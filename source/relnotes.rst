@@ -9,7 +9,7 @@ Main Features:
 
 * Vitis AI Execution Provider for ONNX Runtime supports CNN models on Ryzen AI CPUs
 * C++, Python APIs supported
-* Quantization using Vitis AI quantizer through PyTorch or Olive
+* Quantization using Vitis AI Quantizer through PyTorch or Olive
 
 
 
