@@ -149,7 +149,12 @@ By default ``predict.py`` runs the model on CPU.
 
 .. code-block::
   
-        my_working_directory> python predict.py
+        > python predict.py
+
+Typical output
+
+.. code-block:: 
+
         Image 0: Actual Label cat, Predicted Label cat
         Image 1: Actual Label ship, Predicted Label ship
         Image 2: Actual Label ship, Predicted Label airplane
@@ -202,7 +207,12 @@ Run the ``predict.py`` with the ``--ep ipu`` switch to run the ResNet-50 model o
 
 .. code-block::
 
-    my_working_directory>python predict.py --ep ipu
+    >python predict.py --ep ipu
+
+Typical output
+
+.. code-block:: 
+
     WARNING: Logging before InitGoogleLogging() is written to STDERR
     I20230610 23:31:05.571316  6032 vitisai_compile_model.cpp:210] Vitis AI EP Load ONNX Model Success
     I20230610 23:31:05.571316  6032 vitisai_compile_model.cpp:211] Graph Input Node Name/Shape (1)
