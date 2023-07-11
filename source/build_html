@@ -1,0 +1,6 @@
+#!/bin/bash
+
+rm -rf html
+sphinx-build -a . html
+rm -rf ../html
+mv html ../.
