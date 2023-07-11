@@ -152,9 +152,9 @@ An example of Quantization Aware Training is available at the `Vitis Github <htt
 
 General approaches are:
 
-1. If some non-module operations are needed to be quantized, convert them into module operations. For example, ResNet18 uses ``+`` operator to add two tensors, which can be replaced by ``pytorch_nndct.nn.modules.functional.Add``. 
+1. If some non-module operations are needed to be quantized, convert them into module operations. For example, ResNet18 uses the ``+`` operator to add two tensors, which can be replaced by ``pytorch_nndct.nn.modules.functional.Add``. 
 
-2. If some modules are calles multiple times, uniqify them by defining multiple such modules and call them separately in the foward pass.
+2. If some modules are called multiple times, uniqify them by defining multiple such modules and call them separately in the foward pass.
 
 3. Insert ``QuantStub`` and ``DeQuantStub``. Any sub-network from QuantStub to DeQuantStub in a forward pass will be quantized. Multiple QuantStub-DeQuantStub pairs are allowed.
 
