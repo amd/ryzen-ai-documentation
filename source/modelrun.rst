@@ -85,7 +85,7 @@ Python API Example
     session = onnxruntime.InferenceSession(
                   '[model_file].onnx',
                    providers=["VitisAIExecutionProvider"],
-                   provider_options=[{"config_file":"/etc/vaip_config.json"}])
+                   provider_options=[{"config_file":"/path/to/vaip_config.json"}])
 
     input_shape = session.get_inputs()[0].shape
     input_name = session.get_inputs()[0].name
@@ -110,9 +110,8 @@ C++ API Example
    auto session_options = Ort::SessionOptions();
 
    auto options = std::unorderd_map<std::string,std::string>({});
-   options["config_file"] = "/etc/vaip_config.json";
-   // optional, eg: cache path : /tmp/my_cache/abcdefg // Replace abcdefg with your model name, eg. onnx_model_md5 
-   options["cacheDir"] = "/tmp/my_cache";
+   options["config_file"] = "/path/to/vaip_config.json";
+   options["cacheDir"] = "/path/to/cache/directory";
    options["cacheKey"] = "abcdefg"; // Replace abcdefg with your model name, eg. onnx_model_md5
 
    // Create an inference session using the Vitis AI execution provider
