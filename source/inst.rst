@@ -96,10 +96,6 @@ Install packages:
    pip install voe-0.1.0-cp39-cp39-win_amd64.whl
    pip install onnxruntime_vitisai-1.16.0-cp39-cp39-win_amd64.whl
 
-.. note::
-
-  **Temporary Note**: Today the second wheel file is missing from the downloaded package. I have informed this to Andy and Yiming and they confirmed they will fix it. 
-
 
 |
 |
