@@ -5,7 +5,7 @@ Model Deployment
 ONNX Runtime with Vitis AI Execution Provider
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-After the model is quantized, it can be deployed by the ONNX Runtime by utilizing C++ or Python APIs using Vitis AI execution provider for the inference session: 
+After the model is quantized, it can be deployed by the ONNX Runtime by utilizing C++ or Python APIs using Vitis AI Execution Provider for the inference session: 
 
 .. code-block::
 
