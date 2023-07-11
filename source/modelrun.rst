@@ -60,7 +60,7 @@ Additionally, the Ryzen AI ONNX runtime based deployment can be controlled by th
    * - XLNX_VART_FIRMWARE
      - Mandatory
      - None
-     - The DPU binary ``1x4.xclbin`` file. 
+     - The IPU binary ``1x4.xclbin`` file. 
        The ``1x4.xclbin`` is available inside the setup package.
    * - XLNX_ENABLE_CACHE
      - Optional
