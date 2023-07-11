@@ -3,7 +3,7 @@ Release Notes
 #############
 
 
-Current Release date: 7/15/2023
+Current Release 0.7: Preview Release July 2023
 
 Main Features:
 
@@ -12,18 +12,6 @@ Main Features:
 * Quantization using Vitis AI quantizer through PyTorch or Olive
 
 
-Future Release Plans
-~~~~~~~~~~~~~~~~~~~~
-
-Release Date: 8/15/2023
-
-* Vitis AI Execution Provider updated for ASR/Transformer models on Ryzen AI CPUs
-* Support asymmetric Q/DQ for ASR/Transformer operators
-* Includes first release of QoS 
-
-Release Date: 9/30/2023
-
-* Improved operator/model support for CNN, ASR/LLM/Transformer models
 
 ..
   ------------
