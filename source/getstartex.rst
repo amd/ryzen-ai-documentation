@@ -140,7 +140,7 @@ The Olive workflow is configured using the ``resnet_static_config.json`` file.
 Step 4: Deploy the Model  
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-The ``predict.py`` script is used to deploy the model. It extracts the first ten images from the CIFAR-10 test dataset and dumps them in .png format. The script then reads all those ten images and classifies them by running the quantized ResNet-50 model on CPU or IPU. 
+The ``predict.py`` script is used to deploy the model. It extracts the first ten images from the CIFAR-10 test dataset and converts them to the .png format. The script then reads all those ten images and classifies them by running the quantized ResNet-50 model on CPU or IPU. 
 
 Deploy the Model on the CPU
 ===========================
