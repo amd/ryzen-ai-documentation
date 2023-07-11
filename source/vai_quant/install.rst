@@ -19,25 +19,25 @@ Multiple versions of the Docker container are available, each tailored to specif
 For example, 
 
 
-- PyTorch docker w/o AMD GPU acceleration support: 
+- PyTorch docker without AMD GPU acceleration support: 
 
 .. code-block:: 
 
     docker pull xilinx/vitis-ai-pytorch-cpu:latest
 
-- PyTorch docker w/ AMD GPU acceleration support:
+- PyTorch docker with AMD GPU acceleration support:
 
 .. code-block:: 
 
     docker pull xilinx/vitis-ai-pytorch-rocm:latest
 
-- TensorFlow 2 docker w/o AMD GPU acceleration support:
+- TensorFlow 2 docker without AMD GPU acceleration support:
 
 .. code-block:: 
   
     docker pull xilinx/vitis-ai-tensorflow2-cpu:latest
 
-- TensorFlow 2 docker w AMD GPU acceleration support:
+- TensorFlow 2 docker with AMD GPU acceleration support:
 
 .. code-block:: 
 
