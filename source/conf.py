@@ -148,23 +148,19 @@ highlight_language = 'none'
 # a list of builtin themes.
 #
 ##html_theme = 'karma_sphinx_theme'
-html_theme = 'renku'
+html_theme = 'rocm_docs_theme'
 ##html_theme_path = ["./_themes"]
 
-
-html_context = {
-     "default_mode": "dark"
-}
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
 # documentation.
 #
 ##html_logo = '_static/xilinx-header-logo.svg'
-##html_theme_options = {
-##    'logo_only': False,
-##    'style_nav_header_background': 'black',
-##}
+html_theme_options = {
+    "link_main_doc": False,
+    "flavor": "local"
+}
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
