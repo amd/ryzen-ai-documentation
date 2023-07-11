@@ -119,7 +119,7 @@ Runtime Environment Setup
 
 .. _copy-vaip-config:
 
-2. The setup package (``voe-3.0-win_amd64.zip``) contains Vitis AI execution provider runtime configuration file ``vaip_config.json``. This file is required when configuring Vitis AI execution provider inside the ONNX runtime code. 
+2. The setup package (``voe-3.0-win_amd64.zip``) contains the Vitis AI Execution Provider runtime configuration file ``vaip_config.json``. This file is required when configuring Vitis AI Execution Provider inside the ONNX runtime code. 
 
 ..
   ------------
