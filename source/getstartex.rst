@@ -113,14 +113,14 @@ Quantizing AI models from floating-point to 8-bit integers reduces computational
 The Olive workflow is configured using the ``resnet_static_config.json`` file. 
  
 
-1. First, run Olive in the setup mode 
+- First, run Olive in the setup mode 
 
    .. code-block::
 
        python -m olive.workflows.run --config resnet_static_config.json --setup
 
  
-2. Next, run Olive to convert the model to the ONNX format and quantize it
+- Next, run Olive to convert the model to the ONNX format and quantize it
 
 
    .. code-block::
@@ -132,7 +132,7 @@ The Olive workflow is configured using the ``resnet_static_config.json`` file.
 
    Example ``model.onnx`` path:  ``./cache/models/1_VitisAIQuantization-0-1586a0b670df52697b3acf9aecd67b24-cpu-cpu/model.onnx``
 
-3. Finally, copy the quantized ONNX model in the current working directory for deployment
+- Finally, copy the quantized ONNX model in the current working directory for deployment
 
 |
 |
