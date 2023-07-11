@@ -60,8 +60,8 @@ After the quantization, the quantized model can be saved into ONNX to deploy wit
                                               output_dir='./quantize_results', 
                                               **kwargs)
 
-Fast Finetuing
-%%%%%%%%%%%%%%
+Fast Finetuning
+%%%%%%%%%%%%%%%
 
 After post-training quantization, usually there is a small accuracy loss. If the accuracy loss is large, a fast-finetuning approach, which is based on the `AdaQuant Algorithm <https://arxiv.org/abs/2006.10518>`__, can be tried instead of quantization aware training. The fast finetuning uses a small unlabeled data to calibrate the activations and finetuning the weights. 
 
