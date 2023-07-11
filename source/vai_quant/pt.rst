@@ -120,8 +120,8 @@ Partial quantization can be enabled by using ``QuantStab`` and ``DeQuantStub`` o
           output2 = self.dequant(output2) # end of part to be quantized
 
 
-Fast Finetuing
-%%%%%%%%%%%%%%
+Fast Finetuning
+%%%%%%%%%%%%%%%
 
 After post-training quantization, there is usually a small accuracy loss. If the accuracy loss is large, a fast-finetuning approach, which is based on the `AdaQuant Algorithm <https://arxiv.org/abs/2006.10518>`__, can be tried instead of the quantization aware training. The fast finetuning uses a small unlabeled data to calibrate the activations and finetuning the weights. 
 
