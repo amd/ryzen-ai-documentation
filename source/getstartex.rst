@@ -24,7 +24,7 @@ The following are the steps and the required files to run the example. The files
    * - Quantization 
      - ``resnet_static_config.json``, 
        ``user_script.py``
-     - Convert the model to the IPU-deployable model by running Post-Training Quantization flow by Olive.
+     - Convert the model to the IPU-deployable model by performing Post-Training Quantization flow using Olive.
    * - Deployment
      - ``predict.py``
      -  Run the Quantized model using ONNX runtime code. We demonstrate running the model on both CPU and IPU. 
