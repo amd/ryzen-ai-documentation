@@ -8,7 +8,7 @@ Vitis AI Quantizer, which is part of the complete Vitis AI toolchain, requires t
 Host Server Requirement
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-The Vitis AI Docker container can be installed on Ubuntu 20.04, CentOS 7.8, 7.9, 8.1, and RHEL 8.3, 8.4. The Windows 11 developer can use WSL for installing Vitis AI docker. 
+The Vitis AI Docker container can be installed on Ubuntu 20.04, CentOS 7.8, 7.9, 8.1, and RHEL 8.3, 8.4. The developers working on Windows 11 can use `WSL <https://learn.microsoft.com/en-us/windows/wsl/install>`_ for installing Vitis AI docker. 
 
 
 Docker Container Installation
