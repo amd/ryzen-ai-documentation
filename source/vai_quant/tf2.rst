@@ -10,7 +10,7 @@ Tensorflow Quantization
 Enabling Quantization
 ~~~~~~~~~~~~~~~~~~~~~
 
-To enable Vitis AI Tensorflow Quantization, acvitate the conda environment inside the Vitis AI Tensorflow-2 docker container:
+To enable Vitis AI Tensorflow Quantization, acvitate the conda environment inside the Vitis AI Tensorflow 2 docker container:
 
 .. code-block::
 
