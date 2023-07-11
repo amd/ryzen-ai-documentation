@@ -53,7 +53,7 @@ Step 2: Prepare the Model and the Data
 
 In this example, we utilize the ResNet-50 model from PyTorch Hub and train it using the CIFAR-10 dataset.
 
-The ``prepare_model_data.py`` script downloads the ResNet-50 model from the PyTorch Hub. The Script also downloads the CIFAR10 dataset and uses it to retrain the model using the transfer learning technique. The training process runs over 500 images for each epoch up to five epochs. The training process takes approximately 30 minutes to complete. At the end of the training, we use the trained model for the subsequent steps.
+The ``prepare_model_data.py`` script downloads the ResNet-50 model from the PyTorch Hub. The script also downloads the CIFAR10 dataset and uses it to retrain the model using the transfer learning technique. The training process runs over 500 images for each epoch up to five epochs. The training process takes approximately 30 minutes to complete. At the end of the training, we use the trained model for the subsequent steps.
 
 Run the following command to start the training:
  
@@ -66,7 +66,7 @@ A typical output from the training process looks as follows:
 
 .. code-block::
 
-   Downloading: "https://download.pytorch.org/models/resnet50-11ad3fa6.pth" to C:\Users\udayd/.cache\torch\hub\checkpoints\resnet50-11ad3fa6.pth
+   Downloading: "https://download.pytorch.org/models/resnet50-11ad3fa6.pth" to C:\Users\JohnDoe/.cache\torch\hub\checkpoints\resnet50-11ad3fa6.pth
    100%|██████████████████████████████████████████████████████████████████████████████| 97.8M/97.8M [02:07<00:00, 805kB/s]
    Epoch [1/5], Step [100/500] Loss: 1.1550
    Epoch [1/5], Step [200/500] Loss: 1.0453
