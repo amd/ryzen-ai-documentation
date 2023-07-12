@@ -30,9 +30,9 @@ copyright = '2023, Advanced Micro Devices, Inc'
 author = 'Advanced Micro Devices, Inc'
 
 # The short X.Y version
-version = 'Preview'
+version = '0.7 (Preview)'
 # The full version, including alpha/beta/rc tags
-release = 'Preview'
+release = '0.7 (Preview)'
 html_last_updated_fmt = 'October 7, 2022'
 
 
