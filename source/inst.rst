@@ -11,7 +11,7 @@ Supported Processors
 
 AMD Ryzen 7040U, 7040HS series mobile processors with Windows 11 OS. 
 
-Ensure the IPU driver (officially tested for the 10.105.5.38 version) is installed as shown in the following image.
+Ensure the IPU driver (tested for the 10.105.5.38 version) is installed as shown in the following image.
 
 .. image:: images/ipu_driver.png
 
