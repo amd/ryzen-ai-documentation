@@ -11,11 +11,11 @@ The Ryzen AI SDK enables developers to execute machine learning models trained i
 
 Obtaining Pre-trained Model
 ***************************
-The Ryzen AI development flow does not require any modifications to existing model training processes and methods. The pre-trained model (in PyTorch or TensorFlow) can be used as the starting point of the Ryzen-AI flow. 
+The Ryzen AI development flow does not require any modifications to existing model training processes and methods. The pre-trained model (in PyTorch or TensorFlow) can be used as the starting point of the Ryzen AI flow. 
 
 Quantization
 ************
-Quantization involves converting the AI model's parameters from floating-point to lower-precision representations, such as 16-bit or 8-bit integers. Quantized models are more power-efficient, utilize less memory, and offer better performance. You can quantize the model using either Microsoft Olive or the AMD Vitis AI™ quantizer. Olive is a user-friendly post-training model quantization tool. The Vitis AI quantizer is a powerful model optimization tool that provides advanced user controls and supports quantization-aware training. 
+Quantization involves converting the AI model's parameters from floating-point to lower-precision representations, such as 16-bit or 8-bit integers. Quantized models are more power-efficient, utilize less memory, and offer better performance. You can quantize the model using either Microsoft Olive or the AMD Vitis™ AI quantizer. Olive is a user-friendly post-training model quantization tool. The Vitis AI quantizer is a powerful model optimization tool that provides advanced user controls and supports quantization-aware training. 
 
 For more details, refer to the :doc:`modelport` page.
 
