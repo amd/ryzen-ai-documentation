@@ -22,7 +22,7 @@ Post-Training Quantization requires the following files:
  2. model.py : A Python script including float model definition.
  3. calibration dataset: A subset of the training dataset containing 100 to 1000 images.
 
-A complete example of Post-Training Quantization is available in `Vitis AI GitHub <https://github.com/Xilinx/Vitis-AI/blob/v3.0/src/vai_quantizer/vai_q_pytorch/example/resnet18_quant.py>`__
+A complete example of Post-Training Quantization is available in the `Vitis AI GitHub <https://github.com/Xilinx/Vitis-AI/blob/v3.0/src/vai_quantizer/vai_q_pytorch/example/resnet18_quant.py>`__ repo.
 
 
 Vitis AI Quantization APIs
@@ -66,7 +66,7 @@ Vitis AI provides ``pytorch_nndct`` module with Quantization related APIs.
 Quantization Output
 %%%%%%%%%%%%%%%%%%%
 
-If this quantization command runs successfully, two important files are generated in the output directory ``./quantize_result``.
+If this quantization command runs successfully, two important files are generated in the output directory ``./quantize_result``:
 
   • ``<model>.onnx``: Quantized ONNX model
   • ``Quant_info.json``: Quantization steps of tensors. Retain this file for evaluating quantized models.
@@ -92,7 +92,7 @@ The ``target`` of current version of IPU is ``AMD_AIE2_Nx4_Overlay_cfg0``
 Partial Quantization
 %%%%%%%%%%%%%%%%%%%%
 
-Partial quantization can be enabled by using ``QuantStab`` and ``DeQuantStub`` operator from the ``pytorch_nndct`` library. In the following example, we are quantizing the layers ``subm0`` and ``subm2``, but not the ``subm1``. 
+Partial quantization can be enabled by using ``QuantStab`` and ``DeQuantStub`` operator from the ``pytorch_nndct`` library. In the following example, we are quantizing the layers ``subm0`` and ``subm2``, but not the ``subm1``: 
 
 .. code-block::
 
@@ -148,7 +148,7 @@ After post-training quantization, there is usually a small accuracy loss. If the
 Quantization Aware Training
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-An example of Quantization Aware Training is available at the `Vitis Github <https://github.com/Xilinx/Vitis-AI/blob/v3.0/src/vai_quantizer/vai_q_pytorch/example/resnet18_qat.py>`__ 
+An example of Quantization Aware Training is available at the `Vitis Github <https://github.com/Xilinx/Vitis-AI/blob/v3.0/src/vai_quantizer/vai_q_pytorch/example/resnet18_qat.py>`__.
 
 General approaches are:
 
