@@ -16,7 +16,7 @@ Docker Container Installation
 
 Multiple versions of the Docker container are available, each tailored to specific frameworks and GPU support.  
 
-For example, 
+Examples: 
 
 
 - PyTorch docker without AMD GPU acceleration support: 
