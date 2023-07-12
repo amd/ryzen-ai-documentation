@@ -71,7 +71,7 @@ To quantize the model, you need to run Olive with the JSON configuration file as
    python -m olive.workflows.run --config resnet_static_config.json 
 
 
-Typical output
+Here is the typical output:
 
 .. code-block::
 
