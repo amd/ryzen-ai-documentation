@@ -20,7 +20,7 @@ The following are the steps and the required files to run the example. The files
    * - Preparation
      - ``prepare_model_data.py``,
        ``resnet_utils.py``
-     - Train to prepare a model for the example. The training process adopts the transfer learning technique to train a pre-trained ResNet-50 model with the CIFAR-10 dataset
+     - Train to prepare a model for the example. The training process adopts the transfer learning technique to train a pre-trained ResNet-50 model with the CIFAR-10 dataset.
    * - Quantization 
      - ``resnet_static_config.json``, 
        ``user_script.py``
