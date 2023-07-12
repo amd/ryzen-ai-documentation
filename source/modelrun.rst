@@ -36,11 +36,11 @@ Vitis AI execution provider supports three provider options.
    * - cacheDir
      - Optional
      - ``C:\temp\{user}\vaip\.cache``
-     - The cache directory 
+     - The cache directory.
    * - cacheKey
      - Optional 
      - {onnx_model_md5}
-     - Used to distinguish between the models 
+     - Used to distinguish between the models. 
 
 
 Environment Variables
