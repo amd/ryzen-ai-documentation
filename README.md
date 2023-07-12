@@ -8,7 +8,7 @@
 Intro text here
 
 # License
-Ryzen AI is licensed under [MIT License](https://github.com/amd/ryzen-ai-documentation/blob/main/License>) . Refer to the [LICENSE File](https://github.com/amd/ryzen-ai-documentation/blob/main/License) for the full license text and copyright notice.
+Ryzen AI is licensed under [MIT License](https://github.com/amd/ryzen-ai-documentation/blob/main/License) . Refer to the [LICENSE File](https://github.com/amd/ryzen-ai-documentation/blob/main/License) for the full license text and copyright notice.
 
 # Please Read: Important Legal Notices
 The information presented in this document is for informational purposes only and may contain technical inaccuracies, omissions, and typographical errors. The information contained herein is subject to change and may be rendered inaccurate for many reasons, including but not limited to product and roadmap changes, component and motherboard version changes, new model and/or product releases, product differences between differing manufacturers, software changes, BIOS flashes, firmware upgrades, or the like. Any computer system has risks of security vulnerabilities that cannot be completely prevented or mitigated. AMD assumes no obligation to update or
