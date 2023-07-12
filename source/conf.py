@@ -285,6 +285,9 @@ rinoh_documents = [dict(doc='index',        # top-level file (index.rst)
 
 
 #################################################################################  
+#License
+#Ryzen AI is licensed under `MIT License <https://github.com/amd/ryzen-ai-documentation/blob/main/License>`_ . Refer to the `LICENSE File <https://github.com/amd/ryzen-ai-documentation/blob/main/License>`_ for the full license text and copyright notice.
+
 #X11 License
 #
 #Copyright (C) 2023, Advanced Micro Devices, Inc.
