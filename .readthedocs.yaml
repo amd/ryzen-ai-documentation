@@ -4,11 +4,11 @@
 version: 2
 
 sphinx:
-   configuration: source/conf.py
+   configuration: docs/conf.py
 
 formats: [htmlzip, pdf, epub]
 
 python:
    version: "3.8"
    install:
-   - requirements: source/sphinx/requirements.txt
+   - requirements: docs/sphinx/requirements.txt
