@@ -11,7 +11,7 @@ The Ryzen AI SDK enables developers to execute machine learning models trained i
 
 Obtaining Pre-trained Model
 ***************************
-The Ryzen AI development flow does not require any modifications to existing model training processes and methods. The pre-trained model (in PyTorch or TensorFlow) can be used as the starting point of the Ryzen AI flow. 
+The Ryzen AI development flow does not require any modifications to the existing model training processes and methods. The pre-trained model (in PyTorch or TensorFlow) can be used as the starting point of the Ryzen AI flow. 
 
 Quantization
 ************
