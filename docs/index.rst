@@ -1,5 +1,5 @@
 ########################
-Ryzen AI Developer Guide  
+Ryzen AI User Guide  
 ########################
 
 The AMD Ryzen™ AI SDK enables developers to take machine learning models trained in PyTorch or TensorFlow and run them on laptops powered by `Ryzen AI <https://www.amd.com/en/products/ryzen-ai>`__. Ryzen AI is a dedicated AI accelerator integrated on-chip with the CPU cores. The Ryzen AI software intelligently optimizes tasks and workloads, freeing-up CPU and GPU resources, and ensuring optimal performance at lower power.
@@ -17,12 +17,15 @@ The AMD Ryzen™ AI SDK enables developers to take machine learning models train
 Table of Contents
 *****************
 
+Release Notes
+===============
+
+* **Release Notes**: Refer to :doc:`relnotes` page.
+
 Getting Started
 ===============
 
 * **Installation**: Refer to :doc:`inst` page. 
-
-* **Release Notes**: Refer to :doc:`relnotes` page.
 
 * **Development Flow Overview**: Refer to :doc:`devflow` page. 
 
@@ -41,11 +44,18 @@ Using Your Model
 
 .. toctree::
    :maxdepth: 1
+   :caption: Release Notes
+   :hidden:
+
+   relnotes.rst
+
+
+.. toctree::
+   :maxdepth: 1
    :caption: Getting Started
    :hidden:
 
    inst.rst
-   relnotes.rst
    devflow.rst
    getstartex.rst
 
