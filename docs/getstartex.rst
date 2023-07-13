@@ -27,7 +27,7 @@ The following are the steps and the required files to run the example. The files
      - Convert the model to the IPU-deployable model by performing Post-Training Quantization flow using Olive.
    * - Deployment
      - ``predict.py``
-     -  Run the Quantized model using ONNX runtime code. We demonstrate running the model on both CPU and IPU. 
+     -  Run the Quantized model using the ONNX Runtime code. We demonstrate running the model on both CPU and IPU. 
 
 
 |
@@ -177,7 +177,7 @@ To successfully run the model on the IPU, you need to run the following setup st
 - Copy the ``vaip_config.json`` runtime configuration file from the Vitis AI Execution Provider package to the current directory. For more information, see :ref:`installation instructions <copy-vaip-config>`. The ``vaip_config.json`` is used by the ``predict.py`` script to configure the Vitis AI Execution Provider.
 
 
-The following section of the ``predict.py`` script shows how the ONNX Runtime is configured to deploy the model on the Ryzen AI IPU:
+The following section of the ``predict.py`` script shows how ONNX Runtime is configured to deploy the model on the Ryzen AI IPU:
 
 
 .. code-block::
