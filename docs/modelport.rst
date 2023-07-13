@@ -10,7 +10,7 @@ Model Quantization
 
 .. .. rubric:: Olive
 
-.. Olive is an easy-to-use tool which supports post-training quantization (PTQ). 
+.. Olive is an easy-to-use tool, which supports post-training quantization (PTQ). 
 
 .. For more details, refer to the :doc:`olive_quant` page.
 
