@@ -6,7 +6,7 @@ The AMD Ryzen™ AI SDK enables developers to take machine learning models train
 
 |
 
-.. image:: images/rayzenai.png
+.. image:: images/RyzenAILanding.png
    :scale: 75%
    :align: center
 
