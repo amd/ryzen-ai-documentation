@@ -5,7 +5,7 @@ Model Deployment
 ONNX Runtime with Vitis AI Execution Provider
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-After the model is quantized, it can be deployed by the ONNX Runtime by utilizing C++ or Python APIs using Vitis AI Execution Provider for the inference session: 
+After the model is quantized, it can be deployed with ONNX Runtime by utilizing C++ or Python APIs using Vitis AI Execution Provider (VAI EP) for the inference session: 
 
 .. code-block::
 
@@ -17,7 +17,7 @@ After the model is quantized, it can be deployed by the ONNX Runtime by utilizin
 Provider Options
 ~~~~~~~~~~~~~~~~
 
-Vitis AI execution provider supports three provider options.
+VAI EP supports three provider options:
 
 
 .. list-table:: 
@@ -46,7 +46,7 @@ Vitis AI execution provider supports three provider options.
 Environment Variables
 ~~~~~~~~~~~~~~~~~~~~~
 
-Additionally, the Ryzen AI ONNX runtime based deployment can be controlled by the following environment variables:
+Additionally, use the following environment variables to control the Ryzen AI ONNX Runtime based deployment.
 
 
 .. list-table:: 
