@@ -1,6 +1,6 @@
 <table width="100%">
   <tr width="100%">
-    <td align="center"><img src="https://raw.githubusercontent.com/Xilinx/Image-Collateral/main/xilinx-logo.png" width="30%"/><h1>Ryzen AI 1.0 User Guide </h1>
+    <td align="center"><img src="https://raw.githubusercontent.com/Xilinx/Image-Collateral/main/xilinx-logo.png" width="30%"/><h1>Ryzen AI 0.7 User Guide </h1>
     </td>
  </table>
 
