@@ -3,7 +3,7 @@ Installation
 ############
 
 
-Vitis AI Quantizer, which is part of the complete Vitis AI toolchain, requires the installation of a Docker container on the host server.
+Vitis AI Quantizer, which is part of the Vitis AI toolchain, requires the installation of a Docker container on the host server.
 
 Host Server Requirement
 ~~~~~~~~~~~~~~~~~~~~~~~

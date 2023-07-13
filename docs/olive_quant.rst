@@ -22,7 +22,7 @@ Configuring the Quantization Pass
 
 The JSON configuration file must include a ``passes`` key, which is a dictionary containing information about passes executed by the engine. The passes are executed in the order defined within the dictionary, where the key of the dictionary represents the name of the pass. 
 
-To quantize the model for Ryzen AI, you need to use the ``VitisAIQuantization`` pass. In the the following example, two passes are used, converting to ONNX and quantizing using Vitis AI. 
+To quantize the model for Ryzen AI, use the ``VitisAIQuantization`` pass. In the following example, two passes are used, converting to ONNX and quantizing using Vitis AI. 
 
 .. code-block:: 
 
@@ -47,13 +47,13 @@ To quantize the model for Ryzen AI, you need to use the ``VitisAIQuantization`` 
         }
 
 
-For a complete description of the ``VitisAIQuantization`` pass, refer to the `VitisAIQuantization pass reference guide <https://microsoft.github.io/Olive/api/passes.html#vitis-ai-quantization>`_
+For a complete description of the ``VitisAIQuantization`` pass, refer to the `VitisAIQuantization pass reference guide <https://microsoft.github.io/Olive/api/passes.html#vitis-ai-quantization>`_.
 
 
 Checking the Configuration
 **************************
 
-Before running quantization with Olive, you can optionally execute a setup mode to identify additional packages that may need to be installed to supported the passes set in the configuration JSON file.
+Before running quantization with Olive, you can optionally execute a setup mode to identify additional packages that might need to be installed to support the passes set in the configuration JSON file.
 
 .. code-block:: 
 
@@ -63,7 +63,7 @@ Before running quantization with Olive, you can optionally execute a setup mode 
 Quantizing the Model
 ********************
 
-To quantize the model, you need to run Olive with the JSON configuration file as follows:
+To quantize the model, run Olive with the JSON configuration file as follows:
 
 
 .. code-block:: 
@@ -101,7 +101,7 @@ Here is the typical output:
 
 
 
-At the end of the Quantization process, the model is saved in the ``[model]``.onnx format 
+At the end of the Quantization process, the model is saved in the ``[model]``.onnx format. 
 
 ..
   ------------
