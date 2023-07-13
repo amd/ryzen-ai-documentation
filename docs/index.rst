@@ -25,20 +25,20 @@ Release Notes
 Getting Started
 ===============
 
-* **Installation**: Refer to :doc:`inst` page. 
+* **Installation**: Refer to the :doc:`inst` page. 
 
-* **Development Flow Overview**: Refer to :doc:`devflow` page. 
+* **Development Flow Overview**: Refer to the :doc:`devflow` page. 
 
-* **Getting Started Example**: Refer to :doc:`getstartex` page to run a resnet50 model example
+* **Getting Started Example**: Refer to the :doc:`getstartex` page to run a resnet50 model example.
 
 Using Your Model
 ================
 
-* **Model Compatibility**: Refer to :doc:`modelcompat` page. 
+* **Model Compatibility**: Refer to the :doc:`modelcompat` page. 
 
-* **Model Quantization**: Refer to :doc:`modelport` page. 
+* **Model Quantization**: Refer to the :doc:`modelport` page. 
 
-* **Model Running Using ONNX Runtime**: Refer to the :doc:`modelrun` page. 
+* **Model Running Using ONNX Runtime**: Refer to the the :doc:`modelrun` page. 
 
 
 
