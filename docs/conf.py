@@ -216,7 +216,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'ENTER YOUR LIBRARY ID HERE. FOR EXAMPLE: xfopencv.tex', 'ENTER YOUR LIBRARY PROJECT NAME HERE',
+    (master_doc, 'ryzenai.tex', 'Ryzen AI',
      'AMD', 'manual'),
 ]
 
@@ -226,7 +226,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'ENTER YOUR LIBRARY ID HERE. FOR EXAMPLE: xfopencv', 'ENTER YOUR LIBRARY PROJECT NAME HERE',
+    (master_doc, 'ryzenai.tex', 'Ryzen AI',
      [author], 1)
 ]
 
