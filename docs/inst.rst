@@ -48,7 +48,7 @@ To enable the development and deployment of IPU-based inference on the client de
 Installation Steps
 ~~~~~~~~~~~~~~~~~~
 
-For the installation, we recommend using a conda environment (Anaconda or Miniconda). 
+Using a conda environment (Anaconda or Miniconda) is recommended for the installation. 
 
 Start a conda prompt. In the conda prompt, create and activate an environment for the rest of the installation process. 
 
@@ -83,7 +83,7 @@ https://www.xilinx.com/bin/public/openDownload?filename=voe-3.0-win_amd64.zip
 
 **4. Install Necessary Packages**
 
-Change directory to the extracted setup package directory:
+Change the directory to the extracted setup package directory:
 
 .. code-block:: 
    
@@ -106,7 +106,7 @@ Runtime Environment Setup
    
 .. _set-vart-envar:
 
-1. Specify IPU binary path. It is a required step everytime the application is run from a new terminal
+1. Specify the IPU binary path. It is a required step everytime the application is run from a new terminal:
 
 .. code-block::
 
@@ -115,7 +115,7 @@ Runtime Environment Setup
 
 .. _copy-vaip-config:
 
-2. The setup package (``voe-3.0-win_amd64.zip``) contains the Vitis AI Execution Provider runtime configuration file ``vaip_config.json``. This file is required when configuring Vitis AI Execution Provider inside the ONNX runtime code. 
+2. The setup package (``voe-3.0-win_amd64.zip``) contains the Vitis AI Execution Provider runtime configuration file ``vaip_config.json``. This file is required when configuring Vitis AI Execution Provider (VAI EP) inside the ONNX Runtime code. 
 
 ..
   ------------
