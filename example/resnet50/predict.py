@@ -93,3 +93,8 @@ for i in range (0,10):
     predicted_label = metadata['label_names'][predicted_class]
     label = metadata['label_names'][labels[i]]
     print(f'Image {i}: Actual Label {label}, Predicted Label {predicted_label}')
+
+
+#################################################################################  
+#License
+#Ryzen AI is licensed under `MIT License <https://github.com/amd/ryzen-ai-documentation/blob/main/License>`_ . Refer to the `LICENSE File <https://github.com/amd/ryzen-ai-documentation/blob/main/License>`_ for the full license text and copyright notice.
