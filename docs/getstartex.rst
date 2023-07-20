@@ -115,7 +115,7 @@ The Olive workflow is configured using the ``resnet_static_config.json`` file.
 
 - First, run Olive in the setup mode:
 
-   .. code-block::
+  .. code-block::
 
        python -m olive.workflows.run --config resnet_static_config.json --setup
 
@@ -123,14 +123,14 @@ The Olive workflow is configured using the ``resnet_static_config.json`` file.
 - Next, run Olive to convert the model to the ONNX format and quantize it:
 
 
-   .. code-block::
+  .. code-block::
 
       python -m olive.workflows.run --config resnet_static_config.json 
    
    
-   After the run is complete, the quantized ONNX model ``model.onnx`` is saved inside a cache directory. 
+After the run is complete, the quantized ONNX model ``model.onnx`` is saved inside a cache directory. 
 
-   Example ``model.onnx`` path:  ``./cache/models/1_VitisAIQuantization-0-1586a0b670df52697b3acf9aecd67b24-cpu-cpu/model.onnx``
+Example ``model.onnx`` path:  ``./cache/models/1_VitisAIQuantization-0-1586a0b670df52697b3acf9aecd67b24-cpu-cpu/model.onnx``
 
 - Finally, copy the quantized ONNX model in the current working directory for deployment.
 
