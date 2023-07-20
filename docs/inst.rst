@@ -95,10 +95,8 @@ https://microsoft.github.io/Olive/getstarted/installation.html
       pip install voe-0.1.0-cp39-cp39-win_amd64.whl
       pip install onnxruntime_vitisai-1.16.0-cp39-cp39-win_amd64.whl
 
-
 |
 |
-
    
 Runtime Environment Setup 
 ~~~~~~~~~~~~~~~~~~~~~~~~~
