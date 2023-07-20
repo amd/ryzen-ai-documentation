@@ -67,31 +67,32 @@ Start a conda prompt. In the conda prompt, create and activate an environment fo
   pip install olive-ai[cpu]
 
 
-For additional information regarding the Olive installation, refer to the Microsoft documentation: https://microsoft.github.io/Olive/getstarted/installation.html
+   For additional information regarding the Olive installation, refer to the Microsoft documentation:       
+   https://microsoft.github.io/Olive/getstarted/installation.html
 
 
-2. Ensure ONNX Runtime is Installed
+2. Ensure ONNX Runtime is installed
 
 .. code-block::
    
    pip install onnxruntime 
 
-3. Download and Extract Setup Package
+3. Download and txtract the setup package
 
-https://www.xilinx.com/bin/public/openDownload?filename=voe-3.0-win_amd64.zip 
+   https://www.xilinx.com/bin/public/openDownload?filename=voe-3.0-win_amd64.zip 
 
 
-4. Install Necessary Packages
+4. Install the necessary packages:
 
-Change the directory to the extracted setup package directory:
+   Change the directory to the extracted setup package directory:
 
-.. code-block:: 
+   .. code-block:: 
    
-   cd voe-3.0-win_amd64\voe-3.0-win_amd64\Install
+      cd voe-3.0-win_amd64\voe-3.0-win_amd64\Install
    
-Install packages:
+   Install packages:
 
-.. code-block:: 
+   .. code-block:: 
 
    pip install voe-0.1.0-cp39-cp39-win_amd64.whl
    pip install onnxruntime_vitisai-1.16.0-cp39-cp39-win_amd64.whl
