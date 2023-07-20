@@ -59,7 +59,7 @@ Start a conda prompt. In the conda prompt, create and activate an environment fo
 
 .. _install-olive:
 
-1. Install Olive
+1. Install Olive:
 
 
 .. code-block::
@@ -71,13 +71,13 @@ Start a conda prompt. In the conda prompt, create and activate an environment fo
    https://microsoft.github.io/Olive/getstarted/installation.html
 
 
-2. Ensure ONNX Runtime is installed
+2. Ensure ONNX Runtime is installed:
 
 .. code-block::
    
    pip install onnxruntime 
 
-3. Download and txtract the setup package
+3. Download and extract the setup package:
 
    https://www.xilinx.com/bin/public/openDownload?filename=voe-3.0-win_amd64.zip 
 
