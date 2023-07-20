@@ -61,14 +61,12 @@ Start a conda prompt. In the conda prompt, create and activate an environment fo
 
 1. Install Olive:
 
-
 .. code-block::
 
   pip install olive-ai[cpu]
 
-
-   For additional information regarding the Olive installation, refer to the Microsoft documentation:       
-   https://microsoft.github.io/Olive/getstarted/installation.html
+For additional information regarding the Olive installation, refer to the Microsoft documentation:       
+https://microsoft.github.io/Olive/getstarted/installation.html
 
 
 2. Ensure ONNX Runtime is installed:
@@ -94,8 +92,8 @@ Start a conda prompt. In the conda prompt, create and activate an environment fo
 
    .. code-block:: 
 
-   pip install voe-0.1.0-cp39-cp39-win_amd64.whl
-   pip install onnxruntime_vitisai-1.16.0-cp39-cp39-win_amd64.whl
+      pip install voe-0.1.0-cp39-cp39-win_amd64.whl
+      pip install onnxruntime_vitisai-1.16.0-cp39-cp39-win_amd64.whl
 
 
 |
