@@ -63,7 +63,7 @@ Start a conda prompt. In the conda prompt, create and activate an environment fo
 
 .. code-block::
 
-  pip install olive-ai[cpu]
+   pip install olive-ai[cpu]
 
 For additional information regarding the Olive installation, refer to the Microsoft documentation:       
 https://microsoft.github.io/Olive/getstarted/installation.html
