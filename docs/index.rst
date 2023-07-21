@@ -1,8 +1,8 @@
-########################
-Ryzen AI User Guide  
-########################
+##########################
+Ryzen AI Software Platform  
+##########################
 
-The AMD Ryzen™ AI SDK enables developers to take machine learning models trained in PyTorch or TensorFlow and run them on laptops powered by `Ryzen AI <https://www.amd.com/en/products/ryzen-ai>`__. Ryzen AI is a dedicated AI accelerator integrated on-chip with the CPU cores. The Ryzen AI software intelligently optimizes tasks and workloads, freeing-up CPU and GPU resources, and ensuring optimal performance at lower power.
+The AMD Ryzen™ AI Software Platform enables developers to take machine learning models trained in PyTorch or TensorFlow and run them on laptops powered by `Ryzen AI <https://www.amd.com/en/products/ryzen-ai>`__. Ryzen AI is a dedicated AI accelerator integrated on-chip with the CPU cores. The Ryzen AI software platform intelligently optimizes tasks and workloads, freeing-up CPU and GPU resources, and ensuring optimal performance at lower power.
 
 |
 
