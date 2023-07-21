@@ -36,7 +36,7 @@ The following are the steps and the required files to run the example. The files
 Step 1: Install Packages
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-* Ensure that the Ryzen AI SDK is correctly installed. For more details, see the :ref:`installation instructions <inst.rst>`.
+* Ensure that the Ryzen AI Software Platform is correctly installed. For more details, see the :ref:`installation instructions <inst.rst>`.
 
 * This example requires a couple of additional packages. Run the following command to install them:
 
