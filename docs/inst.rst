@@ -75,7 +75,7 @@ https://microsoft.github.io/Olive/getstarted/installation.html
    
    pip install onnxruntime 
 
-3. Download and extract the setup package:
+3. Download and extract the Execution Provider setup package:
 
    https://www.xilinx.com/bin/public/openDownload?filename=voe-3.0-win_amd64.zip 
 
@@ -110,7 +110,7 @@ Runtime Environment Setup
    set set XLNX_VART_FIRMWARE=C:\path\to\1x4.xclbin
    set XLNX_TARGET_NAME="AMD_AIE2_Nx4_Overlay"
 
-The IPU binaries are located inside the execution provider setup package.
+The IPU binaries are located inside the Execution Provider setup package.
 
 .. _copy-vaip-config:
 
