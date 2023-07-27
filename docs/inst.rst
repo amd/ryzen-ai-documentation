@@ -129,7 +129,7 @@ The procedure of selecting a specific binary by using the environment variables 
 
 Selecting 1x4.xclbin IPU binary
 
-..code-block::
+.. code-block::
 
    set XLNX_VART_FIRMWARE=C:\path\to\1x4.xclbin
    set XLNX_TARGET_NAME="AMD_AIE2_Nx4_Overlay"
@@ -137,7 +137,7 @@ Selecting 1x4.xclbin IPU binary
 
 Selecting 5x4.xclbin IPU binary
 
-..code-block::
+.. code-block::
 
    set XLNX_VART_FIRMWARE=C:\path\to\5x4.xclbin
    set XLNX_TARGET_NAME="AMD_AIE2_5x4_Overlay"
