@@ -103,12 +103,14 @@ Runtime Environment Setup
    
 .. _set-vart-envar:
 
-1. Specify the IPU binary path. It is a required step everytime the application is run from a new terminal:
+1. Select the IPU binary. It is a required step everytime the application is run from a new terminal:
 
 .. code-block::
 
-   set XLNX_VART_FIRMWARE=C:\[path_to_package]\voe-3.0-win_amd64\voe-3.0-win_amd64\Install\1x4.xclbin
+   set set XLNX_VART_FIRMWARE=C:\path\to\1x4.xclbin
+   set XLNX_TARGET_NAME="AMD_AIE2_Nx4_Overlay"
 
+The IPU binaries are located inside the execution provider setup package.
 
 .. _copy-vaip-config:
 
