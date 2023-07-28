@@ -143,7 +143,7 @@ Selecting 5x4.xclbin IPU binary
    set XLNX_TARGET_NAME="AMD_AIE2_5x4_Overlay"
 
 
-Note to set 5x4.xclbin as the IPU binary we require an additional environment variable ``XLNX_TARGET_NAME``. 
+Note to set 5x4.xclbin as the IPU binary we require an additional environment variable XLNX_TARGET_NAME. 
 ..
   ------------
 
