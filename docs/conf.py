@@ -15,6 +15,7 @@
 #
 import os
 import sys
+import urllib.parse
 # import recommonmark
 # from recommonmark.transform import AutoStructify
 # from recommonmark.parser import CommonMarkParser
@@ -57,6 +58,7 @@ extensions = [
     'sphinx.ext.ifconfig',
     'sphinx.ext.viewcode',
     'sphinx.ext.githubpages',
+    "notfound.extension",
 	#'recommonmark',
 	#'sphinx_markdown_tables',
 	#'edit_on_github',
@@ -271,7 +273,11 @@ rinoh_documents = [dict(doc='index',        # top-level file (index.rst)
 
 
 
+# -- Notfound (404) extension settings
 
+if "READTHEDOCS" in os.environ:
+    components = urllib.parse.urlparse(os.environ["READTHEDOCS_CANONICAL_URL"])
+    notfound_urls_prefix = components.path
 
 
 # -- Extension configuration -------------------------------------------------
