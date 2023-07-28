@@ -107,8 +107,7 @@ Runtime Environment Setup
 
 .. code-block::
 
-   set set XLNX_VART_FIRMWARE=C:\path\to\1x4.xclbin
-   set XLNX_TARGET_NAME="AMD_AIE2_Nx4_Overlay"
+   set XLNX_VART_FIRMWARE=C:\path\to\1x4.xclbin
 
 The IPU binaries are located inside the Execution Provider setup package.
 
@@ -134,7 +133,6 @@ Selecting 1x4.xclbin IPU binary
 .. code-block::
 
    set XLNX_VART_FIRMWARE=C:\path\to\1x4.xclbin
-   set XLNX_TARGET_NAME="AMD_AIE2_Nx4_Overlay"
 
 
 Selecting 5x4.xclbin IPU binary
@@ -145,6 +143,7 @@ Selecting 5x4.xclbin IPU binary
    set XLNX_TARGET_NAME="AMD_AIE2_5x4_Overlay"
 
 
+Note to set 5x4.xclbin as the IPU binary we require an additional environment variable ``XLNX_TARGET_NAME``. 
 ..
   ------------
 
