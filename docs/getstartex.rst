@@ -122,7 +122,7 @@ After the run is complete, the quantized ONNX model ``model.onnx`` is saved insi
 
 Example ``model.onnx`` path:  ``./cache/models/1_VitisAIQuantization-0-1586a0b670df52697b3acf9aecd67b24-cpu-cpu/model.onnx``
 
-- Finally, copy the quantized ONNX model in the current working directory for deployment.
+Copy the quantized ONNX model in the current working directory for deployment.
 
 |
 |
