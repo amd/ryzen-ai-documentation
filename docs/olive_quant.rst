@@ -47,6 +47,8 @@ To quantize the model for Ryzen AI, use the ``VitisAIQuantization`` pass. In the
         }
 
 
+Note: The opset must be above 10.
+
 For a complete description of the ``VitisAIQuantization`` pass, refer to the `VitisAIQuantization pass reference guide <https://microsoft.github.io/Olive/api/passes.html#vitis-ai-quantization>`_.
 
 
