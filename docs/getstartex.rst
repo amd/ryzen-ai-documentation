@@ -110,10 +110,17 @@ Step 3: Quantize the Model
 
 Quantizing AI models from floating-point to 8-bit integers reduces computational power and the memory footprint required for inference. For model quantization, you can either use Olive or the Vitis AI quantizer. This example utilizes the Olive workflow.
 
+Note: Current Olive flow is not compatible with the latest pydantic version. Downgrade the pydantic version as below before running the quantization flow
+
+.. code-block::
+
+   pip install pydantic==1.10.9
+
+
 The Olive workflow is configured using the ``resnet_static_config.json`` file. Run Olive to convert the model to the ONNX format and quantize it:
  
 
-  .. code-block::
+.. code-block::
 
       python -m olive.workflows.run --config resnet_static_config.json 
    
