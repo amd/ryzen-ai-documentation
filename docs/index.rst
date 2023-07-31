@@ -6,7 +6,7 @@ The AMD Ryzen™ AI Software Platform enables developers to take machine learnin
 
 |
 
-.. image:: images/RyzenAILanding.png
+.. image:: images/landing1.png
    :scale: 75%
    :align: center
 
