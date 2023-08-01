@@ -186,31 +186,31 @@ Runtime IPU Binary selection
 
 Ryzen AI Software platform provides a couple of IPU binaries using different configurations on the IPU device. 
 
-**IPU binary 1x4.xclbin**: An AI stream using 1x4.xclbin use a 1x4 grid-style configuration on the IPU device that provides up to 2 TOPS performance. Most real-time application (video conferencing use cases) performance requirements can be met using this configuration. Four such AI streams (each utilizing 1x4.xclbin) can be run in parallel on the IPU device without any visible loss of performance. When using 1x4.xclbin, Ryzen AI supports up to 8 concurrent AI streams by spatial and temporal sharing of the IPU device by multiple 1x4 style configurations. 
+**IPU binary 1x4.xclbin**: An AI stream using 1x4.xclbin use a 1x4 grid-style configuration on the IPU device that provides up to 2 TOPS performance. Most real-time application (video conferencing use cases) performance requirements can be met using this configuration. In the current Ryzen AI software platform, up to four such AI streams can be run in parallel on the IPU device without any visible loss of performance.
 
 
-**IPU binary 5x4.xclbin**: For a more advanced use case or larger model, IPU binary 5x4.xclbin can be used which uses a larger 5x4 grid-style configuration that occupies the complete IPU device to provide up to 10 TOPs performance. 
+**IPU binary 5x4.xclbin**: For more advanced use cases or larger models, IPU binary 5x4.xclbin can be used which uses a larger 5x4 grid-style configuration that occupies the complete IPU device to provide up to 10 TOPs performance. 
 
-In the current version of the release, 5x4.xclbin does not support temporal sharing with multiple threads, and can only be used with a single application thread.
+In the current version of the release, 5x4.xclbin does not support multiple concurrent AI streams, and can only be used by a single application. 
 
 
-The procedure of selecting a specific binary by using the environment variables as shown below:
+The procedure of selecting a specific binary by using the environment variables is shown below:
 
-Selecting 1x4.xclbin IPU binary
+Selecting the 1x4.xclbin IPU binary
 
 .. code-block::
 
    set XLNX_VART_FIRMWARE=C:\path\to\1x4.xclbin
 
 
-Selecting 5x4.xclbin IPU binary
+Selecting the 5x4.xclbin IPU binary
 
 .. code-block::
 
    set XLNX_VART_FIRMWARE=C:\path\to\5x4.xclbin
    set XLNX_TARGET_NAME="AMD_AIE2_5x4_Overlay"
 
-Note: To set 5x4.xclbin as the IPU binary we require an additional environment variable XLNX_TARGET_NAME. 
+Note: To select the 5x4.xclbin as the IPU binary, the additional XLNX_TARGET_NAME environment variable is required. 
 
 ..
   ------------
