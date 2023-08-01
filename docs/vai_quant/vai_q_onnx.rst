@@ -89,6 +89,7 @@ Pre-processing API is in the Python module ``onnxruntime.quantization.shape_infe
 ``guess_output_rank``: (Boolean) This flag indicates whether to guess the output rank to be the same as input 0 for unknown operations. The default value is False.
 
 ``verbose``: (Integer) This parameter controls the level of detailed information logged during inference. 
+
    - 0 turns off logging (default)
    - 1 logs warnings
    - 3 logs detailed information. 
