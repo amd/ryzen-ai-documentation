@@ -15,6 +15,8 @@ Ensure that the IPU driver is installed by opening ``Device Manager`` -> ``Syste
 
 .. image:: images/ipu_device_properties.png
 
+|
+|
 
 This release is compatible with IPU driver version >= 10.105.5.42. For the Ryzen AI PC with earlier IPU driver versions such as 10.105.5.38, please download the `IPU Driver <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ipu_stack_rel_silicon.zip>`_ and install it as below
 
@@ -95,7 +97,7 @@ Optionally you can install standalone `Vitis AI ONNX Quantizer <https://www.xili
 
 4. Install the necessary packages:
 
-   Change the directory to the extracted setup package directory:
+   Change the directory to the extracted Execution Provider setup package directory:
 
    .. code-block:: 
    
@@ -127,7 +129,7 @@ The IPU binaries are located inside the Execution Provider setup package.
 
 .. _copy-vaip-config:
 
-2. The setup package (``voe-3.5-win_amd64.zip``) contains the Vitis AI Execution Provider runtime configuration file ``vaip_config.json``. This file is required when configuring Vitis AI Execution Provider (VAI EP) inside the ONNX Runtime code. 
+2. The Execution Provider setup package (``voe-3.5-win_amd64.zip``) contains the Vitis AI Execution Provider runtime configuration file ``vaip_config.json``. This file is required when configuring Vitis AI Execution Provider (VAI EP) inside the ONNX Runtime code. 
 
 
 Runtime IPU Binary selection 
