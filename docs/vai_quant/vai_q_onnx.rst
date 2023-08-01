@@ -22,13 +22,21 @@ The static quantization method first runs the model using a set of inputs called
 Arguments
 
 model_input: (String) This parameter represents the file path of the model to be quantized.
+
 model_output: (String) This parameter represents the file path where the quantized model will be saved.
+
 calibration_data_reader: (Object or None) This parameter is a calibration data reader. It enumerates the calibration data and generates inputs for the original model. If you wish to use random data for a quick test, you can set calibration_data_reader to None. The default value is None.
+
 quant_format: (String) This parameter is used to specify the quantization format of the model. It has the following options:
+
 QOperator: This option quantizes the model directly using quantized operators.
+
 QDQ: This option quantizes the model by inserting QuantizeLinear/DeQuantizeLinear into the tensor. It supports 8-bit quantization only.
+
 VitisQuantFormat.QDQ: This option quantizes the model by inserting VAIQuantizeLinear/VAIDeQuantizeLinear into the tensor. It supports a wider range of bit-widths and configurations.
+
 VitisQuantFormat.FixNeuron: This option quantizes the model by inserting FixNeuron (a combination of QuantizeLinear and DeQuantizeLinear) into the tensor.
+
 calibrate_method: (String) For DPU devices, set calibrate_method to either 'vai_q_onnx.PowerOfTwoMethod.NonOverflow' or 'vai_q_onnx.PowerOfTwoMethod.MinMSE' to apply power-of-2 scale quantization. The PowerOfTwoMethod currently supports two methods: MinMSE and NonOverflow. The default method is MinMSE.
 
   
