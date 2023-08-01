@@ -129,6 +129,7 @@ Arguments
 ``calibration_data_reader``: (Object or None) This parameter is a calibration data reader that enumerates the calibration data and generates inputs for the original model. If you wish to use random data for a quick test, you can set calibration_data_reader to None.
 
 ``quant_format``: (Enum) This parameter defines the quantization format for the model. It has the following options:
+
    - QOperator This option quantizes the model directly using quantized operators.
    - QDQ This option quantizes the model by inserting QuantizeLinear/DeQuantizeLinear into the tensor. It supports 8-bit quantization only 
    - VitisQuantFormat.QDQ This option quantizes the model by inserting VAIQuantizeLinear/VAIDeQuantizeLinear into the tensor. It supports a wider range of bit-widths and configurations.
@@ -136,6 +137,7 @@ Arguments
 
 
 ``calibrate_method``: (Enum) This parameter is used to set the power-of-2 scale quantization method. It currently supports two methods: 
+
    - 'vai_q_onnx.PowerOfTwoMethod.NonOverflow' 
    - 'vai_q_onnx.PowerOfTwoMethod.MinMSE' (default) 
 
