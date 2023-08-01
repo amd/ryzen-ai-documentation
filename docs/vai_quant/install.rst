@@ -14,44 +14,18 @@ The Vitis AI Docker container can be installed on Ubuntu 20.04, CentOS 7.8, 7.9,
 Docker Container Installation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Multiple versions of the Docker container are available, each tailored to specific frameworks and GPU support.  
+Multiple versions of the Docker container are available, each tailored to specific frameworks.  
 
 Examples: 
 
 
-- PyTorch docker without AMD GPU acceleration support: 
+- PyTorch docker download and running instruction: https://hub.docker.com/r/amdih/ryzen-ai-pytorch  
 
-.. code-block:: 
+- TensorFlow 2 docker download and running instruction: https://hub.docker.com/r/amdih/ryzen-ai-tensorflow2
 
-    docker pull xilinx/vitis-ai-pytorch-cpu:latest
-
-- PyTorch docker with AMD GPU acceleration support:
-
-.. code-block:: 
-
-    docker pull xilinx/vitis-ai-pytorch-rocm:latest
-
-- TensorFlow 2 docker without AMD GPU acceleration support:
-
-.. code-block:: 
-  
-    docker pull xilinx/vitis-ai-tensorflow2-cpu:latest
-
-- TensorFlow 2 docker with AMD GPU acceleration support:
-
-.. code-block:: 
-
-   docker pull xilinx/vitis-ai-tensorflow2-rocm:latest
-   
+- Tensorflow docker download and running instruction: https://hub.docker.com/r/amdih/ryzen-ai-tensorflow
 
 
-Next, you can now start the Vitis AI Docker using the following commands:
-
-.. code-block:: 
-
-    cd <Vitis-AI install path>/Vitis-AI
-    ./docker_run.sh xilinx/vitis-ai-<pytorch|opt-pytorch|tensorflow2>-<cpu|rocm>:latest
-    
     
 
 
