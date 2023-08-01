@@ -5,7 +5,7 @@ Version 0.7
 Quantizer
 ~~~~~~~~
 
--Docker Containers
+- Docker Containers
 
   - Provide CPU dockers for Pytorch, Tensorflow 1.x and Tensorflow 2.x quantizer
   - Provide GPU dockerfiles to build GPU dockers
