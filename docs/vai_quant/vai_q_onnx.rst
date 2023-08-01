@@ -62,25 +62,29 @@ Model optimization performs certain operator fusion that makes the quantization 
 
 Unfortunately, a known issue in ONNX Runtime is that model optimization can not output a model size greater than 2GB. So for large models, optimization must be skipped.
 
-Pre-processing API is in the Python module onnxruntime.quantization.shape_inference, function quant_pre_process().
+Pre-processing API is in the Python module ``onnxruntime.quantization.shape_inference``, function ``quant_pre_process()``.
 
-from onnxruntime.quantization import shape_inference
+.. code-block::
 
-shape_inference.quant_pre_process(
-     input_model_path: str,
-    output_model_path: str,
-    skip_optimization: bool = False,
-    skip_onnx_shape: bool = False,
-    skip_symbolic_shape: bool = False,
-    auto_merge: bool = False,
-    int_max: int = 2**31 - 1,
-    guess_output_rank: bool = False,
-    verbose: int = 0,
-    save_as_external_data: bool = False,
-    all_tensors_to_one_file: bool = False,
-    external_data_location: str = "./",
-    external_data_size_threshold: int = 1024,)
-Arguments
+    from onnxruntime.quantization import shape_inference
+
+    shape_inference.quant_pre_process(
+         input_model_path: str,
+         output_model_path: str,
+         skip_optimization: bool = False,
+         skip_onnx_shape: bool = False,
+         skip_symbolic_shape: bool = False,
+         auto_merge: bool = False,
+         int_max: int = 2**31 - 1,
+         guess_output_rank: bool = False,
+         verbose: int = 0,
+         save_as_external_data: bool = False,
+         all_tensors_to_one_file: bool = False,
+         external_data_location: str = "./",
+         external_data_size_threshold: int = 1024,)
+
+
+**Arguments**
 
 input_model_path: (String) This parameter specifies the file path of the input model that is to be pre-processed for quantization.
 output_model_path: (String) This parameter specifies the file path where the pre-processed model will be saved.
