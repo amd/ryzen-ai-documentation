@@ -98,7 +98,7 @@ Note: Current Olive flow is not compatible with the latest pydantic version. Dow
 
 .. code-block::
 
-    pip install pydantic==1.10.910.9
+    pip install pydantic==1.10.9
 
 
 For additional information regarding the Olive installation, refer to the Microsoft documentation:       
