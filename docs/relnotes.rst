@@ -27,12 +27,12 @@ Quantizer
       - Support signed and unsigned configurations.
       - Support symmetry and asymmetry configurations.
       - Support per-tensor and per-channel configurations.
-   - Support bias quantization using int8 datatype for IPU.
-   - Support quantization parameters (scale) refinement for IPU.
-   - Support excluding certain operations from quantization for IPU.
-   - Support onnx models larger than 2GB.
-   - Support using CUDAExecutionProvider for calibration in quantization
-   - Open source and upstreamed to Microsoft Olive Github repo
+  - Support bias quantization using int8 datatype for IPU.
+  - Support quantization parameters (scale) refinement for IPU.
+  - Support excluding certain operations from quantization for IPU.
+  - Support onnx models larger than 2GB.
+  - Support using CUDAExecutionProvider for calibration in quantization
+  - Open source and upstreamed to Microsoft Olive Github repo
 
 - TensorFlow 2.x Quantizer
 
