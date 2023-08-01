@@ -72,32 +72,35 @@ Pre-processing API is in the Python module ``onnxruntime.quantization.shape_infe
 
 **Arguments**
 
-input_model_path: (String) This parameter specifies the file path of the input model that is to be pre-processed for quantization.
+``input_model_path``: (String) This parameter specifies the file path of the input model that is to be pre-processed for quantization.
 
+``output_model_path``: (String) This parameter specifies the file path where the pre-processed model will be saved.
 
-output_model_path: (String) This parameter specifies the file path where the pre-processed model will be saved.
+``skip_optimization``: (Boolean) This flag indicates whether to skip the model optimization step. If set to True, model optimization will be skipped, which may cause ONNX shape inference failure for some models. The default value is False.
 
-skip_optimization: (Boolean) This flag indicates whether to skip the model optimization step. If set to True, model optimization will be skipped, which may cause ONNX shape inference failure for some models. The default value is False.
+``skip_onnx_shape``: (Boolean) This flag indicates whether to skip the ONNX shape inference step. The symbolic shape inference is most effective with transformer-based models. Skipping all shape inferences may reduce the effectiveness of quantization, as a tensor with an unknown shape cannot be quantized. The default value is False.
 
-skip_onnx_shape: (Boolean) This flag indicates whether to skip the ONNX shape inference step. The symbolic shape inference is most effective with transformer-based models. Skipping all shape inferences may reduce the effectiveness of quantization, as a tensor with an unknown shape cannot be quantized. The default value is False.
+``skip_symbolic_shape``: (Boolean) This flag indicates whether to skip the symbolic shape inference step. Symbolic shape inference is most effective with transformer-based models. Skipping all shape inferences may reduce the effectiveness of quantization, as a tensor with an unknown shape cannot be quantized. The default value is False.
 
-skip_symbolic_shape: (Boolean) This flag indicates whether to skip the symbolic shape inference step. Symbolic shape inference is most effective with transformer-based models. Skipping all shape inferences may reduce the effectiveness of quantization, as a tensor with an unknown shape cannot be quantized. The default value is False.
+``auto_merge``: (Boolean) This flag determines whether to automatically merge symbolic dimensions when a conflict occurs during symbolic shape inference. The default value is False.
 
-auto_merge: (Boolean) This flag determines whether to automatically merge symbolic dimensions when a conflict occurs during symbolic shape inference. The default value is False.
+``int_max``: (Integer) This parameter specifies the maximum integer value that is to be considered as boundless for operations like slice during symbolic shape inference. The default value is 2**31 - 1.
 
-int_max: (Integer) This parameter specifies the maximum integer value that is to be considered as boundless for operations like slice during symbolic shape inference. The default value is 2**31 - 1.
+``guess_output_rank``: (Boolean) This flag indicates whether to guess the output rank to be the same as input 0 for unknown operations. The default value is False.
 
-guess_output_rank: (Boolean) This flag indicates whether to guess the output rank to be the same as input 0 for unknown operations. The default value is False.
+``verbose``: (Integer) This parameter controls the level of detailed information logged during inference. 
+   - 0 turns off logging (default)
+   - 1 logs warnings
+   - 3 logs detailed information. 
+  
 
-verbose: (Integer) This parameter controls the level of detailed information logged during inference. A value of 0 turns off logging, 1 logs warnings, and 3 logs detailed information. The default value is 0.
+``save_as_external_data``: (Boolean) This flag determines whether to save the ONNX model to external data. The default value is False.
 
-save_as_external_data: (Boolean) This flag determines whether to save the ONNX model to external data. The default value is False.
+``all_tensors_to_one_file``: (Boolean) This flag indicates whether to save all the external data to one file. The default value is False.
 
-all_tensors_to_one_file: (Boolean) This flag indicates whether to save all the external data to one file. The default value is False.
+``external_data_location``: (String) This parameter specifies the file location where the external file is saved. The default value is "./".
 
-external_data_location: (String) This parameter specifies the file location where the external file is saved. The default value is "./".
-
-external_data_size_threshold: (Integer) This parameter specifies the size threshold for external data. The default value is 1024.
+``external_data_size_threshold``: (Integer) This parameter specifies the size threshold for external data. The default value is 1024.
 
 3. Quantizing Using the vai_q_onnx API
 ######################################
@@ -119,26 +122,27 @@ The static quantization method first runs the model using a set of inputs called
 
 Arguments
 
-model_input: (String) This parameter specifies the file path of the model that is to be quantized.
+``model_input``: (String) This parameter specifies the file path of the model that is to be quantized.
 
-model_output: (String) This parameter specifies the file path where the quantized model will be saved.
+``model_output``: (String) This parameter specifies the file path where the quantized model will be saved.
 
-calibration_data_reader: (Object or None) This parameter is a calibration data reader that enumerates the calibration data and generates inputs for the original model. If you wish to use random data for a quick test, you can set calibration_data_reader to None.
+``calibration_data_reader``: (Object or None) This parameter is a calibration data reader that enumerates the calibration data and generates inputs for the original model. If you wish to use random data for a quick test, you can set calibration_data_reader to None.
 
-quant_format: (Enum) This parameter defines the quantization format for the model. It has the following options:
+``quant_format``: (Enum) This parameter defines the quantization format for the model. It has the following options:
 - QOperator This option quantizes the model directly using quantized operators.
 - QDQ This option quantizes the model by inserting QuantizeLinear/DeQuantizeLinear into the tensor. It supports 8-bit quantization only.
 - VitisQuantFormat.QDQ This option quantizes the model by inserting VAIQuantizeLinear/VAIDeQuantizeLinear into the tensor. It supports a wider range of bit-widths and configurations.
 - VitisQuantFormat.FixNeuron This option quantizes the model by inserting FixNeuron (a combination of QuantizeLinear and DeQuantizeLinear) into the tensor. This is the default value.
 
-calibrate_method: (Enum) This parameter is used to set the power-of-2 scale quantization method. It currently supports two methods: 'vai_q_onnx.PowerOfTwoMethod.NonOverflow' and 'vai_q_onnx.PowerOfTwoMethod.MinMSE'. The default value is 'vai_q_onnx.PowerOfTwoMethod.MinMSE'.
+``calibrate_method``: (Enum) This parameter is used to set the power-of-2 scale quantization method. It currently supports two methods: 
+   - 'vai_q_onnx.PowerOfTwoMethod.NonOverflow' 
+   - 'vai_q_onnx.PowerOfTwoMethod.MinMSE' (default) 
 
-input_nodes: (List of Strings) This parameter is a list of the names of the starting nodes to be quantized. Nodes in the model before these nodes will not be quantized. For example, this argument can be used to skip some pre-processing nodes or stop the first node from being quantized. The default value is an empty list ([]).
+``input_nodes``: (List of Strings) This parameter is a list of the names of the starting nodes to be quantized. Nodes in the model before these nodes will not be quantized. For example, this argument can be used to skip some pre-processing nodes or stop the first node from being quantized. The default value is an empty list ([]).
 
-output_nodes: (List of Strings) This parameter is a list of the names of the end nodes to be quantized. Nodes in the model after these nodes will not be quantized. For example, this argument can be used to skip some post-processing nodes or stop the last node from being quantized. The default value is an empty list ([]).
+``output_nodes``: (List of Strings) This parameter is a list of the names of the end nodes to be quantized. Nodes in the model after these nodes will not be quantized. For example, this argument can be used to skip some post-processing nodes or stop the last node from being quantized. The default value is an empty list ([]).
 
-extra_options: (Dict or None) This parameter is a dictionary of additional options that can be passed to the quantization process. If there are no additional options to provide, this can be set to None. The default value is None.
-(Optional) Evaluating the Quantized Model
+``extra_options``: (Dict or None) This parameter is a dictionary of additional options that can be passed to the quantization process. If there are no additional options to provide, this can be set to None. The default value is None.
 
 
 ..
