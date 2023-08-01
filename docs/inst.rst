@@ -21,8 +21,7 @@ This release is compatible with IPU driver version >= 10.105.5.42. For the Ryzen
 1. Extract the downloaded package ipu_stack_rel_silicon.zip
 2. Open a terminal in administrator mode and execute bat file ``.\amd_install_kipudrv.bat``
 
-
-
+Note: If you see an error saying that "Windows could not verify the digital signature of this driver" follow `this tutorial <https://pureinfotech.com/disable-driver-signature-enforcement-windows-11/>`_ to disable signature checking."
 
 |
 |
