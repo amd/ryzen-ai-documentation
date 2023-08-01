@@ -71,6 +71,7 @@ Start a conda prompt. In the conda prompt, create and activate an environment fo
 Install Quantizer
 #################
 
+
 Ryzen AI Software platform provides multiple quantization flow support
 
 **Vitis AI ONNX Quantization** 
