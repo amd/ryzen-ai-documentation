@@ -77,7 +77,7 @@ https://microsoft.github.io/Olive/getstarted/installation.html
 
 3. Download and extract the Execution Provider setup package:
 
-   https://www.xilinx.com/bin/public/openDownload?filename=voe-3.0-win_amd64.zip 
+   https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=voe-3.5-win_amd64.zip 
 
 
 4. Install the necessary packages:
@@ -86,12 +86,13 @@ https://microsoft.github.io/Olive/getstarted/installation.html
 
    .. code-block:: 
    
-      cd voe-3.0-win_amd64\voe-3.0-win_amd64\Install
+      cd voe-3.5-win_amd64\voe-3.5-win_amd64
    
    Install packages:
 
    .. code-block:: 
 
+      python installer.py
       pip install voe-0.1.0-cp39-cp39-win_amd64.whl
       pip install onnxruntime_vitisai-1.16.0-cp39-cp39-win_amd64.whl
 
