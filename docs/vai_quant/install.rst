@@ -30,20 +30,6 @@ Multiple versions of the Docker container are available, each tailored to specif
      - https://hub.docker.com/r/amdih/ryzen-ai-tensorflow 
 
 
-
-Examples: 
-
-
-- PyTorch docker download and running instruction: https://hub.docker.com/r/amdih/ryzen-ai-pytorch  
-
-- TensorFlow 2 docker download and running instruction: https://hub.docker.com/r/amdih/ryzen-ai-tensorflow2
-
-- Tensorflow docker download and running instruction: https://hub.docker.com/r/amdih/ryzen-ai-tensorflow
-
-
-    
-
-
 ..
   ------------
 
