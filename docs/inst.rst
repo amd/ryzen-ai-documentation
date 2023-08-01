@@ -68,7 +68,8 @@ Start a conda prompt. In the conda prompt, create and activate an environment fo
 
 .. _install-olive:
 
-1. Install Quantizer
+Install Quantizer
+#################
 
 Ryzen AI Software platform provides multiple quantization flow support
 
@@ -126,26 +127,29 @@ Multiple versions of the Docker container are available, each tailored to specif
 
 
 
-2. Ensure ONNX Runtime is installed:
+Install ONNX Runtime
+####################
 
 .. code-block::
    
    pip install onnxruntime 
 
-3. Download and extract the Execution Provider setup package:
+Install Vitis AI Execution Provider
+###################################
+
+Download and extract the Execution Provider setup package:
 
    https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=voe-3.5-win_amd64.zip 
 
+Install the necessary packages:
 
-4. Install the necessary packages:
-
-   Change the directory to the extracted Execution Provider setup package directory:
+Change the directory to the extracted Execution Provider setup package directory:
 
    .. code-block:: 
    
       cd voe-3.5-win_amd64\voe-3.5-win_amd64
    
-   Install packages:
+Install packages:
 
    .. code-block:: 
 
