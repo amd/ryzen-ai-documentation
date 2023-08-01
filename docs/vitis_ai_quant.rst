@@ -6,7 +6,7 @@ Quantization with Vitis-AI
 
 You can perform model quantization using the Vitis AI quantization flow, which is a part of the Vitis AI software suite. Depending on your network format (PyTorch or TensorFlow2), you can install the Vitis AI Docker container in a Linux environment to quantize your model and save it in the ONNX format. 
 
-Vitis-AI also supports Post Training Quantization on ONNX format. 
+Vitis-AI also supports Post Training Quantization directly on the model saved in ONNX format. 
 
 .. toctree::
    :maxdepth: 1
