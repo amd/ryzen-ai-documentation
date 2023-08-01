@@ -12,38 +12,10 @@ ONNX Quantizer does not require any docker installation. Install the ONNX Quanti
 
    pip install vai_q_onnx-1.14.0-py2.py3-none-any.whl
 
-
+Overview
+~~~~~~~~
 
 The ONNX quantization supports Post Training Quantization. This static quantization method first runs the model using a set of inputs called calibration data. During these runs, the flow computes the quantization parameters for each activation. These quantization parameters are written as constants to the quantized model and used for all inputs. The quantization tool supports the following calibration methods: MinMax, Entropy and Percentile, and MinMSE.
-
-.. code-block::
-  
-    import vai_q_onnx
-
-    vai_q_onnx.quantize_static(
-       model_input,
-       model_output,
-       calibration_data_reader,
-       quant_format=vai_q_onnx.VitisQuantFormat.FixNeuron,
-       calibrate_method=vai_q_onnx.PowerOfTwoMethod.MinMSE)
-
-  
-**Arguments**
-
-model_input: (String) This parameter represents the file path of the model to be quantized.
-
-model_output: (String) This parameter represents the file path where the quantized model will be saved.
-
-calibration_data_reader: (Object or None) This parameter is a calibration data reader. It enumerates the calibration data and generates inputs for the original model. If you wish to use random data for a quick test, you can set calibration_data_reader to None. The default value is None.
-
-quant_format: (String) This parameter is used to specify the quantization format of the model. It has the following options:
-
-- QOperator: This option quantizes the model directly using quantized operators.
-- QDQ: This option quantizes the model by inserting QuantizeLinear/DeQuantizeLinear into the tensor. It supports 8-bit quantization only.
-- VitisQuantFormat.QDQ: This option quantizes the model by inserting VAIQuantizeLinear/VAIDeQuantizeLinear into the tensor. It supports a wider range of bit-widths and configurations.
-- VitisQuantFormat.FixNeuron: This option quantizes the model by inserting FixNeuron (a combination of QuantizeLinear and DeQuantizeLinear) into the tensor.
-
-calibrate_method: (String) For DPU devices, set calibrate_method to either 'vai_q_onnx.PowerOfTwoMethod.NonOverflow' or 'vai_q_onnx.PowerOfTwoMethod.MinMSE' to apply power-of-2 scale quantization. The PowerOfTwoMethod currently supports two methods: MinMSE and NonOverflow. The default method is MinMSE.
 
   
 Running vai_q_onnx
@@ -54,6 +26,7 @@ Quantization in ONNX Runtime refers to the linear quantization of an ONNX model.
 Use the following steps to run PTQ with vai_q_onnx.
 
 1. Preparing the Float Model and Calibration Set 
+################################################
 
 Before running vai_q_onnx, prepare the float model and calibration set, including the files as listed
 
@@ -61,6 +34,7 @@ Before running vai_q_onnx, prepare the float model and calibration set, includin
 - calibration dataset	A subset of the training dataset or validation dataset to represent the input data distribution, usually 100 to 1000 images are enough.
 
 2. (Recommended) Pre-processing on the Float Model
+##################################################
 
 Pre-processing is to transform a float model to prepare it for quantization. It consists of the following three optional steps:
 
@@ -126,6 +100,7 @@ external_data_location: (String) This parameter specifies the file location wher
 external_data_size_threshold: (Integer) This parameter specifies the size threshold for external data. The default value is 1024.
 
 3. Quantizing Using the vai_q_onnx API
+######################################
 
 The static quantization method first runs the model using a set of inputs called calibration data. During these runs, we compute the quantization parameters for each activation. These quantization parameters are written as constants to the quantized model and used for all inputs. Vai_q_onnx quantization tool has expanded calibration methods to power-of-2 scale/float scale quantization methods. Float scale quantization methods include MinMax, Entropy, and Percentile. Power-of-2 scale quantization methods include MinMax and MinMSE.
 
