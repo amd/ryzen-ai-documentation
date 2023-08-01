@@ -11,9 +11,17 @@ Supported Processors
 
 AMD Ryzen 7040U, 7040HS series mobile processors with Windows 11 OS. 
 
-Ensure that the IPU driver (tested for the 10.105.5.38 version) is installed as shown in the following image.
+Ensure that the IPU driver is installed by opening ``Device Manager`` -> ``System Devices`` -> ``AMD IPU Device`` as shown in the following image.
 
-.. image:: images/ipu_driver.png
+.. image:: images/ipu_device_properties.png
+
+
+This release is compatible with IPU driver version >= 10.105.5.42. For the Ryzen AI PC with earlier IPU driver versions such as 10.105.5.38, please download the `IPU Driver <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ipu_stack_rel_silicon.zip>`_ and install it as below
+
+1. Extract the downloaded package ipu_stack_rel_silicon.zip
+2. Open a terminal in administrator mode and execute bat file ``.\amd_install_kipudrv.bat``
+
+
 
 
 |
