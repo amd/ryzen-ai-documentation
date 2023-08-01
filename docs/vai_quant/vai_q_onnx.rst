@@ -16,8 +16,7 @@ The ONNX quantization supports Post Training Quantization. This static quantizat
        calibrate_method=vai_q_onnx.PowerOfTwoMethod.MinMSE)
 
   
-Arguments
-#########
+**Arguments**
 
 model_input: (String) This parameter represents the file path of the model to be quantized.
 
