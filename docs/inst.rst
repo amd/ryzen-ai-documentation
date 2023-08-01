@@ -144,18 +144,11 @@ Download and extract the Execution Provider setup package:
 
 https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=voe-3.5-win_amd64.zip 
 
-Install the necessary packages:
-
-Change the directory to the extracted Execution Provider setup package directory:
-
-.. code-block:: 
-   
-   cd voe-3.5-win_amd64\voe-3.5-win_amd64
-   
-Install packages:
+Change the directory to the extracted Execution Provider setup package directory and install the necessary packages
 
 .. code-block:: 
 
+     cd voe-3.5-win_amd64\voe-3.5-win_amd64
      python installer.py
      pip install voe-0.1.0-cp39-cp39-win_amd64.whl
      pip install onnxruntime_vitisai-1.15.1-cp39-cp39-win_amd64.whl
