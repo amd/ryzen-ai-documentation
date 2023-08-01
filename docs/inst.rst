@@ -96,12 +96,14 @@ Microsoft Olive framework can be used for Vitis AI ONNX Quantization.
 
 Note: Current Olive flow is not compatible with the latest pydantic version. Downgrade the pydantic version as shown below
 
-For additional information regarding the Olive installation, refer to the Microsoft documentation:       
-https://microsoft.github.io/Olive/getstarted/installation.html
-
 .. code-block::
 
     pip install pydantic==1.10.910.9
+
+
+For additional information regarding the Olive installation, refer to the Microsoft documentation:       
+https://microsoft.github.io/Olive/getstarted/installation.html
+
 
 **PyTorch/Tensorflow 2/Tensorflow Quantization**
 
