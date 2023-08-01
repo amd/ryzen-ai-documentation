@@ -11,7 +11,6 @@ Vitis-AI also supports Post Training Quantization directly on the model saved in
 .. toctree::
    :maxdepth: 1
    
-   Installing Vitis AI Quantizer <./vai_quant/install>
    PyTorch Model Quantization <./vai_quant/pt>
    TensorFlow Model Quantization <./vai_quant/tf2>
    ONNX Quantization <./vai_quant/vai_q_onnx>
