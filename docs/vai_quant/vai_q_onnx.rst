@@ -20,6 +20,7 @@ The static quantization method first runs the model using a set of inputs called
 
   
 Arguments
+#########
 
 model_input: (String) This parameter represents the file path of the model to be quantized.
 
@@ -29,13 +30,10 @@ calibration_data_reader: (Object or None) This parameter is a calibration data r
 
 quant_format: (String) This parameter is used to specify the quantization format of the model. It has the following options:
 
-QOperator: This option quantizes the model directly using quantized operators.
-
-QDQ: This option quantizes the model by inserting QuantizeLinear/DeQuantizeLinear into the tensor. It supports 8-bit quantization only.
-
-VitisQuantFormat.QDQ: This option quantizes the model by inserting VAIQuantizeLinear/VAIDeQuantizeLinear into the tensor. It supports a wider range of bit-widths and configurations.
-
-VitisQuantFormat.FixNeuron: This option quantizes the model by inserting FixNeuron (a combination of QuantizeLinear and DeQuantizeLinear) into the tensor.
+- QOperator: This option quantizes the model directly using quantized operators.
+- QDQ: This option quantizes the model by inserting QuantizeLinear/DeQuantizeLinear into the tensor. It supports 8-bit quantization only.
+- VitisQuantFormat.QDQ: This option quantizes the model by inserting VAIQuantizeLinear/VAIDeQuantizeLinear into the tensor. It supports a wider range of bit-widths and configurations.
+- VitisQuantFormat.FixNeuron: This option quantizes the model by inserting FixNeuron (a combination of QuantizeLinear and DeQuantizeLinear) into the tensor.
 
 calibrate_method: (String) For DPU devices, set calibrate_method to either 'vai_q_onnx.PowerOfTwoMethod.NonOverflow' or 'vai_q_onnx.PowerOfTwoMethod.MinMSE' to apply power-of-2 scale quantization. The PowerOfTwoMethod currently supports two methods: MinMSE and NonOverflow. The default method is MinMSE.
 
@@ -45,25 +43,23 @@ Running vai_q_onnx
   
 Quantization in ONNX Runtime refers to the linear quantization of an ONNX model. We have developed the vai_q_onnx tool as a plugin for ONNX Runtime to support more post-training quantization(PTQ) functions for quantizing a deep learning model. Post-training quantization(PTQ) is a technique to convert a pre-trained float model into a quantized model with little degradation in model accuracy. A representative dataset is needed to run a few batches of inference on the float model to obtain the distributions of the activations, which is also called quantized calibration.
 
-vai_q_onnx supports static quantization and the usage is as follows.
-
-vai_q_onnx Post-Training Quantization(PTQ)
 Use the following steps to run PTQ with vai_q_onnx.
 
-Preparing the Float Model and Calibration Set
-Before running vai_q_onnx, prepare the float model and calibration set, including the files listed in the following table.
+1. Preparing the Float Model and Calibration Set 
 
-Table 1. Input files for vai_q_onnx
+Before running vai_q_onnx, prepare the float model and calibration set, including the files as listed
 
-No.	Name	Description
-1	float model	Floating-point ONNX models in onnx format.
-2	calibration dataset	A subset of the training dataset or validation dataset to represent the input data distribution, usually 100 to 1000 images are enough.
-(Recommended) Pre-processing on the Float Model
+- float model	Floating-point ONNX models in onnx format.
+- calibration dataset	A subset of the training dataset or validation dataset to represent the input data distribution, usually 100 to 1000 images are enough.
+
+2. (Recommended) Pre-processing on the Float Model
+
 Pre-processing is to transform a float model to prepare it for quantization. It consists of the following three optional steps:
 
-Symbolic shape inference: This is best suited for transformer models.
-Model Optimization: This step uses ONNX Runtime native library to rewrite the computation graph, including merging computation nodes, and eliminating redundancies to improve runtime efficiency.
-ONNX shape inference.
+- Symbolic shape inference: This is best suited for transformer models.
+- Model Optimization: This step uses ONNX Runtime native library to rewrite the computation graph, including merging computation nodes, and eliminating redundancies to improve runtime efficiency.
+- ONNX shape inference.
+
 The goal of these steps is to improve quantization quality. ONNX Runtime quantization tool works best when the tensor’s shape is known. Both symbolic shape inference and ONNX shape inference help figure out tensor shapes. Symbolic shape inference works best with transformer-based models, and ONNX shape inference works with other models.
 
 Model optimization performs certain operator fusion that makes the quantization tool’s job easier. For instance, a Convolution operator followed by BatchNormalization can be fused into one during the optimization, which can be quantized very efficiently.
