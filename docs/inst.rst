@@ -6,10 +6,10 @@ Installation
 ############
 
 
-Supported Processors
-~~~~~~~~~~~~~~~~~~~~
+Supported Configurations
+~~~~~~~~~~~~~~~~~~~~~~~~
 
-AMD Ryzen 7040U, 7040HS series mobile processors with Windows 11 OS. 
+The Ryzen AI Software Platform supports AMD Ryzen 7040U, 7040HS series mobile processors with Windows 11 OS.
 
 Ensure that the IPU driver is installed by opening ``Device Manager`` -> ``System Devices`` -> ``AMD IPU Device`` as shown in the following image.
 
@@ -18,7 +18,7 @@ Ensure that the IPU driver is installed by opening ``Device Manager`` -> ``Syste
 |
 |
 
-This release is compatible with IPU driver version >= 10.105.5.42. For the Ryzen AI PC with earlier IPU driver versions such as 10.105.5.38, please download the `IPU Driver <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ipu_stack_rel_silicon.zip>`_ and install it as below
+This release is compatible with IPU driver version >= 10.105.5.42. For Ryzen AI laptops with earlier IPU driver versions such as 10.105.5.38, please download the `IPU Driver <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ipu_stack_rel_silicon.zip>`_ and install it as explained below
 
 1. Extract the downloaded package ipu_stack_rel_silicon.zip
 2. Open a terminal in administrator mode and execute bat file ``.\amd_install_kipudrv.bat``
@@ -32,7 +32,7 @@ Note: If you see an error saying that "Windows could not verify the digital sign
 Prepare Client Device 
 ~~~~~~~~~~~~~~~~~~~~~
 
-To enable the development and deployment of IPU-based inference on the client device, it is crucial to have the following software installed, along with their minimum versions. 
+To enable the development and deployment of IPU-based inference on the client device, it is required to have the following software installed, along with their minimum versions. 
 
 .. list-table:: 
    :widths: 25 25 
@@ -57,7 +57,7 @@ To enable the development and deployment of IPU-based inference on the client de
 Installation Steps
 ~~~~~~~~~~~~~~~~~~
 
-The installation process is recommended using a conda environment (Anaconda or Miniconda). 
+The Ryzen AI Software Platform requires using a conda environment (Anaconda or Miniconda) for the installation process. 
 
 Start a conda prompt. In the conda prompt, create and activate an environment for the rest of the installation process. 
 
@@ -68,20 +68,62 @@ Start a conda prompt. In the conda prompt, create and activate an environment fo
 
 .. _install-olive:
 
-1. Install Olive:
+1. Install Quantizer
+
+Ryzen AI Software platform provides multiple quantization flow support
+
+**Vitis AI ONNX Quantization** 
+
+Vitis AI ONNX Quantization is post-training quantization that works on the models saved in ONNX format. To install download the installation file and follow the command:
+
+https://www.xilinx.com/bin/public/openDownload?filename=vai_q_onnx-1.14.0-py2.py3-none-any.whl
+
+.. code-block::
+
+   pip install vai_q_onnx-1.14.0-py2.py3-none-any.whl
+
+
+**Olive Quantization**
+
+Microsoft Olive framework can be used for Vitis AI ONNX Quantization. 
 
 .. code-block::
 
    pip install olive-ai[cpu]
 
+
+Note: Current Olive flow is not compatible with the latest pydantic version. Downgrade the pydantic version as shown below
+
 For additional information regarding the Olive installation, refer to the Microsoft documentation:       
 https://microsoft.github.io/Olive/getstarted/installation.html
 
-Optionally you can install standalone `Vitis AI ONNX Quantizer <https://www.xilinx.com/bin/public/openDownload?filename=vai_q_onnx-1.14.0-py2.py3-none-any.whl>`_. 
-
 .. code-block::
 
-   pip install vai_q_onnx-1.14.0-py2.py3-none-any.whl
+    pip install pydantic==1.10.910.9
+
+**PyTorch/Tensorflow 2/Tensorflow Quantization**
+
+Vitis AI PyTorch and Tensorflow Quantizer, which is part of the Vitis AI toolchain, require the installation of a Docker container on the host server.
+
+The Vitis AI Docker container can be installed on Ubuntu 20.04, CentOS 7.8, 7.9, 8.1, and RHEL 8.3, 8.4. The developers working on Windows 11 can use WSL for installing Vitis AI docker.
+
+Multiple versions of the Docker container are available, each tailored to specific frameworks. Please follow the docker download and running instructions as per the following links
+
+.. list-table:: 
+   :widths: 25 25 
+   :header-rows: 1
+
+   * - Framework
+     - Docker location
+   * - PyTorch
+     - https://hub.docker.com/r/amdih/ryzen-ai-pytorch
+   * - Tensorflow 2
+     - https://hub.docker.com/r/amdih/ryzen-ai-tensorflow2
+   * - Tensorflow 1
+     - https://hub.docker.com/r/amdih/ryzen-ai-tensorflow 
+
+
+
 
 
 2. Ensure ONNX Runtime is installed:
