@@ -75,6 +75,8 @@ Start a conda prompt. In the conda prompt, create and activate an environment fo
 For additional information regarding the Olive installation, refer to the Microsoft documentation:       
 https://microsoft.github.io/Olive/getstarted/installation.html
 
+Optionally you can install standalone Vitis AI ONNX Quantizer `Vitis AI ONNX Quantizer <https://www.xilinx.com/bin/public/openDownload?filename=vai_q_onnx-1.14.0-py2.py3-none-any.whl>`_. The Vitis AI ONNX quantizer is the same ONNX quantizer that can be used through Olive but without using the Olive framework.  
+
 
 2. Ensure ONNX Runtime is installed:
 
