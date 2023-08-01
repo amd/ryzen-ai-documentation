@@ -121,7 +121,7 @@ The static quantization method first runs the model using a set of inputs called
       extra_options=None,)
 
 
-Arguments
+**Arguments**
 
 ``model_input``: (String) This parameter specifies the file path of the model that is to be quantized.
 
