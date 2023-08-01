@@ -88,6 +88,7 @@ Pre-processing API is in the Python module ``onnxruntime.quantization.shape_infe
 
 input_model_path: (String) This parameter specifies the file path of the input model that is to be pre-processed for quantization.
 
+
 output_model_path: (String) This parameter specifies the file path where the pre-processed model will be saved.
 
 skip_optimization: (Boolean) This flag indicates whether to skip the model optimization step. If set to True, model optimization will be skipped, which may cause ONNX shape inference failure for some models. The default value is False.
