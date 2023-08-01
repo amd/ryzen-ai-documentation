@@ -47,7 +47,7 @@ To enable the development and deployment of IPU-based inference on the client de
    * - Anaconda or Miniconda
      - Latest version
    * - AMD IPU driver
-     - >= 10.105.5.38
+     - >= 10.105.5.42
 
 |
 |
@@ -55,7 +55,7 @@ To enable the development and deployment of IPU-based inference on the client de
 Installation Steps
 ~~~~~~~~~~~~~~~~~~
 
-Using a conda environment (Anaconda or Miniconda) is recommended for the installation. 
+The installation process is recommended using a conda environment (Anaconda or Miniconda). 
 
 Start a conda prompt. In the conda prompt, create and activate an environment for the rest of the installation process. 
 
