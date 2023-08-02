@@ -7,64 +7,64 @@ Quantizer
 
 - Docker Containers
 
-  - Provide CPU dockers for Pytorch, Tensorflow 1.x and Tensorflow 2.x quantizer
-  - Provide GPU dockerfiles to build GPU dockers
+  - Provided CPU dockers for Pytorch, Tensorflow 1.x, and Tensorflow 2.x quantizer
+  - Provided GPU Docker files to build GPU dockers
 
 - Pytorch Quantizer
 
-  - Support multiple output conversion to slicing
-  - Enhancement of transpose OP optimization
-  - Inspector support some new IP targets for IPU
+  - Supports multiple output conversion to slicing
+  - Enhanced transpose OP optimization
+  - Inspectorsupportst new IP targets for IPU
 
 - ONNX Quantizer
 
-  - Provide python wheel file for installation
-  - Supports quantizing ONNX models for IPU as a plugin for the ONNX Runtime native quantizer.
-  - Support power-of-two quantization with both QDQ and QOP format.
-  - Support Non-overflow and Min-MSE quantization methods.
-  - Support various quantization configurations in power-of-two quantization in both QDQ and QOP format.
+  - Provided Python wheel file for installation
+  - Supports quantizing ONNX models for IPU as a plugin for the ONNX Runtime native quantizer
+  - Supports power-of-two quantization with both QDQ and QOP format
+  - Supports Non-overflow and Min-MSE quantization methods
+  - Supports various quantization configurations in power-of-two quantization in both QDQ and QOP format.
    
-    - Support signed and unsigned configurations.
-    - Support symmetry and asymmetry configurations.
-    - Support per-tensor and per-channel configurations.
-  - Support bias quantization using int8 datatype for IPU.
-  - Support quantization parameters (scale) refinement for IPU.
-  - Support excluding certain operations from quantization for IPU.
-  - Support onnx models larger than 2GB.
-  - Support using CUDAExecutionProvider for calibration in quantization
+    - Supports signed and unsigned configurations.
+    - Supports symmetry and asymmetry configurations.
+    - Supports per-tensor and per-channel configurations.
+  - Supports bias quantization using int8 datatype for IPU.
+  - Supports quantization parameters (scale) refinement for IPU.
+  - Supports excluding certain operations from quantization for IPU.
+  - Supports ONNX models larger than 2GB.
+  - Supports using CUDAExecutionProvider for calibration in quantization
   - Open source and upstreamed to Microsoft Olive Github repo
 
 - TensorFlow 2.x Quantizer
 
-  - Add support for exporting the quantized model onnx format.
-  - Add support for the keras.layers.Activation('leaky_relu')
+  - Added support for exporting the quantized model ONNX format.
+  - Added support for the keras.layers.Activation('leaky_relu')
 
 - TensorFlow 1.x Quantizer
 
-  - Add support for folding Reshape and ResizeNearestNeighbor operators.
-  - Add support for splitting Avgpool and Maxpool with large kernel sizes into smaller kernel sizes.
-  - Add support for quantizing Sum, StridedSlice, and Maximum operators.
-  - Add support for setting the input shape of the model, which is useful in the deployment of models with undefined input shapes.
-  - Add support for setting the opset version in exporting onnx format
+  - Added support for folding Reshape and ResizeNearestNeighbor operators.
+  - Added support for splitting Avgpool and Maxpool with large kernel sizes into smaller kernel sizes.
+  - Added support for quantizing Sum, StridedSlice, and Maximum operators.
+  - Added support for setting the input shape of the model, which is useful in deploying models with undefined input shapes.
+  - Add support for setting the opset version in exporting ONNX format
 
 ONNX Runtime Execution Provider
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - Vitis ONNX Runtime Execution Provider (VOE)
 
-  - Support for ONNX Opset version 18, ONNX Runtime 1.16.0 and ONNX version 1.13
-  - Support for both C++ and Python APIs(Python version 3)
-  - Support deploy model with other EPs 
-  - Support falling back to CPU EP
+  - Supports ONNX Opset version 18, ONNX Runtime 1.16.0, and ONNX version 1.13
+  - Supports both C++ and Python APIs(Python version 3)
+  - Supports deploy model with other EPs 
+  - Supports falling back to CPU EP
   - Open source and upstreamed to ONNX Runtime Github repo
   - Compiler
 
     - Multiple Level op fusion
-    - Support same muti-output opterator like chunk split 
-    - Support split big pooling to small pooling        
-    - Support 2-channel writeback feature for Hard-Sigmoid and Depthwise-Convolution
-    - Support 1 channel GStiling
-    - explicit pad-fix in CPU subgraph for 4 byte alignment
+    - Supports the  same muti-output operator like chunk split 
+    - Supports split big pooling to small pooling        
+    - Supports 2-channel writeback feature for Hard-Sigmoid and Depthwise-Convolution
+    - Supports 1-channel GStiling
+    - Explicit pad-fix in CPU subgraph for 4-byte alignment
     - Tuning the performance for multiple models
 
 IPU
@@ -75,7 +75,7 @@ IPU
   - Power Optimized Overlay
       
     - Suitable for smaller AI models (1x4.xclbin)
-    - Support spatial sharing, up to 4 concurrent AI workloads
+    - Supports spatial sharing, up to 4 concurrent AI workloads
 
   - Performance Optimized Overlay (5x4.xclbin)
        
@@ -83,7 +83,7 @@ IPU
 
 Known issues
 ~~~~~~~~~~~~
-- Flow control OPs including "Loop", "If", "Reduce" not supported by VOE
+- Flow control OPs including "Loop", "If", "Reduce" are not supported by VOE
 - Resize OP in ONNX opset 10 or lower not supported by VOE
 - Tensorflow 2.x quantizer supports models within tf.keras.model only
 - Running quantizer docker in WSL on Ryzen AI laptops may encounter OOM (Out-of-memory) issue
