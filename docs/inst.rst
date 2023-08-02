@@ -75,7 +75,7 @@ Ryzen AI Software platform provides multiple quantization flow support
 
 **Vitis AI ONNX Quantization** 
 
-Vitis AI ONNX Quantization is post-training quantization that works on the models saved in ONNX format. To install download the installation file and follow the command:
+Vitis AI ONNX Quantization is post-training quantization that works on the models saved in ONNX format. To install it, download the installation file and follow the command:
 
 https://www.xilinx.com/bin/public/openDownload?filename=vai_q_onnx-1.14.0-py2.py3-none-any.whl
 
@@ -86,11 +86,11 @@ https://www.xilinx.com/bin/public/openDownload?filename=vai_q_onnx-1.14.0-py2.py
 
 **Vitis AI PyTorch/TensorFlow 2/TensorFlow Quantization**
 
-Vitis AI PyTorch and TensorFlow Quantizer, which is part of the Vitis AI toolchain, require the installation of a docker container on the host server.
+Vitis AI PyTorch and TensorFlow Quantizer, which is part of the Vitis AI toolchain, require the installation of a Docker container on the host server.
 
-The Vitis AI docker container can be installed on Ubuntu 20.04, CentOS 7.8, 7.9, 8.1, and RHEL 8.3, 8.4. The developers working on Windows 11 can use WSL for installing Vitis AI docker.
+The Vitis AI Docker container can be installed on Ubuntu 20.04, CentOS 7.8, 7.9, 8.1, and RHEL 8.3, 8.4. The developers working on Windows 11 can use WSL for installing Vitis AI Docker.
 
-Multiple versions of the docker container are available, each tailored to specific frameworks. Please follow the docker download and running instructions as per the following links
+Multiple versions of the Docker container are available, each tailored to specific frameworks. Follow the Docker download and running instructions as per the following links:
 
 .. list-table:: 
    :widths: 25 25 
@@ -106,21 +106,21 @@ Multiple versions of the docker container are available, each tailored to specif
      - https://hub.docker.com/r/amdih/ryzen-ai-tensorflow 
 
 
-The above docker containers do not have GPU-accelerated quantization support. If you like to leverage GPU for the quantization process, you can download and build GPU docker containers. The below tar file has README that you can follow to build and run GPU dockers.  
+The above Docker containers do not have GPU-accelerated quantization support. If you like to leverage GPU for the quantization process, you can download and build GPU Docker containers. The following TAR file has README that you can follow to build and run GPU dockers.  
 
 https://www.xilinx.com/bin/public/openDownload?filename=ryzen-ai-gpudockerfiles-3.5.0-099.tar.gz
 
 
 **Olive Quantization**
 
-Microsoft Olive framework supports quantization with Vitis AI ONNX Quantization.  
+Microsoft Olive framework supports quantization with Vitis AI ONNX Quantization:  
 
 .. code-block::
 
    pip install olive-ai[cpu]
 
 
-Note: Current Olive flow is not compatible with the latest pydantic version. Downgrade the pydantic version as shown below
+Note: Current Olive flow is not compatible with the latest pydantic version. Downgrade the pydantic version as follows:
 
 .. code-block::
 
@@ -146,7 +146,7 @@ Download and extract the Execution Provider setup package:
 
 https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=voe-3.5-win_amd64.zip 
 
-Change the directory to the extracted Execution Provider setup package directory and install the necessary packages
+Change the directory to the extracted Execution Provider setup package directory and install the necessary packages:
 
 .. code-block:: 
 
@@ -187,7 +187,7 @@ Ryzen AI Software platform provides a couple of IPU binaries using different con
 **IPU binary 5x4.xclbin**: For more advanced use cases or larger models, IPU binary 5x4.xclbin can be used which uses a larger configuration to provide up to 10 TOPs performance. In the current version of the release, 5x4.xclbin does not support multiple concurrent AI streams, and can only be used by a single application. 
 
 
-The procedure of selecting a specific binary by using the environment variables is shown below:
+The procedure for selecting a specific binary using environment variables is as follows:
 
 Selecting the 1x4.xclbin IPU binary
 
