@@ -19,7 +19,7 @@ Quantizer
 - ONNX Quantizer
 
   - Provide python wheel file for installation
-  - Supports quantizing ONNX models for IPU as a plugin for the ONNXRuntime native quantizer.
+  - Supports quantizing ONNX models for IPU as a plugin for the ONNX Runtime native quantizer.
   - Support power-of-two quantization with both QDQ and QOP format.
   - Support Non-overflow and Min-MSE quantization methods.
   - Support various quantization configurations in power-of-two quantization in both QDQ and QOP format.
