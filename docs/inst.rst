@@ -71,7 +71,6 @@ Start a conda prompt. In the conda prompt, create and activate an environment fo
 Install Quantizer
 #################
 
-
 Ryzen AI Software platform provides multiple quantization flow support
 
 **Vitis AI ONNX Quantization** 
@@ -85,7 +84,7 @@ https://www.xilinx.com/bin/public/openDownload?filename=vai_q_onnx-1.14.0-py2.py
    pip install vai_q_onnx-1.14.0-py2.py3-none-any.whl
 
 
-**Olive Quantization**
+**Olive ONNX Quantization**
 
 Microsoft Olive framework can be used for Vitis AI ONNX Quantization. 
 
@@ -105,13 +104,13 @@ For additional information regarding the Olive installation, refer to the Micros
 https://microsoft.github.io/Olive/getstarted/installation.html
 
 
-**PyTorch/Tensorflow 2/Tensorflow Quantization**
+**Vitis AI PyTorch/TensorFlow 2/TensorFlow Quantization**
 
-Vitis AI PyTorch and Tensorflow Quantizer, which is part of the Vitis AI toolchain, require the installation of a Docker container on the host server.
+Vitis AI PyTorch and TensorFlow Quantizer, which is part of the Vitis AI toolchain, require the installation of a docker container on the host server.
 
-The Vitis AI Docker container can be installed on Ubuntu 20.04, CentOS 7.8, 7.9, 8.1, and RHEL 8.3, 8.4. The developers working on Windows 11 can use WSL for installing Vitis AI docker.
+The Vitis AI docker container can be installed on Ubuntu 20.04, CentOS 7.8, 7.9, 8.1, and RHEL 8.3, 8.4. The developers working on Windows 11 can use WSL for installing Vitis AI docker.
 
-Multiple versions of the Docker container are available, each tailored to specific frameworks. Please follow the docker download and running instructions as per the following links
+Multiple versions of the docker container are available, each tailored to specific frameworks. Please follow the docker download and running instructions as per the following links
 
 .. list-table:: 
    :widths: 25 25 
@@ -121,9 +120,9 @@ Multiple versions of the Docker container are available, each tailored to specif
      - Docker location
    * - PyTorch
      - https://hub.docker.com/r/amdih/ryzen-ai-pytorch
-   * - Tensorflow 2
+   * - TensorFlow 2
      - https://hub.docker.com/r/amdih/ryzen-ai-tensorflow2
-   * - Tensorflow 1
+   * - TensorFlow 1
      - https://hub.docker.com/r/amdih/ryzen-ai-tensorflow 
 
 
