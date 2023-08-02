@@ -8,7 +8,7 @@ Quantization with Olive
 Prerequisites
 *************
 
-Make sure Olive is correctly installed. For more information, see :ref:`Olive installation instructions <install-olive>`.
+Ensure that Olive is correctly installed. For more information, see :ref:`Olive installation instructions <install-olive>`.
 
 
 Describing the Model 
@@ -55,7 +55,7 @@ For a complete description of the ``VitisAIQuantization`` pass, refer to the `Vi
 Checking the Configuration
 **************************
 
-Before running quantization with Olive, you can optionally execute a setup mode to identify additional packages that might need to be installed to support the passes set in the configuration JSON file.
+Before running quantization with Olive, you can optionally execute a setup mode. This helps identify additional packages that might need to be installed to support the passes set in the configuration JSON file.
 
 .. code-block:: 
 
