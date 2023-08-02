@@ -84,26 +84,6 @@ https://www.xilinx.com/bin/public/openDownload?filename=vai_q_onnx-1.14.0-py2.py
    pip install vai_q_onnx-1.14.0-py2.py3-none-any.whl
 
 
-**Olive ONNX Quantization**
-
-Microsoft Olive framework can be used for Vitis AI ONNX Quantization. 
-
-.. code-block::
-
-   pip install olive-ai[cpu]
-
-
-Note: Current Olive flow is not compatible with the latest pydantic version. Downgrade the pydantic version as shown below
-
-.. code-block::
-
-    pip install pydantic==1.10.9
-
-
-For additional information regarding the Olive installation, refer to the Microsoft documentation:       
-https://microsoft.github.io/Olive/getstarted/installation.html
-
-
 **Vitis AI PyTorch/TensorFlow 2/TensorFlow Quantization**
 
 Vitis AI PyTorch and TensorFlow Quantizer, which is part of the Vitis AI toolchain, require the installation of a docker container on the host server.
@@ -130,6 +110,25 @@ The above docker containers do not have GPU-accelerated quantization support. If
 
 https://www.xilinx.com/bin/public/openDownload?filename=ryzen-ai-gpudockerfiles-3.5.0-099.tar.gz
 
+
+**Olive ONNX Quantization**
+
+Microsoft Olive framework can be used for Vitis AI ONNX Quantization. 
+
+.. code-block::
+
+   pip install olive-ai[cpu]
+
+
+Note: Current Olive flow is not compatible with the latest pydantic version. Downgrade the pydantic version as shown below
+
+.. code-block::
+
+    pip install pydantic==1.10.9
+
+
+For additional information regarding the Olive installation, refer to the Microsoft documentation:       
+https://microsoft.github.io/Olive/getstarted/installation.html
 
 
 
