@@ -4,9 +4,9 @@
 Quantization with Vitis-AI
 ##########################
 
-Vitis-AI supports Post Training Quantization directly on the pre-trained model saved in ONNX format. 
+Vitis AI supports Post-Training Quantization (PTQ) directly on the pre-trained model saved in ONNX format. 
 
-You can also perform model quantization using the Vitis AI PyTorch or TensorFlow quantization flow. Depending on your network format (PyTorch, TensorFlow 2, or Tensorflow), you can install the Vitis AI Docker container in a Linux environment to quantize your model and save it in the ONNX format. 
+You can also perform model quantization using the Vitis AI PyTorch or TensorFlow quantization flow. Depending on your network format (PyTorch, TensorFlow 2, or Tensorflow), you can install the Vitis AI Docker container in a Linux environment to quantize your model and save it in the ONNX format:
 
 
 .. toctree::
