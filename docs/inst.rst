@@ -23,7 +23,7 @@ This release is compatible with IPU driver version >= 10.105.5.42. For Ryzen AI 
 1. Extract the downloaded package ipu_stack_rel_silicon.zip.
 2. Open a terminal in administrator mode and execute the ``.\amd_install_kipudrv.bat`` bat file.
 
-Note: If you see the "Windows could not verify the digital signature of this driver" follow `this tutorial <https://pureinfotech.com/disable-driver-signature-enforcement-windows-11/>`_ to disable signature checking." error message
+Note: If you see the "Windows could not verify the digital signature of this driver" error message, follow `this tutorial <https://pureinfotech.com/disable-driver-signature-enforcement-windows-11/>`_ to disable signature checking."
 
 |
 |
@@ -32,7 +32,7 @@ Note: If you see the "Windows could not verify the digital signature of this dri
 Prepare Client Device 
 ~~~~~~~~~~~~~~~~~~~~~
 
-To enable the development and deployment of IPU-based inference on the client device, it is required to have the following software installed, along with their minimum versions. 
+To enable the development and deployment of IPU-based inference on the client device, you must have the following software installed, along with their minimum versions.
 
 .. list-table:: 
    :widths: 25 25 
