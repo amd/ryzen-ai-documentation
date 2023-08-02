@@ -184,7 +184,7 @@ Ryzen AI Software platform provides a couple of IPU binaries using different con
 **IPU binary 1x4.xclbin**: An AI stream using 1x4.xclbin use an IPU configuration that provides up to 2 TOPS performance. Most real-time application (video conferencing use cases) performance requirements can be met using this configuration. In the current Ryzen AI software platform, up to four such AI streams can be run in parallel on the IPU without any visible loss of performance.
 
 
-**IPU binary 5x4.xclbin**: For more advanced use cases or larger models, IPU binary 5x4.xclbin can be used which uses a larger configuration that occupies the complete IPU device to provide up to 10 TOPs performance. In the current version of the release, 5x4.xclbin does not support multiple concurrent AI streams, and can only be used by a single application. 
+**IPU binary 5x4.xclbin**: For more advanced use cases or larger models, IPU binary 5x4.xclbin can be used which uses a larger configuration to provide up to 10 TOPs performance. In the current version of the release, 5x4.xclbin does not support multiple concurrent AI streams, and can only be used by a single application. 
 
 
 The procedure of selecting a specific binary by using the environment variables is shown below:
