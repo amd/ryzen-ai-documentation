@@ -18,12 +18,12 @@ Ensure that the IPU driver is installed from ``Device Manager`` -> ``System Devi
 |
 |
 
-This release is compatible with IPU driver version >= 10.105.5.42. For Ryzen AI laptops with earlier IPU driver versions such as 10.105.5.38, please download the `IPU Driver <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ipu_stack_rel_silicon.zip>`_ and install it as explained below
+This release is compatible with IPU driver version >= 10.105.5.42. For Ryzen AI laptops with earlier IPU driver versions such as 10.105.5.38. Download the `IPU Driver <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ipu_stack_rel_silicon.zip>`_ and install it by following these steps:
 
-1. Extract the downloaded package ipu_stack_rel_silicon.zip
-2. Open a terminal in administrator mode and execute bat file ``.\amd_install_kipudrv.bat``
+1. Extract the downloaded package ipu_stack_rel_silicon.zip.
+2. Open a terminal in administrator mode and execute the ``.\amd_install_kipudrv.bat`` bat file.
 
-Note: If you see an error saying that "Windows could not verify the digital signature of this driver" follow `this tutorial <https://pureinfotech.com/disable-driver-signature-enforcement-windows-11/>`_ to disable signature checking."
+Note: If you see the "Windows could not verify the digital signature of this driver" follow `this tutorial <https://pureinfotech.com/disable-driver-signature-enforcement-windows-11/>`_ to disable signature checking." error message
 
 |
 |
