@@ -24,9 +24,9 @@ Quantizer
   - Support Non-overflow and Min-MSE quantization methods.
   - Support various quantization configurations in power-of-two quantization in both QDQ and QOP format.
    
-      - Support signed and unsigned configurations.
-      - Support symmetry and asymmetry configurations.
-      - Support per-tensor and per-channel configurations.
+    - Support signed and unsigned configurations.
+    - Support symmetry and asymmetry configurations.
+    - Support per-tensor and per-channel configurations.
   - Support bias quantization using int8 datatype for IPU.
   - Support quantization parameters (scale) refinement for IPU.
   - Support excluding certain operations from quantization for IPU.
@@ -36,50 +36,50 @@ Quantizer
 
 - TensorFlow 2.x Quantizer
 
-   - Add support for exporting the quantized model onnx format.
-   - Add support for the keras.layers.Activation('leaky_relu')
+  - Add support for exporting the quantized model onnx format.
+  - Add support for the keras.layers.Activation('leaky_relu')
 
 - TensorFlow 1.x Quantizer
 
-   - Add support for folding Reshape and ResizeNearestNeighbor operators.
-   - Add support for splitting Avgpool and Maxpool with large kernel sizes into smaller kernel sizes.
-   - Add support for quantizing Sum, StridedSlice, and Maximum operators.
-   - Add support for setting the input shape of the model, which is useful in the deployment of models with undefined input shapes.
-   - Add support for setting the opset version in exporting onnx format
+  - Add support for folding Reshape and ResizeNearestNeighbor operators.
+  - Add support for splitting Avgpool and Maxpool with large kernel sizes into smaller kernel sizes.
+  - Add support for quantizing Sum, StridedSlice, and Maximum operators.
+  - Add support for setting the input shape of the model, which is useful in the deployment of models with undefined input shapes.
+  - Add support for setting the opset version in exporting onnx format
 
-ONNXRuntime Execution Provider
+ONNX Runtime Execution Provider
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- Vitis ONNXRuntime Execution Provider (VOE)
+- Vitis ONNX Runtime Execution Provider (VOE)
 
-   - Support for ONNX Opset version 18, ONNX Runtime 1.16.0 and ONNX version 1.13
-   - Support for both C++ and Python APIs(Python version 3)
-   - Support deploy model with other EPs 
-   - Support falling back to CPU EP
-   - Open source and upstreamed to ONNXRuntime Github repo
-   - Compiler
+  - Support for ONNX Opset version 18, ONNX Runtime 1.16.0 and ONNX version 1.13
+  - Support for both C++ and Python APIs(Python version 3)
+  - Support deploy model with other EPs 
+  - Support falling back to CPU EP
+  - Open source and upstreamed to ONNX Runtime Github repo
+  - Compiler
 
-       - Multiple Level op fusion
-       - Support same muti-output opterator like chunk split 
-       - Support split big pooling to small pooling        
-       - Support 2-channel writeback feature for Hard-Sigmoid and Depthwise-Convolution
-       - Support 1 channel GStiling
-       - explicit pad-fix in CPU subgraph for 4 byte alignment
-       - Tuning the performance for multiple models
+    - Multiple Level op fusion
+    - Support same muti-output opterator like chunk split 
+    - Support split big pooling to small pooling        
+    - Support 2-channel writeback feature for Hard-Sigmoid and Depthwise-Convolution
+    - Support 1 channel GStiling
+    - explicit pad-fix in CPU subgraph for 4 byte alignment
+    - Tuning the performance for multiple models
 
 IPU
 ~~~
 
 - Two configurations
 
-   - Power Optimized Overlay
+  - Power Optimized Overlay
       
-       - Suitable for smaller AI models (1x4.xclbin)
-       - Support spatial sharing, up to 4 concurrent AI workloads
+    - Suitable for smaller AI models (1x4.xclbin)
+    - Support spatial sharing, up to 4 concurrent AI workloads
 
-   - Performance Optimized Overlay (5x4.xclbin)
+  - Performance Optimized Overlay (5x4.xclbin)
        
-       - Suitable for larger AI models
+    - Suitable for larger AI models
 
 Known issues
 ~~~~~~~~~~~~
