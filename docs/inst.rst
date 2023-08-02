@@ -189,14 +189,14 @@ Ryzen AI Software platform provides a couple of IPU binaries using different con
 
 The procedure for selecting a specific binary using environment variables is as follows:
 
-Selecting the 1x4.xclbin IPU binary
+Selecting the 1x4.xclbin IPU binary:
 
 .. code-block::
 
    set XLNX_VART_FIRMWARE=C:\path\to\1x4.xclbin
 
 
-Selecting the 5x4.xclbin IPU binary
+Selecting the 5x4.xclbin IPU binary:
 
 .. code-block::
 
