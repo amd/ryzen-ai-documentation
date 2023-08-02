@@ -111,9 +111,9 @@ The above docker containers do not have GPU-accelerated quantization support. If
 https://www.xilinx.com/bin/public/openDownload?filename=ryzen-ai-gpudockerfiles-3.5.0-099.tar.gz
 
 
-**Olive ONNX Quantization**
+**Olive Quantization**
 
-Microsoft Olive framework can be used for Vitis AI ONNX Quantization. 
+Microsoft Olive framework supports quantization with Vitis AI ONNX Quantization.  
 
 .. code-block::
 
