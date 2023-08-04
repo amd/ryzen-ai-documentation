@@ -115,7 +115,7 @@ Quantizing AI models from floating-point to 8-bit integers reduces computational
 
 This will generate quantized model using QDQ quant format and UInt8 activation type and Int8 weight type. After the run is complete, the quantized ONNX model ``resnet.qdq.U8S8.onnx`` is saved to models/resnet.qdq.U8S8.onnx. 
 
-The `resnet_quantize.py` file has `quantize_static` function (line 103) that applies static quantization to the model. 
+The `resnet_quantize.py` file has `quantize_static` function (line 95) that applies static quantization to the model. 
 
 .. code-block::
 
