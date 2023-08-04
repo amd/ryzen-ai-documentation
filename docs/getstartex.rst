@@ -20,10 +20,11 @@ The following are the steps and the required files to run the example. The files
    * - Preparation
      - ``prepare_model_data.py``,
        ``resnet_utils.py``
-     - Train to prepare a model for the example. The training process adopts the transfer learning technique to train a pre-trained ResNet-50 model with the CIFAR-10 dataset. 
+     - Train to prepare a model for the example. The training process adopts the transfer learning technique to train a pre-trained ResNet-50 model with the CIFAR-10 dataset.
    * - Quantization 
-     - ``resnet_quantize.py``
-     - Convert the model to the IPU-deployable model by performing Post-Training Quantization flow using VitisAI ONNX Quantization.
+     - ``resnet_static_config.json``, 
+       ``user_script.py``
+     - Convert the model to the IPU-deployable model by performing Post-Training Quantization flow using Olive.
    * - Deployment
      - ``predict.py``
      -  Run the Quantized model using the ONNX Runtime code. We demonstrate running the model on both CPU and IPU. 
@@ -98,8 +99,8 @@ A typical output from the training process looks as follows:
 After completing the training process, observe the following output:
  
 * The trained ResNet-50 model on the CIFAR-10 dataset is saved at the following location: ``models\resnet_trained_for_cifar10.pt``.
-* The trained ResNet-50 model on the CIFAR-10 dataset is saved at the following location in ONNX format: ``models\resnet_trained_for_cifar10.onnx``.
 * The downloaded CIFAR-10 dataset is saved in the current directory at the following location: ``data\cifar-10-batches-py\*``.
+
 
 |
 |
@@ -107,40 +108,28 @@ After completing the training process, observe the following output:
 Step 3: Quantize the Model
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Quantizing AI models from floating-point to 8-bit integers reduces computational power and the memory footprint required for inference. For model quantization, you can either use Olive or the Vitis AI quantizer. This example utilizes the Vitis AI ONNX quantizer workflow. Quantization tool takes the pre-processed float32 model and produce a quantized model
+Quantizing AI models from floating-point to 8-bit integers reduces computational power and the memory footprint required for inference. For model quantization, you can either use Olive or the Vitis AI quantizer. This example utilizes the Olive workflow.
+
+Note: Current Olive flow is not compatible with the latest pydantic version. Downgrade the pydantic version as below before running the quantization flow
 
 .. code-block::
 
-   python resnet_quantize.py
+   pip install pydantic==1.10.9
 
-This will generate quantized model using QDQ quant format and UInt8 activation type and Int8 weight type. After the run is complete, the quantized ONNX model ``resnet.qdq.U8S8.onnx`` is saved to models/resnet.qdq.U8S8.onnx. 
 
-The `resnet_quantize.py` file has `quantize_static` function (line 103) that applies static quantization to the model. 
+The Olive workflow is configured using the ``resnet_static_config.json`` file. Run Olive to convert the model to the ONNX format and quantize it:
+ 
 
 .. code-block::
 
-   from onnxruntime.quantization import QuantFormat, QuantType
-   import vai_q_onnx
+      python -m olive.workflows.run --config resnet_static_config.json 
+   
+   
+After the run is complete, the quantized ONNX model ``model.onnx`` is saved inside a cache directory. 
 
-   vai_q_onnx.quantize_static(
-        input_model_path,
-        output_model_path,
-        dr,
-        quant_format=QuantFormat.QDQ,
-        calibrate_method=vai_q_onnx.PowerOfTwoMethod.MinMSE,
-        activation_type=QuantType.QUInt8,
-        weight_type=QuantType.QInt8,
-    )
+Example ``model.onnx`` path:  ``./cache/models/1_VitisAIQuantization-0-1586a0b670df52697b3acf9aecd67b24-cpu-cpu/model.onnx``
 
-The parameters of this function are:
-
-* **input_model_path**: (String) This parameter represents the file path of the model to be quantized.
-* **output_model_path**: (String) This parameter represents the file path where the quantized model will be saved.
-* **dr**: (Object or None) This parameter is a calibration data reader that enumerates the calibration data and producing inputs for the original model. In this example, CIFAR10 dataset is used for calibration during the quantization process.
-* **quant_format**: (String) This parameter is used to specify the quantization format of the model. In this example we have used the QDQ quant format.
-* **calibrate_method**:(String) In this example this parameter is set to 'vai_q_onnx.PowerOfTwoMethod.MinMSE' to apply power-of-2 scale quantization. 
-* **activation_type**: (String) This parameter represents the data type of activation tensors after quantization. In this example, it's set to QUInt8 (Quantized Unsigned Int 8).
-* **weight_type**: (String) This parameter represents the data type of weight tensors after quantization. In this example, it's set to QInt8 (Quantized Int 8).
+Copy the quantized ONNX model in the current working directory for deployment.
 
 |
 |
@@ -221,27 +210,25 @@ Typical output
 
 .. code-block:: 
 
-  I20230803 19:29:01.962848 13180 vitisai_compile_model.cpp:274] Vitis AI EP Load ONNX Model Success
-  I20230803 19:29:01.970893 13180 vitisai_compile_model.cpp:275] Graph Input Node Name/Shape (1)
-  I20230803 19:29:01.970893 13180 vitisai_compile_model.cpp:279]   input : [-1x3x32x32]
-  I20230803 19:29:01.970893 13180 vitisai_compile_model.cpp:285] Graph Output Node Name/Shape (1)
-  I20230803 19:29:01.970893 13180 vitisai_compile_model.cpp:289]   output : [-1x10]
-  I20230803 19:29:01.970893 13180 vitisai_compile_model.cpp:165] use cache key modelcachekey
-  2023-08-03 19:29:02.0303033 [W:onnxruntime:, session_state.cc:1169 onnxruntime::VerifyEachNodeIsAssignedToAnEp] Some nodes were not assigned to the preferred execution providers which may or may not have an negative impact on performance. e.g. ORT explicitly assigns shape related ops to CPU to improve perf.
-  2023-08-03 19:29:02.0363239 [W:onnxruntime:, session_state.cc:1171 onnxruntime::VerifyEachNodeIsAssignedToAnEp] Rerunning with verbose output on a non-minimal build will show node assignments.
-  I20230803 19:29:02.108831 13180 custom_op.cpp:126]  Vitis AI EP running 348 Nodes
-  !!! Warning: fingerprint of xclbin file C:\Windows\System32\AMD\1x4.xclbin doesn't match subgraph subgraph_/fc/fc.1/Relu_output_0(TransferMatMulToConv2d)
+    WARNING: Logging before InitGoogleLogging() is written to STDERR
+    I20230610 23:31:05.571316  6032 vitisai_compile_model.cpp:210] Vitis AI EP Load ONNX Model Success
+    I20230610 23:31:05.571316  6032 vitisai_compile_model.cpp:211] Graph Input Node Name/Shape (1)
+    I20230610 23:31:05.571316  6032 vitisai_compile_model.cpp:215]   input : [-1x3x32x32]
+    I20230610 23:31:05.571316  6032 vitisai_compile_model.cpp:221] Graph Output Node Name/Shape (1)
+    I20230610 23:31:05.571316  6032 vitisai_compile_model.cpp:225]   output : [-1x10]
+    I20230610 23:31:05.579483  6032 vitisai_compile_model.cpp:131] use cache key modelcachekey
+    Image 0: Actual Label cat, Predicted Label cat
+    Image 1: Actual Label ship, Predicted Label ship
+    Image 2: Actual Label ship, Predicted Label airplane
+    Image 3: Actual Label airplane, Predicted Label airplane
+    Image 4: Actual Label frog, Predicted Label frog
+    Image 5: Actual Label frog, Predicted Label frog
+    Image 6: Actual Label automobile, Predicted Label automobile
+    Image 7: Actual Label frog, Predicted Label frog
+    Image 8: Actual Label cat, Predicted Label cat
+    Image 9: Actual Label automobile, Predicted Label automobile
+ 
 
-  Image 0: Actual Label cat, Predicted Label deer
-  Image 1: Actual Label ship, Predicted Label ship
-  Image 2: Actual Label ship, Predicted Label ship
-  Image 3: Actual Label airplane, Predicted Label ship
-  Image 4: Actual Label frog, Predicted Label deer
-  Image 5: Actual Label frog, Predicted Label horse
-  Image 6: Actual Label automobile, Predicted Label frog
-  Image 7: Actual Label frog, Predicted Label deer
-  Image 8: Actual Label cat, Predicted Label deer
-  Image 9: Actual Label automobile, Predicted Label ship
 
 ..
   ------------
