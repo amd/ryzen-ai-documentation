@@ -134,13 +134,13 @@ The `resnet_quantize.py` file has `quantize_static` function (line 95) that appl
 
 The parameters of this function are:
 
-* **input_model_path**: (String) This parameter represents the file path of the model to be quantized.
-* **output_model_path**: (String) This parameter represents the file path where the quantized model will be saved.
-* **dr**: (Object or None) This parameter is a calibration data reader that enumerates the calibration data and producing inputs for the original model. In this example, CIFAR10 dataset is used for calibration during the quantization process.
-* **quant_format**: (String) This parameter is used to specify the quantization format of the model. In this example we have used the QDQ quant format.
+* **input_model_path**: (String) The file path of the model to be quantized.
+* **output_model_path**: (String) The file path where the quantized model will be saved.
+* **dr**: (Object or None) Calibration data reader that enumerates the calibration data and producing inputs for the original model. In this example, CIFAR10 dataset is used for calibration during the quantization process.
+* **quant_format**: (String) Specifies the quantization format of the model. In this example we have used the QDQ quant format.
 * **calibrate_method**:(String) In this example this parameter is set to 'vai_q_onnx.PowerOfTwoMethod.MinMSE' to apply power-of-2 scale quantization. 
-* **activation_type**: (String) This parameter represents the data type of activation tensors after quantization. In this example, it's set to QUInt8 (Quantized Unsigned Int 8).
-* **weight_type**: (String) This parameter represents the data type of weight tensors after quantization. In this example, it's set to QInt8 (Quantized Int 8).
+* **activation_type**: (String) Data type of activation tensors after quantization. In this example, it's set to QUInt8 (Quantized Unsigned Int 8).
+* **weight_type**: (String) Data type of weight tensors after quantization. In this example, it's set to QInt8 (Quantized Int 8).
 
 |
 |
