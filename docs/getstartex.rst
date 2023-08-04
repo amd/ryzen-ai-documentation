@@ -107,7 +107,7 @@ After completing the training process, observe the following output:
 Step 3: Quantize the Model
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Quantizing AI models from floating-point to 8-bit integers reduces computational power and the memory footprint required for inference. For model quantization, you can either use Olive or the Vitis AI quantizer. This example utilizes the Vitis AI ONNX quantizer workflow. Quantization tool takes the pre-processed float32 model and produce a quantized model
+Quantizing AI models from floating-point to 8-bit integers reduces computational power and the memory footprint required for inference. For model quantization, you can either use Vitis AI quantizer or Microsoft Olive. This example utilizes the Vitis AI ONNX quantizer workflow. Quantization tool takes the pre-trained float32 model from the previous step (``resnet_trained_for_cifar10.onnx``) and produces a quantized model.
 
 .. code-block::
 
