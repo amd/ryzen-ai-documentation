@@ -3,7 +3,7 @@ Version 0.7
 ###########
 
 Quantizer
-~~~~~~~~
+~~~~~~~~~
 
 - Docker Containers
 
@@ -48,7 +48,7 @@ Quantizer
   - Add support for setting the opset version in exporting ONNX format
 
 ONNX Runtime Execution Provider
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - Vitis ONNX Runtime Execution Provider (VOE)
 
