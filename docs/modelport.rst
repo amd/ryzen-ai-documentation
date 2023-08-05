@@ -35,7 +35,6 @@ Ryzen AI software platform supports multiple quantization flows.
 For complete details about each quantization flow, refer to the following pages:
 
 .. toctree::
-   :hidden:
    :maxdepth: 1
 
    Vitis AI ONNX Quantization: <./vai_quant/vai_q_onnx>
