@@ -23,6 +23,11 @@ Running vai_q_onnx
   
 Quantization in ONNX Runtime refers to the linear quantization of an ONNX model. We have developed the vai_q_onnx tool as a plugin for ONNX Runtime to support more post-training quantization(PTQ) functions for quantizing a deep learning model. Post-training quantization(PTQ) is a technique to convert a pre-trained float model into a quantized model with little degradation in model accuracy. A representative dataset is needed to run a few batches of inference on the float model to obtain the distributions of the activations, which is also called quantized calibration.
 
+.. note:: 
+
+    The ONNX models must be opset 10 or higher to be quantized by Vitis AI ONNX Quantizer. Models with opset < 10 must be reconverted to ONNX from their original framework using opset 10 or above. Alternatively, you can refer to the usage of the version converter for ONNX Version Converter https://github.com/onnx/onnx/blob/main/docs/VersionConverter.md
+
+
 Use the following steps to run PTQ with vai_q_onnx.
 
 1. Preparing the Float Model and Calibration Set 
