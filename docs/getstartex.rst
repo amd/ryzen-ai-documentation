@@ -115,7 +115,7 @@ Quantizing AI models from floating-point to 8-bit integers reduces computational
 
 This will generate quantized model using QDQ quant format and UInt8 activation type and Int8 weight type. After the run is complete, the quantized ONNX model ``resnet.qdq.U8S8.onnx`` is saved to models/resnet.qdq.U8S8.onnx. 
 
-The `resnet_quantize.py` file has `quantize_static` function (line 95) that applies static quantization to the model. 
+The ``resnet_quantize.py`` file has ``quantize_static`` function (line 95) that applies static quantization to the model. 
 
 .. code-block::
 
@@ -138,7 +138,7 @@ The parameters of this function are:
 * **output_model_path**: (String) The file path where the quantized model will be saved.
 * **dr**: (Object or None) Calibration data reader that enumerates the calibration data and producing inputs for the original model. In this example, CIFAR10 dataset is used for calibration during the quantization process.
 * **quant_format**: (String) Specifies the quantization format of the model. In this example we have used the QDQ quant format.
-* **calibrate_method**:(String) In this example this parameter is set to 'vai_q_onnx.PowerOfTwoMethod.MinMSE' to apply power-of-2 scale quantization. 
+* **calibrate_method**:(String) In this example this parameter is set to ``vai_q_onnx.PowerOfTwoMethod.MinMSE`` to apply power-of-2 scale quantization. 
 * **activation_type**: (String) Data type of activation tensors after quantization. In this example, it's set to QUInt8 (Quantized Unsigned Int 8).
 * **weight_type**: (String) Data type of weight tensors after quantization. In this example, it's set to QInt8 (Quantized Int 8).
 
