@@ -34,7 +34,7 @@ author = 'Advanced Micro Devices, Inc'
 version = '0.7 (Preview)'
 # The full version, including alpha/beta/rc tags
 release = '0.7 (Preview)'
-html_last_updated_fmt = 'October 7, 2022'
+html_last_updated_fmt = 'August 2, 2023'
 
 
 # -- General configuration ---------------------------------------------------
