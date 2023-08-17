@@ -14,7 +14,7 @@ Quantizer
 
   - Supports multiple output conversion to slicing
   - Enhanced transpose OP optimization
-  - Inspectorsupportst new IP targets for IPU
+  - Inspector support new IP targets for IPU
 
 - ONNX Quantizer
 
