@@ -37,10 +37,10 @@ For complete details about each quantization flow, refer to the following pages:
 .. toctree::
    :maxdepth: 1
 
-   Vitis AI ONNX Quantization: <./vai_quant/vai_q_onnx>
-   Vitis AI PyTorch Quantization: <./vai_quant/pt>
-   Vitis AI TensorFlow Quantization: <./vai_quant/tf2>
-   Microsoft Olive Quantization: <./olive_quant>
+   Vitis AI ONNX Quantization <./vai_quant/vai_q_onnx>
+   Vitis AI PyTorch Quantization <./vai_quant/pt>
+   Vitis AI TensorFlow Quantization <./vai_quant/tf2>
+   Microsoft Olive Quantization <./olive_quant>
 
    
 ..
