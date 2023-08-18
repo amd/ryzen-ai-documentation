@@ -5,7 +5,7 @@ ONNX Quantization
 Installation
 ~~~~~~~~~~~~
 
-ONNX Quantizer does not require any docker installation. Install the ONNX Quantizer after downloading this installation `python Wheel file <https://www.xilinx.com/bin/public/openDownload?filename=vai_q_onnx-1.14.0-py2.py3-none-any.whl>`_.   
+ONNX Quantizer does not require any docker installation. Install the ONNX Quantizer after downloading this installation `python wheel file <https://www.xilinx.com/bin/public/openDownload?filename=vai_q_onnx-1.14.0-py2.py3-none-any.whl>`_.   
 
 
 .. code-block::
