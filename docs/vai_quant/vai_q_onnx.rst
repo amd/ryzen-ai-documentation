@@ -95,9 +95,9 @@ Pre-processing API is in the Python module ``onnxruntime.quantization.shape_infe
 
 ``verbose``: (Integer) This parameter controls the level of detailed information logged during inference. 
 
- - 0 turns off logging (default)
- - 1 logs warnings
- - 3 logs detailed information. 
+- 0 turns off logging (default)
+- 1 logs warnings
+- 3 logs detailed information. 
   
 
 ``save_as_external_data``: (Boolean) This flag determines whether to save the ONNX model to external data. The default value is False.
