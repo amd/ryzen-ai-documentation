@@ -136,16 +136,16 @@ The static quantization method first runs the model using a set of inputs called
 
 ``quant_format``: (Enum) This parameter defines the quantization format for the model. It has the following options:
 
-   - QOperator This option quantizes the model directly using quantized operators.
-   - QDQ This option quantizes the model by inserting QuantizeLinear/DeQuantizeLinear into the tensor. It supports 8-bit quantization only 
-   - VitisQuantFormat.QDQ This option quantizes the model by inserting VAIQuantizeLinear/VAIDeQuantizeLinear into the tensor. It supports a wider range of bit-widths and configurations.
-   - VitisQuantFormat.FixNeuron This option quantizes the model by inserting FixNeuron (a combination of QuantizeLinear and DeQuantizeLinear) into the tensor. This is the default value.
+- QOperator This option quantizes the model directly using quantized operators.
+- QDQ This option quantizes the model by inserting QuantizeLinear/DeQuantizeLinear into the tensor. It supports 8-bit quantization only 
+- VitisQuantFormat.QDQ This option quantizes the model by inserting VAIQuantizeLinear/VAIDeQuantizeLinear into the tensor. It supports a wider range of bit-widths and configurations.
+- VitisQuantFormat.FixNeuron This option quantizes the model by inserting FixNeuron (a combination of QuantizeLinear and DeQuantizeLinear) into the tensor. This is the default value.
 
 
 ``calibrate_method``: (Enum) This parameter is used to set the power-of-2 scale quantization method. It currently supports two methods: 
 
-   - 'vai_q_onnx.PowerOfTwoMethod.NonOverflow' 
-   - 'vai_q_onnx.PowerOfTwoMethod.MinMSE' (default) 
+- 'vai_q_onnx.PowerOfTwoMethod.NonOverflow' 
+- 'vai_q_onnx.PowerOfTwoMethod.MinMSE' (default) 
 
 ``input_nodes``: (List of Strings) This parameter is a list of the names of the starting nodes to be quantized. Nodes in the model before these nodes will not be quantized. For example, this argument can be used to skip some pre-processing nodes or stop the first node from being quantized. The default value is an empty list ([]).
 
