@@ -77,7 +77,7 @@ Ryzen AI Software platform provides multiple quantization flow support
 
 Vitis AI ONNX Quantization is post-training quantization that works on the models saved in ONNX format. To install it, download the installation file and follow the command:
 
-https://www.xilinx.com/bin/public/openDownload?filename=vai_q_onnx-1.14.0-py2.py3-none-any.whl
+https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=vai_q_onnx-1.15.0-py2.py3-none-any.whl
 
 .. code-block::
 
