@@ -173,7 +173,7 @@ The IPU binaries are located inside the Execution Provider setup package.
 
 .. _copy-vaip-config:
 
-2. The Execution Provider setup package (``voe-3.5-win_amd64.zip``) contains the Vitis AI Execution Provider runtime configuration file ``vaip_config.json``. This file is required when configuring Vitis AI Execution Provider (VAI EP) inside the ONNX Runtime code. 
+2. The Execution Provider setup package contains the Vitis AI Execution Provider runtime configuration file ``vaip_config.json``. This file is required when configuring Vitis AI Execution Provider (VAI EP) inside the ONNX Runtime code. 
 
 
 Runtime IPU Binary selection 
