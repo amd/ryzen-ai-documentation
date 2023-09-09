@@ -156,6 +156,27 @@ The static quantization method first runs the model using a set of inputs called
 
 ``extra_options``: (Dict or None) This parameter is a dictionary of additional options that can be passed to the quantization process. If there are no additional options to provide, this can be set to None. The default value is None.
 
+Recommended configuration for Ryzen AI Software Platform
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+These are the recommended configuration for ``vai_q_onnx.quantize_static`` when targeting IPU
+
+.. code-block:: 
+
+   from onnxruntime.quantization import QuantFormat, QuantType 
+   import vai_q_onnx 
+
+   vai_q_onnx.quantize_static( 
+      model_input, 
+      model_output, 
+      calibration_data_reader, 
+      quant_format=QuantFormat.QDQ, 
+      calibrate_method=vai_q_onnx.PowerOfTwoMethod.MinMSE, 
+      activation_type=QuantType.QInt8, 
+      weight_type=QuantType.QInt8, 
+      use_dpu=True, 
+      extra_options={'ActivationSymmetric': True} 
+   ) 
 
 ..
   ------------
