@@ -144,7 +144,7 @@ Install Vitis AI Execution Provider
 
 Download and extract the Execution Provider setup package:
 
-https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=voe-3.5-win_amd64.zip 
+https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=voe-4.0-win-amd64.zip 
 
 Change the directory to the extracted Execution Provider setup package directory and install the necessary packages:
 
