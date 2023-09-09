@@ -11,17 +11,17 @@ Supported Configurations
 
 The Ryzen AI Software Platform supports AMD Ryzen 7040U, 7040HS series mobile processors with Windows 11 OS.
 
+Download the `IPU Driver <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ipu_stack_rel_silicon_2308.zip>`_ and install it by following these steps:
+
+1. Extract the downloaded zip file.
+2. Open a terminal in administrator mode and execute the ``.\amd_install_kipudrv.bat`` bat file.
+
 Ensure that the IPU driver is installed from ``Device Manager`` -> ``System Devices`` -> ``AMD IPU Device`` as shown in the following image.
 
 .. image:: images/ipu_device_properties1.png
 
 |
 |
-
-This release is compatible with IPU driver version >= 10.105.5.42. For Ryzen AI laptops with earlier IPU driver versions such as 10.105.5.38. Download the `IPU Driver <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ipu_stack_rel_silicon.zip>`_ and install it by following these steps:
-
-1. Extract the downloaded package ipu_stack_rel_silicon.zip.
-2. Open a terminal in administrator mode and execute the ``.\amd_install_kipudrv.bat`` bat file.
 
 Note: If you see the "Windows could not verify the digital signature of this driver" error message, follow `this tutorial <https://pureinfotech.com/disable-driver-signature-enforcement-windows-11/>`_ to disable signature checking."
 
