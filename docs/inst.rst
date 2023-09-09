@@ -108,7 +108,8 @@ Multiple versions of the Docker container are available, each tailored to specif
 
 The above Docker containers do not have GPU-accelerated quantization support. If you like to leverage GPU for the quantization process, you can download and build GPU Docker containers. The following TAR file has README that you can follow to build and run GPU dockers.  
 
-https://www.xilinx.com/bin/public/openDownload?filename=ryzen-ai-gpudockerfiles-3.5.0-099.tar.gz
+
+https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ryzen-ai-gpudockerfiles-3.5.0-130.tar.gz
 
 
 **Olive Quantization**
