@@ -67,9 +67,10 @@ IPU and Compiler
 Demos
 ~~~~~
 
-- LLM demo with OPT-1.3B/2.7B/6.7B
-- Automatic speech recognition demo with Whisper-tiny
-- Demo links: https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=transformers_2308.zip
+- New Demos link: https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=transformers_2308.zip
+
+  - LLM demo with OPT-1.3B/2.7B/6.7B
+  - Automatic speech recognition demo with Whisper-tiny
 
 Known issues
 ~~~~~~~~~~~~
