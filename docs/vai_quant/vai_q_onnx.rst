@@ -2,6 +2,9 @@
 ONNX Quantization 
 #################
 
+.. contents:: Table of Contents
+
+
 Installation
 ~~~~~~~~~~~~
 
