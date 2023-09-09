@@ -150,7 +150,7 @@ Change the directory to the extracted Execution Provider setup package directory
 
 .. code-block:: 
 
-     cd voe-3.5-win_amd64\voe-3.5-win_amd64
+     cd voe-4.0-win_amd64\voe-4.0-win_amd64
      python installer.py
      pip install voe-0.1.0-cp39-cp39-win_amd64.whl
      pip install onnxruntime_vitisai-1.15.1-cp39-cp39-win_amd64.whl
