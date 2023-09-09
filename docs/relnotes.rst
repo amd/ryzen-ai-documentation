@@ -1,4 +1,87 @@
 ###########
+Version 0.8
+###########
+
+Quantizer
+~~~~~~~~~
+
+- Pytorch Quantizer
+
+  - Pytorch 1.13 and 2.0 support
+  - Mixed precision quantization support, supporting float32/float16/bfloat16/intx mixed quantization
+  - Support of bit-wise accuracy cross check between quantizer and ONNX-runtime
+  - Split and chunk operators were automatically converted to slicing
+  - Add support for BFP data type quantization
+  - Support of some operations in quantizer: where, less, less_equal, greater, greater_equal, not, and, or, eq, maximum, minimum, sqrt, Elu, Reduction_min, argmin
+  - QAT supports training on multiple GPUs
+  - QAT supports operations with multiple inputs or outputs
+
+- ONNX Quantizer
+
+  - Provided Python wheel file for installation
+  - Support OnnxRuntime 1.15
+  - Supports setting input shapes of random data reader
+  - Supports random data reader in the dump model function
+  - Supports saving the S8S8 model in U8S8 format for IPU
+  - Supports simulation of Sigmoid, Swish, Softmax, AvgPool, GlobalAvgPool, ReduceMean and LeakyRelu for IPU
+  - Supports node fusions for IPU
+  
+ONNXRuntime Execution Provider 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- Supports for U8S8 quantized ONNX models
+- Improve the function of falling back to CPU EP
+- Improve AIE plugin framework
+
+  - Supports LLM Demo
+  - Supports Gemm ASR
+  - Supports E2E AIE acceleration for Pre/Post ops
+  - Improve the easy-of-use for partition and  deployment
+- Supports  models containing subgraphs
+- Supports report summary about OP assignment
+- Supports report summary about DPU subgraphs falling back to CPU
+- Improve log printing and troubleshooting tools.
+- Upstreamed to ONNX Runtime Github repo for any data type support and bug fix
+
+IPU and Compiler
+~~~~~~~~~~~~~~~~
+
+- Extended the support range of some operators
+
+  - Larger input size: conv2d, dwc
+  - Padding mode: pad
+  - Broadcast: add
+  - Variant dimension (non-NHWC shape): reshape, transpose, add
+- Support new operators, e.g. reducemax(min/sum/avg), argmax(min)
+- Enhanced multi-level fusion
+- Performance enhancement for some operators
+- Add quantization information validation
+- Improvement in device partition
+
+  - User friendly message
+  - Target-dependency check
+
+Demos
+~~~~~
+
+- LLM demo with OPT-1.3B/2.7B/6.7B
+- Automatic speech recognition demo with Whisper-tiny
+- Demo links: https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=transformers_2308.zip
+
+Known issues
+~~~~~~~~~~~~
+- Flow control OPs including "Loop", "If", "Reduce" not supported by VOE
+- Resize OP in ONNX opset 10 or lower not supported by VOE
+- Tensorflow 2.x quantizer supports models within tf.keras.model only
+- Running quantizer docker in WSL on Ryzen AI laptops may encounter OOM (Out-of-memory) issue
+- Run multiple concurrent models by temporal sharing on the Performance optimized overlay (5x4.xclbin) is not supported
+- Support batch size 1 only for IPU
+
+
+
+
+
+###########
 Version 0.7
 ###########
 
