@@ -164,7 +164,7 @@ Runtime Environment Setup
    
 .. _set-vart-envar:
 
-Runtime IPU Binary selection
+Runtime IPU Binary Selection
 ############################
 
 The IPU binaries are located inside the Vitis AI Execution Provider package. Selecting an IPU binary is a required step everytime the application is run from a new terminal. Ryzen AI Software platform provides a couple of IPU binaries using different configurations on the IPU device. 
@@ -195,7 +195,7 @@ Note: To select the 5x4.xclbin as the IPU binary, the additional XLNX_TARGET_NAM
 
 .. _copy-vaip-config:
 
-Runtime configuration file
+Runtime Configuration File
 ##########################
 
 The Execution Provider setup package contains the Vitis AI Execution Provider runtime configuration file ``vaip_config.json``. This file is required when configuring Vitis AI Execution Provider (VAI EP) inside the ONNX Runtime code. 
