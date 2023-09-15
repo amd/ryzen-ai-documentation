@@ -100,6 +100,8 @@ def main():
         calibrate_method=vai_q_onnx.PowerOfTwoMethod.MinMSE,
         activation_type=QuantType.QUInt8,
         weight_type=QuantType.QInt8,
+        enable_dpu=True, 
+        extra_options={'ActivationSymmetric': True} 
     )
     print('Calibrated and quantized model saved at:', output_model_path)
 

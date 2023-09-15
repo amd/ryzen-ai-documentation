@@ -81,7 +81,7 @@ https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?f
 
 .. code-block::
 
-   pip install vai_q_onnx-1.14.0-py2.py3-none-any.whl
+   pip install vai_q_onnx-1.15.0-py2.py3-none-any.whl
 
 
 **Vitis AI PyTorch/TensorFlow 2/TensorFlow Quantization**
@@ -164,23 +164,10 @@ Runtime Environment Setup
    
 .. _set-vart-envar:
 
-1. Select the IPU binary. It is a required step everytime the application is run from a new terminal:
+Runtime IPU Binary selection
+############################
 
-.. code-block::
-
-   set XLNX_VART_FIRMWARE=C:\path\to\1x4.xclbin
-
-The IPU binaries are located inside the Execution Provider setup package.
-
-.. _copy-vaip-config:
-
-2. The Execution Provider setup package contains the Vitis AI Execution Provider runtime configuration file ``vaip_config.json``. This file is required when configuring Vitis AI Execution Provider (VAI EP) inside the ONNX Runtime code. 
-
-
-Runtime IPU Binary selection 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Ryzen AI Software platform provides a couple of IPU binaries using different configurations on the IPU device. 
+The IPU binaries are located inside the Vitis AI Execution Provider package. Selecting an IPU binary is a required step everytime the application is run from a new terminal. Ryzen AI Software platform provides a couple of IPU binaries using different configurations on the IPU device. 
 
 **IPU binary 1x4.xclbin**: An AI stream using 1x4.xclbin use an IPU configuration that provides up to 2 TOPS performance. Most real-time application (video conferencing use cases) performance requirements can be met using this configuration. In the current Ryzen AI software platform, up to four such AI streams can be run in parallel on the IPU without any visible loss of performance.
 
@@ -205,6 +192,13 @@ Selecting the 5x4.xclbin IPU binary:
    set XLNX_TARGET_NAME="AMD_AIE2_5x4_Overlay"
 
 Note: To select the 5x4.xclbin as the IPU binary, the additional XLNX_TARGET_NAME environment variable is required. 
+
+.. _copy-vaip-config:
+
+Runtime configuration file
+##########################
+
+The Execution Provider setup package contains the Vitis AI Execution Provider runtime configuration file ``vaip_config.json``. This file is required when configuring Vitis AI Execution Provider (VAI EP) inside the ONNX Runtime code. 
 
 ..
   ------------
