@@ -130,6 +130,8 @@ The ``resnet_quantize.py`` file has ``quantize_static`` function (line 95) that 
         calibrate_method=vai_q_onnx.PowerOfTwoMethod.MinMSE,
         activation_type=QuantType.QUInt8,
         weight_type=QuantType.QInt8,
+        enable_dpu=True, 
+        extra_options={'ActivationSymmetric': True} 
     )
 
 The parameters of this function are:
