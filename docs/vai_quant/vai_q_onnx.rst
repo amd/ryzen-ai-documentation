@@ -13,7 +13,7 @@ ONNX Quantizer does not require any docker installation. Install the ONNX Quanti
 
 .. code-block::
 
-   pip install vai_q_onnx-1.14.0-py2.py3-none-any.whl
+   pip install vai_q_onnx-1.15.0-py2.py3-none-any.whl
 
 Overview
 ~~~~~~~~
