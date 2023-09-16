@@ -174,7 +174,7 @@ These are the recommended configuration for ``vai_q_onnx.quantize_static`` when 
       calibrate_method=vai_q_onnx.PowerOfTwoMethod.MinMSE, 
       activation_type=QuantType.QInt8, 
       weight_type=QuantType.QInt8, 
-      use_dpu=True, 
+      enable_dpu=True, 
       extra_options={'ActivationSymmetric': True} 
    ) 
 
