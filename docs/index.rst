@@ -29,8 +29,6 @@ Getting Started
 
 * **Development Flow Overview**: Refer to the :doc:`devflow` page. 
 
-* **Getting Started Example**: Refer to the :doc:`getstartex` page to run a resnet50 model example.
-
 * **Examples, Demos, and Tutorials**: Refer to the :doc:`examples` page.
 
 Using Your Model
