@@ -10,7 +10,7 @@ Getting Started Tutorials
 .. toctree::
    :maxdepth: 1
 
-   Run a ResNet-50 model on Ryzen-AI Software Platform <./getstartex>
+   - Run a ResNet-50 model <./getstartex>
 
 
 Examples
