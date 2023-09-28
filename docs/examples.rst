@@ -10,14 +10,11 @@ Getting Started Tutorials
 .. toctree::
    :maxdepth: 1
 
-- `Getting started with a ResNet50 model <./getstartex>`_ : A getting started example using the ResNet-50 model from PyTorch Hub to demonstrate the process of preparing, quantizing, and deploying a model using Ryzen AI.
+- Getting started with a ResNet50 model <./getstartex> : A getting started example using the ResNet-50 model from PyTorch Hub to demonstrate the process of preparing, quantizing, and deploying a model using Ryzen AI.
 
 
 Examples
 ~~~~~~~~
-
-.. toctree::
-   :maxdepth: 1
 
 - Run OPT-1.3B model with ONNXRuntime 
 - Run Whipser-tiny model with ONNXRuntime 
@@ -27,18 +24,12 @@ Examples
 Demos
 ~~~~~
 
-.. toctree::
-   :maxdepth: 1
-
 - Cloud-to-Client demo on Ryzen AI
 - Local chatbot demo on Ryzen AI
 - Multiple model concurrency demo on Ryzen AI
 
 Tutorials
 ~~~~~~~~~
-
-.. toctree::
-   :maxdepth: 1
 
 - End-to-end Object Detection
 - Quantization for Ryzen AI
