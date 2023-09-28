@@ -31,6 +31,8 @@ Getting Started
 
 * **Getting Started Example**: Refer to the :doc:`getstartex` page to run a resnet50 model example.
 
+* **Examples, Demos, and Tutorials**: Refer to the :doc:`examples` page.
+
 Using Your Model
 ================
 
@@ -40,11 +42,6 @@ Using Your Model
 
 * **Model Running Using ONNX Runtime**: Refer to the the :doc:`modelrun` page. 
 
-
-Examples, Demos, and Tutorials
-==============================
-
-* **Examples, Demos, and Tutorials**: Refer to the :doc:`examples` page. 
 
 
 
