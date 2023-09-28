@@ -16,13 +16,19 @@ Getting Started Tutorials
 Examples
 ~~~~~~~~
 
+.. toctree::
+   :maxdepth: 1
+
 - Run OPT-1.3B model with ONNXRuntime 
 - Run Whipser-tiny model with ONNXRuntime 
 - Run multiple concurrent AI applications with ONNXRuntime
-- Real-time object detection with Yolov8
+- `Real-time object detection with Yolov8 <https://github.com/amd/RyzenAI-SW/tree/main/example/Yolov8>`_ : Run Yolov8 on IPU enabled laptop
 
 Demos
 ~~~~~
+
+.. toctree::
+   :maxdepth: 1
 
 - Cloud-to-Client demo on Ryzen AI
 - Local chatbot demo on Ryzen AI
@@ -34,6 +40,6 @@ Tutorials
 .. toctree::
    :maxdepth: 1
 
-- `Real-time object detection with Yolov8 <https://github.com/amd/RyzenAI-SW/tree/main/example/Yolov8>`_ : Run Yolov8 on IPU enabled laptop
+- End-to-end Object Detection
 - Quantization for Ryzen AI
 - Run LLM on Ryzen AI
