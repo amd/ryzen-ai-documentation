@@ -59,7 +59,6 @@ Using Your Model
 
    inst.rst
    devflow.rst
-   getstartex.rst
    examples.rst
 
 .. toctree::
