@@ -10,7 +10,7 @@ Getting Started Tutorials
 .. toctree::
    :maxdepth: 1
 
-   - Run a ResNet-50 model <./getstartex>
+   - `Getting started with a ResNet50 model <./getstartex>`_ : A getting started example using the ResNet-50 model from PyTorch Hub to demonstrate the process of preparing, quantizing, and deploying a model using Ryzen AI.
 
 
 Examples
