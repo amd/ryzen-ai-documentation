@@ -31,6 +31,9 @@ Demos
 Tutorials
 ~~~~~~~~~
 
-- End-to-end Object Detection
+.. toctree::
+   :maxdepth: 1
+
+- `Real-time object detection with Yolov8 <https://github.com/amd/RyzenAI-SW/tree/main/example/Yolov8>`_ : Run Yolov8 on IPU enabled laptop
 - Quantization for Ryzen AI
 - Run LLM on Ryzen AI
