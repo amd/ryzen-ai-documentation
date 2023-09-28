@@ -4,6 +4,11 @@ Examples, Demos, Tutorials
 
 This page introduces various demos, examples, and tutorials currently available with the Ryzen™ AI Software Platform. 
 
+Getting Started Tutorials
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- Run a ResNet-50 model on Ryzen-AI Software Platform <./getstartex>
+
 Examples
 ~~~~~~~~
 
