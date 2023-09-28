@@ -65,6 +65,7 @@ Examples, Demos, and Tutorials
    inst.rst
    devflow.rst
    getstartex.rst
+   examples.rst
 
 .. toctree::
    :maxdepth: 1
@@ -74,6 +75,8 @@ Examples, Demos, and Tutorials
    modelcompat.rst
    modelport.rst
    modelrun.rst
+
+
 
 ..
   ------------
