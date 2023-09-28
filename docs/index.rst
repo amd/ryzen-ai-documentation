@@ -31,6 +31,8 @@ Getting Started
 
 * **Getting Started Example**: Refer to the :doc:`getstartex` page to run a resnet50 model example.
 
+* **Examples, Demos, and Tutorials**: Refer to the :doc:`examples` page.
+
 Using Your Model
 ================
 
@@ -39,6 +41,8 @@ Using Your Model
 * **Model Quantization**: Refer to the :doc:`modelport` page. 
 
 * **Model Running Using ONNX Runtime**: Refer to the the :doc:`modelrun` page. 
+
+
 
 
 
@@ -58,6 +62,7 @@ Using Your Model
    inst.rst
    devflow.rst
    getstartex.rst
+   examples.rst
 
 .. toctree::
    :maxdepth: 1
@@ -67,6 +72,8 @@ Using Your Model
    modelcompat.rst
    modelport.rst
    modelrun.rst
+
+
 
 ..
   ------------
