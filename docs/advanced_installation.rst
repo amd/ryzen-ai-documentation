@@ -15,19 +15,32 @@ This section dives deeper into specific aspects of the installation process, inc
 Advanced Quantization
 ~~~~~~~~~~~~~~~~~~~~~
 
-**Vitis AI ONNX Quantization**
+**Vitis AI PyTorch/TensorFlow 2/TensorFlow Quantization**
 
-Vitis AI ONNX Quantization is a post-training quantization method that works on models saved in the ONNX format. If you'd like to explore this advanced quantization method, you can follow the installation steps below:
+The Vitis AI PyTorch and TensorFlow Quantizer, which is part of the Vitis AI toolchain, require the installation of a Docker container on the host server.
 
-1. Download the installation file from the following link:
+The Vitis AI Docker container can be installed on Ubuntu 20.04, CentOS 7.8, 7.9, 8.1, and RHEL 8.3, 8.4. The developers working on Windows 11 can use WSL for installing Vitis AI Docker.
 
-   `Vitis AI ONNX Quantization <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=vai_q_onnx-1.15.0-py2.py3-none-any.whl>`_
+Multiple versions of the Docker container are available, each tailored to specific frameworks. Follow the Docker download and running instructions as per the following links:
 
-2. Install Vitis AI ONNX Quantization using the following command:
+.. list-table:: 
+   :widths: 25 25 
+   :header-rows: 1
 
-.. code-block:: shell
+   * - Framework
+     - Docker location
+   * - PyTorch
+     - https://hub.docker.com/r/amdih/ryzen-ai-pytorch
+   * - TensorFlow 2
+     - https://hub.docker.com/r/amdih/ryzen-ai-tensorflow2
+   * - TensorFlow 1
+     - https://hub.docker.com/r/amdih/ryzen-ai-tensorflow 
 
-   pip install vai_q_onnx-1.15.0-py2.py3-none-any.whl
+
+The above Docker containers do not have GPU-accelerated quantization support. If you like to leverage GPU for the quantization process, you can download and build GPU Docker containers. The following TAR file has README that you can follow to build and run GPU dockers.  
+
+
+https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ryzen-ai-gpudockerfiles-3.5.0-130.tar.gz
 
 
 **Olive Quantization**
