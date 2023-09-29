@@ -62,39 +62,27 @@ Start a conda prompt. In the conda prompt, create and activate an environment fo
 Install Quantizer
 #################
 
-Ryzen AI Software platform provides multiple quantization flow support. While this section covers the fundamental instructions, if you plan to utilize ONNX Quantization or Olive Quantization, go to the relevant sections in the documentation located in the [Advanced Installation](advanced_installation.rst) page.
-
-**Vitis AI PyTorch/TensorFlow 2/TensorFlow Quantization**
-
-The Vitis AI PyTorch and TensorFlow Quantizer, which is part of the Vitis AI toolchain, require the installation of a Docker container on the host server.
-
-The Vitis AI Docker container can be installed on Ubuntu 20.04, CentOS 7.8, 7.9, 8.1, and RHEL 8.3, 8.4. The developers working on Windows 11 can use WSL for installing Vitis AI Docker.
-
-Multiple versions of the Docker container are available, each tailored to specific frameworks. Follow the Docker download and running instructions as per the following links:
-
-.. list-table:: 
-   :widths: 25 25 
-   :header-rows: 1
-
-   * - Framework
-     - Docker location
-   * - PyTorch
-     - https://hub.docker.com/r/amdih/ryzen-ai-pytorch
-   * - TensorFlow 2
-     - https://hub.docker.com/r/amdih/ryzen-ai-tensorflow2
-   * - TensorFlow 1
-     - https://hub.docker.com/r/amdih/ryzen-ai-tensorflow 
+Ryzen AI Software platform provides multiple quantization flow support. While this section covers the fundamental instructions, if you plan to utilize Vitis AI PyTorch/TensorFlow 2/TensorFlow Quantization or Olive Quantization, go to the relevant sections in the documentation located in the [Advanced Installation](advanced_installation.rst) page.
 
 
-The above Docker containers do not have GPU-accelerated quantization support. If you like to leverage GPU for the quantization process, you can download and build GPU Docker containers. The following TAR file has README that you can follow to build and run GPU dockers.  
+**Vitis AI ONNX Quantization**
 
+Vitis AI ONNX Quantization is a post-training quantization method that works on models saved in the ONNX format. If you'd like to explore this advanced quantization method, you can follow the installation steps below:
 
-https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ryzen-ai-gpudockerfiles-3.5.0-130.tar.gz
+1. Download the installation file from the following link:
+
+   `Vitis AI ONNX Quantization <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=vai_q_onnx-1.15.0-py2.py3-none-any.whl>`_
+
+2. Install Vitis AI ONNX Quantization using the following command:
+
+.. code-block:: shell
+
+   pip install vai_q_onnx-1.15.0-py2.py3-none-any.whl
 
 
 **Advanced Quantizations**
 
-- **Vitis AI ONNX Quantization** - For specific instructions, see the [Advanced Installation](advanced_installation.rst) page.
+- **Vitis AI PyTorch/TensorFlow 2/TensorFlow Quantization** - For specific instructions, see the [Advanced Installation](advanced_installation.rst) page.
 
 - **Olive Quantization** - If you wish to explore Olive Quantization, detailed instructions can be found in the [Advanced Installation](advanced_installation.rst) section.
 
