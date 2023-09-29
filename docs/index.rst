@@ -27,6 +27,8 @@ Getting Started
 
 * **Installation**: Refer to the :doc:`inst` page. 
 
+* **Advanced Installation**: Refer to the :doc:`advanced_installation` page. 
+
 * **Development Flow Overview**: Refer to the :doc:`devflow` page. 
 
 * **Examples, Demos, and Tutorials**: Refer to the :doc:`examples` page.
@@ -39,7 +41,6 @@ Using Your Model
 * **Model Quantization**: Refer to the :doc:`modelport` page. 
 
 * **Model Running Using ONNX Runtime**: Refer to the the :doc:`modelrun` page. 
-
 
 
 
@@ -58,6 +59,7 @@ Using Your Model
    :hidden:
 
    inst.rst
+   advanced_installation.rst
    devflow.rst
    examples.rst
 
