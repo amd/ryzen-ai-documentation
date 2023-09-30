@@ -62,8 +62,7 @@ Start a conda prompt. In the conda prompt, create and activate an environment fo
 Install Quantizer
 #################
 
-Ryzen AI Software platform provides multiple quantization flow support. While this section covers the fundamental instructions, if you plan to utilize Vitis AI PyTorch/TensorFlow 2/TensorFlow Quantization or Olive Quantization, go to the relevant sections in the documentation located in the [Advanced Installation](advanced_installation.rst) page.
-
+Ryzen AI Software platform provides multiple quantization flow support. The Vitis AI ONNX Quantization is one of the quickest ways to enable quantization. 
 
 **Vitis AI ONNX Quantization**
 
@@ -79,12 +78,7 @@ Vitis AI ONNX Quantization is a post-training quantization method that works on 
 
    pip install vai_q_onnx-1.15.0-py2.py3-none-any.whl
 
-
-**Advanced Quantizations**
-
-- **Vitis AI PyTorch/TensorFlow 2/TensorFlow Quantization** - For specific instructions, see the [Advanced Installation](advanced_installation.rst) page.
-
-- **Olive Quantization** - If you wish to explore Olive Quantization, detailed instructions can be found in the [Advanced Installation](advanced_installation.rst) section.
+For other quantization options please refer to the :doc:`advanced_installation` page. 
 
 
 Install ONNX Runtime
@@ -119,18 +113,13 @@ Runtime Environment Setup
 Runtime IPU Binary Selection
 ############################
 
-The IPU binaries are located inside the Vitis AI Execution Provider package. Selecting an IPU binary is a required step every time the application is run from a new terminal. Ryzen AI Software platform provides a couple of IPU binaries using different configurations on the IPU device. 
-
-**IPU binary 1x4.xclbin**: An AI stream using 1x4.xclbin uses an IPU configuration that provides up to 2 TOPS performance. Most real-time applications (video conferencing use cases) performance requirements can be met using this configuration. In the current Ryzen AI software platform, up to four such AI streams can be run in parallel on the IPU without any visible loss of performance.
-
-Selecting the 1x4.xclbin IPU binary:
+The IPU binaries are located inside the Vitis AI Execution Provider package. Selecting an IPU binary is a required step every time the application is run from a new terminal. For example, IPU binary 1x4.xclbin is selected as below 
 
 .. code-block::
 
    set XLNX_VART_FIRMWARE=C:\path\to\1x4.xclbin
 
-
-``IPU binary 5x4.xclbin`` - [Advanced Installation](advanced_installation.rst)
+To understand different other IPU binary options please refer to the :doc:`advanced_installation` page.
 
 
 Runtime Configuration File
