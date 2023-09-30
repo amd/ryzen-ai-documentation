@@ -76,8 +76,11 @@ set XLNX_TARGET_NAME="AMD_AIE2_5x4_Overlay"
 
 Note: To select the 5x4.xclbin as the IPU binary, the additional XLNX_TARGET_NAME environment variable is required.
 
+..
+  ------------
 
-License
-~~~~~~~
-Ryzen AI is licensed under the `MIT License <https://github.com/amd/ryzen-ai-documentation/blob/main/License>`_. Refer to the `LICENSE File <https://github.com/amd/ryzen-ai-documentation/blob/main/License>`_ for the full license text and copyright notice.
+  #####################################
+  License
+  #####################################
 
+ Ryzen AI is licensed under `MIT License <https://github.com/amd/ryzen-ai-documentation/blob/main/License>`_ . Refer to the `LICENSE File <https://github.com/amd/ryzen-ai-documentation/blob/main/License>`_ for the full license text and copyright notice.
