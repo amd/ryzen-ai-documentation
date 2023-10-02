@@ -142,35 +142,38 @@ Vitis AI EP generates a file named ``vitisai_ep_report.json`` that reports the m
 and etc.,
 
 .. code-block:: 
-  {
- "deviceStat": [
-  {
-   "name": "all",
-   "nodeNum": 402,
-   "supportedOpType": [
-    "::Add",
+    {
+    "deviceStat": [
+    {
+      "name": "all",
+      "nodeNum": 402,
+      "supportedOpType": [
+      "::Add",
+      ...
+      ]
+    },
+    {
+      "name": "CPU",
+      "nodeNum": 2,
+      "supportedOpType": [
+      "::DequantizeLinear",
+      ...
+      ]
+    },
+    {
+      "name": "DPU",
+      "nodeNum": 400,
+      "supportedOpType": [
+      "::Add",
+      ...
+      ]
+    }
+    ],
     ...
-   ]
-  },
-  {
-   "name": "CPU",
-   "nodeNum": 2,
-   "supportedOpType": [
-    "::DequantizeLinear",
-    ...
-   ]
-  },
-  {
-   "name": "DPU",
-   "nodeNum": 400,
-   "supportedOpType": [
-    "::Add",
-    ...
-   ]
-  }
- ],
- ...
+..
 
+
+ 
 ..
   ------------
 
