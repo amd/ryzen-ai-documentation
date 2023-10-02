@@ -4,7 +4,7 @@ Getting Started Example
 
 This example uses the ResNet-50 model from PyTorch Hub to demonstrate the process of preparing, quantizing, and deploying a model using Ryzen AI.
 
-The following are the steps and the required files to run the example. The files can be downloaded from `here <https://github.com/amd/RyzenAI-SW/tree/main/tutorial/getting_started_resnet>`_.
+The following are the steps and the required files to run the example. The files can be downloaded from `here <https://github.com/amd/ryzen-ai-documentation/tree/main/example/resnet50>`_.
 
 
 .. list-table:: 
@@ -128,7 +128,7 @@ The ``resnet_quantize.py`` file has ``quantize_static`` function (line 95) that 
         dr,
         quant_format=QuantFormat.QDQ,
         calibrate_method=vai_q_onnx.PowerOfTwoMethod.MinMSE,
-        activation_type=QuantType.QUInt8,
+        activation_type=QuantType.QInt8,
         weight_type=QuantType.QInt8,
         enable_dpu=True, 
         extra_options={'ActivationSymmetric': True} 
@@ -140,9 +140,11 @@ The parameters of this function are:
 * **output_model_path**: (String) The file path where the quantized model will be saved.
 * **dr**: (Object or None) Calibration data reader that enumerates the calibration data and producing inputs for the original model. In this example, CIFAR10 dataset is used for calibration during the quantization process.
 * **quant_format**: (String) Specifies the quantization format of the model. In this example we have used the QDQ quant format.
-* **calibrate_method**:(String) In this example this parameter is set to ``vai_q_onnx.PowerOfTwoMethod.MinMSE`` to apply power-of-2 scale quantization. 
-* **activation_type**: (String) Data type of activation tensors after quantization. In this example, it's set to QUInt8 (Quantized Unsigned Int 8).
-* **weight_type**: (String) Data type of weight tensors after quantization. In this example, it's set to QInt8 (Quantized Int 8).
+* **calibrate_method**: (String) In this example this parameter is set to ``vai_q_onnx.PowerOfTwoMethod.MinMSE`` to apply power-of-2 scale quantization. 
+* **activation_type**: (String) Data type of activation tensors after quantization. In this example, it's set to QInt8 (Quantized Integer 8).
+* **weight_type**: (String) Data type of weight tensors after quantization. In this example, it's set to QInt8 (Quantized Integer 8).
+* **enable_dpu**: (Boolean) Determines whether to generate a quantized model that is suitable for the DPU. If set to True, the quantization process will create a model that is optimized for DPU computations.
+* **extra_options**: (Dict or None) Dictionary of additional options that can be passed to the quantization process. In this example, ``ActivationSymmetric`` is set to True i.e., calibration data for activations is symmetrized. 
 
 |
 |
@@ -234,16 +236,16 @@ Typical output
   I20230803 19:29:02.108831 13180 custom_op.cpp:126]  Vitis AI EP running 348 Nodes
   !!! Warning: fingerprint of xclbin file C:\Windows\System32\AMD\1x4.xclbin doesn't match subgraph subgraph_/fc/fc.1/Relu_output_0(TransferMatMulToConv2d)
 
-  Image 0: Actual Label cat, Predicted Label deer
+  Image 0: Actual Label cat, Predicted Label cat
   Image 1: Actual Label ship, Predicted Label ship
-  Image 2: Actual Label ship, Predicted Label ship
-  Image 3: Actual Label airplane, Predicted Label ship
-  Image 4: Actual Label frog, Predicted Label deer
-  Image 5: Actual Label frog, Predicted Label horse
-  Image 6: Actual Label automobile, Predicted Label frog
-  Image 7: Actual Label frog, Predicted Label deer
-  Image 8: Actual Label cat, Predicted Label deer
-  Image 9: Actual Label automobile, Predicted Label ship
+  Image 2: Actual Label ship, Predicted Label airplane
+  Image 3: Actual Label airplane, Predicted Label airplane
+  Image 4: Actual Label frog, Predicted Label frog
+  Image 5: Actual Label frog, Predicted Label frog
+  Image 6: Actual Label automobile, Predicted Label automobile
+  Image 7: Actual Label frog, Predicted Label frog
+  Image 8: Actual Label cat, Predicted Label cat
+  Image 9: Actual Label automobile, Predicted Label automobile
 
 ..
   ------------

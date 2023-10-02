@@ -4,16 +4,13 @@
 Advanced Installation
 #####################
 
-This section dives deeper into specific aspects of the installation process, including advanced quantization options and detailed IPU binary configuration.
+This section dives deeper into specific aspects of the installation process, including quantization options and detailed IPU binary configuration.
 
-.. contents:: Table of Contents
-   :local:
-   :depth: 2
 
 .. _advanced-quantization:
 
-Advanced Quantization
-~~~~~~~~~~~~~~~~~~~~~
+Quantization
+~~~~~~~~~~~~
 
 **Vitis AI PyTorch/TensorFlow 2/TensorFlow Quantization**
 
