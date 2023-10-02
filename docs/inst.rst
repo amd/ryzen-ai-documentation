@@ -62,11 +62,11 @@ Start a conda prompt. In the conda prompt, create and activate an environment fo
 Install Quantizer
 #################
 
-Ryzen AI Software platform provides multiple quantization flow support. The Vitis AI ONNX Quantization is one of the quickest ways to enable quantization. 
+Ryzen AI Software platform supports multiple quantization flows. The Vitis AI ONNX Quantization is one of the quickest ways to enable quantization. 
 
 **Vitis AI ONNX Quantization**
 
-Vitis AI ONNX Quantization is a post-training quantization method that works on models saved in the ONNX format. If you'd like to explore this advanced quantization method, you can follow the installation steps below:
+Vitis AI ONNX Quantization is a post-training quantization method that works on models saved in the ONNX format. To install it, download the installation file and follow the command:
 
 1. Download the installation file from the following link:
 
@@ -78,7 +78,7 @@ Vitis AI ONNX Quantization is a post-training quantization method that works on 
 
    pip install vai_q_onnx-1.15.0-py2.py3-none-any.whl
 
-For other quantization options please refer to the :doc:`advanced_installation` page. 
+For other quantization options - Vitis AI PyTorch/TensorFlow 2/TensorFlow Quantization or Olive Quantization, please refer to the :doc:`advanced_installation` page. 
 
 
 Install ONNX Runtime
@@ -119,8 +119,7 @@ The IPU binaries are located inside the Vitis AI Execution Provider package. Sel
 
    set XLNX_VART_FIRMWARE=C:\path\to\1x4.xclbin
 
-To understand different other IPU binary options please refer to the :doc:`advanced_installation` page.
-
+Ryzen AI Software platform provides a couple of IPU binaries (1x4.xclbin and 5x4.xclbin) using different configurations on the IPU device. Refer to the :doc:`advanced_installation` page for more details on IPU binaries.
 
 Runtime Configuration File
 ##########################

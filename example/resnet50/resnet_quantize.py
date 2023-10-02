@@ -90,15 +90,17 @@ def main():
     # - `output_model_path`: the path where the quantized model will be saved.
     # - `dr`: an instance of a data reader utility, which provides data for model calibration.
     # - `quant_format`: the format of quantization operators. Need to set to QDQ or QOperator.
-    # - `activation_type`: the data type of activation tensors after quantization. In this case, it's QUInt8 (Quantized Unsigned Int 8).
+    # - `activation_type`: the data type of activation tensors after quantization. In this case, it's QUInt8 (Quantized Int 8).
     # - `weight_type`: the data type of weight tensors after quantization. In this case, it's QInt8 (Quantized Int 8).
+    # - `enable_dpu`: (Boolean) determines whether to generate a quantized model that is suitable for the DPU. If set to True, the quantization process will create a model that is optimized for DPU computations.
+    # - `extra_options`: (Dict or None) Dictionary of additional options that can be passed to the quantization process. In this example, ``ActivationSymmetric`` is set to True i.e., calibration data for activations is symmetrized. 
     vai_q_onnx.quantize_static(
         input_model_path,
         output_model_path,
         dr,
         quant_format=QuantFormat.QDQ,
         calibrate_method=vai_q_onnx.PowerOfTwoMethod.MinMSE,
-        activation_type=QuantType.QUInt8,
+        activation_type=QuantType.QInt8,
         weight_type=QuantType.QInt8,
         enable_dpu=True, 
         extra_options={'ActivationSymmetric': True} 
