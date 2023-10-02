@@ -142,7 +142,8 @@ Vitis AI EP generates a file named ``vitisai_ep_report.json`` that reports the m
 and etc.,
 
 .. code-block:: 
-    {
+
+  {
     "deviceStat": [
     {
       "name": "all",
@@ -170,7 +171,9 @@ and etc.,
     }
     ],
     ...
-..
+
+    
+
 
 
  
