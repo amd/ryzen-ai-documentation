@@ -141,10 +141,9 @@ Model Operators Assignment Report
 Vitis AI EP generates a file named ``vitisai_ep_report.json`` that reports the model operator assignments across CPU and IPU. This report shows device statistics like total number of nodes, number of nodes running on the CPU, and DPU. It also shows a list of all operator types in the model, the list of operators running on the CPU, and on the DPU. The report also shows the node statistics like input to a node, the operation applied, the output from the node, 
 and etc.,
 
-
 .. code-block:: 
 
-    {
+  {
     "deviceStat": [
     {
       "name": "all",
@@ -172,6 +171,8 @@ and etc.,
     }
     ],
     ...
+
+    
 
 
 
