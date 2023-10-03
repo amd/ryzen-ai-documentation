@@ -135,6 +135,56 @@ C++ API Example
 
 
 
+
+Quickstart Example
+~~~~~~~~~~~~~~~~~~
+
+A quickstart example using the ResNet-50 model from PyTorch Hub is quantized and provided to quickly verify the setup. 
+
+The following are the steps and the required files to run the example. The files can be downloaded from `here <https://github.com/amd/RyzenAI-SW/tree/main/tutorial/getting_started_resnet>`_.
+
+
+.. list-table:: 
+   :widths: 20 25 25
+   :header-rows: 1
+
+   * - Steps 
+     - Files Used
+     - Description
+   * - Installation
+     - ``requirements.txt``
+     - Install the necessary package for this example.
+   * - quickstart: Models
+     - ``resnet.qdq.U8S8.onnx``,
+     - Model created by performing Post-Training Quantization using VitisAI ONNX Quantization on pre-trained ResNet-50 model with the CIFAR-10 dataset. 
+   * - quickstart: Data/Images 
+     - ``cifar-10-batches-py``
+     - Contains subset of CIFAR-10 dataset for quicly checking the model.
+   * - quickstart: Deployment
+     - ``quickstart_resnet50_predict.py``
+     -  Run the Quantized model using the ONNX Runtime code. We demonstrate running the model on both CPU and IPU. 
+
+
+Note: 
+- Ensure that the ``XLNX_VART_FIRMWARE`` environment variable is correctly pointing to the XCLBIN file included in the ONNX Vitis AI Execution Provider package.
+- Copy the ``vaip_config.json`` runtime configuration file from the Vitis AI Execution Provider package to the current ``quickstart`` directory.
+
+To verify the installation run ``quickstart_resnet50_predict.py`` follow the instruction below. By default, the quickstart example runs the model on CPU.:
+
+.. code-block::
+  
+        > python quickstart_resnet50_predict.py
+
+
+Run the ``quickstart_resnet50_predict.py`` with the ``--ep ipu`` switch to run the ResNet-50 model on the Ryzen AI IPU:
+
+.. code-block::
+
+    >python quickstart_resnet50_predict.py --ep ipu
+
+
+
+
 Model Operators Assignment Report
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
