@@ -5,8 +5,8 @@ Alternate Quantizer Setup
 
 Alternate quantizers available in Ryzen-AI software platform as below
 
-1. PyTorch/TensorFlow 2/TensorFlow Quantization: If the user requires Quantization Aware training using the original model training framework, they can use Vitis AI PyTorch/Tensorflow 2/Tensorflow quantizer.
-2. Olive Quantization: If the user is already familiar with Olive framework and using it for other model transformations, quantization through Olive is also an option. 
+1. **PyTorch/TensorFlow 2/TensorFlow Quantization**: If the user requires Quantization Aware training using the original model training framework, they can use Vitis AI PyTorch/Tensorflow 2/Tensorflow quantizer.
+2. **Olive Quantization**: If the user is already familiar with Olive framework and using it for other model transformations, quantization through Olive is also an option. 
 
 
 Vitis AI PyTorch/TensorFlow 2/TensorFlow Quantization
