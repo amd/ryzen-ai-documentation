@@ -27,7 +27,9 @@ Getting Started
 
 * **Installation**: Refer to the :doc:`inst` page. 
 
-* **Advanced Installation**: Refer to the :doc:`advanced_installation` page. 
+* **Runtime Setup**: Refer to the :doc:`runtime_setup` page. 
+
+* **Alternate Quantization Flow**: Refer to the :doc:`alternate_quantization_setup` page. 
 
 * **Development Flow Overview**: Refer to the :doc:`devflow` page. 
 
@@ -59,7 +61,8 @@ Using Your Model
    :hidden:
 
    inst.rst
-   advanced_installation.rst
+   runtime_setup.rst
+   alternate_quantization_setup.rst 
    devflow.rst
    examples.rst
 

@@ -47,15 +47,19 @@ Microsoft Olive framework supports quantization with Vitis AI ONNX Quantization.
 
 1. Install Olive Quantization by running the following command:
 
-```shell
-pip install olive-ai[cpu]
-```
+
+.. code-block::
+
+    pip install olive-ai[cpu]
+
 
 2. The current Olive flow is not compatible with the latest pydantic version. To make it compatible, downgrade the pydantic version using the following command:
 
-```shell
-pip install pydantic==1.10.9
-```
+
+.. code-block::
+
+   pip install pydantic==1.10.9
+
 
 For additional information regarding the Olive installation, refer to the [Microsoft documentation](https://microsoft.github.io/Olive/getstarted/installation.html).
 

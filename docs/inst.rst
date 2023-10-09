@@ -78,7 +78,7 @@ Vitis AI ONNX Quantization is a post-training quantization method that works on 
 
    pip install vai_q_onnx-1.15.0-py2.py3-none-any.whl
 
-For other quantization options - Vitis AI PyTorch/TensorFlow 2/TensorFlow Quantization or Olive Quantization, please refer to the :doc:`advanced_installation` page. 
+For other quantization options - Vitis AI PyTorch/TensorFlow 2/TensorFlow Quantization or Olive Quantization, please refer to the :doc:`alternate_quantization_setup` page. 
 
 
 Install ONNX Runtime
@@ -119,7 +119,7 @@ The IPU binaries are located inside the Vitis AI Execution Provider package. Sel
 
    set XLNX_VART_FIRMWARE=C:\path\to\1x4.xclbin
 
-Ryzen AI Software platform provides a couple of IPU binaries (1x4.xclbin and 5x4.xclbin) using different configurations on the IPU device. Refer to the :doc:`advanced_installation` page for more details on IPU binaries.
+Ryzen AI Software platform provides a couple of IPU binaries (1x4.xclbin and 5x4.xclbin) using different configurations on the IPU device. Refer to the :doc:`runtime_setup` page for more details on IPU binaries.
 
 Runtime Configuration File
 ##########################
