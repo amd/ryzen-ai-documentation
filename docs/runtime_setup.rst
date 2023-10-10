@@ -2,6 +2,8 @@
 Runtime Setup
 #############
 
+.. contents:: Table of Contents
+
 
 IPU Binary selection
 ~~~~~~~~~~~~~~~~~~~~
