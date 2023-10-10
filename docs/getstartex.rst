@@ -1,11 +1,20 @@
-#######################
-Getting Started Example
-#######################
+########################
+Getting Started Tutorial
+########################
 
 This example uses the ResNet-50 model from PyTorch Hub to demonstrate the process of preparing, quantizing, and deploying a model using Ryzen AI.
 
-The following are the steps and the required files to run the example. The files can be downloaded from `here <https://github.com/amd/RyzenAI-SW/tree/main/tutorial/getting_started_resnet>`_.
+The following are the steps and the required files to run the example. 
 
+- The source code files can be downloaded from `this link <https://github.com/amd/RyzenAI-SW/tree/main/tutorial/getting_started_resnet>`_. Alternatively, you can clone the RyzenAI-SW repo and change the directory into the tutorial code directory. 
+
+.. code-block::
+
+    git clone https://github.com/amd/RyzenAI-SW.git
+    cd tutorial/getting_started_resnet
+
+|
+|
 
 .. list-table:: 
    :widths: 20 25 25
@@ -185,6 +194,10 @@ Deploy the Model on the Ryzen AI IPU
 To successfully run the model on the IPU, run the following setup steps:
 
 - Ensure that the ``XLNX_VART_FIRMWARE`` environment variable is correctly pointing to the XCLBIN file included in the ONNX Vitis AI Execution Provider package. For more information, see the :ref:`installation instructions <set-vart-envar>`.
+
+.. code-block::
+
+   set XLNX_VART_FIRMWARE=C:\path\to\1x4.xclbin
 
 - Copy the ``vaip_config.json`` runtime configuration file from the Vitis AI Execution Provider package to the current directory. For more information, see the :ref:`installation instructions <copy-vaip-config>`. The ``vaip_config.json`` is used by the ``predict.py`` script to configure the Vitis AI Execution Provider.
 
