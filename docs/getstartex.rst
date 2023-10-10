@@ -4,8 +4,6 @@ Getting Started Tutorial
 
 This example uses the ResNet-50 model from PyTorch Hub to demonstrate the process of preparing, quantizing, and deploying a model using Ryzen AI.
 
-The following are the steps and the required files to run the example. 
-
 - The source code files can be downloaded from `this link <https://github.com/amd/RyzenAI-SW/tree/main/tutorial/getting_started_resnet>`_. Alternatively, you can clone the RyzenAI-SW repo and change the directory into the tutorial code directory. 
 
 .. code-block::
@@ -15,6 +13,8 @@ The following are the steps and the required files to run the example.
 
 |
 |
+
+The following are the steps and the required files to run the example. 
 
 .. list-table:: 
    :widths: 20 25 25
