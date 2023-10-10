@@ -5,6 +5,10 @@
 Quantization with Olive
 ##########################
 
+
+.. contents:: Table of Contents
+
+
 Prerequisites
 *************
 
