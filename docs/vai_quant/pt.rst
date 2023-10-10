@@ -2,6 +2,8 @@
 PyTorch Quantization
 ####################
 
+.. contents:: Table of Contents
+
 
 Enabling Quantization
 ~~~~~~~~~~~~~~~~~~~~~

@@ -2,6 +2,9 @@
 Model Deployment
 ###################
 
+.. contents:: Table of Contents
+
+
 ONNX Runtime with Vitis AI Execution Provider
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
