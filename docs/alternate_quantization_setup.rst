@@ -3,6 +3,9 @@
 Alternate Quantizer Setup
 #########################
 
+.. contents:: Table of Contents
+
+
 Alternate quantizers available in Ryzen-AI software platform as below
 
 1. **PyTorch/TensorFlow 2/TensorFlow Quantization**: If the user requires Quantization Aware Training using the original model training framework, they can use Vitis AI PyTorch/Tensorflow 2/Tensorflow quantizer.
