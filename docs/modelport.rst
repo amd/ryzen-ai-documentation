@@ -27,6 +27,13 @@ Ryzen AI Software Platform supports a few other quantization tools that can be u
 **Microsoft Olive**: Microsoft Olive framework has plugin support of Vitis AI ONNX Quantization. If you are familiar with Olive Framework and use it for other model optimization purposes, you may use this flow to enable the Vitis AI ONNX quantization through it. For more detail please refer :doc:`olive_quant`  
 
 
+.. toctree::
+   :maxdepth: 1
+
+   Vitis AI ONNX Quantization <./vai_quant/vai_q_onnx>
+   Vitis AI PyTorch Quantization <./vai_quant/pt>
+   Vitis AI TensorFlow Quantization <./vai_quant/tf2>
+   Microsoft Olive Quantization <./olive_quant>
    
 ..
   ------------
