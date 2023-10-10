@@ -12,7 +12,6 @@ This example uses the ResNet-50 model from PyTorch Hub to demonstrate the proces
     cd tutorial/getting_started_resnet
 
 |
-|
 
 The following are the steps and the required files to run the example. 
 
