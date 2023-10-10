@@ -6,7 +6,12 @@ This example uses the ResNet-50 model from PyTorch Hub to demonstrate the proces
 
 The following are the steps and the required files to run the example. 
 
-- The source code files can be downloaded from `this link <https://github.com/amd/RyzenAI-SW/tree/main/tutorial/getting_started_resnet>`_.
+- The source code files can be downloaded from `this link <https://github.com/amd/RyzenAI-SW/tree/main/tutorial/getting_started_resnet>`_. Alternatively you can clone the whole repo and change directory inside the tutorial code
+
+.. code-block::
+
+    git clone https://github.com/amd/RyzenAI-SW.git
+    cd tutorial/getting_started_resnet
 
 |
 |
