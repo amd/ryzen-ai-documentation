@@ -2,6 +2,8 @@
 Model Quantization 
 ##################
 
+.. contents:: Table of Contents
+
 
 Quantization is the process of converting model weights and activation values from floating-point to lower-precision integer representations. Quantized models are more power-efficient, utilize less memory, and offer better performance. Ryzen AI requires INT8 quantization for inference. 
 
