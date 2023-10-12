@@ -24,10 +24,14 @@ Start a conda prompt. In the conda prompt, create and activate an environment fo
   conda create --name <name> python=3.9
   conda activate <name> 
 
+
+.. _install-onnx-quantizer:
+
+
 Install Quantizer
 #################
 
-Vitis AI ONNX Quantization is a post-training quantization method that works on models saved in the ONNX format. 
+**Vitis AI ONNX Quantizer** supports a post-training quantization method that works on models saved in the ONNX format. 
 
 Install Vitis AI ONNX Quantization using the following command:
 
