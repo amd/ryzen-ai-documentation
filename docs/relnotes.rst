@@ -5,7 +5,85 @@ Release Notes
 Version 0.9
 $$$$$$$$$$$
 
-<TBD>
+Quantizer
+~~~~~~~~~
+
+- Pytorch Quantizer
+
+  - Dict input/output support for model forward function
+  - Keywords argument support for model forward function
+  - Matmul subroutine quantization support
+  - Support of some operations in quantizer: softmax, div, exp, clamp
+  - Support quantization of some non-standard conv2d.
+
+
+- ONNX Quantizer
+
+  - Add support for Float16 and BFloat16 quantization.
+  - Add C++ kernels for customized QuantizeLinear and DequantizeLinaer operations.
+  - Support saving quantizer version info to the quantized models' producer field.
+  - Support conversion of ReduceMean to AvgPool in IPU workflow.
+  - Support conversion of BatchNorm to Conv in IPU workflow.
+  - Support optimization of large kernel GlobalAvgPool and AvgPool operations in IPU workflow.
+  - Supports hardware constraints check and adjustment of Gemm, Add, and Mul operations in IPU workflow.
+  - Supports quantization for LayerNormalization, HardSigmoid, Erf, Div, and Tanh for IPU.
+
+ONNXRuntime Execution Provider
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- Support new OPs, such as Conv1d, LayerNorm, Clip, Abs, Unsqueeze, ConvTranspose.
+- Support pad and depad based on IPU subgraph’s inputs and outputs.
+- Support for U8S8 models quantized by ONNX quantizer.
+- Improve report summary tools.
+
+IPU and Compiler
+~~~~~~~~~~~~~~~~
+
+- Supported exp/tanh/channel-shuffle/pixel-unshuffle/space2depth
+- Performance uplift of xint8 output softmax
+- Improve the partition messages for CPU/DPU
+- Improve the validation check for some operators
+- Accelerate the speed of compiling large models
+- Fix the elew/pool/dwc/reshape mismatch issue and fix the stride_slice hang issue
+- Fix str_w != str_h issue in Conv
+
+
+LLM
+~~~
+
+- Smoothquant for OPT1.3b, 2.7b, 6.7b, 13b models. 
+- Huggingface Optimum ORT Quantizer for ONNX and Pytorch dynamic quantizer for Pytorch
+- Enabled Flash attention v2 for larger prompts as a custom torch.nn.Module
+- Enabled all CPU ops in bfloat16 or float32 with Pytorch
+- int32 accumulator in AIE (previously int16)
+- DynamicQuantLinear op support in ONNX
+- Support different compute primitives for prefill/prompt and token phases 
+- Zero copy of weights shared between different op primitives
+- Model saving after quantization and loading at runtime for both Pytorch and ONNX
+- Enabled profiling prefill/prompt and token time using local copy of OPT Model with additional timer instrumentation
+- Added demo mode script with greedy, stochastic and contrastive search options
+
+ASR
+~~~
+- Support Whipser-tiny
+- All GEMMs offloaded to AIE
+- Improved compile time
+- Improved WER
+
+Known issues
+~~~~~~~~~~~~
+
+- Flow control OPs including "Loop", "If", "Reduce" not supported by VOE
+- Resize OP in ONNX opset 10 or lower not supported by VOE
+- Tensorflow 2.x quantizer supports models within tf.keras.model only
+- Running quantizer docker in WSL on Ryzen AI laptops may encounter OOM (Out-of-memory) issue
+- Run multiple concurrent models by temporal sharing on the Performance optimized overlay (5x4.xclbin) is not supported
+- Support batch size 1 only for IPU
+
+|
+|
+|
+|
 
 Version 0.8
 $$$$$$$$$$$
