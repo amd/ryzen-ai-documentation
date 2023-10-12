@@ -29,8 +29,6 @@ Getting Started
 
 * **Runtime Setup**: Refer to the :doc:`runtime_setup` page. 
 
-* **Alternate Quantization Flow**: Refer to the :doc:`alternate_quantization_setup` page. 
-
 * **Development Flow Overview**: Refer to the :doc:`devflow` page. 
 
 * **Examples, Demos, and Tutorials**: Refer to the :doc:`examples` page.
@@ -43,6 +41,16 @@ Using Your Model
 * **Model Quantization**: Refer to the :doc:`modelport` page. 
 
 * **Model Running Using ONNX Runtime**: Refer to the the :doc:`modelrun` page. 
+
+
+Additional Topics
+=================
+
+
+* **Alternate Quantization Flow**: Refer to the :doc:`alternate_quantization_setup` page. 
+
+
+
 
 
 
@@ -62,7 +70,6 @@ Using Your Model
 
    inst.rst
    runtime_setup.rst
-   alternate_quantization_setup.rst 
    devflow.rst
    examples.rst
 
@@ -74,6 +81,15 @@ Using Your Model
    modelcompat.rst
    modelport.rst
    modelrun.rst
+
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Additional Topics
+   :hidden:
+
+   alternate_quantization_setup.rst   
+
 
 
 
