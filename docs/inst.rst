@@ -60,7 +60,7 @@ Open the Windows Command Prompt and run the below command
 
 .. code:: 
 
-    install.bat
+    .\install.bat
 
 The installation script, ``install.bat`` does the following 
 
@@ -77,7 +77,7 @@ If you would like to provide your desired name for the conda environment run the
 
 .. code::
 
-    install.bat -name <env name>
+    .\install.bat -name <env name>
 
 Instead of the bundled installation process using ``install.bat``, if you choose to install each component manually please refer to :doc:`manual_installation` page.
 
