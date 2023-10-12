@@ -54,30 +54,32 @@ Download the setup package ryzen-ai-sw-0.9.tar.gz and extract.
 
 Before running the installation script ensure all the prerequisites outlined above have been met and the Windows PATH variable is properly set for each component. 
 
-Open the Windows command prompt and run the below command 
+Open the Windows Command Prompt and run the below command 
 
 .. code:: 
 
     install.bat
 
-The automatic installation script does the following 
+The installation script, ``install.bat`` does the following 
 
 - Creates a conda environment 
 - Install Vitis AI ONNX Quantizer
 - Install ONNX Runtime 
-- Install Vitis AI Execution provider
+- Install Vitis AI Execution Provider
 - Set the environment variable to specify 1x4.xclbin binary
 - Print the name of the conda environment and exit 
 
 Thereafter you can activate the created conda environment to get the work environment. 
 
-If you would like to provide your desired name for the conda environment run the `install.bat` file as shown below
+If you would like to provide your desired name for the conda environment run the ``install.bat`` file as shown below
 
 .. code::
 
     install.bat -name <env name>
 
-Instead of running the automated installer, if you choose to install each component manually please refer to :doc:`manual_installation` page 
+Instead of running the automated installer, if you choose to install each component manually please refer to :doc:`manual_installation` page.
+
+If you require to install Vitis AI PyTorch/Tensorflow or Microsoft Olive Quantizer, please refer to :doc:`alternate_quantization_setup` page. 
 
 
 |
