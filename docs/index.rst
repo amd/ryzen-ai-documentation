@@ -88,6 +88,7 @@ Additional Topics
    :caption: Additional Topics
    :hidden:
 
+   manual_installation.rst
    alternate_quantization_setup.rst   
 
 
