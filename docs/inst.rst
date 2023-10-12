@@ -91,13 +91,13 @@ Runtime Environment Setup
 Runtime IPU Binary Selection
 ############################
 
-The IPU binaries are located inside the Vitis AI Execution Provider package. Selecting an IPU binary is a required step every time the application is run from a new terminal. For example, IPU binary 1x4.xclbin is selected as below 
+The IPU binaries are located inside the setup package. Selecting an IPU binary is a required step every time the application is run from a new terminal. For example, IPU binary 1x4.xclbin is selected as below 
 
 .. code-block::
 
-   set XLNX_VART_FIRMWARE=C:\path\to\1x4.xclbin
+   set XLNX_VART_FIRMWARE=C:\path\to\ryzen-ai-sw-xx\ryzen-ai-sw-xx\voe-xx-win_amd64\1x4.xclbin
 
-Ryzen AI Software platform provides a couple of IPU binaries (1x4.xclbin and 5x4.xclbin) using different configurations on the IPU device. Refer to the :doc:`runtime_setup` page for more details on IPU binaries.
+Ryzen AI Software platform provides multiple IPU binaries using different configurations on the IPU device. Refer to the :doc:`runtime_setup` page for more details on IPU binaries.
 
 Runtime Configuration File
 ##########################
