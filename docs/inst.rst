@@ -47,6 +47,8 @@ To enable the development and deployment of IPU-based inference on the client de
 |
 |
 
+.. _install-bundeld:
+
 Installation Steps
 ~~~~~~~~~~~~~~~~~~~
 
