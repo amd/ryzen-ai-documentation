@@ -12,6 +12,9 @@ Alternate quantizers available in Ryzen-AI software platform as below
 2. **Olive Quantization**: If the user is already familiar with Olive framework and using it for other model transformations, quantization through Olive is also an option. 
 
 
+.. _install-pt-tf:
+
+
 Vitis AI PyTorch/TensorFlow 2/TensorFlow Quantization
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -40,6 +43,7 @@ The above Docker containers do not have GPU-accelerated quantization support. If
 
 https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ryzen-ai-gpudockerfiles-3.5.0-130.tar.gz
 
+.. _install-olive:
 
 Olive Quantization
 ~~~~~~~~~~~~~~~~~~
