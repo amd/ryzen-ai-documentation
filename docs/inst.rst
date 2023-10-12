@@ -62,20 +62,23 @@ Open the Windows command prompt and run the below command
 
 The automatic installation script does the following 
 
-   - Creates a conda environment 
-   - Install Vitis AI ONNX Quantizer
-   - Install ONNX Runtime 
-   - Install Vitis AI Execution provider
-   - Print the name of the conda environment and exit 
-
+- Creates a conda environment 
+- Install Vitis AI ONNX Quantizer
+- Install ONNX Runtime 
+- Install Vitis AI Execution provider
+- Set the environment variable to specify 1x4.xclbin binary
+- Print the name of the conda environment and exit 
 
 Thereafter you can activate the created conda environment to get the work environment. 
 
-If you would like to provide your desired name for the conda environment run the `install.bat` file as below
+If you would like to provide your desired name for the conda environment run the `install.bat` file as shown below
 
 .. code::
 
     install.bat -name <env name>
+
+Instead of running the automated installer, if you choose to install each component manually please refer to :doc:`manual_installation` page 
+
 
 |
 |
