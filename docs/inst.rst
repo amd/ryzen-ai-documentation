@@ -105,33 +105,34 @@ Runtime Configuration File
 The Execution Provider setup package contains the Vitis AI Execution Provider runtime configuration file ``vaip_config.json``. This file is required when configuring Vitis AI Execution Provider (VAI EP) inside the ONNX Runtime code.
 
 
-Test Installation
-~~~~~~~~~~~~~~~~~
+.. Test Installation
+.. ~~~~~~~~~~~~~~~~~
 
-To quick test this setup download this directory from `here <https://github.com/amd/RyzenAI-SW/tree/main/tutorial/getting_started_resnet>`_.
+.. To quick test this setup download this directory from `here <https://github.com/amd/RyzenAI-SW/tree/main/tutorial/getting_started_resnet>`_.
 
-Run the command: 
+.. Run the command: 
 
-.. code-block:: 
+.. .. code-block:: 
 
-    python quickstart.py --ep ipu
+..    python quickstart.py --ep ipu
 
 
-This test will take an image and run classification on IPU. On a sucessful run you will see a output like below:
+.. This test will take an image and run classification on IPU. On a sucessful run you will see a output like below:
 
-.. code-block::
+.. .. code-block::
   
-  WARNING: Logging before InitGoogleLogging() is written to STDERR
-  I20231004 15:57:40.141337 43720 vitisai_compile_model.cpp:303] Vitis AI EP Load ONNX Model Success
-  I20231004 15:57:40.141337 43720 vitisai_compile_model.cpp:304] Graph Input Node Name/Shape (1)
-  I20231004 15:57:40.141337 43720 vitisai_compile_model.cpp:308]   input : [-1x3x32x32]
-  I20231004 15:57:40.141337 43720 vitisai_compile_model.cpp:314] Graph Output Node Name/Shape (1)
-  I20231004 15:57:40.141337 43720 vitisai_compile_model.cpp:318]   output : [-1x10]
-  I20231004 15:57:40.141337 43720 vitisai_compile_model.cpp:193] use cache key quickstart_modelcachekey
-  2023-10-04 15:57:40.2479179 [W:onnxruntime:, session_state.cc:1169 onnxruntime::VerifyEachNodeIsAssignedToAnEp] Some nodes were not assigned to the preferred execution providers which may or may not have an negative impact on performance. e.g. ORT explicitly assigns shape related ops to CPU to improve perf.
-  2023-10-04 15:57:40.2569196 [W:onnxruntime:, session_state.cc:1171 onnxruntime::VerifyEachNodeIsAssignedToAnEp] Rerunning with verbose output on a non-minimal build will show node assignments.
-  I20231004 15:57:40.361856 43720 custom_op.cpp:128]  Vitis AI EP running 400 Nodes
-  Image 0: Actual Label cat, Predicted Label cat
+..  WARNING: Logging before InitGoogleLogging() is written to STDERR
+..  I20231004 15:57:40.141337 43720 vitisai_compile_model.cpp:303] Vitis AI EP Load ONNX Model Success
+..  I20231004 15:57:40.141337 43720 vitisai_compile_model.cpp:304] Graph Input Node Name/Shape (1)
+..  I20231004 15:57:40.141337 43720 vitisai_compile_model.cpp:308]   input : [-1x3x32x32]
+..  I20231004 15:57:40.141337 43720 vitisai_compile_model.cpp:314] Graph Output Node Name/Shape (1)
+..  I20231004 15:57:40.141337 43720 vitisai_compile_model.cpp:318]   output : [-1x10]
+..  I20231004 15:57:40.141337 43720 vitisai_compile_model.cpp:193] use cache key quickstart_modelcachekey
+..  2023-10-04 15:57:40.2479179 [W:onnxruntime:, session_state.cc:1169 onnxruntime::VerifyEachNodeIsAssignedToAnEp] Some nodes were not assigned to the preferred execution ..  providers which may or may not have an negative impact on performance. e.g. ORT explicitly assigns shape related ops to CPU to improve perf.
+..  2023-10-04 15:57:40.2569196 [W:onnxruntime:, session_state.cc:1171 onnxruntime::VerifyEachNodeIsAssignedToAnEp] Rerunning with verbose output on a non-minimal build 
+..  will show node assignments.
+..  I20231004 15:57:40.361856 43720 custom_op.cpp:128]  Vitis AI EP running 400 Nodes
+..  Image 0: Actual Label cat, Predicted Label cat
 
 
 
