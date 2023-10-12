@@ -46,6 +46,7 @@ Using Your Model
 Additional Topics
 =================
 
+* **Alternate Manual Installation Flow**: Refer to the :doc:`manual_installation` page. 
 
 * **Alternate Quantization Flow**: Refer to the :doc:`alternate_quantization_setup` page. 
 
@@ -88,6 +89,7 @@ Additional Topics
    :caption: Additional Topics
    :hidden:
 
+   manual_installation.rst
    alternate_quantization_setup.rst   
 
 
