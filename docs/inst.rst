@@ -77,7 +77,7 @@ If you would like to provide your desired name for the conda environment run the
 
     install.bat -name <env name>
 
-Instead of running the automated installer, if you choose to install each component manually please refer to :doc:`manual_installation` page.
+Instead of the bundled installation process using ``install.bat``, if you choose to install each component manually please refer to :doc:`manual_installation` page.
 
 If you require to install Vitis AI PyTorch/Tensorflow or Microsoft Olive Quantizer, please refer to :doc:`alternate_quantization_setup` page. 
 
