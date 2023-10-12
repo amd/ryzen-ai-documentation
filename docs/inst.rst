@@ -65,23 +65,23 @@ Open the Windows Command Prompt and run the below command
 The installation script, ``install.bat`` does the following 
 
 - Creates a conda environment 
-- Install Vitis AI ONNX Quantizer
-- Install ONNX Runtime 
-- Install Vitis AI Execution Provider
-- Set the environment variable to specify 1x4.xclbin binary
-- Print the name of the conda environment and exit 
+- Installs Vitis AI ONNX Quantizer
+- Installs ONNX Runtime 
+- Installs Vitis AI Execution Provider
+- Sets the environment variable to specify 1x4.xclbin binary
+- Prints the name of the conda environment before exiting 
 
 Thereafter you can activate the created conda environment to get the work environment. 
 
-If you would like to provide your desired name for the conda environment run the ``install.bat`` file as shown below
+To provide a specific name of the conda work environment run the ``install.bat`` as shown below
 
 .. code::
 
     .\install.bat -name <env name>
 
-Instead of the bundled installation process using ``install.bat``, if you choose to install each component manually please refer to :doc:`manual_installation` page.
+- Instead of the bundled installation process using ``install.bat``, if you choose to install each component manually please refer to :doc:`manual_installation` page.
 
-If you require to install Vitis AI PyTorch/TensorFlow or Microsoft Olive Quantizer, please refer to :doc:`alternate_quantization_setup` page. 
+- If you require to install Vitis AI PyTorch/TensorFlow or Microsoft Olive Quantizer, please refer to :doc:`alternate_quantization_setup` page. 
 
 
 |
