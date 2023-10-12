@@ -2,7 +2,7 @@
 Manual Installation
 ###################
 
-In the main doc:`inst` page, we have shown a one-step installation process that checks the prerequisite and installs ONNX Runtime, Vitis AI execution provider, and Vitis AI ONNX quantizer.
+In the main :doc:`inst` page, we have shown a one-step installation process that checks the prerequisite and installs ONNX Runtime, Vitis AI execution provider, and Vitis AI ONNX quantizer.
 
 This page shows a manual step-by-step process to install each component. 
 
