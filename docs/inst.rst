@@ -50,61 +50,36 @@ To enable the development and deployment of IPU-based inference on the client de
 Installation Steps
 ~~~~~~~~~~~~~~~~~~~
 
-The Ryzen AI Software Platform requires using a conda environment (Anaconda or Miniconda) for the installation process. 
+Download the setup package ryzen-ai-sw-0.9.tar.gz and extract. 
 
-Start a conda prompt. In the conda prompt, create and activate an environment for the rest of the installation process. 
+Before running the installation script ensure all the prerequisites outlined above have been met and the Windows PATH variable is properly set for each component. 
 
-.. code-block:: 
+Open the Windows command prompt and run the below command 
 
-  conda create --name <name> python=3.9
-  conda activate <name> 
+.. code:: 
 
-Install Quantizer
-#################
+    install.bat
 
-Ryzen AI Software platform supports multiple quantization flows. The Vitis AI ONNX Quantization is one of the quickest ways to enable quantization. 
+The automatic installation script does the following 
 
-**Vitis AI ONNX Quantization**
+- Creates a conda environment 
+- Install Vitis AI ONNX Quantizer
+- Install ONNX Runtime 
+- Install Vitis AI Execution provider
+- Set the environment variable to specify 1x4.xclbin binary
+- Print the name of the conda environment and exit 
 
-Vitis AI ONNX Quantization is a post-training quantization method that works on models saved in the ONNX format. To install it, download the installation file and follow the command:
+Thereafter you can activate the created conda environment to get the work environment. 
 
-1. Download the installation file from the following link:
+If you would like to provide your desired name for the conda environment run the `install.bat` file as shown below
 
-   `Vitis AI ONNX Quantization <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=vai_q_onnx-1.15.0-py2.py3-none-any.whl>`_
+.. code::
 
-2. Install Vitis AI ONNX Quantization using the following command:
+    install.bat -name <env name>
 
-.. code-block:: shell
-
-   pip install vai_q_onnx-1.15.0-py2.py3-none-any.whl
-
-For other quantization options - Vitis AI PyTorch/TensorFlow 2/TensorFlow Quantization or Olive Quantization, please refer to the :doc:`alternate_quantization_setup` page. 
+Instead of running the automated installer, if you choose to install each component manually please refer to :doc:`manual_installation` page 
 
 
-Install ONNX Runtime
-####################
-
-.. code-block::
-   
-   pip install onnxruntime 
-
-Install Vitis AI Execution Provider
-###################################
-
-Download and extract the Execution Provider setup package:
-
-https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=voe-4.0-win-amd64.zip 
-
-Change the directory to the extracted Execution Provider setup package directory and install the necessary packages:
-
-.. code-block:: 
-
-     cd voe-4.0-win_amd64\voe-4.0-win_amd64
-     pip install voe-0.1.0-cp39-cp39-win-amd64.whl
-     pip install onnxruntime_vitisai-1.15.1-cp39-cp39-win-amd64.whl     
-     python installer.py
-
-     
 |
 |
    
