@@ -77,7 +77,7 @@ To provide a specific name of the conda work environment run the ``install.bat``
 
 .. code::
 
-    .\install.bat -name <env name>
+    .\install.bat -env <env name>
 
 - Instead of the bundled installation process using ``install.bat``, if you choose to install each component manually please refer to :doc:`manual_installation` page.
 
