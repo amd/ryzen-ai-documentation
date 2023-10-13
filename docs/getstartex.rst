@@ -45,7 +45,7 @@ Step 1: Install Packages
 
 * Ensure that the Ryzen AI Software Platform is correctly installed. For more details, see the :ref:`installation instructions <inst.rst>`.
 
-* This example requires a couple of additional packages. Run the following command to install them:
+* Use the conda environment created during the installation for the rest of the steps. This example requires a couple of additional packages. Run the following command to install them:
 
 
 .. code-block:: 
