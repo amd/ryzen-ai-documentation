@@ -6,7 +6,7 @@ ONNX Quantization
 Installation
 ~~~~~~~~~~~~
 
-If you have installed your working environment using :ref:`the bundled installation script <install-bundeld>`, then Vitis AI ONNX quantization is already installed. 
+If you have prepared your working environment using :ref:`the bundled installation script <install-bundeld>`, then Vitis AI ONNX quantizer is already installed. 
 
 Otherwise, ensure that Vitis AI ONNX Quantizer is correctly installed as per :ref:`ONNX Quantizer installation instructions <install-onnx-quantizer>`.
  
