@@ -2,8 +2,6 @@
 Development Flow Overview
 #########################
 
-.. contents:: Table of Contents
-
 
 The Ryzen AI Software Platform enables developers to execute machine learning models trained in PyTorch or TensorFlow on laptops powered by AMD Ryzen™ AI. The development flow for Ryzen AI consists of three simple steps.
 

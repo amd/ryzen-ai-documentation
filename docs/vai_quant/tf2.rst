@@ -7,8 +7,6 @@ Tensorflow Quantization
     All Tensorflow related documentation is applicable to the Tensorflow 2 version. 
 
 
-.. contents:: Table of Contents
-
 
 Enabling Quantization
 ~~~~~~~~~~~~~~~~~~~~~
