@@ -54,6 +54,8 @@ Installation Steps
 
 Download the setup package ryzen-ai-sw-0.9.tar.gz and extract. 
 
+https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ryzen-ai-sw-0.9.zip
+
 Before running the installation script ensure all the prerequisites outlined above have been met and the Windows PATH variable is properly set for each component. Make sure to set the PATH variable using "Environment Variables" window from the "System Properties". For example, Anaconda requires following paths to set the PATH variable ``path\to\anaconda3\``, ``path\to\anaconda3\Scripts\``, ``path\to\anaconda3\Lib\bin\``.     
 
 Open the Windows Command Prompt and run the below command 
