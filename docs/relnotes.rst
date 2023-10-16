@@ -74,11 +74,13 @@ Known issues
 ~~~~~~~~~~~~
 
 - Flow control OPs including "Loop", "If", "Reduce" not supported by VOE
-- Resize OP in ONNX opset 10 or lower not supported by VOE
+- Resizing OP in ONNX opset 10 or lower is not supported by VOE
 - Tensorflow 2.x quantizer supports models within tf.keras.model only
 - Running quantizer docker in WSL on Ryzen AI laptops may encounter OOM (Out-of-memory) issue
-- Run multiple concurrent models by temporal sharing on the Performance optimized overlay (5x4.xclbin) is not supported
-- Support batch size 1 only for IPU
+- Running multiple concurrent models using temporal sharing on the 5x4 binary is not supported
+- Only batch sizes of 1 are supported
+- Only models with the pretrained weights setting = TRUE should be imported
+- Launching multiple processes on 4 1x4 binaries can cause hangs, especially when models have many sub-graphs
 
 |
 |
