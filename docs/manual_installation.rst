@@ -8,6 +8,8 @@ This page shows a manual step-by-step process to install each component.
 
 Download the installation package and extract. 
 
+https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ryzen-ai-sw-0.9.zip
+
 .. code-block:
 
     cd ryzen-ai-sw-0.9\ryzen-ai-sw-0.9
@@ -37,8 +39,8 @@ Install Vitis AI ONNX Quantization using the following command:
 
 .. code-block:: shell
 
-   #pip install vai_q_onnx-1.15.0-py2.py3-none-any.whl
-   pip install vai_q_onnx-1.15.0+1b31b78-py2.py3-none-any.whl
+   cd ryzen-ai-sw-0.9\ryzen-ai-sw-0.9
+   pip install vai_q_onnx-1.15.0+a27a6e0-py2.py3-none-any.whl
 
 For other quantization options - Vitis AI PyTorch/TensorFlow 2/TensorFlow Quantization or Olive Quantization, please refer to the :doc:`alternate_quantization_setup` page. 
 
