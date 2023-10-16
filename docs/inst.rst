@@ -52,7 +52,7 @@ To enable the development and deployment of IPU-based inference on the client de
 Installation Steps
 ~~~~~~~~~~~~~~~~~~~
 
-Download the setup package ryzen-ai-sw-0.9.tar.gz and extract. 
+Download the setup package ``ryzen-ai-sw-0.9.tar.gz`` and extract. 
 
 https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ryzen-ai-sw-0.9.zip
 
