@@ -16,7 +16,7 @@ Examples
 - `Run OPT-1.3B model with ONNXRuntime <https://github.com/amd/RyzenAI-SW/tree/main/example/opt-1.3b/opt-onnx>`_ : Run LLM ONNX flow on Ryzen AI Software Platform
 - `Run OPT-1.3B model with PyTorch <https://github.com/amd/RyzenAI-SW/tree/main/example/opt-1.3b/opt-pytorch>`_ : Run LLM PyTorch flow on Ryzen AI Software Platform
 - `Run Whipser-tiny model with ONNXRuntime <https://github.com/amd/RyzenAI-SW/tree/main/example/Whipser-tiny>`_ : Automatic Speech Recognotion on Ryzen AI Software Platform
-- `Run multiple concurrent AI applications with ONNXRuntime <https://github.com/amd/RyzenAI-SW/tree/main/example/multi-model>`_ : Run multiple models (ResNet, MobileNet, etc) together on Ryzen AI Software Platform 
+- `Run multiple concurrent AI applications with ONNXRuntime <https://github.com/amd/RyzenAI-SW/tree/main/example/multi-model>`_ : Run multiple models (ResNet, MobileNet, etc) concurrently on Ryzen AI Software Platform 
 - `Real-time object detection with Yolov8 <https://github.com/amd/RyzenAI-SW/tree/main/example/Yolov8>`_ : Run Yolov8 on IPU enabled laptop
 
 Demos
