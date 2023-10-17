@@ -27,9 +27,11 @@ Getting Started
 
 * **Installation**: Refer to the :doc:`inst` page. 
 
+* **Runtime Setup**: Refer to the :doc:`runtime_setup` page. 
+
 * **Development Flow Overview**: Refer to the :doc:`devflow` page. 
 
-* **Getting Started Example**: Refer to the :doc:`getstartex` page to run a resnet50 model example.
+* **Examples, Demos, and Tutorials**: Refer to the :doc:`examples` page.
 
 Using Your Model
 ================
@@ -39,6 +41,18 @@ Using Your Model
 * **Model Quantization**: Refer to the :doc:`modelport` page. 
 
 * **Model Running Using ONNX Runtime**: Refer to the the :doc:`modelrun` page. 
+
+
+Additional Topics
+=================
+
+* **Alternate Manual Installation Flow**: Refer to the :doc:`manual_installation` page. 
+
+* **Alternate Quantization Flow**: Refer to the :doc:`alternate_quantization_setup` page. 
+
+
+
+
 
 
 
@@ -56,8 +70,9 @@ Using Your Model
    :hidden:
 
    inst.rst
+   runtime_setup.rst
    devflow.rst
-   getstartex.rst
+   examples.rst
 
 .. toctree::
    :maxdepth: 1
@@ -67,6 +82,18 @@ Using Your Model
    modelcompat.rst
    modelport.rst
    modelrun.rst
+
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Additional Topics
+   :hidden:
+
+   manual_installation.rst
+   alternate_quantization_setup.rst   
+
+
+
 
 ..
   ------------

@@ -2,18 +2,14 @@
 ONNX Quantization 
 #################
 
-.. contents:: Table of Contents
-
 
 Installation
 ~~~~~~~~~~~~
 
-ONNX Quantizer does not require any docker installation. Install the ONNX Quantizer after downloading this installation `python wheel file <https://www.xilinx.com/bin/public/openDownload?filename=vai_q_onnx-1.14.0-py2.py3-none-any.whl>`_.   
+If you have prepared your working environment using :ref:`the bundled installation script <install-bundeld>`, then Vitis AI ONNX quantizer is already installed. 
 
-
-.. code-block::
-
-   pip install vai_q_onnx-1.15.0-py2.py3-none-any.whl
+Otherwise, ensure that Vitis AI ONNX Quantizer is correctly installed as per :ref:`ONNX Quantizer installation instructions <install-onnx-quantizer>`.
+ 
 
 Overview
 ~~~~~~~~

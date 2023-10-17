@@ -1,11 +1,19 @@
-#######################
-Getting Started Example
-#######################
+########################
+Getting Started Tutorial
+########################
 
 This example uses the ResNet-50 model from PyTorch Hub to demonstrate the process of preparing, quantizing, and deploying a model using Ryzen AI.
 
-The following are the steps and the required files to run the example. The files can be downloaded from `here <https://github.com/amd/ryzen-ai-documentation/tree/main/example/resnet50>`_.
+- The source code files can be downloaded from `this link <https://github.com/amd/RyzenAI-SW/tree/main/tutorial/getting_started_resnet>`_. Alternatively, you can clone the RyzenAI-SW repo and change the directory into the tutorial code directory. 
 
+.. code-block::
+
+    git clone https://github.com/amd/RyzenAI-SW.git
+    cd tutorial/getting_started_resnet
+
+|
+
+The following are the steps and the required files to run the example. 
 
 .. list-table:: 
    :widths: 20 25 25
@@ -37,7 +45,7 @@ Step 1: Install Packages
 
 * Ensure that the Ryzen AI Software Platform is correctly installed. For more details, see the :ref:`installation instructions <inst.rst>`.
 
-* This example requires a couple of additional packages. Run the following command to install them:
+* Use the conda environment created during the installation for the rest of the steps. This example requires a couple of additional packages. Run the following command to install them:
 
 
 .. code-block:: 
@@ -128,7 +136,7 @@ The ``resnet_quantize.py`` file has ``quantize_static`` function (line 95) that 
         dr,
         quant_format=QuantFormat.QDQ,
         calibrate_method=vai_q_onnx.PowerOfTwoMethod.MinMSE,
-        activation_type=QuantType.QUInt8,
+        activation_type=QuantType.QInt8,
         weight_type=QuantType.QInt8,
         enable_dpu=True, 
         extra_options={'ActivationSymmetric': True} 
@@ -140,9 +148,11 @@ The parameters of this function are:
 * **output_model_path**: (String) The file path where the quantized model will be saved.
 * **dr**: (Object or None) Calibration data reader that enumerates the calibration data and producing inputs for the original model. In this example, CIFAR10 dataset is used for calibration during the quantization process.
 * **quant_format**: (String) Specifies the quantization format of the model. In this example we have used the QDQ quant format.
-* **calibrate_method**:(String) In this example this parameter is set to ``vai_q_onnx.PowerOfTwoMethod.MinMSE`` to apply power-of-2 scale quantization. 
-* **activation_type**: (String) Data type of activation tensors after quantization. In this example, it's set to QUInt8 (Quantized Unsigned Int 8).
-* **weight_type**: (String) Data type of weight tensors after quantization. In this example, it's set to QInt8 (Quantized Int 8).
+* **calibrate_method**: (String) In this example this parameter is set to ``vai_q_onnx.PowerOfTwoMethod.MinMSE`` to apply power-of-2 scale quantization. 
+* **activation_type**: (String) Data type of activation tensors after quantization. In this example, it's set to QInt8 (Quantized Integer 8).
+* **weight_type**: (String) Data type of weight tensors after quantization. In this example, it's set to QInt8 (Quantized Integer 8).
+* **enable_dpu**: (Boolean) Determines whether to generate a quantized model that is suitable for the DPU. If set to True, the quantization process will create a model that is optimized for DPU computations.
+* **extra_options**: (Dict or None) Dictionary of additional options that can be passed to the quantization process. In this example, ``ActivationSymmetric`` is set to True i.e., calibration data for activations is symmetrized. 
 
 |
 |
@@ -183,6 +193,10 @@ Deploy the Model on the Ryzen AI IPU
 To successfully run the model on the IPU, run the following setup steps:
 
 - Ensure that the ``XLNX_VART_FIRMWARE`` environment variable is correctly pointing to the XCLBIN file included in the ONNX Vitis AI Execution Provider package. For more information, see the :ref:`installation instructions <set-vart-envar>`.
+
+.. code-block::
+
+   set XLNX_VART_FIRMWARE=C:\path\to\1x4.xclbin
 
 - Copy the ``vaip_config.json`` runtime configuration file from the Vitis AI Execution Provider package to the current directory. For more information, see the :ref:`installation instructions <copy-vaip-config>`. The ``vaip_config.json`` is used by the ``predict.py`` script to configure the Vitis AI Execution Provider.
 
@@ -234,16 +248,16 @@ Typical output
   I20230803 19:29:02.108831 13180 custom_op.cpp:126]  Vitis AI EP running 348 Nodes
   !!! Warning: fingerprint of xclbin file C:\Windows\System32\AMD\1x4.xclbin doesn't match subgraph subgraph_/fc/fc.1/Relu_output_0(TransferMatMulToConv2d)
 
-  Image 0: Actual Label cat, Predicted Label deer
+  Image 0: Actual Label cat, Predicted Label cat
   Image 1: Actual Label ship, Predicted Label ship
-  Image 2: Actual Label ship, Predicted Label ship
-  Image 3: Actual Label airplane, Predicted Label ship
-  Image 4: Actual Label frog, Predicted Label deer
-  Image 5: Actual Label frog, Predicted Label horse
-  Image 6: Actual Label automobile, Predicted Label frog
-  Image 7: Actual Label frog, Predicted Label deer
-  Image 8: Actual Label cat, Predicted Label deer
-  Image 9: Actual Label automobile, Predicted Label ship
+  Image 2: Actual Label ship, Predicted Label airplane
+  Image 3: Actual Label airplane, Predicted Label airplane
+  Image 4: Actual Label frog, Predicted Label frog
+  Image 5: Actual Label frog, Predicted Label frog
+  Image 6: Actual Label automobile, Predicted Label automobile
+  Image 7: Actual Label frog, Predicted Label frog
+  Image 8: Actual Label cat, Predicted Label cat
+  Image 9: Actual Label automobile, Predicted Label automobile
 
 ..
   ------------
