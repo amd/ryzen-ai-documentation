@@ -1,32 +1,25 @@
-.. _inst.rst:
-
-
 ############
 Installation 
 ############
-
 
 Supported Configurations
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 The Ryzen AI Software Platform supports AMD Ryzen 7040U, 7040HS series mobile processors with Windows 11 OS.
 
-Download the `IPU Driver <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ipu_stack_rel_silicon_2308.zip>`_ and install it by following these steps:
+Download the `IPU Driver <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ipu_stack_rel_silicon_2309.zip>`_ and install it by following these steps:
 
 1. Extract the downloaded zip file.
 2. Open a terminal in administrator mode and execute the ``.\amd_install_kipudrv.bat`` bat file.
 
 Ensure that the IPU driver is installed from ``Device Manager`` -> ``System Devices`` -> ``AMD IPU Device`` as shown in the following image.
 
-.. image:: images/ipu_device_properties1.png
+.. image:: images/driver_0_9.png
 
 |
 |
 
-Note: If you see the "Windows could not verify the digital signature of this driver" error message, follow `this tutorial <https://pureinfotech.com/disable-driver-signature-enforcement-windows-11/>`_ to disable signature checking."
-
-|
-|
+Note: If you see the "Windows could not verify the digital signature of this driver" error message, follow `this tutorial <https://pureinfotech.com/disable-driver-signature-enforcement-windows-11/>`_ to disable signature checking.
 
 
 Prepare Client Device 
@@ -54,107 +47,44 @@ To enable the development and deployment of IPU-based inference on the client de
 |
 |
 
+.. _install-bundeld:
+
 Installation Steps
-~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~
 
-The Ryzen AI Software Platform requires using a conda environment (Anaconda or Miniconda) for the installation process. 
+Download the setup package ``ryzen-ai-sw-0.9.tar.gz`` and extract. 
 
-Start a conda prompt. In the conda prompt, create and activate an environment for the rest of the installation process. 
+https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ryzen-ai-sw-0.9.zip
 
-.. code-block:: 
+Before running the installation script ensure all the prerequisites outlined above have been met and the Windows PATH variable is properly set for each component. Make sure to set the PATH variable using "Environment Variables" window from the "System Properties". For example, Anaconda requires following paths to set the PATH variable ``path\to\anaconda3\``, ``path\to\anaconda3\Scripts\``, ``path\to\anaconda3\Lib\bin\``.     
 
-  conda create --name <name> python=3.9
-  conda activate <name> 
+Open the Windows Command Prompt and run the below command 
 
-.. _install-olive:
+.. code:: 
 
-Install Quantizer
-#################
+    .\install.bat
 
-Ryzen AI Software platform provides multiple quantization flow support
+The installation script, ``install.bat`` does the following 
 
-**Vitis AI ONNX Quantization** 
+- Creates a conda environment 
+- Installs Vitis AI ONNX Quantizer
+- Installs ONNX Runtime 
+- Installs Vitis AI Execution Provider
+- Sets the environment variable to specify 1x4.xclbin binary
+- Prints the name of the conda environment before exiting 
 
-Vitis AI ONNX Quantization is post-training quantization that works on the models saved in ONNX format. To install it, download the installation file and follow the command:
+Thereafter you can activate the created conda environment to get the work environment. 
 
-https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=vai_q_onnx-1.15.0-py2.py3-none-any.whl
+To provide a specific name of the conda work environment run the ``install.bat`` as shown below
 
-.. code-block::
+.. code::
 
-   pip install vai_q_onnx-1.15.0-py2.py3-none-any.whl
+    .\install.bat -env <env name>
 
+- Instead of the bundled installation process using ``install.bat``, if you choose to install each component manually please refer to :doc:`manual_installation` page.
 
-**Vitis AI PyTorch/TensorFlow 2/TensorFlow Quantization**
+- If you require to install Vitis AI PyTorch/TensorFlow or Microsoft Olive Quantizer, please refer to :doc:`alternate_quantization_setup` page. 
 
-Vitis AI PyTorch and TensorFlow Quantizer, which is part of the Vitis AI toolchain, require the installation of a Docker container on the host server.
-
-The Vitis AI Docker container can be installed on Ubuntu 20.04, CentOS 7.8, 7.9, 8.1, and RHEL 8.3, 8.4. The developers working on Windows 11 can use WSL for installing Vitis AI Docker.
-
-Multiple versions of the Docker container are available, each tailored to specific frameworks. Follow the Docker download and running instructions as per the following links:
-
-.. list-table:: 
-   :widths: 25 25 
-   :header-rows: 1
-
-   * - Framework
-     - Docker location
-   * - PyTorch
-     - https://hub.docker.com/r/amdih/ryzen-ai-pytorch
-   * - TensorFlow 2
-     - https://hub.docker.com/r/amdih/ryzen-ai-tensorflow2
-   * - TensorFlow 1
-     - https://hub.docker.com/r/amdih/ryzen-ai-tensorflow 
-
-
-The above Docker containers do not have GPU-accelerated quantization support. If you like to leverage GPU for the quantization process, you can download and build GPU Docker containers. The following TAR file has README that you can follow to build and run GPU dockers.  
-
-
-https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ryzen-ai-gpudockerfiles-3.5.0-130.tar.gz
-
-
-**Olive Quantization**
-
-Microsoft Olive framework supports quantization with Vitis AI ONNX Quantization:  
-
-.. code-block::
-
-   pip install olive-ai[cpu]
-
-
-Note: Current Olive flow is not compatible with the latest pydantic version. Downgrade the pydantic version as follows:
-
-.. code-block::
-
-    pip install pydantic==1.10.9
-
-
-For additional information regarding the Olive installation, refer to the Microsoft documentation:       
-https://microsoft.github.io/Olive/getstarted/installation.html
-
-
-
-Install ONNX Runtime
-####################
-
-.. code-block::
-   
-   pip install onnxruntime 
-
-Install Vitis AI Execution Provider
-###################################
-
-Download and extract the Execution Provider setup package:
-
-https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=voe-4.0-win-amd64.zip 
-
-Change the directory to the extracted Execution Provider setup package directory and install the necessary packages:
-
-.. code-block:: 
-
-     cd voe-4.0-win_amd64\voe-4.0-win_amd64
-     python installer.py
-     pip install voe-0.1.0-cp39-cp39-win_amd64.whl
-     pip install onnxruntime_vitisai-1.15.1-cp39-cp39-win_amd64.whl
 
 |
 |
@@ -162,43 +92,54 @@ Change the directory to the extracted Execution Provider setup package directory
 Runtime Environment Setup 
 ~~~~~~~~~~~~~~~~~~~~~~~~~
    
-.. _set-vart-envar:
-
 Runtime IPU Binary Selection
 ############################
 
-The IPU binaries are located inside the Vitis AI Execution Provider package. Selecting an IPU binary is a required step everytime the application is run from a new terminal. Ryzen AI Software platform provides a couple of IPU binaries using different configurations on the IPU device. 
-
-**IPU binary 1x4.xclbin**: An AI stream using 1x4.xclbin use an IPU configuration that provides up to 2 TOPS performance. Most real-time application (video conferencing use cases) performance requirements can be met using this configuration. In the current Ryzen AI software platform, up to four such AI streams can be run in parallel on the IPU without any visible loss of performance.
-
-
-**IPU binary 5x4.xclbin**: For more advanced use cases or larger models, IPU binary 5x4.xclbin can be used which uses a larger configuration to provide up to 10 TOPs performance. In the current version of the release, 5x4.xclbin does not support multiple concurrent AI streams, and can only be used by a single application. 
-
-
-The procedure for selecting a specific binary using environment variables is as follows:
-
-Selecting the 1x4.xclbin IPU binary:
+The IPU binaries are located inside the setup package. Selecting an IPU binary is a required step every time the application is run from a new terminal. For example, IPU binary 1x4.xclbin is selected as below 
 
 .. code-block::
 
-   set XLNX_VART_FIRMWARE=C:\path\to\1x4.xclbin
+   set XLNX_VART_FIRMWARE=C:\path\to\ryzen-ai-sw-xx\ryzen-ai-sw-xx\voe-xx-win_amd64\1x4.xclbin
 
-
-Selecting the 5x4.xclbin IPU binary:
-
-.. code-block::
-
-   set XLNX_VART_FIRMWARE=C:\path\to\5x4.xclbin
-   set XLNX_TARGET_NAME="AMD_AIE2_5x4_Overlay"
-
-Note: To select the 5x4.xclbin as the IPU binary, the additional XLNX_TARGET_NAME environment variable is required. 
-
-.. _copy-vaip-config:
+Ryzen AI Software platform provides multiple IPU binaries using different configurations on the IPU device. Refer to the :doc:`runtime_setup` page for more details on IPU binaries.
 
 Runtime Configuration File
 ##########################
 
-The Execution Provider setup package contains the Vitis AI Execution Provider runtime configuration file ``vaip_config.json``. This file is required when configuring Vitis AI Execution Provider (VAI EP) inside the ONNX Runtime code. 
+The Execution Provider setup package contains the Vitis AI Execution Provider runtime configuration file ``vaip_config.json``. This file is required when configuring Vitis AI Execution Provider (VAI EP) inside the ONNX Runtime code.
+
+
+.. Test Installation
+.. ~~~~~~~~~~~~~~~~~
+
+.. To quick test this setup download this directory from `here <https://github.com/amd/RyzenAI-SW/tree/main/tutorial/getting_started_resnet>`_.
+
+.. Run the command: 
+
+.. .. code-block:: 
+
+..    python quickstart.py --ep ipu
+
+
+.. This test will take an image and run classification on IPU. On a sucessful run you will see a output like below:
+
+.. .. code-block::
+  
+..  WARNING: Logging before InitGoogleLogging() is written to STDERR
+..  I20231004 15:57:40.141337 43720 vitisai_compile_model.cpp:303] Vitis AI EP Load ONNX Model Success
+..  I20231004 15:57:40.141337 43720 vitisai_compile_model.cpp:304] Graph Input Node Name/Shape (1)
+..  I20231004 15:57:40.141337 43720 vitisai_compile_model.cpp:308]   input : [-1x3x32x32]
+..  I20231004 15:57:40.141337 43720 vitisai_compile_model.cpp:314] Graph Output Node Name/Shape (1)
+..  I20231004 15:57:40.141337 43720 vitisai_compile_model.cpp:318]   output : [-1x10]
+..  I20231004 15:57:40.141337 43720 vitisai_compile_model.cpp:193] use cache key quickstart_modelcachekey
+..  2023-10-04 15:57:40.2479179 [W:onnxruntime:, session_state.cc:1169 onnxruntime::VerifyEachNodeIsAssignedToAnEp] Some nodes were not assigned to the preferred execution ..  providers which may or may not have an negative impact on performance. e.g. ORT explicitly assigns shape related ops to CPU to improve perf.
+..  2023-10-04 15:57:40.2569196 [W:onnxruntime:, session_state.cc:1171 onnxruntime::VerifyEachNodeIsAssignedToAnEp] Rerunning with verbose output on a non-minimal build 
+..  will show node assignments.
+..  I20231004 15:57:40.361856 43720 custom_op.cpp:128]  Vitis AI EP running 400 Nodes
+..  Image 0: Actual Label cat, Predicted Label cat
+
+
+
 
 ..
   ------------

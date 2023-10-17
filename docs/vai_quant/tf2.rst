@@ -7,8 +7,11 @@ Tensorflow Quantization
     All Tensorflow related documentation is applicable to the Tensorflow 2 version. 
 
 
+
 Enabling Quantization
 ~~~~~~~~~~~~~~~~~~~~~
+
+Ensure that Vitis AI TensorFlow is correctly installed. For more information, see :ref:`TensorFlow Quantizer installation instructions <install-pt-tf>`.
 
 To enable Vitis AI Tensorflow Quantization, activate the conda environment inside the Vitis AI Tensorflow 2 docker container:
 
