@@ -36,10 +36,11 @@ Multiple versions of the Docker container are available, each tailored to specif
      - https://hub.docker.com/r/amdih/ryzen-ai-tensorflow 
 
 
-The above Docker containers do not have GPU-accelerated quantization support. If you like to leverage GPU for the quantization process, you can download and build GPU Docker containers. The following TAR file has README that you can follow to build and run GPU dockers.  
+The above Docker containers do not have GPU-accelerated quantization support. If you like to leverage GPU for the quantization process, you can download and build `GPU Docker containers <https://www.xilinx.com/bin/public/openDownload?filename=ryzen-ai-gpudockerfiles-3.6.0-130.tar.gz>`_. Inside the downloaded TAR file you can find README that you can follow to build and run GPU dockers.  
 
 
-[Ryzen-AI GPU Docker Files](https://www.xilinx.com/bin/public/openDownload?filename=ryzen-ai-gpudockerfiles-3.6.0-130.tar.gz)
+
+
 
 .. _install-olive:
 
@@ -64,4 +65,6 @@ Microsoft Olive framework supports quantization with Vitis AI ONNX Quantization.
     pip install pydantic==1.10.9
 
 
-For additional information regarding the Olive installation, refer to the [Microsoft documentation](https://microsoft.github.io/Olive/getstarted/installation.html).
+For additional information regarding the Olive installation, refer to the `Microsoft Olive Documentation <https://microsoft.github.io/Olive/getstarted/installation.html>`_
+
+
