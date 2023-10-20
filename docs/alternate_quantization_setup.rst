@@ -1,7 +1,7 @@
 
-#########################
-Alternate Quantizer Setup
-#########################
+#####################
+Additional quantizers 
+#####################
 
 
 Alternate quantizers available in Ryzen-AI software platform as below
