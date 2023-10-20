@@ -6,15 +6,15 @@ Alternate Quantizer Setup
 
 The Ryzen-AI software platform provides support for these additional quantizers:
 
-1. **PyTorch/TensorFlow 2/TensorFlow Quantization**: If the user requires Quantization Aware Training using the original model training framework, they can use Vitis AI PyTorch/Tensorflow 2/Tensorflow quantizer.
-2. **Olive Quantization**: If the user is already familiar with Olive framework and using it for other model transformations, quantization through Olive is also an option. 
+1. **PyTorch/TensorFlow 2/TensorFlow Quantizer**: If the user requires Quantization Aware Training using the original model training framework, they can use Vitis AI PyTorch/Tensorflow 2/Tensorflow quantizer.
+2. **Olive Quantizer**: If the user is already familiar with Olive framework and using it for other model transformations, quantization through Olive is also an option. 
 
 
 .. _install-pt-tf:
 
 
-Vitis AI PyTorch/TensorFlow 2/TensorFlow Quantization
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Vitis AI PyTorch/TensorFlow 2/TensorFlow Quantizer
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The Vitis AI PyTorch and TensorFlow Quantizer, which is part of the Vitis AI toolchain, require the installation of a Docker container on the host server.
 
@@ -44,8 +44,8 @@ The above Docker containers do not have GPU-accelerated quantization support. If
 
 .. _install-olive:
 
-Olive Quantization
-~~~~~~~~~~~~~~~~~~
+Olive Quantizer
+~~~~~~~~~~~~~~~
 
 
 Microsoft Olive framework supports quantization with Vitis AI ONNX Quantization. If you're interested in exploring Olive Quantization as an advanced quantization method, you can follow the steps below:
