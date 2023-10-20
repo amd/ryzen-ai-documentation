@@ -20,6 +20,9 @@ The Vitis AI PyTorch and TensorFlow Quantizer, which is part of the Vitis AI too
 
 The Vitis AI Docker container can be installed on Ubuntu 20.04, CentOS 7.8, 7.9, 8.1, and RHEL 8.3, 8.4. The developers working on Windows 11 can use WSL for installing Vitis AI Docker.
 
+Standard Containers
+%%%%%%%%%%%%%%%%%%%
+
 Multiple versions of the Docker container are available, each tailored to specific frameworks. Follow the Docker download and running instructions as per the following links:
 
 .. list-table:: 
@@ -35,6 +38,9 @@ Multiple versions of the Docker container are available, each tailored to specif
    * - TensorFlow 1
      - https://hub.docker.com/r/amdih/ryzen-ai-tensorflow 
 
+
+GPU-Accelerated Quantization Containers
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 The above Docker containers do not have GPU-accelerated quantization support. If you like to leverage GPU for the quantization process, you can download and build `GPU Docker containers <https://www.xilinx.com/bin/public/openDownload?filename=ryzen-ai-gpudockerfiles-3.6.0-130.tar.gz>`_. Inside the downloaded TAR file you can find README that you can follow to build and run GPU dockers.  
 
