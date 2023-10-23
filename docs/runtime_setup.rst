@@ -28,7 +28,7 @@ Selecting the 5x4.xclbin IPU binary:
 .. code-block::
 
    set XLNX_VART_FIRMWARE=C:\path\to\5x4.xclbin
-   set XLNX_TARGET_NAME="AMD_AIE2_5x4_Overlay"
+   set XLNX_TARGET_NAME=AMD_AIE2_5x4_Overlay
 
 Note: To select the 5x4.xclbin as the IPU binary, the additional XLNX_TARGET_NAME environment variable is required. 
 
