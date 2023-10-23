@@ -33,6 +33,15 @@ Getting Started
 
 * **Examples, Demos, and Tutorials**: Refer to the :doc:`examples` page.
 
+
+Custom Installation
+===================
+
+* **Manual Installation Flow**: Refer to the :doc:`manual_installation` page. 
+
+* **Additional Quantizers **: Refer to the :doc:`alternate_quantization_setup` page. 
+
+
 Using Your Model
 ================
 
@@ -41,18 +50,6 @@ Using Your Model
 * **Model Quantization**: Refer to the :doc:`modelport` page. 
 
 * **Model Running Using ONNX Runtime**: Refer to the the :doc:`modelrun` page. 
-
-
-Additional Topics
-=================
-
-* **Alternate Manual Installation Flow**: Refer to the :doc:`manual_installation` page. 
-
-* **Alternate Quantization Flow**: Refer to the :doc:`alternate_quantization_setup` page. 
-
-
-
-
 
 
 
@@ -74,6 +71,15 @@ Additional Topics
    devflow.rst
    examples.rst
 
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Custom Installation
+   :hidden:
+
+   manual_installation.rst
+   alternate_quantization_setup.rst  
+
 .. toctree::
    :maxdepth: 1
    :caption: Using Your Model
@@ -84,13 +90,7 @@ Additional Topics
    modelrun.rst
 
 
-.. toctree::
-   :maxdepth: 1
-   :caption: Additional Topics
-   :hidden:
-
-   manual_installation.rst
-   alternate_quantization_setup.rst   
+ 
 
 
 

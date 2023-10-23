@@ -1,7 +1,7 @@
 
-#########################
-Alternate Quantizer Setup
-#########################
+#####################
+Additional Quantizers 
+#####################
 
 
 The Ryzen-AI software platform provides support for these additional quantizers:
