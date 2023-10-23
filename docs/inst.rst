@@ -7,6 +7,9 @@ Supported Configurations
 
 The Ryzen AI Software Platform supports AMD Ryzen 7040U, 7040HS series mobile processors with Windows 11 OS.
 
+Prepare Client Device 
+~~~~~~~~~~~~~~~~~~~~~
+
 Download the `IPU Driver <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ipu_stack_rel_silicon_2309.zip>`_ and install it by following these steps:
 
 1. Extract the downloaded zip file.
@@ -21,9 +24,6 @@ Ensure that the IPU driver is installed from ``Device Manager`` -> ``System Devi
 
 Note: If you see the "Windows could not verify the digital signature of this driver" error message, follow `this tutorial <https://pureinfotech.com/disable-driver-signature-enforcement-windows-11/>`_ to disable signature checking.
 
-
-Prepare Client Device 
-~~~~~~~~~~~~~~~~~~~~~
 
 To enable the development and deployment of IPU-based inference on the client device, you must have the following software installed, along with their minimum versions.
 
@@ -73,7 +73,8 @@ The installation script, ``install.bat`` does the following
 - Sets the environment variable to specify 1x4.xclbin binary
 - Prints the name of the conda environment before exiting 
 
-Thereafter you can activate the created conda environment to get the work environment. 
+
+The default Ryzen AI Software Platform packages are now installed inside the conda environment created by the installer. You can start using it by activating the conda environment created by the installer (check the name it prints during the installation process). Ensure the requirements of the runtime environment as described below
 
 To provide a specific name of the conda work environment run the ``install.bat`` as shown below
 
@@ -95,13 +96,9 @@ Runtime Environment Setup
 Runtime IPU Binary Selection
 ############################
 
-The IPU binaries are located inside the setup package. Selecting an IPU binary is a required step every time the application is run from a new terminal. For example, IPU binary 1x4.xclbin is selected as below 
+The IPU binaries are located inside the setup package. Selecting an IPU binary is a required step every time the application is run from a new environment. 
 
-.. code-block::
-
-   set XLNX_VART_FIRMWARE=C:\path\to\ryzen-ai-sw-xx\ryzen-ai-sw-xx\voe-xx-win_amd64\1x4.xclbin
-
-Ryzen AI Software platform provides multiple IPU binaries using different configurations on the IPU device. Refer to the :doc:`runtime_setup` page for more details on IPU binaries.
+The automatic installer ``install.bat`` sets IPU binary 1x4.xclbin as default. However, Ryzen AI Software platform provides multiple IPU binaries using different configurations on the IPU device. Refer to the :doc:`runtime_setup` page for more details on IPU binaries.
 
 Runtime Configuration File
 ##########################
