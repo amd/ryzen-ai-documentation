@@ -80,9 +80,9 @@ The default Ryzen AI Software Platform packages are now installed inside the con
 
    To provide a specific name of the conda work environment run the ``install.bat`` as shown below
 
-    .. code::
+   .. code::
 
-       .\install.bat -env <env name>
+      .\install.bat -env <env name>
 
 
 .. note:: 
