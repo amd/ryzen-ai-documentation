@@ -76,15 +76,20 @@ The installation script, ``install.bat`` does the following
 
 The default Ryzen AI Software Platform packages are now installed inside the conda environment created by the installer. You can start using it by activating the conda environment created by the installer (check the name it prints during the installation process). Ensure the requirements of the runtime environment as described below
 
-To provide a specific name of the conda work environment run the ``install.bat`` as shown below
+.. note:: 
 
-.. code::
+   To provide a specific name of the conda work environment run the ``install.bat`` as shown below
 
-    .\install.bat -env <env name>
+    .. code::
 
-- Instead of the bundled installation process using ``install.bat``, if you choose to install each component manually please refer to :doc:`manual_installation` page.
+       .\install.bat -env <env name>
 
-- If you require to install Vitis AI PyTorch/TensorFlow or Microsoft Olive Quantizer, please refer to :doc:`alternate_quantization_setup` page. 
+
+.. note:: 
+
+   - Instead of the bundled installation process using ``install.bat``, if you choose to install each component manually please refer to :doc:`manual_installation` page.
+
+   - If you require to install Vitis AI PyTorch/TensorFlow or Microsoft Olive Quantizer, please refer to :doc:`alternate_quantization_setup` page. 
 
 
 |
