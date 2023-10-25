@@ -42,6 +42,10 @@ VAI EP supports three provider options:
      - Optional 
      - {onnx_model_md5}
      - Used to distinguish between the models. 
+   * - encryptionKey
+     - Optional 
+     - None
+     - Encryption/Decryption key for the models generated. 
 
 
 Environment Variables
