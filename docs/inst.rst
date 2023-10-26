@@ -78,16 +78,15 @@ The default Ryzen AI Software Platform packages are now installed inside the con
 
 .. note:: 
 
-   To provide a specific name of the conda work environment run the ``install.bat`` as shown below
+   - To provide a specific name of the conda work environment run the ``install.bat`` as shown below
 
-   .. code::
+     .. code::
 
-      .\install.bat -env <env name>
-
-
-.. note:: 
+        .\install.bat -env <env name>
 
    - Instead of the bundled installation process using ``install.bat``, if you choose to install each component manually please refer to :doc:`manual_installation` page.
+
+   - To use your existing conda environment for Ryzen-AI software platform, follow the :doc:`manual_installation` and manually install Vitis AI ONNX Quantizer, ONNX Runtime, and Vitis AI Execution Provider, without creating a new conda environment
 
    - If you require to install Vitis AI PyTorch/TensorFlow or Microsoft Olive Quantizer, please refer to :doc:`alternate_quantization_setup` page. 
 
