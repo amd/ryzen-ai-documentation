@@ -30,6 +30,10 @@ Start a conda prompt. In the conda prompt, create and activate an environment fo
 .. _install-onnx-quantizer:
 
 
+.. note::
+
+   Please make sure to follow the installation order as shown below
+
 Install Quantizer
 #################
 
