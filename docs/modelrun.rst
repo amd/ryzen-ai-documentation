@@ -41,7 +41,8 @@ VAI EP supports three provider options:
    * - cacheKey
      - Optional 
      - {onnx_model_md5}
-     - Used to distinguish between the models. 
+     - Compiled model directory generated inside the cache directory. Use string to specify desired name of the compiler model directory. For example: ``'cacheKey': 'resnet50_cache'``
+
    * - encryptionKey
      - Optional 
      - None
