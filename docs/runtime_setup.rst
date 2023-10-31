@@ -10,7 +10,7 @@ The IPU binaries are located inside the Ryzen AI Software setup package. Selecti
 
 .. note:: 
 
-   The folder ``ryzen-ai-sw-1.0\ryzen-ai-sw-1.0\voe-4.0-win_amd64`` contains IPU binarie. 
+   The folder structure to find IPU binaries inside the setup package is ``ryzen-ai-sw-1.0\ryzen-ai-sw-1.0\voe-4.0-win_amd64``
 
 **IPU binary 1x4.xclbin**: An AI stream using 1x4.xclbin uses an IPU configuration that provides up to 2 TOPS performance. Most real-time application (video conferencing use cases) performance requirements can be met using this configuration. In the current Ryzen AI software platform, up to four such AI streams can be run in parallel on the IPU without any visible loss of performance.
 
