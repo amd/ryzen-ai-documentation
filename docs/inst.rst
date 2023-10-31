@@ -69,7 +69,7 @@ The installation script, ``install.bat`` does the following
 - Creates a conda environment 
 - Installs :doc:`vai_quant/vai_q_onnx`
 - Installs `ONNX Runtime <https://onnxruntime.ai/>`_
-- Installs Vitis AI Execution Provider :doc:`modelrun`
+- Installs :doc:`Vitis AI Execution Provider <modelrun>`
 - Sets the environment variable to specify 1x4.xclbin binary
 - Prints the name of the conda environment before exiting 
 
