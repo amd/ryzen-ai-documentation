@@ -38,7 +38,7 @@ To enable the development and deployment of IPU-based inference on the client de
    * - cmake
      - version >= 3.26
    * - python
-     - version >= 3.9 (3.9.13 64bit recommended) 
+     - version >= 3.9 
    * - Anaconda or Miniconda
      - Latest version
    * - AMD IPU driver
