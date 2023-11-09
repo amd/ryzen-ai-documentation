@@ -14,17 +14,17 @@ The latest iteration of the CVML SDK contains the following features:
 - LowLight Denoiser
 - Super Resolution
 
-HARDWARE & SOFTWARE REQUIREMENTS
+Hardware & Software Requirements
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-AMD HARDWARE REQUIREMENTS
+AMD Hardware Requirements
 #########################
 
 The CVML SDK is intended to work with the following AMD device(s): Phoenix
 
 CVML SDK works with any camera connected with the computer (USB or integrated). CVML SDK supports 720p or 1080p resolutions. We recommend using Logitech C920 PRO HD Webcam or Logitech BRIO Webcam as our development teams use them for reference.  
 
-PREREQUISITE SOFTWARE PACKAGES
+Prerequisite Software Packages
 ##############################
 
 Download the required software packages below to build and run CVML SDK applications. Ensure that they are added to the Path environment variable. Path can be tested by running the executables in command prompt. Download Windows packages.
@@ -32,21 +32,21 @@ Download the required software packages below to build and run CVML SDK applicat
 Table 1: Software Prerequisites
 
 
-PROGRAMMING GUIDE
+Programming Guide
 ~~~~~~~~~~~~~~~~~
 
-API DOCUMENTATION
+API Documentation
 #################
 Detailed API documentation is available in Doxygen format
 
-FEATURE HEADER REQUIREMENTS
+Feature Header Requirements
 ###########################
 The API headers are packaged into a single folder and are meant to be included (depending on what functions are needed from the CVML SDK) as part of the compilation. Table 2 outlines the minimum header files required for each feature respectively. The section API Include Headers lists all the available included headers with a brief description.
 
 
 
 
-FEATURE DYNAMIC LIBRARY REQUIREMENTS
+Feature Dynamic Library Requirements
 ####################################
 
 There are core and feature specific dynamic libraries. This allows for modularization of the required DLLs for the desired feature(s). The full list of libraries and their descriptions are in the Dynamic Libraries section of the Appendix.
@@ -59,7 +59,7 @@ The path environment variable to the CVML SDK lib folder must be established to 
 
 Close the command prompt after this step to reflect the change to the PATH variable.
 
-PROGRAMMING FLOW
+Programming Flow
 ################
 
 
@@ -70,12 +70,12 @@ The API will check if the feature(s) are supported on the current platform and a
 Preprocess the format of the frame/image to be in RGB before executing the built feature(s). After execution, the feature(s) will return the result(s) from the inference. This entire step is done in a loop for as long as the feature is enabled and running.
 Release the CVML context to undo the allocation of both the CVML context as well as the feature(s).
 
-BUILDING AND RUNNING CVML SDK SAMPLES
+Building And Running CVML SDK Samples
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Besides the provided prebuilt sample executables, users can also follow below instructions to build executables from altered samples.
 
-ADD LIB TO PATH
+Add LIB To PATH
 ###############
 Open command prompt and add SDK lib folder to PATH variable.
 
@@ -83,7 +83,7 @@ set PATH=%PATH%;%CVML_SDK_LIB_PATH%
 
 Close the command prompt after this step to reflect the change to the PATH variable.
 
-CONFIGURE CMAKELISTS.TXT
+Configure Cmakelists.txt
 ########################
 In samples/CMakeLists.txt line 12, change example path for OPENCV_INSTALL_ROOT to location of the OpenCV install build folder (i.e. C:/**/opencv/build)
 
@@ -94,7 +94,7 @@ Note: Sample apps use opencv library. Please make sure OpenCV_DIR in related CMa
 
 Note msvc-142 is equivalent to VS2019
 
-BUILDING SDK SAMPLES
+Building SDK Samples
 ####################
 Open command prompt and change directory to samples folder.  Run ms-build-samples.bat.
 
@@ -109,18 +109,18 @@ A new folder named build-samples will be created within the samples folder of th
 
 Figure 3: Built Samples Folder
 
-IPU DRIVER SETUP AND RADEON ML DEVELOPMENT
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+IPU Driver Setup And Radeon ML Development
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Development directly using the Radeon ML and IPU driver setup can be found in in the “PHX IPU Driver Setup User Guide for 0.8.5.1.pdf"
 
-APPENDIX
+Appendix
 ~~~~~~~~
 
-FILE CONTENTS
+File Contents
 #############
 The CVML SDK is packaged as a ZIP file.  Extract using 7-zip or similar decompression tool.
 
-API INCLUDE HEADERS
+API Include Headers
 ###################
 Table 3: Header Descriptions
 Header File
@@ -179,7 +179,7 @@ float16.hpp
 
 header containing API to support floating point 16
 
-DYNAMIC LIBRARIES
+Dynamic Libraries
 #################
 
 The SDK is structured with 2 levels of APIs from code modularization perspective. A set of core libraries that are needed for every CVML feature and a set of libraries which are feature specific. This allows applications to incorporate only the core and sub-set of features that are of interest. Table 4 describes CVML SDK library binaries calling relationship:
@@ -205,11 +205,11 @@ Core library for TVM run time to load feature model
 
 Inference data for each feature
 
-SAMPLE FILES
+Sample Files
 ############
 A precompiled binary and its corresponding sources are available for developers to use as a reference during integration. Edited sample source code can be built running ms-build-samples.bat.
 
-FREQUENTLY ASKED QUESTIONS
+Frequently Asked Questions
 ##########################
 When running the sample executables, I get a opencv_world*.dll was not found error:
 
