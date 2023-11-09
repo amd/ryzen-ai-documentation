@@ -52,6 +52,10 @@ Using Your Model
 * **Model Running Using ONNX Runtime**: Refer to the the :doc:`modelrun` page. 
 
 
+Ryzen-AI Libraries
+==================
+
+* **Ryzen AI Libraries**: Refer to the :doc:`ryzen_ai_libraries` page
 
 .. toctree::
    :maxdepth: 1
@@ -90,6 +94,12 @@ Using Your Model
    modelrun.rst
 
 
+.. toctree::
+   :maxdepth: 1
+   :caption: Ryzen AI Libraries
+   :hidden:
+
+   ryzen_ai_libraries.rst
  
 
 
