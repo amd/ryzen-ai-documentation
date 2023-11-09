@@ -53,7 +53,9 @@ There are core and feature specific dynamic libraries. This allows for modulariz
 
 The path environment variable to the CVML SDK lib folder must be established to run the features. This can be done using a command prompt with the following command:
 
-set PATH=%PATH%;%CVML_SDK_LIB_PATH%
+.. code-block::
+
+   set PATH=%PATH%;%CVML_SDK_LIB_PATH%
 
 Close the command prompt after this step to reflect the change to the PATH variable.
 
