@@ -79,20 +79,25 @@ Add LIB To PATH
 ###############
 Open command prompt and add SDK lib folder to PATH variable.
 
-set PATH=%PATH%;%CVML_SDK_LIB_PATH%
+.. code-block::
+
+   set PATH=%PATH%;%CVML_SDK_LIB_PATH%
 
 Close the command prompt after this step to reflect the change to the PATH variable.
 
 Configure Cmakelists.txt
 ########################
-In samples/CMakeLists.txt line 12, change example path for OPENCV_INSTALL_ROOT to location of the OpenCV install build folder (i.e. C:/**/opencv/build)
+In samples/CMakeLists.txt line 12, change example path for :envvar:OPENCV_INSTALL_ROOT to location of the OpenCV install build folder (i.e. `C:/**/opencv/build`)
 
-  11 # Please set opencv install root path, below is an example
-12 set(OPENCV_INSTALL_ROOT "C:/cvml/tools/opencv/build")
+.. code-block:: python
+   :lineno-start: 11
+
+   # Please set opencv install root path, below is an example
+   set(OPENCV_INSTALL_ROOT "C:/cvml/tools/opencv/build")
     
 Note: Sample apps use opencv library. Please make sure OpenCV_DIR in related CMakeList.txt file is properly set as per the opencv installed path in the build environment.
 
-Note msvc-142 is equivalent to VS2019
+Note: msvc-142 is equivalent to VS2019
 
 Building SDK Samples
 ####################
