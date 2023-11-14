@@ -201,22 +201,20 @@ A precompiled binary and its corresponding sources are available for developers 
 Frequently Asked Questions
 ==========================
 
-* When running the sample executables, I get a ``opencv_world*.dll`` was not found error:
+When running the sample executables, I get a ``opencv_world*.dll`` was not found error
+   Add OpenCV lib folder to path:
 
-Need to add OpenCV lib folder to path:
+   .. code-block::
 
-.. code-block::
-
-   set PATH=%PATH%; %OPENCV_PATH%
+      set PATH=%PATH%; %OPENCV_PATH%
 
 
-* When running the sample executables, I get a ``cvml-sdk.dll`` was not found error:
+When running the sample executables, I get a ``cvml-sdk.dll`` was not found error
+   Add lib folder to path: 
 
-Need to add lib folder to path: 
+   .. code-block::
 
-.. code-block::
-
-   set PATH=%PATH%; %CVML_SDK_LIB_PATH%
+      set PATH=%PATH%; %CVML_SDK_LIB_PATH%
 
 
 ..
