@@ -90,19 +90,18 @@ Ryzen-AI Libraries
 
 .. toctree::
    :maxdepth: 1
+   :caption: Ryzen AI Libraries
+   :hidden:
+
+   ryzen_ai_libraries.rst
+
+.. toctree::
+   :maxdepth: 1
    :caption: Custom Installation
    :hidden:
 
    manual_installation.rst
    alternate_quantization_setup.rst  
-
-.. toctree::
-   :maxdepth: 1
-   :caption: Ryzen AI Libraries
-   :hidden:
-
-   ryzen_ai_libraries.rst
- 
 
 
 ..
