@@ -79,6 +79,14 @@ Ryzen-AI Libraries
    devflow.rst
    examples.rst
 
+.. toctree::
+   :maxdepth: 1
+   :caption: Using Your Model
+   :hidden:
+
+   modelcompat.rst
+   modelport.rst
+   modelrun.rst
 
 .. toctree::
    :maxdepth: 1
@@ -90,23 +98,11 @@ Ryzen-AI Libraries
 
 .. toctree::
    :maxdepth: 1
-   :caption: Using Your Model
-   :hidden:
-
-   modelcompat.rst
-   modelport.rst
-   modelrun.rst
-
-
-.. toctree::
-   :maxdepth: 1
    :caption: Ryzen AI Libraries
    :hidden:
 
    ryzen_ai_libraries.rst
  
-
-
 
 
 ..
