@@ -8,7 +8,7 @@ Quantization is the process of converting model weights and activation values fr
 Vitis AI ONNX Quantization
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-**Vitis AI ONNX Quantization** provides an easy-to-use Post Training Quantization (PTQ) flow on the pre-trained model saved in ONNX format. It generates a quantized ONNX model ready to be deployed with the Ryzen AI software platform and is mostly recommended for CNN-based models. 
+**Vitis AI ONNX Quantization** provides an easy-to-use Post Training Quantization (PTQ) flow on the pre-trained model saved in ONNX format. It generates a quantized ONNX model ready to be deployed with the Ryzen AI software and is mostly recommended for CNN-based models. 
 
 For more details regarding Vitis AI ONNX Quantization please refer :doc:`vai_quant/vai_q_onnx`
 
@@ -16,7 +16,7 @@ For more details regarding Vitis AI ONNX Quantization please refer :doc:`vai_qua
 Alternate Quantization options
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Ryzen AI Software Platform supports a few other quantization tools that can be used in specific situations: 
+Ryzen AI Software supports a few other quantization tools that can be used in specific situations: 
 
 **Vitis AI PyTorch Quantization**: Allows quantizing models through the PyTorch framework. This flow supports both post-training quantization (PTQ) and quantization-aware training (QAT) to improve model accuracy. For more details please refer :doc:`vai_quant/pt`
 

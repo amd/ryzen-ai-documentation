@@ -43,7 +43,7 @@ The following are the steps and the required files to run the example.
 Step 1: Install Packages
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-* Ensure that the Ryzen AI Software Platform is correctly installed. For more details, see the :ref:`installation instructions <inst.rst>`.
+* Ensure that the Ryzen AI Software is correctly installed. For more details, see the :ref:`installation instructions <inst.rst>`.
 
 * Use the conda environment created during the installation for the rest of the steps. This example requires a couple of additional packages. Run the following command to install them:
 

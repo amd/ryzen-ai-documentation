@@ -17,7 +17,7 @@ https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?f
 Create Conda Environment
 ########################
 
-The Ryzen AI Software Platform requires using a conda environment (Anaconda or Miniconda) for the installation process. 
+The Ryzen AI Software requires using a conda environment (Anaconda or Miniconda) for the installation process. 
 
 Start a conda prompt. In the conda prompt, create and activate an environment for the rest of the installation process. 
 

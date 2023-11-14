@@ -5,7 +5,7 @@ Installation
 Supported Configurations
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-The Ryzen AI Software Platform supports AMD Ryzen 7040U, 7040HS series mobile processors with Windows 11 OS.
+The Ryzen AI Software supports AMD Ryzen 7040U, 7040HS series mobile processors with Windows 11 OS.
 
 Prepare Client Device 
 ~~~~~~~~~~~~~~~~~~~~~
@@ -74,7 +74,7 @@ The installation script, ``install.bat`` does the following
 - Prints the name of the conda environment before exiting 
 
 
-The default Ryzen AI Software Platform packages are now installed inside the conda environment created by the installer. You can start using it by activating the conda environment created by the installer (check the name it prints during the installation process). Ensure the requirements of the runtime environment as described below
+The default Ryzen AI Software packages are now installed inside the conda environment created by the installer. You can start using it by activating the conda environment created by the installer (check the name it prints during the installation process). Ensure the requirements of the runtime environment as described below
 
 .. note:: 
 
@@ -86,7 +86,7 @@ The default Ryzen AI Software Platform packages are now installed inside the con
 
    - Instead of the bundled installation process using ``install.bat``, if you choose to install each component manually please refer to :doc:`manual_installation` page.
 
-   - To use your existing conda environment for Ryzen-AI software platform, follow the :doc:`manual_installation` and manually install Vitis AI ONNX Quantizer, ONNX Runtime, and Vitis AI Execution Provider, without creating a new conda environment.
+   - To use your existing conda environment for Ryzen-AI software, follow the :doc:`manual_installation` and manually install Vitis AI ONNX Quantizer, ONNX Runtime, and Vitis AI Execution Provider, without creating a new conda environment.
 
    - If you require to install Vitis AI PyTorch/TensorFlow or Microsoft Olive Quantizer, please refer to :doc:`alternate_quantization_setup` page. 
 
@@ -102,7 +102,7 @@ Runtime IPU Binary Selection
 
 The IPU binaries are located inside the setup package. Selecting an IPU binary is a required step every time the application is run from a new environment. 
 
-The automatic installer ``install.bat`` sets IPU binary 1x4.xclbin as default. However, Ryzen AI Software platform provides multiple IPU binaries using different configurations on the IPU device. Refer to the :doc:`runtime_setup` page for more details on IPU binaries.
+The automatic installer ``install.bat`` sets IPU binary 1x4.xclbin as default. However, Ryzen AI Software provides multiple IPU binaries using different configurations on the IPU device. Refer to the :doc:`runtime_setup` page for more details on IPU binaries.
 
 Runtime Configuration File
 ##########################
