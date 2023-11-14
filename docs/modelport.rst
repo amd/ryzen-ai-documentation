@@ -5,16 +5,18 @@ Model Quantization
 
 Quantization is the process of converting model weights and activation values from floating-point to lower-precision integer representations. Quantized models are more power-efficient, utilize less memory, and offer better performance. Ryzen AI requires INT8 quantization for inference. 
 
+**************************
 Vitis AI ONNX Quantization
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+**************************
 
 **Vitis AI ONNX Quantization** provides an easy-to-use Post Training Quantization (PTQ) flow on the pre-trained model saved in ONNX format. It generates a quantized ONNX model ready to be deployed with the Ryzen AI software platform and is mostly recommended for CNN-based models. 
 
 For more details regarding Vitis AI ONNX Quantization please refer :doc:`vai_quant/vai_q_onnx`
 
 
+******************************
 Alternate Quantization options
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+******************************
 
 Ryzen AI Software Platform supports a few other quantization tools that can be used in specific situations: 
 
@@ -26,6 +28,7 @@ Ryzen AI Software Platform supports a few other quantization tools that can be u
 
 
 .. toctree::
+   :hidden:
    :maxdepth: 1
 
    Vitis AI ONNX Quantization <./vai_quant/vai_q_onnx>

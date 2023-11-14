@@ -43,7 +43,7 @@ Custom Installation
 
 * **Manual Installation Flow**: Refer to the :doc:`manual_installation` page. 
 
-* **Additional Quantizers **: Refer to the :doc:`alternate_quantization_setup` page. 
+* **Additional Quantizers**: Refer to the :doc:`alternate_quantization_setup` page. 
 
 
 Using Your Model

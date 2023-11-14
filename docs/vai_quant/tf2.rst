@@ -8,8 +8,9 @@ Tensorflow Quantization
 
 
 
+*********************
 Enabling Quantization
-~~~~~~~~~~~~~~~~~~~~~
+*********************
 
 Ensure that Vitis AI TensorFlow is correctly installed. For more information, see :ref:`TensorFlow Quantizer installation instructions <install-pt-tf>`.
 
@@ -20,8 +21,9 @@ To enable Vitis AI Tensorflow Quantization, activate the conda environment insid
      conda activate vitis-ai-tensorflow2
      
 
+**************************
 Post-Training Quantization
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+**************************
 
 Post-Training Quantization requires the following files:
 
@@ -32,7 +34,7 @@ Post-Training Quantization requires the following files:
 A complete example of Post-Training Quantization is available at `Vitis AI GitHub <https://github.com/Xilinx/Vitis-AI/blob/v3.0/src/vai_quantizer/vai_q_tensorflow2.x/tensorflow_model_optimization/python/examples/quantization/keras/vitis/mnist_cnn_ptq.py>`__.
      
 Vitis AI Quantization APIs
-%%%%%%%%%%%%%%%%%%%%%%%%%%     
+==========================     
 
 Vitis AI provides the ``vitis_activation`` module into Tensorflow library for quantization. The following code shows the usage:
 
@@ -51,7 +53,7 @@ Vitis AI provides the ``vitis_activation`` module into Tensorflow library for qu
 - kwargs: Dictionary of the user-defined configurations of quantize strategy. 
 
 Exporting the Model for Deployment
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+==================================
 
 After the quantization, the quantized model can be saved into ONNX to deploy with ONNX Runtime Vitis AI Execution Provider: 
 
@@ -64,7 +66,7 @@ After the quantization, the quantized model can be saved into ONNX to deploy wit
                                               **kwargs)
 
 Fast Finetuning
-%%%%%%%%%%%%%%%
+===============
 
 After post-training quantization, usually there is a small accuracy loss. If the accuracy loss is large, a fast finetuning approach based on the `AdaQuant Algorithm <https://arxiv.org/abs/2006.10518>`__ can be tried instead of quantization aware training. This approach uses a small unlabeled data to calibrate the activations and finetuning the weights. 
 
@@ -79,8 +81,9 @@ Fast finetuning related parameters are as follows:
 - fast_ft_epochs: indicates the number of finetuning epochs for each layer.
 
 
+***************************
 Quantization Aware Training
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+***************************
 
 
 An example of the Quantization Aware Training is available in the `Vitis Github <https://github.com/Xilinx/Vitis-AI/blob/v3.0/src/vai_quantizer/vai_q_tensorflow2.x/tensorflow_model_optimization/python/examples/quantization/keras/vitis/mnist_cnn_qat.py>`__ repo. 

@@ -1,24 +1,26 @@
-#################
+================#
 ONNX Quantization 
-#################
+================#
 
-
-Installation
-~~~~~~~~~~~~
-
-If you have prepared your working environment using :ref:`the bundled installation script <install-bundeld>`, then Vitis AI ONNX quantizer is already installed. 
-
-Otherwise, ensure that Vitis AI ONNX Quantizer is correctly installed as per :ref:`ONNX Quantizer installation instructions <install-onnx-quantizer>`.
- 
-
+********
 Overview
-~~~~~~~~
+********
 
 The ONNX quantization supports Post Training Quantization. This static quantization method first runs the model using a set of inputs called calibration data. During these runs, the flow computes the quantization parameters for each activation. These quantization parameters are written as constants to the quantized model and used for all inputs. The quantization tool supports the following calibration methods: MinMax, Entropy and Percentile, and MinMSE.
 
+
+************
+Installation
+************
+
+If you have prepared your working environment using the :ref:`automatic installation script <install-bundeld>`, then the Vitis AI ONNX Quantizer is already installed. 
+
+Otherwise, ensure that the Vitis AI ONNX Quantizer is correctly installed as per the :ref:`installation instructions <install-onnx-quantizer>`.
+ 
   
+******************
 Running vai_q_onnx
-~~~~~~~~~~~~~~~~~~
+******************
   
 Quantization in ONNX Runtime refers to the linear quantization of an ONNX model. We have developed the vai_q_onnx tool as a plugin for ONNX Runtime to support more post-training quantization(PTQ) functions for quantizing a deep learning model. Post-training quantization(PTQ) is a technique to convert a pre-trained float model into a quantized model with little degradation in model accuracy. A representative dataset is needed to run a few batches of inference on the float model to obtain the distributions of the activations, which is also called quantized calibration.
 
@@ -30,7 +32,7 @@ Quantization in ONNX Runtime refers to the linear quantization of an ONNX model.
 Use the following steps to run PTQ with vai_q_onnx.
 
 1. Preparing the Float Model and Calibration Set 
-################################################
+================================================
 
 Before running vai_q_onnx, prepare the float model and calibration set, including the files as listed
 
@@ -38,7 +40,7 @@ Before running vai_q_onnx, prepare the float model and calibration set, includin
 - calibration dataset	A subset of the training dataset or validation dataset to represent the input data distribution, usually 100 to 1000 images are enough.
 
 2. (Recommended) Pre-processing on the Float Model
-##################################################
+==================================================
 
 Pre-processing is to transform a float model to prepare it for quantization. It consists of the following three optional steps:
 
@@ -50,7 +52,9 @@ The goal of these steps is to improve quantization quality. ONNX Runtime quantiz
 
 Model optimization performs certain operator fusion that makes the quantization tool’s job easier. For instance, a Convolution operator followed by BatchNormalization can be fused into one during the optimization, which can be quantized very efficiently.
 
-Unfortunately, a known issue in ONNX Runtime is that model optimization can not output a model size greater than 2GB. So for large models, optimization must be skipped.
+.. note:: 
+
+    ONNX model optimization can not output a model size greater than 2GB. So for large models, optimization must be skipped.
 
 Pre-processing API is in the Python module ``onnxruntime.quantization.shape_inference``, function ``quant_pre_process()``.
 
@@ -108,7 +112,7 @@ Pre-processing API is in the Python module ``onnxruntime.quantization.shape_infe
 ``external_data_size_threshold``: (Integer) This parameter specifies the size threshold for external data. The default value is 1024.
 
 3. Quantizing Using the vai_q_onnx API
-######################################
+======================================
 
 The static quantization method first runs the model using a set of inputs called calibration data. During these runs, we compute the quantization parameters for each activation. These quantization parameters are written as constants to the quantized model and used for all inputs. Vai_q_onnx quantization tool has expanded calibration methods to power-of-2 scale/float scale quantization methods. Float scale quantization methods include MinMax, Entropy, and Percentile. Power-of-2 scale quantization methods include MinMax and MinMSE.
 
@@ -152,8 +156,9 @@ The static quantization method first runs the model using a set of inputs called
 
 ``extra_options``: (Dict or None) This parameter is a dictionary of additional options that can be passed to the quantization process. If there are no additional options to provide, this can be set to None. The default value is None.
 
+*************************
 Recommended configuration
-~~~~~~~~~~~~~~~~~~~~~~~~~
+*************************
 
 These are the recommended configuration for ``vai_q_onnx.quantize_static`` when targeting IPU
 
@@ -177,8 +182,8 @@ These are the recommended configuration for ``vai_q_onnx.quantize_static`` when 
 ..
   ------------
 
-  #####################################
+  ====================================#
   License
-  #####################################
+  ====================================#
 
  Ryzen AI is licensed under `MIT License <https://github.com/amd/ryzen-ai-documentation/blob/main/License>`_ . Refer to the `LICENSE File <https://github.com/amd/ryzen-ai-documentation/blob/main/License>`_ for the full license text and copyright notice.

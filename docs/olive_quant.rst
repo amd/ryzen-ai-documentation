@@ -7,18 +7,21 @@ Quantization with Olive
 
 
 
+*************
 Prerequisites
 *************
 
 Ensure that Olive is correctly installed. For more information, see :ref:`Olive installation instructions <install-olive>`.
 
 
+********************
 Describing the Model 
 ********************
 
 Olive requires information about your model, such as loading instructions, the names and shapes of input tensors, target hardware selection, and a list of optimizations you want to perform on the model. You can provide this information in a JSON file as input to Olive. For more details on using Olive and creating the Olive configuration file, refer to the `Microsoft Olive Documentation <https://microsoft.github.io/Olive/>`_.
 
 
+*********************************
 Configuring the Quantization Pass
 *********************************
 
@@ -54,6 +57,7 @@ Note: The ``target_opset`` configuration of ``onnx_conversion`` pass must be abo
 For a complete description of the ``VitisAIQuantization`` pass, refer to the `VitisAIQuantization pass reference guide <https://microsoft.github.io/Olive/api/passes.html#vitis-ai-quantization>`_.
 
 
+**************************
 Checking the Configuration
 **************************
 
@@ -64,6 +68,7 @@ Before running quantization with Olive, you can optionally execute a setup mode.
    python -m olive.workflows.run --config resnet_static_config.json --setup
 
 
+********************
 Quantizing the Model
 ********************
 

@@ -2,13 +2,15 @@
 Installation 
 ############
 
+************************
 Supported Configurations
-~~~~~~~~~~~~~~~~~~~~~~~~
+************************
 
 The Ryzen AI Software Platform supports AMD Ryzen 7040U, 7040HS series mobile processors with Windows 11 OS.
 
+*********************
 Prepare Client Device 
-~~~~~~~~~~~~~~~~~~~~~
+*********************
 
 Download the `IPU Driver <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ipu_stack_rel_silicon_2309.zip>`_ and install it by following these steps:
 
@@ -49,8 +51,9 @@ To enable the development and deployment of IPU-based inference on the client de
 
 .. _install-bundeld:
 
+******************
 Installation Steps
-~~~~~~~~~~~~~~~~~~~
+******************
 
 Download the setup package ``ryzen-ai-sw-0.9.tar.gz`` and extract. 
 
@@ -94,24 +97,25 @@ The default Ryzen AI Software Platform packages are now installed inside the con
 |
 |
    
+*************************
 Runtime Environment Setup 
-~~~~~~~~~~~~~~~~~~~~~~~~~
+*************************
    
 Runtime IPU Binary Selection
-############################
+============================
 
 The IPU binaries are located inside the setup package. Selecting an IPU binary is a required step every time the application is run from a new environment. 
 
 The automatic installer ``install.bat`` sets IPU binary 1x4.xclbin as default. However, Ryzen AI Software platform provides multiple IPU binaries using different configurations on the IPU device. Refer to the :doc:`runtime_setup` page for more details on IPU binaries.
 
 Runtime Configuration File
-##########################
+==========================
 
 The Execution Provider setup package contains the Vitis AI Execution Provider runtime configuration file ``vaip_config.json``. This file is required when configuring Vitis AI Execution Provider (VAI EP) inside the ONNX Runtime code.
 
 
 .. Test Installation
-.. ~~~~~~~~~~~~~~~~~
+.. *****************
 
 .. To quick test this setup download this directory from `here <https://github.com/amd/RyzenAI-SW/tree/main/tutorial/getting_started_resnet>`_.
 

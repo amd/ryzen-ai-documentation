@@ -2,11 +2,12 @@
 Release Notes
 #############
 
+***********
 Version 0.9
-$$$$$$$$$$$
+***********
 
 Quantizer
-~~~~~~~~~
+=========
 
 - Pytorch Quantizer
 
@@ -29,7 +30,7 @@ Quantizer
   - Supports quantization for LayerNormalization, HardSigmoid, Erf, Div, and Tanh for IPU.
 
 ONNXRuntime Execution Provider
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+==============================
 
 - Support new OPs, such as Conv1d, LayerNorm, Clip, Abs, Unsqueeze, ConvTranspose.
 - Support pad and depad based on IPU subgraph’s inputs and outputs.
@@ -37,7 +38,7 @@ ONNXRuntime Execution Provider
 - Improve report summary tools.
 
 IPU and Compiler
-~~~~~~~~~~~~~~~~
+================
 
 - Supported exp/tanh/channel-shuffle/pixel-unshuffle/space2depth
 - Performance uplift of xint8 output softmax
@@ -49,7 +50,7 @@ IPU and Compiler
 
 
 LLM
-~~~
+===
 
 - Smoothquant for OPT1.3b, 2.7b, 6.7b, 13b models. 
 - Huggingface Optimum ORT Quantizer for ONNX and Pytorch dynamic quantizer for Pytorch
@@ -64,14 +65,14 @@ LLM
 - Added demo mode script with greedy, stochastic and contrastive search options
 
 ASR
-~~~
+===
 - Support Whipser-tiny
 - All GEMMs offloaded to AIE
 - Improved compile time
 - Improved WER
 
 Known issues
-~~~~~~~~~~~~
+============
 
 - Flow control OPs including "Loop", "If", "Reduce" not supported by VOE
 - Resizing OP in ONNX opset 10 or lower is not supported by VOE
@@ -84,14 +85,13 @@ Known issues
 
 |
 |
-|
-|
 
+***********
 Version 0.8
-$$$$$$$$$$$
+***********
 
 Quantizer
-~~~~~~~~~
+=========
 
 - Pytorch Quantizer
 
@@ -115,7 +115,7 @@ Quantizer
   - Supports node fusions for IPU
   
 ONNXRuntime Execution Provider 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+==============================
 
 - Supports for U8S8 quantized ONNX models
 - Improve the function of falling back to CPU EP
@@ -132,7 +132,7 @@ ONNXRuntime Execution Provider 
 - Upstreamed to ONNX Runtime Github repo for any data type support and bug fix
 
 IPU and Compiler
-~~~~~~~~~~~~~~~~
+================
 
 - Extended the support range of some operators
 
@@ -150,7 +150,7 @@ IPU and Compiler
   - Target-dependency check
 
 Demos
-~~~~~
+=====
 
 - New Demos link: https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=transformers_2308.zip
 
@@ -158,7 +158,7 @@ Demos
   - Automatic speech recognition demo with Whisper-tiny
 
 Known issues
-~~~~~~~~~~~~
+============
 - Flow control OPs including "Loop", "If", "Reduce" not supported by VOE
 - Resize OP in ONNX opset 10 or lower not supported by VOE
 - Tensorflow 2.x quantizer supports models within tf.keras.model only
@@ -169,15 +169,13 @@ Known issues
 
 |
 |
-|
-|
 
-
+***********
 Version 0.7
-$$$$$$$$$$$
+***********
 
 Quantizer
-~~~~~~~~~
+=========
 
 - Docker Containers
 
@@ -222,7 +220,7 @@ Quantizer
   - Add support for setting the opset version in exporting ONNX format
 
 ONNX Runtime Execution Provider
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+===============================
 
 - Vitis ONNX Runtime Execution Provider (VOE)
 
@@ -242,7 +240,7 @@ ONNX Runtime Execution Provider
     - Tuning the performance for multiple models
 
 IPU
-~~~
+===
 
 - Two configurations
 
@@ -256,7 +254,7 @@ IPU
     - Suitable for larger AI models
 
 Known issues
-~~~~~~~~~~~~
+============
 - Flow control OPs including "Loop", "If", "Reduce" are not supported by VOE
 - Resize OP in ONNX opset 10 or lower not supported by VOE
 - Tensorflow 2.x quantizer supports models within tf.keras.model only

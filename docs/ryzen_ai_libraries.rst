@@ -119,11 +119,10 @@ Open command prompt and change directory to samples folder.  Run :file:`ms-build
 
 If the build is successful, last console output will ``be >exit /b 0``. See Figure 2 for correct output after a successful build.
 
-
-
 Figure 2: ms-build-samples.bat correct output
-A new folder named build-samples will be created within the samples folder of the SDK. Refer to Figure 3
 
+
+A new folder named build-samples will be created within the samples folder of the SDK. Refer to Figure 3
 
 
 Figure 3: Built Samples Folder
@@ -143,88 +142,57 @@ The CVML SDK is packaged as a ZIP file.  Extract using 7-zip or similar decompre
 
 API Include Headers
 ===================
-Table 3: Header Descriptions
-Header File
 
-Header Type and Description
+.. list-table:: Header Descriptions
+   :header-rows: 1
 
-:file:`cvml-api-common.h`
-
-core header containing API required by each feature
-
-:file:`cvml-auto-framing.h`
-
-header containing CVML auto framing feature API
-
-:file:`cvml-context.h`
-
-core header containing CVML context and context builder API
-
-:file:`cvml-image.h`
-
-core header containing CVML image API
-
-:file:`cvml-logger.h`
-
-core header containing CVML SDK logging interface
-
-:file:`cvml-face-detector.h`
-
-header containing CVML face detection feature API
-
-:file:`cvml-eyegaze-correction.h`
-
-header containing CVML eye gaze correction feature API
-
-:file:`cvml-depth-estimation.h`
-
-header containing CVML depth estimation feature API
-
-:file:`cvml-super-resolution.h`
-
-header containing CVML super resolution feature API
-
-:file:`cvml-lowlight-denoiser.h`
-
-header containing CVML lowlight denoiser feature API
-
-:file:`cvml-scene-detection.h`
-
-header containing CVML scene detection feature API
-
-:file:`cvml-human-segmentation.h`
-
-header containing CVML human segmentation feature API
-
-:file:`float16.hpp`
-
-header containing API to support floating point 16
+   * - Header File
+     - Header Type and Description
+   * - :file:`cvml-api-common.h`
+     - core header containing API required by each feature
+   * - :file:`cvml-auto-framing.h`
+     - header containing CVML auto framing feature API
+   * - :file:`cvml-context.h`
+     - core header containing CVML context and context builder API
+   * - :file:`cvml-image.h`
+     - core header containing CVML image API
+   * - :file:`cvml-logger.h`
+     - core header containing CVML SDK logging interface
+   * - :file:`cvml-face-detector.h`
+     - header containing CVML face detection feature API
+   * - :file:`cvml-eyegaze-correction.h`
+     - header containing CVML eye gaze correction feature API
+   * - :file:`cvml-depth-estimation.h`
+     - header containing CVML depth estimation feature API
+   * - :file:`cvml-super-resolution.h`
+     - header containing CVML super resolution feature API
+   * - :file:`cvml-lowlight-denoiser.h`
+     - header containing CVML lowlight denoiser feature API
+   * - :file:`cvml-scene-detection.h`
+     - header containing CVML scene detection feature API
+   * - :file:`cvml-human-segmentation.h`
+     - header containing CVML human segmentation feature API
+   * - :file:`float16.hpp`
+     - header containing API to support floating point 16
 
 Dynamic Libraries
 =================
 
 The SDK is structured with 2 levels of APIs from code modularization perspective. A set of core libraries that are needed for every CVML feature and a set of libraries which are feature specific. This allows applications to incorporate only the core and sub-set of features that are of interest. Table 4 describes CVML SDK library binaries calling relationship:
 
-Table 4: SDK Lib Binary Descriptions
-Library Binary
+.. list-table:: SDK Lib Binary Descriptions
+   :header-rows: 1
 
-Core or Feature Library and Description
-
-amdblitter.dll / amdblitter.cl.bin
-
-Core library for image processing used during model pre-process and post-processing
-
-cvml-*.dll
-
-Core SDK and feature libraries
-
-tvm_runtime.dll
-
-Core library for TVM run time to load feature model
-
-*.amodel
-
-Inference data for each feature
+   * - Library Binary
+     - Core or Feature Library and Description
+   * - amdblitter.dll / amdblitter.cl.bin
+     - Core library for image processing used during model pre-process and post-processing
+   * - cvml-\*.dll
+     - Core SDK and feature libraries
+   * - tvm_runtime.dll
+     - Core library for TVM run time to load feature model
+   * - \*.amodel
+     - Inference data for each feature
 
 Sample Files
 ============
