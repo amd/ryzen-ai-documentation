@@ -40,10 +40,11 @@ The following are the steps and the required files to run the example.
 |
 |
 
+************************
 Step 1: Install Packages
-~~~~~~~~~~~~~~~~~~~~~~~~
+************************
 
-* Ensure that the Ryzen AI Software Platform is correctly installed. For more details, see the :ref:`installation instructions <inst.rst>`.
+* Ensure that the Ryzen AI Software Platform is correctly installed. For more details, see the :doc:`installation instructions <inst>`.
 
 * Use the conda environment created during the installation for the rest of the steps. This example requires a couple of additional packages. Run the following command to install them:
 
@@ -55,12 +56,13 @@ Step 1: Install Packages
 |
 |
 
+**************************************
 Step 2: Prepare the Model and the Data
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+**************************************
 
 In this example, the ResNet-50 model from PyTorch Hub is utilized and trained using the CIFAR-10 dataset.
 
-The ``prepare_model_data.py`` script downloads the ResNet-50 model from the PyTorch Hub. The script also downloads the CIFAR10 dataset and uses it to retrain the model using the transfer learning technique. The training process runs over 500 images for each epoch up to five epochs. The training process takes approximately 30 minutes to complete. At the end of the training, the trained model is used for the subsequent steps.
+The :file:`prepare_model_data.py` script downloads the ResNet-50 model from the PyTorch Hub. The script also downloads the CIFAR10 dataset and uses it to retrain the model using the transfer learning technique. The training process runs over 500 images for each epoch up to five epochs. The training process takes approximately 30 minutes to complete. At the end of the training, the trained model is used for the subsequent steps.
 
 Run the following command to start the training:
  
@@ -112,8 +114,9 @@ After completing the training process, observe the following output:
 |
 |
 
+**************************
 Step 3: Quantize the Model
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+**************************
 
 Quantizing AI models from floating-point to 8-bit integers reduces computational power and the memory footprint required for inference. For model quantization, you can either use Vitis AI quantizer or Microsoft Olive. This example utilizes the Vitis AI ONNX quantizer workflow. Quantization tool takes the pre-trained float32 model from the previous step (``resnet_trained_for_cifar10.onnx``) and produces a quantized model.
 
@@ -123,7 +126,7 @@ Quantizing AI models from floating-point to 8-bit integers reduces computational
 
 This will generate quantized model using QDQ quant format and UInt8 activation type and Int8 weight type. After the run is complete, the quantized ONNX model ``resnet.qdq.U8S8.onnx`` is saved to models/resnet.qdq.U8S8.onnx. 
 
-The ``resnet_quantize.py`` file has ``quantize_static`` function (line 95) that applies static quantization to the model. 
+The :file:`resnet_quantize.py` file has ``quantize_static`` function (line 95) that applies static quantization to the model. 
 
 .. code-block::
 
@@ -157,8 +160,9 @@ The parameters of this function are:
 |
 |
 
+************************
 Step 4: Deploy the Model  
-~~~~~~~~~~~~~~~~~~~~~~~~
+************************
 
 The ``predict.py`` script is used to deploy the model. It extracts the first ten images from the CIFAR-10 test dataset and converts them to the .png format. The script then reads all those ten images and classifies them by running the quantized ResNet-50 model on CPU or IPU. 
 
@@ -192,16 +196,16 @@ Deploy the Model on the Ryzen AI IPU
 
 To successfully run the model on the IPU, run the following setup steps:
 
-- Ensure that the ``XLNX_VART_FIRMWARE`` environment variable is correctly pointing to the XCLBIN file included in the ONNX Vitis AI Execution Provider package. For more information, see the :ref:`installation instructions <set-vart-envar>`.
+- Ensure that the :envvar:`XLNX_VART_FIRMWARE` environment variable is correctly pointing to the XCLBIN file included in the ONNX Vitis AI Execution Provider package. For more information, see the :ref:`runtime setup instructions <ipu-selection>`.
 
 .. code-block::
 
    set XLNX_VART_FIRMWARE=C:\path\to\1x4.xclbin
 
-- Copy the ``vaip_config.json`` runtime configuration file from the Vitis AI Execution Provider package to the current directory. For more information, see the :ref:`installation instructions <copy-vaip-config>`. The ``vaip_config.json`` is used by the ``predict.py`` script to configure the Vitis AI Execution Provider.
+- Copy the :file:`vaip_config.json` runtime configuration file from the Vitis AI Execution Provider package to the current directory. For more information, see the :ref:`runtime setup instructions <config-file>`. The :file:`vaip_config.json` is used by the :file:`predict.py` script to configure the Vitis AI Execution Provider.
 
 
-The following section of the ``predict.py`` script shows how ONNX Runtime is configured to deploy the model on the Ryzen AI IPU:
+The following section of the :file:`predict.py` script shows how ONNX Runtime is configured to deploy the model on the Ryzen AI IPU:
 
 
 .. code-block::
@@ -226,7 +230,7 @@ The following section of the ``predict.py`` script shows how ONNX Runtime is con
                                  provider_options=provider_options)
 
 
-Run the ``predict.py`` with the ``--ep ipu`` switch to run the ResNet-50 model on the Ryzen AI IPU:
+Run the :file:`predict.py` with the ``--ep ipu`` switch to run the ResNet-50 model on the Ryzen AI IPU:
 
 
 .. code-block::

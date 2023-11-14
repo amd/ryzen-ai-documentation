@@ -3,8 +3,9 @@ Model Deployment
 ###################
 
 
+*********************************************
 ONNX Runtime with Vitis AI Execution Provider
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+*********************************************
 
 After the model is quantized, you can deploy it with ONNX Runtime by utilizing C++ or Python APIs using Vitis AI Execution Provider (VAI EP) for the inference session: 
 
@@ -15,8 +16,9 @@ After the model is quantized, you can deploy it with ONNX Runtime by utilizing C
                                             providers = providers,
                                             provider_options = provider_options)
 
+****************
 Provider Options
-~~~~~~~~~~~~~~~~
+****************
 
 VAI EP supports three provider options:
 
@@ -49,8 +51,9 @@ VAI EP supports three provider options:
      - Encryption/Decryption key for the models generated. 
 
 
+*********************
 Environment Variables
-~~~~~~~~~~~~~~~~~~~~~
+*********************
 
 Additionally, use the following environment variables to control the Ryzen AI ONNX Runtime based deployment.
 
@@ -74,8 +77,9 @@ Additionally, use the following environment variables to control the Ryzen AI ON
      - If unset, the runtime flow ignores the cache directory and recompiles the model.
      
      
+******************
 Python API Example
-~~~~~~~~~~~~~~~~~~
+******************
  
 .. code-block::
  
@@ -101,8 +105,9 @@ Python API Example
     result = session.run([], {input_name: input_data})  
 
 
+***************
 C++ API Example
-~~~~~~~~~~~~~~~
+***************
 
 .. code-block:: 
 
@@ -140,8 +145,9 @@ C++ API Example
    // ...
 
 
+****************
 Model Encryption
-~~~~~~~~~~~~~~~~
+****************
 
 To protect customers’ intellectual property, encryption is supported as a session option.
 With this enabled, all the xir and compiled models generated would be encrypted using AES256 algorithm.
@@ -175,8 +181,9 @@ The key is 256-bit which is represented as a 64-digit string.
 The model now generated under cache directory is now unabled to be opened with Netron.
 There is a side effect as well, dumping would be disabled as dumping would leak out much information about the model.
 
+*********************************
 Model Operators Assignment Report
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+*********************************
 
 Vitis AI EP generates a file named ``vitisai_ep_report.json`` that reports the model operator assignments across CPU and IPU. This report shows device statistics like total number of nodes, number of nodes running on the CPU, and DPU. It also shows a list of all operator types in the model, the list of operators running on the CPU, and on the DPU. The report also shows the node statistics like input to a node, the operation applied, the output from the node, 
 and etc.,

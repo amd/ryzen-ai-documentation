@@ -3,8 +3,9 @@ PyTorch Quantization
 ####################
 
 
+*********************
 Enabling Quantization
-~~~~~~~~~~~~~~~~~~~~~
+*********************
 
 Ensure that Vitis AI PyTorch is correctly installed. For more information, see :ref:`PyTorch Quantizer installation instructions <install-pt-tf>`.
 
@@ -15,20 +16,21 @@ To enable Vitis AI Pytorch Quantization, acvitate the conda environment inside V
      conda activate vitis-ai-pytorch
      
  
+**************************
 Post-Training Quantization
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+**************************
 
 Post-Training Quantization requires the following files:
 
- 1. model.pth : Pre-trained PyTorch model, generally pth file.
- 2. model.py : A Python script including float model definition.
- 3. calibration dataset: A subset of the training dataset containing 100 to 1000 images.
+1. model.pth : Pre-trained PyTorch model, generally pth file.
+2. model.py : A Python script including float model definition.
+3. calibration dataset: A subset of the training dataset containing 100 to 1000 images.
 
 A complete example of Post-Training Quantization is available in the `Vitis AI GitHub <https://github.com/Xilinx/Vitis-AI/blob/v3.0/src/vai_quantizer/vai_q_pytorch/example/resnet18_quant.py>`__ repo.
 
 
 Vitis AI Quantization APIs
-%%%%%%%%%%%%%%%%%%%%%%%%%%
+==========================
 
 Vitis AI provides ``pytorch_nndct`` module with Quantization related APIs. 
 
@@ -66,16 +68,16 @@ Vitis AI provides ``pytorch_nndct`` module with Quantization related APIs.
     
     
 Quantization Output
-%%%%%%%%%%%%%%%%%%%
+===================
 
 If this quantization command runs successfully, two important files are generated in the output directory ``./quantize_result``:
 
-  • ``<model>.onnx``: Quantized ONNX model
-  • ``Quant_info.json``: Quantization steps of tensors. Retain this file for evaluating quantized models.
+* ``<model>.onnx``: Quantized ONNX model
+* ``Quant_info.json``: Quantization steps of tensors. Retain this file for evaluating quantized models.
 
 
 Hardware-Aware Quantization
-%%%%%%%%%%%%%%%%%%%%%%%%%%%
+===========================
 
 To enable hardware-aware quantization provide the ``target`` to the IPU specific archietecture as follows: 
 
@@ -92,7 +94,7 @@ The ``target`` of current version of IPU is ``AMD_AIE2_Nx4_Overlay_cfg0``
 
 
 Partial Quantization
-%%%%%%%%%%%%%%%%%%%%
+====================
 
 Partial quantization can be enabled by using ``QuantStab`` and ``DeQuantStub`` operator from the ``pytorch_nndct`` library. In the following example, we are quantizing the layers ``subm0`` and ``subm2``, but not the ``subm1``: 
 
@@ -123,7 +125,7 @@ Partial quantization can be enabled by using ``QuantStab`` and ``DeQuantStub`` o
 
 
 Fast Finetuning
-%%%%%%%%%%%%%%%
+===============
 
 After post-training quantization, there is usually a small accuracy loss. If the accuracy loss is large, a fast-finetuning approach, which is based on the `AdaQuant Algorithm <https://arxiv.org/abs/2006.10518>`__, can be tried instead of the quantization aware training. The fast finetuning uses a small unlabeled data to calibrate the activations and finetuning the weights. 
 
@@ -147,8 +149,9 @@ After post-training quantization, there is usually a small accuracy loss. If the
       quantizer.load_ft_param()
 
 
+***************************
 Quantization Aware Training
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+***************************
 
 An example of Quantization Aware Training is available at the `Vitis Github <https://github.com/Xilinx/Vitis-AI/blob/v3.0/src/vai_quantizer/vai_q_pytorch/example/resnet18_qat.py>`__.
 
