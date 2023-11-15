@@ -20,7 +20,11 @@ The following are the steps and the required files to run the example. The files
    * - Preparation
      - ``prepare_model_data.py``,
        ``resnet_utils.py``
-     - Train to prepare a model for the example. The training process adopts the transfer learning technique to train a pre-trained ResNet-50 model with the CIFAR-10 dataset. 
+     - The script prepare_model_data.py downloads and extracts the CIFAR10 dataset. The script has an optional flag to re-train a pretrained ResNet50 model using CIFAR10 dataset via transfer learning. The trained ResNet50 model (in .pt and .onnx formats) are provided. 
+   * - Trained model
+     - ``models/resnet_trained_for_cifar10.onnx``,
+       ``models/resnet_trained_for_cifar10.pt``
+     - The ResNet50 model trained using CIFAR10 is provided both in .pt and .onnx formats.
    * - Quantization 
      - ``resnet_quantize.py``
      - Convert the model to the IPU-deployable model by performing Post-Training Quantization flow using VitisAI ONNX Quantization.
