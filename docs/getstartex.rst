@@ -51,18 +51,26 @@ Step 1: Install Packages
 |
 |
 
-Step 2: Prepare the Model and the Data
+Step 2: Prepare the CIFAR10 dataset for training (optional), quantization and inference
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In this example, the ResNet-50 model from PyTorch Hub is utilized and trained using the CIFAR-10 dataset.
 
-The ``prepare_model_data.py`` script downloads the ResNet-50 model from the PyTorch Hub. The script also downloads the CIFAR10 dataset and uses it to retrain the model using the transfer learning technique. The training process runs over 500 images for each epoch up to five epochs. The training process takes approximately 30 minutes to complete. At the end of the training, the trained model is used for the subsequent steps.
+The prepare_model_data.py script downloads the CIFAR10 dataset in pickle format (for python) and binary format (for C++). The dataset is used for training (optional), quantization and inference. The script has an optional flag to perform the retraining process on CIFAR10. The training process runs over 500 images for each epoch up to five epochs. The training process takes approximately 30 minutes to complete. 
 
-Run the following command to start the training:
- 
+Run the following command to prepare the dataset:
+
 .. code-block:: 
 
-   python prepare_model_data.py --num_epochs 5
+   python prepare_model_data.py 
+
+The ResNet50 model has been retrained on CIFAR10 and the model artifacts resnet_trained_for_cifar10.pt and resnet_trained_for_cifar10.onnx are provided in the models/ directory. To generate these files by yourself, follow the instructions in the next step.
+
+
+[Optional] To also train the model on CIFAR10, run the following command:
+.. code-block:: 
+
+   python prepare_model_data.py --train --num_epochs 5
 
  
 A typical output from the training process looks as follows:
@@ -103,7 +111,7 @@ After completing the training process, observe the following output:
  
 * The trained ResNet-50 model on the CIFAR-10 dataset is saved at the following location: ``models\resnet_trained_for_cifar10.pt``.
 * The trained ResNet-50 model on the CIFAR-10 dataset is saved at the following location in ONNX format: ``models\resnet_trained_for_cifar10.onnx``.
-* The downloaded CIFAR-10 dataset is saved in the current directory at the following location: ``data\cifar-10-batches-py\*``.
+* The downloaded CIFAR-10 dataset is saved in the current directory at the following location: ``data\*``.
 
 |
 |
