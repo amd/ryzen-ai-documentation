@@ -30,12 +30,6 @@ The following are the steps and the required files to run the example. The files
    * - Quantization 
      - ``resnet_quantize.py``
      - Convert the model to the IPU-deployable model by performing Post-Training Quantization flow using VitisAI ONNX Quantization.
-   * - Deployment - Python
-     - ``predict.py``
-     -  Run the Quantized model using the ONNX Runtime code. We demonstrate running the model on both CPU and IPU. 
-   * - Deployment - C++
-     - ``cpp/resnet50/.``
-     -  This folder contains the script ``resnet50_cifar.cpp`` that demonstrates running inference using C++ APIs. We additionally provide the infrastructure (required libraries, CMake files and headerfiles) required by the example. 
 
 
 |
