@@ -164,8 +164,8 @@ Step 4: Deploy the Model
 
 We demonstrate deploying the quantized model using both Python and C++ APIs. 
 
-* [Deployment - Python](Deployment - Python)
-* [Deployment - C++](Deployment - C++)
+* Deployment - Python 
+* Deployment - C++
 
 Deployment - Python
 
@@ -267,7 +267,7 @@ Typical output
 ..
   ------------
 
-( Deployment - Python)
+Deployment - C++
 
 ------------
   #####################################
