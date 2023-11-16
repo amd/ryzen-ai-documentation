@@ -48,7 +48,6 @@ html_last_updated_fmt = 'September 11, 2023'
 # ones.
 extensions = [
     'sphinx.ext.graphviz',
-    'sphinx.ext.autosectionlabel',
     'breathe',
     'sphinx.ext.autodoc',
     'sphinx.ext.doctest',
