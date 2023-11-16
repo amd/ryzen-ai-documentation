@@ -163,10 +163,10 @@ Step 4: Deploy the Model
 
 We demonstrate deploying the quantized model using both Python and C++ APIs. 
 
-* Deployment - Python 
-* Deployment - C++
+* [Deployment - Python](###Deployment - Python) 
+* [Deployment - C++](###Deployment - C++)
 
-Deployment - Python
+###Deployment - Python
 
 The ``predict.py`` script is used to deploy the model. It extracts the first ten images from the CIFAR-10 test dataset and converts them to the .png format. The script then reads all those ten images and classifies them by running the quantized ResNet-50 model on CPU or IPU. 
 
@@ -264,6 +264,9 @@ Typical output
   Image 9: Actual Label automobile, Predicted Label ship
 
 ..
+
+
+###Deployment - C++
   ------------
 
   #####################################
