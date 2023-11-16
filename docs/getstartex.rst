@@ -28,9 +28,12 @@ The following are the steps and the required files to run the example. The files
    * - Quantization 
      - ``resnet_quantize.py``
      - Convert the model to the IPU-deployable model by performing Post-Training Quantization flow using VitisAI ONNX Quantization.
-   * - Deployment
+   * - Deployment - Python
      - ``predict.py``
      -  Run the Quantized model using the ONNX Runtime code. We demonstrate running the model on both CPU and IPU. 
+   * - Deployment - C++
+     - ``cpp/resnet50/.``
+     -  This folder contains the script ``resnet50_cifar.cpp`` that demonstrates running inference using C++ APIs. We additionally provide the infrastructure (required libraries, CMake files and headerfiles) required by the example. 
 
 
 |
@@ -68,7 +71,8 @@ Run the following command to prepare the dataset:
 * The ResNet50 model has been retrained on CIFAR10 and the model artifacts ``resnet_trained_for_cifar10.pt`` and ``resnet_trained_for_cifar10.onnx`` are provided in ``models/``. To generate these files by yourself, follow the instructions in the next step.
 
 
-[Optional] To also train the model on CIFAR10, run the following command:
+[**Optional] To retrain the model on CIFAR10, run the following command:
+
 .. code-block:: 
 
    python prepare_model_data.py --train --num_epochs 5
@@ -161,6 +165,13 @@ The parameters of this function are:
 
 Step 4: Deploy the Model  
 ~~~~~~~~~~~~~~~~~~~~~~~~
+
+We demonstrate deploying the quantized model using both Python and C++ APIs. 
+
+* [Deployment - Python](### Deployment - Python)
+* [Deployment - C++](### Deployment - C++)
+
+### Deployment - Python
 
 The ``predict.py`` script is used to deploy the model. It extracts the first ten images from the CIFAR-10 test dataset and converts them to the .png format. The script then reads all those ten images and classifies them by running the quantized ResNet-50 model on CPU or IPU. 
 
@@ -260,6 +271,9 @@ Typical output
 ..
   ------------
 
+(### Deployment - Python)
+
+------------
   #####################################
   License
   #####################################
