@@ -172,12 +172,13 @@ We demonstrate deploying the quantized model using both Python and C++ APIs.
 * Deployment - Python :ref: `Deployment - Python`
 * Deployment - C++ :ref: `Deployment - C++`
 
-.. _Deployment - Python
+Deployment - Python
+===========================
 
 The ``predict.py`` script is used to deploy the model. It extracts the first ten images from the CIFAR-10 test dataset and converts them to the .png format. The script then reads all those ten images and classifies them by running the quantized ResNet-50 model on CPU or IPU. 
 
 Deploy the Model on the CPU
-===========================
+----------------------------
 
 By default, ``predict.py`` runs the model on CPU. 
 
@@ -202,7 +203,7 @@ Typical output
         
                 
 Deploy the Model on the Ryzen AI IPU
-====================================
+------------------------------------
 
 To successfully run the model on the IPU, run the following setup steps:
 
@@ -271,7 +272,8 @@ Typical output
 
 
 
-.. _Deployment - C++
+Deployment - C++
+===========================
 
 ..
   ------------
