@@ -264,9 +264,6 @@ Typical output
   Image 9: Actual Label automobile, Predicted Label ship
 
 ..
-
-
-###Deployment - C++
   ------------
 
   #####################################
