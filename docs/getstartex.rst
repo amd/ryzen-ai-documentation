@@ -263,6 +263,10 @@ Typical output
   Image 8: Actual Label cat, Predicted Label deer
   Image 9: Actual Label automobile, Predicted Label ship
 
+
+
+###Deployment - C++
+
 ..
   ------------
 
