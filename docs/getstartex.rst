@@ -73,7 +73,7 @@ Run the following command to prepare the dataset:
 * The ResNet50 model has been retrained on CIFAR10 and the model artifacts ``resnet_trained_for_cifar10.pt`` and ``resnet_trained_for_cifar10.onnx`` are provided in ``models/``. To generate these files by yourself, follow the instructions in the next step.
 
 
-[**Optional] To retrain the model on CIFAR10, run the following command:
+[Optional] To retrain the model on CIFAR10, run the following command:
 
 .. code-block:: 
 
