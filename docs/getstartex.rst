@@ -68,7 +68,7 @@ Run the following command to prepare the dataset:
 
    python prepare_model_data.py 
 
-* The downloaded CIFAR-10 dataset is saved in the current directory at the following location: ``data\*``.
+* The downloaded CIFAR-10 dataset is saved in the current directory at the following location: ``data/*``.
 * The ResNet50 model has been retrained on CIFAR10 and the model artifacts ``resnet_trained_for_cifar10.pt`` and ``resnet_trained_for_cifar10.onnx`` are provided in ``models/``. To generate these files by yourself, follow the instructions in the next step.
 
 
@@ -169,10 +169,10 @@ Step 4: Deploy the Model
 
 We demonstrate deploying the quantized model using both Python and C++ APIs. 
 
-* [Deployment - Python](###Deployment - Python) 
-* [Deployment - C++](###Deployment - C++)
+* Deployment - Python :ref: `Deployment - Python`
+* Deployment - C++ :ref: `Deployment - C++`
 
-###Deployment - Python
+.. _Deployment - Python
 
 The ``predict.py`` script is used to deploy the model. It extracts the first ten images from the CIFAR-10 test dataset and converts them to the .png format. The script then reads all those ten images and classifies them by running the quantized ResNet-50 model on CPU or IPU. 
 
@@ -271,7 +271,7 @@ Typical output
 
 
 
-###Deployment - C++
+.. _Deployment - C++
 
 ..
   ------------
