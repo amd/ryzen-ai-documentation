@@ -8,7 +8,7 @@ The following are the steps and the required files to run the example. The files
 
 
 .. list-table:: 
-   :widths: 25 30 30
+   :widths: 20 25 25
    :header-rows: 1
 
    * - Steps 
