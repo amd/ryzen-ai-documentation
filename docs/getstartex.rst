@@ -319,16 +319,64 @@ After compilation, the executable should be generated in ``build/Release/resnet5
 
    copy build/Release/resnet50_cifar.exe resnet50/onnxruntime/bin/.
 
+Now to deploy our model, we will go back to the parent directory (getting_started_resnet) of this example:
+
+.. code-block:: bash 
+
+   cd ../
+
 The C++ application that was generated takes 3 arguments: 
 
 #. Path to the quantized ONNX model generated in Step 3 
 #. The execution provider of choice (cpu or ipu) 
 #. vaip_config.json (pass None if running on CPU) 
 
+
 Deploy the Model on the CPU
 ****************************
 
+To run the model on the CPU, use the following command: 
 
+.. code-block:: bash 
+
+   cpp\resnet50\onnxruntime\bin\resnet50_cifar.exe models\resnet.qdq.U8S8.onnx cpu None
+
+Typical output: 
+
+.. code-block:: bash 
+
+      model name:models\resnet.qdq.U8S8.onnx
+   ep:cpuInput Node Name/Shape (1):
+           input : -1x3x32x32
+   Output Node Name/Shape (1):
+           output : -1x10
+   curr file: ./images/cifar_image_0.png
+   
+   input_tensor shape: 1x3x32x32
+   Running model...done
+   output_tensor_shape: 1x10
+   score[3]    =  0.979557     text: cat
+   score[6]    =  0.0123308    text: frog
+   score[5]    =  0.0066002    text: dog
+   score[2]    =  0.00089324   text: bird
+   score[4]    =  0.000421937  text: deer
+   curr file: ./images/cifar_image_1.png
+   
+   .
+   .
+   .
+   .
+   Final results:
+   Predicted label is cat and actual label is cat
+   Predicted label is ship and actual label is ship
+   Predicted label is ship and actual label is ship
+   Predicted label is airplane and actual label is airplane
+   Predicted label is frog and actual label is frog
+   Predicted label is frog and actual label is frog
+   Predicted label is truck and actual label is automobile
+   Predicted label is frog and actual label is frog
+   Predicted label is cat and actual label is cat
+   Predicted label is automobile and actual label is automobile
 
 ..
   ------------
