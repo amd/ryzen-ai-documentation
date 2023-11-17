@@ -1,10 +1,9 @@
 .. _quantization-with-olive:
 
 
-##########################
-Quantization with Olive
-##########################
-
+############################
+Vitis AI Quantizer for Olive 
+############################
 
 
 *************

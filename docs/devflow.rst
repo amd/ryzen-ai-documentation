@@ -3,7 +3,7 @@ Development Flow Overview
 #########################
 
 
-The Ryzen AI Software Platform enables developers to execute machine learning models trained in PyTorch or TensorFlow on laptops powered by AMD Ryzen™ AI. The development flow for Ryzen AI consists of three simple steps.
+The Ryzen AI Software enables developers to execute machine learning models trained in PyTorch or TensorFlow on laptops powered by AMD Ryzen™ AI. The development flow for Ryzen AI consists of three simple steps.
 
 .. image:: images/devflow.png
    :scale: 100%
@@ -20,9 +20,11 @@ Quantization
 ************
 Quantization involves converting the AI model's parameters from floating-point to lower-precision representations, such as 16-bit or 8-bit integers. Quantized models are more power-efficient, utilize less memory, and offer better performance. 
 
-**Vitis AI ONNX Quantization** provides an easy-to-use Post Training Quantization (PTQ) flow on the pre-trained model saved in ONNX format. It generates a quantized ONNX model ready to be deployed with the Ryzen AI software platform and is mostly recommended for CNN-based models.
+The **Vitis AI Quantizer for ONNX** provides an easy-to-use Post Training Quantization (PTQ) flow on the pre-trained model saved in the ONNX format. It generates a quantized ONNX model ready to be deployed with the Ryzen AI Software. This is the recommended quantization flow for CNN-based models.
 
-Ryzen AI Software Platform supports a few other quantization tools that can be used in specific situations, for example, Vitis AI PyTorch/Tensorflow quantizer, Olive Quantizer, etc. For more details about quantization refer to the :doc:`modelport` page.
+The Ryzen AI Software also supports other quantization tools that can be used in specific situations. 
+
+For more details, refer to the :doc:`modelport` page.
 
 **********
 Deployment

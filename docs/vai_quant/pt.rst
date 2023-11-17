@@ -1,15 +1,15 @@
-####################
-PyTorch Quantization
-####################
+##############################
+Vitis AI Quantizer for PyTorch
+##############################
 
 
 *********************
 Enabling Quantization
 *********************
 
-Ensure that Vitis AI PyTorch is correctly installed. For more information, see :ref:`PyTorch Quantizer installation instructions <install-pt-tf>`.
+Ensure that the Vitis AI Quantizer for PyTorch is correctly installed. For more information, see the :ref:`installation instructions <install-pt-tf>`.
 
-To enable Vitis AI Pytorch Quantization, acvitate the conda environment inside Vitis AI Pytorch Docker container:
+To enable the Vitis AI Quantizer for PyTorch, activate the conda environment in the Vitis AI Pytorch Docker container:
 
 .. code-block::
 
