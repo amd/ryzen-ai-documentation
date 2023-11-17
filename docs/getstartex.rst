@@ -397,6 +397,8 @@ To run the model on the IPU, we will pass the ipu flag and the vaip_config.json 
 
 Typical output: 
 
+.. code-block:: bash 
+
    model name:models\resnet.qdq.U8S8.onnx
    ep:ipuWARNING: Logging before InitGoogleLogging() is written to STDERR
    I20231116 14:49:23.608762 92092 vitisai_compile_model.cpp:304] Vitis AI EP Load ONNX Model Success
