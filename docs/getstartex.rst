@@ -278,6 +278,25 @@ Typical output
 Deployment - C++
 ===========================
 
+Prerequisites
+^^^^^^^^^^^^^
+
+1. Visual Studio 2019 or 2022 (Recommended for Visual Studio 2019)
+2. cmake (version >= 3.26)
+3. opencv (version=4.6.0) required for the resnet50 example
+
+Install OpenCV 
+^^^^^^^^^^^^^^
+It is recommended to build OpenCV from the source code and use static build. The default installation localtion is "\install" , the following instruction installs OpenCV in the location "D:\opencv" as an example.
+.. code-block:: 
+   git clone https://github.com/opencv/opencv.git -b 4.6.0
+   cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DBUILD_SHARED_LIBS=OFF -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DCMAKE_CONFIGURATION_TYPES=Release -A x64 -T host=x64 -G 'Visual Studio 16 2019' '-DCMAKE_INSTALL_PREFIX=D:\opencv' '-DCMAKE_PREFIX_PATH=D:\opencv' -DCMAKE_BUILD_TYPE=Release -DBUILD_opencv_python2=OFF -DBUILD_opencv_python3=OFF -DBUILD_WITH_STATIC_CRT=OFF -B build -S opencv
+   cmake --build build --config Release
+   cmake --install build --config Release
+
+
+
+
 ..
   ------------
 
