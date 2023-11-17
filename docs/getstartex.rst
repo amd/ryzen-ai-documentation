@@ -300,9 +300,10 @@ It is recommended to build OpenCV from the source code and use static build. The
 Build and Run Resnet50 C++ sample
 ----------------------------------
 
-The CMake list files and related artifacts are provided in the `cpp/resnet50/*` folder. The example has onnxruntime dependencies, that are provided in `cpp/resnet50/onnxruntime/*`. Run the following command to build the resnet50 example. Assign -DOpenCV_DIR to the OpenCV installation directory.
+The CMake list files and related artifacts are provided in the ``cpp/resnet50/*`` folder. The example has onnxruntime dependencies, that are provided in ``cpp/resnet50/onnxruntime/*``. Run the following command to build the resnet50 example. Assign ``-DOpenCV_DIR`` to the OpenCV installation directory.
 
 .. code-block:: bash
+
    cd cpp
    cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DBUILD_SHARED_LIBS=OFF -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DCMAKE_CONFIGURATION_TYPES=Release -A x64 -T host=x64 -DCMAKE_INSTALL_PREFIX=. -DCMAKE_PREFIX_PATH=. -B build -S resnet50 -DOpenCV_DIR="C:/opencv" -G "Visual Studio 16 2019"
 
