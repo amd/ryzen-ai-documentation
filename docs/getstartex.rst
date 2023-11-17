@@ -347,27 +347,12 @@ Typical output:
 
 .. code-block:: bash 
 
-      model name:models\resnet.qdq.U8S8.onnx
-   ep:cpuInput Node Name/Shape (1):
+   model name:models\resnet.qdq.U8S8.onnx
+   ep:cpu
+   Input Node Name/Shape (1):
            input : -1x3x32x32
    Output Node Name/Shape (1):
            output : -1x10
-   curr file: ./images/cifar_image_0.png
-   
-   input_tensor shape: 1x3x32x32
-   Running model...done
-   output_tensor_shape: 1x10
-   score[3]    =  0.979557     text: cat
-   score[6]    =  0.0123308    text: frog
-   score[5]    =  0.0066002    text: dog
-   score[2]    =  0.00089324   text: bird
-   score[4]    =  0.000421937  text: deer
-   curr file: ./images/cifar_image_1.png
-   
-   .
-   .
-   .
-   .
    Final results:
    Predicted label is cat and actual label is cat
    Predicted label is ship and actual label is ship
@@ -400,27 +385,28 @@ Typical output:
 .. code-block:: bash 
 
    model name:models\resnet.qdq.U8S8.onnx
-   ep:ipuWARNING: Logging before InitGoogleLogging() is written to STDERR
-   I20231116 14:49:23.608762 92092 vitisai_compile_model.cpp:304] Vitis AI EP Load ONNX Model Success
-   I20231116 14:49:23.608762 92092 vitisai_compile_model.cpp:305] Graph Input Node Name/Shape (1)
-   I20231116 14:49:23.608762 92092 vitisai_compile_model.cpp:309]   input : [-1x3x32x32]
-   I20231116 14:49:23.608762 92092 vitisai_compile_model.cpp:315] Graph Output Node Name/Shape (1)
-   I20231116 14:49:23.608762 92092 vitisai_compile_model.cpp:319]   output : [-1x10]
-   I20231116 14:49:24.227304 92092 pass_imp.cpp:366] save const info to "C:\\temp\\savsrini\\vaip\\.cache\\c13917fcfb7de23b99be18a8d7588e62\\const_info_before_const_folding.txt"
-   I20231116 14:49:24.337621 92092 pass_imp.cpp:275] save fix info to "C:\\temp\\savsrini\\vaip\\.cache\\c13917fcfb7de23b99be18a8d7588e62\\fix_info.txt"
-   I20231116 14:49:24.337621 92092 pass_imp.cpp:366] save const info to "C:\\temp\\savsrini\\vaip\\.cache\\c13917fcfb7de23b99be18a8d7588e62\\const_info_after_const_folding.txt"
-   I20231116 14:49:24.337621 92092 pass_imp.cpp:393] save const info to "C:\\temp\\savsrini\\vaip\\.cache\\c13917fcfb7de23b99be18a8d7588e62\\const.bin"
-   I20231116 14:49:29.816938 92092 compile_pass_manager.cpp:352] Compile mode: aie
-   I20231116 14:49:29.816938 92092 compile_pass_manager.cpp:353] Debug mode: performance
-   I20231116 14:49:29.816938 92092 compile_pass_manager.cpp:357] Target architecture: AMD_AIE2_Nx4_Overlay
-   I20231116 14:49:29.816938 92092 compile_pass_manager.cpp:523] Graph name: main_graph, with op num: 439
-   I20231116 14:49:29.816938 92092 compile_pass_manager.cpp:536] Begin to compile...
-   W20231116 14:49:33.973276 92092 RedundantOpReductionPass.cpp:663] xir::Op{name = /avgpool/GlobalAveragePool_output_0_DequantizeLinear_Output_vaip_315, type = pool-fix}'s input and output is unchanged, so it will be removed.
-   I20231116 14:49:34.134106 92092 PartitionPass.cpp:5648] xir::Op{name = output_, type = fix2float} is not supported by current target. Target name: AMD_AIE2_Nx4_Overlay, target type: IPU_PHX. Assign it to CPU.
-   I20231116 14:49:35.301882 92092 compile_pass_manager.cpp:548] Total device subgraph number 3, CPU subgraph number 1
-   I20231116 14:49:35.301882 92092 compile_pass_manager.cpp:557] Total device subgraph number 3, DPU subgraph number 1
-   I20231116 14:49:35.301882 92092 compile_pass_manager.cpp:613] Compile done.
-   I20231116 14:49:35.367611 92092 anchor_point.cpp:428] before optimization:
+   ep:ipu
+   WARNING: Logging before InitGoogleLogging() is written to STDERR
+   I20231117 11:22:16.366518 105724 vitisai_compile_model.cpp:304] Vitis AI EP Load ONNX Model Success
+   I20231117 11:22:16.366518 105724 vitisai_compile_model.cpp:305] Graph Input Node Name/Shape (1)
+   I20231117 11:22:16.366518 105724 vitisai_compile_model.cpp:309]          input : [-1x3x32x32]
+   I20231117 11:22:16.366518 105724 vitisai_compile_model.cpp:315] Graph Output Node Name/Shape (1)
+   I20231117 11:22:16.366518 105724 vitisai_compile_model.cpp:319]          output : [-1x10]
+   I20231117 11:22:17.189302 105724 pass_imp.cpp:366] save const info to "C:\\temp\\savsrini\\vaip\\.cache\\c13917fcfb7de23b99be18a8d7588e62\\const_info_before_const_folding.txt"
+   I20231117 11:22:17.317427 105724 pass_imp.cpp:275] save fix info to "C:\\temp\\savsrini\\vaip\\.cache\\c13917fcfb7de23b99be18a8d7588e62\\fix_info.txt"
+   I20231117 11:22:17.317427 105724 pass_imp.cpp:366] save const info to "C:\\temp\\savsrini\\vaip\\.cache\\c13917fcfb7de23b99be18a8d7588e62\\const_info_after_const_folding.txt"
+   I20231117 11:22:17.317427 105724 pass_imp.cpp:393] save const info to "C:\\temp\\savsrini\\vaip\\.cache\\c13917fcfb7de23b99be18a8d7588e62\\const.bin"
+   I20231117 11:22:24.488317 105724 compile_pass_manager.cpp:352] Compile mode: aie
+   I20231117 11:22:24.488317 105724 compile_pass_manager.cpp:353] Debug mode: performance
+   I20231117 11:22:24.488317 105724 compile_pass_manager.cpp:357] Target architecture: AMD_AIE2_Nx4_Overlay
+   I20231117 11:22:24.513685 105724 compile_pass_manager.cpp:523] Graph name: main_graph, with op num: 439
+   I20231117 11:22:24.513685 105724 compile_pass_manager.cpp:536] Begin to compile...
+   W20231117 11:22:30.609391 105724 RedundantOpReductionPass.cpp:663] xir::Op{name = /avgpool/GlobalAveragePool_output_0_DequantizeLinear_Output_vaip_315, type = pool-fix}'s input and output is unchanged, so it will be removed.
+   I20231117 11:22:30.848696 105724 PartitionPass.cpp:5648] xir::Op{name = output_, type = fix2float} is not supported by current target. Target name: AMD_AIE2_Nx4_Overlay, target type: IPU_PHX. Assign it to CPU.
+   I20231117 11:22:32.471781 105724 compile_pass_manager.cpp:548] Total device subgraph number 3, CPU subgraph number 1
+   I20231117 11:22:32.471781 105724 compile_pass_manager.cpp:557] Total device subgraph number 3, DPU subgraph number 1
+   I20231117 11:22:32.471781 105724 compile_pass_manager.cpp:613] Compile done.
+   I20231117 11:22:32.563076 105724 anchor_point.cpp:428] before optimization:
    
    input_DequantizeLinear_Output <-- identity@ --
    input_QuantizeLinear_Output <-- identity@fuse_DPU --
@@ -429,7 +415,7 @@ Typical output:
    
    input_QuantizeLinear_Output_vaip_426 <-- identity@combine_empty --
    input_QuantizeLinear_Output
-   I20231116 14:49:35.367611 92092 anchor_point.cpp:428] before optimization:
+   I20231117 11:22:32.563076 105724 anchor_point.cpp:428] before optimization:
    
    output <-- identity@ --
    output_QuantizeLinear_Output <-- identity@fuse_DPU --
@@ -438,27 +424,13 @@ Typical output:
    
    output_QuantizeLinear_Output_vaip_427 <-- identity@combine_empty --
    output_QuantizeLinear_Output
-   2023-11-16 14:49:35.4696161 [W:onnxruntime:, session_state.cc:1169 onnxruntime::VerifyEachNodeIsAssignedToAnEp] Some nodes were not assigned to the preferred execution providers which may or may not have an negative impact on performance. e.g. ORT explicitly assigns shape related ops to CPU to improve perf.
-   2023-11-16 14:49:35.4751682 [W:onnxruntime:, session_state.cc:1171 onnxruntime::VerifyEachNodeIsAssignedToAnEp] Rerunning with verbose output on a non-minimal build will show node assignments.
-   I20231116 14:49:35.523561 92092 custom_op.cpp:133]  Vitis AI EP running 400 Nodes
+   2023-11-17 11:22:32.7183935 [W:onnxruntime:, session_state.cc:1169 onnxruntime::VerifyEachNodeIsAssignedToAnEp] Some nodes were not assigned to the preferred execution providers which may or may not have an negative impact on performance. e.g. ORT explicitly assigns shape related ops to CPU to improve perf.
+   2023-11-17 11:22:32.7282487 [W:onnxruntime:, session_state.cc:1171 onnxruntime::VerifyEachNodeIsAssignedToAnEp] Rerunning with verbose output on a non-minimal build will show node assignments.
+   I20231117 11:22:32.799844 105724 custom_op.cpp:133]  Vitis AI EP running 400 Nodes
    Input Node Name/Shape (1):
            input : -1x3x32x32
    Output Node Name/Shape (1):
            output : -1x10
-   curr file: ./images/cifar_image_0.png
-   
-   input_tensor shape: 1x3x32x32
-   Running model...done
-   output_tensor_shape: 1x10
-   score[3]    =  0.982167     text: cat
-   score[6]    =  0.0109109    text: frog
-   score[5]    =  0.00584018   text: dog
-   score[2]    =  0.00069751   text: bird
-   score[4]    =  0.0002566    text: deer
-   curr file: ./images/cifar_image_1.png
-   .
-   .
-   .
    Final results:
    Predicted label is cat and actual label is cat
    Predicted label is ship and actual label is ship
