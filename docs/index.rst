@@ -17,54 +17,10 @@ The AMD Ryzen™ AI Software enables developers to take full advantage of the AM
 |
 |
 
-*****************
-Table of Contents
-*****************
-
-Release Notes
-===============
-
-* **Release Notes**: Refer to :doc:`relnotes` page.
-
-Getting Started
-===============
-
-* **Installation**: Refer to the :doc:`inst` page. 
-
-* **Runtime Setup**: Refer to the :doc:`runtime_setup` page. 
-
-* **Development Flow Overview**: Refer to the :doc:`devflow` page. 
-
-* **Examples, Demos, and Tutorials**: Refer to the :doc:`examples` page.
-
-
-Custom Installation
-===================
-
-* **Manual Installation Flow**: Refer to the :doc:`manual_installation` page. 
-
-* **Additional Quantizers**: Refer to the :doc:`alternate_quantization_setup` page. 
-
-
-Using Your Model
-================
-
-* **Model Compatibility**: Refer to the :doc:`modelcompat` page. 
-
-* **Model Quantization**: Refer to the :doc:`modelport` page. 
-
-* **Model Running Using ONNX Runtime**: Refer to the the :doc:`modelrun` page. 
-
-
-Ryzen-AI Libraries
-==================
-
-* **Ryzen AI Libraries**: Refer to the :doc:`ryzen_ai_libraries` page
 
 .. toctree::
    :maxdepth: 1
    :caption: Release Notes
-   :hidden:
 
    relnotes.rst
 
@@ -72,7 +28,6 @@ Ryzen-AI Libraries
 .. toctree::
    :maxdepth: 1
    :caption: Getting Started
-   :hidden:
 
    inst.rst
    runtime_setup.rst
@@ -82,7 +37,6 @@ Ryzen-AI Libraries
 .. toctree::
    :maxdepth: 1
    :caption: Using Your Model
-   :hidden:
 
    modelcompat.rst
    modelport.rst
@@ -91,14 +45,12 @@ Ryzen-AI Libraries
 .. toctree::
    :maxdepth: 1
    :caption: Ryzen AI Libraries
-   :hidden:
 
    ryzen_ai_libraries.rst
 
 .. toctree::
    :maxdepth: 1
-   :caption: Custom Installation
-   :hidden:
+   :caption: Additional Topics
 
    manual_installation.rst
    alternate_quantization_setup.rst  
