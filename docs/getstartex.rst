@@ -320,7 +320,7 @@ After compilation, the executable should be generated in ``build/Release/resnet5
    copy build/Release/resnet50_cifar.exe resnet50/onnxruntime/bin/.
 
 Deploy the Model on the CPU
-
+****************************
 
 The C++ application that was generated in the previous step takes 3 arguments: 
 1. The quantized ONNX model generated in Step 3 
