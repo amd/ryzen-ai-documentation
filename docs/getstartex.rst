@@ -287,7 +287,7 @@ After compilation, the executable should be generated in ``build/Release/resnet5
 
 .. code-block:: bash 
 
-   copy build/Release/resnet50_cifar.exe resnet50/onnxruntime/bin/.
+   xcopy build\Release\resnet50_cifar.exe resnet50\onnxruntime\bin\
 
 Now to deploy our model, we will go back to the parent directory (getting_started_resnet) of this example:
 
