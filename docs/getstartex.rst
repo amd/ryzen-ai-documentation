@@ -288,7 +288,7 @@ Prerequisites
 Install OpenCV 
 --------------
 
-It is recommended to build OpenCV from the source code and use static build. The default installation localtion is "\install" , the following instruction installs OpenCV in the location "D:\opencv" as an example.
+It is recommended to build OpenCV from the source code and use static build. The default installation localtion is "\install" , the following instruction installs OpenCV in the location "D:\opencv" as an example. You may first change the directory to where you want to clone the OpenCV repository.
 
 .. code-block:: bash
 
@@ -304,9 +304,28 @@ The CMake list files and related artifacts are provided in the ``cpp/resnet50/*`
 
 .. code-block:: bash
 
-   cd cpp
+   cd getting_started_resnet/cpp
    cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DBUILD_SHARED_LIBS=OFF -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DCMAKE_CONFIGURATION_TYPES=Release -A x64 -T host=x64 -DCMAKE_INSTALL_PREFIX=. -DCMAKE_PREFIX_PATH=. -B build -S resnet50 -DOpenCV_DIR="C:/opencv" -G "Visual Studio 16 2019"
 
+This should generate the build directory with the ``resnet50_cifar.sln`` solution file along with other project files. Open the solution file using Visual Studio 2019 and build to compile. You can also use the command line to open the solution file in Visual Studio. 
+
+..code-block:: bash 
+
+   devenv build/resnet50_cifar.sln
+
+After compilation, the executable should be generated in ``build/Release/resnet50_cifar.exe``. We will copy this application over to the directory with the onnxruntime DLLs that were provided: 
+
+..code-block:: bash 
+
+   copy build/Release/resnet50_cifar.exe resnet50/onnxruntime/bin/.
+
+Deploy the Model on the CPU
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The C++ application that was generated in the previous step takes 3 arguments: 
+1. The quantized ONNX model generated in Step 3 
+2. The execution provider of choice (cpu or ipu) 
+3. vaip_config.json (pass None if running on CPU) 
 ..
   ------------
 
