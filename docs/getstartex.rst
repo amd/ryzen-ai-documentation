@@ -34,7 +34,7 @@ The following are the steps and the required files to run the example. The files
      -  Run the Quantized model using the ONNX Runtime code. We demonstrate running the model on both CPU and IPU. 
    * - Deployment - C++
      - ``cpp/resnet50/.``
-     -  This folder contains the script ``resnet50_cifar.cpp`` that demonstrates running inference using C++ APIs. We additionally provide the infrastructure (required libraries, CMake files and headerfiles) required by the example. 
+     -  This folder contains the source code ``resnet50_cifar.cpp`` that demonstrates running inference using C++ APIs. We additionally provide the infrastructure (required libraries, CMake files and headerfiles) required by the example. 
 
 
 |
