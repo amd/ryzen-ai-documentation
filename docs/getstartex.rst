@@ -55,12 +55,12 @@ Step 1: Install Packages
 |
 |
 
-Step 2: Prepare the CIFAR10 dataset for training (optional), quantization and inference
+Step 2: Prepare the CIFAR10 dataset
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In this example, the ResNet-50 model from PyTorch Hub is utilized and trained using the CIFAR-10 dataset.
+In this example, we utilize the ResNet-50 model (from PyTorch Hub) finetuned using the CIFAR-10 dataset.
 
-The ``prepare_model_data.py`` script downloads the CIFAR10 dataset in pickle format (for python) and binary format (for C++). The dataset is used for training (optional), quantization and inference. The script has an optional flag to perform the retraining process on CIFAR10. The training process runs over 500 images for each epoch up to five epochs. The training process takes approximately 30 minutes to complete. 
+The ``prepare_model_data.py`` script downloads the CIFAR10 dataset in pickle format (for python) and binary format (for C++). This dataset will be used in the subsequent steps for quantization and inference.
 
 Run the following command to prepare the dataset:
 
@@ -72,46 +72,14 @@ Run the following command to prepare the dataset:
 * The ResNet50 model has been retrained on CIFAR10 and the model artifacts ``resnet_trained_for_cifar10.pt`` and ``resnet_trained_for_cifar10.onnx`` are provided in ``models/``. To generate these files by yourself, follow the instructions in the next step.
 
 
-[Optional] To retrain the model on CIFAR10, run the following command:
+[Optional] Finetuning ResNet50 on CIFAR10 dataset:
+==================================================
+
+The ``prepare_model_data.py`` script has an optional flag to perform the retraining process on CIFAR10. The training process runs over 500 images for each epoch up to five epochs. The training process takes approximately 30 minutes to complete. 
 
 .. code-block:: 
 
    python prepare_model_data.py --train --num_epochs 5
-
- 
-A typical output from the training process looks as follows:
-
-.. code-block::
-
-   Downloading: "https://download.pytorch.org/models/resnet50-11ad3fa6.pth" to C:\Users\JohnDoe/.cache\torch\hub\checkpoints\resnet50-11ad3fa6.pth
-   100%|██████████████████████████████████████████████████████████████████████████████| 97.8M/97.8M [02:07<00:00, 805kB/s]
-   Epoch [1/5], Step [100/500] Loss: 1.1550
-   Epoch [1/5], Step [200/500] Loss: 1.0453
-   Epoch [1/5], Step [300/500] Loss: 0.6397
-   Epoch [1/5], Step [400/500] Loss: 0.6130
-   Epoch [1/5], Step [500/500] Loss: 0.6792
-   Epoch [2/5], Step [100/500] Loss: 0.5454
-   Epoch [2/5], Step [200/500] Loss: 0.5218
-   Epoch [2/5], Step [300/500] Loss: 0.7235
-   Epoch [2/5], Step [400/500] Loss: 0.5740
-   Epoch [2/5], Step [500/500] Loss: 0.9055
-   Epoch [3/5], Step [100/500] Loss: 0.5954
-   Epoch [3/5], Step [200/500] Loss: 0.4662
-   Epoch [3/5], Step [300/500] Loss: 0.3351
-   Epoch [3/5], Step [400/500] Loss: 0.4871
-   Epoch [3/5], Step [500/500] Loss: 0.4340
-   Epoch [4/5], Step [100/500] Loss: 0.4139
-   Epoch [4/5], Step [200/500] Loss: 0.4724
-   Epoch [4/5], Step [300/500] Loss: 0.4847
-   Epoch [4/5], Step [400/500] Loss: 0.4778
-   Epoch [4/5], Step [500/500] Loss: 0.3955
-   Epoch [5/5], Step [100/500] Loss: 0.5511
-   Epoch [5/5], Step [200/500] Loss: 0.4557
-   Epoch [5/5], Step [300/500] Loss: 0.6158
-   Epoch [5/5], Step [400/500] Loss: 0.3884
-   Epoch [5/5], Step [500/500] Loss: 0.4330
-   Accuracy of the model on the test images: 75.27 %
-
 
 After completing the training process, observe the following output:
  
@@ -372,7 +340,7 @@ To successfully run the model on the IPU:
 
 - Ensure that the ``XLNX_VART_FIRMWARE`` environment variable is correctly pointing to the XCLBIN file included in the ONNX Vitis AI Execution Provider package. For more information, see the :ref:`installation instructions <set-vart-envar>`.
 
-- Copy the ``vaip_config.json`` runtime configuration file from the Vitis AI Execution Provider package to the current directory. For more information, see the :ref:`installation instructions <copy-vaip-config>`. The ``vaip_config.json`` is used by the ``predict.py`` script to configure the Vitis AI Execution Provider.
+- Copy the ``vaip_config.json`` runtime configuration file from the Vitis AI Execution Provider package to the current directory. For more information, see the :ref:`installation instructions <copy-vaip-config>`. The ``vaip_config.json`` is used by the source file ``resnet50_cifar.cpp`` to configure the Vitis AI Execution Provider.
 
 To run the model on the IPU, we will pass the ipu flag and the vaip_config.json file as arguments to the C++ application. Use the following command to run the model on the IPU: 
 
