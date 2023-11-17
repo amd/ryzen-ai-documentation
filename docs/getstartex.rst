@@ -288,7 +288,7 @@ Prerequisites
 Install OpenCV 
 --------------
 
-It is recommended to build OpenCV from the source code and use static build. The default installation localtion is "\install" , the following instruction installs OpenCV in the location "D:\opencv" as an example. You may first change the directory to where you want to clone the OpenCV repository.
+It is recommended to build OpenCV from the source code and use static build. The default installation localtion is "\install" , the following instruction installs OpenCV in the location "D:\\opencv" as an example. You may first change the directory to where you want to clone the OpenCV repository.
 
 .. code-block:: bash
 
