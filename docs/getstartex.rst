@@ -309,13 +309,13 @@ The CMake list files and related artifacts are provided in the ``cpp/resnet50/*`
 
 This should generate the build directory with the ``resnet50_cifar.sln`` solution file along with other project files. Open the solution file using Visual Studio 2019 and build to compile. You can also use the command line to open the solution file in Visual Studio. 
 
-..code-block:: bash 
+.. code-block:: bash 
 
    devenv build/resnet50_cifar.sln
 
 After compilation, the executable should be generated in ``build/Release/resnet50_cifar.exe``. We will copy this application over to the directory with the onnxruntime DLLs that were provided: 
 
-..code-block:: bash 
+.. code-block:: bash 
 
    copy build/Release/resnet50_cifar.exe resnet50/onnxruntime/bin/.
 
