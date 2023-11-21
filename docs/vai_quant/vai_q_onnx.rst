@@ -26,7 +26,9 @@ Quantization in ONNX refers to the linear quantization of an ONNX model. The ``v
 
 .. note:: 
 
-    The ONNX models must be opset 10 or higher to be quantized by Vitis AI ONNX Quantizer. Models with opset < 10 must be reconverted to ONNX from their original framework using opset 10 or above. Alternatively, you can refer to the usage of the version converter for ONNX Version Converter https://github.com/onnx/onnx/blob/main/docs/VersionConverter.md
+    The ONNX models must be opset 10 or higher (recommended setting 13) to be quantized by Vitis AI ONNX Quantizer. Models with opset < 10 must be reconverted to ONNX from their original framework using opset 10 or above. Alternatively, you can refer to the usage of the version converter for ONNX Version Converter https://github.com/onnx/onnx/blob/main/docs/VersionConverter.md
+
+    
 
 
 Use the following steps to run PTQ with vai_q_onnx.
