@@ -18,17 +18,17 @@ Package Contents
 
 The following files are included with the Ryzen AI Library package,
 
-**include/**
+include/
   C++ header files
-**lib/**
+windows/
   Binary files for Windows, including both compile time .LIB files and runtime .DLL files
-**thirdparty_lib**
+thirdparty_lib/
   Additional dependent libraries for sample applications (e.g., OpenCV binaries)
-**samples/**
+samples/
   Individual sample applications
-**LICENSE.txt**
+LICENSE.txt
   License file
-**README.rst**
+README.rst
   This file
 
 **************************************
@@ -100,8 +100,8 @@ estimation library, using the *ryzenai_image* from the previous section::
 
   // encapsulate output buffer
   amd::cvml::Image ryzenai_output(amd::cvml::Image::Format::kGrayScale,
-                                 amd::cvml::Image::DataType::kFloat32,
-                                 output_width, output_height, output_pointer);
+                                  amd::cvml::Image::DataType::kFloat32,
+                                  output_width, output_height, output_pointer);
 
   // execute the feature
   ryzenai_depth_estimation.GenerateDepthMap(ryzenai_image, &ryzenai_output);
@@ -112,11 +112,11 @@ Building applications with Ryzen AI Libraries
 When building applications against the Ryzen AI Library, ensure that the
 library's,
 
-  **include/**
+  include/
 
 folder is part of the compiler's include paths, and that the library's,
 
-  **lib/**
+  windows/
 
 folder has been added to the linker's library paths.
 
@@ -132,7 +132,7 @@ that one of the following conditions is met,
 
 1. The Ryzen AI Library dll's are in the same folder as the application
    executable.
-2. The Ryzen AI Library's **lib/** folder has been added to the PATH
+2. The Ryzen AI Library's **windows/** folder has been added to the PATH
    environment variable.
 
 ****************
