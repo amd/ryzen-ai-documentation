@@ -143,3 +143,12 @@ Revision History
 +===================+==========+==================+
 | November 30, 2023 | 1.0      | Initial revision |
 +-------------------+----------+------------------+
+
+..
+  ------------
+
+  #####################################
+  License
+  #####################################
+
+  Ryzen AI is licensed under MIT License. Refer to the LICENSE file for the full license text and copyright notice.
