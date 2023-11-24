@@ -6,36 +6,70 @@ In the Ryzen AI workflow, the quantized model is converted into ONNX format for 
 
 The current list of the IPU-supported ONNX operators is as follows:
 
+- Abs
 - Add
 - And
-- Average pool
+- Argmax
+- Argmin
+- Average pool_2D
 - BatchNorm
+- Channel Shuffle
 - Clip
 - Concat
-- Conv
+- Convolution
 - ConvTranspose
+- Depthwise_Convolution
+- Div
+- Elu
+- Equal
+- Exp
+- Fully-Connected
 - Gemm
 - GlobalAveragePool
 - GlobalMaxPool
+- Greater
+- GreaterOrEqual
+- Gstiling
+- Hard-Sigmoid
+- Hard-Swish
 - Identity
 - LayerNorm
+- LeakyRelu
+- Less
+- LessOrEqual
 - LSTM
+- MatMul
 - Max
+- Min
 - MaxPool
 - Mul
-- Pad
+- Neg
+- Not
+- Or
+- Pad: constant or symmetric
+- Pixel-Shuffle
+- Pixel-Unshuffle
 - Prelu
+- ReduceMax
+- ReduceMin
+- ReduceMean
+- ReduceSum
 - Relu
+- Reshape
 - Resize
 - RNN
 - Sigmoid
 - Slice
 - Softmax
+- SpaceToDepth
+- Sqrt
 - Split
 - Squeeze
+- Strided-Slice
+- Sub
+- Tanh
 - Unsqueeze
 - Upsample
-- Spacetodepth
 
 ..
   ------------
