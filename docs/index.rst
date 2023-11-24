@@ -53,7 +53,8 @@ The AMD Ryzen™ AI Software enables developers to take full advantage of the AM
    :caption: Additional Topics
 
    manual_installation.rst
-   alternate_quantization_setup.rst  
+   alternate_quantization_setup.rst 
+   early_access_features.rst
 
 
 ..
