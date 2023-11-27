@@ -43,8 +43,7 @@ To enable the development and deployment of IPU-based inference on the client de
      - version >= 3.9 
    * - Anaconda or Miniconda
      - Latest version
-   * - AMD IPU driver
-     - >= 10.105.5.42
+
 
 |
 |
