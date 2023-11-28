@@ -4,7 +4,7 @@
     </td>
  </table>
 
-# Ryzen AI Software Platform
+# Ryzen AI Software
 
 Version 1.0
 
