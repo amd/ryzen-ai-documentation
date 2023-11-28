@@ -72,8 +72,7 @@ Run the following command to prepare the dataset:
    python prepare_model_data.py 
 
 * The downloaded CIFAR-10 dataset is saved in the current directory at the following location: ``data/*``.
-* The ResNet50 model has been retrained on CIFAR10 and the model artifacts ``resnet_trained_for_cifar10.pt`` and ``resnet_trained_for_cifar10.onnx`` are provided in ``models/``. To generate these files by yourself, follow the instructions in the next step.
-
+* The ResNet50 model has been retrained on CIFAR10 and the PyTorch model ``resnet_trained_for_cifar10.pt`` is provided in ``models/``. If you would like to regenerate the fine-tuned model artifacts by yourself, you may perform the optional step described next. 
 
 [Optional] Finetuning ResNet50 on CIFAR10 dataset:
 ==================================================
