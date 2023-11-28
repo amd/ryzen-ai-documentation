@@ -113,36 +113,35 @@ Runtime Configuration File
 The Execution Provider setup package contains the Vitis AI Execution Provider runtime configuration file ``vaip_config.json``. This file is required when configuring Vitis AI Execution Provider (VAI EP) inside the ONNX Runtime code.
 
 
-.. Test Installation
-.. *****************
+Test Installation
+*****************
 
-.. To quick test this setup download this directory from `here <https://github.com/amd/RyzenAI-SW/tree/main/tutorial/getting_started_resnet>`_.
+The setup package ``ryzen-ai-sw-1.0`` contains a ``quicktest`` folder to help test the setup. 
 
-.. Run the command: 
+Run the command: 
 
-.. .. code-block:: 
+.. code-block::
 
-..    python quickstart.py --ep ipu
+   cd ryzen-ai-sw-1.0\ryzen-ai-sw-1.0\quicktest
+   python -m pip install -r requirements.txt
+   python quicktest.py –ep ipu
 
 
-.. This test will take an image and run classification on IPU. On a sucessful run you will see a output like below:
+- This test will take an image and run classification on IPU. On a successful run you will see a output like below:
 
-.. .. code-block::
+.. code-block::
   
-..  WARNING: Logging before InitGoogleLogging() is written to STDERR
-..  I20231004 15:57:40.141337 43720 vitisai_compile_model.cpp:303] Vitis AI EP Load ONNX Model Success
-..  I20231004 15:57:40.141337 43720 vitisai_compile_model.cpp:304] Graph Input Node Name/Shape (1)
-..  I20231004 15:57:40.141337 43720 vitisai_compile_model.cpp:308]   input : [-1x3x32x32]
-..  I20231004 15:57:40.141337 43720 vitisai_compile_model.cpp:314] Graph Output Node Name/Shape (1)
-..  I20231004 15:57:40.141337 43720 vitisai_compile_model.cpp:318]   output : [-1x10]
-..  I20231004 15:57:40.141337 43720 vitisai_compile_model.cpp:193] use cache key quickstart_modelcachekey
-..  2023-10-04 15:57:40.2479179 [W:onnxruntime:, session_state.cc:1169 onnxruntime::VerifyEachNodeIsAssignedToAnEp] Some nodes were not assigned to the preferred execution ..  providers which may or may not have an negative impact on performance. e.g. ORT explicitly assigns shape related ops to CPU to improve perf.
-..  2023-10-04 15:57:40.2569196 [W:onnxruntime:, session_state.cc:1171 onnxruntime::VerifyEachNodeIsAssignedToAnEp] Rerunning with verbose output on a non-minimal build 
-..  will show node assignments.
-..  I20231004 15:57:40.361856 43720 custom_op.cpp:128]  Vitis AI EP running 400 Nodes
-..  Image 0: Actual Label cat, Predicted Label cat
-
-
+   I20231127 16:29:15.010130 13892 vitisai_compile_model.cpp:336] Vitis AI EP Load ONNX Model Success
+   I20231127 16:29:15.010130 13892 vitisai_compile_model.cpp:337] Graph Input Node Name/Shape (1)
+   I20231127 16:29:15.010130 13892 vitisai_compile_model.cpp:341]   input : [-1x3x32x32]
+   I20231127 16:29:15.010130 13892 vitisai_compile_model.cpp:347] Graph Output Node Name/Shape (1)
+   I20231127 16:29:15.010130 13892 vitisai_compile_model.cpp:351]   output : [-1x10]
+   I20231127 16:29:15.010130 13892 vitisai_compile_model.cpp:226] use cache key quickstart_modelcachekey
+   [Vitis AI EP] No. of Operators :   CPU     2    IPU   400  99.50%
+   [Vitis AI EP] No. of Subgraphs :   CPU     1    IPU     1 Actually running on IPU     1
+   2 0 2 3 - 1 1 - 2 7   1 6 : 2 9 : 1 5 . 0 9 6 6 7 8 8   [ W : o n n x r u n t i m e : ,   s e s s i o n _ s t a t e . c c : 1 1 6 9   o n n x r u n t i m e : : V e r i f y E a c h N o d e I s A s s i g n e d T o A n E p ]   S o m e   n o d e s   w e r e   n o t   a s s i g n e d   t o   t h e   p r e f e r r e d   e x e c u t i o n   p r o v i d e r s   w h i c h   m a y   o r   m a y   n o t   h a v e   a n   n e g a t i v e   i m p a c t   o n   p e r f o r m a n c e .   e . g .   O R T   e x p l i c i t l y   a s s i g n s   s h a p e   r e l a t e d   o p s   t o   C P U   t o   i m p r o v e   p e r f .
+    2 0 2 3 - 1 1 - 2 7   1 6 : 2 9 : 1 5 . 1 0 1 2 0 1 5   [ W : o n n x r u n t i m e : ,   s e s s i o n _ s t a t e . c c : 1 1 7 1   o n n x r u n t i m e : : V e r i f y E a c h N o d e I s A s s i g n e d T o A n E p ]   R e r u n n i n g   w i t h   v e r b o s e   o u t p u t   o n   a   n o n - m i n i m a l   b u i l d   w i l l   s h o w   n o d e   a s s i g n m e n t s .
+    Image 0: Actual Label cat, Predicted Label not-cat
 
 
 ..
