@@ -21,14 +21,14 @@ The following are the steps and the required files to run the example. The files
    * - Preparation
      - ``prepare_model_data.py``,
        ``resnet_utils.py``
-     - The script prepare_model_data.py prepares the model and the data for the rest of the tutorial.
+     - The script ``prepare_model_data.py`` prepares the model and the data for the rest of the tutorial.
        To prepare the model the script converts pre-trained PyTorch model to ONNX format.
        To prepare the necessary data the script downloads and extract CIFAR10 dataset. 
        Optionally the script can be used to retrain the ResNet50 model from PyTorch hub using CIFAR10 dataset. However, this retrained model, resnet_trained_for_cifar10.pt is already provided in this tutorial to skip the retraining process
    * - Trained model
      - ``models/resnet_trained_for_cifar10.onnx``,
        ``models/resnet_trained_for_cifar10.pt``
-     - The ResNet50 model trained using CIFAR10 is provided both in .pt and .onnx formats.
+     - The ResNet50 model trained using CIFAR10 is provided both in .pt format.
    * - Quantization 
      - ``resnet_quantize.py``
      - Convert the model to the IPU-deployable model by performing Post-Training Quantization flow using VitisAI ONNX Quantization.
