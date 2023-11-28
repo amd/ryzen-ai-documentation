@@ -25,11 +25,11 @@ The following are the steps and the required files to run the example. The files
      - The script ``prepare_model_data.py`` prepares the model and the data for the rest of the tutorial.
           1. To prepare the model the script converts pre-trained PyTorch model to ONNX format.
           2. To prepare the necessary data the script downloads and extract CIFAR10 dataset. 
-       Optionally, the script can be used to retrain the ResNet50 model from PyTorch hub using CIFAR10 dataset. However, this retrained model, resnet_trained_for_cifar10.pt is already provided in this tutorial to skip the retraining process
+       Optionally, the script can be used to retrain the ResNet model from PyTorch hub using CIFAR10 dataset. However, this retrained model, resnet_trained_for_cifar10.pt is already provided in this tutorial to skip the retraining process
    * - Trained model
      - ``models/resnet_trained_for_cifar10.onnx``,
        ``models/resnet_trained_for_cifar10.pt``
-     - The ResNet50 model trained using CIFAR10 is provided both in .pt format.
+     - The ResNet model trained using CIFAR10 is provided both in .pt format.
    * - Quantization 
      - ``resnet_quantize.py``
      - Convert the model to the IPU-deployable model by performing Post-Training Quantization flow using VitisAI ONNX Quantization.
@@ -64,7 +64,7 @@ Step 2: Prepare the CIFAR10 dataset
 
 In this example, we utilize the a custom ResNet model finetuned using the CIFAR-10 dataset.
 
-The ``prepare_model_data.py`` script downloads the CIFAR10 dataset in pickle format (for python) and binary format (for C++). This dataset will be used in the subsequent steps for quantization and inference. The script also exports the provided PyTorch model into ONNX format. 
+The ``prepare_model_data.py`` script downloads the CIFAR10 dataset in pickle format (for python) and binary format (for C++). This dataset will be used in the subsequent steps for quantization and inference. The script also exports the provided PyTorch model into ONNX format. The following snippet from the script shows how the ONNX model is exported: 
 
 .. code-block:: 
 
@@ -274,7 +274,7 @@ Prerequisites
 
 1. Visual Studio 2019 Community edition, ensure "Desktop Development with C++" is installed
 2. cmake (version >= 3.26)
-3. opencv (version=4.6.0) required for the resnet50 example
+3. opencv (version=4.6.0) required for the custom resnet example
 
 Install OpenCV 
 --------------
@@ -289,12 +289,12 @@ It is recommended to build OpenCV from the source code and use static build. The
    cmake --build build --config Release
    cmake --install build --config Release
 
-Build and Run Resnet50 C++ sample
+Build and Run Custom Resnet C++ sample
 ----------------------------------
 
 The C++ source files, CMake list files and related artifacts are provided in the ``cpp/resnet50/*`` folder. The source file ``cpp/resnet50/resnet50_cifar.cpp`` takes 10 images from the CIFAR10 test set, converts them to .png format, preprocesses them, and performs model inference. The example has onnxruntime dependencies, that are provided in ``cpp/resnet50/onnxruntime/*``. 
 
-Run the following command to build the resnet50 example. Assign ``-DOpenCV_DIR`` to the OpenCV installation directory.
+Run the following command to build the resnet example. Assign ``-DOpenCV_DIR`` to the OpenCV installation directory.
 
 .. code-block:: bash
 
