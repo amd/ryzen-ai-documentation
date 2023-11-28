@@ -280,7 +280,7 @@ Run the following command to build the resnet50 example. Assign ``-DOpenCV_DIR``
    cd getting_started_resnet/cpp
    cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DBUILD_SHARED_LIBS=OFF -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DCMAKE_CONFIGURATION_TYPES=Release -A x64 -T host=x64 -DCMAKE_INSTALL_PREFIX=. -DCMAKE_PREFIX_PATH=. -B build -S resnet50 -DOpenCV_DIR="C:/opencv" -G "Visual Studio 16 2019"
 
-This should generate the build directory with the ``resnet50_cifar.sln`` solution file along with other project files. Open the solution file using Visual Studio 2019 and build to compile. You can also use the command line to open the solution file in Visual Studio. 
+This should generate the build directory with the ``resnet50_cifar.sln`` solution file along with other project files. Open the solution file using Visual Studio 2019 and build to compile. You can also use "Developer Command Prompt for VS 2019" to open the solution file in Visual Studio.
 
 .. code-block:: bash 
 
@@ -341,7 +341,11 @@ Deploy the Model on the IPU
 
 To successfully run the model on the IPU:
 
-- Ensure that the ``XLNX_VART_FIRMWARE`` environment variable is correctly pointing to the XCLBIN file included in the ONNX Vitis AI Execution Provider package. For more information, see the :ref:`installation instructions <set-vart-envar>`.
+- Ensure that the ``XLNX_VART_FIRMWARE`` environment variable is correctly pointing to the XCLBIN file included in the ONNX Vitis AI Execution Provider package. If you installed Ryzen-AI software by automatic installer, the IPU binary path is already set, however if you did the installation manually, ensure the IPU binary path is set using the following command: 
+.. code-block:: bash 
+
+   set XLNX_VART_FIRMWARE=path\to\RyzenAI\installation\ryzen-ai-sw-1.0\ryzen-ai-sw-1.0\voe-4.0-win_amd64\1x4.xclbin
+
 
 - Copy the ``vaip_config.json`` runtime configuration file from the Vitis AI Execution Provider package to the current directory. For more information, see the :ref:`installation instructions <copy-vaip-config>`. The ``vaip_config.json`` is used by the source file ``resnet50_cifar.cpp`` to configure the Vitis AI Execution Provider.
 
