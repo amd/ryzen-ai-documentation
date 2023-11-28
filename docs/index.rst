@@ -1,5 +1,5 @@
 ##########################
-Ryzen AI Software Platform  
+Ryzen AI Software   
 ##########################
 
 The AMD Ryzen™ AI Software enables developers to take full advantage of the AMD XDNA™-based AI accelerators integrated in AMD Ryzen AI processors. The Ryzen AI Software intelligently optimizes AI tasks and workloads, freeing-up CPU and GPU resources, and ensuring optimal performance at lower power.
