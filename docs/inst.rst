@@ -58,7 +58,7 @@ Download the setup package ``ryzen-ai-sw-1.0.zip`` and extract.
 
 https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ryzen-ai-sw-1.0.zip
 
-Before running the installation script ensure all the prerequisites outlined above have been met and the Windows PATH variable is properly set for each component. Make sure to set the PATH variable using "Environment Variables" window from the "System Properties". For example, Anaconda requires following paths to set the PATH variable ``path\to\anaconda3\``, ``path\to\anaconda3\Scripts\``, ``path\to\anaconda3\Lib\bin\``.     
+Before running the installation script ensure all the prerequisites outlined previously have been met and the Windows PATH variable is properly set for each component. Ensure to set the PATH variable using *Environment Variables* window from the *System Properties*. For example, Anaconda requires following paths to set the PATH variable ``path\to\anaconda3\``, ``path\to\anaconda3\Scripts\``, ``path\to\anaconda3\Lib\bin\``.     
 
 Open a ``Anaconda Command Prompt`` (or ``Windows Command Prompt``) and run the below command 
 
@@ -66,7 +66,7 @@ Open a ``Anaconda Command Prompt`` (or ``Windows Command Prompt``) and run the b
 
     .\install.bat
 
-The installation script, ``install.bat`` does the following 
+The installation script, ``install.bat`` does the following: 
 
 - Creates a conda environment 
 - Installs :doc:`vai_quant/vai_q_onnx`
@@ -76,21 +76,21 @@ The installation script, ``install.bat`` does the following
 - Prints the name of the conda environment before exiting 
 
 
-The default Ryzen AI Software packages are now installed inside the conda environment created by the installer. You can start using it by activating the conda environment created by the installer (check the name it prints during the installation process). Ensure the requirements of the runtime environment as described below
+The default Ryzen AI Software packages are now installed inside the conda environment created by the installer. You can start using it by activating the conda environment created by the installer (check the name it prints during the installation process). Ensure that the specified runtime environment requirements are met as follows.
 
 .. note:: 
 
-   - To provide a specific name of the conda work environment run the ``install.bat`` as shown below
+   - To provide a specific name of the conda work environment run the ``install.bat``:
 
      .. code::
 
         .\install.bat -env <env name>
 
-   - Instead of the bundled installation process using ``install.bat``, if you choose to install each component manually please refer to :doc:`manual_installation` page.
+   - Instead of the bundled installation process using ``install.bat``, if you choose to install each component manually refer to the :doc:`manual_installation` page.
 
-   - To use your existing conda environment for Ryzen-AI software platform, follow the :doc:`manual_installation` and manually install Vitis AI ONNX Quantizer, ONNX Runtime, and Vitis AI Execution Provider, without creating a new conda environment.
+   - To use your existing conda environment for Ryzen AI software, follow the :doc:`manual_installation` and manually install Vitis AI ONNX Quantizer, ONNX Runtime, and Vitis AI Execution Provider, without creating a new conda environment.
 
-   - If you require to install Vitis AI PyTorch/TensorFlow or Microsoft Olive Quantizer, please refer to :doc:`alternate_quantization_setup` page. 
+   - If you need to install Vitis AI PyTorch/TensorFlow or Microsoft Olive Quantizer, refer to the :doc:`alternate_quantization_setup` page. 
 
 
 |
@@ -103,7 +103,7 @@ Runtime Environment Setup
 Runtime IPU Binary Selection
 ============================
 
-The IPU binaries are located inside the setup package. Selecting an IPU binary is a required step every time the application is run from a new environment. 
+The IPU binaries are located inside the setup package. Selecting an IPU binary is necessary every time the application is run from a new environment. 
 
 The automatic installer ``install.bat`` sets IPU binary 1x4.xclbin as default. However, Ryzen AI Software provides multiple IPU binaries using different configurations on the IPU device. Refer to the :doc:`runtime_setup` page for more details on IPU binaries.
 
@@ -127,7 +127,7 @@ Run the command:
    python quicktest.py –ep ipu
 
 
-- This test will take an image and run classification on IPU. On a successful run you will see a output like below:
+- This test takes an image and run classification on IPU. On a successful run, you can see an output similar to the following:
 
 .. code-block::
   

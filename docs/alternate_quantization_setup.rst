@@ -4,10 +4,10 @@ Other Quantizers
 ################
 
 
-The Ryzen-AI software platform provides support for these additional quantizers:
+The Ryzen AI software provides support for these additional quantizers:
 
-1. **Vitis AI Quantizer for PyTorch/TensorFlow/TensorFlow 2**: If the user requires Quantization Aware Training using the original model training framework, they can use Vitis AI PyTorch/Tensorflow 2/Tensorflow quantizer.
-2. **Olive Quantizer**: If the user is already familiar with the Olive framework and using it for other model transformations, quantization through Olive is also an option. 
+1. **Vitis AI Quantizer for PyTorch/TensorFlow/TensorFlow 2**: If you require Quantization Aware Training using the original model training framework, you can use Vitis AI PyTorch/Tensorflow 2/Tensorflow quantizer.
+2. **Olive Quantizer**: If you are already familiar with the Olive framework and using it for other model transformations, quantization through Olive is also an option. 
 
 
 .. _install-pt-tf:
@@ -17,14 +17,14 @@ The Ryzen-AI software platform provides support for these additional quantizers:
 Vitis AI Quantizer for PyTorch/TensorFlow/TensorFlow 2
 ******************************************************
 
-The Vitis AI Quantizer, integrated as a component of either PyTorch, TensorFlow or TensorFlow 2, is distributed through framework-specific Docker containers.
+The Vitis AI Quantizer, integrated as a component of either PyTorch, TensorFlow, or TensorFlow 2, is distributed through framework-specific Docker containers.
 
-The Vitis AI Docker containers can be installed on Ubuntu 20.04, CentOS 7.8, 7.9, 8.1, and RHEL 8.3, 8.4. The developers working on Windows 11 can use WSL for installing the Vitis AI Docker containers.
+The Vitis AI Docker containers can be installed on Ubuntu 20.04, CentOS 7.8, 7.9, 8.1, and RHEL 8.3, 8.4. For developers working on Windows 11, WSL can be used to install the Vitis AI Docker containers.
 
 Standard Containers
 ===================
 
-Multiple versions of the Docker container are available, each tailored to specific a frameworks Follow the Docker download and running instructions as per the following links:
+Multiple versions of the Docker container are available, each tailored to specific frameworks. Follow the Docker download and running instructions as per the following links:
 
 .. list-table:: 
    :widths: 30 70 
@@ -43,7 +43,7 @@ Multiple versions of the Docker container are available, each tailored to specif
 GPU-Accelerated Quantization Containers
 =======================================
 
-The standard Vitis AI Docker containers do not support GPU-accelerated quantization. To create a container with GPU-accelerated quantization enabled, download the following archive and follow the instructions in the included README.
+The standard Vitis AI Docker containers do not support GPU-accelerated quantization. To create a container with GPU-accelerated quantization enabled, download the following archive and follow the instructions in the README file.
 
 `Download and build GPU Docker containers <https://www.xilinx.com/bin/public/openDownload?filename=ryzen-ai-gpudockerfiles-3.6.0-130.tar.gz>`_
 
@@ -57,7 +57,7 @@ Olive Quantizer
 ***************
 
 
-Microsoft Olive framework supports quantization with Vitis AI ONNX Quantization. The Olive Quantizer can be installed by following the steps below:
+Microsoft Olive framework supports quantization with Vitis AI ONNX Quantization. The Olive Quantizer can be installed by following these steps:
 
 1. Install the Olive Quantizer as follows:
 

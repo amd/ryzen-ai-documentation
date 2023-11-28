@@ -13,7 +13,7 @@ This example uses the ResNet-50 model from PyTorch Hub to demonstrate the proces
 
 |
 
-The following are the steps and the required files to run the example. 
+The following are the steps and the required files to run the example: 
 
 .. list-table:: 
    :widths: 20 25 25
@@ -34,7 +34,7 @@ The following are the steps and the required files to run the example.
      - Convert the model to the IPU-deployable model by performing Post-Training Quantization flow using VitisAI ONNX Quantization.
    * - Deployment
      - ``predict.py``
-     -  Run the Quantized model using the ONNX Runtime code. We demonstrate running the model on both CPU and IPU. 
+     -  Run the Quantized model using the ONNX Runtime code. Running the model on both CPU and IPU is demonstrated. 
 
 
 |
@@ -124,7 +124,7 @@ Quantizing AI models from floating-point to 8-bit integers reduces computational
 
    python resnet_quantize.py
 
-This will generate quantized model using QDQ quant format and UInt8 activation type and Int8 weight type. After the run is complete, the quantized ONNX model ``resnet.qdq.U8S8.onnx`` is saved to models/resnet.qdq.U8S8.onnx. 
+This generates a quantized model using QDQ quant format and UInt8 activation type and Int8 weight type. After the completion of the run, the quantized ONNX model ``resnet.qdq.U8S8.onnx`` is saved to models/resnet.qdq.U8S8.onnx. 
 
 The :file:`resnet_quantize.py` file has ``quantize_static`` function (line 95) that applies static quantization to the model. 
 
@@ -148,14 +148,14 @@ The :file:`resnet_quantize.py` file has ``quantize_static`` function (line 95) t
 The parameters of this function are:
 
 * **input_model_path**: (String) The file path of the model to be quantized.
-* **output_model_path**: (String) The file path where the quantized model will be saved.
+* **output_model_path**: (String) The file path where the quantized model is saved.
 * **dr**: (Object or None) Calibration data reader that enumerates the calibration data and producing inputs for the original model. In this example, CIFAR10 dataset is used for calibration during the quantization process.
 * **quant_format**: (String) Specifies the quantization format of the model. In this example we have used the QDQ quant format.
 * **calibrate_method**: (String) In this example this parameter is set to ``vai_q_onnx.PowerOfTwoMethod.MinMSE`` to apply power-of-2 scale quantization. 
 * **activation_type**: (String) Data type of activation tensors after quantization. In this example, it's set to QInt8 (Quantized Integer 8).
 * **weight_type**: (String) Data type of weight tensors after quantization. In this example, it's set to QInt8 (Quantized Integer 8).
 * **enable_dpu**: (Boolean) Determines whether to generate a quantized model that is suitable for the DPU. If set to True, the quantization process will create a model that is optimized for DPU computations.
-* **extra_options**: (Dict or None) Dictionary of additional options that can be passed to the quantization process. In this example, ``ActivationSymmetric`` is set to True i.e., calibration data for activations is symmetrized. 
+* **extra_options**: (Dict or None) Dictionary of additional options that can be passed to the quantization process. In this example, ``ActivationSymmetric`` is set to True. It means calibration data for activations is symmetrized. 
 
 |
 |

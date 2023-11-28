@@ -2,7 +2,7 @@
 Examples, Demos, Tutorials 
 ##########################
 
-This page introduces various demos, examples, and tutorials currently available with the Ryzen™ AI Software Platform. 
+This page introduces various demos, examples, and tutorials currently available with the Ryzen™ AI Software. 
 
 *************************
 Getting Started Tutorials

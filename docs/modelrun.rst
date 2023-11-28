@@ -43,7 +43,7 @@ VAI EP supports three provider options:
    * - cacheKey
      - Optional 
      - {onnx_model_md5}
-     - Compiled model directory generated inside the cache directory. Use string to specify desired name of the compiler model directory. For example: ``'cacheKey': 'resnet50_cache'``
+     - Compiled model directory generated inside the cache directory. Use string to specify the desired name of the compiler model directory. For example: ``'cacheKey': 'resnet50_cache'``
 
    * - encryptionKey
      - Optional 
@@ -55,7 +55,7 @@ VAI EP supports three provider options:
 Environment Variables
 *********************
 
-Additionally, use the following environment variables to control the Ryzen AI ONNX Runtime based deployment.
+Additionally, use the following environment variables to control the Ryzen AI ONNX Runtime-based deployment.
 
 
 .. list-table:: 
@@ -150,8 +150,8 @@ Model Encryption
 ****************
 
 To protect customers’ intellectual property, encryption is supported as a session option.
-With this enabled, all the xir and compiled models generated would be encrypted using AES256 algorithm.
-To enable encryption, you need to pass in the encryption key like following in python:
+With this enabled, all the XIR and compiled models generated are encrypted using AES256 algorithm.
+To enable encryption, you need to pass the encryption key in python as follows:
 
 .. code-block:: python
  
@@ -177,16 +177,13 @@ Here is the cpp version:
     session_options.AppendExecutionProvider("VitisAI", options);
     auto session = Ort::Experimental::Session(env, model_name, session_options);
 
-The key is 256-bit which is represented as a 64-digit string.
-The model now generated under cache directory is now unabled to be opened with Netron.
-There is a side effect as well, dumping would be disabled as dumping would leak out much information about the model.
+The key is a 256-bit value represented as a 64-digit string. The model generated in the cache directory cannot be opened with Netron currently. Additionally, there is a side effect: dumping is disabled to prevent the leakage of sensitive information about the model.
 
 *********************************
 Model Operators Assignment Report
 *********************************
 
-Vitis AI EP generates a file named ``vitisai_ep_report.json`` that reports the model operator assignments across CPU and IPU. This report shows device statistics like total number of nodes, number of nodes running on the CPU, and DPU. It also shows a list of all operator types in the model, the list of operators running on the CPU, and on the DPU. The report also shows the node statistics like input to a node, the operation applied, the output from the node, 
-and etc.,
+Vitis AI EP generates a file named ``vitisai_ep_report.json`` that provides a report on model operator assignments across CPU and IPU. This report includes device statistics such as the total number of nodes, the number of nodes running on the CPU and DPU. It also presents a list of all operator types in the model, the operators running on the CPU, and those on the DPU. Additionally, the report includes node statistics, such as input to a node, the applied operation, and output from the node.
 
 .. code-block:: 
 

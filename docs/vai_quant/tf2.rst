@@ -92,7 +92,7 @@ An example of the Quantization Aware Training is available in the `Vitis Github 
 The general steps are as follows:
 
 1. Prepare the floating point model, training dataset, and training script.
-2. Modify the training by using ``VitisQuantizer.get_qat_model`` to convert the model into a quantized model and then proceed to training/finetuning it.
+2. Modify the training by using ``VitisQuantizer.get_qat_model`` to convert the model into a quantized model and then proceed to training/finetuning it:
 
 .. code-block::
 
