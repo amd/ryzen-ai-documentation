@@ -3,7 +3,7 @@
 Getting Started Example
 #######################
 
-This example uses a fine-tuned version of the ResNet-50 model (using the CIFAR10 dataset) to demonstrate the process of preparing, quantizing, and deploying a model using Ryzen AI.
+This example uses a fine-tuned version of the ResNet model (using the CIFAR10 dataset) to demonstrate the process of preparing, quantizing, and deploying a model using Ryzen AI.
 
 
 The following are the steps and the required files to run the example. The files can be downloaded from `here <https://github.com/amd/ryzen-ai-documentation/tree/main/example/resnet50>`_.
@@ -37,8 +37,8 @@ The following are the steps and the required files to run the example. The files
      - ``predict.py``
      -  Run the Quantized model using the ONNX Runtime code. We demonstrate running the model on both CPU and IPU. 
    * - Deployment - C++
-     - ``cpp/resnet50/.``
-     -  This folder contains the source code ``resnet50_cifar.cpp`` that demonstrates running inference using C++ APIs. We additionally provide the infrastructure (required libraries, CMake files and headerfiles) required by the example. 
+     - ``cpp/resnet_cifar/.``
+     -  This folder contains the source code ``resnet_cifar.cpp`` that demonstrates running inference using C++ APIs. We additionally provide the infrastructure (required libraries, CMake files and headerfiles) required by the example. 
 
 
 |
@@ -292,26 +292,26 @@ It is recommended to build OpenCV from the source code and use static build. The
 Build and Run Custom Resnet C++ sample
 ----------------------------------
 
-The C++ source files, CMake list files and related artifacts are provided in the ``cpp/resnet50/*`` folder. The source file ``cpp/resnet50/resnet50_cifar.cpp`` takes 10 images from the CIFAR10 test set, converts them to .png format, preprocesses them, and performs model inference. The example has onnxruntime dependencies, that are provided in ``cpp/resnet50/onnxruntime/*``. 
+The C++ source files, CMake list files and related artifacts are provided in the ``cpp/resnet_cifar/*`` folder. The source file ``cpp/resnet_cifar/resnet_cifar.cpp`` takes 10 images from the CIFAR10 test set, converts them to .png format, preprocesses them, and performs model inference. The example has onnxruntime dependencies, that are provided in ``cpp/resnet_cifar/onnxruntime/*``. 
 
 Run the following command to build the resnet example. Assign ``-DOpenCV_DIR`` to the OpenCV installation directory.
 
 .. code-block:: bash
 
    cd getting_started_resnet/cpp
-   cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DBUILD_SHARED_LIBS=OFF -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DCMAKE_CONFIGURATION_TYPES=Release -A x64 -T host=x64 -DCMAKE_INSTALL_PREFIX=. -DCMAKE_PREFIX_PATH=. -B build -S resnet50 -DOpenCV_DIR="C:/opencv" -G "Visual Studio 16 2019"
+   cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DBUILD_SHARED_LIBS=OFF -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DCMAKE_CONFIGURATION_TYPES=Release -A x64 -T host=x64 -DCMAKE_INSTALL_PREFIX=. -DCMAKE_PREFIX_PATH=. -B build -S resnet_cifar -DOpenCV_DIR="C:/opencv" -G "Visual Studio 16 2019"
 
-This should generate the build directory with the ``resnet50_cifar.sln`` solution file along with other project files. Open the solution file using Visual Studio 2019 and build to compile. You can also use "Developer Command Prompt for VS 2019" to open the solution file in Visual Studio.
-
-.. code-block:: bash 
-
-   devenv build/resnet50_cifar.sln
-
-After compilation, the executable should be generated in ``build/Release/resnet50_cifar.exe``. We will copy this application over to the directory with the onnxruntime DLLs that were provided: 
+This should generate the build directory with the ``resnet_cifar.sln`` solution file along with other project files. Open the solution file using Visual Studio 2019 and build to compile. You can also use "Developer Command Prompt for VS 2019" to open the solution file in Visual Studio.
 
 .. code-block:: bash 
 
-   xcopy build\Release\resnet50_cifar.exe resnet50\onnxruntime\bin\
+   devenv build/resnet_cifar.sln
+
+After compilation, the executable should be generated in ``build/Release/resnet_cifar.exe``. We will copy this application over to the directory with the onnxruntime DLLs that were provided: 
+
+.. code-block:: bash 
+
+   xcopy build\Release\resnet_cifar.exe resnet_cifar\onnxruntime\bin\
 
 Now to deploy our model, we will go back to the parent directory (getting_started_resnet) of this example:
 
@@ -333,7 +333,7 @@ To run the model on the CPU, use the following command:
 
 .. code-block:: bash 
 
-   cpp\resnet50\onnxruntime\bin\resnet50_cifar.exe models\resnet.qdq.U8S8.onnx cpu None
+   cpp\resnet_cifar\onnxruntime\bin\resnet_cifar.exe models\resnet.qdq.U8S8.onnx cpu None
 
 Typical output: 
 
@@ -368,13 +368,13 @@ To successfully run the model on the IPU:
    set XLNX_VART_FIRMWARE=path\to\RyzenAI\installation\ryzen-ai-sw-1.0\ryzen-ai-sw-1.0\voe-4.0-win_amd64\1x4.xclbin
 
 
-- Copy the ``vaip_config.json`` runtime configuration file from the Vitis AI Execution Provider package to the current directory. For more information, see the :ref:`installation instructions <copy-vaip-config>`. The ``vaip_config.json`` is used by the source file ``resnet50_cifar.cpp`` to configure the Vitis AI Execution Provider.
+- Copy the ``vaip_config.json`` runtime configuration file from the Vitis AI Execution Provider package to the current directory. For more information, see the :ref:`installation instructions <copy-vaip-config>`. The ``vaip_config.json`` is used by the source file ``resnet_cifar.cpp`` to configure the Vitis AI Execution Provider.
 
 To run the model on the IPU, we will pass the ipu flag and the vaip_config.json file as arguments to the C++ application. Use the following command to run the model on the IPU: 
 
 .. code-block:: bash 
 
-   cpp\resnet50\onnxruntime\bin\resnet50_cifar.exe models\resnet.qdq.U8S8.onnx ipu vaip_config.json
+   cpp\resnet_cifar\onnxruntime\bin\resnet_cifar.exe models\resnet.qdq.U8S8.onnx ipu vaip_config.json
 
 Typical output: 
 
