@@ -114,7 +114,7 @@ The Execution Provider setup package contains the Vitis AI Execution Provider ru
 
 
 Test Installation
-*****************
+=================
 
 The setup package ``ryzen-ai-sw-1.0`` contains a ``quicktest`` folder to help test the setup. 
 
