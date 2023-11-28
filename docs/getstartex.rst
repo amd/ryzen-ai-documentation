@@ -2,7 +2,7 @@
 Getting Started Example
 #######################
 
-This example uses the ResNet-50 model from PyTorch Hub to demonstrate the process of preparing, quantizing, and deploying a model using Ryzen AI.
+This example uses a fine-tuned version of the ResNet-50 model (using the CIFAR10 dataset) to demonstrate the process of preparing, quantizing, and deploying a model using Ryzen AI.
 
 
 The following are the steps and the required files to run the example. The files can be downloaded from `here <https://github.com/amd/ryzen-ai-documentation/tree/main/example/resnet50>`_.
