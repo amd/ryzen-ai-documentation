@@ -139,9 +139,7 @@ Run the command:
    I20231127 16:29:15.010130 13892 vitisai_compile_model.cpp:226] use cache key quickstart_modelcachekey
    [Vitis AI EP] No. of Operators :   CPU     2    IPU   400  99.50%
    [Vitis AI EP] No. of Subgraphs :   CPU     1    IPU     1 Actually running on IPU     1
-   2 0 2 3 - 1 1 - 2 7   1 6 : 2 9 : 1 5 . 0 9 6 6 7 8 8   [ W : o n n x r u n t i m e : ,   s e s s i o n _ s t a t e . c c : 1 1 6 9   o n n x r u n t i m e : : V e r i f y E a c h N o d e I s A s s i g n e d T o A n E p ]   S o m e   n o d e s   w e r e   n o t   a s s i g n e d   t o   t h e   p r e f e r r e d   e x e c u t i o n   p r o v i d e r s   w h i c h   m a y   o r   m a y   n o t   h a v e   a n   n e g a t i v e   i m p a c t   o n   p e r f o r m a n c e .   e . g .   O R T   e x p l i c i t l y   a s s i g n s   s h a p e   r e l a t e d   o p s   t o   C P U   t o   i m p r o v e   p e r f .
-    2 0 2 3 - 1 1 - 2 7   1 6 : 2 9 : 1 5 . 1 0 1 2 0 1 5   [ W : o n n x r u n t i m e : ,   s e s s i o n _ s t a t e . c c : 1 1 7 1   o n n x r u n t i m e : : V e r i f y E a c h N o d e I s A s s i g n e d T o A n E p ]   R e r u n n i n g   w i t h   v e r b o s e   o u t p u t   o n   a   n o n - m i n i m a l   b u i l d   w i l l   s h o w   n o d e   a s s i g n m e n t s .
-    Image 0: Actual Label cat, Predicted Label not-cat
+   ....
 
 
 ..
