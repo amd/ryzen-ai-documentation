@@ -251,7 +251,7 @@ Deployment - C++
 Prerequisites
 -------------
 
-1. Visual Studio 2019 or 2022 (Recommended for Visual Studio 2019)
+1. Visual Studio 2019 Community edition, ensure "Desktop Development with C++" is installed
 2. cmake (version >= 3.26)
 3. opencv (version=4.6.0) required for the resnet50 example
 
