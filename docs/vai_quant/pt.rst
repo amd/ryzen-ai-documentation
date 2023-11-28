@@ -22,7 +22,7 @@ Post-Training Quantization
 
 Post-Training Quantization requires the following files:
 
-1. model.pth : Pre-trained PyTorch model, generally pth file.
+1. model.pth : Pre-trained PyTorch model, generally a .pth file.
 2. model.py : A Python script including float model definition.
 3. calibration dataset: A subset of the training dataset containing 100 to 1000 images.
 
@@ -34,13 +34,13 @@ Vitis AI Quantization APIs
 
 Vitis AI provides ``pytorch_nndct`` module with Quantization related APIs. 
 
-1. Import the vai_q_pytorch module.
+1. Import the vai_q_pytorch module:
 
 .. code-block:: 
 
     from pytorch_nndct.apis import torch_quantizer, dump_xmodel
 
-2. Generate a quantizer with quantization needed input and get the converted model.
+2. Generate a quantizer with quantization needed input and get the converted model:
 
 .. code-block::
 
@@ -48,7 +48,7 @@ Vitis AI provides ``pytorch_nndct`` module with Quantization related APIs.
    quantizer = torch_quantizer(quant_mode, model, (input))
    quant_model = quantizer.quant_model
 
-3. Forward a neural network with the converted model.
+3. Forward a neural network with the converted model:
 
 .. code-block:: 
 
@@ -163,7 +163,7 @@ General approaches are:
 
 3. Insert ``QuantStub`` and ``DeQuantStub``. Any sub-network from QuantStub to DeQuantStub in a forward pass will be quantized. Multiple QuantStub-DeQuantStub pairs are allowed.
 
-4. Create Quantizer module from the ``QatProcessor`` library
+4. Create Quantizer module from the ``QatProcessor`` library:
 
 
 .. code-block::

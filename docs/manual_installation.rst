@@ -2,7 +2,7 @@
 Manual Installation
 ###################
 
-In the main :doc:`inst` page, we have shown a one-step installation process that checks the prerequisite and installs Vitis AI ONNX quantizer, ONNX Runtime, and Vitis AI execution provider.
+The main :doc:`inst` page shows a one-step installation process that checks the prerequisite and installs Vitis AI ONNX quantizer, ONNX Runtime, and Vitis AI execution provider.
 
 This page shows a manual step-by-step process to install each component. 
 
@@ -18,7 +18,7 @@ https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?f
 Create Conda Environment
 ************************
 
-The Ryzen AI Software Platform requires using a conda environment (Anaconda or Miniconda) for the installation process. 
+The Ryzen AI Software requires using a conda environment (Anaconda or Miniconda) for the installation process. 
 
 Start a conda prompt. In the conda prompt, create and activate an environment for the rest of the installation process. 
 
@@ -33,7 +33,7 @@ Start a conda prompt. In the conda prompt, create and activate an environment fo
 
 .. note::
 
-   Please make sure to follow the installation order as shown below
+   Ensure to follow the installation order as follows.
 
 *****************
 Install Quantizer
@@ -48,7 +48,7 @@ Install Vitis AI ONNX Quantization using the following command:
    cd ryzen-ai-sw-1.0\ryzen-ai-sw-1.0
    pip install vai_q_onnx-1.15.0+a27a6e0-py2.py3-none-any.whl
 
-For other quantization options - Vitis AI PyTorch/TensorFlow 2/TensorFlow Quantization or Olive Quantization, please refer to the :doc:`alternate_quantization_setup` page. 
+For other quantization options - Vitis AI PyTorch/TensorFlow 2/TensorFlow Quantization or Olive Quantization, refer to the :doc:`alternate_quantization_setup` page. 
 
 
 ********************

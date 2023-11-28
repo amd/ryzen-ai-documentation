@@ -4,19 +4,15 @@
 Ryzen AI Library Quick Start Guide
 ##################################
 
-The Ryzen AI Libraies build on top of the Ryzen AI drivers and execution
-infrastructure to provide powerful AI capabilities to C++ applications without
-having to worry about training specific AI models and integrating them to the
-Ryzen AI framework.
+The Ryzen AI Libraries are built on top of the Ryzen AI drivers and execution infrastructure to provide powerful AI capabilities to C++ applications without the need for training specific AI models and integrating them into the Ryzen AI framework.
 
-Each Ryzen AI library feature offers a simple C++ application programming
-interface (API) that can be easily incorporated into existing applications.
+Each Ryzen AI library feature offers a simple C++ application programming interface (API) that can be easily incorporated into existing applications.
 
 ****************
 Package Contents
 ****************
 
-The following files are included with the Ryzen AI Library package,
+The following files are included with the Ryzen AI Library package:
 
 include/
   C++ header files
@@ -57,8 +53,7 @@ provided within their individual include headers.
 
 Create Ryzen AI Library context
 ===============================
-Each Ryzen AI Library feature is created against a *CVML context*. The context
-provides access to common functions for logging, etc. A pointer to a new
+Each Ryzen AI Library feature is created against a *CVML context*. The context provides access to common functions for logging and other purposes. A pointer to a new
 context may be obtained by calling the *CreateContext()* function::
 
   auto ryzenai_context = amd::cvml::CreateContext();
@@ -70,8 +65,8 @@ member function::
 
 Create Ryzen AI Library feature object
 ======================================
-The application programming interface for each feature is provided via a
-*Ryzen AI Library C++ feature object* that may be instantiated once a
+The application programming interface for each feature is provided through a
+*Ryzen AI Library C++ feature object* that may be instantiated afer a
 Ryzen AI Library context has been created.
 
 The following example instantiates a feature object for the depth estimation
@@ -81,10 +76,10 @@ library::
 
 Encapsulate image buffers
 =========================
-The Ryzen AI Library defines its own *Image* class for representing images
+The Ryzen AI Library defines its own *Image* class to represent images
 and video frame buffers. Each *Image* object is assigned a specific format
-and data type on creation. For example, an *Image* to encapsulate an incoming
-RGB888 frame buffer can be created with the following code::
+and data type on creation. For example, you can use the following code to create an *Image* to encapsulate an incoming
+RGB888 frame buffer::
 
   amd::cvml::Image ryzenai_image(amd::cvml::Image::Format::kRGB,
                                  amd::cvml::Image::DataType::kUint8, width,
@@ -120,7 +115,7 @@ folder is part of the compiler's include paths, and that the library's,
 
 folder has been added to the linker's library paths.
 
-Depending on the application's build environment, it may also be necessary to
+Depending on the application's build environment, you might also need to
 explicitly list which of the Ryzen AI Library's .LIB files (when building for
 Windows applications) need to be linked.
 
@@ -128,7 +123,7 @@ Windows applications) need to be linked.
 Executing Ryzen AI Library enabled applications
 ***********************************************
 When executing Windows applications built against the Ryzen AI Library, ensure
-that one of the following conditions is met,
+that one of the following conditions is met:
 
 1. The Ryzen AI Library dll's are in the same folder as the application
    executable.
@@ -141,7 +136,7 @@ Revision History
 +-------------------+----------+------------------+
 | Date              | Revision | Notes            |
 +===================+==========+==================+
-| November 30, 2023 | 1.0      | Initial revision |
+| December 04, 2023 | 1.0      | Initial revision |
 +-------------------+----------+------------------+
 
 ..
