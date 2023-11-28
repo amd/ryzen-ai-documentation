@@ -41,8 +41,8 @@ To select the latency profile, set the two following environment variables:
 
 .. code-block::
 
-   set XLNX_VART_FIRMWARE=C:\path\to\5x4.xclbin
-   set XLNX_TARGET_NAME=AMD_AIE2_5x4_Overlay
+   set XLNX_VART_FIRMWARE=C:\path\to\4x4.xclbin
+   set XLNX_TARGET_NAME=AMD_AIE2_4x4_Overlay
 
 
 .. _config-file:
