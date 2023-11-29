@@ -283,6 +283,13 @@ Now to deploy our model, we will go back to the parent directory (getting_starte
    cd ..
    xcopy cpp\build\Release\resnet_cifar.exe .
 
+- Additionally, we will also need to copy the onnxruntime DLLs from the Vitis AI Execution Provider package to the current directory. The following commands copy the required files in the current directory: 
+
+.. code-block:: bash 
+
+   xcopy path\to\ryzen-ai-sw-xx\ryzen-ai-sw-xx\voe-xx-win_amd64\voe-xx-cp39-cp39-win_amd64\onnxruntime.dll .
+   xcopy path\to\ryzen-ai-sw-xx\ryzen-ai-sw-xx\voe-xx-win_amd64\voe-xx-cp39-cp39-win_amd64\onnxruntime_vitisai_ep.dll .
+
 
 The C++ application that was generated takes 3 arguments: 
 
@@ -335,13 +342,6 @@ To successfully run the model on the IPU:
 
 - Copy the ``vaip_config.json`` runtime configuration file from the Vitis AI Execution Provider package to the current directory. For more information, see the :ref:`installation instructions <copy-vaip-config>`. The ``vaip_config.json`` is used by the source file ``resnet_cifar.cpp`` to configure the Vitis AI Execution Provider.
 
-- Additionally, we will also need to copy the onnxruntime DLLs from the Vitis AI Execution Provider package to the current directory. The following commands copy the required files in the current directory: 
-
-.. code-block:: bash 
-
-   xcopy path\to\ryzen-ai-sw-xx\ryzen-ai-sw-xx\voe-xx-win_amd64\vaip_config.json .   
-   xcopy path\to\ryzen-ai-sw-xx\ryzen-ai-sw-xx\voe-xx-win_amd64\voe-xx-cp39-cp39-win_amd64\onnxruntime.dll .
-   xcopy path\to\ryzen-ai-sw-xx\ryzen-ai-sw-xx\voe-xx-win_amd64\voe-xx-cp39-cp39-win_amd64\onnxruntime_vitisai_ep.dll .
 
 The following code block from reset_cifar.cpp shows how ONNX Runtime is configured to deploy the model on the Ryzen AI IPU:
 
