@@ -95,21 +95,7 @@ Run the following command to prepare the dataset:
    python prepare_model_data.py 
 
 * The downloaded CIFAR-10 dataset is saved in the current directory at the following location: ``data/*``.
-* The ResNet model has been retrained on CIFAR10 and the PyTorch model ``resnet_trained_for_cifar10.pt`` is provided in ``models/``. If you would like to regenerate the fine-tuned model artifacts by yourself, you may perform the optional step described next. 
-
-[Optional] Finetuning ResNet on CIFAR10 dataset:
-==================================================
-
-The ``prepare_model_data.py`` script has an optional flag to perform the retraining process on CIFAR10. The training process runs over 500 images for each epoch up to five epochs. The training process takes approximately 30 minutes to complete. 
-
-.. code-block:: 
-
-   python prepare_model_data.py --train --num_epochs 5
-
-After completing the training process, observe the following output:
- 
-* The trained ResNet model on the CIFAR-10 dataset is saved at the following location: ``models\resnet_trained_for_cifar10.pt``.
-* The trained ResNet model on the CIFAR-10 dataset is saved at the following location in ONNX format: ``models\resnet_trained_for_cifar10.onnx``.
+* The ResNet model has been retrained on CIFAR10 and the PyTorch model ``resnet_trained_for_cifar10.pt`` is provided in ``models/``.
 
 |
 |
