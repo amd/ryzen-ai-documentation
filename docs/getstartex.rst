@@ -372,6 +372,23 @@ To successfully run the model on the IPU:
 
 - Copy the ``vaip_config.json`` runtime configuration file from the Vitis AI Execution Provider package to the current directory. For more information, see the :ref:`installation instructions <copy-vaip-config>`. The ``vaip_config.json`` is used by the source file ``resnet_cifar.cpp`` to configure the Vitis AI Execution Provider.
 
+The following code block from reset_cifar.cpp shows how ONNX Runtime is configured to deploy the model on the Ryzen AI IPU:
+
+.. code-block:: bash 
+
+    auto session_options = Ort::SessionOptions();
+
+    auto config_key = std::string{ "config_file" };
+ 
+    if(ep=="ipu")
+    {
+    auto options =
+        std::unordered_map<std::string, std::string>{ {config_key, json_config} };
+    session_options.AppendExecutionProvider("VitisAI", options);
+    }
+
+    auto session = Ort::Experimental::Session(env, model_name, session_options);
+
 To run the model on the IPU, we will pass the ipu flag and the vaip_config.json file as arguments to the C++ application. Use the following command to run the model on the IPU: 
 
 .. code-block:: bash 
