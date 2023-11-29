@@ -368,7 +368,7 @@ To run the model on the IPU, we will pass the ipu flag and the vaip_config.json 
 
 Typical output: 
 
-.. code-block:: bash 
+.. image:: images/cpp.png
 
 
 ..
