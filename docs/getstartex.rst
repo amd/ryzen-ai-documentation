@@ -226,10 +226,7 @@ Run the ``predict.py`` with the ``--ep ipu`` switch to run the custom ResNet mod
 
 Typical output
 
-.. code-block:: bash 
-
-
-
+.. image:: images/python.png
 
 
 
