@@ -281,7 +281,7 @@ Now to deploy our model, we will go back to the parent directory (getting_starte
 .. code-block:: bash 
 
    cd ..
-   xcopy cpp\resnet_cifar\build\Release\resnet_cifar.exe .
+   xcopy cpp\build\Release\resnet_cifar.exe .
 
 
 The C++ application that was generated takes 3 arguments: 
