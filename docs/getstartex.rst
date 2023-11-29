@@ -294,17 +294,13 @@ This should generate the build directory with the ``resnet_cifar.sln`` solution 
 
    devenv build/resnet_cifar.sln
 
-After compilation, the executable should be generated in ``build/Release/resnet_cifar.exe``. We will copy this application over to the directory with the onnxruntime DLLs that were provided: 
+Now to deploy our model, we will go back to the parent directory (getting_started_resnet) of this example. After compilation, the executable should be generated in ``cpp/resnet_cifar/build/Release/resnet_cifar.exe``. We will copy this application over to the parent directory:
 
 .. code-block:: bash 
 
-   xcopy build\Release\resnet_cifar.exe resnet_cifar\onnxruntime\bin\
+   cd ..
+   xcopy cpp\resnet_cifar\build\Release\resnet_cifar.exe .
 
-Now to deploy our model, we will go back to the parent directory (getting_started_resnet) of this example:
-
-.. code-block:: bash 
-
-   cd ../
 
 The C++ application that was generated takes 3 arguments: 
 
@@ -356,6 +352,14 @@ To successfully run the model on the IPU:
 
 
 - Copy the ``vaip_config.json`` runtime configuration file from the Vitis AI Execution Provider package to the current directory. For more information, see the :ref:`installation instructions <copy-vaip-config>`. The ``vaip_config.json`` is used by the source file ``resnet_cifar.cpp`` to configure the Vitis AI Execution Provider.
+
+- Additionally, we will also need to copy the onnxruntime DLLs from the Vitis AI Execution Provider package to the current directory. The following commands copy the required files in the current directory: 
+
+.. code-block:: bash 
+
+   xcopy path\to\ryzen-ai-sw-xx\ryzen-ai-sw-xx\voe-xx-win_amd64\vaip_config.json .   
+   xcopy path\to\ryzen-ai-sw-xx\ryzen-ai-sw-xx\voe-xx-win_amd64\voe-xx-cp39-cp39-win_amd64\onnxruntime.dll .
+   xcopy path\to\ryzen-ai-sw-xx\ryzen-ai-sw-xx\voe-xx-win_amd64\voe-xx-cp39-cp39-win_amd64\onnxruntime_vitisai_ep.dll .
 
 The following code block from reset_cifar.cpp shows how ONNX Runtime is configured to deploy the model on the Ryzen AI IPU:
 
