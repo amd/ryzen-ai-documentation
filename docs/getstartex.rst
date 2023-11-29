@@ -316,7 +316,7 @@ To run the model on the CPU, use the following command:
 
 .. code-block:: bash 
 
-   cpp\resnet_cifar\onnxruntime\bin\resnet_cifar.exe models\resnet.qdq.U8S8.onnx cpu None
+   resnet_cifar.exe models\resnet.qdq.U8S8.onnx cpu None
 
 Typical output: 
 
@@ -382,7 +382,7 @@ To run the model on the IPU, we will pass the ipu flag and the vaip_config.json 
 
 .. code-block:: bash 
 
-   cpp\resnet_cifar\onnxruntime\bin\resnet_cifar.exe models\resnet.qdq.U8S8.onnx ipu vaip_config.json
+   resnet_cifar.exe models\resnet.qdq.U8S8.onnx ipu vaip_config.json
 
 Typical output: 
 
