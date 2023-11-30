@@ -257,13 +257,20 @@ To accelerate CNN models on CPU, the recommended configuration is as follows:
 Quantizing to Other Precisions
 ******************************
 
+.. note::
+   The current release of the Vitis AI Execution Provider ingests quantized ONNX models with INT8/UINT8 data types only. No support is provided for direct deployment of models with other precisions, including FP32.
+
+
 In addition to the INT8/UINT8, the VAI_Q_ONNX API supports quantizing models to other data formats, including INT16/UINT16, INT32/UINT32, Float16 and BFloat16, which can provide better accuracy or be used for experimental purposes. These new data formats are achieved by a customized version of QuantizeLinear and DequantizeLinear named "VitisQuantizeLinear" and "VitisDequantizeLinear", which expands onnxruntime's UInt8 and Int8 quantization to support UInt16, Int16, UInt32, Int32, Float16 and BFloat16. This customized Q/DQ was implemented by a custom operations library in VAI_Q_ONNX using onnxruntime's custom operation C API.
 
 The custom operations library was developed based on Linux and does not currently support compilation on Windows. If you want to run the quantized model that has the custom Q/DQ on Windows, it is recommended to switch to WSL as a workaround.
 
-To use this feature, the "quant_format" should be set to VitisQuantFormat.QDQ. You may have noticed that in both the recommended IPU_CNN and IPU_Transformer configurations, the "quant_format" is set to QuantFormat.QDQ. IPU targets that support acceleration for models quantized to INT8/UINT8, do not support other precisions.
+To use this feature, the ```quant_format``` should be set to VitisQuantFormat.QDQ. The ```quant_format``` is set to ```QuantFormat.QDQ``` for accelerating both CNN's and transformers on the IPU target. 
 
-#### 1. Quantizing Float32 Models to Int16 or Int32
+
+
+#### 1. Quantizing Float32 Models to Int16 or Int32 
+
 
 The quantizer supports quantizing float32 models to Int16 and Int32 data formats. To enable this, you need to set the "activation_type" and "weight_type" in the quantize_static API to the new data types. Options are ```VitisQuantType.QInt16/VitisQuantType.QUInt16``` for Int16, and ```VitisQuantType.QInt32/VitisQuantType.QUInt32``` for Int32.
 
@@ -282,6 +289,7 @@ The quantizer supports quantizing float32 models to Int16 and Int32 data formats
 
 #### 2. Quantizing Float32 Models to Float16 or BFloat16
 
+
 Besides integer data formats, the quantizer also supports quantizing float32 models to float16 and bfloat16 data formats, by setting the "activation_type" and "weight_type" to ```VitisQuantType.QFloat16``` or ```VitisQuantType.QBFloat16``` respectively.
 
 .. code-block::
@@ -299,6 +307,7 @@ Besides integer data formats, the quantizer also supports quantizing float32 mod
 
 #### 3. Quantizing Float32 Models to Mixed Data Formats
 
+
 The quantizer supports setting the activation and weight to different precisions. For example, activation is Int16 while weight is set to Int8. This can be used when pure Int8 quantization does not meet the accuracy requirements.
 
 .. code-block::
@@ -315,6 +324,7 @@ The quantizer supports setting the activation and weight to different precisions
 
 
 #### 4. Quantizing Float16 Models
+
 
 For models in float16, we recommend setting convert_fp16_to_fp32 to True. This will first convert your float16 model to a float32 model before quantization, reducing redundant nodes such as cast in the model.
 
@@ -336,6 +346,7 @@ For models in float16, we recommend setting convert_fp16_to_fp32 to True. This w
 
 #### 5. Converting NCHW Models to NHWC and Quantize
 
+
 NHWC input shape typically yields better acceleration performance compared to NCHW on IPU. VAI_Q_ONNX facilitates the conversion of NCHW input models to NHWC input models by setting "convert_nchw_to_nhwc" to True. Please note that the conversion steps will be skipped if the model is already NHWC or has non-convertable input shapes.
 
 .. code-block::
@@ -355,6 +366,7 @@ NHWC input shape typically yields better acceleration performance compared to NC
 
 
 #### 6. Quantizing Using CrossLayerEqualization(CLE)
+
 
 CrossLayerEqualization (CLE) is a technique used to improve PTQ accuracy. It can equalize the weights of consecutive convolution layers, making the model weights easier to perform per-tensor quantization. Experiments show that using CLE technique can improve the PTQ accuracy of some models, especially for models with depthwise_conv layers, such as MobileNet. Here is an example showing how to enable CLE using VAI_Q_ONNX.
 
