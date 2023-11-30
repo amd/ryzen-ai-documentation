@@ -3,7 +3,7 @@
 Getting Started Example
 #######################
 
-This example uses a fine-tuned version of the ResNet model (using the CIFAR10 dataset) to demonstrate the process of preparing, quantizing, and deploying a model using Ryzen AI.
+This example uses a fine-tuned version of the ResNet model (using the CIFAR-10 dataset) to demonstrate the process of preparing, quantizing, and deploying a model using Ryzen AI.
 
 
 The following are the steps and the required files to run the example. The files can be downloaded from `here <https://github.com/amd/ryzen-ai-documentation/tree/main/example/resnet50>`_.
@@ -25,7 +25,7 @@ The following are the steps and the required files to run the example. The files
      - The script ``prepare_model_data.py`` prepares the model and the data for the rest of the tutorial.
 
        1. To prepare the model the script converts pre-trained PyTorch model to ONNX format.
-       2. To prepare the necessary data the script downloads and extract CIFAR10 dataset. 
+       2. To prepare the necessary data the script downloads and extract CIFAR-10 dataset. 
 
    * - Pretrained model
      - ``models/resnet_trained_for_cifar10.pt``
@@ -59,12 +59,12 @@ Step 1: Install Packages
 |
 |
 
-Step 2: Prepare the CIFAR10 dataset
+Step 2: Prepare dataset and ONNX model 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In this example, we utilize the a custom ResNet model finetuned using the CIFAR-10 dataset.
 
-The ``prepare_model_data.py`` script downloads the CIFAR10 dataset in pickle format (for python) and binary format (for C++). This dataset will be used in the subsequent steps for quantization and inference. The script also exports the provided PyTorch model into ONNX format. The following snippet from the script shows how the ONNX model is exported: 
+The ``prepare_model_data.py`` script downloads the CIFAR-10 dataset in pickle format (for python) and binary format (for C++). This dataset will be used in the subsequent steps for quantization and inference. The script also exports the provided PyTorch model into ONNX format. The following snippet from the script shows how the ONNX model is exported: 
 
 .. code-block:: 
 
@@ -93,7 +93,7 @@ Run the following command to prepare the dataset:
    python prepare_model_data.py 
 
 * The downloaded CIFAR-10 dataset is saved in the current directory at the following location: ``data/*``.
-* The ResNet model has been retrained on CIFAR10 and the PyTorch model ``resnet_trained_for_cifar10.pt`` is provided in ``models/``.
+* The ResNet model has been retrained on CIFAR-10 and the PyTorch model ``resnet_trained_for_cifar10.pt`` is provided in ``models/``.
 
 |
 |
@@ -132,7 +132,7 @@ The parameters of this function are:
 
 * **input_model_path**: (String) The file path of the model to be quantized.
 * **output_model_path**: (String) The file path where the quantized model will be saved.
-* **dr**: (Object or None) Calibration data reader that enumerates the calibration data and producing inputs for the original model. In this example, CIFAR10 dataset is used for calibration during the quantization process.
+* **dr**: (Object or None) Calibration data reader that enumerates the calibration data and producing inputs for the original model. In this example, CIFAR-10 dataset is used for calibration during the quantization process.
 * **quant_format**: (String) Specifies the quantization format of the model. In this example we have used the QDQ quant format.
 * **calibrate_method**:(String) In this example this parameter is set to ``vai_q_onnx.PowerOfTwoMethod.MinMSE`` to apply power-of-2 scale quantization. 
 * **activation_type**: (String) Data type of activation tensors after quantization. In this example, it's set to QUInt8 (Quantized Unsigned Int 8).
@@ -257,7 +257,7 @@ It is recommended to build OpenCV from the source code and use static build. The
 Build and Run Custom Resnet C++ sample
 ----------------------------------
 
-The C++ source files, CMake list files and related artifacts are provided in the ``cpp/resnet_cifar/*`` folder. The source file ``cpp/resnet_cifar/resnet_cifar.cpp`` takes 10 images from the CIFAR10 test set, converts them to .png format, preprocesses them, and performs model inference. The example has onnxruntime dependencies, that are provided in ``cpp/resnet_cifar/onnxruntime/*``. 
+The C++ source files, CMake list files and related artifacts are provided in the ``cpp/resnet_cifar/*`` folder. The source file ``cpp/resnet_cifar/resnet_cifar.cpp`` takes 10 images from the CIFAR-10 test set, converts them to .png format, preprocesses them, and performs model inference. The example has onnxruntime dependencies, that are provided in ``cpp/resnet_cifar/onnxruntime/*``. 
 
 Run the following command to build the resnet example. Assign ``-DOpenCV_DIR`` to the OpenCV installation directory.
 
