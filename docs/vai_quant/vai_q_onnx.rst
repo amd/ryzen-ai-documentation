@@ -279,7 +279,8 @@ The static quantization method first runs the model using a set of inputs called
        vai_q_onnx.VitisQuantType.QBFloat16
      - Implemented by customized VitisQuantizeLinear/VitisDequantizeLinear
 
-***Note*** : For pure UInt8 or Int8 quantization, we recommend setting quant_format to QuantFormat.QDQ as it uses native QuantizeLinear/DequantizeLinear operations which may have better compatibility and performance.
+.. note:: 
+   For pure UInt8 or Int8 quantization, we recommend setting quant_format to QuantFormat.QDQ as it uses native QuantizeLinear/DequantizeLinear operations which may have better compatibility and performance.
 
 
 *************************
