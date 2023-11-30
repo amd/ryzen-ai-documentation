@@ -416,8 +416,6 @@ To run the model on the IPU, we will pass the ipu flag and the vaip_config.json 
 
 Typical output: 
 
-.. image:: images/cpp.png
-
 .. code-block::
 
    I20231129 13:19:47.882169 14796 vitisai_compile_model.cpp:336] Vitis AI EP Load ONNX Model Success
@@ -442,16 +440,16 @@ Typical output:
    [Vitis AI EP] No. of Subgraphs :   CPU     1    IPU     1 Actually running on IPU     1
    ...
    Final results:   
-     Predicted label is cat and actual label is cat
-     Predicted label is ship and actual label is ship
-     Predicted label is ship and actual label is ship
-     Predicted label is airplane and actual label is airplane
-     Predicted label is frog and actual label is frog
-     Predicted label is frog and actual label is frog
-     Predicted label is truck and actual label is automobile
-     Predicted label is frog and actual label is frog
-     Predicted label is cat and actual label is cat
-     Predicted label is automobile and actual label is automobile                                                                                                                                                                
+   Predicted label is cat and actual label is cat
+   Predicted label is ship and actual label is ship
+   Predicted label is ship and actual label is ship
+   Predicted label is airplane and actual label is airplane
+   Predicted label is frog and actual label is frog
+   Predicted label is frog and actual label is frog
+   Predicted label is truck and actual label is automobile
+   Predicted label is frog and actual label is frog
+   Predicted label is cat and actual label is cat
+   Predicted label is automobile and actual label is automobile                                                                                                                                                                
 ..
   ------------
 
