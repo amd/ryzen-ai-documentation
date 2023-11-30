@@ -473,7 +473,8 @@ Table 1. List of VAI_Q_ONNX Supported Quantized Ops
 VAI_Q_ONNX APIs
 ***************
 
-### quantize_static Method
+1. quantize_static Method
+=========================
 
 .. code-block::
       
@@ -599,7 +600,8 @@ Table 2. Quantize Types can be selected in Quantize Formats
 
 ***Note*** : For pure UInt8 or Int8 quantization, we recommend that users set quant_format to QuantFormat.QDQ as it uses native QuantizeLinear/DequantizeLinear operations which may have better compatibility and performance.
 
-### dump_model Method
+2. dump_model Method
+====================
 
 .. code-block::
       
@@ -619,7 +621,8 @@ Table 2. Quantize Types can be selected in Quantize Formats
 * **dump_float**: (Boolean) This flag determines whether to dump the floating-point value of nodes' results. If set to True, the float values will be dumped. Note that this may require a lot of storage space. The default value is False.
 * **output_dir**: (String) This parameter specifies the directory where the dumped simulation results will be saved. After successful execution of the function, dump results are generated in this specified directory. The default value is './dump_results'.
 
-### get_library_path Method
+3. get_library_path Method
+==========================
 
 .. code-block::
       
