@@ -27,10 +27,9 @@ The following are the steps and the required files to run the example. The files
        1. To prepare the model the script converts pre-trained PyTorch model to ONNX format.
        2. To prepare the necessary data the script downloads and extract CIFAR10 dataset. 
 
-   * - Trained model
-     - ``models/resnet_trained_for_cifar10.onnx``,
-       ``models/resnet_trained_for_cifar10.pt``
-     - The ResNet model trained using CIFAR10 is provided both in .pt format.
+   * - Pretrained model
+     - ``models/resnet_trained_for_cifar10.pt``
+     - The ResNet model trained using CIFAR-10 is provided in .pt format.
    * - Quantization 
      - ``resnet_quantize.py``
      - Convert the model to the IPU-deployable model by performing Post-Training Quantization flow using VitisAI ONNX Quantization.
