@@ -84,7 +84,10 @@ The ``prepare_model_data.py`` script downloads the CIFAR-10 dataset in pickle fo
             dynamic_axes=dynamic_axes,
         )
 
-Note that the supported batch size on Ryzen AI is 1, and the opset version is 13. 
+Note the following settings for the onnx conversion:
+
+   - Ryzen AI supports a batch size=1, so dummy input is fixed to a batch_size =1 during model conversion
+   - Recommended opset setting is 13 is used. 
 
 Run the following command to prepare the dataset:
 
