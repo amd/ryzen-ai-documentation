@@ -1,24 +1,29 @@
-########################
-Tensorflow Quantization
-########################
+#################################
+Vitis AI Quantizer for TensorFlow
+#################################
 
 .. note:: 
 
-    All Tensorflow related documentation is applicable to the Tensorflow 2 version. 
+    All TensorFlow related documentation is applicable to the TensorFlow 2 version. 
 
 
+
+*********************
 Enabling Quantization
-~~~~~~~~~~~~~~~~~~~~~
+*********************
 
-To enable Vitis AI Tensorflow Quantization, activate the conda environment inside the Vitis AI Tensorflow 2 docker container:
+Ensure that the Vitis AI Quantizer for TensorFlow is correctly installed. For more information, see the :ref:`installation instructions <install-pt-tf>`.
+
+To enable the Vitis AI Quantizer for TensorFlow, activate the conda environment in the Vitis AI Pytorch TensorFlow 2 container:
 
 .. code-block::
 
      conda activate vitis-ai-tensorflow2
      
 
+**************************
 Post-Training Quantization
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+**************************
 
 Post-Training Quantization requires the following files:
 
@@ -29,7 +34,7 @@ Post-Training Quantization requires the following files:
 A complete example of Post-Training Quantization is available at `Vitis AI GitHub <https://github.com/Xilinx/Vitis-AI/blob/v3.0/src/vai_quantizer/vai_q_tensorflow2.x/tensorflow_model_optimization/python/examples/quantization/keras/vitis/mnist_cnn_ptq.py>`__.
      
 Vitis AI Quantization APIs
-%%%%%%%%%%%%%%%%%%%%%%%%%%     
+==========================     
 
 Vitis AI provides the ``vitis_activation`` module into Tensorflow library for quantization. The following code shows the usage:
 
@@ -48,7 +53,7 @@ Vitis AI provides the ``vitis_activation`` module into Tensorflow library for qu
 - kwargs: Dictionary of the user-defined configurations of quantize strategy. 
 
 Exporting the Model for Deployment
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+==================================
 
 After the quantization, the quantized model can be saved into ONNX to deploy with ONNX Runtime Vitis AI Execution Provider: 
 
@@ -61,7 +66,7 @@ After the quantization, the quantized model can be saved into ONNX to deploy wit
                                               **kwargs)
 
 Fast Finetuning
-%%%%%%%%%%%%%%%
+===============
 
 After post-training quantization, usually there is a small accuracy loss. If the accuracy loss is large, a fast finetuning approach based on the `AdaQuant Algorithm <https://arxiv.org/abs/2006.10518>`__ can be tried instead of quantization aware training. This approach uses a small unlabeled data to calibrate the activations and finetuning the weights. 
 
@@ -76,8 +81,9 @@ Fast finetuning related parameters are as follows:
 - fast_ft_epochs: indicates the number of finetuning epochs for each layer.
 
 
+***************************
 Quantization Aware Training
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+***************************
 
 
 An example of the Quantization Aware Training is available in the `Vitis Github <https://github.com/Xilinx/Vitis-AI/blob/v3.0/src/vai_quantizer/vai_q_tensorflow2.x/tensorflow_model_optimization/python/examples/quantization/keras/vitis/mnist_cnn_qat.py>`__ repo. 
@@ -86,7 +92,7 @@ An example of the Quantization Aware Training is available in the `Vitis Github 
 The general steps are as follows:
 
 1. Prepare the floating point model, training dataset, and training script.
-2. Modify the training by using ``VitisQuantizer.get_qat_model`` to convert the model into a quantized model and then proceed to training/finetuning it.
+2. Modify the training by using ``VitisQuantizer.get_qat_model`` to convert the model into a quantized model and then proceed to training/finetuning it:
 
 .. code-block::
 

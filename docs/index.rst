@@ -1,8 +1,12 @@
 ##########################
-Ryzen AI Software Platform  
+Ryzen AI Software   
 ##########################
 
-The AMD Ryzen™ AI Software Platform enables developers to take machine learning models trained in PyTorch or TensorFlow and run them on laptops powered by `Ryzen AI <https://www.amd.com/en/products/ryzen-ai>`__. Ryzen AI is a dedicated AI accelerator integrated on-chip with the CPU cores. The Ryzen AI software platform intelligently optimizes tasks and workloads, freeing-up CPU and GPU resources, and ensuring optimal performance at lower power.
+The AMD Ryzen™ AI Software enables developers to take full advantage of the AMD XDNA™-based AI accelerators integrated in AMD Ryzen AI processors. The Ryzen AI Software intelligently optimizes AI tasks and workloads, freeing-up CPU and GPU resources, and ensuring optimal performance at lower power.
+
+**Bring your own model**: the Ryzen AI Software lets developers take machine learning models trained in PyTorch or TensorFlow and deploy them on laptops powered by Ryzen AI processors using the ONNX runtime.
+
+**Use optimized library functions**: the Ryzen AI Library provides ready-made functions optimized for Ryzen AI. Developers can integrate these functions in their applications and harness the power of AI without experience in machine learning required.
 
 |
 
@@ -13,39 +17,10 @@ The AMD Ryzen™ AI Software Platform enables developers to take machine learnin
 |
 |
 
-*****************
-Table of Contents
-*****************
-
-Release Notes
-===============
-
-* **Release Notes**: Refer to :doc:`relnotes` page.
-
-Getting Started
-===============
-
-* **Installation**: Refer to the :doc:`inst` page. 
-
-* **Development Flow Overview**: Refer to the :doc:`devflow` page. 
-
-* **Getting Started Example**: Refer to the :doc:`getstartex` page to run a resnet50 model example.
-
-Using Your Model
-================
-
-* **Model Compatibility**: Refer to the :doc:`modelcompat` page. 
-
-* **Model Quantization**: Refer to the :doc:`modelport` page. 
-
-* **Model Running Using ONNX Runtime**: Refer to the the :doc:`modelrun` page. 
-
-
 
 .. toctree::
    :maxdepth: 1
    :caption: Release Notes
-   :hidden:
 
    relnotes.rst
 
@@ -53,20 +28,34 @@ Using Your Model
 .. toctree::
    :maxdepth: 1
    :caption: Getting Started
-   :hidden:
 
    inst.rst
+   runtime_setup.rst
    devflow.rst
-   getstartex.rst
+   examples.rst
 
 .. toctree::
    :maxdepth: 1
    :caption: Using Your Model
-   :hidden:
 
    modelcompat.rst
    modelport.rst
    modelrun.rst
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Ryzen AI Libraries
+
+   ryzen_ai_libraries.rst
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Additional Topics
+
+   manual_installation.rst
+   alternate_quantization_setup.rst 
+   early_access_features.rst
+
 
 ..
   ------------

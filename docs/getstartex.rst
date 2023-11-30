@@ -1,13 +1,20 @@
-
-#######################
-Getting Started Example
-#######################
+########################
+Getting Started Tutorial
+########################
 
 This example uses a fine-tuned version of the ResNet model (using the CIFAR-10 dataset) to demonstrate the process of preparing, quantizing, and deploying a model using Ryzen AI.
 
 
-The following are the steps and the required files to run the example. The files can be downloaded from `here <https://github.com/amd/ryzen-ai-documentation/tree/main/example/resnet50>`_.
+- The source code files can be downloaded from `this link <https://github.com/amd/RyzenAI-SW/tree/main/tutorial/getting_started_resnet>`_. Alternatively, you can clone the RyzenAI-SW repo and change the directory into the tutorial code directory. 
 
+.. code-block::
+
+    git clone https://github.com/amd/RyzenAI-SW.git
+    cd tutorial/getting_started_resnet
+
+|
+
+The following are the steps and the required files to run the example: 
 
 .. list-table:: 
    :widths: 20 25 25
@@ -44,12 +51,13 @@ The following are the steps and the required files to run the example. The files
 |
 |
 
+************************
 Step 1: Install Packages
-~~~~~~~~~~~~~~~~~~~~~~~~
+************************
 
-* Ensure that the Ryzen AI Software Platform is correctly installed. For more details, see the :ref:`installation instructions <inst.rst>`.
+* Ensure that the Ryzen AI Software  is correctly installed. For more details, see the :doc:`installation instructions <inst>`.
 
-* This example requires a couple of additional packages. Run the following command to install them:
+* Use the conda environment created during the installation for the rest of the steps. This example requires a couple of additional packages. Run the following command to install them:
 
 
 .. code-block:: 
@@ -59,12 +67,14 @@ Step 1: Install Packages
 |
 |
 
-Step 2: Prepare dataset and ONNX model 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In this example, we utilize the a custom ResNet model finetuned using the CIFAR-10 dataset.
+**************************************
+Step 2: Prepare dataset and ONNX model
+**************************************
 
-The ``prepare_model_data.py`` script downloads the CIFAR-10 dataset in pickle format (for python) and binary format (for C++). This dataset will be used in the subsequent steps for quantization and inference. The script also exports the provided PyTorch model into ONNX format. The following snippet from the script shows how the ONNX model is exported: 
+In this example, we utilize the a custom ResNet model finetuned using the CIFAR-10 dataset
+
+The ``prepare_model_data.py`` script downloads the CIFAR-10 dataset in pickle format (for python) and binary format (for C++). This dataset will be used in the subsequent steps for quantization and inference. The script also exports the provided PyTorch model into ONNX format. The following snippet from the script shows how the ONNX model is exported:
 
 .. code-block:: 
 
@@ -101,8 +111,9 @@ Run the following command to prepare the dataset and export the ONNX model:
 |
 |
 
+**************************
 Step 3: Quantize the Model
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+**************************
 
 Quantizing AI models from floating-point to 8-bit integers reduces computational power and the memory footprint required for inference. This example utilizes the Vitis AI ONNX quantizer workflow. Quantization tool takes the pre-trained float32 model from the previous step (``resnet_trained_for_cifar10.onnx``) and produces a quantized model.
 
@@ -110,9 +121,9 @@ Quantizing AI models from floating-point to 8-bit integers reduces computational
 
    python resnet_quantize.py
 
-This will generate quantized model using QDQ quant format and UInt8 activation type and Int8 weight type. After the run is complete, the quantized ONNX model ``resnet.qdq.U8S8.onnx`` is saved to models/resnet.qdq.U8S8.onnx. 
+This generates a quantized model using QDQ quant format and UInt8 activation type and Int8 weight type. After the completion of the run, the quantized ONNX model ``resnet.qdq.U8S8.onnx`` is saved to models/resnet.qdq.U8S8.onnx. 
 
-The ``resnet_quantize.py`` file has ``quantize_static`` function (line 95) that applies static quantization to the model. 
+The :file:`resnet_quantize.py` file has ``quantize_static`` function (line 95) that applies static quantization to the model. 
 
 .. code-block::
 
@@ -125,7 +136,7 @@ The ``resnet_quantize.py`` file has ``quantize_static`` function (line 95) that 
         dr,
         quant_format=QuantFormat.QDQ,
         calibrate_method=vai_q_onnx.PowerOfTwoMethod.MinMSE,
-        activation_type=QuantType.QUInt8,
+        activation_type=QuantType.QInt8,
         weight_type=QuantType.QInt8,
         enable_dpu=True, 
         extra_options={'ActivationSymmetric': True} 
@@ -134,18 +145,21 @@ The ``resnet_quantize.py`` file has ``quantize_static`` function (line 95) that 
 The parameters of this function are:
 
 * **input_model_path**: (String) The file path of the model to be quantized.
-* **output_model_path**: (String) The file path where the quantized model will be saved.
-* **dr**: (Object or None) Calibration data reader that enumerates the calibration data and producing inputs for the original model. In this example, CIFAR-10 dataset is used for calibration during the quantization process.
+* **output_model_path**: (String) The file path where the quantized model is saved.
+* **dr**: (Object or None) Calibration data reader that enumerates the calibration data and producing inputs for the original model. In this example, CIFAR10 dataset is used for calibration during the quantization process.
 * **quant_format**: (String) Specifies the quantization format of the model. In this example we have used the QDQ quant format.
-* **calibrate_method**:(String) In this example this parameter is set to ``vai_q_onnx.PowerOfTwoMethod.MinMSE`` to apply power-of-2 scale quantization. 
-* **activation_type**: (String) Data type of activation tensors after quantization. In this example, it's set to QUInt8 (Quantized Unsigned Int 8).
-* **weight_type**: (String) Data type of weight tensors after quantization. In this example, it's set to QInt8 (Quantized Int 8).
+* **calibrate_method**: (String) In this example this parameter is set to ``vai_q_onnx.PowerOfTwoMethod.MinMSE`` to apply power-of-2 scale quantization. 
+* **activation_type**: (String) Data type of activation tensors after quantization. In this example, it's set to QInt8 (Quantized Integer 8).
+* **weight_type**: (String) Data type of weight tensors after quantization. In this example, it's set to QInt8 (Quantized Integer 8).
+* **enable_dpu**: (Boolean) Determines whether to generate a quantized model that is suitable for the DPU. If set to True, the quantization process will create a model that is optimized for DPU computations.
+* **extra_options**: (Dict or None) Dictionary of additional options that can be passed to the quantization process. In this example, ``ActivationSymmetric`` is set to True. It means calibration data for activations is symmetrized. 
 
 |
 |
 
+************************
 Step 4: Deploy the Model  
-~~~~~~~~~~~~~~~~~~~~~~~~
+************************
 
 We demonstrate deploying the quantized model using both Python and C++ APIs. 
 
@@ -195,10 +209,10 @@ To successfully run the model on the IPU, run the following setup steps:
 
    set XLNX_VART_FIRMWARE=path\to\RyzenAI\installation\ryzen-ai-sw-1.0\ryzen-ai-sw-1.0\voe-4.0-win_amd64\1x4.xclbin
 
-- Copy the ``vaip_config.json`` runtime configuration file from the Vitis AI Execution Provider package to the current directory. For more information, see the :ref:`installation instructions <copy-vaip-config>`. The ``vaip_config.json`` is used by the ``predict.py`` script to configure the Vitis AI Execution Provider.
+- Copy the :file:`vaip_config.json` runtime configuration file from the Vitis AI Execution Provider package to the current directory. For more information, see the :ref:`runtime setup instructions <config-file>`. The :file:`vaip_config.json` is used by the :file:`predict.py` script to configure the Vitis AI Execution Provider.
 
 
-The following section of the ``predict.py`` script shows how ONNX Runtime is configured to deploy the model on the Ryzen AI IPU:
+The following section of the :file:`predict.py` script shows how ONNX Runtime is configured to deploy the model on the Ryzen AI IPU:
 
 
 .. code-block::
@@ -372,7 +386,6 @@ To run the model on the IPU, we will pass the ipu flag and the vaip_config.json 
 Typical output: 
 
 .. image:: images/cpp.png
-
 
 ..
   ------------
