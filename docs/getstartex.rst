@@ -89,14 +89,14 @@ Note the following settings for the onnx conversion:
    - Ryzen AI supports a batch size=1, so dummy input is fixed to a batch_size =1 during model conversion
    - Recommended opset setting is 13 is used. 
 
-Run the following command to prepare the dataset:
+Run the following command to prepare the dataset and export the ONNX model:
 
 .. code-block:: 
 
    python prepare_model_data.py 
 
 * The downloaded CIFAR-10 dataset is saved in the current directory at the following location: ``data/*``.
-* The ResNet model has been retrained on CIFAR-10 and the PyTorch model ``resnet_trained_for_cifar10.pt`` is provided in ``models/``.
+* The ONNX model is generated at models/resnet_trained_for_cifar10.onnx
 
 |
 |
@@ -104,7 +104,7 @@ Run the following command to prepare the dataset:
 Step 3: Quantize the Model
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Quantizing AI models from floating-point to 8-bit integers reduces computational power and the memory footprint required for inference. For model quantization, you can either use Vitis AI quantizer or Microsoft Olive. This example utilizes the Vitis AI ONNX quantizer workflow. Quantization tool takes the pre-trained float32 model from the previous step (``resnet_trained_for_cifar10.onnx``) and produces a quantized model.
+Quantizing AI models from floating-point to 8-bit integers reduces computational power and the memory footprint required for inference. This example utilizes the Vitis AI ONNX quantizer workflow. Quantization tool takes the pre-trained float32 model from the previous step (``resnet_trained_for_cifar10.onnx``) and produces a quantized model.
 
 .. code-block::
 
@@ -189,7 +189,11 @@ Deploy the Model on the Ryzen AI IPU
 
 To successfully run the model on the IPU, run the following setup steps:
 
-- Ensure that the ``XLNX_VART_FIRMWARE`` environment variable is correctly pointing to the XCLBIN file included in the ONNX Vitis AI Execution Provider package. For more information, see the :ref:`installation instructions <set-vart-envar>`.
+- Ensure that the ``XLNX_VART_FIRMWARE`` environment variable is correctly pointing to the XCLBIN file included in the ONNX Vitis AI Execution Provider package. If you installed Ryzen-AI software by automatic installer, the IPU binary path is already set, however if you did the installation manually, ensure the IPU binary path is set using the following command: 
+
+.. code-block:: bash 
+
+   set XLNX_VART_FIRMWARE=path\to\RyzenAI\installation\ryzen-ai-sw-1.0\ryzen-ai-sw-1.0\voe-4.0-win_amd64\1x4.xclbin
 
 - Copy the ``vaip_config.json`` runtime configuration file from the Vitis AI Execution Provider package to the current directory. For more information, see the :ref:`installation instructions <copy-vaip-config>`. The ``vaip_config.json`` is used by the ``predict.py`` script to configure the Vitis AI Execution Provider.
 
