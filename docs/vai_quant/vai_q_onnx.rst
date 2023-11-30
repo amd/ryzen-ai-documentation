@@ -355,8 +355,7 @@ Quantizing to Other Precisions
 ******************************
 
 
-**NOTE:**
-
+.. note::
   The current release of the Vitis AI Execution Provider ingests quantized ONNX models with INT8/UINT8 data types only. No support is provided for direct deployment of models with other precisions, including FP32.
 
 
