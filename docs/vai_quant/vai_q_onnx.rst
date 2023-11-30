@@ -356,7 +356,7 @@ Quantizing to Other Precisions
 
 
 .. note::
-  The current release of the Vitis AI Execution Provider ingests quantized ONNX models with INT8/UINT8 data types only. No support is provided for direct deployment of models with other precisions, including FP32.
+   The current release of the Vitis AI Execution Provider ingests quantized ONNX models with INT8/UINT8 data types only. No support is provided for direct deployment of models with other precisions, including FP32.
 
 
 In addition to the INT8/UINT8, the VAI_Q_ONNX API supports quantizing models to other data formats, including INT16/UINT16, INT32/UINT32, Float16 and BFloat16, which can provide better accuracy or be used for experimental purposes. These new data formats are achieved by a customized version of QuantizeLinear and DequantizeLinear named "VitisQuantizeLinear" and "VitisDequantizeLinear", which expands onnxruntime's UInt8 and Int8 quantization to support UInt16, Int16, UInt32, Int32, Float16 and BFloat16. This customized Q/DQ was implemented by a custom operations library in VAI_Q_ONNX using onnxruntime's custom operation C API.
