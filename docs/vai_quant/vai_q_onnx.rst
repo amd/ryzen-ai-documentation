@@ -172,17 +172,16 @@ The static quantization method first runs the model using a set of inputs called
   -  vai_q_onnx.QuantFormat.QDQ: This option quantizes the model by inserting QuantizeLinear/DeQuantizeLinear into the tensor. It supports 8-bit quantization only.
   -  vai_q_onnx.VitisQuantFormat.QDQ: This option quantizes the model by inserting VitisQuantizeLinear/VitisDeQuantizeLinear into the tensor. It supports a wider range of bit-widths and configurations.
   -  vai_q_onnx.VitisQuantFormat.FixNeuron (Experimental): This option quantizes the model by inserting FixNeuron (a combination of QuantizeLinear and DeQuantizeLinear) into the tensor. This quant format is currently experimental and cannot be used for actual deployment.
-
 * **calibrate_method**: (String) The method used in calibration, default to vai_q_onnx.PowerOfTwoMethod.MinMSE.
 
-   -  For IPU_CNN platforms, power-of-two methods should be used, options are:
-    - vai_q_onnx.PowerOfTwoMethod.NonOverflow: This method get the power-of-two quantize parameters for each tensor to make sure min/max values not overflow.
-    - vai_q_onnx.PowerOfTwoMethod.MinMSE: This method get the power-of-two quantize parameters for each tensor to minimize the mean-square-loss of quantized values and float values. This takes longer time but usually gets better accuracy.
+ -  For IPU_CNN platforms, power-of-two methods should be used, options are:
+  -  vai_q_onnx.PowerOfTwoMethod.NonOverflow: This method get the power-of-two quantize parameters for each tensor to make sure min/max values not overflow.
+  -  vai_q_onnx.PowerOfTwoMethod.MinMSE: This method get the power-of-two quantize parameters for each tensor to minimize the mean-square-loss of quantized values and float values. This takes longer time but usually gets better accuracy.
 
-   -  For IPU_Transformer or CPU platforms, float scale methods should be used, options are:
-    - vai_q_onnx.CalibrationMethod.MinMax: This method obtains the quantization parameters based on the minimum and maximum values of each tensor.
-    - vai_q_onnx.CalibrationMethod.Entropy: This method determines the quantization parameters by considering the entropy algorithm of each tensor's distribution.
-    - vai_q_onnx.CalibrationMethod.Percentile: This method calculates quantization parameters using percentiles of the tensor values.
+ -  For IPU_Transformer or CPU platforms, float scale methods should be used, options are:
+  -  vai_q_onnx.CalibrationMethod.MinMax: This method obtains the quantization parameters based on the minimum and maximum values of each tensor.
+  -  vai_q_onnx.CalibrationMethod.Entropy: This method determines the quantization parameters by considering the entropy algorithm of each tensor's distribution.
+  -  vai_q_onnx.CalibrationMethod.Percentile: This method calculates quantization parameters using percentiles of the tensor values.
 
 * **activation_type**: (QuantType) Specifies the quantization data type for activations.
 * **weight_type**: (QuantType) Specifies the quantization data type for weights, For DPU/IPU devices, this must be set to QuantType.QInt8.
@@ -194,11 +193,15 @@ The static quantization method first runs the model using a set of inputs called
   -  ActivationSymmetric: (Boolean) If True, symmetrize calibration data for activations. For DPU/IPU, this need be set to True.
   For more details of the extra_options parameters, please refer to the [extra_options](#extra_options).
 
+
+
+
 *************************
 Recommended Configuration
 *************************
 
-#### Configurations For CNN's On IPU  
+Configurations For CNN's On IPU  
+===============================
 
 To accelerate inference of CNN-based models on the IPU, the recommended configuration is as follows:
 
@@ -220,7 +223,8 @@ To accelerate inference of CNN-based models on the IPU, the recommended configur
    )
 
 
-#### Configurations For Transformers On IPU
+Configurations For Transformers On IPU
+======================================
 
 To accelerate inference of Transformer-based models on the IPU, the recommended configuration is as follows:
 
@@ -239,7 +243,8 @@ To accelerate inference of Transformer-based models on the IPU, the recommended 
    )
 
 
-#### Configurations For CPU  
+Configurations For CPU  
+======================
 
 To accelerate CNN models on CPU, the recommended configuration is as follows:
 
@@ -262,8 +267,10 @@ To accelerate CNN models on CPU, the recommended configuration is as follows:
 Quantizing to Other Precisions
 ******************************
 
-.. note::
-   The current release of the Vitis AI Execution Provider ingests quantized ONNX models with INT8/UINT8 data types only. No support is provided for direct deployment of models with other precisions, including FP32.
+
+**NOTE:**
+
+  The current release of the Vitis AI Execution Provider ingests quantized ONNX models with INT8/UINT8 data types only. No support is provided for direct deployment of models with other precisions, including FP32.
 
 
 In addition to the INT8/UINT8, the VAI_Q_ONNX API supports quantizing models to other data formats, including INT16/UINT16, INT32/UINT32, Float16 and BFloat16, which can provide better accuracy or be used for experimental purposes. These new data formats are achieved by a customized version of QuantizeLinear and DequantizeLinear named "VitisQuantizeLinear" and "VitisDequantizeLinear", which expands onnxruntime's UInt8 and Int8 quantization to support UInt16, Int16, UInt32, Int32, Float16 and BFloat16. This customized Q/DQ was implemented by a custom operations library in VAI_Q_ONNX using onnxruntime's custom operation C API.
@@ -274,7 +281,8 @@ To use this feature, the ```quant_format``` should be set to VitisQuantFormat.QD
 
 
 
-#### 1. Quantizing Float32 Models to Int16 or Int32 
+1. Quantizing Float32 Models to Int16 or Int32 
+==============================================
 
 
 The quantizer supports quantizing float32 models to Int16 and Int32 data formats. To enable this, you need to set the "activation_type" and "weight_type" in the quantize_static API to the new data types. Options are ```VitisQuantType.QInt16/VitisQuantType.QUInt16``` for Int16, and ```VitisQuantType.QInt32/VitisQuantType.QUInt32``` for Int32.
@@ -292,7 +300,8 @@ The quantizer supports quantizing float32 models to Int16 and Int32 data formats
    )
 
 
-#### 2. Quantizing Float32 Models to Float16 or BFloat16
+2. Quantizing Float32 Models to Float16 or BFloat16
+===================================================
 
 
 Besides integer data formats, the quantizer also supports quantizing float32 models to float16 and bfloat16 data formats, by setting the "activation_type" and "weight_type" to ```VitisQuantType.QFloat16``` or ```VitisQuantType.QBFloat16``` respectively.
@@ -310,7 +319,8 @@ Besides integer data formats, the quantizer also supports quantizing float32 mod
    )
 
 
-#### 3. Quantizing Float32 Models to Mixed Data Formats
+3. Quantizing Float32 Models to Mixed Data Formats
+==================================================
 
 
 The quantizer supports setting the activation and weight to different precisions. For example, activation is Int16 while weight is set to Int8. This can be used when pure Int8 quantization does not meet the accuracy requirements.
@@ -328,7 +338,8 @@ The quantizer supports setting the activation and weight to different precisions
    )
 
 
-#### 4. Quantizing Float16 Models
+4. Quantizing Float16 Models
+============================
 
 
 For models in float16, we recommend setting convert_fp16_to_fp32 to True. This will first convert your float16 model to a float32 model before quantization, reducing redundant nodes such as cast in the model.
@@ -349,7 +360,8 @@ For models in float16, we recommend setting convert_fp16_to_fp32 to True. This w
    )
 
 
-#### 5. Converting NCHW Models to NHWC and Quantize
+5. Converting NCHW Models to NHWC and Quantize
+==============================================
 
 
 NHWC input shape typically yields better acceleration performance compared to NCHW on IPU. VAI_Q_ONNX facilitates the conversion of NCHW input models to NHWC input models by setting "convert_nchw_to_nhwc" to True. Please note that the conversion steps will be skipped if the model is already NHWC or has non-convertable input shapes.
@@ -370,7 +382,8 @@ NHWC input shape typically yields better acceleration performance compared to NC
    )
 
 
-#### 6. Quantizing Using CrossLayerEqualization(CLE)
+6. Quantizing Using CrossLayerEqualization(CLE)
+===============================================
 
 
 CrossLayerEqualization (CLE) is a technique used to improve PTQ accuracy. It can equalize the weights of consecutive convolution layers, making the model weights easier to perform per-tensor quantization. Experiments show that using CLE technique can improve the PTQ accuracy of some models, especially for models with depthwise_conv layers, such as MobileNet. Here is an example showing how to enable CLE using VAI_Q_ONNX.
