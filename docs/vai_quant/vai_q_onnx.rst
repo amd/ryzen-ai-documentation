@@ -6,7 +6,7 @@ Vitis AI Quantizer for ONNX
 Overview
 ********
 
-The AMD-Xilinx Vitis AI Quantizer for ONNX models. It supports various configuration and functions to quantize models targeting for deployment on IPU_CNN, IPU_Transformer and CPU. It is customized based on [Quantization Tool](https://github.com/microsoft/onnxruntime/tree/main/onnxruntime/python/tools/quantization) in ONNX Runtime.
+The AMD-Xilinx Vitis AI Quantizer for ONNX models. It supports various configuration and functions to quantize models targeting for deployment on IPU_CNN, IPU_Transformer and CPU. It is customized based on `Quantization Tool <https://github.com/microsoft/onnxruntime/tree/main/onnxruntime/python/tools/quantization>`_ in ONNX Runtime.
 
 The Vitis AI Quantizer for ONNX supports Post Training Quantization. This static quantization method first runs the model using a set of inputs called calibration data. During these runs, the flow computes the quantization parameters for each activation. These quantization parameters are written as constants to the quantized model and used for all inputs. The quantization tool supports the following calibration methods: MinMax, Entropy and Percentile, and MinMSE.
 
