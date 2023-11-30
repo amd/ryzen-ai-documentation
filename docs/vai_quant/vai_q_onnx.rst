@@ -37,14 +37,15 @@ Before running ``vai_q_onnx``, prepare the float model and calibration set, incl
 - float model: Floating-point models in ONNX format.
 - calibration dataset: A subset of the training dataset or validation dataset to represent the input data distribution; usually 100 to 1000 images are enough.
 
-* Exporting PyTorch Models to ONNX
+**Exporting PyTorch Models to ONNX**
 
 For PyTorch models, it is recommended to use the TorchScript-based onnx exporter for exporting ONNX models. Please refer to the [PyTorch documentation for guidance](https://pytorch.org/docs/stable/onnx_torchscript.html#torchscript-based-onnx-exporter). 
 
 Tips:
-1. Before exporting, please perform the model.eval().
-2. Models with opset 13 are recommended.
-3. For CNN's on IPU platform, dynamic input shapes are currently not supported and only a batch size of 1 is allowed. Please ensure that the shape of input is a fixed value, and the batch dimension is set to 1.
+
+- Before exporting, please perform model.eval().
+- Models with opset 13 are recommended.
+- For CNN's on IPU platform, dynamic input shapes are currently not supported and only a batch size of 1 is allowed. Please ensure that the shape of input is a fixed value, and the batch dimension is set to 1.
 
 Example code:
 
@@ -60,18 +61,19 @@ Example code:
    )
 
 
-.. note:: 
+**NOTE:** 
 
-   * **Opset Versions**:The ONNX models must be opset 10 or higher (recommended setting 13) to be quantized by Vitis AI ONNX Quantizer. Models with opset < 10 must be reconverted to ONNX from their original framework using opset 10 or above. Alternatively, you can refer to the usage of the version converter for ONNX Version Converter https://github.com/onnx/onnx/blob/main/docs/VersionConverter.md
-   * **Large Models > 2GB**: Due to the 2GB file size limit of Protobuf, for ONNX models exceeding 2GB, additional data will be stored separately. Please ensure that the .onnx file and the data file are placed in the same directory. Also, please set the use_external_data_format parameter to True for large models when quantizing.
+ * **Opset Versions**:The ONNX models must be opset 10 or higher (recommended setting 13) to be quantized by Vitis AI ONNX Quantizer. Models with opset < 10 must be reconverted to ONNX from their original framework using opset 10 or above. Alternatively, you can refer to the usage of the version converter for ONNX Version Converter https://github.com/onnx/onnx/blob/main/docs/VersionConverter.md
+
+ * **Large Models > 2GB**: Due to the 2GB file size limit of Protobuf, for ONNX models exceeding 2GB, additional data will be stored separately. Please ensure that the .onnx file and the data file are placed in the same directory. Also, please set the use_external_data_format parameter to True for large models when quantizing.
 
 
 2. (Recommended) Pre-processing on the Float Model
 ==================================================
 
-.. note:: 
+**NOTE:** 
 
-    ONNX model optimization cannot output a model size greater than 2GB. For models larger than 2GB, the optimization step must be skipped.
+ ONNX model optimization cannot output a model size greater than 2GB. For models larger than 2GB, the optimization step must be skipped.
 
 Pre-processing transforms a float model to prepare it for quantization. It consists of the following three optional steps:
 
@@ -165,20 +167,23 @@ The static quantization method first runs the model using a set of inputs called
 * **model_output**: (String) This parameter represents the file path where the quantized model will be saved.
 * **calibration_data_reader**: (Object or None) This parameter is a calibration data reader. It enumerates the calibration data and generates inputs for the original model. If you wish to use random data for a quick test, you can set calibration_data_reader to None. The default value is None.
 * **quant_format**: (String) This parameter is used to specify the quantization format of the model. It has the following options:
+
   -  vai_q_onnx.QuantFormat.QOperator: This option quantizes the model directly using quantized operators.
   -  vai_q_onnx.QuantFormat.QDQ: This option quantizes the model by inserting QuantizeLinear/DeQuantizeLinear into the tensor. It supports 8-bit quantization only.
   -  vai_q_onnx.VitisQuantFormat.QDQ: This option quantizes the model by inserting VitisQuantizeLinear/VitisDeQuantizeLinear into the tensor. It supports a wider range of bit-widths and configurations.
-  -  vai_q_onnx.VitisQuantFormat.FixNeuron (Experimental): This option quantizes the model by inserting FixNeuron (a combination of QuantizeLinear and DeQuantizeLinear) into the tensor. This quant format is currently experimental and cannot use for actual deployment.
+  -  vai_q_onnx.VitisQuantFormat.FixNeuron (Experimental): This option quantizes the model by inserting FixNeuron (a combination of QuantizeLinear and DeQuantizeLinear) into the tensor. This quant format is currently experimental and cannot be used for actual deployment.
+
 * **calibrate_method**: (String) The method used in calibration, default to vai_q_onnx.PowerOfTwoMethod.MinMSE.
 
-    For IPU_CNN platforms, power-of-two methods should be used, options are:
-  -  vai_q_onnx.PowerOfTwoMethod.NonOverflow: This method get the power-of-two quantize parameters for each tensor to make sure min/max values not overflow.
-  -  vai_q_onnx.PowerOfTwoMethod.MinMSE: This method get the power-of-two quantize parameters for each tensor to minimize the mean-square-loss of quantized values and float values. This takes longer time but usually gets better accuracy.
+   -  For IPU_CNN platforms, power-of-two methods should be used, options are:
+    - vai_q_onnx.PowerOfTwoMethod.NonOverflow: This method get the power-of-two quantize parameters for each tensor to make sure min/max values not overflow.
+    - vai_q_onnx.PowerOfTwoMethod.MinMSE: This method get the power-of-two quantize parameters for each tensor to minimize the mean-square-loss of quantized values and float values. This takes longer time but usually gets better accuracy.
 
-    For IPU_Transformer or CPU platforms, float scale methods should be used, options are:
-  -  vai_q_onnx.CalibrationMethod.MinMax: This method obtains the quantization parameters based on the minimum and maximum values of each tensor.
-  -  vai_q_onnx.CalibrationMethod.Entropy: This method determines the quantization parameters by considering the entropy algorithm of each tensor's distribution.
-  -  vai_q_onnx.CalibrationMethod.Percentile: This method calculates quantization parameters using percentiles of the tensor values.
+   -  For IPU_Transformer or CPU platforms, float scale methods should be used, options are:
+    - vai_q_onnx.CalibrationMethod.MinMax: This method obtains the quantization parameters based on the minimum and maximum values of each tensor.
+    - vai_q_onnx.CalibrationMethod.Entropy: This method determines the quantization parameters by considering the entropy algorithm of each tensor's distribution.
+    - vai_q_onnx.CalibrationMethod.Percentile: This method calculates quantization parameters using percentiles of the tensor values.
+
 * **activation_type**: (QuantType) Specifies the quantization data type for activations.
 * **weight_type**: (QuantType) Specifies the quantization data type for weights, For DPU/IPU devices, this must be set to QuantType.QInt8.
 * **enable_dpu**: (Boolean) This parameter is a flag that determines whether to generate a quantized model that adapts the approximations and constraints the DPU/IPU. If set to True, the quantization process will consider the specific limitations and requirements of the DPU/IPU.
