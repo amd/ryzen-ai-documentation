@@ -246,9 +246,40 @@ Run the ``predict.py`` with the ``--ep ipu`` switch to run the custom ResNet mod
 
 Typical output
 
-.. image:: images/python.png
+.. code-block::
 
-
+    I20231129 12:50:18.631383 16736 vitisai_compile_model.cpp:336] Vitis AI EP Load ONNX Model Success
+    I20231129 12:50:18.631383 16736 vitisai_compile_model.cpp:337] Graph Input Node Name/Shape (1)
+    I20231129 12:50:18.631383 16736 vitisai_compile_model.cpp:341]   input : [-1x3x32x32]
+    I20231129 12:50:18.631383 16736 vitisai_compile_model.cpp:347] Graph Output Node Name/Shape (1)
+    I20231129 12:50:18.631383 16736 vitisai_compile_model.cpp:351]   output : [-1x10]
+    I20231129 12:50:18.631383 16736 vitisai_compile_model.cpp:226] use cache key modelcachekey
+    I20231129 12:50:23.717264 16736 compile_pass_manager.cpp:352] Compile mode: aie
+    I20231129 12:50:23.717264 16736 compile_pass_manager.cpp:353] Debug mode: performance
+    I20231129 12:50:23.717264 16736 compile_pass_manager.cpp:357] Target architecture: AMD_AIE2_Nx4_Overlay
+    I20231129 12:50:23.717264 16736 compile_pass_manager.cpp:540] Graph name: main_graph, with op num: 438
+    I20231129 12:50:23.717264 16736 compile_pass_manager.cpp:553] Begin to compile...
+    W20231129 12:50:27.786000 16736 RedundantOpReductionPass.cpp:663] xir::Op{name = /avgpool/GlobalAveragePool_output_0_DequantizeLinear_Output_vaip_315, type = pool-fix}'s input and output is unchanged, so it will be removed.              
+    I20231129 12:50:27.945919 16736 PartitionPass.cpp:6142] xir::Op{name = output_, type = fix2float} is not supported by current target. Target name: AMD_AIE2_Nx4_Overlay, target type: IPU_PHX. Assign it to CPU.
+    I20231129 12:50:29.098559 16736 compile_pass_manager.cpp:565] Total device subgraph number 3, CPU subgraph number 1
+    I20231129 12:50:29.098559 16736 compile_pass_manager.cpp:574] Total device subgraph number 3, DPU subgraph number 1
+    I20231129 12:50:29.098559 16736 compile_pass_manager.cpp:583] Total device subgraph number 3, USER subgraph number 1
+    I20231129 12:50:29.098559 16736 compile_pass_manager.cpp:639] Compile done.
+    .... 
+    [Vitis AI EP] No. of Operators :   CPU     2    IPU   398  99.50% 
+    [Vitis AI EP] No. of Subgraphs :   CPU     1    IPU     1 Actually running on IPU     1  
+    ...
+    Image 0: Actual Label cat, Predicted Label cat
+    Image 1: Actual Label ship, Predicted Label ship
+    Image 2: Actual Label ship, Predicted Label ship
+    Image 3: Actual Label airplane, Predicted Label airplane
+    Image 4: Actual Label frog, Predicted Label frog 
+    Image 5: Actual Label frog, Predicted Label frog 
+    Image 6: Actual Label automobile, Predicted Label truck
+    Image 7: Actual Label frog, Predicted Label frog
+    Image 8: Actual Label cat, Predicted Label cat
+    Image 9: Actual Label automobile, Predicted Label automobile 
+   
 
 .. _dep-cpp:
 
@@ -385,8 +416,40 @@ To run the model on the IPU, we will pass the ipu flag and the vaip_config.json 
 
 Typical output: 
 
-.. image:: images/cpp.png
+.. code-block::
 
+   I20231129 13:19:47.882169 14796 vitisai_compile_model.cpp:336] Vitis AI EP Load ONNX Model Success
+   I20231129 13:19:47.882169 14796 vitisai_compile_model.cpp:337] Graph Input Node Name/Shape (1)
+   I20231129 13:19:47.882169 14796 vitisai_compile_model.cpp:341]   input : [-1x3x32x32]
+   I20231129 13:19:47.882169 14796 vitisai_compile_model.cpp:347] Graph Output Node Name/Shape (1)
+   I20231129 13:19:47.882169 14796 vitisai_compile_model.cpp:351]   output : [-1x10]
+   I20231129 13:19:53.161406 14796 compile_pass_manager.cpp:352] Compile mode: aie
+   I20231129 13:19:53.161406 14796 compile_pass_manager.cpp:353] Debug mode: performance
+   I20231129 13:19:53.161406 14796 compile_pass_manager.cpp:357] Target architecture: AMD_AIE2_Nx4_Overlay
+   I20231129 13:19:53.161406 14796 compile_pass_manager.cpp:540] Graph name: main_graph, with op num: 438
+   I20231129 13:19:53.161406 14796 compile_pass_manager.cpp:553] Begin to compile...
+   W20231129 13:19:57.223416 14796 RedundantOpReductionPass.cpp:663] xir::Op{name = /avgpool/GlobalAveragePool_output_0_DequantizeLinear_Output_vaip_315, type = pool-fix}'s input and output is unchanged, so it will be removed.
+   I20231129 13:19:57.389281 14796 PartitionPass.cpp:6142] xir::Op{name = output_, type = fix2float} is not supported by current target. Target name: AMD_AIE2_Nx4_Overlay, target type: IPU_PHX. Assign it to CPU.
+   I20231129 13:19:58.546655 14796 compile_pass_manager.cpp:565] Total device subgraph number 3, CPU subgraph number 1
+   I20231129 13:19:58.546655 14796 compile_pass_manager.cpp:574] Total device subgraph number 3, DPU subgraph number 1
+   I20231129 13:19:58.546655 14796 compile_pass_manager.cpp:583] Total device subgraph number 3, USER subgraph number 1
+   I20231129 13:19:58.547658 14796 compile_pass_manager.cpp:639] Compile done.
+   I20231129 13:19:58.583139 14796 anchor_point.cpp:444] before optimization:
+   ... 
+   [Vitis AI EP] No. of Operators :   CPU     2    IPU   398  99.50%
+   [Vitis AI EP] No. of Subgraphs :   CPU     1    IPU     1 Actually running on IPU     1
+   ...
+   Final results:   
+   Predicted label is cat and actual label is cat
+   Predicted label is ship and actual label is ship
+   Predicted label is ship and actual label is ship
+   Predicted label is airplane and actual label is airplane
+   Predicted label is frog and actual label is frog
+   Predicted label is frog and actual label is frog
+   Predicted label is truck and actual label is automobile
+   Predicted label is frog and actual label is frog
+   Predicted label is cat and actual label is cat
+   Predicted label is automobile and actual label is automobile                                                                                                                                                                
 ..
   ------------
 
