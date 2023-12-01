@@ -312,8 +312,8 @@ To accelerate inference of CNN-based models on the IPU, the recommended configur
 
 
 .. note::
-
-   In the current release, for some models, it is possible to observe lower than expected performance using the above mentioned recommended configuration. In this case, the following ``extra_options`` can be tried as a workaround. This issue will be fixed in a future release.
+   
+   By default, Conv + LeakyRelu/PRelu fusion is turned off in the current version. You can try to enable this feature to get better performance if the model contains LeakyRelu or PRelu. This default behavior may change in future versions. Here is the example configuration:
 
    .. code-block::
 
