@@ -8,7 +8,7 @@ This page introduces various demos, examples, and tutorials currently available 
 Getting Started Tutorials
 *************************
 
-- A :doc:`getstartex` with a ResNet50 model: A getting started example using the ResNet-50 model from PyTorch Hub to demonstrate the process of preparing, quantizing, and deploying a model using Ryzen AI.
+- A :doc:`getstartex` with a custom ResNet model: A getting started example using a fine-tuned ResNet model to demonstrate the process of preparing, quantizing, and deploying a model using Ryzen AI.
 
 
 ********
