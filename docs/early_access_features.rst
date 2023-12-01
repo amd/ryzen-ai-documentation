@@ -12,3 +12,12 @@ In ONNX Runtime, the eager mode flow consists of the following steps:
 - **Quantize the pre-trained model**: For LLMs, it is often beneficial to employ a combination of SmoothQuant (applied to the pre-trained PyTorch model) and dynamic quantization (utilizing ONNXRuntime ORTQuantizer) techniques to preserve accuracy as much as possible. As specific operators, like MATMUL, are offloaded to the IPU in the eager mode flow, it is also recommended to perform operator-specific quantization to quantize only the necessary operators.
 
 - **Run the quantized model with ONNX Runtime Vitis AI execution provider**: The quantized model is executed using ONNX Runtime and Vitis AI execution provider. The runtime flow requires IPU binary, Vitis AI EP configuration file, and IPU instructions (precompiled DLL file) to run those quantized operators on the IPU. 
+
+
+ONNX end-to-end flow
+~~~~~~~~~~~~~~~~~~~~
+
+ONNX end-to-end flow provides a framework to create and add pre/post-processing operators to the pre-trained model which enables running end-to-end model inference using Vitis AI Execution Provider. The feature is built on leveraging ONNX Runtime feature `ONNXRuntime-Extensions <https://onnxruntime.ai/docs/extensions/>`_. Typical pre-processing (or post-processing) tasks, such as resize, normalization, etc can be expressed as custom operators and a new model can be extended from the pre-trained model containing those custom operators. The generated model can then run on IPU including the pre-processing (or post-processing) tasks along with the model itself. This helps improve end-to-end latency as well as the PC power saving by reducing the CPU utilization. 
+ 
+The model examples using ONNX end-to-end flow <link>.
+
