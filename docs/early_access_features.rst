@@ -17,6 +17,7 @@ In ONNX Runtime, the eager mode flow consists of the following steps:
 ONNX end-to-end flow
 ~~~~~~~~~~~~~~~~~~~~
 
-ONNX end-to-end flow provides a framework to create and add pre/post-processing operators to the pre-trained model which enables running end-to-end model inference on different Execution Providers. The feature is built on leveraging ONNX Runtime feature ONNXRuntime-Extensions. Typical pre-processing (or post-processing) tasks, such as resize, normalization, etc can be expressed as custom operators and a new model can be generated from the pre-trained model containing those custom operators. The generated model can then run on IPU including the pre-processing (or post-processing) tasks along with the model itself. This helps improve end-to-end latency as well as the PC power saving by reducing CPU utilization. 
+ONNX end-to-end flow provides a framework to create and add pre/post-processing operators to the pre-trained model which enables running end-to-end model inference using Vitis AI Execution Provider. The feature is built on leveraging ONNX Runtime feature `ONNXRuntime-Extensions <https://onnxruntime.ai/docs/extensions/>`_. Typical pre-processing (or post-processing) tasks, such as resize, normalization, etc can be expressed as custom operators and a new model can be extended from the pre-trained model containing those custom operators. The generated model can then run on IPU including the pre-processing (or post-processing) tasks along with the model itself. This helps improve end-to-end latency as well as the PC power saving by reducing the CPU utilization. 
  
-A couple of examples (using ResNet and Yolo model) provided can be found <link>. 
+The model examples using ONNX end-to-end flow <link>.
+
