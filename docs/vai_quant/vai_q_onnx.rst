@@ -309,7 +309,7 @@ To accelerate inference of CNN-based models on the IPU, the recommended configur
       extra_options={'ActivationSymmetric':True}
    )
 
-.. note: 
+.. note:: 
 
 In the current release, for some models, it is possible to observe lower than expected performance using the above mentioned recommended switch. In this case, the following extra options can be tried as a workaround. This issue will be fixed in future release.
 
