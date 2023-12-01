@@ -209,7 +209,7 @@ To successfully run the model on the IPU, run the following setup steps:
 
    set XLNX_VART_FIRMWARE=path\to\RyzenAI\installation\ryzen-ai-sw-1.0\ryzen-ai-sw-1.0\voe-4.0-win_amd64\1x4.xclbin
 
-- Copy the :file:`vaip_config.json` runtime configuration file from the Vitis AI Execution Provider package to the current directory. For more information, see the :ref:`runtime setup instructions <config-file>`. The :file:`vaip_config.json` is used by the :file:`predict.py` script to configure the Vitis AI Execution Provider.
+- Copy the :file:`vaip_config.json` runtime configuration file from the Vitis AI Execution Provider package to the current directory. The :file:`vaip_config.json` is used by the :file:`predict.py` script to configure the Vitis AI Execution Provider.
 
 
 The following section of the :file:`predict.py` script shows how ONNX Runtime is configured to deploy the model on the Ryzen AI IPU:
@@ -388,7 +388,7 @@ To successfully run the model on the IPU:
    set XLNX_VART_FIRMWARE=path\to\RyzenAI\installation\ryzen-ai-sw-1.0\ryzen-ai-sw-1.0\voe-4.0-win_amd64\1x4.xclbin
 
 
-- Copy the ``vaip_config.json`` runtime configuration file from the Vitis AI Execution Provider package to the current directory. For more information, see the :ref:`installation instructions <copy-vaip-config>`. The ``vaip_config.json`` is used by the source file ``resnet_cifar.cpp`` to configure the Vitis AI Execution Provider.
+- Copy the ``vaip_config.json`` runtime configuration file from the Vitis AI Execution Provider package to the current directory. The ``vaip_config.json`` is used by the source file ``resnet_cifar.cpp`` to configure the Vitis AI Execution Provider.
 
 
 The following code block from reset_cifar.cpp shows how ONNX Runtime is configured to deploy the model on the Ryzen AI IPU:
