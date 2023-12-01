@@ -96,8 +96,8 @@ The ``prepare_model_data.py`` script downloads the CIFAR-10 dataset in pickle fo
 
 Note the following settings for the onnx conversion:
 
-   - Ryzen AI supports a batch size=1, so dummy input is fixed to a batch_size =1 during model conversion
-   - Recommended opset setting is 13 is used. 
+- Ryzen AI supports a batch size=1, so dummy input is fixed to a batch_size =1 during model conversion
+- Recommended ``opset_version`` setting 13 is used. 
 
 Run the following command to prepare the dataset and export the ONNX model:
 
@@ -383,6 +383,7 @@ Deploy the Model on the IPU
 To successfully run the model on the IPU:
 
 - Ensure that the ``XLNX_VART_FIRMWARE`` environment variable is correctly pointing to the XCLBIN file included in the ONNX Vitis AI Execution Provider package. If you installed Ryzen-AI software by automatic installer, the IPU binary path is already set, however if you did the installation manually, ensure the IPU binary path is set using the following command: 
+
 .. code-block:: bash 
 
    set XLNX_VART_FIRMWARE=path\to\RyzenAI\installation\ryzen-ai-sw-1.0\ryzen-ai-sw-1.0\voe-4.0-win_amd64\1x4.xclbin
@@ -391,7 +392,7 @@ To successfully run the model on the IPU:
 - Copy the ``vaip_config.json`` runtime configuration file from the Vitis AI Execution Provider package to the current directory. The ``vaip_config.json`` is used by the source file ``resnet_cifar.cpp`` to configure the Vitis AI Execution Provider.
 
 
-The following code block from reset_cifar.cpp shows how ONNX Runtime is configured to deploy the model on the Ryzen AI IPU:
+The following code block from ``reset_cifar.cpp`` shows how ONNX Runtime is configured to deploy the model on the Ryzen AI IPU:
 
 .. code-block:: bash 
 
