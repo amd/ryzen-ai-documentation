@@ -423,9 +423,9 @@ The quantizer supports setting the activation and weight to different precisions
       weight_type=QuantType.QInt8,
    )
 
-
+****************************
 4. Quantizing Float16 Models
-============================
+****************************
 
 
 For models in float16, we recommend setting convert_fp16_to_fp32 to True. This will first convert your float16 model to a float32 model before quantization, reducing redundant nodes such as cast in the model.
@@ -445,9 +445,9 @@ For models in float16, we recommend setting convert_fp16_to_fp32 to True. This w
       extra_options={'ActivationSymmetric':True}
    )
 
-
+**********************************************
 5. Converting NCHW Models to NHWC and Quantize
-==============================================
+**********************************************
 
 
 NHWC input shape typically yields better acceleration performance compared to NCHW on IPU. VAI_Q_ONNX facilitates the conversion of NCHW input models to NHWC input models by setting "convert_nchw_to_nhwc" to True. Please note that the conversion steps will be skipped if the model is already NHWC or has non-convertable input shapes.
@@ -467,9 +467,9 @@ NHWC input shape typically yields better acceleration performance compared to NC
       convert_nchw_to_nhwc=True,
    )
 
-
+***********************************************
 6. Quantizing Using CrossLayerEqualization(CLE)
-===============================================
+***********************************************
 
 CrossLayerEqualization (CLE) is a technique used to improve PTQ accuracy. It can equalize the weights of consecutive convolution layers, making the model weights easier to perform per-tensor quantization. Experiments show that using CLE technique can improve the PTQ accuracy of some models, especially for models with depthwise_conv layers, such as MobileNet. Here is an example showing how to enable CLE using VAI_Q_ONNX.
 
