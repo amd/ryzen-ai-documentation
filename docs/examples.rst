@@ -28,8 +28,8 @@ Examples
 Demos
 *****
 
-- `Cloud-to-Client demo on Ryzen AI <https://github.com/amd/RyzenAI-SW/tree/main/demo/cloud-to-client>`_ : Quick and easy viewing experience with two AI models - Yolov5 and Retinaface
-- `Multiple model concurrency demo on Ryzen AI <https://github.com/amd/RyzenAI-SW/tree/main/demo/multi-model-exec>`_ : Run multiple models concurrently using Ryzen AI Software 
+- `Cloud-to-Client demo on Ryzen AI <https://github.com/amd/RyzenAI-SW/tree/main/demo/cloud-to-client>`_ 
+- `Multiple model concurrency demo on Ryzen AI <https://github.com/amd/RyzenAI-SW/tree/main/demo/multi-model-exec>`_ 
 
 *********
 Tutorials
