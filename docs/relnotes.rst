@@ -21,10 +21,10 @@ ONNX Quantizer
 - Support for converting NCHW model to NHWC model during quantization.
 - Support for two more modes for MinMSE for better accuracy. The "All" mode computes the scales with all batches while the "MostCommon" mode computes the scale for each batch and uses the most common scales.
 - Support for the quantization of more operations:
- -- PReLU, Sub, Max, DepthToSpace, SpaceToDepth, Slice, InstanceNormalization, and LpNormalization.
-  -- Non-4D ReduceMean.
-  -- Leakyrelu with arbitrary alpha.
-  -- Split by converting it to Slice.
+ * PReLU, Sub, Max, DepthToSpace, SpaceToDepth, Slice, InstanceNormalization, and LpNormalization.
+ * Non-4D ReduceMean.
+ * Leakyrelu with arbitrary alpha.
+ * Split by converting it to Slice.
 - Support for op fusing of InstanceNormalization and L2Normalization in IPU workflow.
 - Support for converting Clip to ReLU when the minimal value is 0.
 - Updated shift_bias, shift_read, and shift_write constraints in the IPU workflow and added an option "IPULimitationCheck" to disable it.
