@@ -107,36 +107,36 @@ Pre-processing API is in the Python module ``onnxruntime.quantization.shape_infe
 
 **Arguments**
 
-``input_model_path``: (String) Specifies the file path of the input model that is to be pre-processed for quantization.
+* **input_model_path**: (String) Specifies the file path of the input model that is to be pre-processed for quantization.
 
-``output_model_path``: (String) Specifies the file path to save the pre-processed model.
+* **output_model_path**: (String) Specifies the file path to save the pre-processed model.
 
-``skip_optimization``: (Boolean) Indicates whether to skip the model optimization step. If set to True, model optimization is skipped, which may cause ONNX shape inference failure for some models. The default value is False.
+* **skip_optimization**: (Boolean) Indicates whether to skip the model optimization step. If set to True, model optimization is skipped, which may cause ONNX shape inference failure for some models. The default value is False.
 
-``skip_onnx_shape``: (Boolean) Indicates whether to skip the ONNX shape inference step. The symbolic shape inference is most effective with transformer-based models. Skipping all shape inferences may reduce the effectiveness of quantization, as a tensor with an unknown shape cannot be quantized. The default value is False.
+* **skip_onnx_shape**: (Boolean) Indicates whether to skip the ONNX shape inference step. The symbolic shape inference is most effective with transformer-based models. Skipping all shape inferences may reduce the effectiveness of quantization, as a tensor with an unknown shape cannot be quantized. The default value is False.
 
-``skip_symbolic_shape``: (Boolean) Indicates whether to skip the symbolic shape inference step. Symbolic shape inference is most effective with transformer-based models. Skipping all shape inferences may reduce the effectiveness of quantization, as a tensor with an unknown shape cannot be quantized. The default value is False.
+* **skip_symbolic_shape**: (Boolean) Indicates whether to skip the symbolic shape inference step. Symbolic shape inference is most effective with transformer-based models. Skipping all shape inferences may reduce the effectiveness of quantization, as a tensor with an unknown shape cannot be quantized. The default value is False.
 
-``auto_merge``: (Boolean) Determines whether to automatically merge symbolic dimensions when a conflict occurs during symbolic shape inference. The default value is False.
+* **auto_merge**: (Boolean) Determines whether to automatically merge symbolic dimensions when a conflict occurs during symbolic shape inference. The default value is False.
 
-``int_max``: (Integer) Specifies the maximum integer value that is to be considered as boundless for operations like slice during symbolic shape inference. The default value is 2**31 - 1.
+* **int_max**: (Integer) Specifies the maximum integer value that is to be considered as boundless for operations like slice during symbolic shape inference. The default value is 2**31 - 1.
 
-``guess_output_rank``: (Boolean) Indicates whether to guess the output rank to be the same as input 0 for unknown operations. The default value is False.
+* **guess_output_rank**: (Boolean) Indicates whether to guess the output rank to be the same as input 0 for unknown operations. The default value is False.
 
-``verbose``: (Integer) Controls the level of detailed information logged during inference. 
+* **verbose**: (Integer) Controls the level of detailed information logged during inference. 
 
-- 0 turns off logging (default)
-- 1 logs warnings
-- 3 logs detailed information. 
+  - 0 turns off logging (default)
+  - 1 logs warnings
+  - 3 logs detailed information. 
   
+* **save_as_external_data**: (Boolean) Determines whether to save the ONNX model to external data. The default value is False.
 
-``save_as_external_data``: (Boolean) Determines whether to save the ONNX model to external data. The default value is False.
+* **all_tensors_to_one_file**: (Boolean) Indicates whether to save all the external data to one file. The default value is False.
 
-``all_tensors_to_one_file``: (Boolean) Indicates whether to save all the external data to one file. The default value is False.
+* **external_data_location**: (String) Specifies the file location where the external file is saved. The default value is "./".
 
-``external_data_location``: (String) Specifies the file location where the external file is saved. The default value is "./".
+* **external_data_size_threshold**: (Integer) Specifies the size threshold for external data. The default value is 1024.
 
-``external_data_size_threshold``: (Integer) Specifies the size threshold for external data. The default value is 1024.
 
 3. Quantizing Using the vai_q_onnx API
 ======================================
@@ -178,42 +178,42 @@ The static quantization method first runs the model using a set of inputs called
 * **calibration_data_reader**: (Object or None) This parameter is a calibration data reader that enumerates the calibration data and generates inputs for the original model. If you wish to use random data for a quick test, you can set calibration_data_reader to None.
 * **quant_format**: (String) This parameter is used to specify the quantization format of the model. It has the following options:
 
-  -  vai_q_onnx.QuantFormat.QOperator: This option quantizes the model directly using quantized operators.
-  -  vai_q_onnx.QuantFormat.QDQ: This option quantizes the model by inserting QuantizeLinear/DeQuantizeLinear into the tensor. It supports 8-bit quantization only.
-  -  vai_q_onnx.VitisQuantFormat.QDQ: This option quantizes the model by inserting VitisQuantizeLinear/VitisDequantizeLinear into the tensor. It supports a wider range of bit-widths and precisions.
-  -  vai_q_onnx.VitisQuantFormat.FixNeuron (Experimental): This option quantizes the model by inserting FixNeuron (a combination of QuantizeLinear and DeQuantizeLinear) into the tensor. This quant format is currently experimental and cannot use for actual deployment.
+  -  ``vai_q_onnx.QuantFormat.QOperator``: This option quantizes the model directly using quantized operators.
+  -  ``vai_q_onnx.QuantFormat.QDQ``: This option quantizes the model by inserting QuantizeLinear/DeQuantizeLinear into the tensor. It supports 8-bit quantization only.
+  -  ``vai_q_onnx.VitisQuantFormat.QDQ``: This option quantizes the model by inserting VitisQuantizeLinear/VitisDequantizeLinear into the tensor. It supports a wider range of bit-widths and precisions.
+  -  ``vai_q_onnx.VitisQuantFormat.FixNeuron``: (Experimental) This option quantizes the model by inserting FixNeuron (a combination of QuantizeLinear and DeQuantizeLinear) into the tensor. This quant format is currently experimental and should not be used for actual deployment.
 
-* **calibrate_method**: (String) The method used in calibration, default to vai_q_onnx.PowerOfTwoMethod.MinMSE.
+* **calibrate_method**: (String) The method used in calibration, default to ``vai_q_onnx.PowerOfTwoMethod.MinMSE``.
 
   - For CNNs running on the IPU, power-of-two methods should be used, options are:
 
-    - vai_q_onnx.PowerOfTwoMethod.NonOverflow: This method get the power-of-two quantize parameters for each tensor to make sure min/max values not overflow.
-    - vai_q_onnx.PowerOfTwoMethod.MinMSE: This method get the power-of-two quantize parameters for each tensor to minimize the mean-square-loss of quantized values and float values. This takes longer time but usually gets better accuracy.
+    - ``vai_q_onnx.PowerOfTwoMethod.NonOverflow``: This method get the power-of-two quantize parameters for each tensor to make sure min/max values not overflow.
+    - ``vai_q_onnx.PowerOfTwoMethod.MinMSE``: This method get the power-of-two quantize parameters for each tensor to minimize the mean-square-loss of quantized values and float values. This takes longer time but usually gets better accuracy.
 
   - For Transformers running on the IPU, or for CNNs running on the CPU, float scale methods should be used, options are:
 
-    -  vai_q_onnx.CalibrationMethod.MinMax: This method obtains the quantization parameters based on the minimum and maximum values of each tensor.
-    -  vai_q_onnx.CalibrationMethod.Entropy: This method determines the quantization parameters by considering the entropy algorithm of each tensor's distribution.
-    -  vai_q_onnx.CalibrationMethod.Percentile: This method calculates quantization parameters using percentiles of the tensor values.
+    -  ``vai_q_onnx.CalibrationMethod.MinMax``: This method obtains the quantization parameters based on the minimum and maximum values of each tensor.
+    -  ``vai_q_onnx.CalibrationMethod.Entropy``: This method determines the quantization parameters by considering the entropy algorithm of each tensor's distribution.
+    -  ``vai_q_onnx.CalibrationMethod.Percentile``: This method calculates quantization parameters using percentiles of the tensor values.
 
-* **input_nodes**:  (List of Strings) This parameter is a list of the names of the starting nodes to be quantized. Nodes in the model before these nodes will not be quantized. For example, this argument can be used to skip some pre-processing nodes or stop the first node from being quantized. The default value is an empty list ([]).
+* **input_nodes**: (List of Strings) This parameter is a list of the names of the starting nodes to be quantized. Nodes in the model before these nodes will not be quantized. For example, this argument can be used to skip some pre-processing nodes or stop the first node from being quantized. The default value is an empty list ([]).
 * **output_nodes**: (List of Strings) This parameter is a list of the names of the end nodes to be quantized. Nodes in the model after these nodes will not be quantized. For example, this argument can be used to skip some post-processing nodes or stop the last node from being quantized. The default value is an empty list ([]).
-* **op_types_to_quantize**:  (List of Strings or None) If specified, only operators of the given types will be quantized (e.g., ['Conv'] to only quantize Convolutional layers). By default, all supported operators will be quantized.
+* **op_types_to_quantize**: (List of Strings or None) If specified, only operators of the given types will be quantized (e.g., ['Conv'] to only quantize Convolutional layers). By default, all supported operators will be quantized.
 * **random_data_reader_input_shape**: (List or Tuple of Int) If dynamic axes of inputs require specific value, users should provide its shapes when using internal random data reader (That is, set calibration_data_reader to None). The basic format of shape for single input is list (Int) or tuple (Int) and all dimensions should have concrete values (batch dimensions can be set to 1). For example, random_data_reader_input_shape=[1, 3, 224, 224] or random_data_reader_input_shape=(1, 3, 224, 224) for single input. If the model has multiple inputs, it can be fed in list (shape) format, where the list order is the same as the onnxruntime got inputs. For example, random_data_reader_input_shape=[[1, 1, 224, 224], [1, 2, 224, 224]] for 2 inputs. Moreover, it is possible to use dict {name : shape} to specify a certain input, for example, random_data_reader_input_shape={"image" : [1, 3, 224, 224]} for the input named "image". The default value is an empty list ([]).
 * **per_channel**: (Boolean) Determines whether weights should be quantized per channel. The default value is False. For DPU/IPU devices, this must be set to False as they currently do not support per-channel quantization.
 * **reduce_range**: (Boolean) If True, quantizes weights with 7-bits. The default value is False. For DPU/IPU devices, this must be set to False as they currently do not support reduced range quantization.
-* **activation_type**: (QuantType) Specifies the quantization data type for activations, options please refer to Table 1. The default is vai_q_onnx.QuantType.QInt8.
-* **weight_type**: (QuantType) Specifies the quantization data type for weights, options please refer to Table 1. The default is vai_q_onnx.QuantType.QInt8. For IPU devices, this must be set to QuantType.QInt8.
-* **nodes_to_quantize**:(List of Strings or None) If specified, only the nodes in this list are quantized. The list should contain the names of the nodes, for example, ['Conv__224', 'Conv__252']. The default value is an empty list ([]).
-* **nodes_to_exclude**:(List of Strings or None) If specified, the nodes in this list will be excluded from quantization. The default value is an empty list ([]).
-* **optimize_model**:(Boolean) If True, optimizes the model before quantization. The default value is True.
-* **use_external_data_format**:  (Boolean) This option is used for large size (>2GB) model. The model proto and data will be stored in separate files. The default is False.
-* **execution_providers**:  (List of Strings) This parameter defines the execution providers that will be used by ONNX Runtime to do calibration for the specified model. The default value 'CPUExecutionProvider' implies that the model will be computed using the CPU as the execution provider. You can also set this to other execution providers supported by ONNX Runtime such as 'CUDAExecutionProvider' for GPU-based computation, if they are available in your environment. The default is ['CPUExecutionProvider'].
-* **enable_dpu**:  (Boolean) This parameter is a flag that determines whether to generate a quantized model that is suitable for the DPU/IPU. If set to True, the quantization process will consider the specific limitations and requirements of the DPU/IPU, thus creating a model that is optimized for DPU/IPU computations. The default is False.
-* **convert_fp16_to_fp32**:  (Boolean) This parameter controls whether to convert the input model from float16 to float32 before quantization. For float16 models, it is recommended to set this parameter to True. The default value is False.
+* **activation_type**: (QuantType) Specifies the quantization data type for activations, options please refer to Table 1. The default is ``vai_q_onnx.QuantType.QInt8``.
+* **weight_type**: (QuantType) Specifies the quantization data type for weights, options please refer to Table 1. The default is ``vai_q_onnx.QuantType.QInt8``. For IPU devices, this must be set to ``QuantType.QInt8``.
+* **nodes_to_quantize**: (List of Strings or None) If specified, only the nodes in this list are quantized. The list should contain the names of the nodes, for example, ['Conv__224', 'Conv__252']. The default value is an empty list ([]).
+* **nodes_to_exclude**: (List of Strings or None) If specified, the nodes in this list will be excluded from quantization. The default value is an empty list ([]).
+* **optimize_model**: (Boolean) If True, optimizes the model before quantization. The default value is True.
+* **use_external_data_format**: (Boolean) This option is used for large size (>2GB) model. The model proto and data will be stored in separate files. The default is False.
+* **execution_providers**: (List of Strings) This parameter defines the execution providers that will be used by ONNX Runtime to do calibration for the specified model. The default value ``CPUExecutionProvider`` implies that the model will be computed using the CPU as the execution provider. You can also set this to other execution providers supported by ONNX Runtime such as ``CUDAExecutionProvider`` for GPU-based computation, if they are available in your environment. The default is ['CPUExecutionProvider'].
+* **enable_dpu**: (Boolean) This parameter is a flag that determines whether to generate a quantized model that is suitable for the DPU/IPU. If set to True, the quantization process will consider the specific limitations and requirements of the DPU/IPU, thus creating a model that is optimized for DPU/IPU computations. The default is False.
+* **convert_fp16_to_fp32**: (Boolean) This parameter controls whether to convert the input model from float16 to float32 before quantization. For float16 models, it is recommended to set this parameter to True. The default value is False.
 * **convert_nchw_to_nhwc**: (Boolean) This parameter controls whether to convert the input NCHW model to input NHWC model before quantization. For input NCHW models, it is recommended to set this parameter to True. The default value is False.
 * **include_cle**: (Boolean) This parameter is a flag that determines whether to optimize the models using CrossLayerEqualization; it can improve the accuracy of some models. The default is False.
-* **extra_options**:  (Dictionary or None) Contains key-value pairs for various options in different cases. Current used:
+* **extra_options**: (Dictionary or None) Contains key-value pairs for various options in different cases. Current used:
 
   - **ActivationSymmetric**: (Boolean) If True, symmetrize calibration data for activations. The default is False.
   - **WeightSymmetric**: (Boolean) If True, symmetrize calibration data for weights. The default is True.
@@ -233,7 +233,7 @@ The static quantization method first runs the model using a set of inputs called
   - **CalibMovingAverageConstant**: (Float) Specifies the constant smoothing factor to use when computing the moving average of the minimum and maximum values. The default is 0.01. This is only effective when the calibration method selected is MinMax and CalibMovingAverage is set to True. In PowerOfTwoMethod calibration method, this option is unsupported.
   - **RandomDataReaderInputDataRange**: (Dict or None) Specifies the data range for each inputs if used random data reader (calibration_data_reader is None). Currently, if set to None then the random value will be 0 or 1 for all inputs, otherwise range [-128,127] for unsigned int, range [0,255] for signed int and range [0,1] for other float inputs. The default is None.
   - **Int16Scale**: (Boolean) If True, the float scale will be replaced by the closest value corresponding to M and 2**N, where the range of M and 2**N is within the representation range of int16 and uint16. The default is False.
-  - **MinMSEMode**: (String) When using vai_q_onnx.PowerOfTwoMethod.MinMSE, you can specify the method for calculating minmse. By default, minmse is calculated using all calibration data. Alternatively, you can set the mode to "MostCommon", where minmse is calculated for each batch separately and take the most common value. The default setting is 'All'.
+  - **MinMSEMode**: (String) When using ``vai_q_onnx.PowerOfTwoMethod.MinMSE``, you can specify the method for calculating minmse. By default, minmse is calculated using all calibration data. Alternatively, you can set the mode to "MostCommon", where minmse is calculated for each batch separately and take the most common value. The default setting is 'All'.
   - **ConvertBNToConv**: (Boolean) If True, the BatchNormalization operation will be converted to Conv operation when enable_dpu is True. The default is True.
   - **ConvertReduceMeanToGlobalAvgPool**: (Boolean) If True, the Reduce Mean operation will be converted to Global Average Pooling operation when enable_dpu is True. The default is True.
   - **SplitLargeKernelPool**: (Boolean) If True, the large kernel Global Average Pooling operation will be split into multiple Average Pooling operation when enable_dpu is True. The default is True.
@@ -446,7 +446,7 @@ Quantizing Float16 Models
 *************************
 
 
-For models in float16, we recommend setting convert_fp16_to_fp32 to True. This will first convert your float16 model to a float32 model before quantization, reducing redundant nodes such as cast in the model.
+For models in float16, it is recommended to set "convert_fp16_to_fp32" to True. This will first convert your float16 model to a float32 model before quantization, reducing redundant nodes such as cast in the model.
 
 .. code-block::
       
@@ -513,12 +513,12 @@ Cross Layer Equalization (CLE) is a technique used to improve PTQ accuracy. It c
 
 **Arguments**
 
-* **include_cle**:  (Boolean) This parameter is a flag that determines whether to optimize the models using CrossLayerEqualization; it can improve the accuracy of some models. The default is False.
+* **include_cle**: (Boolean) This parameter is a flag that determines whether to optimize the models using CrossLayerEqualization; it can improve the accuracy of some models. The default is False.
 
-* **extra_options**:  (Dictionary or None) Contains key-value pairs for various options in different cases. Options related to CLE are:
+* **extra_options**: (Dictionary or None) Contains key-value pairs for various options in different cases. Options related to CLE are:
 
   -  **ReplaceClip6Relu**: (Boolean) If True, Replace Clip(0,6) with Relu in the model. The default value is False.
-  -  **CLESteps**: (Int): Specifies the steps for CrossLayerEqualization execution when include_cle is set to true, The default is 1, When set to -1, an adaptive CrossLayerEqualization steps will be conducted. The default value is 1.  
+  -  **CLESteps**: (Int) Specifies the steps for CrossLayerEqualization execution when include_cle is set to true, The default is 1, When set to -1, an adaptive CrossLayerEqualization steps will be conducted. The default value is 1.  
   -  **CLEScaleAppendBias**: (Boolean) Whether the bias be included when calculating the scale of the weights, The default value is True.
   
 
