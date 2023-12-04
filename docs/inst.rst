@@ -121,7 +121,7 @@ Run the command:
 
    cd ryzen-ai-sw-1.0\ryzen-ai-sw-1.0\quicktest
    python -m pip install -r requirements.txt
-   python quicktest.py –ep ipu
+   python quicktest.py –-ep ipu
 
 
 - This test takes an image and run classification on IPU. On a successful run, you can see an output similar to the following:
