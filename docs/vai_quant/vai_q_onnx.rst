@@ -273,9 +273,12 @@ The static quantization method first runs the model using a set of inputs called
      - Implemented by native QuantizeLinear/DequantizeLinear
    * - vai_q_onnx.VitisQuantFormat.QDQ
      - QuantType.QUInt8 
-       QuantType.QInt8 <br> vai_q_onnx.VitisQuantType.QUInt16
-       vai_q_onnx.VitisQuantType.QInt16 <br> vai_q_onnx.VitisQuantType.QUInt32
-       vai_q_onnx.VitisQuantType.QInt32 <br> vai_q_onnx.VitisQuantType.QFloat16 
+       QuantType.QInt8 
+       vai_q_onnx.VitisQuantType.QUInt16
+       vai_q_onnx.VitisQuantType.QInt16 
+       vai_q_onnx.VitisQuantType.QUInt32
+       vai_q_onnx.VitisQuantType.QInt32
+       vai_q_onnx.VitisQuantType.QFloat16 
        vai_q_onnx.VitisQuantType.QBFloat16
      - Implemented by customized VitisQuantizeLinear/VitisDequantizeLinear
 
@@ -507,9 +510,11 @@ CrossLayerEqualization (CLE) is a technique used to improve PTQ accuracy. It can
 * **include_cle**:  (Boolean) This parameter is a flag that determines whether to optimize the models using CrossLayerEqualization; it can improve the accuracy of some models. The default is False.
 
 * **extra_options**:  (Dictionary or None) Contains key-value pairs for various options in different cases. Options related to CLE are:
-  -  ReplaceClip6Relu: (Boolean) If True, Replace Clip(0,6) with Relu in the model. The default value is False.
-  -  CLESteps: (Int): Specifies the steps for CrossLayerEqualization execution when include_cle is set to true, The default is 1, When set to -1, an adaptive CrossLayerEqualization steps will be conducted. The default value is 1.
-  -  CLEScaleAppendBias: (Boolean) Whether the bias be included when calculating the scale of the weights, The default value is True.
+
+  -  **ReplaceClip6Relu**: (Boolean) If True, Replace Clip(0,6) with Relu in the model. The default value is False.
+  -  **CLESteps**: (Int): Specifies the steps for CrossLayerEqualization execution when include_cle is set to true, The default is 1, When set to -1, an adaptive CrossLayerEqualization steps will be conducted. The default value is 1.  
+  -  **CLEScaleAppendBias**: (Boolean) Whether the bias be included when calculating the scale of the weights, The default value is True.
+  
 
 
 ..
