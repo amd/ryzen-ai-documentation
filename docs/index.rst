@@ -44,9 +44,9 @@ The AMD Ryzen™ AI Software enables developers to take full advantage of the AM
 
 .. toctree::
    :maxdepth: 1
-   :caption: Ryzen AI Libraries
+   :caption: Ryzen AI Library
 
-   ryzen_ai_libraries.rst
+   Quick Start Guide <ryzen_ai_libraries.rst>
 
 .. toctree::
    :maxdepth: 1
