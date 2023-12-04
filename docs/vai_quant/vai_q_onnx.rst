@@ -177,20 +177,25 @@ The static quantization method first runs the model using a set of inputs called
 * **model_output**: (String) This parameter specifies the file path where the quantized model will be saved.
 * **calibration_data_reader**: (Object or None) This parameter is a calibration data reader that enumerates the calibration data and generates inputs for the original model. If you wish to use random data for a quick test, you can set calibration_data_reader to None.
 * **quant_format**: (String) This parameter is used to specify the quantization format of the model. It has the following options:
+
   -  vai_q_onnx.QuantFormat.QOperator: This option quantizes the model directly using quantized operators.
   -  vai_q_onnx.QuantFormat.QDQ: This option quantizes the model by inserting QuantizeLinear/DeQuantizeLinear into the tensor. It supports 8-bit quantization only.
   -  vai_q_onnx.VitisQuantFormat.QDQ: This option quantizes the model by inserting VitisQuantizeLinear/VitisDequantizeLinear into the tensor. It supports a wider range of bit-widths and precisions.
   -  vai_q_onnx.VitisQuantFormat.FixNeuron (Experimental): This option quantizes the model by inserting FixNeuron (a combination of QuantizeLinear and DeQuantizeLinear) into the tensor. This quant format is currently experimental and cannot use for actual deployment.
+
 * **calibrate_method**: (String) The method used in calibration, default to vai_q_onnx.PowerOfTwoMethod.MinMSE.
 
-    For IPU_CNN platforms, power-of-two methods should be used, options are:
-  -  vai_q_onnx.PowerOfTwoMethod.NonOverflow: This method get the power-of-two quantize parameters for each tensor to make sure min/max values not overflow.
-  -  vai_q_onnx.PowerOfTwoMethod.MinMSE: This method get the power-of-two quantize parameters for each tensor to minimize the mean-square-loss of quantized values and float values. This takes longer time but usually gets better accuracy.
+  - For CNNs running on the IPU, power-of-two methods should be used, options are:
 
-    For IPU_Transformer or CPU platforms, float scale methods should be used, options are:
-  -  vai_q_onnx.CalibrationMethod.MinMax: This method obtains the quantization parameters based on the minimum and maximum values of each tensor.
-  -  vai_q_onnx.CalibrationMethod.Entropy: This method determines the quantization parameters by considering the entropy algorithm of each tensor's distribution.
-  -  vai_q_onnx.CalibrationMethod.Percentile: This method calculates quantization parameters using percentiles of the tensor values.
+    - vai_q_onnx.PowerOfTwoMethod.NonOverflow: This method get the power-of-two quantize parameters for each tensor to make sure min/max values not overflow.
+    - vai_q_onnx.PowerOfTwoMethod.MinMSE: This method get the power-of-two quantize parameters for each tensor to minimize the mean-square-loss of quantized values and float values. This takes longer time but usually gets better accuracy.
+
+  - For Transformers running on the IPU, or for CNNs running on the CPU, float scale methods should be used, options are:
+
+    -  vai_q_onnx.CalibrationMethod.MinMax: This method obtains the quantization parameters based on the minimum and maximum values of each tensor.
+    -  vai_q_onnx.CalibrationMethod.Entropy: This method determines the quantization parameters by considering the entropy algorithm of each tensor's distribution.
+    -  vai_q_onnx.CalibrationMethod.Percentile: This method calculates quantization parameters using percentiles of the tensor values.
+
 * **input_nodes**:  (List of Strings) This parameter is a list of the names of the starting nodes to be quantized. Nodes in the model before these nodes will not be quantized. For example, this argument can be used to skip some pre-processing nodes or stop the first node from being quantized. The default value is an empty list ([]).
 * **output_nodes**: (List of Strings) This parameter is a list of the names of the end nodes to be quantized. Nodes in the model after these nodes will not be quantized. For example, this argument can be used to skip some post-processing nodes or stop the last node from being quantized. The default value is an empty list ([]).
 * **op_types_to_quantize**:  (List of Strings or None) If specified, only operators of the given types will be quantized (e.g., ['Conv'] to only quantize Convolutional layers). By default, all supported operators will be quantized.
@@ -210,55 +215,56 @@ The static quantization method first runs the model using a set of inputs called
 * **include_cle**: (Boolean) This parameter is a flag that determines whether to optimize the models using CrossLayerEqualization; it can improve the accuracy of some models. The default is False.
 * **extra_options**:  (Dictionary or None) Contains key-value pairs for various options in different cases. Current used:
 
- - **ActivationSymmetric**: (Boolean) If True, symmetrize calibration data for activations. The default is False.
- - **WeightSymmetric**: (Boolean) If True, symmetrize calibration data for weights. The default is True.
- - **UseUnsignedReLU**: (Boolean) If True, the output tensor of ReLU and Clip, whose min is 0, will be forced to be asymmetric. The default is False.
- - **QuantizeBias**: (Boolean) If True, quantize the Bias as a normal weights. The default is True. For DPU/IPU devices, this must be set to True.
- - **RemoveInputInit**: (Boolean) If True, initializer in graph inputs will be removed because it will not be treated as constant value/weight. This may prevent some of the graph optimizations, like const folding. The default is True.
- - **EnableSubgraph**: (Boolean) If True, the subgraph will be quantized. The default is False. More support for this feature is planned in the future.
- - **ForceQuantizeNoInputCheck**: (Boolean) If True, latent operators such as maxpool and transpose will always quantize their inputs, generating quantized outputs even if their inputs have not been quantized. The default behavior can be overridden for specific nodes using nodes_to_exclude.
- - **MatMulConstBOnly**: (Boolean) If True, only MatMul operations with a constant 'B' will be quantized. The default is False.
- - **AddQDQPairToWeight**: (Boolean) If True, both QuantizeLinear and DeQuantizeLinear nodes are inserted for weight, maintaining its floating-point format. The default is False, which quantizes floating-point weight and feeds it solely to an inserted DeQuantizeLinear node. In the PowerOfTwoMethod calibration method, this setting will also be effective for the bias.
- - **OpTypesToExcludeOutputQuantization**: (List of Strings or None) If specified, the output of operators with these types will not be quantized. The default is an empty list.
- - **DedicatedQDQPair**: (Boolean) If True, an identical and dedicated QDQ pair is created for each node. The default is False, allowing multiple nodes to share a single QDQ pair as their inputs.
- - **QDQOpTypePerChannelSupportToAxis**: (Dictionary) Sets the channel axis for specific operator types (e.g., {'MatMul': 1}). This is only effective when per-channel quantization is supported and per_channel is True. If a specific operator type supports per-channel quantization but no channel axis is explicitly specified, the default channel axis will be used. For DPU/IPU devices, this must be set to {} as per-channel quantization is currently unsupported. The default is an empty dict ({}).
- - **UseQDQVitisCustomOps**: (Boolean) If True, The UInt8 and Int8 quantization will be executed by the custom operations library, otherwise by the library of onnxruntime extensions. The default is True, only valid in vai_q_onnx.VitisQuantFormat.QDQ.
- - **CalibTensorRangeSymmetric**: (Boolean) If True, the final range of the tensor during calibration will be symmetrically set around the central point "0". The default is False. In PowerOfTwoMethod calibration method, the default is True.
- - **CalibMovingAverage**: (Boolean) If True, the moving average of the minimum and maximum values will be computed when the calibration method selected is MinMax. The default is False. In PowerOfTwoMethod calibration method, this should be set to False.
- - **CalibMovingAverageConstant**: (Float) Specifies the constant smoothing factor to use when computing the moving average of the minimum and maximum values. The default is 0.01. This is only effective when the calibration method selected is MinMax and CalibMovingAverage is set to True. In PowerOfTwoMethod calibration method, this option is unsupported.
- - **RandomDataReaderInputDataRange**: (Dict or None) Specifies the data range for each inputs if used random data reader (calibration_data_reader is None). Currently, if set to None then the random value will be 0 or 1 for all inputs, otherwise range [-128,127] for unsigned int, range [0,255] for signed int and range [0,1] for other float inputs. The default is None.
- - **Int16Scale**: (Boolean) If True, the float scale will be replaced by the closest value corresponding to M and 2**N, where the range of M and 2**N is within the representation range of int16 and uint16. The default is False.
- - **MinMSEMode**: (String) When using vai_q_onnx.PowerOfTwoMethod.MinMSE, you can specify the method for calculating minmse. By default, minmse is calculated using all calibration data. Alternatively, you can set the mode to "MostCommon", where minmse is calculated for each batch separately and take the most common value. The default setting is 'All'.
- - **ConvertBNToConv**: (Boolean) If True, the BatchNormalization operation will be converted to Conv operation when enable_dpu is True. The default is True.
- - **ConvertReduceMeanToGlobalAvgPool**: (Boolean) If True, the Reduce Mean operation will be converted to Global Average Pooling operation when enable_dpu is True. The default is True.
- - **SplitLargeKernelPool**: (Boolean) If True, the large kernel Global Average Pooling operation will be split into multiple Average Pooling operation when enable_dpu is True. The default is True.
- - **ConvertSplitToSlice**: (Boolean) If True, the Split operation will be converted to Slice operation when enable_dpu is True. The default is True.
- - **FuseInstanceNorm**: (Boolean) If True, the split instance norm operation will be fused to InstanceNorm operation when enable_dpu is True. The default is False.
- - **FuseL2Norm**: (Boolean) If True, a set of L2norm operations will be fused to L2Norm operation when enable_dpu is True. The default is False.
- - **ConvertClipToRelu**: (Boolean) If True, the Clip operations that has a min value of 0 will be converted to ReLU operations. The default is False.
- - **SimulateDPU**: (Boolean) If True, a simulation transformation that replaces some operations with an approximate implementation will be applied for DPU when enable_dpu is True. The default is True.
- - **ConvertLeakyReluToDPUVersion**: (Boolean) If True, the Leaky Relu operation will be converted to DPU version when SimulateDPU is True. The default is True.
- - **ConvertSigmoidToHardSigmoid**: (Boolean) If True, the Sigmoid operation will be converted to Hard Sigmoid operation when SimulateDPU is True. The default is True.
- - **ConvertHardSigmoidToDPUVersion**: (Boolean) If True, the Hard Sigmoid operation will be converted to DPU version when SimulateDPU is True. The default is True.
- - **ConvertAvgPoolToDPUVersion**: (Boolean) If True, the global or kernel-based Average Pooling operation will be converted to DPU version when SimulateDPU is True. The default is True.
- - **ConvertReduceMeanToDPUVersion**: (Boolean) If True, the ReduceMean operation will be converted to DPU version when SimulateDPU is True. The default is True.
- - **ConvertSoftmaxToDPUVersion**: (Boolean) If True, the Softmax operation will be converted to DPU version when SimulateDPU is True. The default is False.
- - **SimulateDPU**: (Boolean) If True, a simulation transformation that replaces some operations with an approximate implementation will be applied for DPU when enable_dpu is True. The default is True.
- - **IPULimitationCheck**: (Boolean) If True, the quantization scale will be adjust due to the limitation of DPU/IPU. The default is True.
- - **AdjustShiftCut**: (Boolean) If True, adjust the shift cut of nodes when IPULimitationCheck is True. The default is True.
- - **AdjustShiftBias**: (Boolean) If True, adjust the shift bias of nodes when IPULimitationCheck is True. The default is True.
- - **AdjustShiftRead**: (Boolean) If True, adjust the shift read of nodes when IPULimitationCheck is True. The default is True.
- - **AdjustShiftWrite**: (Boolean) If True, adjust the shift write of nodes when IPULimitationCheck is True. The default is True.
- - **AdjustHardSigmoid**: (Boolean) If True, adjust the pos of hard sigmoid nodes when IPULimitationCheck is True. The default is True.
- - **AdjustShiftSwish**: (Boolean) If True, adjust the shift swish when IPULimitationCheck is True. The default is True.
- - **AlignConcat**: (Boolean) If True, adjust the quantization pos of concat when IPULimitationCheck is True. The default is True.
- - **AlignPool**: (Boolean) If True, adjust the quantization pos of pooling when IPULimitationCheck is True. The default is True.
- - **ReplaceClip6Relu**: (Boolean) If True, Replace Clip(0,6) with Relu in the model. The default is False.
- - **CLESteps**: (Int) Specifies the steps for CrossLayerEqualization execution when include_cle is set to true, The default is 1, When set to -1, an adaptive CrossLayerEqualization will be conducted. The default is 1.
- - **CLETotalLayerDiffThreshold**: (Float) Specifies The threshold represents the sum of mean transformations of CrossLayerEqualization transformations across all layers when utilizing CrossLayerEqualization. The default is 2e-7.
- - **CLEScaleAppendBias**: (Boolean) Whether the bias be included when calculating the scale of the weights, The default is True.
- - **RemoveQDQConvLeakyRelu**: (Boolean) If True, the QDQ between Conv and LeakyRelu will be removed for DPU when enable_dpu is True. The default is False.
- - **RemoveQDQConvPRelu**: (Boolean) If True, the QDQ between Conv and PRelu will be removed for DPU when enable_dpu is True. The default is False.
+  - **ActivationSymmetric**: (Boolean) If True, symmetrize calibration data for activations. The default is False.
+  - **WeightSymmetric**: (Boolean) If True, symmetrize calibration data for weights. The default is True.
+  - **UseUnsignedReLU**: (Boolean) If True, the output tensor of ReLU and Clip, whose min is 0, will be forced to be asymmetric. The default is False.
+  - **QuantizeBias**: (Boolean) If True, quantize the Bias as a normal weights. The default is True. For DPU/IPU devices, this must be set to True.
+  - **RemoveInputInit**: (Boolean) If True, initializer in graph inputs will be removed because it will not be treated as constant value/weight. This may prevent some of the graph optimizations, like const folding. The default is True.
+  - **EnableSubgraph**: (Boolean) If True, the subgraph will be quantized. The default is False. More support for this feature is planned in the future.
+  - **ForceQuantizeNoInputCheck**: (Boolean) If True, latent operators such as maxpool and transpose will always quantize their inputs, generating quantized outputs even if their inputs have not been quantized. The default behavior can be overridden for specific nodes using nodes_to_exclude.
+  - **MatMulConstBOnly**: (Boolean) If True, only MatMul operations with a constant 'B' will be quantized. The default is False.
+  - **AddQDQPairToWeight**: (Boolean) If True, both QuantizeLinear and DeQuantizeLinear nodes are inserted for weight, maintaining its floating-point format. The default is False, which quantizes floating-point weight and feeds it solely to an inserted DeQuantizeLinear node. In the PowerOfTwoMethod calibration method, this setting will also be effective for the bias.
+  - **OpTypesToExcludeOutputQuantization**: (List of Strings or None) If specified, the output of operators with these types will not be quantized. The default is an empty list.
+  - **DedicatedQDQPair**: (Boolean) If True, an identical and dedicated QDQ pair is created for each node. The default is False, allowing multiple nodes to share a single QDQ pair as their inputs.
+  - **QDQOpTypePerChannelSupportToAxis**: (Dictionary) Sets the channel axis for specific operator types (e.g., {'MatMul': 1}). This is only effective when per-channel quantization is supported and per_channel is True. If a specific operator type supports per-channel quantization but no channel axis is explicitly specified, the default channel axis will be used. For DPU/IPU devices, this must be set to {} as per-channel quantization is currently unsupported. The default is an empty dict ({}).
+  - **UseQDQVitisCustomOps**: (Boolean) If True, The UInt8 and Int8 quantization will be executed by the custom operations library, otherwise by the library of onnxruntime extensions. The default is True, only valid in vai_q_onnx.VitisQuantFormat.QDQ.
+  - **CalibTensorRangeSymmetric**: (Boolean) If True, the final range of the tensor during calibration will be symmetrically set around the central point "0". The default is False. In PowerOfTwoMethod calibration method, the default is True.
+  - **CalibMovingAverage**: (Boolean) If True, the moving average of the minimum and maximum values will be computed when the calibration method selected is MinMax. The default is False. In PowerOfTwoMethod calibration method, this should be set to False.
+  - **CalibMovingAverageConstant**: (Float) Specifies the constant smoothing factor to use when computing the moving average of the minimum and maximum values. The default is 0.01. This is only effective when the calibration method selected is MinMax and CalibMovingAverage is set to True. In PowerOfTwoMethod calibration method, this option is unsupported.
+  - **RandomDataReaderInputDataRange**: (Dict or None) Specifies the data range for each inputs if used random data reader (calibration_data_reader is None). Currently, if set to None then the random value will be 0 or 1 for all inputs, otherwise range [-128,127] for unsigned int, range [0,255] for signed int and range [0,1] for other float inputs. The default is None.
+  - **Int16Scale**: (Boolean) If True, the float scale will be replaced by the closest value corresponding to M and 2**N, where the range of M and 2**N is within the representation range of int16 and uint16. The default is False.
+  - **MinMSEMode**: (String) When using vai_q_onnx.PowerOfTwoMethod.MinMSE, you can specify the method for calculating minmse. By default, minmse is calculated using all calibration data. Alternatively, you can set the mode to "MostCommon", where minmse is calculated for each batch separately and take the most common value. The default setting is 'All'.
+  - **ConvertBNToConv**: (Boolean) If True, the BatchNormalization operation will be converted to Conv operation when enable_dpu is True. The default is True.
+  - **ConvertReduceMeanToGlobalAvgPool**: (Boolean) If True, the Reduce Mean operation will be converted to Global Average Pooling operation when enable_dpu is True. The default is True.
+  - **SplitLargeKernelPool**: (Boolean) If True, the large kernel Global Average Pooling operation will be split into multiple Average Pooling operation when enable_dpu is True. The default is True.
+  - **ConvertSplitToSlice**: (Boolean) If True, the Split operation will be converted to Slice operation when enable_dpu is True. The default is True.
+  - **FuseInstanceNorm**: (Boolean) If True, the split instance norm operation will be fused to InstanceNorm operation when enable_dpu is True. The default is False.
+  - **FuseL2Norm**: (Boolean) If True, a set of L2norm operations will be fused to L2Norm operation when enable_dpu is True. The default is False.
+  - **ConvertClipToRelu**: (Boolean) If True, the Clip operations that has a min value of 0 will be converted to ReLU operations. The default is False.
+  - **SimulateDPU**: (Boolean) If True, a simulation transformation that replaces some operations with an approximate implementation will be applied for DPU when enable_dpu is True. The default is True.
+  - **ConvertLeakyReluToDPUVersion**: (Boolean) If True, the Leaky Relu operation will be converted to DPU version when SimulateDPU is True. The default is True.
+  - **ConvertSigmoidToHardSigmoid**: (Boolean) If True, the Sigmoid operation will be converted to Hard Sigmoid operation when SimulateDPU is True. The default is True.
+  - **ConvertHardSigmoidToDPUVersion**: (Boolean) If True, the Hard Sigmoid operation will be converted to DPU version when SimulateDPU is True. The default is True.
+  - **ConvertAvgPoolToDPUVersion**: (Boolean) If True, the global or kernel-based Average Pooling operation will be converted to DPU version when SimulateDPU is True. The default is True.
+  - **ConvertReduceMeanToDPUVersion**: (Boolean) If True, the ReduceMean operation will be converted to DPU version when SimulateDPU is True. The default is True.
+  - **ConvertSoftmaxToDPUVersion**: (Boolean) If True, the Softmax operation will be converted to DPU version when SimulateDPU is True. The default is False.
+  - **SimulateDPU**: (Boolean) If True, a simulation transformation that replaces some operations with an approximate implementation will be applied for DPU when enable_dpu is True. The default is True.
+  - **IPULimitationCheck**: (Boolean) If True, the quantization scale will be adjust due to the limitation of DPU/IPU. The default is True.
+  - **AdjustShiftCut**: (Boolean) If True, adjust the shift cut of nodes when IPULimitationCheck is True. The default is True.
+  - **AdjustShiftBias**: (Boolean) If True, adjust the shift bias of nodes when IPULimitationCheck is True. The default is True.
+  - **AdjustShiftRead**: (Boolean) If True, adjust the shift read of nodes when IPULimitationCheck is True. The default is True.
+  - **AdjustShiftWrite**: (Boolean) If True, adjust the shift write of nodes when IPULimitationCheck is True. The default is True.
+  - **AdjustHardSigmoid**: (Boolean) If True, adjust the pos of hard sigmoid nodes when IPULimitationCheck is True. The default is True.
+  - **AdjustShiftSwish**: (Boolean) If True, adjust the shift swish when IPULimitationCheck is True. The default is True.
+  - **AlignConcat**: (Boolean) If True, adjust the quantization pos of concat when IPULimitationCheck is True. The default is True.
+  - **AlignPool**: (Boolean) If True, adjust the quantization pos of pooling when IPULimitationCheck is True. The default is True.
+  - **ReplaceClip6Relu**: (Boolean) If True, Replace Clip(0,6) with Relu in the model. The default is False.
+  - **CLESteps**: (Int) Specifies the steps for CrossLayerEqualization execution when include_cle is set to true, The default is 1, When set to -1, an adaptive CrossLayerEqualization will be conducted. The default is 1.
+  - **CLETotalLayerDiffThreshold**: (Float) Specifies The threshold represents the sum of mean transformations of CrossLayerEqualization transformations across all layers when utilizing CrossLayerEqualization. The default is 2e-7.
+  - **CLEScaleAppendBias**: (Boolean) Whether the bias be included when calculating the scale of the weights, The default is True.
+  - **RemoveQDQConvLeakyRelu**: (Boolean) If True, the QDQ between Conv and LeakyRelu will be removed for DPU when enable_dpu is True. The default is False.
+  - **RemoveQDQConvPRelu**: (Boolean) If True, the QDQ between Conv and PRelu will be removed for DPU when enable_dpu is True. The default is False.
+
 
 .. list-table:: Table 1. Quantize Types can be selected in Quantize Formats
    :widths: 25 25 50
@@ -286,14 +292,14 @@ The static quantization method first runs the model using a set of inputs called
    For pure UInt8 or Int8 quantization, we recommend setting quant_format to QuantFormat.QDQ as it uses native QuantizeLinear/DequantizeLinear operations which may have better compatibility and performance.
 
 
-*************************
-Recommended Configuration
-*************************
+**************************
+Recommended Configurations
+**************************
 
-Configurations For CNN's On IPU  
-===============================
+CNNs on IPU  
+===========
 
-To accelerate inference of CNN-based models on the IPU, the recommended configuration is as follows:
+The recommended quantization configuration for CNN models to be deployed on the IPU is as follows:
 
 .. code-block::
 
@@ -322,10 +328,10 @@ To accelerate inference of CNN-based models on the IPU, the recommended configur
 
        extra_options={"ActivationSymmetric":True, 'RemoveQDQConvLeakyRelu':True, 'RemoveQDQConvPRelu':True}
 
-Configurations For Transformers On IPU
-======================================
+Transformers on IPU
+===================
 
-To accelerate inference of Transformer-based models on the IPU, the recommended configuration is as follows:
+The recommended quantization configuration for Transformer models to be deployed on the IPU is as follows:
 
 .. code-block::
 
@@ -342,10 +348,10 @@ To accelerate inference of Transformer-based models on the IPU, the recommended 
    )
 
 
-Configurations For CPU  
-======================
+CNNs on CPU  
+===========
 
-To accelerate CNN models on CPU, the recommended configuration is as follows:
+The recommended quantization configuration for CNN models to be deployed on the CPU is as follows:
 
 .. code-block::
 
@@ -479,11 +485,11 @@ NHWC input shape typically yields better acceleration performance compared to NC
       convert_nchw_to_nhwc=True,
    )
 
-********************************************
-Quantizing Using CrossLayerEqualization(CLE)
-********************************************
+*****************************************
+Quantizing Using Cross Layer Equalization
+*****************************************
 
-CrossLayerEqualization (CLE) is a technique used to improve PTQ accuracy. It can equalize the weights of consecutive convolution layers, making the model weights easier to perform per-tensor quantization. Experiments show that using CLE technique can improve the PTQ accuracy of some models, especially for models with depthwise_conv layers, such as MobileNet. Here is an example showing how to enable CLE using VAI_Q_ONNX.
+Cross Layer Equalization (CLE) is a technique used to improve PTQ accuracy. It can equalize the weights of consecutive convolution layers, making the model weights easier to perform per-tensor quantization. Experiments show that using CLE technique can improve the PTQ accuracy of some models, especially for models with depthwise_conv layers, such as MobileNet. Here is an example showing how to enable CLE using VAI_Q_ONNX.
 
 .. code-block::
       
