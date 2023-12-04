@@ -24,9 +24,6 @@ Ensure that the IPU driver is installed from ``Device Manager`` -> ``System Devi
 |
 |
 
-Note: If you see the "Windows could not verify the digital signature of this driver" error message, follow `this tutorial <https://pureinfotech.com/disable-driver-signature-enforcement-windows-11/>`_ to disable signature checking.
-
-
 To enable the development and deployment of IPU-based inference on the client device, you must have the following software installed, along with their minimum versions.
 
 .. list-table:: 
