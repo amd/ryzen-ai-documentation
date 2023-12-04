@@ -8,7 +8,6 @@ Runtime Setup
 IPU Profile Selection
 *********************
 
-
 The IPU can be configured for different execution profiles. It is required to explicitly select an IPU profile before running an application from a new environment. 
 
 
@@ -28,6 +27,9 @@ To select the throughput profile, set the following environment variable:
    set XLNX_VART_FIRMWARE=C:\path\to\1x4.xclbin
 
 
+The :file:`1x4.xclbin` file is located in the ``voe-4.0-win_amd64`` folder of the Ryzen AI software installation package. 
+
+
 Latency Profile
 ===============
 
@@ -45,10 +47,15 @@ To select the latency profile, set the two following environment variables:
    set XLNX_TARGET_NAME=AMD_AIE2_4x4_Overlay
 
 
+The :file:`4x4.xclbin` file is located in the ``voe-4.0-win_amd64`` folder of the Ryzen AI software installation package. 
+
 .. _config-file:
 
 **************************
 Runtime Configuration File
 **************************
 
-The Execution Provider setup package contains the Vitis AI Execution Provider runtime configuration file :file:`vaip_config.json`. This file is required to configure Vitis AI Execution Provider (VAI EP) inside the ONNX Runtime code.
+The Vitis AI Execution Provider (VAI EP) requires a runtime configuration file. A default version of this runtime configuration file can be found in the ``voe-4.0-win_amd64`` folder of the Ryzen AI software installation package under the name :file:`vaip_config.json`. 
+
+It is recommended to create a copy of the :file:`vaip_config.json` file in your project directory and point to this copy when initializing the inference session..
+

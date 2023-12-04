@@ -34,8 +34,8 @@ VAI EP supports three provider options:
    * - config_file
      - Mandatory
      - None
-     - The configuration file ``vaip_config.json`` path. 
-       The ``vaip_config.json`` is available inside the setup package.
+     - The path and name of the runtime configuration file. 
+       A default version of this file can be found in the ``voe-4.0-win_amd64`` folder of the Ryzen AI software installation package under the name :file:`vaip_config.json`.
    * - cacheDir
      - Optional
      - ``C:\temp\{user}\vaip\.cache``
@@ -43,7 +43,7 @@ VAI EP supports three provider options:
    * - cacheKey
      - Optional 
      - {onnx_model_md5}
-     - Compiled model directory generated inside the cache directory. Use string to specify the desired name of the compiler model directory. For example: ``'cacheKey': 'resnet50_cache'``
+     - Compiled model directory generated inside the cache directory. Use string to specify the desired name of the compiler model directory. For example: ``'cacheKey': 'resnet50_cache'``.
 
    * - encryptionKey
      - Optional 
