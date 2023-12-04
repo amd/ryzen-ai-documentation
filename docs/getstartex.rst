@@ -203,13 +203,13 @@ Deploy the Model on the Ryzen AI IPU
 
 To successfully run the model on the IPU, run the following setup steps:
 
-- Ensure that the ``XLNX_VART_FIRMWARE`` environment variable is correctly pointing to the XCLBIN file included in the ONNX Vitis AI Execution Provider package. If you installed Ryzen-AI software by automatic installer, the IPU binary path is already set, however if you did the installation manually, ensure the IPU binary path is set using the following command: 
+- Ensure that the ``XLNX_VART_FIRMWARE`` environment variable is correctly pointing to the :file:`1x4.xclbin` file located in the ``voe-4.0-win_amd64`` folder of the Ryzen AI software installation package. If you installed the Ryzen AI software using automatic installer, this variable is already correctly set. However, if you did the installation manually, you must set the variable as follows: 
 
 .. code-block:: bash 
 
-   set XLNX_VART_FIRMWARE=path\to\RyzenAI\installation\ryzen-ai-sw-1.0\ryzen-ai-sw-1.0\voe-4.0-win_amd64\1x4.xclbin
+   set XLNX_VART_FIRMWARE=path\to\RyzenAI\installation\files\ryzen-ai-sw-1.0\voe-4.0-win_amd64\1x4.xclbin
 
-- Copy the :file:`vaip_config.json` runtime configuration file from the Vitis AI Execution Provider package to the current directory. The :file:`vaip_config.json` is used by the :file:`predict.py` script to configure the Vitis AI Execution Provider.
+- Copy the :file:`vaip_config.json` runtime configuration file from the ``voe-4.0-win_amd64`` folder of the Ryzen AI software installation package to the current directory. The :file:`vaip_config.json` is used by the :file:`predict.py` script to configure the Vitis AI Execution Provider.
 
 
 The following section of the :file:`predict.py` script shows how ONNX Runtime is configured to deploy the model on the Ryzen AI IPU:
