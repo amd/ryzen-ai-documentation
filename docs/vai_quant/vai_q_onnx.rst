@@ -511,8 +511,9 @@ CrossLayerEqualization (CLE) is a technique used to improve PTQ accuracy. It can
 
 * **extra_options**:  (Dictionary or None) Contains key-value pairs for various options in different cases. Options related to CLE are:
   -  ReplaceClip6Relu: (Boolean) If True, Replace Clip(0,6) with Relu in the model. The default value is False.
-  -  CLESteps: (Int): Specifies the steps for CrossLayerEqualization execution when include_cle is set to true, The default is 1, When set to -1, an adaptive CrossLayerEqualization steps will be conducted. The default value is 1.  
   -  CLEScaleAppendBias: (Boolean) Whether the bias be included when calculating the scale of the weights, The default value is True.
+  -  CLESteps: (Int): Specifies the steps for CrossLayerEqualization execution when include_cle is set to true, The default is 1, When set to -1, an adaptive CrossLayerEqualization steps will be conducted. The default value is 1.  
+  
 
 
 ..
