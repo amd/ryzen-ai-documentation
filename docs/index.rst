@@ -52,6 +52,7 @@ The AMD Ryzen™ AI Software enables developers to take full advantage of the AM
    :maxdepth: 1
    :caption: Additional Topics
 
+   Model Zoo <https://huggingface.co/models?other=RyzenAI>
    manual_installation.rst
    alternate_quantization_setup.rst 
    early_access_features.rst
