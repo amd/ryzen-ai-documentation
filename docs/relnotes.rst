@@ -8,7 +8,7 @@ Version 1.0
 Quantizer
 =========
    
-- **ONNX Quantizer**
+- ONNX Quantizer
   
   - Support for ONNXRuntime 1.16.
   - Support for the Cross-Layer-Equalization (CLE) algorithm in quantization, which can balance the weights of consecutive Conv nodes to make it more quantize-friendly in per-tensor quantization.
@@ -39,7 +39,7 @@ Quantizer
   - Bugfixes:
     - Fix a bug that weights are quantized with the "NonOverflow" method when using the "MinMSE" method.
 
-- **Pytorch Quantizer**
+- Pytorch Quantizer
   
   - Support of some operations quantization in quantizer: inplace div, inplace sub
   - Log and document enhancement to emphasize fast-finetune
@@ -50,7 +50,7 @@ Quantizer
   - QAT ONNX exporting enhancements: support more configurations
   - New QAT examples
 
-- **TF2 Quantizer**
+- TF2 Quantizer
   
   - Support for Tensorflow 2.11 and 2.12.
   - Support for the 'tf.linalg.matmul' operator.
@@ -62,7 +62,7 @@ Quantizer
     - Fix a bug when both align_pool and align_concat are used simultaneously.
     - Fix a bug in the sequential model when a layer has multiple consumers.
 
-- **TF1 Quantizer**
+- TF1 Quantizer
   
   - Update shift_bias constraints for IPU workflow.
   - Bugfixes:
@@ -71,7 +71,8 @@ Quantizer
     - Fix a bug when the data type of the concat op is not float.
     - Fix a bug in split_large_kernel_pool when the stride is not equal to 1.
 
-- **ONNXRuntime Execution Provider**
+ONNXRuntime Execution Provider
+==============================
   
   - Support new OPs, such as PRelu, ReduceSum, LpNormlization, DepthToSpace(DCR).
   - Increase the percentage of model operators performed on the IPU.
@@ -87,7 +88,8 @@ Quantizer
     - Increases number of ops that run on IPU, especially for models which have both GEMM and CNN ops.
   - Examples published for use with some of the vision transformer models.
 
-- **IPU and Compiler**
+IPU and Compiler
+==============================
   
   - New operators support
     - Global average pooling with large spatial dimensions
@@ -105,9 +107,9 @@ Quantizer
   - Fixed asynchronous error in multiple thread scenario
   - Fixed known issue on tanh and transpose-conv2d hang issue
 
-**Known Issues**
+Known Issues
 ==============================
-  - Support for multiple applications is limited to up to 8
+  - Support for multiple applications is limited to up to eight
   - Running AI applications on the IPU when Windows Studio Effects is enabled may lead to performance degradation (in latency mode) or program exceptions (in throughput mode). To avoid these issues, disable Windows Studio Effects.
 
 
