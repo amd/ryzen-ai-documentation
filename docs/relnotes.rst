@@ -5,7 +5,6 @@ Release Information
 ***********
 Version 1.0
 ***********
-
 Quantizer
 =========
    
@@ -110,6 +109,7 @@ Quantizer
 ==============================
   - Support for multiple applications is limited to up to 8
   - Running AI applications on the IPU when Windows Studio Effects is enabled may lead to performance degradation (in latency mode) or program exceptions (in throughput mode). To avoid these issues, disable Windows Studio Effects.
+
 
 
 ***********
