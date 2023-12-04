@@ -25,7 +25,7 @@ Quantizer
     - Non-4D ReduceMean.
     - Leakyrelu with arbitrary alpha.
     - Split by converting it to Slice.
-    
+
   - Support for op fusing of InstanceNormalization and L2Normalization in IPU workflow.
   - Support for converting Clip to ReLU when the minimal value is 0.
   - Updated shift_bias, shift_read, and shift_write constraints in the IPU workflow and added an option "IPULimitationCheck" to disable it.
@@ -124,8 +124,9 @@ IPU and Compiler
 
 Known Issues
 ==============================
-  - Support for multiple applications is limited to up to eight
-  - Running AI applications on the IPU when Windows Studio Effects is enabled may lead to performance degradation (in latency mode) or program exceptions (in throughput mode). To avoid these issues, disable Windows Studio Effects.
+
+- Support for multiple applications is limited to up to eight
+- Running AI applications on the IPU when Windows Studio Effects is enabled may lead to performance degradation (in latency mode) or program exceptions (in throughput mode). To avoid these issues, disable Windows Studio Effects.
 
 
 
