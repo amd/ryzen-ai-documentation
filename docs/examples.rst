@@ -15,8 +15,8 @@ Getting Started Tutorials
 Examples
 ********
 
-- `Run multiple concurrent AI applications with ONNXRuntime <https://github.com/amd/RyzenAI-SW/tree/main/example/multi-model>`_ : Run multiple models (ResNet, MobileNet, etc) concurrently on Ryzen AI Software  
-- `Real-time object detection with Yolov8 <https://github.com/amd/RyzenAI-SW/tree/main/example/yolov8>`_ : Run Yolov8 on IPU enabled laptop
+- `Run multiple concurrent AI applications with ONNXRuntime <https://github.com/amd/RyzenAI-SW/tree/main/example/multi-model>`_  
+- `Real-time object detection with Yolov8 <https://github.com/amd/RyzenAI-SW/tree/main/example/yolov8>`_
 - `Run LLM OPT-1.3B model with ONNXRuntime <https://github.com/amd/RyzenAI-SW/tree/main/example/transformers/opt-onnx>`_  
 - `Run LLM OPT-1.3B model with PyTorch <https://github.com/amd/RyzenAI-SW/tree/main/example/transformers/opt-pytorch>`_  
 - `Run Vision-Transformer model with ONNXRuntime <https://github.com/amd/RyzenAI-SW/tree/main/example/transformers/vision-transformer-onnx>`_  
