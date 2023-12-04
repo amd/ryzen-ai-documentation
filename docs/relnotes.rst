@@ -96,7 +96,7 @@ ONNXRuntime Execution Provider
 
   - VOE configuration that supports both CNN-centric and GEMM-centric IPU overlays.
   - Increases number of ops that run on IPU, especially for models which have both GEMM and CNN ops.
-- Examples published for use with some of the vision transformer models.
+  - Examples published for use with some of the vision transformer models.
 
 IPU and Compiler
 ==============================
@@ -107,6 +107,7 @@ IPU and Compiler
   - Single Activation (no fusion with conv2d, e.g. relu/single alpha PRelu)
 
 - Operator support enhancement
+
   - Enlarge the width dimension support range for depthwise-conv2d
   - Support more generic broadcast for element-wise like operator
   - Support output channel not aligned with 4B GStiling
