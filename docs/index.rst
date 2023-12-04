@@ -6,7 +6,7 @@ The AMD Ryzen™ AI Software enables developers to take full advantage of the AM
 
 **Bring your own model**: the Ryzen AI Software lets developers take machine learning models trained in PyTorch or TensorFlow and deploy them on laptops powered by Ryzen AI processors using the ONNX runtime.
 
-**Use optimized library functions**: the Ryzen AI Library provides ready-made functions optimized for Ryzen AI. Developers can integrate these functions in their applications and harness the power of AI without experience in machine learning required.
+**Use optimized library functions**: the Ryzen AI Library provides ready-made functions optimized for Ryzen AI. Developers can integrate these functions in their applications and harness the power of AI with no machine learning experience required.
 
 |
 
