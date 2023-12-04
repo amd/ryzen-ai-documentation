@@ -20,10 +20,12 @@ Quantizer
   - Support for converting NCHW model to NHWC model during quantization.
   - Support for two more modes for MinMSE for better accuracy. The "All" mode computes the scales with all batches while the "MostCommon" mode computes the scale for each batch and uses the most common scales.
   - Support for the quantization of more operations:
+
     - PReLU, Sub, Max, DepthToSpace, SpaceToDepth, Slice, InstanceNormalization, and LpNormalization.
     - Non-4D ReduceMean.
     - Leakyrelu with arbitrary alpha.
     - Split by converting it to Slice.
+    
   - Support for op fusing of InstanceNormalization and L2Normalization in IPU workflow.
   - Support for converting Clip to ReLU when the minimal value is 0.
   - Updated shift_bias, shift_read, and shift_write constraints in the IPU workflow and added an option "IPULimitationCheck" to disable it.
@@ -32,11 +34,14 @@ Quantizer
   - Support for removing initializer from input to support models converted from old version pytorch where weights are stored as inputs.
   - Added a recommended configuration for the IPU_Transformer platform.
   - New utilities:
+
     - Tool for converting the float16 model to the float32 model.
     - Tool for converting the NCHW model to the NHWC model.
     - Tool for quantized models with random input.
-  - 3 examples for quantization models from Timm, Torchvision, and ONNXRuntime modelzoo respectively.
+
+  - Three examples for quantization models from Timm, Torchvision, and ONNXRuntime modelzoo respectively.
   - Bugfixes:
+
     - Fix a bug that weights are quantized with the "NonOverflow" method when using the "MinMSE" method.
 
 - Pytorch Quantizer
@@ -58,6 +63,7 @@ Quantizer
   - Support for dumping models containing operations with multiple outputs.
   - Added an example of a sequential model.
   - Bugfixes:
+
     - Fix a bug that Hardsigmoid and Hardswish are not mapped to DPU without Batch Normalization.
     - Fix a bug when both align_pool and align_concat are used simultaneously.
     - Fix a bug in the sequential model when a layer has multiple consumers.
@@ -66,6 +72,7 @@ Quantizer
   
   - Update shift_bias constraints for IPU workflow.
   - Bugfixes:
+
     - Fix a bug in fast_finetune when the 'input_node' and 'quant_node' are inconsistent.
     - Fix a bug that AddV2 op identified as BiasAdd.
     - Fix a bug when the data type of the concat op is not float.
@@ -74,38 +81,46 @@ Quantizer
 ONNXRuntime Execution Provider
 ==============================
   
-  - Support new OPs, such as PRelu, ReduceSum, LpNormlization, DepthToSpace(DCR).
-  - Increase the percentage of model operators performed on the IPU.
-  - Fixed some issues causing model operators allocation to CPU.
-  - Improved report summary
-  - Support the encryption of the VOE cache
-  - End-2-End Application support on IPU
-    - Enable running pre/post/custom ops on IPU, utilizing ONNX feature of E2E extensions.
-    - Two examples published for yolov8 and resnet50, in which preprocessing custom op is added and runs on IPU.
-  - Performance: latency improves by up to 18% and power savings by up to 35% by additionally running preprocessing on IPU apart from inference.
-  - Multiple IPU overlays support
-    - VOE configuration that supports both CNN-centric and GEMM-centric IPU overlays.
-    - Increases number of ops that run on IPU, especially for models which have both GEMM and CNN ops.
-  - Examples published for use with some of the vision transformer models.
+- Support new OPs, such as PRelu, ReduceSum, LpNormlization, DepthToSpace(DCR).
+- Increase the percentage of model operators performed on the IPU.
+- Fixed some issues causing model operators allocation to CPU.
+- Improved report summary
+- Support the encryption of the VOE cache
+- End-2-End Application support on IPU
+
+  - Enable running pre/post/custom ops on IPU, utilizing ONNX feature of E2E extensions.
+  - Two examples published for yolov8 and resnet50, in which preprocessing custom op is added and runs on IPU.
+
+- Performance: latency improves by up to 18% and power savings by up to 35% by additionally running preprocessing on IPU apart from inference.
+- Multiple IPU overlays support
+
+  - VOE configuration that supports both CNN-centric and GEMM-centric IPU overlays.
+  - Increases number of ops that run on IPU, especially for models which have both GEMM and CNN ops.
+- Examples published for use with some of the vision transformer models.
 
 IPU and Compiler
 ==============================
   
-  - New operators support
-    - Global average pooling with large spatial dimensions
-    - Single Activation (no fusion with conv2d, e.g. relu/single alpha PRelu)
-  - Operator support enhancement
-    - Enlarge the width dimension support range for depthwise-conv2d
-    - Support more generic broadcast for element-wise like operator
-    - Support output channel not aligned with 4B GStiling
-    - Support Mul and LeakyRelu fusion
-    - Concatenation’s redundant input elimination
-    - Channel Augmentation for conv2d (3x3, stride=2)
-  - Performance optimization
-    - PDI partition refine to reduce the overhead for PDI swap
-    - Enabled cost model for some specific models
-  - Fixed asynchronous error in multiple thread scenario
-  - Fixed known issue on tanh and transpose-conv2d hang issue
+- New operators support
+
+  - Global average pooling with large spatial dimensions
+  - Single Activation (no fusion with conv2d, e.g. relu/single alpha PRelu)
+
+- Operator support enhancement
+  - Enlarge the width dimension support range for depthwise-conv2d
+  - Support more generic broadcast for element-wise like operator
+  - Support output channel not aligned with 4B GStiling
+  - Support Mul and LeakyRelu fusion
+  - Concatenation’s redundant input elimination
+  - Channel Augmentation for conv2d (3x3, stride=2)
+
+- Performance optimization
+
+  - PDI partition refine to reduce the overhead for PDI swap
+  - Enabled cost model for some specific models
+
+- Fixed asynchronous error in multiple thread scenario
+- Fixed known issue on tanh and transpose-conv2d hang issue
 
 Known Issues
 ==============================
