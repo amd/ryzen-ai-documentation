@@ -57,7 +57,7 @@ https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?f
 
 Before running the installation script ensure all the prerequisites outlined previously have been met and the Windows PATH variable is properly set for each component. Ensure to set the PATH variable using *Environment Variables* window from the *System Properties*. For example, Anaconda requires following paths to set the PATH variable ``path\to\anaconda3\``, ``path\to\anaconda3\Scripts\``, ``path\to\anaconda3\Lib\bin\``.     
 
-Open a ``Anaconda Command Prompt`` (or ``Windows Command Prompt``) and run the below command 
+Open a ``Anaconda Command Prompt`` (or ``Windows Command Prompt``) and run the below command. For the EULA acceptance question, please ensure to insert "Y" to accept. 
 
 .. code:: 
 
