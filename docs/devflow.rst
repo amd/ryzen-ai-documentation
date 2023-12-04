@@ -9,18 +9,21 @@ The Ryzen AI Software enables developers to execute machine learning models trai
    :scale: 100%
    :align: center
 
+|
 
 ***************************
 Obtaining Pre-trained Model
 ***************************
 The Ryzen AI development flow does not require any modifications to the existing model training processes and methods. The pre-trained model (in PyTorch or TensorFlow) can be used as the starting point of the Ryzen AI flow. 
 
+Cutting edge pre-trained and pre-quantized models can be found on the `Ryzen AI Model Zoo <https://huggingface.co/models?other=RyzenAI>`_ on Hugging Face.
+
 ************
 Quantization
 ************
 Quantization involves converting the AI model's parameters from floating-point to lower-precision representations, such as 16-bit or 8-bit integers. Quantized models are more power-efficient, utilize less memory, and offer better performance. 
 
-The **Vitis AI Quantizer for ONNX** provides an easy-to-use Post Training Quantization (PTQ) flow on the pre-trained model saved in the ONNX format. It generates a quantized ONNX model ready to be deployed with the Ryzen AI Software. This is the recommended quantization flow for CNN-based models.
+The :doc:`Vitis AI Quantizer for ONNX <vai_quant/vai_q_onnx>` provides an easy-to-use Post Training Quantization (PTQ) flow on the pre-trained model saved in the ONNX format. It generates a quantized ONNX model ready to be deployed with the Ryzen AI Software. This is the recommended quantization flow for CNN-based models.
 
 The Ryzen AI Software also supports other quantization tools that can be used in specific situations. 
 
