@@ -13,10 +13,12 @@ In ONNX Runtime, the eager mode flow consists of the following steps:
 
 - **Run the quantized model with ONNX Runtime Vitis AI execution provider**: The quantized model is executed using ONNX Runtime and Vitis AI execution provider. The runtime flow requires IPU binary, Vitis AI EP configuration file, and IPU instructions (precompiled DLL file) to run those quantized operators on the IPU. 
 
+The OPT model example using eager mode can be found `here <https://github.com/amd/RyzenAI-SW/tree/main/example/transformers/opt-onnx>`_
+
 
 ONNX End-to-End Flow
 ~~~~~~~~~~~~~~~~~~~~
 
 The ONNX end-to-end flow provides a framework to create and add pre/post-processing operators to the pre-trained model which enables end-to-end model inference using Vitis AI Execution Provider. The feature is built by leveraging the ONNX Runtime feature `ONNXRuntime-Extensions <https://onnxruntime.ai/docs/extensions/>`_. Typical pre-processing (or post-processing) tasks, such as resize, normalization, etc can be expressed as custom operators. The pretrained model can then be extended by absorbing these custom operators. The resulting model that contains the pre/post-processing operations can then be run on IPU. This helps improve end-to-end latency and facilitates PC power saving by reducing CPU utilization.
 
-The model examples using ONNX end-to-end flow can be found `here <https://github.com/amd/RyzenAI-SW/tree/main/examples/onnx-e2e>`_ 
+The model examples using ONNX end-to-end flow can be found `here <https://github.com/amd/RyzenAI-SW/tree/main/example/onnx-e2e>`_ 
