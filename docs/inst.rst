@@ -1,6 +1,6 @@
-############
-Installation 
-############
+#########################
+Installation Instructions
+#########################
 
 ************************
 Supported Configurations
@@ -8,11 +8,11 @@ Supported Configurations
 
 The Ryzen AI Software supports AMD Ryzen 7040U, 7040HS series mobile processors with Windows 11 OS.
 
-*********************
-Prepare Client Device 
-*********************
+******************
+Prepare the System 
+******************
 
-Download the `IPU Driver <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ipu_stack_rel_silicon_2309.zip>`_ and install it by following these steps:
+Download the :download:`IPU Driver <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ipu_stack_rel_silicon_2309.zip>` and install it by following these steps:
 
 1. Extract the downloaded zip file.
 2. Open a terminal in administrator mode and execute the ``.\amd_install_kipudrv.bat`` bat file.
@@ -24,7 +24,7 @@ Ensure that the IPU driver is installed from ``Device Manager`` -> ``System Devi
 |
 |
 
-To enable the development and deployment of IPU-based inference on the client device, you must have the following software installed, along with their minimum versions.
+To enable the development and deployment of IPU-based inference on the system, you must have the following software installed, along with their minimum versions.
 
 .. list-table:: 
    :widths: 25 25 
@@ -47,17 +47,15 @@ To enable the development and deployment of IPU-based inference on the client de
 
 .. _install-bundeld:
 
-******************
-Installation Steps
-******************
+*****************************
+Install the Ryzen AI Software
+*****************************
 
-Download the setup package ``ryzen-ai-sw-1.0.zip`` and extract. 
+Before installing the Ryzen AI Software, ensure that all the prerequisites outlined previously have been met and that the Windows PATH variable is properly set for each component. For example, Anaconda requires following paths to be set in the PATH variable ``path\to\anaconda3\``, ``path\to\anaconda3\Scripts\``, ``path\to\anaconda3\Lib\bin\``. The PATH variable should be set through the *Environment Variables* window of the *System Properties*. 
 
-https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ryzen-ai-sw-1.0.zip
+Download the :download:`ryzen-ai-sw-1.0.zip <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ryzen-ai-sw-1.0.zip>` Ryzen AI Software installation package and extract it. 
 
-Before running the installation script ensure all the prerequisites outlined previously have been met and the Windows PATH variable is properly set for each component. Ensure to set the PATH variable using *Environment Variables* window from the *System Properties*. For example, Anaconda requires following paths to set the PATH variable ``path\to\anaconda3\``, ``path\to\anaconda3\Scripts\``, ``path\to\anaconda3\Lib\bin\``.     
-
-Open a ``Anaconda Command Prompt`` (or ``Windows Command Prompt``) and run the below command. Make sure to enter "Y" when prompted to accept the EULA. 
+Open an Anaconda or Windows command prompt in the extracted folder and run the installation script as shown below. Make sure to enter "Y" when prompted to accept the EULA. 
 
 .. code:: 
 
@@ -110,8 +108,12 @@ Runtime Configuration File
 The Execution Provider setup package contains the Vitis AI Execution Provider runtime configuration file ``vaip_config.json``. This file is required when configuring Vitis AI Execution Provider (VAI EP) inside the ONNX Runtime code.
 
 
-Testing the Installation
-========================
+|
+|
+
+*********************
+Test the Installation
+*********************
 
 The ``ryzen-ai-sw-1.0`` package contains a test to verify that the Ryzen AI software is correctly installed. This installation test can be found in the ``quicktest`` folder.
 
