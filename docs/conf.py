@@ -26,15 +26,15 @@ sys.path.insert(0, os.path.abspath('docs'))
 
 # -- Project information -----------------------------------------------------
 
-project = 'Ryzen AI Software Platform'
+project = 'Ryzen AI Software'
 copyright = '2023, Advanced Micro Devices, Inc'
 author = 'Advanced Micro Devices, Inc'
 
 # The short X.Y version
-version = '0.9 (Preview)'
+version = '1.0'
 # The full version, including alpha/beta/rc tags
-release = '0.9 (Preview)'
-html_last_updated_fmt = 'October 16, 2023'
+release = '1.0'
+html_last_updated_fmt = 'December 4, 2023'
 
 
 # -- General configuration ---------------------------------------------------
@@ -91,8 +91,8 @@ pdf_documents = [('index', u'', u'', u'AMD, Inc.'),]
 
 
 # Configure 'Edit on GitHub' extension
-edit_on_github_project = 'Xilinx/XRT'
-edit_on_github_branch = 'master/src/runtime_src/doc/toc'
+edit_on_github_project = '/amd/ryzen-ai-documentation'
+edit_on_github_branch = 'main/docs'
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
