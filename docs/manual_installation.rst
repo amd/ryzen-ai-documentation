@@ -46,7 +46,7 @@ Install Vitis AI ONNX Quantization using the following command:
 .. code-block:: shell
 
    cd ryzen-ai-sw-1.0\ryzen-ai-sw-1.0
-   pip install vai_q_onnx-1.15.0+a27a6e0-py2.py3-none-any.whl
+   pip install vai_q_onnx-1.16.0+be3c70b-py2.py3-none-any.whl
 
 For other quantization options - Vitis AI PyTorch/TensorFlow 2/TensorFlow Quantization or Olive Quantization, refer to the :doc:`alternate_quantization_setup` page. 
 
