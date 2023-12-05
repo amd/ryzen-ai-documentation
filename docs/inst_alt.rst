@@ -8,9 +8,9 @@ Supported Configurations
 
 The Ryzen AI Software supports AMD Ryzen 7040U, 7040HS series mobile processors with Windows 11 OS.
 
-*************************
-Prepare the Client Device 
-*************************
+******************
+Prepare the System
+******************
 
 Download the :download:`IPU Driver <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ipu_stack_rel_silicon_2309.zip>` and install it by following these steps:
 
@@ -24,7 +24,7 @@ Ensure that the IPU driver is installed from ``Device Manager`` -> ``System Devi
 |
 |
 
-To enable the development and deployment of IPU-based inference on the client device, you must have the following software installed, along with their minimum versions.
+To enable the development and deployment of IPU-based inference on the system, you must have the following software installed, along with their minimum versions.
 
 .. list-table:: 
    :widths: 25 25 
