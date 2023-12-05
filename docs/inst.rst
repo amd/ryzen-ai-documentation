@@ -57,7 +57,7 @@ https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?f
 
 Before running the installation script ensure all the prerequisites outlined previously have been met and the Windows PATH variable is properly set for each component. Ensure to set the PATH variable using *Environment Variables* window from the *System Properties*. For example, Anaconda requires following paths to set the PATH variable ``path\to\anaconda3\``, ``path\to\anaconda3\Scripts\``, ``path\to\anaconda3\Lib\bin\``.     
 
-Open a ``Anaconda Command Prompt`` (or ``Windows Command Prompt``) and run the below command. For the EULA acceptance question, please ensure to insert "Y" to accept. 
+Open a ``Anaconda Command Prompt`` (or ``Windows Command Prompt``) and run the below command. Make sure to enter "Y" when prompted to accept the EULA. 
 
 .. code:: 
 
@@ -110,12 +110,12 @@ Runtime Configuration File
 The Execution Provider setup package contains the Vitis AI Execution Provider runtime configuration file ``vaip_config.json``. This file is required when configuring Vitis AI Execution Provider (VAI EP) inside the ONNX Runtime code.
 
 
-Test Installation
-=================
+Testing the Installation
+========================
 
-The setup package ``ryzen-ai-sw-1.0`` contains a ``quicktest`` folder to help test the setup. 
+The ``ryzen-ai-sw-1.0`` package contains a test to verify that the Ryzen AI software is correctly installed. This installation test can be found in the ``quicktest`` folder.
 
-Run the command: 
+- Run the test as follows: 
 
 .. code-block::
 
@@ -124,7 +124,7 @@ Run the command:
    python quicktest.py –-ep ipu
 
 
-- This test takes an image and run classification on IPU. On a successful run, you can see an output similar to the following:
+- The test runs image classification on the IPU. On a successful run, you will see an output similar to the one shown below:
 
 .. code-block::
   
