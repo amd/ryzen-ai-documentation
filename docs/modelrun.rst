@@ -24,7 +24,7 @@ VAI EP supports three provider options:
 
 
 .. list-table:: 
-   :widths: 25 25 25 25
+   :widths: 25 20 20 35
    :header-rows: 1
 
    * - Provider Options
@@ -43,7 +43,8 @@ VAI EP supports three provider options:
    * - cacheKey
      - Optional 
      - {onnx_model_md5}
-     - Compiled model directory generated inside the cache directory. Use string to specify the desired name of the compiler model directory. For example: ``'cacheKey': 'resnet50_cache'``.
+     - Compiled model directory generated inside the cache directory. Use string to specify the desired name of the compiler model directory. 
+       For example: ``'cacheKey': 'resnet50_cache'``.
 
    * - encryptionKey
      - Optional 
@@ -59,7 +60,7 @@ Additionally, use the following environment variables to control the Ryzen AI ON
 
 
 .. list-table:: 
-   :widths: 25 25 25 25
+   :widths: 25 20 20 35
    :header-rows: 1
 
    * - Environment Variable 
@@ -69,8 +70,8 @@ Additionally, use the following environment variables to control the Ryzen AI ON
    * - XLNX_VART_FIRMWARE
      - Mandatory
      - None
-     - The IPU binary ``1x4.xclbin`` file. 
-       The ``1x4.xclbin`` is available inside the setup package.
+     - Set it to ``C:\path\to\1x4.xclbin`` to use the throughput profile of the IPU. 
+       For more details, refer to the :doc:`runtime_setup` page.
    * - XLNX_ENABLE_CACHE
      - Optional
      - 1
