@@ -9,7 +9,7 @@ Supported Configurations
 The Ryzen AI Software supports AMD Ryzen 7040U, 7040HS series mobile processors with Windows 11 OS.
 
 ******************
-Prepare the System 
+Prepare the System
 ******************
 
 Download the :download:`IPU Driver <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ipu_stack_rel_silicon_2309.zip>` and install it by following these steps:
@@ -61,51 +61,33 @@ Open an Anaconda or Windows command prompt in the extracted folder and run the i
 
     .\install.bat
 
-The installation script, ``install.bat`` does the following: 
+The ``install.bat`` script does the following: 
 
 - Creates a conda environment 
-- Installs :doc:`vai_quant/vai_q_onnx`
-- Installs `ONNX Runtime <https://onnxruntime.ai/>`_
-- Installs :doc:`Vitis AI Execution Provider <modelrun>`
+- Installs the :doc:`vai_quant/vai_q_onnx`
+- Installs the `ONNX Runtime <https://onnxruntime.ai/>`_
+- Installs the :doc:`Vitis AI Execution Provider <modelrun>`
 - Sets the environment variable to specify 1x4.xclbin binary
 - Prints the name of the conda environment before exiting 
 
+The default Ryzen AI Software packages are now installed in the conda environment created by the installer. You can start using the Ryzen AI Software by activating the conda environment created by the installer (the name of the environment is printed during the installation process). 
 
-The default Ryzen AI Software packages are now installed inside the conda environment created by the installer. You can start using it by activating the conda environment created by the installer (check the name it prints during the installation process). Ensure that the specified runtime environment requirements are met as follows.
-
-.. note:: 
-
-   - To provide a specific name of the conda work environment run the ``install.bat``:
-
-     .. code::
-
-        .\install.bat -env <env name>
-
-   - Instead of the bundled installation process using ``install.bat``, if you choose to install each component manually refer to the :doc:`manual_installation` page.
-
-   - To use your existing conda environment for Ryzen AI software, follow the :doc:`manual_installation` and manually install Vitis AI ONNX Quantizer, ONNX Runtime, and Vitis AI Execution Provider, without creating a new conda environment.
-
-   - If you need to install Vitis AI PyTorch/TensorFlow or Microsoft Olive Quantizer, refer to the :doc:`alternate_quantization_setup` page. 
+**IMPORTANT:** The Ryzen AI Software installation folder (where the zip file was extracted) contains various files required at runtime by the inference session. These files include the IPU binaries (:file:`*.xclbin`) and the default runtime configuration file (:file:`vaip_config.json`) for the Vitis AI Execution Provider. Because of this, the installation folder should not be deleted and should be kept in a convenient location. Refer to the :doc:`runtime_setup` page for more details about setting up the environment before running an inference session on the IPU.
 
 
-|
-|
-   
-*************************
-Runtime Environment Setup 
-*************************
-   
-Runtime IPU Binary Selection
-============================
+.. rubric:: Customizing the Installation
 
-The IPU binaries are located inside the setup package. Selecting an IPU binary is necessary every time the application is run from a new environment. 
+- To provide a specific name for the conda work environment run the ``install.bat`` script as follows:
 
-The automatic installer ``install.bat`` sets IPU binary 1x4.xclbin as default. However, Ryzen AI Software provides multiple IPU binaries using different configurations on the IPU device. Refer to the :doc:`runtime_setup` page for more details on IPU binaries.
+.. code::
 
-Runtime Configuration File
-==========================
+   .\install.bat -env <env name>
 
-The Execution Provider setup package contains the Vitis AI Execution Provider runtime configuration file ``vaip_config.json``. This file is required when configuring Vitis AI Execution Provider (VAI EP) inside the ONNX Runtime code.
+- Instead of the automated installation process using ``install.bat``, you can install each component manually by following the instructions on the :doc:`manual_installation` page.
+
+- To use your existing conda environment with the Ryzen AI software, follow the :doc:`manual_installation` instructions and manually install the Vitis AI ONNX Quantizer, the ONNX Runtime, and the Vitis AI Execution Provider, without creating a new conda environment.
+
+- If you need to install the Vitis AI PyTorch/TensorFlow Quantizer or the Microsoft Olive Quantizer, refer to the :doc:`alternate_quantization_setup` page. 
 
 
 |
