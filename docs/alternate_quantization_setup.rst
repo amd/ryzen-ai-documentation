@@ -45,7 +45,7 @@ GPU-Accelerated Quantization Containers
 
 The standard Vitis AI Docker containers do not support GPU-accelerated quantization. To create a container with GPU-accelerated quantization enabled, download the following archive and follow the instructions in the README file.
 
-`Download and build GPU Docker containers <https://account.amd.com/en/forms/downloads/xef.html?filename=ipu-rel-3.5.0-235.tar.gz>`_
+`Download and build GPU Docker containers <https://www.xilinx.com/bin/public/openDownload?filename=ryzen-ai-gpudockerfiles-3.6.0-235.tar.gz>`_
 
   
 
