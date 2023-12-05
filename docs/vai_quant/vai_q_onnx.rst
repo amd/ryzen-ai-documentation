@@ -15,7 +15,7 @@ The Vitis AI Quantizer for ONNX supports Post Training Quantization. This static
 Installation
 ************
 
-If you have prepared your working environment using the :ref:`automatic installation script <install-bundeld>`, the Vitis AI Quantizer for ONNX is already installed. 
+If you have prepared your working environment using the :ref:`automatic installation script <install-bundled>`, the Vitis AI Quantizer for ONNX is already installed. 
 
 Otherwise, ensure that the Vitis AI Quantizer for ONNX is correctly installed by following the :ref:`installation instructions <install-onnx-quantizer>`.
  

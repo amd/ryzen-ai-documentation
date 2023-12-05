@@ -11,9 +11,9 @@ The Ryzen AI Software enables developers to execute machine learning models trai
 
 |
 
-***************************
-Obtaining Pre-trained Model
-***************************
+*****************
+Pre-Trained Model
+*****************
 The Ryzen AI development flow does not require any modifications to the existing model training processes and methods. The pre-trained model (in PyTorch or TensorFlow) can be used as the starting point of the Ryzen AI flow. 
 
 Cutting edge pre-trained and pre-quantized models can be found on the `Ryzen AI Model Zoo <https://huggingface.co/models?other=RyzenAI>`_ on Hugging Face.
@@ -32,9 +32,10 @@ For more details, refer to the :doc:`modelport` page.
 **********
 Deployment
 **********
-The AI model is deployed using the ONNX Runtime with either C++ or Python APIs. The Vitis AI Execution Provider included in the ONNX Runtime intelligently determines what portions of the AI model should run on the Ryzen IPU, optimizing workloads to ensure optimal performance with lower power consumption.
+The AI model is deployed using the ONNX Runtime with either C++ or Python APIs. The Vitis AI Execution Provider included in the ONNX Runtime intelligently determines what portions of the AI model should run on the IPU, optimizing workloads to ensure optimal performance with lower power consumption.
 
 For more details, refer to the :doc:`modelrun` page.
+
 
 ..
   ------------
