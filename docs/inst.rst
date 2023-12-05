@@ -12,7 +12,7 @@ The Ryzen AI Software supports the AMD Ryzen 7040U and 7040HS mobile processor s
 Prepare the System
 ******************
 
-Download the :download:`IPU Driver <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ipu_stack_rel_silicon_2309.zip>` and install it by following these steps:
+Download the :download:`IPU Driver <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ipu_stack_rel_silicon_1.0.zip>` and install it by following these steps:
 
 1. Extract the downloaded zip file.
 2. Open a terminal in administrator mode and execute the ``.\amd_install_kipudrv.bat`` bat file.
