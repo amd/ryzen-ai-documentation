@@ -14,6 +14,7 @@ Prepare the System
 
 Download the :download:`IPU Driver <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ipu_stack_rel_silicon_1.0.zip>` and install it by following these steps:
 
+
 1. Extract the downloaded zip file.
 2. Open a terminal in administrator mode and execute the ``.\amd_install_kipudrv.bat`` bat file.
 
@@ -24,7 +25,8 @@ Ensure that the IPU driver is installed from ``Device Manager`` -> ``System Devi
 |
 |
 
-To enable the development and deployment of applications leverage the IPU, you must have the following software installed on the system.
+To enable the development and deployment of applications leveraging the IPU, you must have the following software installed on the system.
+
 
 .. list-table:: 
    :widths: 25 25 

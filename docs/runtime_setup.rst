@@ -46,7 +46,6 @@ To select the latency profile, set the two following environment variables:
    set XLNX_VART_FIRMWARE=C:\path\to\4x4.xclbin
    set XLNX_TARGET_NAME=AMD_AIE2_4x4_Overlay
 
-
 The :file:`4x4.xclbin` file is located in the ``voe-4.0-win_amd64`` folder of the Ryzen AI Software installation package. 
 
 .. _config-file:
