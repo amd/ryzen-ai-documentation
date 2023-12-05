@@ -8,9 +8,9 @@ Supported Configurations
 
 The Ryzen AI Software supports AMD Ryzen 7040U, 7040HS series mobile processors with Windows 11 OS.
 
-*********************
-Prepare Client Device 
-*********************
+*************************
+Prepare the Client Device 
+*************************
 
 Download the :download:`IPU Driver <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ipu_stack_rel_silicon_2309.zip>` and install it by following these steps:
 
@@ -47,9 +47,9 @@ To enable the development and deployment of IPU-based inference on the client de
 
 .. _install-bundeld:
 
-******************
-Installation Steps
-******************
+*****************************
+Install the Ryzen AI Software
+*****************************
 
 Before installing the Ryzen AI Software, ensure that all the prerequisites outlined previously have been met and that the Windows PATH variable is properly set for each component. For example, Anaconda requires following paths to be set in the PATH variable ``path\to\anaconda3\``, ``path\to\anaconda3\Scripts\``, ``path\to\anaconda3\Lib\bin\``. The PATH variable should be set through the *Environment Variables* window of the *System Properties*. 
 
@@ -73,7 +73,7 @@ The ``install.bat`` script does the following:
 
 The default Ryzen AI Software packages are now installed in the conda environment created by the installer. You can start using the Ryzen AI Software by activating the conda environment created by the installer (the name of the environment is printed during the installation process). 
 
-**IMPORTANT:** The Ryzen AI Software installation folder (where the zip file was extracted) contains various files required at runtime by the inference session. These files include the IPU binaries (:file:`*.xclbin`) and the default runtime configuration file (:file:`vaip_config.json.`) for the Vitis AI Execution Provider. Because of this, the installation folder should not be deleted and should be kept in a convenient location. Refer to the :doc:`runtime_setup` page for more details about setting up the environment before running an inference session on the IPU.
+**IMPORTANT:** The Ryzen AI Software installation folder (where the zip file was extracted) contains various files required at runtime by the inference session. These files include the IPU binaries (:file:`*.xclbin`) and the default runtime configuration file (:file:`vaip_config.json`) for the Vitis AI Execution Provider. Because of this, the installation folder should not be deleted and should be kept in a convenient location. Refer to the :doc:`runtime_setup` page for more details about setting up the environment before running an inference session on the IPU.
 
 
 .. rubric:: Customizing the Installation
@@ -94,9 +94,9 @@ The default Ryzen AI Software packages are now installed in the conda environmen
 |
 |
 
-************************
-Testing the Installation
-************************
+*********************
+Test the Installation
+*********************
 
 The ``ryzen-ai-sw-1.0`` package contains a test to verify that the Ryzen AI software is correctly installed. This installation test can be found in the ``quicktest`` folder.
 
