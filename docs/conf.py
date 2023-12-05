@@ -91,8 +91,8 @@ pdf_documents = [('index', u'', u'', u'AMD, Inc.'),]
 
 
 # Configure 'Edit on GitHub' extension
-edit_on_github_project = 'Xilinx/XRT'
-edit_on_github_branch = 'master/src/runtime_src/doc/toc'
+edit_on_github_project = '/amd/ryzen-ai-documentation'
+edit_on_github_branch = 'main/docs'
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
