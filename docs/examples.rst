@@ -4,11 +4,11 @@ Examples, Demos, Tutorials
 
 This page introduces various demos, examples, and tutorials currently available with the Ryzen™ AI Software. 
 
-*************************
-Getting Started Tutorials
-*************************
+************************
+Getting Started Tutorial
+************************
 
-- A :doc:`getstartex` with a custom ResNet model: A getting started example using a fine-tuned ResNet model to demonstrate the process of preparing, quantizing, and deploying a model using Ryzen AI.
+- The :doc:`Getting Started Tutorial <getstartex>` demonstrates the process of preparing, quantizing, and deploying a custom ResNet model using the Ryzen AI Software.
 
 
 ********
