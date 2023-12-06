@@ -21,8 +21,9 @@ Download the :download:`IPU Driver <https://account.amd.com/en/forms/downloads/r
 Ensure that the IPU driver is installed from ``Device Manager`` -> ``System Devices`` -> ``AMD IPU Device`` as shown in the following image.
 
 .. image:: images/ipu_driver_1.0.png
-   :width: 400px
    :align: center
+   :width: 400 px
+
 |
 |
 
