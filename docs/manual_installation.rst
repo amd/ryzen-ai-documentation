@@ -4,19 +4,22 @@ Manual Installation
 
 The main :doc:`inst` page shows a one-step installation process that checks the prerequisite and installs Vitis AI ONNX quantizer, ONNX Runtime, and Vitis AI execution provider.
 
-This page shows a manual step-by-step process to install each component. 
+This page explains how to install each component manually. 
 
-Download the installation package and extract. 
+.. note::
 
-https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ryzen-ai-sw-1.0.zip
+   Make sure to follow the installation steps in the order explained below.
 
-.. code-block:
+********************
+Download the Package
+********************
 
-    cd ryzen-ai-sw-1.0\ryzen-ai-sw-1.0
+Download the :download:`ryzen-ai-sw-1.0.zip <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ryzen-ai-sw-1.0.zip>` Ryzen AI Software installation package and extract it. 
 
-************************
-Create Conda Environment
-************************
+
+**************************
+Create a Conda Environment
+**************************
 
 The Ryzen AI Software requires using a conda environment (Anaconda or Miniconda) for the installation process. 
 
@@ -30,39 +33,34 @@ Start a conda prompt. In the conda prompt, create and activate an environment fo
 
 .. _install-onnx-quantizer:
 
+******************************
+Install the Vitis AI Quantizer
+******************************
 
-.. note::
+The :doc:`Vitis AI Quantizer for ONNX <vai_quant/vai_q_onnx>` supports a post-training quantization method that works on models saved in the ONNX format. 
 
-   Ensure to follow the installation order as follows.
-
-*****************
-Install Quantizer
-*****************
-
-**Vitis AI ONNX Quantizer** supports a post-training quantization method that works on models saved in the ONNX format. 
-
-Install Vitis AI ONNX Quantization using the following command:
+Install the Vitis AI Quantizer for ONNX as follows:
 
 .. code-block:: shell
 
    cd ryzen-ai-sw-1.0\ryzen-ai-sw-1.0
    pip install vai_q_onnx-1.16.0+be3c70b-py2.py3-none-any.whl
 
-For other quantization options - Vitis AI PyTorch/TensorFlow 2/TensorFlow Quantization or Olive Quantization, refer to the :doc:`alternate_quantization_setup` page. 
+To install other quantization tools (Vitis AI PyTorch/TensorFlow 2/TensorFlow Quantization or Olive Quantization), refer to the :doc:`alternate_quantization_setup` page. 
 
 
-********************
-Install ONNX Runtime
-********************
+************************
+Install the ONNX Runtime
+************************
 
 .. code-block::
    
    pip install onnxruntime 
 
 
-***********************************
-Install Vitis AI Execution Provider
-***********************************
+***************************************
+Install the Vitis AI Execution Provider
+***************************************
 
 .. code-block:: 
 
