@@ -2,11 +2,11 @@
 Ryzen AI Software   
 ##########################
 
-The AMD Ryzen™ AI Software enables developers to take full advantage of the AMD XDNA™-based AI accelerators integrated in AMD Ryzen AI processors. The Ryzen AI Software intelligently optimizes AI tasks and workloads, freeing-up CPU and GPU resources, and ensuring optimal performance at lower power.
+AMD Ryzen™ AI Software enables developers to take full advantage of AMD XDNA™ architecture integrated in select AMD Ryzen AI processors. Ryzen AI software intelligently optimizes AI tasks and workloads, freeing-up CPU and GPU resources, providing optimal performance at lower power.
 
-**Bring your own model**: the Ryzen AI Software lets developers take machine learning models trained in PyTorch or TensorFlow and deploy them on laptops powered by Ryzen AI processors using the ONNX runtime.
+**Bring your own model**: Ryzen AI software lets developers take machine learning models trained in PyTorch or TensorFlow and deploy them on laptops powered by Ryzen AI processors using ONNX Runtime.
 
-**Use optimized library functions**: the Ryzen AI Library provides ready-made functions optimized for Ryzen AI. Developers can integrate these functions in their applications and harness the power of AI with no machine learning experience required.
+**Use optimized library functions**: The Ryzen AI Library provides ready-made functions optimized for Ryzen AI processors so that developers can integrate these functions in their applications with no machine learning experience required.
 
 |
 
