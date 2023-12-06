@@ -10,7 +10,7 @@ The AMD Ryzen™ AI Software enables developers to take full advantage of the AM
 
 |
 
-.. image:: images/landing1.png
+.. image:: images/landing_new.png
    :scale: 75%
    :align: center
 
