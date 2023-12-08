@@ -22,8 +22,6 @@ Examples
 - `Run Vision-Transformer model with ONNXRuntime <https://github.com/amd/RyzenAI-SW/tree/main/example/transformers/vision-transformer-onnx>`_  
 - `Run ONNX end-to-end examples with custom pre/post-processing nodes running on IPU <https://github.com/amd/RyzenAI-SW/tree/main/example/onnx-e2e>`_  
 
-
-
 *****
 Demos
 *****
@@ -35,6 +33,7 @@ Demos
 Tutorials
 *********
 
+- `Hello World using a Jupyer Notebook <https://github.com/amd/RyzenAI-SW/tree/main/tutorial/hello_world>`_
 - `End-to-end Object Detection <https://github.com/amd/RyzenAI-SW/tree/main/tutorial/yolov8_e2e>`_
 - `Quantization for Ryzen AI <https://github.com/amd/RyzenAI-SW/tree/main/tutorial/RyzenAI_quant_tutorial>`_
 
