@@ -8,7 +8,10 @@ This page introduces various demos, examples, and tutorials currently available 
 Getting Started Tutorial
 ************************
 
-- The :doc:`Getting Started Tutorial <getstartex>` demonstrates the process of preparing, quantizing, and deploying (using C++ and Python ONNX runtime code) a custom ResNet model.
+- The :doc:`Getting Started Tutorial <getstartex>` deploys a custom ResNet model demonstrating the following features
+  - Converting the pretrained model to ONNX 
+  - Quantization using Vitis AI ONNX quantizer 
+  - Deployment using ONNX C++ and Python Runtime code
 
 
 ********
