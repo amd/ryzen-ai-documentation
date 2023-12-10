@@ -12,7 +12,7 @@ Getting Started Tutorial
 
   - Converting the pretrained model to ONNX 
   - Quantization using Vitis AI ONNX quantizer 
-  - Deployment using ONNX C++ and Python Runtime code
+  - Deployment using ONNX Runtime C++ and Python code
 
 
 ********
