@@ -8,7 +8,7 @@ This page introduces various demos, examples, and tutorials currently available 
 Getting Started Tutorial
 ************************
 
-- The :doc:`Getting Started Tutorial <getstartex>` demonstrates the process of preparing, quantizing, and deploying a custom ResNet model using the Ryzen AI Software.
+- The :doc:`Getting Started Tutorial <getstartex>` demonstrates the process of preparing, quantizing, and deploying (using C++ and Python ONNX runtime code) a custom ResNet model.
 
 
 ********
