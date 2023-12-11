@@ -109,7 +109,7 @@ The ``ryzen-ai-sw-1.0`` package contains a test to verify that the Ryzen AI soft
 
    cd ryzen-ai-sw-1.0\ryzen-ai-sw-1.0\quicktest
    python -m pip install -r requirements.txt
-   python quicktest.py –-ep ipu
+   python quicktest.py --ep ipu
 
 
 - The test runs image classification on the IPU. On a successful run, you will see an output similar to the one shown below:
