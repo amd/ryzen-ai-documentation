@@ -16,7 +16,7 @@ For CNN-based models, a couple of configurations can be used to achieve better p
 ############
 
 
-..code-block:: 
+.. code-block:: 
 
     "xcompilerAttrs": {
         ....
