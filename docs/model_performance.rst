@@ -42,10 +42,11 @@ The default value of opt_level is 0, which does not enable any compiler optimiza
 .. code-block::
 
     "xcompilerAttrs": {
-        .....
-        "dpu_subgraph_num" : {
-            "intValue" : 32
-        },
+     .....
+     "dpu_subgraph_num" : {
+     "intValue" : 32
+     },
+
 
 
 
