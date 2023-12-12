@@ -7,9 +7,9 @@ This page provides some of the techniques to improve CNN model performance when 
 1. Enabling compiler optimization
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Ryzen-AI software uses a ``vaip_config.json`` file to configure the Vitis AI execution provider. 
+Ryzen-AI software uses a ``vaip_config.json`` file to configure the Vitis AI Execution Provider. 
 
-For CNN-based models, configuration ``opt_level`` can be used to enable advanced compiler optimization that improve model running efficiency on the IPU
+For CNN-based models, configuration ``opt_level`` can be used to enable advanced compiler optimization, which can improve model running efficiency on the IPU
 
 
 .. code-block:: 
@@ -34,9 +34,16 @@ The default value of ``opt_level`` is 0, which does not enable any compiler opti
 2. IPU subgraph control (experimental)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Ryzen-AI software uses a ``vaip_config.json`` file to configure the Vitis AI execution provider. 
+Ryzen-AI software uses a ``vaip_config.json`` file to configure the Vitis AI Execution Provider. 
 
-For CNN-based models, configuration ``dpu_subgraph_num`` can be used to reduce the number of IPU subgraphs. This can help improve performance for complex models where the model can run slow due to a large number of IPU subgraphs. The user can determine the number of subgraphs from the ``vaip_ep_report.json`` generated inside the cache directory. This configuration can only be used as an experimental trial.
+For CNN-based models, configuration ``dpu_subgraph_num`` can be used to reduce the number of IPU subgraphs. During the model running stdout shows the number of IPU subgraphs running on IPU as shown below. This configuration can only be used as an experimental trial.
+
+.. code-block::
+
+   ...
+   [Vitis AI EP] No. of Subgraphs :   CPU     1    IPU     1 Actually running on IPU     1
+
+If the user sees a large number of IPU subgraphs running on the IPU, they can try to set ``dpu_subgraph_num:intValue`` to a lower value resulting lesser number of IPU subgraphs which can potentially alleviate slow model runtime performance. 
 
 .. code-block::
 
