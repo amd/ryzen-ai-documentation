@@ -50,7 +50,7 @@ The default value of opt_level is 0, which does not enable any compiler optimiza
 
 
 
-The Ryzen-AI CNN compiler tries to reduce the number of IPU subgraphs so that data movement between CPU and IPU can be minimized. thus helps improve the runtime performance. For some complex models, it is possible compiler can generate a large number of subgraphs as the default maximum number of subgraph settings is 32. If the user sees a large number of IPU subgraphs (as reported in ``vaip_ep_report.json``), they can set a lower limit to the maximum IPU subgraphs from 32 to a lower value, which can improve the performance. This switch can only be used as an experimental trial.  
+The Ryzen-AI CNN compiler tries to reduce the number of IPU subgraphs so that data movement between CPU and IPU can be minimized, thus helping to improve the runtime performance. For some complex models, it is possible compiler can generate a large number of subgraphs as the default maximum number of subgraph settings is 32. If the user sees a large number of IPU subgraphs (as reported in ``vaip_ep_report.json``), they can set a lower limit to the maximum IPU subgraphs from 32 to a lower value, which can improve the performance. This switch can only be used as an experimental trial.  
 
 
 ..
