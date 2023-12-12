@@ -29,10 +29,10 @@ For CNN-based models, a couple of configurations can be used to achieve better p
 
 The default value of opt_level is 0, which does not enable any compiler optimization. Set this to 1,2 or 3 to enable increasing levels of compiler optimizations, such as data-movement optimization, control path optimization, and operator fusion. 
 
-0 (default): No advanced compiler optimization
-1: Enable data movement optimization
-2: Enable data movement and certain control path optimization; 
-3: Enable data movement, control path, and operator fusion optimization
+- 0 (default): No advanced compiler optimization
+- 1: Enable data movement optimization
+- 2: Enable data movement and certain control path optimization; 
+- 3: Enable data movement, control path, and operator fusion optimization
 
 
 2. dpu_subgraph_number
