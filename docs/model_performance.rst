@@ -36,14 +36,14 @@ The default value of ``opt_level`` is 0, which does not enable any compiler opti
 
 Ryzen-AI software uses a ``vaip_config.json`` file to configure the Vitis AI Execution Provider. 
 
-For CNN-based models, configuration ``dpu_subgraph_num`` can be used to reduce the number of IPU subgraphs. During the model running stdout shows the number of IPU subgraphs running on IPU as shown below. This configuration can only be used as an experimental trial.
+For CNN-based models, configuration ``dpu_subgraph_num`` can be used to reduce the number of IPU subgraphs. During the model execution stdout shows the number of IPU subgraphs running on IPU as shown below. 
 
 .. code-block::
 
    ...
    [Vitis AI EP] No. of Subgraphs :   CPU     1    IPU     1 Actually running on IPU     1
 
-If the user sees a large number of IPU subgraphs running on the IPU, they can try to set ``dpu_subgraph_num:intValue`` to a lower value resulting lesser number of IPU subgraphs which can potentially alleviate slow model runtime performance. 
+If the user sees a large number of IPU subgraphs running on the IPU, they can try to set ``dpu_subgraph_num:intValue`` to a lower value resulting lesser number of IPU subgraphs which can potentially alleviate slow model runtime performance. This configuration can only be used as an experimental trial.
 
 .. code-block::
 
