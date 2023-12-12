@@ -4,12 +4,12 @@ Model Performance Tuning in Ryzen AI Software
 
 This page provides some of the techniques to improve CNN model performance when deploying on the IPU.
 
-1. Enabling Compiler optimization
+1. Enabling compiler optimization
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Ryzen-AI software uses ``vaip_config.json`` file to configure the Vitis AI execution provider. 
+Ryzen-AI software uses a ``vaip_config.json`` file to configure the Vitis AI execution provider. 
 
-For CNN-based models, configuration ``opt_level`` can be used to enable advanced compiler optimization can improve model running efficiency on the IPU
+For CNN-based models, configuration ``opt_level`` can be used to enable advanced compiler optimization that improve model running efficiency on the IPU
 
 
 .. code-block:: 
@@ -34,9 +34,9 @@ The default value of ``opt_level`` is 0, which does not enable any compiler opti
 2. IPU subgraph control (experimental)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Ryzen-AI software uses ``vaip_config.json`` file to configure the Vitis AI execution provider. 
+Ryzen-AI software uses a ``vaip_config.json`` file to configure the Vitis AI execution provider. 
 
-For CNN-based models, configuration ``dpu_subgraph_num`` can be used to reduce the number of IPU subgraph. This can help improve performance for complex models where the model can run slow due to a large number of IPU subgraphs. The user can determine the number of subgraph from the ``vaip_ep_report.json`` generated inside the cache directory. This configuration can only be used as an experimental trial.
+For CNN-based models, configuration ``dpu_subgraph_num`` can be used to reduce the number of IPU subgraphs. This can help improve performance for complex models where the model can run slow due to a large number of IPU subgraphs. The user can determine the number of subgraphs from the ``vaip_ep_report.json`` generated inside the cache directory. This configuration can only be used as an experimental trial.
 
 .. code-block::
 
