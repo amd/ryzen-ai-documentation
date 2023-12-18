@@ -103,7 +103,7 @@ Test the Installation
 
 The ``ryzen-ai-sw-1.0`` package contains a test to verify that the Ryzen AI software is correctly installed. This installation test can be found in the ``quicktest`` folder.
 
-- If the ``quicktest`` folder does not contain any sample image, download an image from cifar-10 dataset 
+- If the ``ryzen-ai-sw-1.0\ryzen-ai-sw-1.0\quicktest`` folder does not contain any sample image, download an image from cifar-10 dataset 
 
   https://www.cs.toronto.edu/~kriz/cifar.html and save it in .png format. 
 
