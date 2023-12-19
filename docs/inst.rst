@@ -20,7 +20,7 @@ Download the :download:`IPU Driver <https://account.amd.com/en/forms/downloads/r
 
 Ensure that the IPU driver is installed from ``Device Manager`` -> ``System Devices`` -> ``AMD IPU Device`` as shown in the following image.
 
-.. image:: images/ipu_driver_1.0.png
+.. image:: images/ipu_driver_101.png
    :align: center
    :width: 400 px
 
@@ -101,13 +101,13 @@ The default Ryzen AI Software packages are now installed in the conda environmen
 Test the Installation
 *********************
 
-The ``ryzen-ai-sw-1.0`` package contains a test to verify that the Ryzen AI software is correctly installed. This installation test can be found in the ``quicktest`` folder.
+The ``ryzen-ai-sw-1.0.1`` package contains a test to verify that the Ryzen AI software is correctly installed. This installation test can be found in the ``quicktest`` folder.
 
 - Run the test as follows: 
 
 .. code-block::
 
-   cd ryzen-ai-sw-1.0\ryzen-ai-sw-1.0\quicktest
+   cd ryzen-ai-sw-1.0.1\ryzen-ai-sw-1.0.1\quicktest
    curl https://www.cs.toronto.edu/~kriz/cifar-10-sample/bird6.png --output image_0.png
    python -m pip install -r requirements.txt
    python quicktest.py --ep ipu
