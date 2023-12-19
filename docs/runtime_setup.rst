@@ -14,6 +14,8 @@ The IPU can be configured for different execution profiles. It is required to ex
 Throughput Profile
 ==================
 
+**IMPORTANT**: This is the default profile, and it should be used for all CNN-based applications.
+
 The throughput profile allows concurrent execution of four inference sessions in parallel on the IPU, with a performance of up to two TOPS per session. These parallel inference sessions can be run from different processes or applications, meeting the performance requirements of most real-time applications (such as video conferencing use cases) using the throughput profile.
 
 Up to four additional inference sessions can be executed through temporal sharing of the IPU resources and at the expense of TOPS per session. 
@@ -32,6 +34,8 @@ The :file:`1x4.xclbin` file is located in the ``voe-4.0-win_amd64`` folder of th
 
 Latency Profile
 ===============
+
+**IMPORTANT**: This profile should only be used for testing Early Access features and for benchmarking purposes. Windows Studio Effects should be disabled when using this profile. To disable Windows Studio Effects, open **Settings > Bluetooth & devices > Camera**, select your primary camera, and then disable all camera effects.
 
 The latency profile allocates the entire IPU for a single inference session, delivering a performance of up to 10 TOPS for the session. 
 

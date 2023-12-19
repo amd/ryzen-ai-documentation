@@ -127,7 +127,7 @@ Known Issues
 ==============================
 
 - Support for multiple applications is limited to up to eight
-- Running AI applications on the IPU when Windows Studio Effects is enabled may lead to performance degradation (in latency mode) or program exceptions (in throughput mode). To avoid these issues, disable Windows Studio Effects.
+- Windows Studio Effects should be disabled when using the Latency profile. To disable Windows Studio Effects, open **Settings > Bluetooth & devices > Camera**, select your primary camera, and then disable all camera effects.
 
 
 
