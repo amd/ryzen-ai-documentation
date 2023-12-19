@@ -107,13 +107,13 @@ The ``ryzen-ai-sw-1.0`` package contains a test to verify that the Ryzen AI soft
 
 .. code-block::
 
+   cd ryzen-ai-sw-1.0\ryzen-ai-sw-1.0\quicktest
    curl https://www.cs.toronto.edu/~kriz/cifar-10-sample/bird6.png --output image_0.png
 
 - Run the test as follows: 
 
 .. code-block::
 
-   cd ryzen-ai-sw-1.0\ryzen-ai-sw-1.0\quicktest
    python -m pip install -r requirements.txt
    python quicktest.py --ep ipu
 
