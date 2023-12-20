@@ -103,7 +103,13 @@ Test the Installation
 
 The ``ryzen-ai-sw-1.0.1`` package contains a test to verify that the Ryzen AI software is correctly installed. This installation test can be found in the ``quicktest`` folder.
 
-- Run the test as follows: 
+- Activate the conda environment:
+
+.. code-block::
+
+   conda activate <env_name>
+
+- Run the test: 
 
 .. code-block::
 
