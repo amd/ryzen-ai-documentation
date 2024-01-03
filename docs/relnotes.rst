@@ -2,6 +2,16 @@
 Release Information
 ###################
 
+*************
+Version 1.0.1
+*************
+
+- Minor fix for Single click installation without given env name.
+- Perform improvement in the IPU driver.
+- Bug fix in elementwise subtraction in the compiler.
+- Runtime stability fixes for minor corner cases.
+- Quantizer update to resolve performance drop with default settings.
+
 ***********
 Version 1.0
 ***********
