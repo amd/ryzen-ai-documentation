@@ -6,13 +6,13 @@ Installation Instructions
 Supported Configurations
 ************************
 
-The Ryzen AI Software supports the AMD Ryzen™ 7940HS, 7840HS, 7640HS, 7840U and 7640U processors running Windows 11, including 
+The Ryzen AI Software supports the AMD Ryzen™ 7940HS, 7840HS, 7640HS, 7840U and 7640U processors running Windows 11. 
 
 ******************
 Prepare the System
 ******************
 
-Download the :download:`IPU Driver <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ipu_stack_rel_silicon_1.0.zip>` and install it by following these steps:
+Download the :download:`IPU Driver <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ipu_stack_rel_silicon_prod.zip>` and install it by following these steps:
 
 
 1. Extract the downloaded zip file.
@@ -20,7 +20,7 @@ Download the :download:`IPU Driver <https://account.amd.com/en/forms/downloads/r
 
 Ensure that the IPU driver is installed from ``Device Manager`` -> ``System Devices`` -> ``AMD IPU Device`` as shown in the following image.
 
-.. image:: images/ipu_driver_1.0.png
+.. image:: images/ipu_driver_101.png
    :align: center
    :width: 400 px
 
@@ -57,7 +57,7 @@ Install the Ryzen AI Software
 
 Before installing the Ryzen AI Software, ensure that all the prerequisites outlined previously have been met and that the Windows PATH variable is properly set for each component. For example, Anaconda requires following paths to be set in the PATH variable ``path\to\anaconda3\``, ``path\to\anaconda3\Scripts\``, ``path\to\anaconda3\Lib\bin\``. The PATH variable should be set through the *Environment Variables* window of the *System Properties*. 
 
-Download the :download:`ryzen-ai-sw-1.0.zip <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ryzen-ai-sw-1.0.zip>` Ryzen AI Software installation package and extract it. 
+Download the :download:`ryzen-ai-sw-1.0.1.zip <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ryzen-ai-sw-1.0.1.zip>` Ryzen AI Software installation package and extract it. 
 
 Open an Anaconda or Windows command prompt in the extracted folder and run the installation script as shown below. Make sure to enter "Y" when prompted to accept the EULA. 
 
@@ -101,23 +101,20 @@ The default Ryzen AI Software packages are now installed in the conda environmen
 Test the Installation
 *********************
 
-The ``ryzen-ai-sw-1.0`` package contains a test to verify that the Ryzen AI software is correctly installed. This installation test can be found in the ``quicktest`` folder.
+The ``ryzen-ai-sw-1.0.1`` package contains a test to verify that the Ryzen AI software is correctly installed. This installation test can be found in the ``quicktest`` folder.
 
-- If the ``ryzen-ai-sw-1.0\ryzen-ai-sw-1.0\quicktest`` folder does not contain any sample image, download an image from cifar-10 dataset 
-
-  https://www.cs.toronto.edu/~kriz/cifar.html and save it in .png format. 
-
-- You may need to change the line 41 of ``quicktest.py`` to pick the downloaded image 
+- Activate the conda environment:
 
 .. code-block::
 
-   image_name = f'image_{0}.png'
+   conda activate <env_name>
 
-- Run the test as follows: 
+- Run the test: 
 
 .. code-block::
 
-   cd ryzen-ai-sw-1.0\ryzen-ai-sw-1.0\quicktest
+   cd ryzen-ai-sw-1.0.1\ryzen-ai-sw-1.0.1\quicktest
+   curl https://www.cs.toronto.edu/~kriz/cifar-10-sample/bird6.png --output image_0.png
    python -m pip install -r requirements.txt
    python quicktest.py --ep ipu
 
