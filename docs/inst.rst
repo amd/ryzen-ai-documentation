@@ -123,11 +123,9 @@ The ``ryzen-ai-sw-1.1`` package contains a test to verify that the Ryzen AI soft
   
    [Vitis AI EP] No. of Operators :   CPU     2    IPU   398  99.50%
    [Vitis AI EP] No. of Subgraphs :   CPU     1    IPU     1 Actually running on IPU     1
-   [ W : o n n x r u n t i m e : ,   s e s s i o n _ s t a t e . c c : 1 1 6 9   o n n x r u n t i m e : : V e r i f y E a c h N o d e I s A s s i g n e d T o A n E p ]   S o m e   n o d e s   w e r e   n o t   a s s i g n e d   t o   t h e   p r e f e r r e d   e x e c u t i o n   p r o v i d e r s   w h i c h   m a y   o r   m a y   n o t   h a v e   a n   n e g a t i v e   i m p a c t   o n   p e r f o r m a n c e .   e . g .   O R T   e x p l i c i t l y   a s s i g n s   s h a p e   r e l a t e d   o p s   t o   C P U   t o   i m p r o v e   p e r f .
-   [ W : o n n x r u n t i m e : ,   s e s s i o n _ s t a t e . c c : 1 1 7 1   o n n x r u n t i m e : : V e r i f y E a c h N o d e I s A s s i g n e d T o A n E p ]   R e r u n n i n g   w i t h   v e r b o s e   o u t p u t   o n   a   n o n - m i n i m a l   b u i l d   w i l l   s h o w   n o d e   a s s i g n m e n t s .
+   ...
    Test Passed
-   [ W : o n n x r u n t i m e : D e f a u l t ,   v i t i s a i _ e x e c u t i o n _ p r o v i d e r . c c : 7 4   o n n x r u n t i m e : : V i t i s A I E x e c u t i o n P r o v i d e r : : ~ V i t i s A I E x e c u t i o n P r o v i d e r ]   R e l e a s i n g   t h e   F l e x M L   E P   p o i n t e r   i n   V i t i s   A I   E P
-
+   ...
 
 ..
   ------------
