@@ -101,7 +101,7 @@ The default Ryzen AI Software packages are now installed in the conda environmen
 Test the Installation
 *********************
 
-The ``ryzen-ai-sw-1.0.1`` package contains a test to verify that the Ryzen AI software is correctly installed. This installation test can be found in the ``quicktest`` folder.
+The ``ryzen-ai-sw-1.1`` package contains a test to verify that the Ryzen AI software is correctly installed. This installation test can be found in the ``quicktest`` folder.
 
 - Activate the conda environment:
 
@@ -113,26 +113,19 @@ The ``ryzen-ai-sw-1.0.1`` package contains a test to verify that the Ryzen AI so
 
 .. code-block::
 
-   cd ryzen-ai-sw-1.0.1\ryzen-ai-sw-1.0.1\quicktest
-   curl https://www.cs.toronto.edu/~kriz/cifar-10-sample/bird6.png --output image_0.png
-   python -m pip install -r requirements.txt
+   cd ryzen-ai-sw-1.1\quicktest
    python quicktest.py --ep ipu
 
 
-- The test runs image classification on the IPU. On a successful run, you will see an output similar to the one shown below:
+- The test runs an image classification model on the IPU using random number data. On a successful run, you will see an output similar to the one shown below:
 
 .. code-block::
   
-   I20231127 16:29:15.010130 13892 vitisai_compile_model.cpp:336] Vitis AI EP Load ONNX Model Success
-   I20231127 16:29:15.010130 13892 vitisai_compile_model.cpp:337] Graph Input Node Name/Shape (1)
-   I20231127 16:29:15.010130 13892 vitisai_compile_model.cpp:341]   input : [-1x3x32x32]
-   I20231127 16:29:15.010130 13892 vitisai_compile_model.cpp:347] Graph Output Node Name/Shape (1)
-   I20231127 16:29:15.010130 13892 vitisai_compile_model.cpp:351]   output : [-1x10]
-   I20231127 16:29:15.010130 13892 vitisai_compile_model.cpp:226] use cache key quickstart_modelcachekey
-   [Vitis AI EP] No. of Operators :   CPU     2    IPU   400  99.50%
+   [Vitis AI EP] No. of Operators :   CPU     2    IPU   398  99.50%
    [Vitis AI EP] No. of Subgraphs :   CPU     1    IPU     1 Actually running on IPU     1
-   ....
-
+   ...
+   Test Passed
+   ...
 
 ..
   ------------
