@@ -331,7 +331,7 @@ Now to deploy our model, we will go back to the parent directory (getting_starte
    cd ..
    xcopy cpp\build\Release\resnet_cifar.exe .
 
-- Additionally, we will also need to copy the onnxruntime DLLs from the Vitis AI Execution Provider package to the current directory. The following commands copy the required files in the current directory: 
+Additionally, we will also need to copy the onnxruntime DLLs from the Vitis AI Execution Provider package to the current directory. The following commands copy the required files in the current directory: 
 
 .. code-block:: bash 
 
