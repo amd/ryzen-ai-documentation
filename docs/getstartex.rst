@@ -338,7 +338,7 @@ Now to deploy our model, we will go back to the parent directory (getting_starte
    xcopy %RYZEN_AI_INSTALLER%\onnxruntime\bin\onnxruntime.dll .
    xcopy %RYZEN_AI_INSTALLER%\onnxruntime\bin\onnxruntime_vitisai_ep.dll .
 
-Here, ``RYZEN_AI_INSTALLER`` is an environment variable that should point to the path\to\ryzen-ai-sw-xx\ryzen-ai-sw-xx. If you installed Ryzen-AI software by automatic installer, this variable should already be set. Ensure that the Ryzen-AI software package has not been moved post installation, in which case ``RYZEN_AI_INSTALLER`` will have to be set again. 
+Here, ``RYZEN_AI_INSTALLER`` is an environment variable that should point to the ``path\to\ryzen-ai-sw-xx\ryzen-ai-sw-xx``. If you installed Ryzen-AI software using the automatic installer, this variable should already be set. Ensure that the Ryzen-AI software package has not been moved post installation, in which case ``RYZEN_AI_INSTALLER`` will have to be set again. 
 
 
 The C++ application that was generated takes 3 arguments: 
