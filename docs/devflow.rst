@@ -32,7 +32,7 @@ For more details, refer to the :doc:`modelport` page.
 **********
 Deployment
 **********
-The AI model is deployed using the ONNX Runtime with either C++ or Python APIs. The Vitis AI Execution Provider included in the ONNX Runtime intelligently determines what portions of the AI model should run on the IPU, optimizing workloads to ensure optimal performance with lower power consumption.
+The AI model is deployed using the ONNX Runtime with either C++ or Python APIs. The Vitis AI Execution Provider included in the ONNX Runtime intelligently determines what portions of the AI model should run on the NPU, optimizing workloads to ensure optimal performance with lower power consumption.
 
 For more details, refer to the :doc:`modelrun` page.
 
