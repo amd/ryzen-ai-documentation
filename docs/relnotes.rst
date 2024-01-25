@@ -7,7 +7,7 @@ Version 1.0.1
 *************
 
 - Minor fix for Single click installation without given env name.
-- Perform improvement in the IPU driver.
+- Perform improvement in the NPU driver.
 - Bug fix in elementwise subtraction in the compiler.
 - Runtime stability fixes for minor corner cases.
 - Quantizer update to resolve performance drop with default settings.
@@ -36,10 +36,10 @@ Quantizer
     - Leakyrelu with arbitrary alpha.
     - Split by converting it to Slice.
 
-  - Support for op fusing of InstanceNormalization and L2Normalization in IPU workflow.
+  - Support for op fusing of InstanceNormalization and L2Normalization in NPU workflow.
   - Support for converting Clip to ReLU when the minimal value is 0.
-  - Updated shift_bias, shift_read, and shift_write constraints in the IPU workflow and added an option "IPULimitationCheck" to disable it.
-  - Support for disabling the op fusing of Conv + LeakyReLU/PReLU in the IPU workflow.
+  - Updated shift_bias, shift_read, and shift_write constraints in the NPU workflow and added an option "IPULimitationCheck" to disable it.
+  - Support for disabling the op fusing of Conv + LeakyReLU/PReLU in the NPU workflow.
   - Support for logging for quantization configurations and summary information.
   - Support for removing initializer from input to support models converted from old version pytorch where weights are stored as inputs.
   - Added a recommended configuration for the IPU_Transformer platform.
@@ -69,7 +69,7 @@ Quantizer
   
   - Support for Tensorflow 2.11 and 2.12.
   - Support for the 'tf.linalg.matmul' operator.
-  - Updated shift_bias constraints for IPU workflow.
+  - Updated shift_bias constraints for NPU workflow.
   - Support for dumping models containing operations with multiple outputs.
   - Added an example of a sequential model.
   - Bugfixes:
@@ -80,7 +80,7 @@ Quantizer
 
 - TF1 Quantizer
   
-  - Update shift_bias constraints for IPU workflow.
+  - Update shift_bias constraints for NPU workflow.
   - Bugfixes:
 
     - Fix a bug in fast_finetune when the 'input_node' and 'quant_node' are inconsistent.
@@ -92,23 +92,23 @@ ONNXRuntime Execution Provider
 ==============================
   
 - Support new OPs, such as PRelu, ReduceSum, LpNormlization, DepthToSpace(DCR).
-- Increase the percentage of model operators performed on the IPU.
+- Increase the percentage of model operators performed on the NPU.
 - Fixed some issues causing model operators allocation to CPU.
 - Improved report summary
 - Support the encryption of the VOE cache
-- End-2-End Application support on IPU
+- End-2-End Application support on NPU
 
-  - Enable running pre/post/custom ops on IPU, utilizing ONNX feature of E2E extensions.
-  - Two examples published for yolov8 and resnet50, in which preprocessing custom op is added and runs on IPU.
+  - Enable running pre/post/custom ops on NPU, utilizing ONNX feature of E2E extensions.
+  - Two examples published for yolov8 and resnet50, in which preprocessing custom op is added and runs on NPU.
 
-- Performance: latency improves by up to 18% and power savings by up to 35% by additionally running preprocessing on IPU apart from inference.
-- Multiple IPU overlays support
+- Performance: latency improves by up to 18% and power savings by up to 35% by additionally running preprocessing on NPU apart from inference.
+- Multiple NPU overlays support
 
-  - VOE configuration that supports both CNN-centric and GEMM-centric IPU overlays.
-  - Increases number of ops that run on IPU, especially for models which have both GEMM and CNN ops.
+  - VOE configuration that supports both CNN-centric and GEMM-centric NPU overlays.
+  - Increases number of ops that run on NPU, especially for models which have both GEMM and CNN ops.
   - Examples published for use with some of the vision transformer models.
 
-IPU and Compiler
+NPU and Compiler
 ==============================
   
 - New operators support
@@ -162,21 +162,21 @@ Quantizer
   - Add support for Float16 and BFloat16 quantization.
   - Add C++ kernels for customized QuantizeLinear and DequantizeLinaer operations.
   - Support saving quantizer version info to the quantized models' producer field.
-  - Support conversion of ReduceMean to AvgPool in IPU workflow.
-  - Support conversion of BatchNorm to Conv in IPU workflow.
-  - Support optimization of large kernel GlobalAvgPool and AvgPool operations in IPU workflow.
-  - Supports hardware constraints check and adjustment of Gemm, Add, and Mul operations in IPU workflow.
-  - Supports quantization for LayerNormalization, HardSigmoid, Erf, Div, and Tanh for IPU.
+  - Support conversion of ReduceMean to AvgPool in NPU workflow.
+  - Support conversion of BatchNorm to Conv in NPU workflow.
+  - Support optimization of large kernel GlobalAvgPool and AvgPool operations in NPU workflow.
+  - Supports hardware constraints check and adjustment of Gemm, Add, and Mul operations in NPU workflow.
+  - Supports quantization for LayerNormalization, HardSigmoid, Erf, Div, and Tanh for NPU.
 
 ONNXRuntime Execution Provider
 ==============================
 
 - Support new OPs, such as Conv1d, LayerNorm, Clip, Abs, Unsqueeze, ConvTranspose.
-- Support pad and depad based on IPU subgraph’s inputs and outputs.
+- Support pad and depad based on NPU subgraph’s inputs and outputs.
 - Support for U8S8 models quantized by ONNX quantizer.
 - Improve report summary tools.
 
-IPU and Compiler
+NPU and Compiler
 ================
 
 - Supported exp/tanh/channel-shuffle/pixel-unshuffle/space2depth
@@ -249,9 +249,9 @@ Quantizer
   - Support OnnxRuntime 1.15
   - Supports setting input shapes of random data reader
   - Supports random data reader in the dump model function
-  - Supports saving the S8S8 model in U8S8 format for IPU
-  - Supports simulation of Sigmoid, Swish, Softmax, AvgPool, GlobalAvgPool, ReduceMean and LeakyRelu for IPU
-  - Supports node fusions for IPU
+  - Supports saving the S8S8 model in U8S8 format for NPU
+  - Supports simulation of Sigmoid, Swish, Softmax, AvgPool, GlobalAvgPool, ReduceMean and LeakyRelu for NPU
+  - Supports node fusions for NPU
   
 ONNXRuntime Execution Provider 
 ==============================
@@ -270,7 +270,7 @@ ONNXRuntime Execution Provider 
 - Improve log printing and troubleshooting tools.
 - Upstreamed to ONNX Runtime Github repo for any data type support and bug fix
 
-IPU and Compiler
+NPU and Compiler
 ================
 
 - Extended the support range of some operators
@@ -303,7 +303,7 @@ Known issues
 - Tensorflow 2.x quantizer supports models within tf.keras.model only
 - Running quantizer docker in WSL on Ryzen AI laptops may encounter OOM (Out-of-memory) issue
 - Run multiple concurrent models by temporal sharing on the Performance optimized overlay (5x4.xclbin) is not supported
-- Support batch size 1 only for IPU
+- Support batch size 1 only for NPU
 
 
 |
@@ -325,12 +325,12 @@ Quantizer
 
   - Supports multiple output conversion to slicing
   - Enhanced transpose OP optimization
-  - Inspector support new IP targets for IPU
+  - Inspector support new IP targets for NPU
 
 - ONNX Quantizer
 
   - Provided Python wheel file for installation
-  - Supports quantizing ONNX models for IPU as a plugin for the ONNX Runtime native quantizer
+  - Supports quantizing ONNX models for NPU as a plugin for the ONNX Runtime native quantizer
   - Supports power-of-two quantization with both QDQ and QOP format
   - Supports Non-overflow and Min-MSE quantization methods
   - Supports various quantization configurations in power-of-two quantization in both QDQ and QOP format.
@@ -338,9 +338,9 @@ Quantizer
     - Supports signed and unsigned configurations.
     - Supports symmetry and asymmetry configurations.
     - Supports per-tensor and per-channel configurations.
-  - Supports bias quantization using int8 datatype for IPU.
-  - Supports quantization parameters (scale) refinement for IPU.
-  - Supports excluding certain operations from quantization for IPU.
+  - Supports bias quantization using int8 datatype for NPU.
+  - Supports quantization parameters (scale) refinement for NPU.
+  - Supports excluding certain operations from quantization for NPU.
   - Supports ONNX models larger than 2GB.
   - Supports using CUDAExecutionProvider for calibration in quantization
   - Open source and upstreamed to Microsoft Olive Github repo
@@ -378,7 +378,7 @@ ONNX Runtime Execution Provider
     - Explicit pad-fix in CPU subgraph for 4-byte alignment
     - Tuning the performance for multiple models
 
-IPU
+NPU
 ===
 
 - Two configurations
