@@ -7,18 +7,21 @@ Supported Configurations
 ************************
 
 The Ryzen AI Software supports the AMD Ryzen™ 7940HS, 7840HS, 7640HS, 7840U and 7640U processors running Windows 11. 
+.. note::
+
+In this documentation, "NPU" is used in descriptions, while "IPU" is retained in the tool's language, code, screenshots, and commands. This intentional distinction aligns with existing tool references and does not affect functionality. Avoid making replacements in the code.
 
 ******************
 Prepare the System
 ******************
 
-Download the :download:`IPU Driver <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ipu_stack_rel_silicon_prod.zip>` and install it by following these steps:
+Download the :download:`NPU Driver <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=NPU_stack_rel_silicon_prod.zip>` and install it by following these steps:
 
 
 1. Extract the downloaded zip file.
 2. Open a terminal in administrator mode and execute the ``.\amd_install_kipudrv.bat`` bat file.
 
-Ensure that the IPU driver is installed from ``Device Manager`` -> ``System Devices`` -> ``AMD IPU Device`` as shown in the following image.
+Ensure that the NPU driver is installed from ``Device Manager`` -> ``System Devices`` -> ``AMD IPU Device`` as shown in the following image.
 
 .. image:: images/ipu_driver_101.png
    :align: center
@@ -27,7 +30,7 @@ Ensure that the IPU driver is installed from ``Device Manager`` -> ``System Devi
 |
 |
 
-To enable the development and deployment of applications leveraging the IPU, you must have the following software installed on the system.
+To enable the development and deployment of applications leveraging the NPU, you must have the following software installed on the system.
 
 
 .. list-table:: 
@@ -71,12 +74,12 @@ The ``install.bat`` script does the following:
 - Installs the :doc:`vai_quant/vai_q_onnx`
 - Installs the `ONNX Runtime <https://onnxruntime.ai/>`_
 - Installs the :doc:`Vitis AI Execution Provider <modelrun>`
-- Configures the environment to use the throughput profile of the IPU
+- Configures the environment to use the throughput profile of the NPU
 - Prints the name of the conda environment before exiting 
 
 The default Ryzen AI Software packages are now installed in the conda environment created by the installer. You can start using the Ryzen AI Software by activating the conda environment created by the installer (the name of the environment is printed during the installation process). 
 
-**IMPORTANT:** The Ryzen AI Software installation folder (where the zip file was extracted) contains various files required at runtime by the inference session. These files include the IPU binaries (:file:`*.xclbin`) and the default runtime configuration file (:file:`vaip_config.json`) for the Vitis AI Execution Provider. Because of this, the installation folder should not be deleted and should be kept in a convenient location. Refer to the :doc:`runtime_setup` page for more details about setting up the environment before running an inference session on the IPU.
+**IMPORTANT:** The Ryzen AI Software installation folder (where the zip file was extracted) contains various files required at runtime by the inference session. These files include the NPU binaries (:file:`*.xclbin`) and the default runtime configuration file (:file:`vaip_config.json`) for the Vitis AI Execution Provider. Because of this, the installation folder should not be deleted and should be kept in a convenient location. Refer to the :doc:`runtime_setup` page for more details about setting up the environment before running an inference session on the NPU.
 
 
 .. rubric:: Customizing the Installation
@@ -117,7 +120,7 @@ The ``ryzen-ai-sw-1.1`` package contains a test to verify that the Ryzen AI soft
    python quicktest.py --ep ipu
 
 
-- The test runs an image classification model on the IPU using random number data. On a successful run, you will see an output similar to the one shown below:
+- The test runs an image classification model on the NPU using random number data. On a successful run, you will see an output similar to the one shown below:
 
 .. code-block::
   
