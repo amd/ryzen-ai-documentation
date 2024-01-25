@@ -24,7 +24,7 @@ Examples
 - `Run LLM OPT-1.3B model with ONNXRuntime <https://github.com/amd/RyzenAI-SW/tree/main/example/transformers/opt-onnx>`_  
 - `Run LLM OPT-1.3B model with PyTorch <https://github.com/amd/RyzenAI-SW/tree/main/example/transformers/opt-pytorch>`_  
 - `Run Vision-Transformer model with ONNXRuntime <https://github.com/amd/RyzenAI-SW/tree/main/example/transformers/vision-transformer-onnx>`_  
-- `Run ONNX end-to-end examples with custom pre/post-processing nodes running on IPU <https://github.com/amd/RyzenAI-SW/tree/main/example/onnx-e2e>`_  
+- `Run ONNX end-to-end examples with custom pre/post-processing nodes running on NPU <https://github.com/amd/RyzenAI-SW/tree/main/example/onnx-e2e>`_  
 
 *****
 Demos
