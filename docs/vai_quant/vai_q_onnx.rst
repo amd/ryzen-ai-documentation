@@ -10,6 +10,9 @@ The AMD-Xilinx Vitis AI Quantizer for ONNX models. It supports various configura
 
 The Vitis AI Quantizer for ONNX supports Post Training Quantization. This static quantization method first runs the model using a set of inputs called calibration data. During these runs, the flow computes the quantization parameters for each activation. These quantization parameters are written as constants to the quantized model and used for all inputs. The quantization tool supports the following calibration methods: MinMax, Entropy and Percentile, and MinMSE.
 
+.. note::
+
+In this documentation, **"NPU"** is used in descriptions, while **"IPU"** is retained in the tool's language, code, screenshots, and commands. This intentional distinction aligns with existing tool references and does not affect functionality. Avoid making replacements in the code.
 
 ************
 Installation
@@ -45,7 +48,7 @@ Tips:
 
 - Before exporting, please perform model.eval().
 - Models with opset 13 are recommended.
-- For CNN's on IPU platform, dynamic input shapes are currently not supported and only a batch size of 1 is allowed. Please ensure that the shape of input is a fixed value, and the batch dimension is set to 1.
+- For CNN's on NPU platform, dynamic input shapes are currently not supported and only a batch size of 1 is allowed. Please ensure that the shape of input is a fixed value, and the batch dimension is set to 1.
 
 Example code:
 
@@ -185,12 +188,12 @@ The static quantization method first runs the model using a set of inputs called
 
 * **calibrate_method**: (String) The method used in calibration, default to ``vai_q_onnx.PowerOfTwoMethod.MinMSE``.
 
-  - For CNNs running on the IPU, power-of-two methods should be used, options are:
+  - For CNNs running on the NPU, power-of-two methods should be used, options are:
 
     - ``vai_q_onnx.PowerOfTwoMethod.NonOverflow``: This method get the power-of-two quantize parameters for each tensor to make sure min/max values not overflow.
     - ``vai_q_onnx.PowerOfTwoMethod.MinMSE``: This method get the power-of-two quantize parameters for each tensor to minimize the mean-square-loss of quantized values and float values. This takes longer time but usually gets better accuracy.
 
-  - For Transformers running on the IPU, or for CNNs running on the CPU, float scale methods should be used, options are:
+  - For Transformers running on the NPU, or for CNNs running on the CPU, float scale methods should be used, options are:
 
     -  ``vai_q_onnx.CalibrationMethod.MinMax``: This method obtains the quantization parameters based on the minimum and maximum values of each tensor.
     -  ``vai_q_onnx.CalibrationMethod.Entropy``: This method determines the quantization parameters by considering the entropy algorithm of each tensor's distribution.
@@ -200,16 +203,16 @@ The static quantization method first runs the model using a set of inputs called
 * **output_nodes**: (List of Strings) This parameter is a list of the names of the end nodes to be quantized. Nodes in the model after these nodes will not be quantized. For example, this argument can be used to skip some post-processing nodes or stop the last node from being quantized. The default value is an empty list ([]).
 * **op_types_to_quantize**: (List of Strings or None) If specified, only operators of the given types will be quantized (e.g., ['Conv'] to only quantize Convolutional layers). By default, all supported operators will be quantized.
 * **random_data_reader_input_shape**: (List or Tuple of Int) If dynamic axes of inputs require specific value, users should provide its shapes when using internal random data reader (That is, set calibration_data_reader to None). The basic format of shape for single input is list (Int) or tuple (Int) and all dimensions should have concrete values (batch dimensions can be set to 1). For example, random_data_reader_input_shape=[1, 3, 224, 224] or random_data_reader_input_shape=(1, 3, 224, 224) for single input. If the model has multiple inputs, it can be fed in list (shape) format, where the list order is the same as the onnxruntime got inputs. For example, random_data_reader_input_shape=[[1, 1, 224, 224], [1, 2, 224, 224]] for 2 inputs. Moreover, it is possible to use dict {name : shape} to specify a certain input, for example, random_data_reader_input_shape={"image" : [1, 3, 224, 224]} for the input named "image". The default value is an empty list ([]).
-* **per_channel**: (Boolean) Determines whether weights should be quantized per channel. The default value is False. For DPU/IPU devices, this must be set to False as they currently do not support per-channel quantization.
-* **reduce_range**: (Boolean) If True, quantizes weights with 7-bits. The default value is False. For DPU/IPU devices, this must be set to False as they currently do not support reduced range quantization.
+* **per_channel**: (Boolean) Determines whether weights should be quantized per channel. The default value is False. For DPU/NPU devices, this must be set to False as they currently do not support per-channel quantization.
+* **reduce_range**: (Boolean) If True, quantizes weights with 7-bits. The default value is False. For DPU/NPU devices, this must be set to False as they currently do not support reduced range quantization.
 * **activation_type**: (QuantType) Specifies the quantization data type for activations, options please refer to Table 1. The default is ``vai_q_onnx.QuantType.QInt8``.
-* **weight_type**: (QuantType) Specifies the quantization data type for weights, options please refer to Table 1. The default is ``vai_q_onnx.QuantType.QInt8``. For IPU devices, this must be set to ``QuantType.QInt8``.
+* **weight_type**: (QuantType) Specifies the quantization data type for weights, options please refer to Table 1. The default is ``vai_q_onnx.QuantType.QInt8``. For NPU devices, this must be set to ``QuantType.QInt8``.
 * **nodes_to_quantize**: (List of Strings or None) If specified, only the nodes in this list are quantized. The list should contain the names of the nodes, for example, ['Conv__224', 'Conv__252']. The default value is an empty list ([]).
 * **nodes_to_exclude**: (List of Strings or None) If specified, the nodes in this list will be excluded from quantization. The default value is an empty list ([]).
 * **optimize_model**: (Boolean) If True, optimizes the model before quantization. The default value is True.
 * **use_external_data_format**: (Boolean) This option is used for large size (>2GB) model. The model proto and data will be stored in separate files. The default is False.
 * **execution_providers**: (List of Strings) This parameter defines the execution providers that will be used by ONNX Runtime to do calibration for the specified model. The default value ``CPUExecutionProvider`` implies that the model will be computed using the CPU as the execution provider. You can also set this to other execution providers supported by ONNX Runtime such as ``CUDAExecutionProvider`` for GPU-based computation, if they are available in your environment. The default is ['CPUExecutionProvider'].
-* **enable_dpu**: (Boolean) This parameter is a flag that determines whether to generate a quantized model that is suitable for the DPU/IPU. If set to True, the quantization process will consider the specific limitations and requirements of the DPU/IPU, thus creating a model that is optimized for DPU/IPU computations. The default is False.
+* **enable_dpu**: (Boolean) This parameter is a flag that determines whether to generate a quantized model that is suitable for the DPU/NPU. If set to True, the quantization process will consider the specific limitations and requirements of the DPU/NPU, thus creating a model that is optimized for DPU/NPU computations. The default is False.
 * **convert_fp16_to_fp32**: (Boolean) This parameter controls whether to convert the input model from float16 to float32 before quantization. For float16 models, it is recommended to set this parameter to True. The default value is False.
 * **convert_nchw_to_nhwc**: (Boolean) This parameter controls whether to convert the input NCHW model to input NHWC model before quantization. For input NCHW models, it is recommended to set this parameter to True. The default value is False.
 * **include_cle**: (Boolean) This parameter is a flag that determines whether to optimize the models using CrossLayerEqualization; it can improve the accuracy of some models. The default is False.
@@ -218,7 +221,7 @@ The static quantization method first runs the model using a set of inputs called
   - **ActivationSymmetric**: (Boolean) If True, symmetrize calibration data for activations. The default is False.
   - **WeightSymmetric**: (Boolean) If True, symmetrize calibration data for weights. The default is True.
   - **UseUnsignedReLU**: (Boolean) If True, the output tensor of ReLU and Clip, whose min is 0, will be forced to be asymmetric. The default is False.
-  - **QuantizeBias**: (Boolean) If True, quantize the Bias as a normal weights. The default is True. For DPU/IPU devices, this must be set to True.
+  - **QuantizeBias**: (Boolean) If True, quantize the Bias as a normal weights. The default is True. For DPU/NPU devices, this must be set to True.
   - **RemoveInputInit**: (Boolean) If True, initializer in graph inputs will be removed because it will not be treated as constant value/weight. This may prevent some of the graph optimizations, like const folding. The default is True.
   - **EnableSubgraph**: (Boolean) If True, the subgraph will be quantized. The default is False. More support for this feature is planned in the future.
   - **ForceQuantizeNoInputCheck**: (Boolean) If True, latent operators such as maxpool and transpose will always quantize their inputs, generating quantized outputs even if their inputs have not been quantized. The default behavior can be overridden for specific nodes using nodes_to_exclude.
@@ -226,7 +229,7 @@ The static quantization method first runs the model using a set of inputs called
   - **AddQDQPairToWeight**: (Boolean) If True, both QuantizeLinear and DeQuantizeLinear nodes are inserted for weight, maintaining its floating-point format. The default is False, which quantizes floating-point weight and feeds it solely to an inserted DeQuantizeLinear node. In the PowerOfTwoMethod calibration method, this setting will also be effective for the bias.
   - **OpTypesToExcludeOutputQuantization**: (List of Strings or None) If specified, the output of operators with these types will not be quantized. The default is an empty list.
   - **DedicatedQDQPair**: (Boolean) If True, an identical and dedicated QDQ pair is created for each node. The default is False, allowing multiple nodes to share a single QDQ pair as their inputs.
-  - **QDQOpTypePerChannelSupportToAxis**: (Dictionary) Sets the channel axis for specific operator types (e.g., {'MatMul': 1}). This is only effective when per-channel quantization is supported and per_channel is True. If a specific operator type supports per-channel quantization but no channel axis is explicitly specified, the default channel axis will be used. For DPU/IPU devices, this must be set to {} as per-channel quantization is currently unsupported. The default is an empty dict ({}).
+  - **QDQOpTypePerChannelSupportToAxis**: (Dictionary) Sets the channel axis for specific operator types (e.g., {'MatMul': 1}). This is only effective when per-channel quantization is supported and per_channel is True. If a specific operator type supports per-channel quantization but no channel axis is explicitly specified, the default channel axis will be used. For DPU/NPU devices, this must be set to {} as per-channel quantization is currently unsupported. The default is an empty dict ({}).
   - **UseQDQVitisCustomOps**: (Boolean) If True, The UInt8 and Int8 quantization will be executed by the custom operations library, otherwise by the library of onnxruntime extensions. The default is True, only valid in vai_q_onnx.VitisQuantFormat.QDQ.
   - **CalibTensorRangeSymmetric**: (Boolean) If True, the final range of the tensor during calibration will be symmetrically set around the central point "0". The default is False. In PowerOfTwoMethod calibration method, the default is True.
   - **CalibMovingAverage**: (Boolean) If True, the moving average of the minimum and maximum values will be computed when the calibration method selected is MinMax. The default is False. In PowerOfTwoMethod calibration method, this should be set to False.
@@ -249,7 +252,7 @@ The static quantization method first runs the model using a set of inputs called
   - **ConvertReduceMeanToDPUVersion**: (Boolean) If True, the ReduceMean operation will be converted to DPU version when SimulateDPU is True. The default is True.
   - **ConvertSoftmaxToDPUVersion**: (Boolean) If True, the Softmax operation will be converted to DPU version when SimulateDPU is True. The default is False.
   - **SimulateDPU**: (Boolean) If True, a simulation transformation that replaces some operations with an approximate implementation will be applied for DPU when enable_dpu is True. The default is True.
-  - **IPULimitationCheck**: (Boolean) If True, the quantization scale will be adjust due to the limitation of DPU/IPU. The default is True.
+  - **IPULimitationCheck**: (Boolean) If True, the quantization scale will be adjust due to the limitation of DPU/NPU. The default is True.
   - **AdjustShiftCut**: (Boolean) If True, adjust the shift cut of nodes when IPULimitationCheck is True. The default is True.
   - **AdjustShiftBias**: (Boolean) If True, adjust the shift bias of nodes when IPULimitationCheck is True. The default is True.
   - **AdjustShiftRead**: (Boolean) If True, adjust the shift read of nodes when IPULimitationCheck is True. The default is True.
@@ -296,10 +299,10 @@ The static quantization method first runs the model using a set of inputs called
 Recommended Configurations
 **************************
 
-CNNs on IPU  
+CNNs on NPU  
 ===========
 
-The recommended quantization configuration for CNN models to be deployed on the IPU is as follows:
+The recommended quantization configuration for CNN models to be deployed on the NPU is as follows:
 
 .. code-block::
 
@@ -328,10 +331,10 @@ The recommended quantization configuration for CNN models to be deployed on the 
 
        extra_options={"ActivationSymmetric":True, 'RemoveQDQConvLeakyRelu':True, 'RemoveQDQConvPRelu':True}
 
-Transformers on IPU
+Transformers on NPU
 ===================
 
-The recommended quantization configuration for Transformer models to be deployed on the IPU is as follows:
+The recommended quantization configuration for Transformer models to be deployed on the NPU is as follows:
 
 .. code-block::
 
@@ -381,7 +384,7 @@ In addition to the INT8/UINT8, the VAI_Q_ONNX API supports quantizing models to 
 
 The custom operations library was developed based on Linux and does not currently support compilation on Windows. If you want to run the quantized model that has the custom Q/DQ on Windows, it is recommended to switch to WSL as a workaround.
 
-To use this feature, the ```quant_format``` should be set to VitisQuantFormat.QDQ. The ```quant_format``` is set to ```QuantFormat.QDQ``` for accelerating both CNN's and transformers on the IPU target. 
+To use this feature, the ```quant_format``` should be set to VitisQuantFormat.QDQ. The ```quant_format``` is set to ```QuantFormat.QDQ``` for accelerating both CNN's and transformers on the NPU target. 
 
 
 
@@ -468,7 +471,7 @@ Converting NCHW Models to NHWC and Quantize
 *******************************************
 
 
-NHWC input shape typically yields better acceleration performance compared to NCHW on IPU. VAI_Q_ONNX facilitates the conversion of NCHW input models to NHWC input models by setting "convert_nchw_to_nhwc" to True. Please note that the conversion steps will be skipped if the model is already NHWC or has non-convertable input shapes.
+NHWC input shape typically yields better acceleration performance compared to NCHW on NPU. VAI_Q_ONNX facilitates the conversion of NCHW input models to NHWC input models by setting "convert_nchw_to_nhwc" to True. Please note that the conversion steps will be skipped if the model is already NHWC or has non-convertable input shapes.
 
 .. code-block::
       
