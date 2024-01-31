@@ -79,7 +79,7 @@ If this quantization command runs successfully, two important files are generate
 Hardware-Aware Quantization
 ===========================
 
-To enable hardware-aware quantization provide the ``target`` to the IPU specific archietecture as follows: 
+To enable hardware-aware quantization provide the ``target`` to the NPU specific archietecture as follows: 
 
 .. code-block::
 
@@ -90,7 +90,7 @@ To enable hardware-aware quantization provide the ``target`` to the IPU specific
                                quant_config_file=config_file,
                                target=target)
                                
-The ``target`` of current version of IPU is ``AMD_AIE2_Nx4_Overlay_cfg0``
+The ``target`` of current version of NPU is ``AMD_AIE2_Nx4_Overlay_cfg0``
 
 
 Partial Quantization
