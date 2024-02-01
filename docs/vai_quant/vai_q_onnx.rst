@@ -11,7 +11,8 @@ The AMD-Xilinx Vitis AI Quantizer for ONNX models. It supports various configura
 The Vitis AI Quantizer for ONNX supports Post Training Quantization. This static quantization method first runs the model using a set of inputs called calibration data. During these runs, the flow computes the quantization parameters for each activation. These quantization parameters are written as constants to the quantized model and used for all inputs. The quantization tool supports the following calibration methods: MinMax, Entropy and Percentile, and MinMSE.
 
 .. note::
-     In this documentation, **"NPU"** is used in descriptions, while **"IPU"** is retained in the tool's language, code, screenshots, and commands. This intentional distinction aligns with existing tool references and does not affect functionality. Avoid making replacements in the code.
+   In this documentation, **"NPU"** is used in descriptions, while **"IPU"** is retained in the tool's language, code, screenshots, and commands. This intentional 
+   distinction aligns with existing tool references and does not affect functionality. Avoid making replacements in the code.
 
 ************
 Installation
@@ -291,10 +292,12 @@ The static quantization method first runs the model using a set of inputs called
      - Implemented by customized VitisQuantizeLinear/VitisDequantizeLinear
 
 .. note:: 
-   For pure UInt8 or Int8 quantization, we recommend setting quant_format to QuantFormat.QDQ as it uses native QuantizeLinear/DequantizeLinear operations which may have better compatibility and performance.
+   For pure UInt8 or Int8 quantization, we recommend setting quant_format to QuantFormat.QDQ as it uses native QuantizeLinear/DequantizeLinear operations which 
+   may have better compatibility and performance.
 
 .. note::
-     In this documentation, **"NPU"** is used in descriptions, while **"IPU"** is retained in the tool's language, code, screenshots, and commands. This intentional distinction aligns with existing tool references and does not affect functionality. Avoid making replacements in the code.
+   In this documentation, **"NPU"** is used in descriptions, while **"IPU"** is retained in the tool's language, code, screenshots, and commands. This intentional 
+   distinction aligns with existing tool references and does not affect functionality. Avoid making replacements in the code.
 
 **************************
 Recommended Configurations
@@ -326,7 +329,8 @@ The recommended quantization configuration for CNN models to be deployed on the 
 
 .. note::
    
-   By default, Conv + LeakyRelu/PRelu fusion is turned off in the current version. You can try to enable this feature to get better performance if the model contains LeakyRelu or PRelu. This default behavior may change in future versions. Here is the example configuration:
+   By default, Conv + LeakyRelu/PRelu fusion is turned off in the current version. You can try to enable this feature to get better performance if the model 
+   contains LeakyRelu or PRelu. This default behavior may change in future versions. Here is the example configuration:
 
    .. code-block::
 
@@ -378,7 +382,8 @@ Quantizing to Other Precisions
 
 
 .. note::
-   The current release of the Vitis AI Execution Provider ingests quantized ONNX models with INT8/UINT8 data types only. No support is provided for direct deployment of models with other precisions, including FP32.
+   The current release of the Vitis AI Execution Provider ingests quantized ONNX models with INT8/UINT8 data types only. No support is provided for direct 
+   deployment of models with other precisions, including FP32.
 
 
 In addition to the INT8/UINT8, the VAI_Q_ONNX API supports quantizing models to other data formats, including INT16/UINT16, INT32/UINT32, Float16 and BFloat16, which can provide better accuracy or be used for experimental purposes. These new data formats are achieved by a customized version of QuantizeLinear and DequantizeLinear named "VitisQuantizeLinear" and "VitisDequantizeLinear", which expands onnxruntime's UInt8 and Int8 quantization to support UInt16, Int16, UInt32, Int32, Float16 and BFloat16. This customized Q/DQ was implemented by a custom operations library in VAI_Q_ONNX using onnxruntime's custom operation C API.
