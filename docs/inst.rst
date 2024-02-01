@@ -6,11 +6,11 @@ Installation Instructions
 Supported Configurations
 ************************
 
-.. note::
- 
-    In this documentation, **"NPU"** is used in descriptions, while **"IPU"** is retained in the tool's language, code, screenshots, and commands. This intentional distinction aligns with existing tool references and does not affect functionality. Avoid making replacements in the code.
-
 The Ryzen AI Software supports the AMD Ryzen™ 7940HS, 7840HS, 7640HS, 7840U and 7640U processors running Windows 11. 
+
+.. note::
+   In this documentation, **"NPU"** is used in descriptions, while **"IPU"** is retained in the tool's language, code, screenshots, and commands. This intentional 
+   distinction aligns with existing tool references and does not affect functionality. Avoid making replacements in the code.
 
 ******************
 Prepare the System
