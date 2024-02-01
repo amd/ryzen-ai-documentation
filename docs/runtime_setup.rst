@@ -11,8 +11,8 @@ NPU Profile Selection
 The NPU can be configured for different execution profiles. It is required to explicitly select an NPU profile before running an application from a new environment. 
 
 .. note::
- 
-    In this documentation, **"NPU"** is used in descriptions, while **"IPU"** is retained in the tool's language, code, screenshots, and commands. This intentional distinction aligns with existing tool references and does not affect functionality. Avoid making replacements in the code.
+   In this documentation, **"NPU"** is used in descriptions, while **"IPU"** is retained in the tool's language, code, screenshots, and commands. This intentional 
+   distinction aligns with existing tool references and does not affect functionality. Avoid making replacements in the code.
 
 Throughput Profile
 ==================
