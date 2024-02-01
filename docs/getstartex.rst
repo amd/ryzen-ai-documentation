@@ -310,8 +310,8 @@ Build and Run Custom Resnet C++ sample
 --------------------------------------
 
 .. note::
- 
-    In this documentation, **"NPU"** is used in descriptions, while **"IPU"** is retained in the tool's language, code, screenshots, and commands. This intentional distinction aligns with existing tool references and does not affect functionality. Avoid making replacements in the code.
+   In this documentation, **"NPU"** is used in descriptions, while **"IPU"** is retained in the tool's language, code, screenshots, and commands. This intentional 
+   distinction aligns with existing tool references and does not affect functionality. Avoid making replacements in the code.
 
 The C++ source files, CMake list files and related artifacts are provided in the ``cpp/resnet_cifar/*`` folder. The source file ``cpp/resnet_cifar/resnet_cifar.cpp`` takes 10 images from the CIFAR-10 test set, converts them to .png format, preprocesses them, and performs model inference. The example has onnxruntime dependencies, that are provided in ``cpp/resnet_cifar/onnxruntime/*``. 
 
