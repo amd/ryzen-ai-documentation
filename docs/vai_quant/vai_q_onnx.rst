@@ -11,8 +11,8 @@ The AMD-Xilinx Vitis AI Quantizer for ONNX models. It supports various configura
 The Vitis AI Quantizer for ONNX supports Post Training Quantization. This static quantization method first runs the model using a set of inputs called calibration data. During these runs, the flow computes the quantization parameters for each activation. These quantization parameters are written as constants to the quantized model and used for all inputs. The quantization tool supports the following calibration methods: MinMax, Entropy and Percentile, and MinMSE.
 
 .. note::
-
-In this documentation, **"NPU"** is used in descriptions, while **"IPU"** is retained in the tool's language, code, screenshots, and commands. This intentional distinction aligns with existing tool references and does not affect functionality. Avoid making replacements in the code.
+   In this documentation, **"NPU"** is used in descriptions, while **"IPU"** is retained in the tool's language, code, screenshots, and commands. This intentional 
+   distinction aligns with existing tool references and does not affect functionality. Avoid making replacements in the code.
 
 ************
 Installation
