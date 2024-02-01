@@ -39,10 +39,10 @@ The following are the steps and the required files to run the example:
      - The ResNet model trained using CIFAR-10 is provided in .pt format.
    * - Quantization 
      - ``resnet_quantize.py``
-     - Convert the model to the IPU-deployable model by performing Post-Training Quantization flow using VitisAI ONNX Quantization.
+     - Convert the model to the NPU-deployable model by performing Post-Training Quantization flow using VitisAI ONNX Quantization.
    * - Deployment - Python
      - ``predict.py``
-     -  Run the Quantized model using the ONNX Runtime code. We demonstrate running the model on both CPU and IPU. 
+     -  Run the Quantized model using the ONNX Runtime code. We demonstrate running the model on both CPU and NPU. 
    * - Deployment - C++
      - ``cpp/resnet_cifar/.``
      -  This folder contains the source code ``resnet_cifar.cpp`` that demonstrates running inference using C++ APIs. We additionally provide the infrastructure (required libraries, CMake files and headerfiles) required by the example. 
@@ -151,7 +151,7 @@ The parameters of this function are:
 * **calibrate_method**: (String) In this example this parameter is set to ``vai_q_onnx.PowerOfTwoMethod.MinMSE`` to apply power-of-2 scale quantization. 
 * **activation_type**: (String) Data type of activation tensors after quantization. In this example, it's set to QInt8 (Quantized Integer 8).
 * **weight_type**: (String) Data type of weight tensors after quantization. In this example, it's set to QInt8 (Quantized Integer 8).
-* **enable_dpu**: (Boolean) Determines whether to generate a quantized model that is suitable for the IPU/DPU. If set to True, the quantization process will create a model that is optimized for IPU/DPU computations.
+* **enable_dpu**: (Boolean) Determines whether to generate a quantized model that is suitable for the NPU/DPU. If set to True, the quantization process will create a model that is optimized for NPU/DPU computations.
 * **extra_options**: (Dict or None) Dictionary of additional options that can be passed to the quantization process. In this example, ``ActivationSymmetric`` is set to True. It means calibration data for activations is symmetrized. 
 
 |
@@ -171,7 +171,7 @@ We demonstrate deploying the quantized model using both Python and C++ APIs.
 Deployment - Python
 ===========================
 
-The ``predict.py`` script is used to deploy the model. It extracts the first ten images from the CIFAR-10 test dataset and converts them to the .png format. The script then reads all those ten images and classifies them by running the quantized custom ResNet model on CPU or IPU. 
+The ``predict.py`` script is used to deploy the model. It extracts the first ten images from the CIFAR-10 test dataset and converts them to the .png format. The script then reads all those ten images and classifies them by running the quantized custom ResNet model on CPU or NPU. 
 
 Deploy the Model on the CPU
 ----------------------------
@@ -198,10 +198,10 @@ Typical output
         Image 9: Actual Label automobile, Predicted Label automobile
         
                 
-Deploy the Model on the Ryzen AI IPU
+Deploy the Model on the Ryzen AI NPU
 ------------------------------------
 
-To successfully run the model on the IPU, run the following setup steps:
+To successfully run the model on the NPU, run the following setup steps:
 
 - Ensure that the ``XLNX_VART_FIRMWARE`` environment variable is correctly pointing to the :file:`1x4.xclbin` file located in the ``voe-4.0-win_amd64`` folder of the Ryzen AI software installation package. If you installed the Ryzen AI software using automatic installer, this variable is already correctly set. However, if you did the installation manually, you must set the variable as follows: 
 
@@ -212,7 +212,7 @@ To successfully run the model on the IPU, run the following setup steps:
 - Copy the :file:`vaip_config.json` runtime configuration file from the ``voe-4.0-win_amd64`` folder of the Ryzen AI software installation package to the current directory. The :file:`vaip_config.json` is used by the :file:`predict.py` script to configure the Vitis AI Execution Provider.
 
 
-The following section of the :file:`predict.py` script shows how ONNX Runtime is configured to deploy the model on the Ryzen AI IPU:
+The following section of the :file:`predict.py` script shows how ONNX Runtime is configured to deploy the model on the Ryzen AI NPU:
 
 
 .. code-block::
@@ -237,7 +237,7 @@ The following section of the :file:`predict.py` script shows how ONNX Runtime is
                                  provider_options=provider_options)
 
 
-Run the ``predict.py`` with the ``--ep ipu`` switch to run the custom ResNet model on the Ryzen AI IPU:
+Run the ``predict.py`` with the ``--ep ipu`` switch to run the custom ResNet model on the Ryzen AI NPU:
 
 
 .. code-block::
@@ -309,6 +309,10 @@ It is recommended to build OpenCV from the source code and use static build. The
 Build and Run Custom Resnet C++ sample
 --------------------------------------
 
+.. note::
+ 
+    In this documentation, **"NPU"** is used in descriptions, while **"IPU"** is retained in the tool's language, code, screenshots, and commands. This intentional distinction aligns with existing tool references and does not affect functionality. Avoid making replacements in the code.
+
 The C++ source files, CMake list files and related artifacts are provided in the ``cpp/resnet_cifar/*`` folder. The source file ``cpp/resnet_cifar/resnet_cifar.cpp`` takes 10 images from the CIFAR-10 test set, converts them to .png format, preprocesses them, and performs model inference. The example has onnxruntime dependencies, that are provided in ``cpp/resnet_cifar/onnxruntime/*``. 
 
 Run the following command to build the resnet example. Assign ``-DOpenCV_DIR`` to the OpenCV installation directory.
@@ -377,12 +381,12 @@ Typical output:
    Predicted label is cat and actual label is cat
    Predicted label is automobile and actual label is automobile
 
-Deploy the Model on the IPU
+Deploy the Model on the NPU
 ****************************
 
-To successfully run the model on the IPU:
+To successfully run the model on the NPU:
 
-- Ensure that the ``XLNX_VART_FIRMWARE`` environment variable is correctly pointing to the XCLBIN file included in the ONNX Vitis AI Execution Provider package. If you installed Ryzen-AI software by automatic installer, the IPU binary path is already set, however if you did the installation manually, ensure the IPU binary path is set using the following command: 
+- Ensure that the ``XLNX_VART_FIRMWARE`` environment variable is correctly pointing to the XCLBIN file included in the ONNX Vitis AI Execution Provider package. If you installed Ryzen-AI software by automatic installer, the NPU binary path is already set, however if you did the installation manually, ensure the NPU binary path is set using the following command: 
 
 .. code-block:: bash 
 
@@ -392,7 +396,7 @@ To successfully run the model on the IPU:
 - Copy the ``vaip_config.json`` runtime configuration file from the Vitis AI Execution Provider package to the current directory. The ``vaip_config.json`` is used by the source file ``resnet_cifar.cpp`` to configure the Vitis AI Execution Provider.
 
 
-The following code block from ``reset_cifar.cpp`` shows how ONNX Runtime is configured to deploy the model on the Ryzen AI IPU:
+The following code block from ``reset_cifar.cpp`` shows how ONNX Runtime is configured to deploy the model on the Ryzen AI NPU:
 
 .. code-block:: bash 
 
@@ -409,7 +413,7 @@ The following code block from ``reset_cifar.cpp`` shows how ONNX Runtime is conf
 
     auto session = Ort::Experimental::Session(env, model_name, session_options);
 
-To run the model on the IPU, we will pass the ipu flag and the vaip_config.json file as arguments to the C++ application. Use the following command to run the model on the IPU: 
+To run the model on the NPU, we will pass the ipu flag and the vaip_config.json file as arguments to the C++ application. Use the following command to run the model on the NPU: 
 
 .. code-block:: bash 
 
