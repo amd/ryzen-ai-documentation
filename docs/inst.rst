@@ -117,10 +117,10 @@ The ``ryzen-ai-sw-1.1`` package contains a test to verify that the Ryzen AI soft
 .. code-block::
 
    cd ryzen-ai-sw-1.1\quicktest
-   python quicktest.py --ep ipu
+   python quicktest.py
 
 
-- The test runs an image classification model on the NPU using random number data. On a successful run, you will see an output similar to the one shown below:
+- The test runs a simple CNN model. On a successful run, you will see an output similar to the one shown below. This indicates that the model is running on NPU and the installation of the Ryzen AI Software was successful:
 
 .. code-block::
   
