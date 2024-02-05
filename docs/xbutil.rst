@@ -1,12 +1,18 @@
 Examine, Validate, and Configure the NPU
 =========================================
-Ryzen-AI features an integrated NPU explorer tool called 'xbutil,' which is a command-line interface for both developers and end-users to monitor and manage the NPU. This feature is currently in the early access phase. Currently, it supports three primary commands:
+Ryzen-AI features an integrated NPU explorer tool called 'xbutil,' which is a command-line interface for both developers and end-users to monitor and manage the NPU. This feature is currently in the early access phase. 
+
+The ``xbutil`` command-line tool can be accessed from ``C:\Windows\System32\AMD``. Within the Ryzen-AI installer conda environment, ``xbutil`` can be directly invoked.
+
+Currently, it supports three primary commands:
 
 - **examine:** Retrieves reports related to the platform and AIE.
 - **validate:** Executes sanity tests on the device.
 - **configure:** Manages the performance level of the device.
 
-1. Examining Platform and AIE Reports Examples
+You can use '--help' with any command, such as 'xbutil examine --help,' to view all supported subcommands and their details.
+
+1. Examining Platform and AIE Reports - Examples
 ------------------------------------------------
 
 .. code-block:: shell
@@ -33,7 +39,7 @@ Provides information about the NPU Binary loaded during model inference.
  
 Provides information about the column occupancy on the NPU, allowing you to determine if more models can run in parallel.
 
-2. Executing Sanity Check on the NPU Examples
+2. Executing Sanity Check on the NPU - Examples
 ------------------------------------------------
 
 .. code-block:: shell
@@ -42,7 +48,7 @@ Provides information about the column occupancy on the NPU, allowing you to dete
 
 Runs a built-in test on the NPU to ensure it is in a deployable state.
 
-3. Managing the Performance Level of the NPU Examples
+3. Managing the Performance Level of the NPU - Examples
 ---------------------------------------------------------
 
 .. code-block:: shell
