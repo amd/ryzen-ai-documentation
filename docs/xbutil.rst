@@ -1,6 +1,7 @@
 Examine, Validate, and Configure the NPU
 =========================================
-Ryzen-AI features an integrated NPU explorer tool called 'xbutil,' which is a command-line interface for both developers and end-users to monitor and manage the NPU. This feature is currently in the early access phase. 
+
+Ryzen-AI features an integrated NPU utility tool called 'xbutil,' which is a command-line interface for both developers and end-users to monitor and manage the NPU. This feature is currently in the early access phase. 
 
 The ``xbutil`` command-line tool can be accessed from ``C:\Windows\System32\AMD``. Within the Ryzen-AI installer conda environment, ``xbutil`` can be directly invoked.
 
@@ -10,7 +11,7 @@ Currently, it supports three primary commands:
 - **validate:** Executes sanity tests on the device.
 - **configure:** Manages the performance level of the device.
 
-You can use '--help' with any command, such as 'xbutil examine --help,' to view all supported subcommands and their details.
+You can use ``--help`` with any command, such as ``xbutil examine --help``, to view all supported subcommands and their details.
 
 1. Examining Platform and AIE Reports - Examples
 ------------------------------------------------
