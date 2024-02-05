@@ -1,5 +1,5 @@
-Examine, Validate, and Configure the NPU
-=========================================
+NPU Management Interface
+========================
 
 Ryzen-AI features an integrated NPU utility tool called ``xbutil``, which is a command-line interface for both developers and end-users to monitor and manage the NPU. This feature is currently in the early access phase. 
 
