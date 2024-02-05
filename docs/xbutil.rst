@@ -7,14 +7,14 @@ The ``xbutil`` command-line tool can be accessed from ``C:\Windows\System32\AMD`
 
 Currently, it supports three primary commands:
 
-- **examine:** Retrieves reports related to the platform and AIE.
-- **validate:** Executes sanity tests on the device.
-- **configure:** Manages the performance level of the device.
+- **examine:** Retrieves reports related to the Ryzen-AI Software Plaform and NPU.
+- **validate:** Executes sanity tests on the NPU.
+- **configure:** Manages the performance level of the NPU.
 
 You can use ``--help`` with any command, such as ``xbutil examine --help``, to view all supported subcommands and their details.
 
-1. Examining Platform and AIE Reports - Examples
-------------------------------------------------
+1. Examining Ryzen-AI Software Platform and NPU Reports - Examples
+------------------------------------------------------------------
 
 .. code-block:: shell
 
@@ -22,11 +22,17 @@ You can use ``--help`` with any command, such as ``xbutil examine --help``, to v
     
 Provides OS/system information of the AI PC and informs about the presence of the NPU. 
 
+|
+|
+
 .. code-block:: shell
 
    xbutil examine -d --report platform
  
 Provides more detailed information about the NPU, such as its architecture and performance mode.
+
+|
+|
 
 .. code-block:: shell
 
@@ -34,12 +40,16 @@ Provides more detailed information about the NPU, such as its architecture and p
  
 Provides information about the NPU Binary loaded during model inference.
 
+|
+|
 .. code-block:: shell
 
    xbutil examine -d --report aie-partition
  
 Provides information about the column occupancy on the NPU, allowing you to determine if more models can run in parallel.
 
+|
+|
 2. Executing Sanity Check on the NPU - Examples
 ------------------------------------------------
 
