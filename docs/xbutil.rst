@@ -1,9 +1,9 @@
 NPU Management Interface
 ========================
 
-Ryzen-AI features an integrated NPU utility tool called ``xbutil``, which is a command-line interface for both developers and end-users to monitor and manage the NPU. This feature is currently in the early access phase. 
+Ryzen AI features an integrated NPU utility tool called ``xbutil``, which is a command-line interface for both developers and end-users to monitor and manage the NPU. This feature is currently in the early access phase. 
 
-The ``xbutil`` command-line tool can be accessed from ``C:\Windows\System32\AMD``. Within the Ryzen-AI installer conda environment, ``xbutil`` can be directly invoked.
+The ``xbutil`` command-line tool can be accessed from ``C:\Windows\System32\AMD``. Within the Ryzen AI installer conda environment, ``xbutil`` can be directly invoked.
 
 Currently, it supports three primary commands:
 
@@ -13,8 +13,8 @@ Currently, it supports three primary commands:
 
 You can use ``--help`` with any command, such as ``xbutil examine --help``, to view all supported subcommands and their details.
 
-1. Examining Ryzen-AI Software Platform and NPU Reports - Examples
-------------------------------------------------------------------
+1. Examining Ryzen AI Software Platform and NPU Reports
+--------------------------------------------------------
 
 - To provide OS/system information of the AI PC and informs about the presence of the NPU:
 
@@ -40,8 +40,8 @@ You can use ``--help`` with any command, such as ``xbutil examine --help``, to v
 
      xbutil examine -d --report aie-partition
 
-2. Executing Sanity Check on the NPU - Examples
-------------------------------------------------
+2. Executing Sanity Check on the NPU
+------------------------------------
 
 - To run a built-in test on the NPU to ensure it is in a deployable state:
 
@@ -49,8 +49,8 @@ You can use ``--help`` with any command, such as ``xbutil examine --help``, to v
 
      xbutil validate -d --run verify
 
-3. Managing the Performance Level of the NPU - Examples
----------------------------------------------------------
+3. Managing the Performance Level of the NPU
+--------------------------------------------
 
 - To set the performance level of the NPU. You can choose powersaver mode, balanced mode, performance mode, or use the default:
 
