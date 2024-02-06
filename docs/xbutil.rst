@@ -16,54 +16,45 @@ You can use ``--help`` with any command, such as ``xbutil examine --help``, to v
 1. Examining Ryzen-AI Software Platform and NPU Reports - Examples
 ------------------------------------------------------------------
 
-.. code-block:: shell
+- Provides OS/system information of the AI PC and informs about the presence of the NPU.
 
-   xbutil examine
-    
-Provides OS/system information of the AI PC and informs about the presence of the NPU. 
+  .. code-block:: shell
 
-|
-|
+     xbutil examine
 
-.. code-block:: shell
+- Provides more detailed information about the NPU, such as its architecture and performance mode.
 
-   xbutil examine -d --report platform
- 
-Provides more detailed information about the NPU, such as its architecture and performance mode.
+  .. code-block:: shell
 
-|
-|
+     xbutil examine -d --report platform
 
-.. code-block:: shell
+- Provides information about the NPU Binary loaded during model inference.
 
-   xbutil examine -d --report dynamic-regions
- 
-Provides information about the NPU Binary loaded during model inference.
+  .. code-block:: shell
 
-|
-|
-.. code-block:: shell
+     xbutil examine -d --report dynamic-regions
 
-   xbutil examine -d --report aie-partition
- 
-Provides information about the column occupancy on the NPU, allowing you to determine if more models can run in parallel.
+- Provides information about the column occupancy on the NPU, allowing you to determine if more models can run in parallel.
 
-|
-|
+  .. code-block:: shell
+
+     xbutil examine -d --report aie-partition
+
 2. Executing Sanity Check on the NPU - Examples
 ------------------------------------------------
 
-.. code-block:: shell
+- Runs a built-in test on the NPU to ensure it is in a deployable state.
 
-   xbutil validate -d --run verify
+  .. code-block:: shell
 
-Runs a built-in test on the NPU to ensure it is in a deployable state.
+     xbutil validate -d --run verify
 
 3. Managing the Performance Level of the NPU - Examples
 ---------------------------------------------------------
 
-.. code-block:: shell
+- Sets the performance level of the NPU. You can choose powersaver mode, balanced mode, performance mode, or use the default.
 
-   xbutil configure -d --performance <powersaver | balanced | performance | default>
+  .. code-block:: shell
 
-Sets the performance level of the NPU. Your can choose powersaver mode or performance mode based on your preference. The default performance level is set to balanced.
+     xbutil configure -d --performance <powersaver | balanced | performance | default>
+
