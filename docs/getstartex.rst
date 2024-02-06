@@ -404,11 +404,12 @@ The following code block from ``reset_cifar.cpp`` shows how ONNX Runtime is conf
     auto session_options = Ort::SessionOptions();
 
     auto config_key = std::string{ "config_file" };
+    auto cache_dir = std::filesystem::current_path().string(); 
  
     if(ep=="ipu")
     {
     auto options =
-        std::unordered_map<std::string, std::string>{ {config_key, json_config} };
+        std::unordered_map<std::string, std::string>{ {config_key, json_config}, {"cacheDir", cache_dir}, {"cacheKey", "modelcachekey"} };
     session_options.AppendExecutionProvider("VitisAI", options);
     }
 
