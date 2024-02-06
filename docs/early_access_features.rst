@@ -37,6 +37,6 @@ https://account.amd.com/en/member/ryzenai-sw-ea.html.
 
 NPU Management Interface
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Ryzen AI introduces ``xbutil``, an integrated utility tool to monitor and manage the NPU. It can be accessed from ``C:\Windows\System32\AMD`` and offers three primary commands: examine, validate, and configure. Read more about ``xbutil`` `here <https://github.com/amd/ryzen-ai-documentation/blob/develop/docs/xbutil.rst>`_.
+Ryzen AI introduces ``xbutil``, an integrated utility tool to monitor and manage the NPU. It can be accessed from ``C:\Windows\System32\AMD`` and offers three primary commands: ``examine``, ``validate``, and ``configure``. Read more about ``xbutil`` `here <xbutil.html>`_.
 
 
