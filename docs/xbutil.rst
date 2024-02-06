@@ -16,25 +16,25 @@ You can use ``--help`` with any command, such as ``xbutil examine --help``, to v
 1. Examining Ryzen-AI Software Platform and NPU Reports - Examples
 ------------------------------------------------------------------
 
-- Provides OS/system information of the AI PC and informs about the presence of the NPU.
+- To provide OS/system information of the AI PC and informs about the presence of the NPU:
 
   .. code-block:: shell
 
      xbutil examine
 
-- Provides more detailed information about the NPU, such as its architecture and performance mode.
+- To provide more detailed information about the NPU, such as its architecture and performance mode:
 
   .. code-block:: shell
 
      xbutil examine -d --report platform
 
-- Provides information about the NPU Binary loaded during model inference.
+- To provide information about the NPU Binary loaded during model inference:
 
   .. code-block:: shell
 
      xbutil examine -d --report dynamic-regions
 
-- Provides information about the column occupancy on the NPU, allowing you to determine if more models can run in parallel.
+- To provide information about the column occupancy on the NPU, allowing you to determine if more models can run in parallel:
 
   .. code-block:: shell
 
@@ -43,7 +43,7 @@ You can use ``--help`` with any command, such as ``xbutil examine --help``, to v
 2. Executing Sanity Check on the NPU - Examples
 ------------------------------------------------
 
-- Runs a built-in test on the NPU to ensure it is in a deployable state.
+- To run a built-in test on the NPU to ensure it is in a deployable state:
 
   .. code-block:: shell
 
@@ -52,7 +52,7 @@ You can use ``--help`` with any command, such as ``xbutil examine --help``, to v
 3. Managing the Performance Level of the NPU - Examples
 ---------------------------------------------------------
 
-- Sets the performance level of the NPU. You can choose powersaver mode, balanced mode, performance mode, or use the default.
+- To set the performance level of the NPU. You can choose powersaver mode, balanced mode, performance mode, or use the default:
 
   .. code-block:: shell
 
