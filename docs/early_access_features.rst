@@ -40,6 +40,4 @@ NPU Management Interface
 
 Ryzen AI introduces xbutil, an integrated NPU utility tool in early access. Accessed from C:\Windows\System32\AMD, it offers three commands—examine for reports, validate for sanity tests, and configure for NPU performance management—accessible through the command line within the Ryzen AI installer conda environment. Read more about the tool :doc:`here <xbutil>`
 
-`_
-
 
