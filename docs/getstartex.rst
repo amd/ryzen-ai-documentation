@@ -169,6 +169,10 @@ We demonstrate deploying the quantized model using both Python and C++ APIs.
 * :ref:`Deployment - Python <dep-python>`
 * :ref:`Deployment - C++ <dep-cpp>`
 
+.. note::
+   In both Python and C++ deployment, the model is compiled and saved in the cache folder named ``modelcachekey`` inside the run directory. Ryzen-AI does not support the complied model artifacts across the versions, so if the run directory contains the existing cache folder ``modelcachekey`` generated from the previous version of the software, ensure to delete the same before deployment steps. 
+
+
 .. _dep-python:
 
 Deployment - Python
