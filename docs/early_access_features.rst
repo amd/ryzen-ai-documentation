@@ -24,7 +24,7 @@ ONNX End-to-End Flow
 
 The ONNX end-to-end flow provides a framework to create and add pre/post-processing operators to the pre-trained model which enables end-to-end model inference using Vitis AI Execution Provider. The feature is built by leveraging the ONNX Runtime feature `ONNXRuntime-Extensions <https://onnxruntime.ai/docs/extensions/>`_. Typical pre-processing (or post-processing) tasks, such as resize, normalization, etc can be expressed as custom operators. The pretrained model can then be extended by absorbing these custom operators. The resulting model that contains the pre/post-processing operations can then be run on NPU. This helps improve end-to-end latency and facilitates PC power saving by reducing CPU utilization.
 
-An example showing the ONNX end-to-end flow can be found `here <https://github.com/amd/RyzenAI-SW/tree/main/example/onnx-e2e>`_ 
+An example showing the ONNX end-to-end flow can be found `here <https://github.com/amd/RyzenAI-SW/tree/main/example/onnx-e2e>`_.
 
 
 Llama2 and Whisper-base Preview
@@ -32,13 +32,13 @@ Llama2 and Whisper-base Preview
 
 Preview examples demonstrating Llama2 and Whisper-base running on the NPU are available on the Ryzen AI SW Early Access Secure Site. Access to the secure site can be requested here: 
 
-https://account.amd.com/en/member/ryzenai-sw-ea.html
+https://account.amd.com/en/member/ryzenai-sw-ea.html.
 
 
 NPU Management Interface
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Ryzen AI introduces xbutil, an integrated NPU utility tool in early access. Accessed from C:\Windows\System32\AMD, it offers three commands—examine for reports, validate for sanity tests, and configure for NPU performance management—accessible through the command line within the Ryzen AI installer conda environment. Read more about the tool `here <xbutil.rst>`_.
+Ryzen AI introduces xbutil, an integrated NPU utility tool in early access. Accessed from C:\Windows\System32\AMD, it offers three commands—examine for reports, validate for sanity tests, and configure for NPU performance management—accessible through the command line within the Ryzen AI installer conda environment. Read more about the tool `here <https://github.com/amd/ryzen-ai-documentation/blob/develop/docs/xbutil.rst>`_.
 
 
 
