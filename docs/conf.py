@@ -27,14 +27,14 @@ sys.path.insert(0, os.path.abspath('docs'))
 # -- Project information -----------------------------------------------------
 
 project = 'Ryzen AI Software'
-copyright = '2023, Advanced Micro Devices, Inc'
+copyright = '2023-2024, Advanced Micro Devices, Inc'
 author = 'Advanced Micro Devices, Inc'
 
 # The short X.Y version
-version = '1.0.1'
+version = '1.1'
 # The full version, including alpha/beta/rc tags
-release = '1.0.1'
-html_last_updated_fmt = 'December 19, 2023'
+release = '1.1'
+html_last_updated_fmt = 'February 12, 2024'
 
 
 # -- General configuration ---------------------------------------------------
