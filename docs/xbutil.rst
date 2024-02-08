@@ -38,7 +38,7 @@ You can use ``--help`` with any command, such as ``xbutil examine --help``, to v
 
   .. code-block:: shell
 
-     xbutil examine -d --report aie-partition
+     xbutil examine -d --report aie-partitions
 
 2. Executing Sanity Check on the NPU
 ------------------------------------
