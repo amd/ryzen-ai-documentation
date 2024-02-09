@@ -6,7 +6,7 @@
 
 # Ryzen AI Software
 
-Version 1.0
+Version 1.1
 
 # License
 Ryzen AI is licensed under [MIT License](https://github.com/amd/ryzen-ai-documentation/blob/main/License). Refer to the [LICENSE File](https://github.com/amd/ryzen-ai-documentation/blob/main/License) for the full license text and copyright notice.
