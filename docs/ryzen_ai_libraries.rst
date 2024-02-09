@@ -137,6 +137,13 @@ that one of the following conditions is met:
 2. The Ryzen AI Library's **windows/** folder has been added to the PATH
    environment variable.
 
+*******
+Example
+*******
+
+Examples of the Ryzen-AI Library can be found `Ryzen AI Software repo <https://github.com/amd/RyzenAI-SW/tree/main/example/Ryzen-AI-Library>`_
+
+
 ****************
 Revision History
 ****************
