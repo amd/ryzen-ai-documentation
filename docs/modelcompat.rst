@@ -14,7 +14,6 @@ The list of the ONNX operators currently supported by the IPU is as follows:
 - Argmax
 - Argmin
 - Average pool_2D
-- BatchNorm
 - Channel Shuffle
 - Clip
 - Concat
@@ -28,18 +27,15 @@ The list of the ONNX operators currently supported by the IPU is as follows:
 - Fully-Connected
 - Gemm
 - GlobalAveragePool
-- GlobalMaxPool
 - Greater
 - GreaterOrEqual
 - Gstiling
 - Hard-Sigmoid
 - Hard-Swish
 - Identity
-- LayerNorm
 - LeakyRelu
 - Less
 - LessOrEqual
-- LSTM
 - MatMul
 - Max
 - Min
@@ -59,18 +55,14 @@ The list of the ONNX operators currently supported by the IPU is as follows:
 - Relu
 - Reshape
 - Resize
-- RNN
-- Sigmoid
 - Slice
 - Softmax
 - SpaceToDepth
 - Sqrt
-- Split
 - Squeeze
 - Strided-Slice
 - Sub
 - Tanh
-- Unsqueeze
 - Upsample
 
 ..
