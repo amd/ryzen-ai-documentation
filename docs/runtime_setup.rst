@@ -14,8 +14,6 @@ The NPU can be configured for different execution profiles. It is required to ex
 Throughput Profile
 ==================
 
-**IMPORTANT**: This is the default profile, and it should be used for all CNN-based applications.
-
 The throughput profile allows concurrent execution of four inference sessions in parallel on the NPU, with a performance of up to two TOPS per session. These parallel inference sessions can be run from different processes or applications, meeting the performance requirements of most real-time applications (such as video conferencing use cases) using the throughput profile.
 
 Up to four additional inference sessions can be executed through temporal sharing of the NPU resources and at the expense of TOPS per session. 
