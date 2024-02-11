@@ -20,13 +20,14 @@ The throughput profile allows concurrent execution of four inference sessions in
 
 Up to four additional inference sessions can be executed through temporal sharing of the NPU resources and at the expense of TOPS per session. 
 
-The Ryzen AI runtime automatically manages the scheduling of the parallel sessions, requiring no user intervention. When the maximum load is reached and no other sessions can be submitted to the NPU, new incoming sessions are directed to run on the CPU.
+The Ryzen AI runtime automatically manages the scheduling of the parallel sessions, requiring no user intervention. When the maximum load is reached and no other sessions can be submitted to the NPU. 
 
 To select the throughput profile, set the following environment variable:
 
 .. code-block::
 
    set XLNX_VART_FIRMWARE=C:\path\to\1x4.xclbin
+   set NUM_OF_DPU_RUNNERS=1
 
 
 The :file:`1x4.xclbin` file is located in the ``voe-4.0-win_amd64`` folder of the Ryzen AI Software installation package. 
