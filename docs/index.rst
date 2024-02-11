@@ -55,6 +55,7 @@ AMD Ryzenâ„¢ AI Software enables developers to take full advantage of AMD XDNAâ„
    Model Zoo <https://huggingface.co/models?other=RyzenAI>
    manual_installation.rst
    alternate_quantization_setup.rst 
+   onnx_e2e.rst
    early_access_features.rst
 
 
