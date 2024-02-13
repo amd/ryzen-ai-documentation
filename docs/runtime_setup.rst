@@ -40,7 +40,7 @@ The latency profile allocates the entire NPU for a single inference session, del
 
 Up to seven additional inference sessions can be executed through temporal sharing of the NPU resources and at the expense of TOPS per session. 
 
-The Ryzen AI runtime automatically manages the scheduling of the parallel sessions, requiring no user intervention. When the maximum load is reached and no other sessions can be submitted to the NPU, new incoming sessions are directed to run on the CPU.
+The Ryzen AI runtime automatically manages the scheduling of the parallel sessions, requiring no user intervention. When the maximum load is reached and no other sessions can be submitted to the NPU.
 
 To select the latency profile, set the two following environment variables:
 
@@ -48,6 +48,8 @@ To select the latency profile, set the two following environment variables:
 
    set XLNX_VART_FIRMWARE=C:\path\to\4x4.xclbin
    set XLNX_TARGET_NAME=AMD_AIE2_4x4_Overlay
+   set NUM_OF_DPU_RUNNERS=1
+
 
 The :file:`4x4.xclbin` file is located in the ``voe-4.0-win_amd64`` folder of the Ryzen AI Software installation package. 
 
