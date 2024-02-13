@@ -5,30 +5,26 @@ Early Access Features
 Early Access features are features which are still undergoing some optimization and fine-tuning. These features are not in their final form and may change as we continue to work in order to mature them into full-fledged features.
 
 
-Ryzen AI Gen AI (LLM) Flow
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+Suport for Generative AI
+========================
+The latest version of Ryzen AI Software includes early access support for Generative AI, transformers, and LLMs. Like CNNs, Gen AI models require quantization before deployment on the NPU. However, the development flow for Gen AI models features some differences due to their distinct nature.
 
-In Ryzen AI LLM flow, also known as the eager mode flow, the model deployed on the NPU through an operator-by-operator basis instead of compiling a complete graph. Specific compute-intensive operations, such as matrix multiplication based on GEMM/MATMUL operators, are dynamically offloaded to the NPU. The remaining operators are executed on the CPU. This approach simplifies the model ingestion process, reduces CPU load, and enables power savings on laptops. The latest state-of-the-art LLM models, such as OPT or Llama2, can be executed on a Ryzen AI-enabled laptop using the eager mode flow. 
+**Quantization:** For Gen AI models, it's often advantageous to use a combination of SmoothQuant or AWQ (applied to the pre-trained PyTorch model) and/or dynamic quantization (leveraging ONNXRuntime ORTQuantizer) techniques to maintain the highest possible accuracy. Since only specific operators are offloaded to the NPU, it's also recommended to conduct operator-specific quantization to selectively quantize necessary operators (typically GEMM/MATMUL).
 
-The LLM eager mode flow consists of the following steps:
+**Deployment:** Gen AI models are deployed on the NPU using an eager execution mode, simplifying the model ingestion process. Instead of compiling and executing as a complete graph, the model is processed on an operator-by-operator basis. Compute-intensive operations, such as GEMM/MATMUL, are dynamically offloaded to the NPU, while the remaining operators are executed on the CPU. Eager mode for Gen AI models is supported in both PyTorch and the ONNX Runtime.
 
-- **Quantize the pre-trained model**: For LLMs, it is often beneficial to employ a combination of SmoothQuant or AWQ (applied to the pre-trained PyTorch model) and/or dynamic quantization (utilizing ONNXRuntime ORTQuantizer) techniques to preserve accuracy as much as possible. As specific operators, like MATMUL, are offloaded to the NPU in the eager mode flow, it is also recommended to perform operator-specific quantization to quantize only the necessary operators.
+The following LLMs and transformers are supported and provided as examples:
 
-- **Run the quantized model with ONNX Runtime Vitis AI execution provider**: The quantized model is executed using the ONNX Runtime and the Vitis AI execution provider. In addition to the NPU binary and the Vitis AI EP configuration file, the eager mode requires a library of instructions (in the form of a precompiled DLL) to run those quantized operators on the NPU. 
+- `Llama 2 with PyTorch <https://github.com/amd/RyzenAI-SW/tree/main/example/transformers>`_
+- `OPT-1.3B with PyTorch <https://github.com/amd/RyzenAI-SW/tree/main/example/transformers/opt-pytorch>`_  
+- `OPT-1.3B with ONNXRuntime <https://github.com/amd/RyzenAI-SW/tree/main/example/transformers/opt-onnx>`_  
+-	Whisper base with ONNX Runtime (Access via Early Access secure site - `Request access here <https://account.amd.com/en/member/ryzenai-sw-ea.html>`_)
 
-An example showing the OPT-1.3B model running on the NPU in eager mode can be found `here <https://github.com/amd/RyzenAI-SW/tree/main/example/transformers/opt-onnx>`_
-
-
-Whisper-base Preview
-~~~~~~~~~~~~~~~~~~~~
-
-Preview example demonstrating Whisper-base running on the NPU are available on the Ryzen AI SW Early Access Secure Site. Access to the secure site can be requested here: 
-
-https://account.amd.com/en/member/ryzenai-sw-ea.html.
-
+|
+|
 
 NPU Management Interface
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Ryzen AI introduces ``xbutil``, an integrated utility tool to monitor and manage the NPU. It can be accessed from ``C:\Windows\System32\AMD`` and offers three primary commands: ``examine``, ``validate``, and ``configure``. Read more about ``xbutil`` `here <xbutil.html>`_.
+========================
+The ``xbutil`` utility is an integrated tool to monitor and manage the NPU. It can be accessed from ``C:\Windows\System32\AMD`` and offers three primary commands: ``examine``, ``validate``, and ``configure``. Read more about ``xbutil`` `here <xbutil.html>`_.
 
 
