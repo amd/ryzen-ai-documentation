@@ -1,20 +1,20 @@
 NPU Management Interface
 ========================
 
-Ryzen AI features an integrated NPU utility tool called ``xbutil``, which is a command-line interface for both developers and end-users to monitor and manage the NPU. This feature is currently in the early access phase. 
+**NOTE**: This feature is currently in the early access stage. 
 
-The ``xbutil`` command-line tool can be accessed from ``C:\Windows\System32\AMD``. Within the Ryzen AI installer conda environment, ``xbutil`` can be directly invoked.
+The ``xbutil`` utility is a command-line interface to monitor and manage the NPU. It is installed in ``C:\Windows\System32\AMD`` and it can be directly invoked from within the conda environment created by tge Ryzen AI Software installer.
 
-Currently, it supports three primary commands:
+The ``xbutil`` utility currently supports three primary commands:
 
-- **examine:** Retrieves reports related to the Ryzen-AI Software Plaform and NPU.
+- **examine:** Examines the state of the AI PC and the NPU.
 - **validate:** Executes sanity tests on the NPU.
 - **configure:** Manages the performance level of the NPU.
 
 You can use ``--help`` with any command, such as ``xbutil examine --help``, to view all supported subcommands and their details.
 
-1. Examining Ryzen AI Software Platform and NPU Reports
---------------------------------------------------------
+Examining the AI PC and the NPU
+-------------------------------
 
 - To provide OS/system information of the AI PC and informs about the presence of the NPU:
 
@@ -40,8 +40,8 @@ You can use ``--help`` with any command, such as ``xbutil examine --help``, to v
 
      xbutil examine -d --report aie-partitions
 
-2. Executing Sanity Check on the NPU
-------------------------------------
+Executing a Sanity Check on the NPU
+-----------------------------------
 
 - To run a built-in test on the NPU to ensure it is in a deployable state:
 
@@ -49,8 +49,8 @@ You can use ``--help`` with any command, such as ``xbutil examine --help``, to v
 
      xbutil validate -d --run verify
 
-3. Managing the Performance Level of the NPU
---------------------------------------------
+Managing the Performance Level of the NPU
+-----------------------------------------
 
 - To set the performance level of the NPU. You can choose powersaver mode, balanced mode, performance mode, or use the default:
 
