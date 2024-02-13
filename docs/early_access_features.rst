@@ -25,6 +25,6 @@ The following LLMs and transformers are supported and provided as examples:
 
 NPU Management Interface
 ========================
-The ``xbutil`` utility is an integrated tool to monitor and manage the NPU. It can be accessed from ``C:\Windows\System32\AMD`` and offers three primary commands: ``examine``, ``validate``, and ``configure``. Read more about ``xbutil`` `here <xbutil.html>`_.
+The ``xbutil`` utility is an integrated command-line interface to monitor and manage the NPU. More details can be found `here <xbutil.html>`_.
 
 
