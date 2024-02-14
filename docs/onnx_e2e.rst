@@ -20,6 +20,7 @@ Create PreProcessor and PostProcessor instances:
 .. code-block:: python
 
   from vitis_customop.preprocess import generic_preprocess as pre
+  from vitis_customop.postprocess_resnet import generic_post_process as post
   input_node_name = "blob.1"
   preprocessor = pre.PreProcessor(input_model_path, output_model_path, input_node_name)
   output_node_name = "1327"
