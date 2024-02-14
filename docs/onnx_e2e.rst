@@ -12,7 +12,7 @@ We provide the ``vitis_customop`` library that supports some common tasks such a
 
 We will continue to expand the library with more supported operations. 
 
-The following steps describe how to use the pre and post processor APIs:
+The following steps describe how to use the pre and post-processor APIs:
 
 **Step 1:**
 
@@ -31,7 +31,7 @@ Create PreProcessor and PostProcessor instances:
 
 **Step 2:**
 
-Specify the operations to perform, and pass required parameters. 
+Specify the operations to perform, and pass the required parameters. 
 
 .. code-block:: python
 
