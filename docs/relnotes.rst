@@ -29,7 +29,7 @@ Quantizer
 
   - Improved usability with various features and tools, including diverse parameter configurations, graph optimization, shape fixing and format transformations. 
   - Improved quantization accuracy through the implementation of experimental algorithmic improvements, including AdaRound and AdaQuant.
-  - Optimized the IPU workflow by distinguishing between different targets and aligning with the hardware constraints of the IPU.
+  - Optimized the NPU workflow by distinguishing between different targets and aligning with the hardware constraints of the NPU.
   - Introduced new utilities for model conversion.
 
     - Tool for converting the S8S8 model to the U8S8 model.
