@@ -17,33 +17,33 @@ Step 1:
 
 Create PreProcessor and PostProcessor instances:
 
-```
+.. code-block:: python
 from vitis_customop.preprocess import generic_preprocess as pre
 input_node_name = "blob.1"
 preprocessor = pre.PreProcessor(input_model_path, output_model_path, input_node_name)
 output_node_name = "1327"
 postprocessor = post.PostProcessor(onnx_pre_model_name, onnx_e2e_model_name, output_node_name)
-```
+
 
 Step 2:
 
 Specify the operations to perform, and pass required parameters. 
 
-```
+.. code-block:: python
 preprocessor.resize(resize_shape)
 preprocessor.normalize(mean, std_dev, scale)
 preprocessor.set_resnet_params(mean, std_dev, scale)
 postprocessor.ResNetPostProcess()
-```
+
 
 Step 3:
 
 Generate and save new model
 
-```
+.. code-block:: python
 preprocessor.build()
 postprocessor.build()
-```
+
 
 Examples to utilize the ONNX end-to-end flow can be found `here <https://github.com/amd/RyzenAI-SW/tree/main/example/onnx-e2e>`_.
 
