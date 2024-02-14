@@ -540,6 +540,7 @@ To see those utility tools
 or 
 
 .. code-block:: 
+
    >>> help ('vai_q_onnx.tools')
 
 The available utility tools
