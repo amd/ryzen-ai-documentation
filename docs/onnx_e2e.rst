@@ -2,9 +2,10 @@
 ONNX End-to-End Flow
 ####################
 
-Machine learning models often require pre/post-processing operations that are not part of the model itself. In order to run the pre/post-processing operations on the NPU, we present a way to integrate these operations into the original ONNX model. This way, we can enable end-to-end model inference using Vitis AI Execution Provider. The feature is built by leveraging the ONNX Runtime feature `ONNXRuntime-Extensions <https://onnxruntime.ai/docs/extensions/>`_. Typical pre-processing (or post-processing) tasks, such as resize, normalization, etc can be expressed as custom operators. The pretrained model can then be extended by absorbing these custom operators. The resulting model that contains the pre/post-processing operations can then be run on NPU. This helps improve end-to-end latency and facilitates PC power saving by reducing CPU utilization.
+AI models often require pre/post-processing operations that are not part of the model itself. To run the pre/post-processing operations on the NPU, we have developed a mechanism for integrating them into the original ONNX model. This allows for end-to-end model inference using Vitis AI Execution Provider. The feature is built by leveraging the ONNX Runtime feature ONNXRuntime-Extensions. Typical pre-processing (or post-processing) tasks, such as resizing, normalization, etc can be expressed as custom operators. The pre-trained model can then be extended by absorbing these custom operators. The resulting model that contains the pre/post-processing operations can then be run on NPU. This helps improve end-to-end latency and facilitates PC power saving by reducing CPU utilization.
 
-We provide the vitis_customop library that supports some common tasks such as resizing, normalization, NMS, etc. These operations are accessible through high-level API calls. The user will need to specify the following:
+
+We provide the ``vitis_customop`` library that supports some common tasks such as resizing, normalization, NMS, etc. These operations are accessible through high-level API calls. The user will need to specify the following:
 
 - pre/postprocessing operations
 - operation-specific parameters
