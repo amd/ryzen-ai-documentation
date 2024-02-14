@@ -6,19 +6,7 @@ Release Information
 Version 1.1
 ***********
 
-Key Highlights
---------------
 
-- CNN and ViT model support; validated with over 800 public models.
-- Model Zoo on Hugging Face: addition of int4 pre-quantized Llama2 7B model
-- EoU
-- Llama2 model example running on Ryzen AI on GitHub
-- Procyon score estimation tool in the early access lounge
-- Benchmarking tool in early access lounge
-- Bug fixes in Single click installation 
-- Gen AI
-- Beta GA support for LlaMa2 7B with w4abf16 quantization
-- Whisper base and Stable Diffusion are available in the early access lounge.
 
 
 *************
