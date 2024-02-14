@@ -25,7 +25,7 @@ Key Highlights
 Quantizer
 =========
 
-- ONNX
+- ONNX Quantizer
   - Improved usability with various features and tools, including:
     - Diverse parameter configurations
     - Graph optimization
@@ -35,8 +35,15 @@ Quantizer
   - Optimized the IPU workflow by distinguishing between different targets and aligning with the hardware constraints of the IPU.
   - Introduced new utilities for model conversion.
 
-- PyTorch
+- PyTorch Quantizer
   - Mixed data type quantization enhancement.
+
+ONNX Runtime EP
+===============
+
+- End-2-End Application support on NPU
+  - Enhanced existing support  - Provided high-level APIs to enable seamless incorporation of pre/post-processing operations into the model to run on NPU
+  - Two examples (resnet50 and yolov8) published to demonstrate the usage of these APIs to run end-to-end models on the NPU
 
 New Utilities
 -------------
