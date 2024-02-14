@@ -13,7 +13,7 @@ We will continue to expand the library with more supported operations.
 
 The following steps describe how to use the pre and post processor APIs:
 
-#### Step 1:
+Step 1:
 
 Create PreProcessor and PostProcessor instances:
 
@@ -25,7 +25,7 @@ output_node_name = "1327"
 postprocessor = post.PostProcessor(onnx_pre_model_name, onnx_e2e_model_name, output_node_name)
 ```
 
-#### Step 2:
+Step 2:
 
 Specify the operations to perform, and pass required parameters. 
 
@@ -36,7 +36,7 @@ preprocessor.set_resnet_params(mean, std_dev, scale)
 postprocessor.ResNetPostProcess()
 ```
 
-#### Step 3:
+Step 3:
 
 Generate and save new model
 
