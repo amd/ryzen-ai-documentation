@@ -7,7 +7,8 @@ Version 1.1
 ***********
 
 - ONNX Quantizer
- - Improved usability with various features and tools, including:
+
+- Improved usability with various features and tools, including:
    - Diverse parameter configurations
    - Graph optimization
    - Shape fixing
@@ -17,10 +18,12 @@ Version 1.1
  - Introduced new utilities for model conversion.
 
 - PyTorch Quantizer
- - Mixed data type quantization enhancement.
+
+- Mixed data type quantization enhancement.
 
 - New Utilities
- - Tool for converting the S8S8 model to the U8S8 model.
+ 
+- Tool for converting the S8S8 model to the U8S8 model.
  - Tool for converting the customized Q/DQ to onnxruntime contributed Q/DQ with the "microsoft" domain.
  - Tool for fixing a dynamic shapes model to a fixed shape model.
 
