@@ -37,6 +37,10 @@ Quantizer
   - Optimized the IPU workflow by distinguishing between different targets and aligning with the hardware constraints of the IPU.
   - Introduced new utilities for model conversion.
 
+    - Tool for converting the S8S8 model to the U8S8 model.
+    - Tool for converting the customized Q/DQ to onnxruntime contributed Q/DQ with the "microsoft" domain.
+    - Tool for fixing a dynamic shapes model to a fixed shape model.
+
 - PyTorch Quantizer
   - Mixed data type quantization enhancement.
 
@@ -47,12 +51,6 @@ ONNX Runtime EP
   - Enhanced existing support  - Provided high-level APIs to enable seamless incorporation of pre/post-processing operations into the model to run on NPU
   - Two examples (resnet50 and yolov8) published to demonstrate the usage of these APIs to run end-to-end models on the NPU
 
-New Utilities
--------------
-
-- Tool for converting the S8S8 model to the U8S8 model.
-- Tool for converting the customized Q/DQ to onnxruntime contributed Q/DQ with the "microsoft" domain.
-- Tool for fixing a dynamic shapes model to a fixed shape model.
 
 
 *************
