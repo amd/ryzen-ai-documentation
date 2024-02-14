@@ -2,9 +2,50 @@
 ONNX End-to-End Flow
 ####################
 
-The ONNX end-to-end flow provides a framework to create and add pre/post-processing operators to the pre-trained model which enables end-to-end model inference using Vitis AI Execution Provider. The feature is built by leveraging the ONNX Runtime feature `ONNXRuntime-Extensions <https://onnxruntime.ai/docs/extensions/>`_. Typical pre-processing (or post-processing) tasks, such as resize, normalization, etc can be expressed as custom operators. The pretrained model can then be extended by absorbing these custom operators. The resulting model that contains the pre/post-processing operations can then be run on NPU. This helps improve end-to-end latency and facilitates PC power saving by reducing CPU utilization.
+Machine learning models often require pre/post-processing operations that are often not part of the model itself. In order to run the pre/post-processing operations on the NPU, we present a way to integrate these operations into the original ONNX model. This way, we can enable end-to-end model inference using Vitis AI Execution Provider. The feature is built by leveraging the ONNX Runtime feature `ONNXRuntime-Extensions <https://onnxruntime.ai/docs/extensions/>`_. Typical pre-processing (or post-processing) tasks, such as resize, normalization, etc can be expressed as custom operators. The pretrained model can then be extended by absorbing these custom operators. The resulting model that contains the pre/post-processing operations can then be run on NPU. This helps improve end-to-end latency and facilitates PC power saving by reducing CPU utilization.
 
-An example showing the ONNX end-to-end flow can be found `here <https://github.com/amd/RyzenAI-SW/tree/main/example/onnx-e2e>`_.
+We provide the vitis_customop library that supports some common tasks such as resizing, normalization, NMS, etc. These operations are accessible through high-level API calls. The user will need to specify the following:
+
+- pre/postprocessing operations
+- operation-specific parameters
+
+We will continue to expand the library with more supported operations. 
+
+The following steps describe how to use the pre and post processor APIs. 
+
+#### Step 1:
+
+Create PreProcessor and PostProcessor instances:
+
+```
+from vitis_customop.preprocess import generic_preprocess as pre
+input_node_name = "blob.1"
+preprocessor = pre.PreProcessor(input_model_path, output_model_path, input_node_name)
+output_node_name = "1327"
+postprocessor = post.PostProcessor(onnx_pre_model_name, onnx_e2e_model_name, output_node_name)
+```
+
+#### Step 2:
+
+Specify the operations to perform, and pass required parameters. 
+
+```
+preprocessor.resize(resize_shape)
+preprocessor.normalize(mean, std_dev, scale)
+preprocessor.set_resnet_params(mean, std_dev, scale)
+postprocessor.ResNetPostProcess()
+```
+
+#### Step 3:
+
+Generate and save new model
+
+```
+preprocessor.build()
+postprocessor.build()
+```
+
+ Examples to utilize the ONNX end-to-end flow can be found `here <https://github.com/amd/RyzenAI-SW/tree/main/example/onnx-e2e>`_
 
 ..
   ------------
