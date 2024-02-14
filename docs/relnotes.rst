@@ -14,11 +14,8 @@ ONNX Quantizer
   - Graph optimization
   - Shape fixing
   - Format transformations
-
 - Improved quantization accuracy through the implementation of experimental algorithmic improvements, including AdaRound and AdaQuant.
-
 - Optimized the IPU workflow by distinguishing between different targets and aligning with the hardware constraints of the IPU.
-
 - Introduced new utilities for model conversion.
 
 PyTorch Quantizer
@@ -30,10 +27,10 @@ New Utilities
 -------------
 
 - Tool for converting the S8S8 model to the U8S8 model.
-
 - Tool for converting the customized Q/DQ to onnxruntime contributed Q/DQ with the "microsoft" domain.
-
 - Tool for fixing a dynamic shapes model to a fixed shape model.
+
+- Various bug fixes
 
 
 *************
