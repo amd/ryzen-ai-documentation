@@ -525,6 +525,39 @@ Cross Layer Equalization (CLE) is a technique used to improve PTQ accuracy. It c
   -  **CLEScaleAppendBias**: (Boolean) Whether the bias be included when calculating the scale of the weights, The default value is True.
   
 
+*****
+Tools
+*****
+
+Vitis AI ONNX quantizer includes a few built-in utility tools for model conversation. 
+
+The list of available tools can be viewed as below
+
+.. code-block::
+
+   (conda_env)dir %CONDA_PREFIX%\lib\site-packages\vai_q_onnx\tools\
+
+or 
+
+.. code-block:: 
+
+   (conda_env)python
+   >>> help ('vai_q_onnx.tools')
+
+
+Currently available utility tools
+
+- convert_customqdq_to_qdq
+- convert_dynamic_to_fixed
+- convert_fp16_to_fp32
+- convert_nchw_to_nhwc
+- convert_onnx_to_onnxtxt
+- convert_onnxtxt_to_onnx
+- convert_qdq_to_qop
+- convert_s8s8_to_u8s8
+- random_quantize
+- remove_qdq
+
 
 ..
   ------------
