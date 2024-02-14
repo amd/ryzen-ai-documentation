@@ -531,7 +531,7 @@ Tools
 
 Vitis AI ONNX quantizer includes a few built-in utility tools for model conversation. 
 
-To see those utility tools
+The list of available tools can be viewed as below
 
 .. code-block::
 
@@ -541,9 +541,11 @@ or
 
 .. code-block:: 
 
+   (conda_env)python
    >>> help ('vai_q_onnx.tools')
 
-The available utility tools
+
+Currently available utility tools
 
 - convert_customqdq_to_qdq
 - convert_dynamic_to_fixed
