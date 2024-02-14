@@ -6,7 +6,10 @@ Release Information
 Version 1.1
 ***********
 
+Key Highlights
+--------------
 
+- CNN and ViT model support; validated with over 800 public models.
 
 
 *************
