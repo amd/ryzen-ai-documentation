@@ -11,7 +11,7 @@ We provide the vitis_customop library that supports some common tasks such as re
 
 We will continue to expand the library with more supported operations. 
 
-The following steps describe how to use the pre and post processor APIs. 
+The following steps describe how to use the pre and post processor APIs:
 
 #### Step 1:
 
@@ -45,7 +45,7 @@ preprocessor.build()
 postprocessor.build()
 ```
 
- Examples to utilize the ONNX end-to-end flow can be found `here <https://github.com/amd/RyzenAI-SW/tree/main/example/onnx-e2e>`_
+Examples to utilize the ONNX end-to-end flow can be found `here <https://github.com/amd/RyzenAI-SW/tree/main/example/onnx-e2e>`_.
 
 ..
   ------------
