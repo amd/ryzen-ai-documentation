@@ -28,6 +28,7 @@ Quantizer
 - ONNX Quantizer
 
   - Improved usability with various features and tools, including:
+
     - Diverse parameter configurations
     - Graph optimization
     - Shape fixing
