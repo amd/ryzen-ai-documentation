@@ -2,45 +2,6 @@
 Release Information
 ###################
 
-***********
-Version 1.1
-***********
-Key Highlights
---------------
-
-- CNN and ViT model support; validated with over 800 public models.
-- Model Zoo on Hugging Face: addition of int4 pre-quantized Llama2 7B model
-- EoU
-- Llama2 model example running on Ryzen AI on GitHub
-- Procyon score estimation tool in the early access lounge
-- Benchmarking tool in early access lounge
-- Bug fixes in Single click installation 
-- Gen AI
-- Beta GA support for LlaMa2 7B with w4abf16 quantization
-- Whisper base and Stable Diffusion are available in the early access lounge.
-
-Quantizer
----------
-
-- ONNX
-  - Improved usability with various features and tools, including:
-    - Diverse parameter configurations
-    - Graph optimization
-    - Shape fixing
-    - Format transformations
-  - Improved quantization accuracy through the implementation of experimental algorithmic improvements, including AdaRound and AdaQuant.
-  - Optimized the IPU workflow by distinguishing between different targets and aligning with the hardware constraints of the IPU.
-  - Introduced new utilities for model conversion.
-
-- PyTorch
-  - Mixed data type quantization enhancement.
-
-New Utilities
--------------
-
-- Tool for converting the S8S8 model to the U8S8 model.
-- Tool for converting the customized Q/DQ to onnxruntime contributed Q/DQ with the "microsoft" domain.
-- Tool for fixing a dynamic shapes model to a fixed shape model.
 
 
 
