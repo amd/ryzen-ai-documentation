@@ -46,19 +46,19 @@ Compiler
   - Gstiling with reverse = false.
 - Fixed issues:
 
-   - Fixed Transpose-convolution and concat optimization issues.
-   - Fixed Conv stride 3 corner case hang issue.
+  - Fixed Transpose-convolution and concat optimization issues.
+  - Fixed Conv stride 3 corner case hang issue.
 - Performance improvement:
 
-   - Updated Conv 1x1 stride 2x2 optimization.
-   - Enhanced Conv 7x7 performance.
-   - Improved padding performance.
-   - Enhanced convolution MT fusion.
-   - Improved the performance for NCHW layout model.
-   - Enhanced the performance for eltwise-like op.
-   - Enhanced Conv and eltwise AT fusion.
-   - Improved the output convolution/transpose-convolution’s performance.
-   - Enhanced the logging message for EoU.
+  - Updated Conv 1x1 stride 2x2 optimization.
+  - Enhanced Conv 7x7 performance.
+  - Improved padding performance.
+  - Enhanced convolution MT fusion.
+  - Improved the performance for NCHW layout model.
+  - Enhanced the performance for eltwise-like op.
+  - Enhanced Conv and eltwise AT fusion.
+  - Improved the output convolution/transpose-convolution’s performance.
+  - Enhanced the logging message for EoU.
 
 
 ONNX Runtime EP
