@@ -32,8 +32,8 @@ Quantizer
   - Improved quantization accuracy through the implementation of experimental algorithmic improvements, including AdaRound and AdaQuant.
   - Optimized the NPU workflow by distinguishing between different targets and aligning with the hardware constraints of the NPU.
   - Introduced new utilities for model conversion.
+- PyTorch Quantizer:
 
-- PyTorch Quantizer
   - Mixed data type quantization enhancement and bug fix.
   - Corner bug fixes for add, sub, and conv1d operations.
 
@@ -41,12 +41,15 @@ Compiler
 =========
 
 - New op support:
+
   - Support Channel-wie Prelu.
   - Gstiling with reverse = false.
 - Fixed issues:
+
    - Fixed Transpose-convolution and concat optimization issues.
    - Fixed Conv stride 3 corner case hang issue.
 - Performance improvement:
+
    - Updated Conv 1x1 stride 2x2 optimization.
    - Enhanced Conv 7x7 performance.
    - Improved padding performance.
