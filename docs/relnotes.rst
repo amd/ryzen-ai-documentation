@@ -21,17 +21,16 @@ Key Highlights
 
   - Beta GA support for LlaMa2 7B with w4abf16 quantization.
   - Whisper base and Stable Diffusion available in the early access lounge.
-
 - Various bug fixes.
 Quantizer
 =========
 
 - ONNX Quantizer:
 
-  - Improved usability with various features and tools, including diverse parameter configurations, graph optimization, shape fixing, and format transformations. 
-  - Improved quantization accuracy through the implementation of experimental algorithmic improvements, including AdaRound and AdaQuant.
-  - Optimized the NPU workflow by distinguishing between different targets and aligning with the hardware constraints of the NPU.
-  - Introduced new utilities for model conversion.
+ - Improved usability with various features and tools, including diverse parameter configurations, graph optimization, shape fixing, and format transformations. 
+ - Improved quantization accuracy through the implementation of experimental algorithmic improvements, including AdaRound and AdaQuant.
+ - Optimized the NPU workflow by distinguishing between different targets and aligning with the hardware constraints of the NPU.
+ - Introduced new utilities for model conversion.
 - PyTorch Quantizer:
 
   - Mixed data type quantization enhancement and bug fix.
