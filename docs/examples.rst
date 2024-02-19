@@ -19,15 +19,15 @@ Getting Started Tutorial
 Examples
 ********
 
-- `Run Vitis AI ONNX Quantizer example <example/onnx_quantizer>_
-- `Real-time object detection with Yolov8 <example/yolov8>_
-- `Run multiple concurrent AI applications with ONNXRuntime <example/multi-model>_
-- `Run Ryzen AI Library example <example/Ryzen-AI-Library>_
-- `Run ONNX end-to-end examples with custom pre/post-processing nodes running on IPU <https://github.com/amd/RyzenAI-SW/tree/main/example/onnx-e2e>_
+- `Run Vitis AI ONNX Quantizer example <example/onnx_quantizer>`_
+- `Real-time object detection with Yolov8 <example/yolov8>`_
+- `Run multiple concurrent AI applications with ONNXRuntime <example/multi-model>`_
+- `Run Ryzen AI Library example <example/Ryzen-AI-Library>`_
+- `Run ONNX end-to-end examples with custom pre/post-processing nodes running on IPU <https://github.com/amd/RyzenAI-SW/tree/main/example/onnx-e2e>`_
 - Generative AI Examples
-   - `Run LLM OPT-1.3B model with ONNXRuntime <example/transformers/>_
-   - `Run LLM OPT-1.3B model with PyTorch <example/transformers/>_
-   - `Run LLM Llama 2 model with PyTorch <example/transformers/>_
+   - `Run LLM OPT-1.3B model with ONNXRuntime <example/transformers/>`_
+   - `Run LLM OPT-1.3B model with PyTorch <example/transformers/>`_
+   - `Run LLM Llama 2 model with PyTorch <example/transformers/>`_
 
 *****
 Demos
