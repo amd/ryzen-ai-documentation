@@ -31,6 +31,10 @@ Quantizer
   - Improved quantization accuracy through the implementation of experimental algorithmic improvements, including AdaRound and AdaQuant.
   - Optimized the NPU workflow by distinguishing between different targets and aligning with the hardware constraints of the NPU.
   - Introduced new utilities for model conversion.
+
+    - Tool for converting the S8S8 model to the U8S8 model.
+    - Tool for converting the customized Q/DQ to onnxruntime contributed Q/DQ with the "microsoft" domain.
+    - Tool for fixing a dynamic shapes model to a fixed shape model.
 - PyTorch Quantizer:
 
   - Mixed data type quantization enhancement and bug fix.
@@ -63,17 +67,9 @@ Compiler
 ONNX Runtime EP
 ===============
 
-- Fixed a few issues with ONNXRT EP to support some customers’ models.
-
-New Utilities
-===============
-
-- Tool for converting the S8S8 model to the U8S8 model.
-- Tool for converting the customized Q/DQ to onnxruntime contributed Q/DQ with the Microsoft domain.
-- Tool for fixing a dynamic shapes model to a fixed shape model.
-
-
-
+- End-2-End Application support on NPU
+  - Enhanced existing support: Provided high-level APIs to enable seamless incorporation of pre/post-processing operations into the model to run on NPU
+  - Two examples (resnet50 and yolov8) published to demonstrate the usage of these APIs to run end-to-end models on the NPU
 
 *************
 Version 1.0.1
