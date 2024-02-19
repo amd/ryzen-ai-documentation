@@ -26,9 +26,9 @@ Examples
 - `Run ONNX end-to-end examples with custom pre/post-processing nodes running on IPU <https://github.com/amd/RyzenAI-SW/tree/main/example/onnx-e2e>`_
 - Generative AI Examples
 
-   - `Run LLM OPT-1.3B model with ONNXRuntime <example/transformers/>`_
-   - `Run LLM OPT-1.3B model with PyTorch <example/transformers/>`_
-   - `Run LLM Llama 2 model with PyTorch <example/transformers/>`_
+  - `Run LLM OPT-1.3B model with ONNXRuntime <example/transformers/>`_
+  - `Run LLM OPT-1.3B model with PyTorch <example/transformers/>`_
+  - `Run LLM Llama 2 model with PyTorch <example/transformers/>`_
 
 *****
 Demos
