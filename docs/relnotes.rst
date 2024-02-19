@@ -6,22 +6,6 @@ Release Information
 Version 1.1
 ***********
 
-Key Highlights
-==============
-
-- CNN and ViT model support; validated with over 800 public models.
-- Model Zoo on Hugging Face: Added int4 pre-quantized Llama2 7B model.
-- EoU:
-
-  - Llama2 model example running on Ryzen AI available on GitHub, with the developer guide on the documentation portal.
-  - Procyon score estimation tool in the early access lounge.
-  - Benchmarking tool in early access lounge.
-  - Bug fixes in Single click installation.
-- Gen AI:
-
-  - Beta GA support for LlaMa2 7B with w4abf16 quantization.
-  - Whisper base and Stable Diffusion available in the early access lounge.
-- Various bug fixes.
 Quantizer
 =========
 
@@ -31,6 +15,10 @@ Quantizer
   - Improved quantization accuracy through the implementation of experimental algorithmic improvements, including AdaRound and AdaQuant.
   - Optimized the NPU workflow by distinguishing between different targets and aligning with the hardware constraints of the NPU.
   - Introduced new utilities for model conversion.
+
+    - Tool for converting the S8S8 model to the U8S8 model.
+    - Tool for converting the customized Q/DQ to onnxruntime contributed Q/DQ with the "microsoft" domain.
+    - Tool for fixing a dynamic shapes model to a fixed shape model.
 - PyTorch Quantizer:
 
   - Mixed data type quantization enhancement and bug fix.
@@ -63,17 +51,10 @@ Compiler
 ONNX Runtime EP
 ===============
 
-- Fixed a few issues with ONNXRT EP to support some customers’ models.
+- End-2-End Application support on NPU
 
-New Utilities
-===============
-
-- Tool for converting the S8S8 model to the U8S8 model.
-- Tool for converting the customized Q/DQ to onnxruntime contributed Q/DQ with the Microsoft domain.
-- Tool for fixing a dynamic shapes model to a fixed shape model.
-
-
-
+  - Enhanced existing support: Provided high-level APIs to enable seamless incorporation of pre/post-processing operations into the model to run on NPU
+  - Two examples (resnet50 and yolov8) published to demonstrate the usage of these APIs to run end-to-end models on the NPU
 
 *************
 Version 1.0.1
