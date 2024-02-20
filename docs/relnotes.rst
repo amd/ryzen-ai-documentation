@@ -56,6 +56,13 @@ ONNX Runtime EP
   - Enhanced existing support: Provided high-level APIs to enable seamless incorporation of pre/post-processing operations into the model to run on NPU
   - Two examples (resnet50 and yolov8) published to demonstrate the usage of these APIs to run end-to-end models on the NPU
 
+
+NPU Management Interface
+========================
+
+- Early access to the ``xbutil`` utility, a command-line interface to monitor and manage the NPU.
+
+
 *************
 Version 1.0.1
 *************
