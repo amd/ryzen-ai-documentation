@@ -9,14 +9,14 @@ Supported Configurations
 The Ryzen AI Software supports the AMD Ryzen™ 7940HS, 7840HS, 7640HS, 7840U and 7640U processors running Windows 11. 
 
 .. note::
-   In this documentation, **"NPU"** is used in descriptions, while **"IPU"** is retained in the tool's language, code, screenshots, and commands. This intentional 
+   In this documentation, "NPU" is used in descriptions, while "IPU" is retained in the tool's language, code, screenshots, and commands. This intentional 
    distinction aligns with existing tool references and does not affect functionality. Avoid making replacements in the code.
 
 ******************
 Prepare the System
 ******************
 
-Download the :download:` NPU Driver <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ipu_stack_rel_silicon_prod.zip>` and install it by following these steps:
+Download the :download:`NPU Driver <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ipu_stack_rel_silicon_prod_1.1.zip>` and install it by following these steps:
 
 
 1. Extract the downloaded zip file.
@@ -24,7 +24,7 @@ Download the :download:` NPU Driver <https://account.amd.com/en/forms/downloads/
 
 Ensure that the NPU driver is installed from ``Device Manager`` -> ``System Devices`` -> ``AMD IPU Device`` as shown in the following image.
 
-.. image:: images/ipu_driver_101.png
+.. image:: images/ipu_driver_1.1.png
    :align: center
    :width: 400 px
 
@@ -61,7 +61,7 @@ Install the Ryzen AI Software
 
 Before installing the Ryzen AI Software, ensure that all the prerequisites outlined previously have been met and that the Windows PATH variable is properly set for each component. For example, Anaconda requires following paths to be set in the PATH variable ``path\to\anaconda3\``, ``path\to\anaconda3\Scripts\``, ``path\to\anaconda3\Lib\bin\``. The PATH variable should be set through the *Environment Variables* window of the *System Properties*. 
 
-Download the :download:`ryzen-ai-sw-1.0.1.zip <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ryzen-ai-sw-1.0.1.zip>` Ryzen AI Software installation package and extract it. 
+Download the :download:`ryzen-ai-sw-1.1.zip <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ryzen-ai-sw-1.1.zip>` Ryzen AI Software installation package and extract it. 
 
 Open an Anaconda or Windows command prompt in the extracted folder and run the installation script as shown below. Make sure to enter "Y" when prompted to accept the EULA. 
 
@@ -105,7 +105,7 @@ The default Ryzen AI Software packages are now installed in the conda environmen
 Test the Installation
 *********************
 
-The ``ryzen-ai-sw-1.0.1`` package contains a test to verify that the Ryzen AI software is correctly installed. This installation test can be found in the ``quicktest`` folder.
+The ``ryzen-ai-sw-1.1`` package contains a test to verify that the Ryzen AI software is correctly installed. This installation test can be found in the ``quicktest`` folder.
 
 - Activate the conda environment:
 
@@ -117,26 +117,19 @@ The ``ryzen-ai-sw-1.0.1`` package contains a test to verify that the Ryzen AI so
 
 .. code-block::
 
-   cd ryzen-ai-sw-1.0.1\ryzen-ai-sw-1.0.1\quicktest
-   curl https://www.cs.toronto.edu/~kriz/cifar-10-sample/bird6.png --output image_0.png
-   python -m pip install -r requirements.txt
-   python quicktest.py --ep ipu
+   cd ryzen-ai-sw-1.1\quicktest
+   python quicktest.py
 
 
-- The test runs image classification on the NPU. On a successful run, you will see an output similar to the one shown below:
+- The test runs a simple CNN model. On a successful run, you will see an output similar to the one shown below. This indicates that the model is running on NPU and the installation of the Ryzen AI Software was successful:
 
 .. code-block::
   
-   I20231127 16:29:15.010130 13892 vitisai_compile_model.cpp:336] Vitis AI EP Load ONNX Model Success
-   I20231127 16:29:15.010130 13892 vitisai_compile_model.cpp:337] Graph Input Node Name/Shape (1)
-   I20231127 16:29:15.010130 13892 vitisai_compile_model.cpp:341]   input : [-1x3x32x32]
-   I20231127 16:29:15.010130 13892 vitisai_compile_model.cpp:347] Graph Output Node Name/Shape (1)
-   I20231127 16:29:15.010130 13892 vitisai_compile_model.cpp:351]   output : [-1x10]
-   I20231127 16:29:15.010130 13892 vitisai_compile_model.cpp:226] use cache key quickstart_modelcachekey
-   [Vitis AI EP] No. of Operators :   CPU     2    IPU   400  99.50%
+   [Vitis AI EP] No. of Operators :   CPU     2    IPU   398  99.50%
    [Vitis AI EP] No. of Subgraphs :   CPU     1    IPU     1 Actually running on IPU     1
-   ....
-
+   ...
+   Test Passed
+   ...
 
 ..
   ------------
