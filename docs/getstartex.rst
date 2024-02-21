@@ -4,6 +4,9 @@ Getting Started Tutorial
 
 This tutorial uses a fine-tuned version of the ResNet model (using the CIFAR-10 dataset) to demonstrate the process of preparing, quantizing, and deploying a model using Ryzen AI Software. The tutorial features deployment using both Python and C++ ONNX runtime code. 
 
+.. note::
+   In this documentation, "NPU" is used in descriptions, while "IPU" is retained in the tool's language, code, screenshots, and commands. This intentional 
+   distinction aligns with existing tool references and does not affect functionality. Avoid making replacements in the code.
 
 - The source code files can be downloaded from `this link <https://github.com/amd/RyzenAI-SW/tree/main/tutorial/getting_started_resnet>`_. Alternatively, you can clone the RyzenAI-SW repo and change the directory into the tutorial code directory. 
 
@@ -166,6 +169,10 @@ We demonstrate deploying the quantized model using both Python and C++ APIs.
 * :ref:`Deployment - Python <dep-python>`
 * :ref:`Deployment - C++ <dep-cpp>`
 
+.. note::
+   During the Python and C++ deployment, the compiled model artifacts are saved in the cache folder named ``<run directory>/modelcachekey``. Ryzen-AI does not support the complied model artifacts across the versions, so if the model artifacts exist from the previous software version, ensure to delete the folder ``modelcachekey`` before the deployment steps. 
+
+
 .. _dep-python:
 
 Deployment - Python
@@ -207,7 +214,7 @@ To successfully run the model on the NPU, run the following setup steps:
 
 .. code-block:: bash 
 
-   set XLNX_VART_FIRMWARE=path\to\RyzenAI\installation\files\ryzen-ai-sw-1.0\voe-4.0-win_amd64\1x4.xclbin
+   set XLNX_VART_FIRMWARE=path\to\RyzenAI\installation\files\ryzen-ai-sw-1.1\voe-4.0-win_amd64\1x4.xclbin
 
 - Copy the :file:`vaip_config.json` runtime configuration file from the ``voe-4.0-win_amd64`` folder of the Ryzen AI software installation package to the current directory. The :file:`vaip_config.json` is used by the :file:`predict.py` script to configure the Vitis AI Execution Provider.
 
@@ -335,18 +342,20 @@ Now to deploy our model, we will go back to the parent directory (getting_starte
    cd ..
    xcopy cpp\build\Release\resnet_cifar.exe .
 
-- Additionally, we will also need to copy the onnxruntime DLLs from the Vitis AI Execution Provider package to the current directory. The following commands copy the required files in the current directory: 
+Additionally, we will also need to copy the onnxruntime DLLs from the Vitis AI Execution Provider package to the current directory. The following commands copy the required files in the current directory: 
 
 .. code-block:: bash 
 
-   xcopy path\to\ryzen-ai-sw-xx\ryzen-ai-sw-xx\voe-xx-win_amd64\voe-xx-cp39-cp39-win_amd64\onnxruntime.dll .
-   xcopy path\to\ryzen-ai-sw-xx\ryzen-ai-sw-xx\voe-xx-win_amd64\voe-xx-cp39-cp39-win_amd64\onnxruntime_vitisai_ep.dll .
+   xcopy %RYZEN_AI_INSTALLER%\onnxruntime\bin\onnxruntime.dll .
+   xcopy %RYZEN_AI_INSTALLER%\onnxruntime\bin\onnxruntime_vitisai_ep.dll .
+
+Here, ``RYZEN_AI_INSTALLER`` is an environment variable that should point to the ``path\to\ryzen-ai-sw-xx\ryzen-ai-sw-xx``. If you installed Ryzen-AI software using the automatic installer, this variable should already be set. Ensure that the Ryzen-AI software package has not been moved post installation, in which case ``RYZEN_AI_INSTALLER`` will have to be set again. 
 
 
 The C++ application that was generated takes 3 arguments: 
 
 #. Path to the quantized ONNX model generated in Step 3 
-#. The execution provider of choice (cpu or ipu) 
+#. The execution provider of choice (cpu or NPU) 
 #. vaip_config.json (pass None if running on CPU) 
 
 
@@ -390,7 +399,7 @@ To successfully run the model on the NPU:
 
 .. code-block:: bash 
 
-   set XLNX_VART_FIRMWARE=path\to\RyzenAI\installation\ryzen-ai-sw-1.0\ryzen-ai-sw-1.0\voe-4.0-win_amd64\1x4.xclbin
+   set XLNX_VART_FIRMWARE=path\to\RyzenAI\installation\ryzen-ai-sw-1.1\ryzen-ai-sw-1.1\voe-4.0-win_amd64\1x4.xclbin
 
 
 - Copy the ``vaip_config.json`` runtime configuration file from the Vitis AI Execution Provider package to the current directory. The ``vaip_config.json`` is used by the source file ``resnet_cifar.cpp`` to configure the Vitis AI Execution Provider.
@@ -403,11 +412,12 @@ The following code block from ``reset_cifar.cpp`` shows how ONNX Runtime is conf
     auto session_options = Ort::SessionOptions();
 
     auto config_key = std::string{ "config_file" };
+    auto cache_dir = std::filesystem::current_path().string(); 
  
     if(ep=="ipu")
     {
     auto options =
-        std::unordered_map<std::string, std::string>{ {config_key, json_config} };
+        std::unordered_map<std::string, std::string>{ {config_key, json_config}, {"cacheDir", cache_dir}, {"cacheKey", "modelcachekey"} };
     session_options.AppendExecutionProvider("VitisAI", options);
     }
 

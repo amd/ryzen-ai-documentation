@@ -2,6 +2,84 @@
 Release Information
 ###################
 
+***********
+Version 1.1
+***********
+
+- New model support:
+
+  - Llama 2 7B with w4abf16 (3-bit and 4-bit) quantization (Beta)
+  - Whisper base (EA access)
+  - Stable Diffusion v1.5 (EA access)
+
+- New EoU tools:
+
+  - CNN Benchmarking tool on RyzenAI-SW Repo
+  - Platform/NPU inspection and management tool
+  - Procyon score estimation tool (EA access)
+
+Quantizer
+=========
+
+- ONNX Quantizer:
+
+  - Improved usability with various features and tools, including diverse parameter configurations, graph optimization, shape fixing, and format transformations. 
+  - Improved quantization accuracy through the implementation of experimental algorithmic improvements, including AdaRound and AdaQuant.
+  - Optimized the NPU workflow by distinguishing between different targets and aligning with the hardware constraints of the NPU.
+  - Introduced new utilities for model conversion.
+
+- PyTorch Quantizer:
+
+  - Mixed data type quantization enhancement and bug fix.
+  - Corner bug fixes for add, sub, and conv1d operations.
+  - Tool for converting the S8S8 model to the U8S8 model.
+  - Tool for converting the customized Q/DQ to onnxruntime contributed Q/DQ with the "microsoft" domain.
+  - Tool for fixing a dynamic shapes model to fixed shape model.
+
+- Bug fixes
+
+  - Fix for incorrect logging when simulating the LeakyRelu alpha value.
+  - Fix for useless initializers not being cleaned up during optimization.
+  - Fix for external data cannot be found when using use_external_data_format.
+  - Fix for custom Ops cannot be registered due to GLIBC version mismatch
+
+
+
+NPU and Compiler
+================
+
+- New op support:
+
+  - Support Channel-wie Prelu.
+  - Gstiling with reverse = false.
+- Fixed issues:
+
+  - Fixed Transpose-convolution and concat optimization issues.
+  - Fixed Conv stride 3 corner case hang issue.
+- Performance improvement:
+
+  - Updated Conv 1x1 stride 2x2 optimization.
+  - Enhanced Conv 7x7 performance.
+  - Improved padding performance.
+  - Enhanced convolution MT fusion.
+  - Improved the performance for NCHW layout model.
+  - Enhanced the performance for eltwise-like op.
+  - Enhanced Conv and eltwise AT fusion.
+  - Improved the output convolution/transpose-convolution’s performance.
+  - Enhanced the logging message for EoU.
+
+
+ONNX Runtime EP
+===============
+
+- End-2-End Application support on NPU
+
+  - Enhanced existing support: Provided high-level APIs to enable seamless incorporation of pre/post-processing operations into the model to run on NPU
+  - Two examples (resnet50 and yolov8) published to demonstrate the usage of these APIs to run end-to-end models on the NPU
+- Bug fixes for ONNXRT EP to support customers’ models
+
+
+
 *************
 Version 1.0.1
 *************

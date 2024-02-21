@@ -6,7 +6,7 @@
 
 # Ryzen AI Software
 
-Version 1.0
+Version 1.1
 
 # License
 Ryzen AI is licensed under [MIT License](https://github.com/amd/ryzen-ai-documentation/blob/main/License). Refer to the [LICENSE File](https://github.com/amd/ryzen-ai-documentation/blob/main/License) for the full license text and copyright notice.
@@ -24,5 +24,5 @@ THAT AFFECT CONTROL OF A VEHICLE ("SAFETY APPLICATION") UNLESS THERE IS A SAFETY
 
 ## Copyright
 
-© Copyright 2023 Advanced Micro Devices, Inc. AMD, the AMD Arrow logo, Ryzen, Vitis AI, and combinations thereof are trademarks of Advanced Micro Devices,
+© Copyright 2024 Advanced Micro Devices, Inc. AMD, the AMD Arrow logo, Ryzen, Vitis AI, and combinations thereof are trademarks of Advanced Micro Devices,
 Inc. AMBA, AMBA Designer, Arm, ARM1176JZ-S, CoreSight, Cortex, PrimeCell, Mali, and MPCore are trademarks of Arm Limited in the US and/or elsewhere. PCI, PCIe, and PCI Express are trademarks of PCI-SIG and used under license. OpenCL and the OpenCL logo are trademarks of Apple Inc. used by permission by Khronos. Other product names used in this publication are for identification purposes only and may be trademarks of their respective companies.
