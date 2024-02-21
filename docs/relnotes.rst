@@ -6,6 +6,18 @@ Release Information
 Version 1.1
 ***********
 
+- New model support:
+
+  - Llama 2 7B with w4abf16 (3-bit and 4-bit) quantization (Beta)
+  - Whisper base (EA access)
+  - Stable Diffusion v1.5 (EA access)
+
+- New EoU tools:
+
+  - CNN Benchmarking tool on RyzenAI-SW Repo
+  - Platform/NPU inspection and management tool
+  - Procyon score estimation tool (EA access)
+
 Quantizer
 =========
 
@@ -16,16 +28,25 @@ Quantizer
   - Optimized the NPU workflow by distinguishing between different targets and aligning with the hardware constraints of the NPU.
   - Introduced new utilities for model conversion.
 
-    - Tool for converting the S8S8 model to the U8S8 model.
-    - Tool for converting the customized Q/DQ to onnxruntime contributed Q/DQ with the "microsoft" domain.
-    - Tool for fixing a dynamic shapes model to a fixed shape model.
 - PyTorch Quantizer:
 
   - Mixed data type quantization enhancement and bug fix.
   - Corner bug fixes for add, sub, and conv1d operations.
+  - Tool for converting the S8S8 model to the U8S8 model.
+  - Tool for converting the customized Q/DQ to onnxruntime contributed Q/DQ with the "microsoft" domain.
+  - Tool for fixing a dynamic shapes model to fixed shape model.
 
-Compiler
-=========
+- Bug fixes
+
+  - Fix for incorrect logging when simulating the LeakyRelu alpha value.
+  - Fix for useless initializers not being cleaned up during optimization.
+  - Fix for external data cannot be found when using use_external_data_format.
+  - Fix for custom Ops cannot be registered due to GLIBC version mismatch
+
+
+
+NPU and Compiler
+================
 
 - New op support:
 
@@ -55,12 +76,8 @@ ONNX Runtime EP
 
   - Enhanced existing support: Provided high-level APIs to enable seamless incorporation of pre/post-processing operations into the model to run on NPU
   - Two examples (resnet50 and yolov8) published to demonstrate the usage of these APIs to run end-to-end models on the NPU
+- Bug fixes for ONNXRT EP to support customers’ models
 
-
-NPU Management Interface
-========================
-
-- Early access to the ``xbutil`` utility, a command-line interface to monitor and manage the NPU.
 
 
 *************
