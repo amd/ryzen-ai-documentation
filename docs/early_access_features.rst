@@ -16,8 +16,8 @@ The latest version of Ryzen AI Software includes early access support for Genera
 The following LLMs and transformers are supported and provided as examples:
 
 - `Llama 2 with PyTorch <https://github.com/amd/RyzenAI-SW/tree/main/example/transformers>`_
-- `OPT-1.3B with PyTorch <https://github.com/amd/RyzenAI-SW/tree/main/example/transformers/opt-pytorch>`_  
-- `OPT-1.3B with ONNXRuntime <https://github.com/amd/RyzenAI-SW/tree/main/example/transformers/opt-onnx>`_  
+- `OPT-1.3B with PyTorch <https://github.com/amd/RyzenAI-SW/tree/main/example/transformers>`_  
+- `OPT-1.3B with ONNXRuntime <https://github.com/amd/RyzenAI-SW/tree/main/example/transformers>`_  
 -	Whisper base with ONNX Runtime (Access via Early Access secure site - `Request access here <https://account.amd.com/en/member/ryzenai-sw-ea.html>`_)
 
 |
