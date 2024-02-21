@@ -6,9 +6,6 @@ Release Information
 Version 1.1
 ***********
 
-Quantizer
-=========
-
 - New model support:
 
   - Llama 2 7B with w4abf16 (3-bit and 4-bit) quantization (Beta)
@@ -21,6 +18,8 @@ Quantizer
   - Platform/NPU inspection and management tool
   - Procyon score estimation tool (EA access)
 
+Quantizer
+=========
 
 - ONNX Quantizer:
 
@@ -36,6 +35,9 @@ Quantizer
   - Tool for converting the S8S8 model to the U8S8 model.
   - Tool for converting the customized Q/DQ to onnxruntime contributed Q/DQ with the "microsoft" domain.
   - Tool for fixing a dynamic shapes model to fixed shape model.
+
+- Bug fixes
+
   - Fix for incorrect logging when simulating the LeakyRelu alpha value.
   - Fix for useless initializers not being cleaned up during optimization.
   - Fix for external data cannot be found when using use_external_data_format.
