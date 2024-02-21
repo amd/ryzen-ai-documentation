@@ -214,7 +214,7 @@ To successfully run the model on the NPU, run the following setup steps:
 
 .. code-block:: bash 
 
-   set XLNX_VART_FIRMWARE=path\to\RyzenAI\installation\files\ryzen-ai-sw-1.0\voe-4.0-win_amd64\1x4.xclbin
+   set XLNX_VART_FIRMWARE=path\to\RyzenAI\installation\files\ryzen-ai-sw-1.1\voe-4.0-win_amd64\1x4.xclbin
 
 - Copy the :file:`vaip_config.json` runtime configuration file from the ``voe-4.0-win_amd64`` folder of the Ryzen AI software installation package to the current directory. The :file:`vaip_config.json` is used by the :file:`predict.py` script to configure the Vitis AI Execution Provider.
 
@@ -395,7 +395,7 @@ To successfully run the model on the NPU:
 
 .. code-block:: bash 
 
-   set XLNX_VART_FIRMWARE=path\to\RyzenAI\installation\ryzen-ai-sw-1.0\ryzen-ai-sw-1.0\voe-4.0-win_amd64\1x4.xclbin
+   set XLNX_VART_FIRMWARE=path\to\RyzenAI\installation\ryzen-ai-sw-1.1\ryzen-ai-sw-1.1\voe-4.0-win_amd64\1x4.xclbin
 
 
 - Copy the ``vaip_config.json`` runtime configuration file from the Vitis AI Execution Provider package to the current directory. The ``vaip_config.json`` is used by the source file ``resnet_cifar.cpp`` to configure the Vitis AI Execution Provider.
