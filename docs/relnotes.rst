@@ -45,8 +45,8 @@ Quantizer
 
 
 
-Compiler
-=========
+NPU and Compiler
+================
 
 - New op support:
 
