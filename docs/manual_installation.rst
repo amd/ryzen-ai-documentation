@@ -81,10 +81,32 @@ Set the following environment variable in the conda environment created above:
    set XLNX_VART_FIRMWARE=<your_path>\ryzen-ai-sw-1.1\ryzen-ai-sw-1.1\voe-4.0-win_amd64\1x4.xclbin
    set NUM_OF_DPU_RUNNERS=1
 
-The `1x4.xclbin` file is located in the `voe-4.0-win_amd64` folder of the Ryzen AI Software installation package. For detailed information and other available options refer to the :doc:`runtime_setup` page.
+The ``1x4.xclbin`` file is located in the ``voe-4.0-win_amd64`` folder of the Ryzen AI Software installation package. For detailed information and other available options refer to the :doc:`runtime_setup` page.
+
 
 *********************
 Test the Installation
 *********************
 
+The ``ryzen-ai-sw-1.1`` package contains a test to verify that the Ryzen AI software is correctly installed. This installation test can be found in the ``quicktest`` folder.
 
+- Run the test: 
+
+.. code-block::
+
+   cd ryzen-ai-sw-1.1\quicktest
+   python quicktest.py
+
+
+- The test runs a simple CNN model. On a successful run, you will see an output similar to the one shown below. This indicates that the model is running on NPU and the installation of the Ryzen AI Software was successful:
+
+.. code-block::
+  
+   [Vitis AI EP] No. of Operators :   CPU     2    IPU   398  99.50%
+   [Vitis AI EP] No. of Subgraphs :   CPU     1    IPU     1 Actually running on IPU     1
+   ...
+   Test Passed
+   ...
+
+..
+  ------------
