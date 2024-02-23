@@ -68,3 +68,23 @@ Install the Vitis AI Execution Provider
      pip install voe-0.1.0-cp39-cp39-win_amd64.whl
      pip install onnxruntime_vitisai-1.15.1-cp39-cp39-win_amd64.whl
      python installer.py
+
+
+*************
+Runtime Setup
+*************
+
+Set the following environment variable in the conda environment created above:
+
+.. code-block::
+
+   set XLNX_VART_FIRMWARE=<your_path>\ryzen-ai-sw-1.1\ryzen-ai-sw-1.1\voe-4.0-win_amd64\1x4.xclbin
+   set NUM_OF_DPU_RUNNERS=1
+
+The `1x4.xclbin` file is located in the `voe-4.0-win_amd64` folder of the Ryzen AI Software installation package. For detailed information and other available options refer to the :doc:`runtime_setup` page.
+
+*********************
+Test the Installation
+*********************
+
+
