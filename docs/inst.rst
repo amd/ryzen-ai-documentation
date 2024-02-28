@@ -7,6 +7,7 @@ Supported Configurations
 ************************
 
 The Ryzen AI Software supports the following processors running Windows 11
+
 - AMD Ryzen™ 7940HS, 7840HS, 7640HS, 7840U, 7640U.
 - AMD Ryzen™ 8640U, 8640HS, 8645H, 8840U, 8840HS, 8845H, 8945H. 
 
