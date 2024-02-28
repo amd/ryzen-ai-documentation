@@ -10,13 +10,11 @@ Version 1.1
 
   - Llama 2 7B with w4abf16 (3-bit and 4-bit) quantization (Beta)
   - Whisper base (EA access)
-  - Stable Diffusion v1.5 (EA access)
 
 - New EoU tools:
 
   - CNN Benchmarking tool on RyzenAI-SW Repo
   - Platform/NPU inspection and management tool
-  - Procyon score estimation tool (EA access)
 
 Quantizer
 =========
