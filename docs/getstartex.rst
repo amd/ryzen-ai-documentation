@@ -214,7 +214,7 @@ To successfully run the model on the NPU, run the following setup steps:
 
 .. code-block:: bash 
 
-   set XLNX_VART_FIRMWARE=path\to\RyzenAI\installation\files\ryzen-ai-sw-1.1\voe-4.0-win_amd64\1x4.xclbin
+   set XLNX_VART_FIRMWARE=path\to\RyzenAI\installation\files\ryzen-ai-sw-<version>\voe-4.0-win_amd64\1x4.xclbin
 
 - Copy the :file:`vaip_config.json` runtime configuration file from the ``voe-4.0-win_amd64`` folder of the Ryzen AI software installation package to the current directory. The :file:`vaip_config.json` is used by the :file:`predict.py` script to configure the Vitis AI Execution Provider.
 
@@ -345,7 +345,7 @@ Additionally, we will also need to copy the onnxruntime DLLs from the Vitis AI E
    xcopy %RYZEN_AI_INSTALLER%\onnxruntime\bin\onnxruntime.dll .
    xcopy %RYZEN_AI_INSTALLER%\onnxruntime\bin\onnxruntime_vitisai_ep.dll .
 
-Here, ``RYZEN_AI_INSTALLER`` is an environment variable that should point to the ``path\to\ryzen-ai-sw-xx\ryzen-ai-sw-xx``. If you installed Ryzen-AI software using the automatic installer, this variable should already be set. Ensure that the Ryzen-AI software package has not been moved post installation, in which case ``RYZEN_AI_INSTALLER`` will have to be set again. 
+Here, ``RYZEN_AI_INSTALLER`` is an environment variable that should point to the ``path\to\ryzen-ai-sw-<version>\ryzen-ai-sw-<version>``. If you installed Ryzen-AI software using the automatic installer, this variable should already be set. Ensure that the Ryzen-AI software package has not been moved post installation, in which case ``RYZEN_AI_INSTALLER`` will have to be set again. 
 
 
 The C++ application that was generated takes 3 arguments: 
@@ -395,7 +395,7 @@ To successfully run the model on the NPU:
 
 .. code-block:: bash 
 
-   set XLNX_VART_FIRMWARE=path\to\RyzenAI\installation\ryzen-ai-sw-1.1\ryzen-ai-sw-1.1\voe-4.0-win_amd64\1x4.xclbin
+   set XLNX_VART_FIRMWARE=path\to\RyzenAI\installation\ryzen-ai-sw-<version>\ryzen-ai-sw-<version>\voe-4.0-win_amd64\1x4.xclbin
 
 
 - Copy the ``vaip_config.json`` runtime configuration file from the Vitis AI Execution Provider package to the current directory. The ``vaip_config.json`` is used by the source file ``resnet_cifar.cpp`` to configure the Vitis AI Execution Provider.
