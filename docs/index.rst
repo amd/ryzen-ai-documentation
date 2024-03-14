@@ -52,7 +52,7 @@ AMD Ryzenâ„¢ AI Software enables developers to take full advantage of AMD XDNAâ„
    :maxdepth: 1
    :caption: Ryzen AI GPU
 
-   Ryzen AI GPU <ryzen_ai_gpu.rst>
+   Ryzen AI GPU <ryzenai_gpu.rst>
 
 
 .. toctree::
