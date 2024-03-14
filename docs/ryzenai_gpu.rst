@@ -6,19 +6,14 @@ With AMD Ryzen™ AI Software, AMD provides highly optimized DirectML implementa
 
 To use the above software stack, you will need to be on DirectX12 capable Windows OS and have the latest AMD™ GPU device drivers installed. No additional package is needed to run with the Ryzen™ AI GPU stack shown above, but it’s always recommended to use latest onnxruntime-directML package and latest AMD™ driver installed for best performance. 
 
-Development Flow
-~~~~~~~~~~~~~~~~
+Running models on Ryzen AI GPU
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Running model on Ryzen AI GPU can be summarized in  easy steps: 
+Running model on Ryzen AI GPU can be summarized in the couple of easy steps: 
 
-Train 
-User selects or develops and trains a model in PyTorch, TensorFlow and/or ONNX models. 
+**Model Convertion and Optimize**: After the model is trained, If your model is not already in ONNX format, you can use Microsoft Olive Optimizer to convert your models to ONNX first and then optimize using Olive optimizer for optimal target execution 
 
-Convert and Optimize 
-After the model is trained, If your model is not already in ONNX format, you can use Microsoft Olive Optimizer to convert your models to ONNX first and then optimize using Olive optimizer for optimal target execution 
-
-Deploy 
-Once the model is in ONNX format, you deploy and run the model with ONNX Runtime DirectML execution provider ("DmlExecutionProvider") to accelerate with AMD Ryzen™ AI GPU device. 
+**Deploy**: Once the model is in ONNX format, you deploy and run the model with ONNX Runtime DirectML execution provider (`DmlExecutionProvider`) to accelerate with AMD Ryzen™ AI GPU device. 
 
  
 
