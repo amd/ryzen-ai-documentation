@@ -13,13 +13,13 @@ Running model on Ryzen AI GPU can be summarized in the couple of easy steps:
 
 **Model Convertion and Optimize**: After the model is trained, If your model is not already in ONNX format, you can use Microsoft Olive Optimizer to convert your models to ONNX first and then optimize using Olive optimizer for optimal target execution 
 
-For Olive installation please refer to :ref:`Olive installation instructions <install-olive>`.
+For Olive installation and optimization flow please refer to `Microsoft Olive Documentation <https://microsoft.github.io/Olive/>`_
 
 
 **Deploy**: Once the model is in ONNX format, you deploy and run the model with ONNX Runtime DirectML execution provider (``DmlExecutionProvider``) to accelerate with AMD Ryzen AI GPU device. 
 
 
-For DirectML Execution provider installation and more information please refer :ref:`https://onnxruntime.ai/docs/execution-providers/DirectML-ExecutionProvider.html#install`.
+For DirectML Execution provider installation and more information please refer `DirectML documentation <https://onnxruntime.ai/docs/execution-providers/DirectML-ExecutionProvider.html>`_
 
 AMD works closely with our creative application partners like Adobe, Black Magic Design, Topaz Labs, GE healthcare, Zoom and others to enable AMD™ Ryzen AI GPU stack to accelerate their AI and ML features on AMD GPUs. 
 
