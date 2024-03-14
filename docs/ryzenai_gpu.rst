@@ -4,7 +4,7 @@ Ryzen AI GPU
 
 With AMD Ryzen AI Software, AMD provides highly optimized DirectML implementation to run AI models on AMD iGPU and dGPU hardware. AMD collaborates closely with Microsoft to add capabilities and to optimize Microsoft DirectML framework running on top of AMD device driver resident ML layers to accelerate ML primitives on AMD GPUs 
 
-To use the above software stack, you will need to be on DirectX12 capable Windows OS and have the latest AMD GPU device drivers installed. No additional package is needed to run with the Ryzen AI GPU stack shown above, but it’s always recommended to use latest onnxruntime-directML package and latest AMD driver installed for best performance. 
+To run AI models on iGPU, you will need to be on DirectX12 capable Windows OS and have the latest AMD GPU device drivers installed. No additional package is needed to run with the Ryzen AI GPU software stack, but it’s always recommended to use latest onnxruntime-directML package and latest AMD driver installed for best performance. 
 
 Running models on Ryzen AI GPU
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
