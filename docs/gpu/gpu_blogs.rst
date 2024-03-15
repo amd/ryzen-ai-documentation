@@ -8,6 +8,7 @@ AMD works closely with our creative application partners like Adobe, Black Magic
 
   - `AI Accelerated Video Editing with DaVinci Resolve 18.6 & AMD Radeon Graphics <https://community.amd.com/t5/ai/ai-accelerated-video-editing-with-davinci-resolve-18-6-amp-amd/ba-p/638252>`_
 
+|
 
 - AMD Ryzen AI GPU also serves the needs of various generative AI workloads to run on the underlying hardware. See below blogs for details: 
 
