@@ -12,7 +12,7 @@ Prerequisites
 - `Microsoft Olive <https://microsoft.github.io/Olive/getstarted/installation.html#>`_ for model conversion and optimization
 - Latest `ONNX Runtime DirectML EP <https://onnxruntime.ai/docs/execution-providers/DirectML-ExecutionProvider.html>`_ 
 
-You can ensure GPU driver and DirectX version from `Windows Task Manager` -> `Performance` -> `GPU` 
+You can ensure GPU driver and DirectX version from ``Windows Task Manager`` -> ``Performance`` -> ``GPU`` 
 
 Running models on Ryzen AI GPU
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
