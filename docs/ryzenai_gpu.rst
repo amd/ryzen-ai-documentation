@@ -30,4 +30,9 @@ For Olive flow please refer to `Microsoft Olive Documentation <https://microsoft
 For DirectML related information please refer `DirectML documentation <https://onnxruntime.ai/docs/execution-providers/DirectML-ExecutionProvider.html>`_
 
  
+Examples
+~~~~~~~~
+
+A simple model optimization and running example with ResNet: TBD 
+
 
