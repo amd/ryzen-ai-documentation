@@ -9,11 +9,10 @@ Prerequisites
 
 - DirectX12 capable Windows OS (Windows 11 recommended)
 - Latest AMD `GPU device driver <https://www.amd.com/en/support>`_ installed
-- `Microsoft Olive <https://microsoft.github.io/Olive/getstarted/installation.html#>`_ for model development
-- Latest `ONNX Runtime DirectML EP <https://onnxruntime.ai/docs/execution-providers/DirectML-ExecutionProvider.html#install>`_ 
+- `Microsoft Olive <https://microsoft.github.io/Olive/getstarted/installation.html#>`_ for model conversion and optimization
+- Latest `ONNX Runtime DirectML EP <https://onnxruntime.ai/docs/execution-providers/DirectML-ExecutionProvider.html>`_ 
 
-
-To run AI models on iGPU, you will need to be on DirectX12 capable Windows OS and have the latest AMD GPU device drivers installed. No additional package is needed to run with the Ryzen AI GPU software stack, but it’s always recommended to use latest onnxruntime-directML package and latest AMD driver installed for best performance. 
+You can ensure GPU driver and DirectX version from `Windows Task Manager` -> `Performance` -> `GPU` 
 
 Running models on Ryzen AI GPU
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
