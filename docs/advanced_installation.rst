@@ -43,7 +43,7 @@ https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?f
 **Olive Quantization**
 
 
-Microsoft Olive framework supports quantization with Vitis AI ONNX Quantization. If you're interested in exploring Olive Quantization as an advanced quantization method, you can follow the steps below:
+Microsoft Olive framework supports quantization with Vitis AI ONNX Quantization. If you are interested in exploring Olive Quantization as an advanced quantization method, you can follow the steps below:
 
 1. Install Olive Quantization by running the following command:
 
