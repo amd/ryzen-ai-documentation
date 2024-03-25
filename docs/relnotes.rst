@@ -76,7 +76,10 @@ ONNX Runtime EP
   - Two examples (resnet50 and yolov8) published to demonstrate the usage of these APIs to run end-to-end models on the NPU
 - Bug fixes for ONNXRT EP to support customers’ models
 
+Misc
+====
 
+- Contains mitigation for the following CVEs: CVE-2024-21974, CVE-2024-21975, CVE-2024-21976
 
 *************
 Version 1.0.1
