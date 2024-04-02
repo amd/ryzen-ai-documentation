@@ -1,10 +1,9 @@
-##################
-Articles and Blogs
-##################
+####################
+Additional Resources
+####################
 
-AMD works closely with our creative application partners like Adobe, Black Magic Design, Topaz Labs, GE healthcare, Zoom and others to enable AMD™ Ryzen AI GPU stack to accelerate their AI and ML features on AMD GPUs. 
 
-- Refer article on how AMD and Black Magic Design worked together to accelerate `Davinci Resolve Studio <https://www.blackmagicdesign.com/products/davinciresolve/studio>`_ workload on AMD hardware: 
+- Article on how AMD and Black Magic Design worked together to accelerate `Davinci Resolve Studio <https://www.blackmagicdesign.com/products/davinciresolve/studio>`_ workload on AMD hardware:   
 
   - `AI Accelerated Video Editing with DaVinci Resolve 18.6 & AMD Radeon Graphics <https://community.amd.com/t5/ai/ai-accelerated-video-editing-with-davinci-resolve-18-6-amp-amd/ba-p/638252>`_
 
