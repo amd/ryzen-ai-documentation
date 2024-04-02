@@ -9,7 +9,7 @@ Additional Resources
 
 |
 
-- AMD Ryzen AI GPU also serves the needs of various generative AI workloads to run on the underlying hardware. See below blogs for details: 
+- Ryzen AI Software serves the needs of various generative AI workloads on GPU. See below blogs for details:: 
 
   - `[How-To] Automatic1111 Stable Diffusion WebUI with... - AMD Community <https://community.amd.com/t5/ai/how-to-automatic1111-stable-diffusion-webui-with-directml/ba-p/649027>`_
 
