@@ -23,7 +23,7 @@ AMD Ryzen™ AI Software includes the tools and runtime libraries for optimizing
 
 .. toctree::
    :maxdepth: 1
-   :caption: Getting Started
+   :caption: Getting Started on the NPU
 
    inst.rst
    runtime_setup.rst
@@ -32,21 +32,16 @@ AMD Ryzen™ AI Software includes the tools and runtime libraries for optimizing
 
 .. toctree::
    :maxdepth: 1
-   :caption: Using Your CNN Model
+   :caption: Using Your CNN on the NPU
 
    modelcompat.rst
    modelport.rst
    modelrun.rst
 
-.. toctree::
-   :maxdepth: 1
-   :caption: Ryzen AI Library
-
-   Quick Start Guide <ryzen_ai_libraries.rst>
 
 .. toctree::
    :maxdepth: 1
-   :caption: Ryzen AI GPU
+   :caption: Running on the GPU
 
    Ryzen AI GPU <gpu/ryzenai_gpu.rst>
    Articles and Blogs <gpu/gpu_blogs.rst>
