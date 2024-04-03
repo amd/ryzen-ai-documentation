@@ -27,8 +27,7 @@ AMD Ryzenâ„¢ AI Software enables developers to take full advantage of AMD XDNAâ„
 
 .. toctree::
    :maxdepth: 1
-   :caption: Getting Started on the NPU
-
+   :caption: Getting Started
    inst.rst
    runtime_setup.rst
    devflow.rst
@@ -36,12 +35,17 @@ AMD Ryzenâ„¢ AI Software enables developers to take full advantage of AMD XDNAâ„
 
 .. toctree::
    :maxdepth: 1
-   :caption: Using Your CNN on the NPU
+   :caption: Using Your CNN Model
 
    modelcompat.rst
    modelport.rst
    modelrun.rst
 
+.. toctree::
+   :maxdepth: 1
+   :caption: Ryzen AI Library
+
+   Quick Start Guide <ryzen_ai_libraries.rst>
 
 .. toctree::
    :maxdepth: 1
