@@ -1,8 +1,6 @@
-##################
-Setup Instructions
-##################
-
-With AMD Ryzen AI Software, AMD provides highly optimized DirectML implementation to run AI models on AMD iGPU and dGPU hardware. AMD collaborates closely with Microsoft to add capabilities and to optimize Microsoft DirectML framework running on top of AMD device driver resident ML layers to accelerate ML primitives on AMD GPUs.
+###########################
+DirectML Flow Instructions
+###########################
 
 Prerequisites
 ~~~~~~~~~~~~~
