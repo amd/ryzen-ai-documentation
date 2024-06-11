@@ -27,4 +27,17 @@ NPU Management Interface
 ========================
 The ``xbutil`` utility is an integrated command-line interface to monitor and manage the NPU. More details can be found `here <xbutil.html>`_.
 
+|
+|
+AI Analyzer
+===========
+AI Analyzer is an AI model visualization tool designed to provide detailed profiling and runtime information for models targeted at the NPU via Ryzen AI. More details can be found `here <ai_analyzer.html>`_.
 
+..
+  ------------
+
+  #####################################
+  License
+  #####################################
+
+ Ryzen AI is licensed under `MIT License <https://github.com/amd/ryzen-ai-documentation/blob/main/License>`_ . Refer to the `LICENSE File <https://github.com/amd/ryzen-ai-documentation/blob/main/License>`_ for the full license text and copyright notice.
