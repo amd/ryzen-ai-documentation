@@ -10,7 +10,7 @@ The AI Analyzer broadly has the following features:
 
 1. Graph partitions: The tool presents the user with a picture of how the model is paritioned across the CPU and NPU.
 2. Operator Fusion: In addition to partitioning, AI Analyzer also presents the user with a picture of how operators have been fused by the compiler. 
-4. Inference Profile: The tool provides a breakdown and visualization of inference timing. For this, a Gantt chart of operators is provided. This chart can also be cross-probed to the fused graph.
+3. Inference Profile: The tool provides a breakdown and visualization of inference timing. For this, a Gantt chart of operators is provided. This chart can also be cross-probed to the fused graph.
 
 Installation 
 ###########
