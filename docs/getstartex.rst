@@ -187,7 +187,7 @@ By default, ``predict.py`` runs the model on CPU.
 
 .. code-block::
   
-        > python predict.py
+        python predict.py
 
 Typical output
 
@@ -249,7 +249,7 @@ Run the ``predict.py`` with the ``--ep ipu`` switch to run the custom ResNet mod
 
 .. code-block::
 
-    >python predict.py --ep ipu
+    python predict.py --ep ipu
 
 Typical output
 
