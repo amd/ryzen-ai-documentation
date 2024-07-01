@@ -296,7 +296,7 @@ Deployment - C++
 Prerequisites
 -------------
 
-1. Visual Studio 2019 Community edition, ensure "Desktop Development with C++" is installed
+1. Visual Studio 2022 Community edition, ensure "Desktop Development with C++" is installed
 2. cmake (version >= 3.26)
 3. opencv (version=4.6.0) required for the custom resnet example
 
@@ -309,7 +309,7 @@ It is recommended to build OpenCV from the source code and use static build. The
 
    git clone https://github.com/opencv/opencv.git -b 4.6.0
    cd opencv
-   cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DBUILD_SHARED_LIBS=OFF -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DCMAKE_CONFIGURATION_TYPES=Release -A x64 -T host=x64 -G "Visual Studio 16 2019" "-DCMAKE_INSTALL_PREFIX=C:\opencv" "-DCMAKE_PREFIX_PATH=C:\opencv" -DCMAKE_BUILD_TYPE=Release -DBUILD_opencv_python2=OFF -DBUILD_opencv_python3=OFF -DBUILD_WITH_STATIC_CRT=OFF -B build
+   cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DBUILD_SHARED_LIBS=OFF -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DCMAKE_CONFIGURATION_TYPES=Release -A x64 -T host=x64 -G "Visual Studio 17 2022" "-DCMAKE_INSTALL_PREFIX=C:\opencv" "-DCMAKE_PREFIX_PATH=C:\opencv" -DCMAKE_BUILD_TYPE=Release -DBUILD_opencv_python2=OFF -DBUILD_opencv_python3=OFF -DBUILD_WITH_STATIC_CRT=OFF -B build
    cmake --build build --config Release
    cmake --install build --config Release
 
@@ -323,9 +323,9 @@ Run the following command to build the resnet example. Assign ``-DOpenCV_DIR`` t
 .. code-block:: bash
 
    cd getting_started_resnet/cpp
-   cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DBUILD_SHARED_LIBS=OFF -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DCMAKE_CONFIGURATION_TYPES=Release -A x64 -T host=x64 -DCMAKE_INSTALL_PREFIX=. -DCMAKE_PREFIX_PATH=. -B build -S resnet_cifar -DOpenCV_DIR="C:/opencv" -G "Visual Studio 16 2019"
+   cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DBUILD_SHARED_LIBS=OFF -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DCMAKE_CONFIGURATION_TYPES=Release -A x64 -T host=x64 -DCMAKE_INSTALL_PREFIX=. -DCMAKE_PREFIX_PATH=. -B build -S resnet_cifar -DOpenCV_DIR="C:/opencv/build" -G "Visual Studio 17 2022"
 
-This should generate the build directory with the ``resnet_cifar.sln`` solution file along with other project files. Open the solution file using Visual Studio 2019 and build to compile. You can also use "Developer Command Prompt for VS 2019" to open the solution file in Visual Studio.
+This should generate the build directory with the ``resnet_cifar.sln`` solution file along with other project files. Open the solution file using Visual Studio 2022 and build to compile. You can also use "Developer Command Prompt for VS 2022" to open the solution file in Visual Studio.
 
 .. code-block:: bash 
 
@@ -342,10 +342,9 @@ Additionally, we will also need to copy the onnxruntime DLLs from the Vitis AI E
 
 .. code-block:: bash 
 
-   xcopy %RYZEN_AI_INSTALLER%\onnxruntime\bin\onnxruntime.dll .
-   xcopy %RYZEN_AI_INSTALLER%\onnxruntime\bin\onnxruntime_vitisai_ep.dll .
+   xcopy %RYZEN_AI_INSTALLATION_PATH%\onnxruntime\bin\* /E /I
 
-Here, ``RYZEN_AI_INSTALLER`` is an environment variable that should point to the ``path\to\ryzen-ai-sw-<version>\ryzen-ai-sw-<version>``. If you installed Ryzen-AI software using the automatic installer, this variable should already be set. Ensure that the Ryzen-AI software package has not been moved post installation, in which case ``RYZEN_AI_INSTALLER`` will have to be set again. 
+Here, ``RYZEN_AI_INSTALLATION_PATH`` is an environment variable that should point to the ``path\to\ryzen-ai-sw-<version>\ryzen-ai-sw-<version>``. If you installed Ryzen-AI software using the automatic installer, this variable should already be set. Ensure that the Ryzen-AI software package has not been moved post installation, in which case ``RYZEN_AI_INSTALLATION_PATH`` will have to be set again. 
 
 
 The C++ application that was generated takes 3 arguments: 
@@ -400,6 +399,10 @@ To successfully run the model on the NPU:
 
 - Copy the ``vaip_config.json`` runtime configuration file from the Vitis AI Execution Provider package to the current directory. The ``vaip_config.json`` is used by the source file ``resnet_cifar.cpp`` to configure the Vitis AI Execution Provider.
 
+.. code-block:: bash 
+
+   xcopy %RYZEN_AI_INSTALLATION_PATH%\voe-4.0-win_amd64\vaip_config.json .
+
 
 The following code block from ``reset_cifar.cpp`` shows how ONNX Runtime is configured to deploy the model on the Ryzen AI NPU:
 
@@ -414,7 +417,7 @@ The following code block from ``reset_cifar.cpp`` shows how ONNX Runtime is conf
     {
     auto options =
         std::unordered_map<std::string, std::string>{ {config_key, json_config}, {"cacheDir", cache_dir}, {"cacheKey", "modelcachekey"} };
-    session_options.AppendExecutionProvider("VitisAI", options);
+    session_options.AppendExecutionProvider_VitisAI(options)
     }
 
     auto session = Ort::Experimental::Session(env, model_name, session_options);
