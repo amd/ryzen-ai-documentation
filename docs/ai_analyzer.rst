@@ -59,7 +59,32 @@ Launch the AI Analyzer:
 
 Follow the link displayed to open the analyzer on your browser. The analyzer displays information such as operator partitioning and hardware execution times. Some of the information displayed for the ResNet50 example are shown below: 
 
+|
 
+.. image:: images/npu_insights.png
+   :scale: 75%
+   :align: center
+
+|
+|
+
+|
+
+.. image:: images/partitioning.png
+   :scale: 75%
+   :align: center
+
+|
+|
+
+|
+
+.. image:: images/performance.png
+   :scale: 75%
+   :align: center
+
+|
+|
 ..
   ------------
 
