@@ -55,7 +55,7 @@ Launch the AI Analyzer:
 
 .. code-block:: 
 
-   aianalyzer <path to generated artifacts> --port=8087
+   aianalyzer <path to folder containing generated artifacts> --port=8087
 
 Follow the link displayed to open the analyzer on your browser. The analyzer displays information such as operator partitioning and hardware execution times. Some of the information displayed for ResNet50 are shown below: 
 
