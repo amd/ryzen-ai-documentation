@@ -68,15 +68,18 @@ Before installing the Ryzen AI Software, ensure that all the prerequisites outli
 For example, Anaconda requires following paths to be set in the PATH variable ``path\to\anaconda3\``, ``path\to\anaconda3\Scripts\``, ``path\to\anaconda3\Lib\bin\``. 
 The PATH variable should be set through the *Environment Variables* window of the *System Properties*. 
 
-Download the MSI installer :download:`https://xcoartifactory:443/artifactory/aie-ipu-prod-local/com/xilinx/ryzenai-installer/main/118/ryzenai-1.2.0.msi` Ryzen AI Software installation package and extract it. 
+Download the RyzenAI Software (MSI) installer :download:`https://xcoartifactory:443/artifactory/aie-ipu-prod-local/com/xilinx/ryzenai-installer/main/118/ryzenai-1.2.0.msi` 
 
 Double click of the MSI installer to start the installation steps. Follows the instructions on the GUI.
 
-Installation process does the following: 
+During the installation process:
+- Accept the terms of the Licence agreement
+- Provide the destination folder for RyzenAI installation or use the default location: ``C:Program Files\RyzenAI\1.2.0``
+- Specify the name for the conda environment, default name: ``ryzen-ai-1.2.0``
 
+Installation process does the following:
 - Copies the necessary files to ``C:Program Files\RyzenAI\1.2.0`` (Default location)
 - Creates a conda environment
-- User prompt to modify the name of the conda environment, default name: ``ryzen-ai-1.2-ea`` 
 - Installs all the dependencies within the conda env
 - Installs the :doc:`vai_quant/vai_q_onnx`
 - Installs the `ONNX Runtime <https://onnxruntime.ai/>`_
@@ -108,7 +111,9 @@ Refer to the :doc:`runtime_setup` page for more details about setting up the env
 Test the Installation
 *********************
 
-The ``ryzen-ai-sw-1.1`` package contains a test to verify that the Ryzen AI software is correctly installed. This installation test can be found in the ``quicktest`` folder.
+The Ryzen AI Software installation folder contains test to verify that the software is correctly installed. This installation test can be found in the ``quicktest`` folder.
+
+Open Anaconda command prompt with administrator access. Adiministrator access is needed to create temporary directories when running the tests.
 
 - Activate the conda environment:
 
@@ -120,7 +125,7 @@ The ``ryzen-ai-sw-1.1`` package contains a test to verify that the Ryzen AI soft
 
 .. code-block::
 
-   cd ryzen-ai-sw-1.1\quicktest
+   cd %RYZEN_AI_INSTALLATION_PATH%/quicktest
    python quicktest.py
 
 
