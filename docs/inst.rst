@@ -19,15 +19,16 @@ The Ryzen AI Software supports the following processors running Windows 11
 Prepare the System
 ******************
 
-Download the :download:`NPU Driver <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ipu_stack_rel_silicon_prod_1.1.zip>` and install it by following these steps:
+Download the NPU Installer :download:`NPU Driver <http://xcoartifactory/ui/native/aie-ipu-prod-local/com/xilinx/ryzenai-installer/npu-driver/rai-1.2-ea1/ipu-driver-1_2.zip>` and install it by following these steps:
 
 
-1. Extract the downloaded zip file.
-2. Open a terminal in administrator mode and execute the ``.\amd_install_kipudrv.bat`` bat file.
+1. Extract the downloaded ``ipu-driver-1_2.zip`` zip file.
+2. Extract the ``RYZEN AI RELEASE 1.2 <Tag>.zip`` zip file.
+3. Open a terminal in administrator mode and execute the ``.\npu_sw_installer.exe`` exe file.
 
-Ensure that the NPU driver is installed from ``Device Manager`` -> ``System Devices`` -> ``AMD IPU Device`` as shown in the following image.
+Ensure that the NPU driver is installed from ``Device Manager`` -> ``Neural processors`` -> ``NPU Compute Accelerator Device`` as shown in the following image.
 
-.. image:: images/ipu_driver_1.1.png
+.. image:: images/npu_driver_1.2.png
    :align: center
    :width: 400 px
 
