@@ -126,11 +126,13 @@ Open Anaconda command prompt with administrator access. Adiministrator access is
 **Note:** Make sure the environment variable XLNX_VART_FIRMWARE is set to the correct *.xclbin from the VOE package.
 
 For STX (default):
+
 .. code-block::
 
-   set XLNX_VART_FIRMWARE=%RYZEN_AI_INSTALLATION_PATH%/voe-4.0-win_amd64/xclbins/strix/
+   set XLNX_VART_FIRMWARE=%RYZEN_AI_INSTALLATION_PATH%/voe-4.0-win_amd64/xclbins/strix/AMD_AIE2P_Nx4_Overlay.xclbin
 
 For PHX:
+
 .. code-block::
 
    set XLNX_VART_FIRMWARE=%RYZEN_AI_INSTALLATION_PATH%/voe-4.0-win_amd64/xclbins/phoenix/1x4.xclbin
