@@ -68,16 +68,18 @@ Before installing the Ryzen AI Software, ensure that all the prerequisites outli
 For example, Anaconda requires following paths to be set in the PATH variable ``path\to\anaconda3\``, ``path\to\anaconda3\Scripts\``, ``path\to\anaconda3\Lib\bin\``. 
 The PATH variable should be set through the *Environment Variables* window of the *System Properties*. 
 
-Download the RyzenAI Software (MSI) installer :download:`https://xcoartifactory:443/artifactory/aie-ipu-prod-local/com/xilinx/ryzenai-installer/main/118/ryzenai-1.2.0.msi` 
+Download the RyzenAI Software (MSI) installer :download:`ryzenai-1.2.0.msi <https://xcoartifactory:443/artifactory/aie-ipu-prod-local/com/xilinx/ryzenai-installer/main/118/ryzenai-1.2.0.msi>`
 
 Double click of the MSI installer to start the installation steps. Follows the instructions on the GUI.
 
 During the installation process:
+
 - Accept the terms of the Licence agreement
 - Provide the destination folder for RyzenAI installation or use the default location: ``C:Program Files\RyzenAI\1.2.0``
 - Specify the name for the conda environment, default name: ``ryzen-ai-1.2.0``
 
 Installation process does the following:
+
 - Copies the necessary files to ``C:Program Files\RyzenAI\1.2.0`` (Default location)
 - Creates a conda environment
 - Installs all the dependencies within the conda env
@@ -120,6 +122,18 @@ Open Anaconda command prompt with administrator access. Adiministrator access is
 .. code-block::
 
    conda activate <env_name>
+
+**Note:** Make sure the environment variable XLNX_VART_FIRMWARE is set to the correct *.xclbin from the VOE package.
+
+For STX (default):
+.. code-block::
+
+   set XLNX_VART_FIRMWARE=%RYZEN_AI_INSTALLATION_PATH%/voe-4.0-win_amd64/xclbins/strix/
+
+For PHX:
+.. code-block::
+
+   set XLNX_VART_FIRMWARE=%RYZEN_AI_INSTALLATION_PATH%/voe-4.0-win_amd64/xclbins/phoenix/1x4.xclbin
 
 - Run the test: 
 
