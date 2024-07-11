@@ -46,6 +46,7 @@ Ensure that the NPU driver (MCDM) is installed from ``Device Manager`` -> ``Neur
    :width: 400 px
 
 
+|
 **Note**: WDF driver can be inspected from ``Device Manager`` -> ``System Devices`` -> ``AMD IPU Device``
 
 |
