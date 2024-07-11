@@ -39,11 +39,14 @@ Download the NPU Installer :download:`NPU Driver <http://xcoartifactory/ui/nativ
 2. Extract the ``RYZEN AI RELEASE 1.2 <Tag>.zip`` zip file.
 3. Open a terminal in administrator mode and execute the ``.\npu_sw_installer.exe`` exe file.
 
-Ensure that the NPU driver is installed from ``Device Manager`` -> ``Neural processors`` -> ``NPU Compute Accelerator Device`` as shown in the following image.
+Ensure that the NPU driver (MCDM) is installed from ``Device Manager`` -> ``Neural processors`` -> ``NPU Compute Accelerator Device`` as shown in the following image.
 
 .. image:: images/npu_driver_1.2.png
    :align: center
    :width: 400 px
+
+
+**Note**: WDF driver can be inspected from ``Device Manager`` -> ``System Devices`` -> ``AMD IPU Device``
 
 |
 |
