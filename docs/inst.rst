@@ -23,7 +23,7 @@ Prepare the System
 
 .. note::
 
-   For the Phonix device with the latest Windows OS build (22631.3527 and above), NPU driver installer installs the new MCDM driver from this 1.2 release. In that case, if you already have the WDF driver from a previous release, uninstall it by following these steps:   
+   For the Phonix device with the latest Windows OS build (22631.3527 and above), NPU driver installer installs the new MCDM driver from Ryzen AI 1.2 release. In that case, if you already have the WDF driver from a previous release, uninstall it by following these steps:   
 
    - Open "Device Manager."
    - Navigate to "System Devices."
