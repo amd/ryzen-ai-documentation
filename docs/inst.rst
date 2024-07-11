@@ -8,8 +8,9 @@ Supported Configurations
 
 The Ryzen AI Software supports the following processors running Windows 11
 
-- AMD Ryzen™ 7940HS, 7840HS, 7640HS, 7840U, 7640U.
-- AMD Ryzen™ 8640U, 8640HS, 8645H, 8840U, 8840HS, 8845H, 8945H. 
+- AMD Ryzen™ (Phonix) 7940HS, 7840HS, 7640HS, 7840U, 7640U.
+- AMD Ryzen™ (Hawk Point) 8640U, 8640HS, 8645H, 8840U, 8840HS, 8845H, 8945H.
+- AMD Ryzen™ (Strix Point) Ryzen AI 9 HX370, Ryzen AI 9 365
 
 .. note::
    In this documentation, "NPU" is used in descriptions, while "IPU" is retained in the tool's language, code, screenshots, and commands. This intentional 
@@ -22,9 +23,7 @@ Prepare the System
 
 .. note::
 
-   For the Phonics device with the latest Windows OS build (22631.3527 and above), . \npu_sw_installer.exe installs the new MCDM driver from this 1.2 release.
-
-   If you already have the WDF driver from a previous release, uninstall it by following these steps:
+   For the Phonix device with the latest Windows OS build (22631.3527 and above), NPU driver installer installs the new MCDM driver from this 1.2 release. In that case, if you already have the WDF driver from a previous release, uninstall it by following these steps:   
 
    - Open "Device Manager."
    - Navigate to "System Devices."
