@@ -313,7 +313,7 @@ It is recommended to build OpenCV from the source code and use static build. The
 Build and Run Custom Resnet C++ sample
 --------------------------------------
 
-The C++ source files, CMake list files and related artifacts are provided in the ``cpp/resnet_cifar/*`` folder. The source file ``cpp/resnet_cifar/resnet_cifar.cpp`` takes 10 images from the CIFAR-10 test set, converts them to .png format, preprocesses them, and performs model inference. The example has onnxruntime dependencies, that are provided in ``cpp/resnet_cifar/onnxruntime/*``. 
+The C++ source files, CMake list files and related artifacts are provided in the ``cpp/resnet_cifar/*`` folder. The source file ``cpp/resnet_cifar/resnet_cifar.cpp`` takes 10 images from the CIFAR-10 test set, converts them to .png format, preprocesses them, and performs model inference. The example has onnxruntime dependencies, that are provided in ``%RYZEN_AI_INSTALLATION_PATH%/onnxruntime/*``. 
 
 Run the following command to build the resnet example. Assign ``-DOpenCV_DIR`` to the OpenCV installation directory.
 
@@ -341,7 +341,7 @@ Additionally, we will also need to copy the onnxruntime DLLs from the Vitis AI E
 
    xcopy %RYZEN_AI_INSTALLATION_PATH%\onnxruntime\bin\* /E /I
 
-Here, ``RYZEN_AI_INSTALLATION_PATH`` is an environment variable that should point to the ``path\to\ryzen-ai-sw-<version>\ryzen-ai-sw-<version>``. If you installed Ryzen-AI software using the automatic installer, this variable should already be set. Ensure that the Ryzen-AI software package has not been moved post installation, in which case ``RYZEN_AI_INSTALLATION_PATH`` will have to be set again. 
+Here, ``RYZEN_AI_INSTALLATION_PATH`` is an environment variable that should point to the ``path\to\ryzen-ai-sw-<version>\``. If you installed Ryzen-AI software using the automatic installer, this variable should already be set. Ensure that the Ryzen-AI software package has not been moved post installation, in which case ``RYZEN_AI_INSTALLATION_PATH`` will have to be set again. 
 
 
 The C++ application that was generated takes 3 arguments: 
