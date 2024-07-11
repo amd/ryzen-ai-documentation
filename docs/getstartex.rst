@@ -212,12 +212,13 @@ To successfully run the model on the NPU, run the following setup steps:
 
 - Make sure the environment variable XLNX_VART_FIRMWARE is set to the correct *.xclbin from the VOE package. Refer to :doc:`installation instructions <inst>` on how to do this correctly.
 
+- Ensure ``RYZEN_AI_INSTALLATION_PATH`` points to ``path\to\ryzen-ai-sw-<version>\``. If you installed Ryzen-AI software using the MSI installer, this variable should already be set. Ensure that the Ryzen-AI software package has not been moved post installation, in which case ``RYZEN_AI_INSTALLATION_PATH`` will have to be set again. 
+
 - Copy the ``vaip_config.json`` runtime configuration file from the Vitis AI Execution Provider package to the current directory. The ``vaip_config.json`` is used by the source file ``predict.py`` to configure the Vitis AI Execution Provider.
 
 .. code-block:: bash 
 
    xcopy %RYZEN_AI_INSTALLATION_PATH%\voe-4.0-win_amd64\vaip_config.json .
-
 
 .. code-block::
 
@@ -341,8 +342,6 @@ Additionally, we will also need to copy the onnxruntime DLLs from the Vitis AI E
 
    xcopy %RYZEN_AI_INSTALLATION_PATH%\onnxruntime\bin\* /E /I
 
-Here, ``RYZEN_AI_INSTALLATION_PATH`` is an environment variable that should point to the ``path\to\ryzen-ai-sw-<version>\``. If you installed Ryzen-AI software using the automatic installer, this variable should already be set. Ensure that the Ryzen-AI software package has not been moved post installation, in which case ``RYZEN_AI_INSTALLATION_PATH`` will have to be set again. 
-
 
 The C++ application that was generated takes 3 arguments: 
 
@@ -387,12 +386,9 @@ Deploy the Model on the NPU
 
 To successfully run the model on the NPU:
 
-- Ensure that the ``XLNX_VART_FIRMWARE`` environment variable is correctly pointing to the XCLBIN file included in the ONNX Vitis AI Execution Provider package. If you installed Ryzen-AI software by automatic installer, the NPU binary path is already set, however if you did the installation manually, ensure the NPU binary path is set using the following command: 
+- Make sure the environment variable XLNX_VART_FIRMWARE is set to the correct *.xclbin from the VOE package. Refer to :doc:`installation instructions <inst>` on how to do this correctly.
 
-.. code-block:: bash 
-
-   set XLNX_VART_FIRMWARE=path\to\RyzenAI\installation\ryzen-ai-sw-<version>\ryzen-ai-sw-<version>\voe-4.0-win_amd64\1x4.xclbin
-
+- Ensure ``RYZEN_AI_INSTALLATION_PATH`` points to ``path\to\ryzen-ai-sw-<version>\``. If you installed Ryzen-AI software using the MSI installer, this variable should already be set. Ensure that the Ryzen-AI software package has not been moved post installation, in which case ``RYZEN_AI_INSTALLATION_PATH`` will have to be set again. 
 
 - Copy the ``vaip_config.json`` runtime configuration file from the Vitis AI Execution Provider package to the current directory. The ``vaip_config.json`` is used by the source file ``resnet_cifar.cpp`` to configure the Vitis AI Execution Provider.
 
