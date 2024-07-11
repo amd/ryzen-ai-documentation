@@ -21,17 +21,6 @@ Prepare the System
 ******************
 
 
-.. note::
-
-   For the Phonix device with the latest Windows OS build (22631.3527 and above), NPU driver installer installs the new MCDM driver from Ryzen AI 1.2 release. In that case, if you already have the WDF driver from a previous release, uninstall it by following these steps:   
-
-   - Open "Device Manager."
-   - Navigate to "System Devices."
-   - Find and right-click on "AMD IPU Device."
-   - Select "Uninstall device."
-   - Check the box for "Attempt to remove the driver for this device."
-   - Click "Uninstall."
-
 Download the NPU Installer :download:`NPU Driver <http://xcoartifactory/ui/native/aie-ipu-prod-local/com/xilinx/ryzenai-installer/npu-driver/rai-1.2-ea1/ipu-driver-1_2.zip>` and install it by following these steps:
 
 
@@ -47,7 +36,7 @@ Ensure that the NPU driver (MCDM) is installed from ``Device Manager`` -> ``Neur
 
 
 |
-**Note**: WDF driver can be inspected from ``Device Manager`` -> ``System Devices`` -> ``AMD IPU Device``
+**Note**: For the Phonix device with the older Windows OS build (<22631.3527) WDF driver is installed which can be inspected from ``Device Manager`` -> ``System Devices`` -> ``AMD IPU Device``
 
 |
 |
