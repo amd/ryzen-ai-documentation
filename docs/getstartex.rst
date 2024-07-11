@@ -75,7 +75,7 @@ Step 1: Install Packages
 Step 2: Prepare dataset and ONNX model
 **************************************
 
-In this example, we utilize the a custom ResNet model finetuned using the CIFAR-10 dataset
+In this example, we utilize a custom ResNet model finetuned using the CIFAR-10 dataset
 
 The ``prepare_model_data.py`` script downloads the CIFAR-10 dataset in pickle format (for python) and binary format (for C++). This dataset will be used in the subsequent steps for quantization and inference. The script also exports the provided PyTorch model into ONNX format. The following snippet from the script shows how the ONNX model is exported:
 
