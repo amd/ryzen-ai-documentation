@@ -66,8 +66,6 @@ To enable the development and deployment of applications leveraging the NPU, you
      - version >= 3.26
    * - python
      - version >= 3.10 
-   * - opencv
-     - version == 4.6.0
    * - Anaconda or Miniconda
      - Latest version
 |
