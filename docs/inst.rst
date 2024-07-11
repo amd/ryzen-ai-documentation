@@ -19,6 +19,20 @@ The Ryzen AI Software supports the following processors running Windows 11
 Prepare the System
 ******************
 
+
+.. note::
+
+   For the Phonics device with the latest Windows OS build (22631.3527 and above), . \npu_sw_installer.exe installs the new MCDM driver from this 1.2 release.
+
+   If you already have the WDF driver from a previous release, uninstall it by following these steps:
+
+   - Open "Device Manager."
+   - Navigate to "System Devices."
+   - Find and right-click on "AMD IPU Device."
+   - Select "Uninstall device."
+   - Check the box for "Attempt to remove the driver for this device."
+Click "Uninstall."
+
 Download the NPU Installer :download:`NPU Driver <http://xcoartifactory/ui/native/aie-ipu-prod-local/com/xilinx/ryzenai-installer/npu-driver/rai-1.2-ea1/ipu-driver-1_2.zip>` and install it by following these steps:
 
 
