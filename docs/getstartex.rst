@@ -214,7 +214,7 @@ To successfully run the model on the NPU, run the following setup steps:
 
 - Ensure ``RYZEN_AI_INSTALLATION_PATH`` points to ``path\to\ryzen-ai-sw-<version>\``. If you installed Ryzen-AI software using the MSI installer, this variable should already be set. Ensure that the Ryzen-AI software package has not been moved post installation, in which case ``RYZEN_AI_INSTALLATION_PATH`` will have to be set again. 
 
-- Copy the ``vaip_config.json`` runtime configuration file from the Vitis AI Execution Provider package to the current directory. The ``vaip_config.json`` is used by the source file ``predict.py`` to configure the Vitis AI Execution Provider.
+- Copy the ``vaip_config.json`` runtime configuration file from the installation package to the current directory. The ``vaip_config.json`` is used by the source file ``predict.py`` to configure the Vitis AI Execution Provider.
 
 .. code-block:: bash 
 
@@ -390,7 +390,7 @@ To successfully run the model on the NPU:
 
 - Ensure ``RYZEN_AI_INSTALLATION_PATH`` points to ``path\to\ryzen-ai-sw-<version>\``. If you installed Ryzen-AI software using the MSI installer, this variable should already be set. Ensure that the Ryzen-AI software package has not been moved post installation, in which case ``RYZEN_AI_INSTALLATION_PATH`` will have to be set again. 
 
-- Copy the ``vaip_config.json`` runtime configuration file from the Vitis AI Execution Provider package to the current directory. The ``vaip_config.json`` is used by the source file ``resnet_cifar.cpp`` to configure the Vitis AI Execution Provider.
+- Copy the ``vaip_config.json`` runtime configuration file from the installation package to the current directory. The ``vaip_config.json`` is used by the source file ``resnet_cifar.cpp`` to configure the Vitis AI Execution Provider.
 
 .. code-block:: bash 
 
