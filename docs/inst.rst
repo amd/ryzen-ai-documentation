@@ -31,7 +31,7 @@ Prepare the System
    - Find and right-click on "AMD IPU Device."
    - Select "Uninstall device."
    - Check the box for "Attempt to remove the driver for this device."
-Click "Uninstall."
+   - Click "Uninstall."
 
 Download the NPU Installer :download:`NPU Driver <http://xcoartifactory/ui/native/aie-ipu-prod-local/com/xilinx/ryzenai-installer/npu-driver/rai-1.2-ea1/ipu-driver-1_2.zip>` and install it by following these steps:
 
