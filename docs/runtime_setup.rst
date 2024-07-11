@@ -22,13 +22,23 @@ The Ryzen AI runtime automatically manages the scheduling of the parallel sessio
 
 To select the throughput profile, set the following environment variable:
 
+For STX: (default)
+
 .. code-block::
 
-   set XLNX_VART_FIRMWARE=C:\path\to\1x4.xclbin
+   set XLNX_VART_FIRMWARE=%RYZEN_AI_INSTALLATION_PATH%/voe-4.0-win_amd64/xclbins/strix/AMD_AIE2P_Nx4_Overlay.xclbin
    set NUM_OF_DPU_RUNNERS=1
 
 
-The :file:`1x4.xclbin` file is located in the ``voe-4.0-win_amd64`` folder of the Ryzen AI Software installation package. 
+For PHX:
+
+.. code-block::
+
+   set XLNX_VART_FIRMWARE=%RYZEN_AI_INSTALLATION_PATH%/voe-4.0-win_amd64/xclbins/phoenix/1x4.xclbin
+   set NUM_OF_DPU_RUNNERS=1
+
+
+The :file:`*.xclbin` files are located in the ``voe-4.0-win_amd64\xclbins`` folder of the Ryzen AI Software installation folder.
 
 
 Latency Profile
@@ -44,14 +54,25 @@ The Ryzen AI runtime automatically manages the scheduling of the parallel sessio
 
 To select the latency profile, set the two following environment variables:
 
+For STX: (default)
+
 .. code-block::
 
-   set XLNX_VART_FIRMWARE=C:\path\to\4x4.xclbin
+   set XLNX_VART_FIRMWARE=%RYZEN_AI_INSTALLATION_PATH%/voe-4.0-win_amd64/xclbins/strix/AMD_AIE2P_Nx4_Overlay.xclbin
+   set XLNX_TARGET_NAME=AMD_AIE2P_4x4_Overlay
+   set NUM_OF_DPU_RUNNERS=1
+
+
+For PHX:
+
+.. code-block::
+
+   set XLNX_VART_FIRMWARE=%RYZEN_AI_INSTALLATION_PATH%/voe-4.0-win_amd64/xclbins/phoenix/1x4.xclbin
    set XLNX_TARGET_NAME=AMD_AIE2_4x4_Overlay
    set NUM_OF_DPU_RUNNERS=1
 
 
-The :file:`4x4.xclbin` file is located in the ``voe-4.0-win_amd64`` folder of the Ryzen AI Software installation package. 
+The :file:`*.xclbin` file is located in the ``voe-4.0-win_amd64\xclbins`` folder of the Ryzen AI Software installation folder.
 
 .. _config-file:
 
