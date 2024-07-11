@@ -5,7 +5,7 @@ Getting Started Tutorial
 This tutorial uses a fine-tuned version of the ResNet model (using the CIFAR-10 dataset) to demonstrate the process of preparing, quantizing, and deploying a model using Ryzen AI Software. The tutorial features deployment using both Python and C++ ONNX runtime code. 
 
 .. note::
-   In this documentation, "NPU" is used in descriptions, while "IPU" is retained in the tool's language, code, screenshots, and commands. This intentional 
+   In this documentation, "NPU" is used in descriptions, while "IPU" is retained in some of the tool's language, code, screenshots, and commands. This intentional 
    distinction aligns with existing tool references and does not affect functionality. Avoid making replacements in the code.
 
 - The source code files can be downloaded from `this link <https://github.com/amd/RyzenAI-SW/tree/main/tutorial/getting_started_resnet>`_. Alternatively, you can clone the RyzenAI-SW repo and change the directory into "tutorial". 
@@ -223,13 +223,13 @@ To successfully run the model on the NPU, run the following setup steps:
 .. code-block::
 
   parser = argparse.ArgumentParser()
-  parser.add_argument('--ep', type=str, default ='cpu',choices = ['cpu','ipu'], help='EP backend selection')
+  parser.add_argument('--ep', type=str, default ='cpu',choices = ['cpu','npu'], help='EP backend selection')
   opt = parser.parse_args()
   
   providers = ['CPUExecutionProvider']
   provider_options = [{}]
 
-  if opt.ep == 'ipu':
+  if opt.ep == 'npu':
      providers = ['VitisAIExecutionProvider']
      cache_dir = Path(__file__).parent.resolve()
      provider_options = [{
@@ -242,12 +242,12 @@ To successfully run the model on the NPU, run the following setup steps:
                                  provider_options=provider_options)
 
 
-Run the ``predict.py`` with the ``--ep ipu`` switch to run the custom ResNet model on the Ryzen AI NPU:
+Run the ``predict.py`` with the ``--ep npu`` switch to run the custom ResNet model on the Ryzen AI NPU:
 
 
 .. code-block::
 
-    python predict.py --ep ipu
+    python predict.py --ep npu
 
 Typical output
 
@@ -406,7 +406,7 @@ The following code block from ``reset_cifar.cpp`` shows how ONNX Runtime is conf
     auto config_key = std::string{ "config_file" };
     auto cache_dir = std::filesystem::current_path().string(); 
  
-    if(ep=="ipu")
+    if(ep=="npu")
     {
     auto options =
         std::unordered_map<std::string, std::string>{ {config_key, json_config}, {"cacheDir", cache_dir}, {"cacheKey", "modelcachekey"} };
@@ -415,11 +415,11 @@ The following code block from ``reset_cifar.cpp`` shows how ONNX Runtime is conf
 
     auto session = Ort::Experimental::Session(env, model_name, session_options);
 
-To run the model on the NPU, we will pass the ipu flag and the vaip_config.json file as arguments to the C++ application. Use the following command to run the model on the NPU: 
+To run the model on the NPU, we will pass the npu flag and the vaip_config.json file as arguments to the C++ application. Use the following command to run the model on the NPU: 
 
 .. code-block:: bash 
 
-   resnet_cifar.exe models\resnet.qdq.U8S8.onnx ipu vaip_config.json
+   resnet_cifar.exe models\resnet.qdq.U8S8.onnx npu vaip_config.json
 
 Typical output: 
 
