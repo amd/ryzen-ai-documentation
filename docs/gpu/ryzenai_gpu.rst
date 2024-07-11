@@ -31,6 +31,6 @@ For DirectML related information please refer `DirectML documentation <https://o
 Examples
 ~~~~~~~~
 
-A simple model optimization and running example with ResNet: TBD 
+Optimizing and running `RestNet on Ryzen AI GPU <https://github.com/amd/RyzenAI-SW/tree/main/iGPU/getting_started>`_
 
 
