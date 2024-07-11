@@ -5,10 +5,10 @@ Getting Started Tutorial
 This tutorial uses a fine-tuned version of the ResNet model (using the CIFAR-10 dataset) to demonstrate the process of preparing, quantizing, and deploying a model using Ryzen AI Software. The tutorial features deployment using both Python and C++ ONNX runtime code. 
 
 .. note::
-   In this documentation, "NPU" is used in descriptions, while "IPU" is retained in the tool's language, code, screenshots, and commands. This intentional 
+   In this documentation, "NPU" is used in descriptions, while "IPU" is retained in some of the tool's language, code, screenshots, and commands. This intentional 
    distinction aligns with existing tool references and does not affect functionality. Avoid making replacements in the code.
 
-- The source code files can be downloaded from `this link <https://github.com/amd/RyzenAI-SW/tree/main/tutorial/getting_started_resnet>`_. Alternatively, you can clone the RyzenAI-SW repo and change the directory into the tutorial code directory. 
+- The source code files can be downloaded from `this link <https://github.com/amd/RyzenAI-SW/tree/main/tutorial/getting_started_resnet>`_. Alternatively, you can clone the RyzenAI-SW repo and change the directory into "tutorial". 
 
 .. code-block::
 
@@ -75,7 +75,7 @@ Step 1: Install Packages
 Step 2: Prepare dataset and ONNX model
 **************************************
 
-In this example, we utilize the a custom ResNet model finetuned using the CIFAR-10 dataset
+In this example, we utilize a custom ResNet model finetuned using the CIFAR-10 dataset
 
 The ``prepare_model_data.py`` script downloads the CIFAR-10 dataset in pickle format (for python) and binary format (for C++). This dataset will be used in the subsequent steps for quantization and inference. The script also exports the provided PyTorch model into ONNX format. The following snippet from the script shows how the ONNX model is exported:
 
@@ -210,28 +210,26 @@ Deploy the Model on the Ryzen AI NPU
 
 To successfully run the model on the NPU, run the following setup steps:
 
-- Ensure that the ``XLNX_VART_FIRMWARE`` environment variable is correctly pointing to the :file:`1x4.xclbin` file located in the ``voe-4.0-win_amd64`` folder of the Ryzen AI software installation package. If you installed the Ryzen AI software using automatic installer, this variable is already correctly set. However, if you did the installation manually, you must set the variable as follows: 
+- Make sure the environment variable XLNX_VART_FIRMWARE is set to the correct *.xclbin from the VOE package. Refer to :doc:`installation instructions <inst>` on how to do this correctly.
+
+- Ensure ``RYZEN_AI_INSTALLATION_PATH`` points to ``path\to\ryzen-ai-sw-<version>\``. If you installed Ryzen-AI software using the MSI installer, this variable should already be set. Ensure that the Ryzen-AI software package has not been moved post installation, in which case ``RYZEN_AI_INSTALLATION_PATH`` will have to be set again. 
+
+- Copy the ``vaip_config.json`` runtime configuration file from the installation package to the current directory. The ``vaip_config.json`` is used by the source file ``predict.py`` to configure the Vitis AI Execution Provider.
 
 .. code-block:: bash 
 
-   set XLNX_VART_FIRMWARE=path\to\RyzenAI\installation\files\ryzen-ai-sw-<version>\voe-4.0-win_amd64\1x4.xclbin
-
-- Copy the :file:`vaip_config.json` runtime configuration file from the ``voe-4.0-win_amd64`` folder of the Ryzen AI software installation package to the current directory. The :file:`vaip_config.json` is used by the :file:`predict.py` script to configure the Vitis AI Execution Provider.
-
-
-The following section of the :file:`predict.py` script shows how ONNX Runtime is configured to deploy the model on the Ryzen AI NPU:
-
+   xcopy %RYZEN_AI_INSTALLATION_PATH%\voe-4.0-win_amd64\vaip_config.json .
 
 .. code-block::
 
   parser = argparse.ArgumentParser()
-  parser.add_argument('--ep', type=str, default ='cpu',choices = ['cpu','ipu'], help='EP backend selection')
+  parser.add_argument('--ep', type=str, default ='cpu',choices = ['cpu','npu'], help='EP backend selection')
   opt = parser.parse_args()
   
   providers = ['CPUExecutionProvider']
   provider_options = [{}]
 
-  if opt.ep == 'ipu':
+  if opt.ep == 'npu':
      providers = ['VitisAIExecutionProvider']
      cache_dir = Path(__file__).parent.resolve()
      provider_options = [{
@@ -244,12 +242,12 @@ The following section of the :file:`predict.py` script shows how ONNX Runtime is
                                  provider_options=provider_options)
 
 
-Run the ``predict.py`` with the ``--ep ipu`` switch to run the custom ResNet model on the Ryzen AI NPU:
+Run the ``predict.py`` with the ``--ep npu`` switch to run the custom ResNet model on the Ryzen AI NPU:
 
 
 .. code-block::
 
-    python predict.py --ep ipu
+    python predict.py --ep npu
 
 Typical output
 
@@ -316,7 +314,7 @@ It is recommended to build OpenCV from the source code and use static build. The
 Build and Run Custom Resnet C++ sample
 --------------------------------------
 
-The C++ source files, CMake list files and related artifacts are provided in the ``cpp/resnet_cifar/*`` folder. The source file ``cpp/resnet_cifar/resnet_cifar.cpp`` takes 10 images from the CIFAR-10 test set, converts them to .png format, preprocesses them, and performs model inference. The example has onnxruntime dependencies, that are provided in ``cpp/resnet_cifar/onnxruntime/*``. 
+The C++ source files, CMake list files and related artifacts are provided in the ``cpp/resnet_cifar/*`` folder. The source file ``cpp/resnet_cifar/resnet_cifar.cpp`` takes 10 images from the CIFAR-10 test set, converts them to .png format, preprocesses them, and performs model inference. The example has onnxruntime dependencies, that are provided in ``%RYZEN_AI_INSTALLATION_PATH%/onnxruntime/*``. 
 
 Run the following command to build the resnet example. Assign ``-DOpenCV_DIR`` to the OpenCV installation directory.
 
@@ -343,8 +341,6 @@ Additionally, we will also need to copy the onnxruntime DLLs from the Vitis AI E
 .. code-block:: bash 
 
    xcopy %RYZEN_AI_INSTALLATION_PATH%\onnxruntime\bin\* /E /I
-
-Here, ``RYZEN_AI_INSTALLATION_PATH`` is an environment variable that should point to the ``path\to\ryzen-ai-sw-<version>\ryzen-ai-sw-<version>``. If you installed Ryzen-AI software using the automatic installer, this variable should already be set. Ensure that the Ryzen-AI software package has not been moved post installation, in which case ``RYZEN_AI_INSTALLATION_PATH`` will have to be set again. 
 
 
 The C++ application that was generated takes 3 arguments: 
@@ -390,14 +386,11 @@ Deploy the Model on the NPU
 
 To successfully run the model on the NPU:
 
-- Ensure that the ``XLNX_VART_FIRMWARE`` environment variable is correctly pointing to the XCLBIN file included in the ONNX Vitis AI Execution Provider package. If you installed Ryzen-AI software by automatic installer, the NPU binary path is already set, however if you did the installation manually, ensure the NPU binary path is set using the following command: 
+- Make sure the environment variable XLNX_VART_FIRMWARE is set to the correct *.xclbin from the VOE package. Refer to :doc:`installation instructions <inst>` on how to do this correctly.
 
-.. code-block:: bash 
+- Ensure ``RYZEN_AI_INSTALLATION_PATH`` points to ``path\to\ryzen-ai-sw-<version>\``. If you installed Ryzen-AI software using the MSI installer, this variable should already be set. Ensure that the Ryzen-AI software package has not been moved post installation, in which case ``RYZEN_AI_INSTALLATION_PATH`` will have to be set again. 
 
-   set XLNX_VART_FIRMWARE=path\to\RyzenAI\installation\ryzen-ai-sw-<version>\ryzen-ai-sw-<version>\voe-4.0-win_amd64\1x4.xclbin
-
-
-- Copy the ``vaip_config.json`` runtime configuration file from the Vitis AI Execution Provider package to the current directory. The ``vaip_config.json`` is used by the source file ``resnet_cifar.cpp`` to configure the Vitis AI Execution Provider.
+- Copy the ``vaip_config.json`` runtime configuration file from the installation package to the current directory. The ``vaip_config.json`` is used by the source file ``resnet_cifar.cpp`` to configure the Vitis AI Execution Provider.
 
 .. code-block:: bash 
 
@@ -413,7 +406,7 @@ The following code block from ``reset_cifar.cpp`` shows how ONNX Runtime is conf
     auto config_key = std::string{ "config_file" };
     auto cache_dir = std::filesystem::current_path().string(); 
  
-    if(ep=="ipu")
+    if(ep=="npu")
     {
     auto options =
         std::unordered_map<std::string, std::string>{ {config_key, json_config}, {"cacheDir", cache_dir}, {"cacheKey", "modelcachekey"} };
@@ -422,11 +415,11 @@ The following code block from ``reset_cifar.cpp`` shows how ONNX Runtime is conf
 
     auto session = Ort::Experimental::Session(env, model_name, session_options);
 
-To run the model on the NPU, we will pass the ipu flag and the vaip_config.json file as arguments to the C++ application. Use the following command to run the model on the NPU: 
+To run the model on the NPU, we will pass the npu flag and the vaip_config.json file as arguments to the C++ application. Use the following command to run the model on the NPU: 
 
 .. code-block:: bash 
 
-   resnet_cifar.exe models\resnet.qdq.U8S8.onnx ipu vaip_config.json
+   resnet_cifar.exe models\resnet.qdq.U8S8.onnx npu vaip_config.json
 
 Typical output: 
 
