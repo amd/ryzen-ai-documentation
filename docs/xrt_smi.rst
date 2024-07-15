@@ -16,7 +16,7 @@ The ``xrt-smi`` utility currently supports three primary commands:
 
 You can use ``--help`` with any command, such as ``xrt-smi examine --help``, to view all supported subcommands and their details. 
 
-Both examine and validate support an additional option --format which takes JSON (`-f JSON`) and can be used to get JSON output (`-o <example.json>`) for automation purposes.
+Both examine and validate support an additional option --format which takes JSON (``-f JSON``) and can be used to get JSON output (``-o <example.json>``) for automation purposes.
 
 Examining the AI PC and the NPU
 -------------------------------
