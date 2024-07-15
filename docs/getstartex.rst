@@ -413,7 +413,7 @@ The following code block from ``reset_cifar.cpp`` shows how ONNX Runtime is conf
     session_options.AppendExecutionProvider_VitisAI(options)
     }
 
-    auto session = Ort::Experimental::Session(env, model_name, session_options);
+    auto session = Ort::Session(env, model_name.data(), session_options);
 
 To run the model on the NPU, we will pass the npu flag and the vaip_config.json file as arguments to the C++ application. Use the following command to run the model on the NPU: 
 

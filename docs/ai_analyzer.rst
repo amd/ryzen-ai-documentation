@@ -40,14 +40,45 @@ Profiling and Visualization can be enabled by passing additional provider option
 
 |
 
+The 'ai_analyzer_profiling' flag enables generation of artifacts related to the inference profile. The 'ai_analyzer_visualization' flag enables generation of artifacts related to graph partitions and operator fusion. These artifacts are generated as .json files in the current run directory.
+
+Launching AI Analyzer
+###########
+
+Once the artifacts are generated, `aianalyzer` can be invoked through the command line as follows: 
+
+.. code-block:: bash
+
+   aianalyzer logdir 
+
+
+**Positional arguments**
+
+logdir: Path to the folder containing generated artifacts 
+
+**Options**
+
+    -v, --version
+        Show the version info and exit.
+
+    -b ADDR, --bind ADDR
+        Hostname or IP address on which to listen, default is 'localhost'.
+
+    -p PORT, --port PORT
+        TCP port on which to listen, default is '8000'.
+
+    -n, --no-browser
+        Prevent the opening of the default url in the browser.
+
+    -t TOKEN, --token TOKEN
+        Token used for authenticating first-time connections to the server.
+        The default is to generate a new, random token.
+        Setting to an empty string disables authentication altogether, which is NOT RECOMMENDED.
+
 Analyzing ResNet50 
 ###########
 
-We can enable the AI Analyzer in the :doc:`Getting started with ResNet50 <getstartex.rst>` example. To do this, modify the provider options as shown above in the ``predict.py`` script. When this script is run, the following artifacts will be dumped in the run directory: 
-
-1. record_timer_ts.json 
-2. fused_viz.json
-3. dpu_timestamp_info.json
+We can enable the AI Analyzer in the :doc:`Getting started with ResNet50 <getstartex.rst>` example. To do this, modify the provider options as shown above in the ``predict.py`` script. When this script is run, the profiling and visualization artifacts will be dumped as .json files in the current run directory.
 
 
 Launch the AI Analyzer: 
@@ -57,22 +88,36 @@ Launch the AI Analyzer:
 
    aianalyzer <path to folder containing generated artifacts> --port=8087
 
-Follow the link displayed to open the analyzer on your browser. The analyzer displays information such as operator partitioning and hardware execution times. Some of the information displayed for the ResNet50 example are shown below: 
+Follow the link displayed to open the analyzer on your browser. The analyzer displays information such as operator partitioning and hardware execution times. Some of the information displayed for the ResNet50 example are shown below.
 
+
+The following donut charts show operator partitioning across the CPU and the NPU:
 
 |
 
 .. image:: images/partitioning.png
-   :scale: 75%
+   :scale: 50%
+   :align: center
+|
+|
+
+A summary of operator execution times on the NPU is shown in the chart below:
+
+|
+
+.. image:: images/performance.png
+   :scale: 35%
    :align: center
 
 |
 |
 
+The following Gantt chart provides a visualization of the inference timing: 
+
 |
 
-.. image:: images/performance.png
-   :scale: 75%
+.. image:: images/inference_timing.png
+   :scale: 50%
    :align: center
 
 |
