@@ -49,11 +49,10 @@ Once the artifacts are generated, `aianalyzer` can be invoked through the comman
 
 .. code-block:: bash
 
-aianalyzer logdir 
+   aianalyzer logdir 
 
 
-Positional arguments
------------
+**Positional arguments**
 
 logdir: Path to the folder containing generated artifacts 
 
