@@ -329,7 +329,7 @@ This should generate the build directory with the ``resnet_cifar.sln`` solution 
 
    devenv build/resnet_cifar.sln
 
-Now to deploy our model, we will go back to the parent directory (getting_started_resnet) of this example. After compilation, the executable should be generated in ``cpp/resnet_cifar/build/Release/resnet_cifar.exe``. We will copy this application over to the parent directory:
+Now to deploy our model, we will go back to the parent directory (getting_started_resnet) of this example. After compilation, the executable should be generated in ``cpp/build/Release/resnet_cifar.exe``. We will copy this application over to the parent directory:
 
 .. code-block:: bash 
 
