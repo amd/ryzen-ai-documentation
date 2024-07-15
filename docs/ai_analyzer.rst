@@ -49,7 +49,7 @@ Once the artifacts are generated, `aianalyzer` can be invoked through the comman
 
 .. code-block::
 
-aianalyzer logdir [-b ADDR] [-p PORT] [-n] [-t TOKEN] [logdir ...]
+aianalyzer logdir 
 
 |
 
