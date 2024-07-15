@@ -53,10 +53,9 @@ aianalyzer logdir
 
 
 Positional arguments
+-----------
 
 logdir: Path to the folder containing generated artifacts 
-
-.. code-block:: rst
 
 Options:
     -v, --version
