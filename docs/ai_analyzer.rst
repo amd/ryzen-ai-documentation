@@ -95,8 +95,7 @@ Follow the link displayed to open the analyzer on your browser. The analyzer dis
 .. image:: images/partitioning.png
    :scale: 50%
    :align: center
-
-   Donut charts showing operator partitioning across the CPU and the NPU. 
+   :title: Donut charts showing operator partitioning across the CPU and the NPU. 
 |
 |
 
