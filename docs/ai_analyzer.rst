@@ -90,7 +90,7 @@ Launch the AI Analyzer:
 Follow the link displayed to open the analyzer on your browser. The analyzer displays information such as operator partitioning and hardware execution times. Some of the information displayed for the ResNet50 example are shown below.
 
 
-The following donut charts show operator partitioning across the CPU and the NPU. 
+The following donut charts show operator partitioning across the CPU and the NPU:
 
 |
 
@@ -100,7 +100,7 @@ The following donut charts show operator partitioning across the CPU and the NPU
 |
 |
 
-A summary of operator execution times on the NPU is shown in the chart below. 
+A summary of operator execution times on the NPU is shown in the chart below:
 
 |
 
