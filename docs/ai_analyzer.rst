@@ -47,16 +47,17 @@ Launching AI Analyzer
 
 Once the artifacts are generated, `aianalyzer` can be invoked through the command line as follows: 
 
-.. code-block::
+.. code-block:: bash
 
 aianalyzer logdir 
 
-|
 
 Positional arguments
+
 logdir: Path to the folder containing generated artifacts 
 
 Options: 
+
 -v, --version            Show the version info and exit.
 -b ADDR, --bind ADDR     Hostname or IP address on which to listen, default is 'localhost'.
 -p PORT, --port PORT     TCP port on which to listen, default is '8000'.
