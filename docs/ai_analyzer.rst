@@ -106,7 +106,7 @@ A summary of operator execution times on the NPU is shown in the chart below:
 |
 
 .. image:: images/performance.png
-   :scale: 35%
+   :scale: 50%
    :align: center
 
 |
