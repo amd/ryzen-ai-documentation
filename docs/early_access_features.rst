@@ -25,7 +25,7 @@ The following LLMs and transformers are supported and provided as examples:
 
 NPU Management Interface
 ========================
-The ``xbutil`` utility is an integrated command-line interface to monitor and manage the NPU. More details can be found `here <xbutil.html>`_.
+The ``xrt-smi`` utility is an integrated command-line interface to monitor and manage the NPU. More details can be found `here <xrt_smi.html>`_.
 
 |
 |
