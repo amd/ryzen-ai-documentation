@@ -91,6 +91,7 @@ Follow the link displayed to open the analyzer on your browser. The analyzer dis
 
 
 The following donut charts show operator partitioning across the CPU and the NPU. 
+
 |
 
 .. image:: images/partitioning.png
@@ -100,16 +101,18 @@ The following donut charts show operator partitioning across the CPU and the NPU
 |
 
 A summary of operator execution times on the NPU is shown in the chart below. 
+
 |
 
 .. image:: images/performance.png
-   :scale: 50%
+   :scale: 35%
    :align: center
 
 |
 |
 
 The following Gantt chart provides a visualization of the inference timing: 
+
 |
 
 .. image:: images/inference_timing.png
