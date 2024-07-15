@@ -57,6 +57,7 @@ Once the artifacts are generated, `aianalyzer` can be invoked through the comman
 logdir: Path to the folder containing generated artifacts 
 
 **Options**
+
     -v, --version
         Show the version info and exit.
 
