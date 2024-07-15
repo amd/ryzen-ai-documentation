@@ -56,15 +56,25 @@ Positional arguments
 
 logdir: Path to the folder containing generated artifacts 
 
-Options: 
+.. code-block:: rst
 
--v, --version               Show the version info and exit.
--b ADDR, --bind ADDR        Hostname or IP address on which to listen, default is 'localhost'.
--p PORT, --port PORT        TCP port on which to listen, default is '8000'.
--n, --no-browser            Prevent the opening of the default url in the browser.
--t TOKEN, --token TOKEN     Token used for authenticating first-time connections to the server.
-                            The default is to generate a new, random token.
-                            Setting to an empty string disables authentication altogether, which is NOT RECOMMENDED.
+Options:
+    -v, --version
+        Show the version info and exit.
+
+    -b ADDR, --bind ADDR
+        Hostname or IP address on which to listen, default is 'localhost'.
+
+    -p PORT, --port PORT
+        TCP port on which to listen, default is '8000'.
+
+    -n, --no-browser
+        Prevent the opening of the default url in the browser.
+
+    -t TOKEN, --token TOKEN
+        Token used for authenticating first-time connections to the server.
+        The default is to generate a new, random token.
+        Setting to an empty string disables authentication altogether, which is NOT RECOMMENDED.
 
 Analyzing ResNet50 
 ###########
