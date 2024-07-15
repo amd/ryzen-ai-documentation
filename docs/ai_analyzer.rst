@@ -87,22 +87,33 @@ Launch the AI Analyzer:
 
    aianalyzer <path to folder containing generated artifacts> --port=8087
 
-Follow the link displayed to open the analyzer on your browser. The analyzer displays information such as operator partitioning and hardware execution times. Some of the information displayed for the ResNet50 example are shown below: 
+Follow the link displayed to open the analyzer on your browser. The analyzer displays information such as operator partitioning and hardware execution times. Some of the information displayed for the ResNet50 example are shown below.
 
 
+The following donut charts show operator partitioning across the CPU and the NPU. 
 |
 
 .. image:: images/partitioning.png
    :scale: 50%
    :align: center
-   :title: Donut charts showing operator partitioning across the CPU and the NPU. 
 |
 |
 
+A summary of operator execution times on the NPU is shown in the chart below. 
 |
 
 .. image:: images/performance.png
-   :scale: 75%
+   :scale: 50%
+   :align: center
+
+|
+|
+
+The following Gantt chart provides a visualization of the inference timing: 
+|
+
+.. image:: images/inference_timing.png
+   :scale: 50%
    :align: center
 
 |
