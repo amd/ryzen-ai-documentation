@@ -51,6 +51,8 @@ Once the artifacts are generated, `aianalyzer` can be invoked through the comman
 
 aianalyzer logdir [-b ADDR] [-p PORT] [-n] [-t TOKEN] [logdir ...]
 
+|
+
 Positional arguments
 logdir: Path to the folder containing generated artifacts 
 
