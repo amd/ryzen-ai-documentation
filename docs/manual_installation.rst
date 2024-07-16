@@ -92,7 +92,7 @@ For STX: (default)
    set NUM_OF_DPU_RUNNERS=1
 
 
-For PHX:
+For PHX/HPT:
 
 .. code-block::
 
