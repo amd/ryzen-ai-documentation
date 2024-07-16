@@ -293,12 +293,14 @@ It is recommended to build OpenCV from the source code and use static build. The
    cmake --build build --config Release
    cmake --install build --config Release
 
+The build files will be written to ``build\``.
+
 Build and Run Custom Resnet C++ sample
 --------------------------------------
 
 The C++ source files, CMake list files and related artifacts are provided in the ``cpp/resnet_cifar/*`` folder. The source file ``cpp/resnet_cifar/resnet_cifar.cpp`` takes 10 images from the CIFAR-10 test set, converts them to .png format, preprocesses them, and performs model inference. The example has onnxruntime dependencies, that are provided in ``%RYZEN_AI_INSTALLATION_PATH%/onnxruntime/*``. 
 
-Run the following command to build the resnet example. Assign ``-DOpenCV_DIR`` to the OpenCV installation directory.
+Run the following command to build the resnet example. Assign ``-DOpenCV_DIR`` to the OpenCV build directory.
 
 .. code-block:: bash
 
