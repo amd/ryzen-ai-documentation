@@ -1,12 +1,7 @@
-#####################
-Early Access Features
-#####################
+##################
+Generative AI Flow
+##################
 
-Early Access features are features which are still undergoing some optimization and fine-tuning. These features are not in their final form and may change as we continue to work in order to mature them into full-fledged features.
-
-
-Suport for Generative AI
-========================
 The latest version of Ryzen AI Software includes early access support for Generative AI, transformers, and LLMs. Like CNNs, Gen AI models require quantization before deployment on the NPU. However, the development flow for Gen AI models features some differences due to their distinct nature.
 
 **Quantization:** For Gen AI models, it's often advantageous to use a combination of SmoothQuant or AWQ (applied to the pre-trained PyTorch model) and/or dynamic quantization (leveraging ONNXRuntime ORTQuantizer) techniques to maintain the highest possible accuracy. Since only specific operators are offloaded to the NPU, it's also recommended to conduct operator-specific quantization to selectively quantize necessary operators (typically GEMM/MATMUL).
@@ -18,20 +13,8 @@ The following LLMs and transformers are supported and provided as examples:
 - `Llama 2 with PyTorch <https://github.com/amd/RyzenAI-SW/tree/main/example/transformers>`_
 - `OPT-1.3B with PyTorch <https://github.com/amd/RyzenAI-SW/tree/main/example/transformers>`_  
 - `OPT-1.3B with ONNXRuntime <https://github.com/amd/RyzenAI-SW/tree/main/example/transformers>`_  
--	Whisper base with ONNX Runtime (Access via Early Access secure site - `Request access here <https://account.amd.com/en/member/ryzenai-sw-ea.html>`_)
 
-|
-|
 
-NPU Management Interface
-========================
-The ``xrt-smi`` utility is an integrated command-line interface to monitor and manage the NPU. More details can be found `here <xrt_smi.html>`_.
-
-|
-|
-AI Analyzer
-===========
-AI Analyzer is an AI model visualization tool designed to provide detailed profiling and runtime information for models targeted at the NPU via Ryzen AI. More details can be found `here <ai_analyzer.html>`_.
 
 ..
   ------------
