@@ -49,7 +49,7 @@ AMD Ryzen™ AI Software includes the tools and runtime libraries for optimizing
 
 .. toctree::
    :maxdepth: 1
-   :caption: Early access features
+   :caption: Early Access Features
 
    xrt_smi.rst
    ai_analyzer.rst
