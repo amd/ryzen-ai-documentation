@@ -25,6 +25,7 @@ Check the Ryzen AI Software installation using the environmental variable ``RYZE
 
    echo %RYZEN_AI_INSTALLATION_PATH%
 
+
 **************************
 Create a Conda Environment
 **************************
@@ -38,6 +39,46 @@ Start a conda prompt. In the conda prompt, create and activate an environment fo
   conda create --name <name> python=3.9
   conda activate <name> 
 
+
+****************************
+Setup Environmental Variable
+****************************
+
+You can configure the environmental variables to be automatically set upon activation in a new or existing conda environment.
+
+First, create a directory for the activation scripts:
+
+.. code-block:: shell
+
+mkdir %CONDA_PREFIX\etc\conda\activate.d
+
+Create script to load ``RYZEN_AI_INSTALLER_PATH`` environment. This script will be executed every time the conda environment is activated.
+
+.. code-block:: shell
+
+notepad %CONDA_PREFIX\etc\conda\activate.d\load_ryzenai_installer_path.bat
+
+
+Add the following line to the script:
+
+.. code-block:: shell
+
+set "RYZEN_AI_INSTALLER_PATH=%RYZEN_AI_INSTALLER_PATH%"
+
+
+Depending on your hardware, set the ``XLNX_VART_FIRMWARE`` environment variable.
+
+For STX: (default)
+
+.. code-block:: shell
+
+   set "XLNX_VART_FIRMWARE=%RYZEN_AI_INSTALLATION_PATH%\voe-4.0-win_amd64\xclbins\strix\AMD_AIE2P_Nx4_Overlay.xclbin"
+
+For PHX/HPT:
+
+.. code-block:: shell
+
+   set "XLNX_VART_FIRMWARE=%RYZEN_AI_INSTALLATION_PATH%\voe-4.0-win_amd64\xclbins\phoenix\1x4.xclbin"
 
 .. _install-onnx-quantizer:
 
