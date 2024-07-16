@@ -293,6 +293,8 @@ It is recommended to build OpenCV from the source code and use static build. The
    cmake --build build --config Release
    cmake --install build --config Release
 
+The build files will be written to "build\".
+
 Build and Run Custom Resnet C++ sample
 --------------------------------------
 
