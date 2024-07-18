@@ -110,6 +110,7 @@ The following donut charts show operator partitioning across the CPU and the NPU
 .. image:: images/partitioning.png
    :scale: 50%
    :align: center
+
 |
 |
 
@@ -134,6 +135,7 @@ The following Gantt chart provides a visualization of the inference timing:
 
 |
 |
+
 ..
   ------------
 
