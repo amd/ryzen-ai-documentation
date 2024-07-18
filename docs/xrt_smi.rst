@@ -1,7 +1,9 @@
 NPU Management Interface
 ========================
 
-**NOTE**: This feature is currently in the early access stage. 
+.. note::
+   This feature is currently in the Early Access stage. Early Access features are features which are still undergoing some optimization and fine-tuning. These features are not in their final form and may change as we continue to work in order to mature them into full-fledged features.
+
 
 The ``xrt-smi`` utility is a command-line interface to monitor and manage the NPU.  It is an OS agnostic tool which supports devices from Edge to Cloud/DC and now NPU integrated AMD CPUs. 
 

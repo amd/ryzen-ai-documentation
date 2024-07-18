@@ -51,6 +51,7 @@ AMD Ryzen™ AI Software includes the tools and runtime libraries for optimizing
    :maxdepth: 1
    :caption: Early Access Features
 
+   llm_flow.rst
    xrt_smi.rst
    ai_analyzer.rst
 
@@ -63,7 +64,6 @@ AMD Ryzen™ AI Software includes the tools and runtime libraries for optimizing
    manual_installation.rst
    alternate_quantization_setup.rst 
    onnx_e2e.rst
-   llm_flow.rst
 
 
 ..
