@@ -10,22 +10,31 @@ APU Types
 
 The Ryzen AI Software supports different types of NPU-enabled APUs. These APU types are referred to as PHX, HPT and STX. 
 
-To determine the type of the local APU, it is possible to check the ``HKEY_LOCAL_MACHINE\HARDWARE\DESCRIPTION\System\CentralProcessor\0\Identifier`` value in the Windows Registry.
+To programmatically determine the type of the local APU, it is possible to enumerate the PCI devices and check for an instance with a matching Hardware ID.
 
 .. list-table:: 
-   :widths: 30 30 40 
    :header-rows: 1
 
-   * - Family Number
-     - Model Number
+   * - Vendor
+     - Device
+     - Revision
      - APU Type
-   * - 0x19
-     - 0x70 - 0x7F
+   * - 0x1022
+     - 0x1502
+     - 0x00
      - PHX or HPT 
-   * - 0x1A
-     - 0x30 - 0x3F
-     - STX
-
+   * - 0x1022
+     - 0x17F0
+     - 0x00
+     - STX 
+   * - 0x1022
+     - 0x17F0
+     - 0x10
+     - STX 
+   * - 0x1022
+     - 0x17F0
+     - 0x11
+     - STX 
 
 
 *********************
