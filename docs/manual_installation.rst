@@ -61,19 +61,19 @@ Add the following line to the script:
    set "RYZEN_AI_INSTALLER_PATH=%RYZEN_AI_INSTALLER_PATH%"
 
 
-Set the ``XLNX_VART_FIRMWARE`` environment variable based on your hardware configuration:
+Set the XLNX_VART_FIRMWARE environment variable based on your CPU model:
 
-For STX hardware:
+For STX CPU models:
 
-.. code-block:: shell
+.. code-block::
 
-   set "XLNX_VART_FIRMWARE=%RYZEN_AI_INSTALLATION_PATH%\voe-4.0-win_amd64\xclbins\strix\AMD_AIE2P_Nx4_Overlay.xclbin"
+   set XLNX_VART_FIRMWARE=%RYZEN_AI_INSTALLATION_PATH%/voe-4.0-win_amd64/xclbins/strix/AMD_AIE2P_Nx4_Overlay.xclbin
 
-For PHX/HPT hardware:
+For PHX/HPT CPU models:
 
-.. code-block:: shell
+.. code-block::
 
-   set "XLNX_VART_FIRMWARE=%RYZEN_AI_INSTALLATION_PATH%\voe-4.0-win_amd64\xclbins\phoenix\1x4.xclbin"
+   set XLNX_VART_FIRMWARE=%RYZEN_AI_INSTALLATION_PATH%/voe-4.0-win_amd64/xclbins/phoenix/1x4.xclbin
 
 .. _install-onnx-quantizer:
 

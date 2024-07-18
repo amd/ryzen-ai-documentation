@@ -6,14 +6,13 @@ Installation Instructions
 Supported Configurations
 ************************
 
-The Ryzen AI Software supports the following processors running Windows 11
+The Ryzen AI Software supports the following processors models running Windows 11
 
-- AMD Ryzen™ (Phoenix) 7940HS, 7840HS, 7640HS, 7840U, 7640U.
-- AMD Ryzen™ (Hawk Point) 8640U, 8640HS, 8645H, 8840U, 8840HS, 8845H, 8945H.
-- AMD Ryzen™ (Strix Point) Ryzen AI 9 HX370, Ryzen AI 9 365
+- Phoenix (PHX) models: AMD Ryzen™ 7940HS, 7840HS, 7640HS, 7840U, 7640U.
+- Hawk (HPT) models: AMD Ryzen™ 8640U, 8640HS, 8645H, 8840U, 8840HS, 8845H, 8945H.
+- Strix (STX) models: AMD Ryzen™ Ryzen AI 9 HX370, Ryzen AI 9 365
 
-
-From now onwards, for the rest of this document, we will refer to Phoenix as PHX, Hawk Point as HPT, and Strix Point as STX.
+The rest of this document will refer to Phoenix as PHX, Hawk as HPT, and Strix as STX.
 
 .. note::
    In this documentation, "NPU" is used in descriptions, while "IPU" is retained in the tool's language, code, screenshots, and commands. This intentional 
@@ -110,15 +109,15 @@ The Ryzen AI Software installation folder contains test to verify that the softw
 
    conda activate <env_name>
 
-- Set the XLNX_VART_FIRMWARE environment variable based on your hardware configuration:
+- Set the XLNX_VART_FIRMWARE environment variable based on your CPU model:
 
-For STX hardware:
+For STX CPU models:
 
 .. code-block::
 
    set XLNX_VART_FIRMWARE=%RYZEN_AI_INSTALLATION_PATH%/voe-4.0-win_amd64/xclbins/strix/AMD_AIE2P_Nx4_Overlay.xclbin
 
-For PHX/HPT hardware:
+For PHX/HPT CPU models:
 
 .. code-block::
 

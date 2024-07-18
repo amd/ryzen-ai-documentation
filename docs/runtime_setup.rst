@@ -4,6 +4,27 @@ Runtime Setup
 
 .. _NPU-selection:
 
+*****************
+CPU Model
+*****************
+
+The Ryzen AI Software supports different NPU-enabled CPU families and models. These CPU models are referred to PHX, HPT and STX. 
+
+To determine the family and model of the local CPU, it is possible to check the ``HKEY_LOCAL_MACHINE\HARDWARE\DESCRIPTION\System\CentralProcessor\0\Identifier`` value in the Windows Registry.
+
+.. list-table:: 
+   :widths: 50 50 
+   :header-rows: 1
+
+   * - Family Number
+     - Model Name
+   * - 25
+     - PHX or HPT 
+   * - 26
+     - STX
+
+
+
 *********************
 NPU Profile Selection
 *********************
@@ -20,9 +41,9 @@ Up to four additional inference sessions can be executed through temporal sharin
 
 The Ryzen AI runtime automatically manages the scheduling of the parallel sessions, requiring no user intervention. When the maximum load is reached and no other sessions can be submitted to the NPU. 
 
-To select the throughput profile, set the following environment variable:
+To select the throughput profile, set the following environment variables based on your CPU model:
 
-For STX: (default)
+For STX CPU models:
 
 .. code-block::
 
@@ -30,7 +51,7 @@ For STX: (default)
    set NUM_OF_DPU_RUNNERS=1
 
 
-For PHX/HPT:
+For PHX/HPT CPU models:
 
 .. code-block::
 
@@ -50,9 +71,9 @@ Up to seven additional inference sessions can be executed through temporal shari
 
 The Ryzen AI runtime automatically manages the scheduling of the parallel sessions, requiring no user intervention. When the maximum load is reached and no other sessions can be submitted to the NPU.
 
-To select the latency profile, set the two following environment variables:
+To select the latency profile, set the following environment variables based on your CPU model:
 
-For STX: (default)
+For STX CPU models:
 
 .. code-block::
 
@@ -61,7 +82,7 @@ For STX: (default)
    set NUM_OF_DPU_RUNNERS=1
 
 
-For PHX/HPT:
+For PHX/HPT CPU models:
 
 .. code-block::
 
@@ -76,7 +97,7 @@ For PHX/HPT:
 Runtime Configuration File
 **************************
 
-The Vitis AI Execution Provider (VAI EP) requires a runtime configuration file. A default version of this runtime configuration file can be found in the Ryzen AI Software installation tree: :file:`%RYZEN_AI_INSTALLATION_PATH%\voe-4.0-win_amd64\vaip_config.json`. 
+The Vitis AI Execution Provider (VAI EP) requires a runtime configuration file. A default version of this runtime configuration file can be found in the Ryzen AI Software installation tree: :file:`%RYZEN_AI_INSTALLATION_PATH%\\voe-4.0-win_amd64\\vaip_config.json`. 
 
 It is recommended to create a copy of the :file:`vaip_config.json` file in your project directory and point to this copy when initializing the inference session. Refer to the :doc:`modelrun` page for more details on how to set up an inference session with the Vitis AI Execution Provider.
 
