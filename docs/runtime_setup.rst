@@ -5,22 +5,25 @@ Runtime Setup
 .. _NPU-selection:
 
 *****************
-CPU Model
+APU Types
 *****************
 
-The Ryzen AI Software supports different NPU-enabled CPU families and models. These CPU models are referred to PHX, HPT and STX. 
+The Ryzen AI Software supports different types of NPU-enabled APUs. These APU types are referred to as PHX, HPT and STX. 
 
-To determine the family and model of the local CPU, it is possible to check the ``HKEY_LOCAL_MACHINE\HARDWARE\DESCRIPTION\System\CentralProcessor\0\Identifier`` value in the Windows Registry.
+To determine the type of the local APU, it is possible to check the ``HKEY_LOCAL_MACHINE\HARDWARE\DESCRIPTION\System\CentralProcessor\0\Identifier`` value in the Windows Registry.
 
 .. list-table:: 
-   :widths: 50 50 
+   :widths: 30 30 40 
    :header-rows: 1
 
    * - Family Number
-     - Model Name
-   * - 25
+     - Model Number
+     - APU Type
+   * - 0x19
+     - 0x70 - 0x7F
      - PHX or HPT 
-   * - 26
+   * - 0x1A
+     - 0x30 - 0x3F
      - STX
 
 
@@ -41,9 +44,9 @@ Up to four additional inference sessions can be executed through temporal sharin
 
 The Ryzen AI runtime automatically manages the scheduling of the parallel sessions, requiring no user intervention. When the maximum load is reached and no other sessions can be submitted to the NPU. 
 
-To select the throughput profile, set the following environment variables based on your CPU model:
+To select the throughput profile, set the following environment variables based on your APU type:
 
-For STX CPU models:
+For STX APUs:
 
 .. code-block::
 
@@ -51,7 +54,7 @@ For STX CPU models:
    set NUM_OF_DPU_RUNNERS=1
 
 
-For PHX/HPT CPU models:
+For PHX/HPT APUs:
 
 .. code-block::
 
@@ -71,9 +74,9 @@ Up to seven additional inference sessions can be executed through temporal shari
 
 The Ryzen AI runtime automatically manages the scheduling of the parallel sessions, requiring no user intervention. When the maximum load is reached and no other sessions can be submitted to the NPU.
 
-To select the latency profile, set the following environment variables based on your CPU model:
+To select the latency profile, set the following environment variables based on your APU type:
 
-For STX CPU models:
+For STX APUs:
 
 .. code-block::
 
@@ -82,7 +85,7 @@ For STX CPU models:
    set NUM_OF_DPU_RUNNERS=1
 
 
-For PHX/HPT CPU models:
+For PHX/HPT APUs:
 
 .. code-block::
 

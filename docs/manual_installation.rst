@@ -61,15 +61,15 @@ Add the following line to the script:
    set "RYZEN_AI_INSTALLER_PATH=%RYZEN_AI_INSTALLER_PATH%"
 
 
-Set the XLNX_VART_FIRMWARE environment variable based on your CPU model:
+Set the XLNX_VART_FIRMWARE environment variable based on your APU type:
 
-For STX CPU models:
+For STX APUs:
 
 .. code-block::
 
    set XLNX_VART_FIRMWARE=%RYZEN_AI_INSTALLATION_PATH%/voe-4.0-win_amd64/xclbins/strix/AMD_AIE2P_Nx4_Overlay.xclbin
 
-For PHX/HPT CPU models:
+For PHX/HPT APUls:
 
 .. code-block::
 
