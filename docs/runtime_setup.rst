@@ -38,8 +38,6 @@ For PHX/HPT:
    set NUM_OF_DPU_RUNNERS=1
 
 
-The :file:`*.xclbin` files are located in the ``voe-4.0-win_amd64\xclbins`` folder of the Ryzen AI Software installation folder.
-
 
 Latency Profile
 ===============
@@ -58,7 +56,7 @@ For STX: (default)
 
 .. code-block::
 
-   set XLNX_VART_FIRMWARE=%RYZEN_AI_INSTALLATION_PATH%/voe-4.0-win_amd64/xclbins/strix/AMD_AIE2P_Nx4_Overlay.xclbin
+   set XLNX_VART_FIRMWARE=%RYZEN_AI_INSTALLATION_PATH%/voe-4.0-win_amd64/xclbins/strix/AMD_AIE2P_4x4_Overlay.xclbin
    set XLNX_TARGET_NAME=AMD_AIE2P_4x4_Overlay
    set NUM_OF_DPU_RUNNERS=1
 
@@ -67,12 +65,10 @@ For PHX/HPT:
 
 .. code-block::
 
-   set XLNX_VART_FIRMWARE=%RYZEN_AI_INSTALLATION_PATH%/voe-4.0-win_amd64/xclbins/phoenix/1x4.xclbin
+   set XLNX_VART_FIRMWARE=%RYZEN_AI_INSTALLATION_PATH%/voe-4.0-win_amd64/xclbins/phoenix/4x4.xclbin
    set XLNX_TARGET_NAME=AMD_AIE2_4x4_Overlay
    set NUM_OF_DPU_RUNNERS=1
 
-
-The :file:`*.xclbin` file is located in the ``voe-4.0-win_amd64\xclbins`` folder of the Ryzen AI Software installation folder.
 
 .. _config-file:
 
@@ -80,7 +76,7 @@ The :file:`*.xclbin` file is located in the ``voe-4.0-win_amd64\xclbins`` folder
 Runtime Configuration File
 **************************
 
-The Vitis AI Execution Provider (VAI EP) requires a runtime configuration file. A default version of this runtime configuration file can be found in the ``voe-4.0-win_amd64`` folder of the Ryzen AI Software installation package under the name :file:`vaip_config.json`. 
+The Vitis AI Execution Provider (VAI EP) requires a runtime configuration file. A default version of this runtime configuration file can be found in the Ryzen AI Software installation tree: :file:`%RYZEN_AI_INSTALLATION_PATH%\voe-4.0-win_amd64\vaip_config.json`. 
 
 It is recommended to create a copy of the :file:`vaip_config.json` file in your project directory and point to this copy when initializing the inference session. Refer to the :doc:`modelrun` page for more details on how to set up an inference session with the Vitis AI Execution Provider.
 
