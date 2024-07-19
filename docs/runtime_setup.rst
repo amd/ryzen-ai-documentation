@@ -43,7 +43,7 @@ NPU Binary Selection
 
 NPU binary selection is a mandatory step before running an application from a new environment. Currently, Ryzen AI software provides two distinct binary profiles: a "light" version and a "max" version, each optimized for different performance characteristics:
 
-NPU Binary "Light" is designed to minimize NPU hardware resource usage, this binary has a smaller footprint on the NPU. This binary allows a greater number of applications to run on the NPU without any loss of performance for each application.
+**NPU Binary "Light"** is designed to minimize NPU hardware resource usage, this binary has a smaller footprint on the NPU. This binary allows a greater number of applications to run on the NPU without any loss of performance for each application.
 
 To select this binary, set the following environment variables based on your PC APU type:
 
@@ -63,7 +63,7 @@ For PHX/HPT APUs:
    set NUM_OF_DPU_RUNNERS=1
 
 
-NPU Binary "Max" maximizes NPU hardware resource usage, resulting in a larger footprint on the NPU. It is optimized for application requiring high throughput and low latency from a single inference session.
+**NPU Binary "Max"** maximizes NPU hardware resource usage, resulting in a larger footprint on the NPU. It is optimized for application requiring high throughput and low latency from a single inference session.
 
 To select this binary, set the following environment variables based on your PC APU type:
 
