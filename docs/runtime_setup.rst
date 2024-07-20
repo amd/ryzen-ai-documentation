@@ -86,7 +86,7 @@ For PHX/HPT APUs:
    set XLNX_TARGET_NAME=AMD_AIE2_4x4_Overlay
    set NUM_OF_DPU_RUNNERS=1
 
-Irrespective of the binary selected, the NPU can handle a maximum of eight simultaneous inference sessions. The runtime automatically schedules each inference session to maximize performance. However, it is important to note that the performance of individual inference sessions can be impacted by the increasing number of inference sessions running on the NPU, along with the NPU hardware (depending on APU types), and the applications running the inference sessions.
+Irrespective of the binary selected, up to eight simultaneous inference sessions can be run. The runtime automatically schedules each inference session to maximize its performance. However, it is important to note that the performance of individual inference sessions can be impacted by the increasing number of inference sessions running on the NPU, along with the NPU hardware (depending on APU types), and the applications running the inference sessions.
 
 
 
