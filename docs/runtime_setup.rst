@@ -41,7 +41,7 @@ To programmatically determine the type of the local APU, it is possible to enume
 NPU Binary Selection
 ********************
 
-NPU binary selection is a mandatory step before running an application from a new environment. Currently, Ryzen AI software provides two distinct binary profiles: a "light" version and a "max" version, each optimized for different performance characteristics:
+NPU binary selection is a mandatory step before running an application from a new environment. Currently, Ryzen AI software provides two distinct binaries: a "light" version and a "max" version:
 
 **NPU Binary "Light"** is designed to minimize NPU hardware resource usage, this binary has a smaller footprint on the NPU. 
 
@@ -86,7 +86,7 @@ For PHX/HPT APUs:
    set XLNX_TARGET_NAME=AMD_AIE2_4x4_Overlay
    set NUM_OF_DPU_RUNNERS=1
 
-Irrespective of the binary selected, up to eight simultaneous inference sessions can be run. The runtime automatically schedules each inference session to maximize its performance. However, it is important to note that the performance of individual inference sessions can be impacted by the increasing number of inference sessions running on the NPU, along with the NPU hardware (depending on APU types), and the applications running the inference sessions.
+Irrespective of the binary selected, up to eight simultaneous inference sessions can be run. The runtime automatically schedules each inference session to maximize its performance. However, it is important to note that the performance of individual inference sessions can be impacted by the increasing number of inference sessions running on the NPU, along with the NPU binary used, and the applications running the inference sessions.
 
 
 
