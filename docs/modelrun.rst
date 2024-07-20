@@ -68,7 +68,7 @@ Additionally, the following environment variables can be used control the Ryzen 
    * - XLNX_VART_FIRMWARE
      - Mandatory
      - None
-     - Set it to ``C:\path\to\1x4.xclbin`` to use the throughput profile of the NPU. 
+     - Set it to one of the NPU binaries. 
        For more details, refer to the :doc:`runtime_setup` page.
    * - XLNX_ENABLE_CACHE
      - Optional
