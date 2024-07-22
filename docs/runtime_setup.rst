@@ -41,11 +41,11 @@ To programmatically determine the type of the local APU, it is possible to enume
 NPU Binary Selection
 ********************
 
-NPU binary selection is a mandatory step before running an application from a new environment. Currently, Ryzen AI software provides two distinct binaries: a "light" version and a "max" version:
+NPU binary selection is a mandatory step before running an application from a new environment. Currently, Ryzen AI software provides two distinct configurations: 
 
-**NPU Binary "Light"** is designed to minimize NPU hardware resource usage, this binary has a smaller footprint on the NPU. 
+The first NPU configuration is designed to minimize NPU hardware resource usage, this configuration has a smaller footprint on the NPU. 
 
-To select this binary, set the following environment variables based on your PC APU type:
+To select this configuration, set the following environment variables based on your PC APU type:
 
 For STX APUs:
 
@@ -65,9 +65,11 @@ For PHX/HPT APUs:
    set NUM_OF_DPU_RUNNERS=1
 
 
-**NPU Binary "Max"** maximizes NPU hardware resource usage, resulting in a larger footprint on the NPU. It is optimized for application requiring high throughput and low latency from a single inference session.
+The second configuration maximizes NPU hardware resource usage, resulting in a larger footprint on the NPU. It is optimized for application requiring high throughput and low latency from a single inference session.
 
-To select this binary, set the following environment variables based on your PC APU type:
+This configuration should only be used for testing Early Access features and for benchmarking purposes. Windows Studio Effects should be disabled when using this profile. To disable Windows Studio Effects, open **Settings > Bluetooth & devices > Camera**, select your primary camera, and then disable all camera effects.
+
+To select this configuration, set the following environment variables based on your PC APU type:
 
 For STX APUs:
 
@@ -86,11 +88,11 @@ For PHX/HPT APUs:
    set XLNX_TARGET_NAME=AMD_AIE2_4x4_Overlay
    set NUM_OF_DPU_RUNNERS=1
 
-Irrespective of the binary selected, up to eight simultaneous inference sessions can be run. The runtime automatically schedules each inference session to maximize its performance. However, it is important to note that the performance of individual inference sessions can be impacted by the increasing number of inference sessions running on the NPU, along with the NPU binary used, and the applications running the inference sessions.
+Irrespective of the configuration selected, up to eight simultaneous inference sessions can be run. The runtime automatically schedules each inference session to maximize its performance. However, it is important to note that the performance of individual inference sessions can be impacted by the increasing number of inference sessions running on the NPU, along with the NPU configuration used, and the applications running the inference sessions.
 
 
 
-**IMPORTANT**: NPU binary "Max" should only be used for testing Early Access features and for benchmarking purposes. Windows Studio Effects should be disabled when using this profile. To disable Windows Studio Effects, open **Settings > Bluetooth & devices > Camera**, select your primary camera, and then disable all camera effects.
+
 
 
 .. _config-file:
