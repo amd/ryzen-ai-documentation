@@ -65,7 +65,7 @@ For PHX/HPT APUs:
    set NUM_OF_DPU_RUNNERS=1
 
 
-The second configuration maximizes NPU hardware resource usage, resulting in a larger footprint on the NPU. It is optimized for application requiring high throughput and low latency from a single inference session.
+The NPU second configuration maximizes NPU hardware resource usage, resulting in a larger footprint on the NPU. It is optimized for application requiring high throughput and low latency from a single inference session.
 
 **Note**: This configuration should only be used for testing Early Access features and for benchmarking purposes. Windows Studio Effects should be disabled when using this profile. To disable Windows Studio Effects, open **Settings > Bluetooth & devices > Camera**, select your primary camera, and then disable all camera effects.
 
