@@ -37,11 +37,11 @@ To programmatically determine the type of the local APU, it is possible to enume
      - STX 
 
 
-********************
-NPU Binary Selection
-********************
+***************************
+Selecting NPU Configuration 
+***************************
 
-NPU binary selection is a mandatory step before running an application from a new environment. Currently, Ryzen AI software provides two distinct configurations: 
+NPU configuration selection is a mandatory step before running an application from a new environment. Currently, Ryzen AI software provides two distinct configurations with two binary (.xclbin) files. 
 
 The first NPU configuration is designed to minimize NPU hardware resource usage, this configuration has a smaller footprint on the NPU. 
 
