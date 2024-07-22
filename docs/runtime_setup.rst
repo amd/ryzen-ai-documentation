@@ -67,7 +67,7 @@ For PHX/HPT APUs:
 
 The second configuration maximizes NPU hardware resource usage, resulting in a larger footprint on the NPU. It is optimized for application requiring high throughput and low latency from a single inference session.
 
-This configuration should only be used for testing Early Access features and for benchmarking purposes. Windows Studio Effects should be disabled when using this profile. To disable Windows Studio Effects, open **Settings > Bluetooth & devices > Camera**, select your primary camera, and then disable all camera effects.
+**Note**: This configuration should only be used for testing Early Access features and for benchmarking purposes. Windows Studio Effects should be disabled when using this profile. To disable Windows Studio Effects, open **Settings > Bluetooth & devices > Camera**, select your primary camera, and then disable all camera effects.
 
 To select this configuration, set the following environment variables based on your PC APU type:
 
