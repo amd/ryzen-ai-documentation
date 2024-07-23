@@ -99,29 +99,15 @@ The Ryzen AI Software packages are now installed in the conda environment create
 Test the Installation
 *********************
 
-The Ryzen AI Software installation folder contains test to verify that the software is correctly installed. This installation test can be found in the ``quicktest`` folder.
+The Ryzen AI Software installation folder contains test to verify that the software is correctly installed. This installation test can be found in the ``quicktest`` subfolder.
 
-- Open an Conda command prompt with administrator access. Administrator access is needed to create temporary directories when running the tests.
+- Open a Conda command prompt (search for "Anaconda Prompt" in the Windows start menu)
 
-- Activate the conda environment:
+- Activate the Conda environment created by the Ryzen AI installer:
 
 .. code-block::
 
    conda activate <env_name>
-
-- Set the XLNX_VART_FIRMWARE environment variable based on your APU type:
-
-For STX APUs:
-
-.. code-block::
-
-   set XLNX_VART_FIRMWARE=%RYZEN_AI_INSTALLATION_PATH%/voe-4.0-win_amd64/xclbins/strix/AMD_AIE2P_Nx4_Overlay.xclbin
-
-For PHX/HPT APUs:
-
-.. code-block::
-
-   set XLNX_VART_FIRMWARE=%RYZEN_AI_INSTALLATION_PATH%/voe-4.0-win_amd64/xclbins/phoenix/1x4.xclbin
 
 - Run the test: 
 
@@ -131,7 +117,7 @@ For PHX/HPT APUs:
    python quicktest.py
 
 
-- The test runs a simple CNN model. On a successful run, you will see an output similar to the one shown below. This indicates that the model is running on NPU and the installation of the Ryzen AI Software was successful:
+- The quicktest.py script sets up the environment and runs a simple CNN model. On a successful run, you will see an output similar to the one shown below. This indicates that the model is running on the NPU and that the installation of the Ryzen AI Software was successful:
 
 .. code-block::
   
