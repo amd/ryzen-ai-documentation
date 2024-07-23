@@ -68,7 +68,7 @@ Additionally, the following environment variables can be used control the Ryzen 
    * - XLNX_VART_FIRMWARE
      - Mandatory
      - None
-     - Set it to one of the NPU binaries. 
+     - Set it to one of the NPU configuration binaries. 
        For more details, refer to the :doc:`runtime_setup` page.
    * - XLNX_ENABLE_CACHE
      - Optional
