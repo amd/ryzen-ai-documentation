@@ -1,3 +1,6 @@
+
+.. include:: icons.txt
+
 #############
 Runtime Setup
 #############
@@ -38,21 +41,20 @@ To programmatically determine the type of the local APU, it is possible to enume
 
 
 *******************************
-Selecting the NPU Configuration 
+NPU Configurations 
 *******************************
 
-NPU configuration selection is a mandatory step before running an application from a new environment. Configurations are selected by loading the corresponding NPU binary file (.xclbin). Currently, the Ryzen AI Software provides two configurations: the standard configuration and the benchmark configuration.
+The Ryzen AI Software currently supports two NPU configurations: the standard configuration and the benchmark configuration.
 
-Up to eight simultaneous inference sessions can be run, irrespective of the configuration selected. The runtime automatically schedules each inference session to maximize its performance. 
+|warning| **IMPORTANT**: Selecting a NPU configuration is a mandatory step before running an application from a new environment. A configurations is selected by loading the corresponding NPU binary file (.xclbin). 
 
-The performance of individual inference sessions is impacted by multiple factors, including the APU type, the NPU configuration used, the number of other inference sessions running on the NPU, and the applications running the inference sessions.
 
 Standard Configuration
 ======================
 
 The standard configuration is designed to minimize NPU hardware resource usage, featuring a smaller footprint on the NPU. 
 
-**Note**: This is the recommended configuration and it should be used for most situations and by most applications.
+|memo| **NOTE**: This is the recommended configuration and it should be used for most situations and by most applications.
 
 To select this configuration, set the following environment variables based on your PC APU type:
 
@@ -79,7 +81,7 @@ Benchmark Configuration
 
 The benchmark configuration maximizes NPU hardware resource usage, resulting in a larger footprint on the NPU. It is optimized for applications requiring high throughput and low latency from a single inference session.
 
-**Note**: This configuration should only be used for testing Early Access features and for benchmarking purposes. Windows Studio Effects should be disabled when using this profile. To disable Windows Studio Effects, open Settings > Bluetooth & devices > Camera, select your primary camera, and then disable all camera effects.
+|memo| **NOTE**: This configuration should only be used for testing Early Access features and for benchmarking purposes. Windows Studio Effects should be disabled when using this profile. To disable Windows Studio Effects, open Settings > Bluetooth & devices > Camera, select your primary camera, and then disable all camera effects.
 
 To select this configuration, set the following environment variables based on your PC APU type:
 

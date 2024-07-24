@@ -147,6 +147,16 @@ C++ API Example
 
 |
 
+*********************
+Simultaneous Sessions
+*********************
+
+Up to eight simultaneous inference sessions can be run on the NPU. The runtime automatically schedules each inference session on available slots to maximize performance of the application. 
+
+The performance of individual inference sessions is impacted by multiple factors, including the APU type, the NPU configuration used, the number of other inference sessions running on the NPU, and the applications running the inference sessions.
+
+|
+
 ****************
 Model Encryption
 ****************
