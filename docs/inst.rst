@@ -1,3 +1,5 @@
+.. include:: icons.txt
+
 #########################
 Installation Instructions
 #########################
@@ -40,7 +42,7 @@ To enable the development and deployment of applications leveraging the NPU, you
 
 |
 
-**IMPORTANT:** 
+|warning| **IMPORTANT**: 
 
 - Visual Studio 2022 Community: ensure that "Desktop Development with C++" is installed
 
@@ -69,7 +71,7 @@ Install NPU Drivers
 
 |
 
-**Note**: On PHX hardware with a Windows OS build < 22631.3527, a WDF driver is installed instead. This driver can be inspected by opening ``Device Manager`` -> ``System Devices`` -> ``AMD IPU Device``
+|memo| **NOTE**: On PHX hardware with a Windows OS build < 22631.3527, a WDF driver is installed instead. This driver can be inspected by opening ``Device Manager`` -> ``System Devices`` -> ``AMD IPU Device``
 
 |
 
