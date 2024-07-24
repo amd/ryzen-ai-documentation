@@ -41,7 +41,7 @@ The Vitis AI Execution Provider supports the following options:
      - The cache directory.
    * - cacheKey
      - Optional 
-     - {onnx_model_md5}
+     - {md5 sum of model}
      - Compiled model directory generated inside the cache directory. Use string to specify the desired name of the compiler model directory. 
        For example: ``'cacheKey': 'resnet50_cache'``.
 
@@ -117,18 +117,18 @@ C++ API Example
    // include user header files
    // ...
 
-   auto onnx_model_path = "resnet50_pt.onnx"
+   auto model_name = "resnet50_pt.onnx"
    Ort::Env env(ORT_LOGGING_LEVEL_WARNING, "resnet50_pt");
-   auto session_options = Ort::SessionOptions();
 
-   auto options = std::unorderd_map<std::string,std::string>({});
+   auto options = std::unordered_map<std::string,std::string>({});
    options["config_file"] = "/path/to/vaip_config.json";
    options["cacheDir"] = "/path/to/cache/directory";
-   options["cacheKey"] = "abcdefg"; // Replace abcdefg with your model name, eg. onnx_model_md5
+   options["cacheKey"] = "resnet50_cache";
 
-   // Create an inference session using the Vitis AI execution provider
+   auto session_options = Ort::SessionOptions();
    session_options.AppendExecutionProvider("VitisAI", options);
-
+   
+   // Create an inference session using the Vitis AI execution provider
    auto session = Ort::Experimental::Session(env, model_name, session_options);
 
    auto input_shapes = session.GetInputShapes();
