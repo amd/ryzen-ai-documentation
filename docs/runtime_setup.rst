@@ -5,7 +5,7 @@
 Runtime Setup
 #############
 
-.. _NPU-selection:
+.. _apu-types:
 
 *****************
 APU Types
@@ -39,6 +39,8 @@ To programmatically determine the type of the local APU, it is possible to enume
      - 0x11
      - STX 
 
+
+.. _npu-configurations:
 
 *******************************
 NPU Configurations 

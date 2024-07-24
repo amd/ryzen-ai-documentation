@@ -212,7 +212,7 @@ Deploy the Model on the Ryzen AI NPU
 
 To successfully run the model on the NPU, run the following setup steps:
 
-- Make sure the environment variable XLNX_VART_FIRMWARE is set to the correct XCLBIN from the VOE package. Refer to :doc:`installation instructions <inst>` on how to do this correctly.
+- Make sure to set the XLNX_VART_FIRMWARE environment variable based to your APU type. Refer to :ref:`runtime setup instructions <npu-configurations>` on how to do this.
 
 - Ensure ``RYZEN_AI_INSTALLATION_PATH`` points to ``path\to\ryzen-ai-sw-<version>\``. If you installed Ryzen-AI software using the MSI installer, this variable should already be set. Ensure that the Ryzen-AI software package has not been moved post installation, in which case ``RYZEN_AI_INSTALLATION_PATH`` will have to be set again. 
 
@@ -372,7 +372,7 @@ Deploy the Model on the NPU
 
 To successfully run the model on the NPU:
 
-- Make sure the environment variable XLNX_VART_FIRMWARE is set to the correct XCLBIN from the VOE package. Refer to :doc:`installation instructions <inst>` on how to do this correctly.
+- Make sure to set the XLNX_VART_FIRMWARE environment variable based to your APU type. Refer to :ref:`runtime setup instructions <npu-configurations>` on how to do this.
 
 - Ensure ``RYZEN_AI_INSTALLATION_PATH`` points to ``path\to\ryzen-ai-sw-<version>\``. If you installed Ryzen-AI software using the MSI installer, this variable should already be set. Ensure that the Ryzen-AI software package has not been moved post installation, in which case ``RYZEN_AI_INSTALLATION_PATH`` will have to be set again. 
 
