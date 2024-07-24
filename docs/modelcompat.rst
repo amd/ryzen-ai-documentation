@@ -1,3 +1,5 @@
+.. include:: icons.txt
+
 ###################
 Model Compatibility
 ###################
@@ -6,7 +8,9 @@ The Ryzen AI Software supports deploying quantized model saved in the ONNX forma
 
 Currently, the NPU supports a subset of the ONNX operators. At runtime, the ONNX graph is automatically partitioned into multiple subgraphs by the Vitis AI ONNX Execution Provider (VAI EP). The subgraph(s) containing operators supported by the NPU are executed on the NPU. The remaining subgraph(s) are executed on the CPU. This graph partitioning and deployment technique across CPU and NPU is fully automated by the VAI EP and is totally transparent to the end-user.
 
-Models with opset 17 are recommended. The list of the ONNX operators currently supported by the NPU is as follows:
+|memo| **NOTE**: Models with opset 17 are recommended. 
+
+The list of the ONNX operators currently supported by the NPU is as follows:
 
 - Abs
 - Add
