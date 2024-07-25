@@ -108,11 +108,43 @@ Install the Vitis AI Execution Provider
 
 .. code-block:: 
 
-   cd %RYZEN_AI_INSTALLATION_PATH%/voe-4.0-win_amd64
-   pip install voe-0.1.0-cp39-cp39-win_amd64.whl
-   pip install onnxruntime_vitisai-1.15.1-cp39-cp39-win_amd64.whl
-   python installer.py
+     cd %RYZEN_AI_INSTALLATION_PATH%/voe-4.0-win_amd64
+     pip install voe-0.1.0-cp39-cp39-win_amd64.whl
+     pip install onnxruntime_vitisai-1.15.1-cp39-cp39-win_amd64.whl
+     python installer.py
 
+*********************************
+Optional: Install the AI Analyzer
+*********************************
+
+.. code-block::
+
+     cd %RYZEN_AI_INSTALLATION_PATH%/voe-4.0-win_amd64
+     pip install aianalyzer-1.2.0.dev202407022336+g2f0e1b-py3-none-any.whl
+
+*************
+Runtime Setup
+*************
+
+Set the following environment variable in the conda environment created above:
+
+For STX: (default)
+
+.. code-block::
+
+   set XLNX_VART_FIRMWARE=%RYZEN_AI_INSTALLATION_PATH%\voe-4.0-win_amd64\xclbins\strix\AMD_AIE2P_Nx4_Overlay.xclbin
+   set NUM_OF_DPU_RUNNERS=1
+
+
+For PHX/HPT:
+
+.. code-block::
+
+   set XLNX_VART_FIRMWARE=%RYZEN_AI_INSTALLATION_PATH%\voe-4.0-win_amd64\xclbins\phoenix\1x4.xclbin
+   set NUM_OF_DPU_RUNNERS=1
+
+
+The ``*.xclbin`` files are located in the ``voe-4.0-win_amd64\xclbins`` folder of the Ryzen AI Software installation package. For detailed information and other available options refer to the :doc:`runtime_setup` page.
 
 *********************
 Test the Installation
