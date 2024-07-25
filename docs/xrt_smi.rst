@@ -86,7 +86,7 @@ Examining the AI PC and the NPU
   .. image:: images/telemetry_phx.png
 
 
-**Note:** To view aie-partition and telemetry reports, the model must be run concurrently on the NPU. For models running for a shorter timespan, you can run the model or xrt-smi commands in a loop to see the output of these commands.
+**Note:** To view ``aie-partition`` and ``telemetry`` reports, the model must be run concurrently on the NPU. For models running for a shorter timespan, you can run the model or xrt-smi commands in a loop to see the output of these commands.
 
 Executing a Sanity Check on the NPU
 -----------------------------------
