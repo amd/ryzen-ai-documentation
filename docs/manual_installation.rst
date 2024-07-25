@@ -118,6 +118,14 @@ Install the Vitis AI Execution Provider
      pip install onnxruntime_vitisai-1.15.1-cp39-cp39-win_amd64.whl
      python installer.py
 
+*********************************
+Optional: Install the AI Analyzer
+*********************************
+
+.. code-block::
+
+     cd %RYZEN_AI_INSTALLATION_PATH%/voe-4.0-win_amd64
+     pip install aianalyzer-1.2.0.dev202407022336+g2f0e1b-py3-none-any.whl
 
 *************
 Runtime Setup
