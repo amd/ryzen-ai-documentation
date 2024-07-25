@@ -68,7 +68,7 @@ Additionally, the following environment variables can be used control the Ryzen 
    * - XLNX_VART_FIRMWARE
      - Mandatory
      - None
-     - Set it to ``C:\path\to\1x4.xclbin`` to use the throughput profile of the NPU. 
+     - Set it to one of the NPU configuration binaries. 
        For more details, refer to the :doc:`runtime_setup` page.
    * - XLNX_ENABLE_CACHE
      - Optional
@@ -144,6 +144,16 @@ C++ API Example
                                       session.GetOutputNames());
    // postprocess output data
    // ...
+
+|
+
+*********************
+Simultaneous Sessions
+*********************
+
+Up to eight simultaneous inference sessions can be run on the NPU. The runtime automatically schedules each inference session on available slots to maximize performance of the application. 
+
+The performance of individual inference sessions is impacted by multiple factors, including the APU type, the NPU configuration used, the number of other inference sessions running on the NPU, and the applications running the inference sessions.
 
 |
 

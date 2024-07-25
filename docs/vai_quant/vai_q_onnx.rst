@@ -47,7 +47,7 @@ For PyTorch models, it is recommended to use the TorchScript-based onnx exporter
 Tips:
 
 - Before exporting, please perform model.eval().
-- Models with opset 13 are recommended.
+- Models with opset 17 are recommended.
 - For CNN's on NPU platform, dynamic input shapes are currently not supported and only a batch size of 1 is allowed. Please ensure that the shape of input is a fixed value, and the batch dimension is set to 1.
 
 Example code:

@@ -2,7 +2,10 @@
 LLM Flow
 ########
 
-The latest version of Ryzen AI Software includes early access support for LLMs. Like CNNs, LLMs require quantization before deployment on the NPU. However, the development flow for LLMs features some differences due to their distinct nature.
+.. note::
+   This flow is currently in the Early Access stage. Early Access features are features which are still undergoing some optimization and fine-tuning. These features are not in their final form and may change as we continue to work in order to mature them into full-fledged features.
+
+The Ryzen AI Software includes support for LLMs. Like CNNs, LLMs require quantization before deployment on the NPU. However, the development flow for LLMs features some differences due to their distinct nature.
 
 **Quantization:** For LLMs, it's often advantageous to use a combination of SmoothQuant or AWQ (applied to the pre-trained PyTorch model) and/or dynamic quantization (leveraging ONNXRuntime ORTQuantizer) techniques to maintain the highest possible accuracy. Since only specific operators are offloaded to the NPU, it's also recommended to conduct operator-specific quantization to selectively quantize necessary operators (typically GEMM/MATMUL).
 

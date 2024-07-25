@@ -10,20 +10,15 @@ This page explains how to install each component manually.
 
    Make sure to follow the installation steps in the order explained below.
 
-********************
-Download the Package
-********************
+******************************
+Perform a Default Installation
+******************************
 
-Download the :download:`ryzenai-1.2.0.msi <https://xcoartifactory:443/artifactory/aie-ipu-prod-local/com/xilinx/ryzenai-installer/main/118/ryzenai-1.2.0.msi>`.
-Ryzen AI Software installation package and double-click to run it.
+Download the :download:`ryzenai-1.2.0.msi <https://xcoartifactory:443/artifactory/aie-ipu-prod-local/com/xilinx/ryzenai-installer/main/118/ryzenai-1.2.0.msi>` installer.
 
-This should copy all the necessary files to default location: ``C:Program Files\RyzenAI\1.2.0``
+Install the RyzenAI Software using the default settings. 
 
-Check the Ryzen AI Software installation using the environmental variable ``RYZEN_AI_INSTALLATION_PATH``
-
-.. code-block::
-
-   echo %RYZEN_AI_INSTALLATION_PATH%
+This will copy in the ``C:Program Files\RyzenAI\1.2.0`` folder all the files required for a manual installation.
 
 
 **************************
@@ -36,49 +31,49 @@ Start a conda prompt. In the conda prompt, create and activate an environment fo
 
 .. code-block:: 
 
-  conda create --name <name> python=3.9
+  conda create --name <name> python=3.10
   conda activate <name> 
 
 
-****************************
-Setup Environmental Variable
-****************************
+*************************
+Set Environment Variables
+*************************
 
-You can configure the environmental variables to be automatically set upon activation in a new or existing conda environment.
+Configure the environment variables to be automatically set upon activation of the conda environment.
 
 First, create a directory for the activation scripts:
 
 .. code-block:: shell
 
-mkdir %CONDA_PREFIX\etc\conda\activate.d
+   mkdir %CONDA_PREFIX%\etc\conda\activate.d
 
 Create script to load ``RYZEN_AI_INSTALLER_PATH`` environment. This script will be executed every time the conda environment is activated.
 
 .. code-block:: shell
 
-notepad %CONDA_PREFIX\etc\conda\activate.d\load_ryzenai_installer_path.bat
+   notepad %CONDA_PREFIX\etc\conda\activate.d\load_ryzenai_installer_path.bat
 
 
 Add the following line to the script:
 
 .. code-block:: shell
 
-set "RYZEN_AI_INSTALLER_PATH=%RYZEN_AI_INSTALLER_PATH%"
+   set "RYZEN_AI_INSTALLER_PATH=%RYZEN_AI_INSTALLER_PATH%"
 
 
-Depending on your hardware, set the ``XLNX_VART_FIRMWARE`` environment variable.
+Set the XLNX_VART_FIRMWARE environment variable based on your APU type:
 
-For STX: (default)
+For STX APUs:
 
-.. code-block:: shell
+.. code-block::
 
-   set "XLNX_VART_FIRMWARE=%RYZEN_AI_INSTALLATION_PATH%\voe-4.0-win_amd64\xclbins\strix\AMD_AIE2P_Nx4_Overlay.xclbin"
+   set XLNX_VART_FIRMWARE=%RYZEN_AI_INSTALLATION_PATH%/voe-4.0-win_amd64/xclbins/strix/AMD_AIE2P_Nx4_Overlay.xclbin
 
-For PHX/HPT:
+For PHX/HPT APUls:
 
-.. code-block:: shell
+.. code-block::
 
-   set "XLNX_VART_FIRMWARE=%RYZEN_AI_INSTALLATION_PATH%\voe-4.0-win_amd64\xclbins\phoenix\1x4.xclbin"
+   set XLNX_VART_FIRMWARE=%RYZEN_AI_INSTALLATION_PATH%/voe-4.0-win_amd64/xclbins/phoenix/1x4.xclbin
 
 .. _install-onnx-quantizer:
 
@@ -151,30 +146,18 @@ For PHX/HPT:
 
 The ``*.xclbin`` files are located in the ``voe-4.0-win_amd64\xclbins`` folder of the Ryzen AI Software installation package. For detailed information and other available options refer to the :doc:`runtime_setup` page.
 
-
 *********************
 Test the Installation
 *********************
 
-The RyzenAI software installation folder contains a test to verify that the Ryzen AI software is correctly installed. This installation test can be found in the ``quicktest`` folder.
+The Ryzen AI Software installation folder contains a test to verify that the Ryzen AI software is correctly installed. Instructions on how to run this test can be found :ref:`here <quicktest>`.
 
-- Run the test: 
-
-.. code-block::
-
-   cd %RYZEN_AI_INSTALLATION_PATH%\quicktest
-   python quicktest.py
-
-
-- The test runs a simple CNN model. On a successful run, you will see an output similar to the one shown below. This indicates that the model is running on NPU and the installation of the Ryzen AI Software was successful:
-
-.. code-block::
-  
-   [Vitis AI EP] No. of Operators :   CPU     2    IPU   398  99.50%
-   [Vitis AI EP] No. of Subgraphs :   CPU     1    IPU     1 Actually running on IPU     1
-   ...
-   Test Passed
-   ...
 
 ..
   ------------
+
+  #####################################
+  License
+  #####################################
+
+ Ryzen AI is licensed under `MIT License <https://github.com/amd/ryzen-ai-documentation/blob/main/License>`_ . Refer to the `LICENSE File <https://github.com/amd/ryzen-ai-documentation/blob/main/License>`_ for the full license text and copyright notice.
