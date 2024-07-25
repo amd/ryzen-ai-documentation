@@ -66,7 +66,6 @@ For STX APUs:
 
    set XLNX_VART_FIRMWARE=%RYZEN_AI_INSTALLATION_PATH%/voe-4.0-win_amd64/xclbins/strix/AMD_AIE2P_Nx4_Overlay.xclbin
    set XLNX_TARGET_NAME=AMD_AIE2P_Nx4_Overlay
-   set NUM_OF_DPU_RUNNERS=1
 
 
 For PHX/HPT APUs:
@@ -75,7 +74,6 @@ For PHX/HPT APUs:
 
    set XLNX_VART_FIRMWARE=%RYZEN_AI_INSTALLATION_PATH%/voe-4.0-win_amd64/xclbins/phoenix/1x4.xclbin
    set XLNX_TARGET_NAME=AMD_AIE2_Nx4_Overlay
-   set NUM_OF_DPU_RUNNERS=1
 
 
 Benchmark Configuration
@@ -93,7 +91,6 @@ For STX APUs:
 
    set XLNX_VART_FIRMWARE=%RYZEN_AI_INSTALLATION_PATH%/voe-4.0-win_amd64/xclbins/strix/AMD_AIE2P_4x4_Overlay.xclbin
    set XLNX_TARGET_NAME=AMD_AIE2P_4x4_Overlay
-   set NUM_OF_DPU_RUNNERS=1
 
 
 For PHX/HPT APUs:
@@ -102,7 +99,6 @@ For PHX/HPT APUs:
 
    set XLNX_VART_FIRMWARE=%RYZEN_AI_INSTALLATION_PATH%/voe-4.0-win_amd64/xclbins/phoenix/4x4.xclbin
    set XLNX_TARGET_NAME=AMD_AIE2_4x4_Overlay
-   set NUM_OF_DPU_RUNNERS=1
 
 
 
