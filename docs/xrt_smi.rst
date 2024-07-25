@@ -86,6 +86,8 @@ Examining the AI PC and the NPU
   .. image:: images/telemetry_phx.png
 
 
+**Note:** To view ``aie-partition`` and ``telemetry`` report model has to be run concurrently on NPU. 
+
 Executing a Sanity Check on the NPU
 -----------------------------------
 
