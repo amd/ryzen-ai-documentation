@@ -7,7 +7,7 @@ NPU Management Interface
    as we continue to work in order to mature them into full-fledged features.
 
 
-The ``xrt-smi`` utility is a command-line interface to monitor and manage the NPU.  It is an OS agnostic tool which supports devices from Edge to Cloud/DC and now NPU integrated AMD CPUs. 
+The ``xrt-smi`` utility is a command-line interface to monitor and manage the NPU integrated AMD CPUs. 
 
 It is installed in ``C:\Windows\System32\AMD`` and it can be directly invoked from within the conda environment created by the Ryzen AI Software installer.
 
@@ -25,7 +25,7 @@ Both examine and validate support an additional option --format which takes JSON
 Examining the AI PC and the NPU
 -------------------------------
 
-- To provide OS/system information of the AI PC and informs about the presence of the NPU:
+- To provide OS/system information of the AI PC and confirm the presence of the AMD NPU:
 
   .. code-block:: shell
 
@@ -51,7 +51,7 @@ Examining the AI PC and the NPU
 
   .. image:: images/report_platform.png
 
-- To show details about the AIE/NPU partition, column occupancy on the NPU, allowing you to determine if more models can run in parallel:
+- To show details about the NPU partition and column occupancy on the NPU:
 
   .. code-block:: shell
 
@@ -61,7 +61,7 @@ Examining the AI PC and the NPU
 
   .. image:: images/aie_partitions.png
 
-- To show details about the AIE/NPU partition in another view of columns to HW context for better understanding:
+- To show details about the columns to NPU HW context binding:
 
   .. code-block:: shell
 
@@ -71,27 +71,27 @@ Examining the AI PC and the NPU
 
   .. image:: images/aie_partitions_verbose.png
 
-- To show details about the opcode trace (stx) or stream buffer tokens (phx):
+- To show details about the ctrlcode opcode trace (on Strix NPU) or stream buffer tokens (on Phonix NPU):
 
   .. code-block:: shell
 
      xrt-smi examine -r telemetry
   
-  *Sample Command Line Output on Strix (STX):*
+  *Sample Command Line Output on Strix NPU:*
 
   .. image:: images/telemetry_stx.png
 
-  *Sample Command Line Output on Phoenix (PHX):*
+  *Sample Command Line Output on Phoenix NPU:*
 
   .. image:: images/telemetry_phx.png
 
 
-**Note:** To view ``aie-partition`` and ``telemetry`` report model has to be run concurrently on NPU. 
+**Note:** To view aie-partition and telemetry reports, the model must be run concurrently on the NPU. For models running for a shorter timespan, you can run the model or xrt-smi commands in a loop to see the output of these commands.
 
 Executing a Sanity Check on the NPU
 -----------------------------------
 
-- To run a built-in test on the NPU to ensure it is in a deployable state. It runs all test in the suite for device validation, includes verify, df-bw, tct  and gemm tests
+- To validate AMD NPU, run a set of built-in sanity tests which includes verify, df-bw, tct and gemm:
 
   .. code-block:: shell
 
