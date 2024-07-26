@@ -72,6 +72,7 @@ Install NPU Drivers
 |
 
 |memo| **NOTE**: From RyzenAI Software 1.2 GA release only the MCDM driver is supported. For older Windows OS builds (< 22631.3527) the legacy WDF driver will be installed, supported by older RyzenAI Software (1.2-EA release or older).
+
 |
 
 
