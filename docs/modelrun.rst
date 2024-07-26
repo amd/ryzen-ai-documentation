@@ -117,6 +117,7 @@ C++ API Example
     std::string xclbin_path = "path/to/xclbin";
     std::string model_path  = "path/to/model.onnx";
     std::string config_path = "path/to/config.json";
+    auto model_name = strconverter.from_bytes(model_path);
     
     _putenv_s("XLNX_VART_FIRMWARE", xclbin_path.c_str());
     
@@ -130,7 +131,7 @@ C++ API Example
         {"cacheKey",    "cacheName"}           // Optional
     };
     session_options.AppendExecutionProvider_VitisAI(options);
-    auto session = Ort::Session(env, model_name.c_str(), session_options);
+    auto session = Ort::Session(env, model_name.data(), session_options);
     
     // get input/output names from model
     size_t                   input_count;
