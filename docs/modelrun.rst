@@ -113,7 +113,8 @@ C++ API Example
 .. code-block:: cpp
 
     #include <onnxruntime_cxx_api.h>
-    ...
+    // include user header files
+    // ...
     std::string xclbin_path = "path/to/xclbin";
     std::string model_path  = "path/to/model.onnx";
     std::string config_path = "path/to/config.json";
@@ -132,7 +133,11 @@ C++ API Example
     };
     session_options.AppendExecutionProvider_VitisAI(options);
     auto session = Ort::Session(env, model_name.data(), session_options);
-    
+
+    // preprocess input data
+    // ...
+
+
     // get input/output names from model
     size_t                   input_count;
     size_t                   output_count;
@@ -150,6 +155,8 @@ C++ API Example
             input_names.data(), input_tensors.data(), input_count, 
             output_names.data(), output_count);
  
+    // postprocess output data
+    // ...
 
 |
 
