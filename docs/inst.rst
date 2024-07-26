@@ -71,8 +71,7 @@ Install NPU Drivers
 
 |
 
-|memo| **NOTE**: On PHX hardware with a Windows OS build < 22631.3527, a WDF driver is installed instead. This driver can be inspected by opening ``Device Manager`` -> ``System Devices`` -> ``AMD IPU Device``
-
+|memo| **NOTE**: From RyzenAI Software 1.2 GA release only the MCDM driver is supported. For older Windows OS builds (< 22631.3527) the legacy WDF driver will be installed, supported by older RyzenAI Software (1.2-EA release or older).
 |
 
 
