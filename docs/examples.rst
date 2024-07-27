@@ -27,7 +27,7 @@ Getting Started Tutorial (iGPU)
 Other examples, demos, and tutorials
 ************************************
 
-Refer to `RyzenAI-SW repo <https://github.com/amd/RyzenAI-SW/tree/main/>`_
+- Refer to `RyzenAI-SW repo <https://github.com/amd/RyzenAI-SW/tree/main/>`_
 
 
 
