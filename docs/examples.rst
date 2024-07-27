@@ -23,7 +23,11 @@ Getting Started Tutorial (iGPU)
 - `ResNet50 on iGPU <https://github.com/amd/RyzenAI-SW/tree/main/iGPU/getting_started>`_
 
 
-For all other examples, demos and tutorials refer to `RyzenAI-SW repo <https://github.com/amd/RyzenAI-SW/tree/main/>`_
+************************************
+Other examples, demos, and tutorials
+************************************
+
+Refer to `RyzenAI-SW repo <https://github.com/amd/RyzenAI-SW/tree/main/>`_
 
 
 
