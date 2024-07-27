@@ -4,9 +4,12 @@ Examples, Demos, Tutorials
 
 This page introduces various demos, examples, and tutorials currently available with the Ryzen™ AI Software. 
 
-******************************
-Getting Started Tutorial (NPU)
-******************************
+*************************
+Getting Started Tutorials
+*************************
+
+NPU
+~~~
 
 - The :doc:`Getting Started Tutorial <getstartex>` deploys a custom ResNet model demonstrating: 
 
@@ -16,9 +19,8 @@ Getting Started Tutorial (NPU)
 
 - `Hello World Jupyter Notebook Tutorial <https://github.com/amd/RyzenAI-SW/tree/main/tutorial/hello_world>`_
 
-*******************************
-Getting Started Tutorial (iGPU)
-*******************************
+iGPU
+~~~~
 
 - `ResNet50 on iGPU <https://github.com/amd/RyzenAI-SW/tree/main/iGPU/getting_started>`_
 
