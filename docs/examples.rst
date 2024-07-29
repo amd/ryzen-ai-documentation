@@ -1,6 +1,6 @@
-##########################
-Examples, Demos, Tutorials 
-##########################
+##############################
+Examples, Demos, and Tutorials 
+##############################
 
 This page introduces various demos, examples, and tutorials currently available with the Ryzen™ AI Software. 
 
