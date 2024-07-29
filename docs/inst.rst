@@ -62,11 +62,7 @@ Install NPU Drivers
   - Extract the ``RYZEN AI RELEASE 1.2 <Tag>.zip`` zip file.
   - Open a terminal in administrator mode and execute the ``.\npu_sw_installer.exe`` exe file.
 
-- Ensure that the NPU MCDM driver is correctly installed by opening ``Device Manager`` -> ``Neural processors`` -> ``NPU Compute Accelerator Device`` as shown in the following image.
-
-.. image:: images/npu_driver_1.2.png
-   :align: center
-   :width: 400 px
+- Ensure that NPU MCDM driver is correctly installed by opening ``Device Manager`` -> ``Neural processors`` -> ``NPU Compute Accelerator Device``.
 
 
 |
