@@ -72,6 +72,7 @@ Install NPU Drivers
 |
 
 |memo| **NOTE**: The RyzenAI Software 1.2 GA release includes Windows MCDM drivers only. WDF drivers can be obtained through previous versions of the RyzenAI Software (1.2-EA release or older). 
+
 |
 
 
