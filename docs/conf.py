@@ -39,6 +39,11 @@ html_last_updated_fmt = 'July 29, 2024'
 
 # -- General configuration ---------------------------------------------------
 
+html_baseurl = os.environ.get("READTHEDOCS_CANONICAL_URL", "ryzenai.docs.amd.com")
+html_context = {}
+if os.environ.get("READTHEDOCS", "") == "True":
+    html_context["READTHEDOCS"] = True
+
 # If your documentation needs a minimal Sphinx version, state it here.
 #
 # needs_sphinx = '1.0'
