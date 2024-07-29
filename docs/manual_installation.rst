@@ -14,7 +14,7 @@ This page explains how to install each component manually.
 Perform a Default Installation
 ******************************
 
-Download the :download:`ryzenai-1.2.0.msi <https://xcoartifactory:443/artifactory/aie-ipu-prod-local/com/xilinx/ryzenai-installer/main/118/ryzenai-1.2.0.msi>` installer.
+Download the :download:`ryzenai-1.2.0.msi <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ryzen-ai-1.2.0-20240726.msi>` installer.
 
 Install the RyzenAI Software using the default settings. 
 
