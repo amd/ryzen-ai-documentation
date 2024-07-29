@@ -54,12 +54,11 @@ To enable the development and deployment of applications leveraging the NPU, you
 Install NPU Drivers
 *******************
 
-- Download the NPU driver installation package :download:`NPU Driver <http://xcoartifactory/ui/native/aie-ipu-prod-local/com/xilinx/ryzenai-installer/npu-driver/rai-1.2-ea1/ipu-driver-1_2.zip>` 
+- Download the NPU driver installation package :download:`NPU Driver <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=NPU_RAI1.2_20240729.zip>`
 
 - Install the NPU drivers by following these steps:
 
-  - Extract the downloaded ``ipu-driver-1_2.zip`` zip file.
-  - Extract the ``RYZEN AI RELEASE 1.2 <Tag>.zip`` zip file.
+  - Extract the downloaded ``NPU_RAI1.2.zip`` zip file.
   - Open a terminal in administrator mode and execute the ``.\npu_sw_installer.exe`` exe file.
 
 - Ensure that NPU MCDM driver is correctly installed by opening ``Device Manager`` -> ``Neural processors`` -> ``NPU Compute Accelerator Device``.
