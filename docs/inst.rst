@@ -61,12 +61,11 @@ Install NPU Drivers
   - Extract the downloaded ``NPU_RAI1.2.zip`` zip file.
   - Open a terminal in administrator mode and execute the ``.\npu_sw_installer.exe`` exe file.
 
-- Ensure that NPU MCDM driver is correctly installed by opening ``Device Manager`` -> ``Neural processors`` -> ``NPU Compute Accelerator Device``.
-
+- Ensure that NPU MCDM driver (Version:32.0.201.204, Date:7/26/2024) is correctly installed by opening ``Device Manager`` -> ``Neural processors`` -> ``NPU Compute Accelerator Device``.
 
 |
 
-|memo| **NOTE**: The RyzenAI Software 1.2 GA release includes Windows MCDM drivers only. WDF drivers can be obtained through previous versions of the RyzenAI Software (1.2-EA release or older). 
+|memo| **NOTE**: The RyzenAI Software 1.2 GA release includes Windows MCDM drivers only. For older Windows OS builds (< 22631.3527) the legacy WDF driver can be obtained through previous versions of the RyzenAI Software (1.2-EA release or older).
 
 |
 
