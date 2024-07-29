@@ -18,7 +18,7 @@ The throughput profile allows concurrent execution of four inference sessions in
 
 Up to four additional inference sessions can be executed through temporal sharing of the NPU resources and at the expense of TOPS per session. 
 
-The Ryzen AI runtime automatically manages the scheduling of the parallel sessions, requiring no user intervention. When the maximum load is reached and no other sessions can be submitted to the NPU. 
+The Ryzen AI runtime automatically manages the scheduling of the parallel sessions, requiring no user intervention. When the maximum load is reached, no other sessions can be submitted to the NPU. 
 
 To select the throughput profile, set the following environment variable:
 
@@ -40,7 +40,7 @@ The latency profile allocates the entire NPU for a single inference session, del
 
 Up to seven additional inference sessions can be executed through temporal sharing of the NPU resources and at the expense of TOPS per session. 
 
-The Ryzen AI runtime automatically manages the scheduling of the parallel sessions, requiring no user intervention. When the maximum load is reached and no other sessions can be submitted to the NPU.
+The Ryzen AI runtime automatically manages the scheduling of the parallel sessions, requiring no user intervention. When the maximum load is reached, no other sessions can be submitted to the NPU.
 
 To select the latency profile, set the two following environment variables:
 

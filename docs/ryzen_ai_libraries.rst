@@ -4,14 +4,15 @@
 Ryzen AI Library Quick Start Guide
 ##################################
 
-The Ryzen AI Libraries are built on top of the Ryzen AI drivers and execution infrastructure to provide powerful AI capabilities to C++ applications without the need for training specific AI models and integrating them into the Ryzen AI framework.
+The Ryzen AI Libraries are built on top of the Ryzen AI drivers and execution infrastructure, providing powerful AI capabilities to C++ applications without the need to train specific AI models or integrate them into the Ryzen AI framework.
 
 Each Ryzen AI library feature offers a simple C++ application programming interface (API) that can be easily incorporated into existing applications.
 
 ******************
 Supported Features
 ******************
-This release of the Ryzen AI Library supports the following features:
+
+Ryzen AI Library supports the following features:
 
 - Depth Estimation
 

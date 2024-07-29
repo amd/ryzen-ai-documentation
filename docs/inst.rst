@@ -19,7 +19,7 @@ Prepare the System
 Download the :download:`NPU Driver <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=NPU_stack_rel_silicon_prod.zip>` and install it by following these steps:
 
 
-1. Extract the downloaded zip file.
+1. Extract the downloaded ZIP file.
 2. Open a terminal in administrator mode and execute the ``.\amd_install_kipudrv.bat`` bat file.
 
 Ensure that the NPU driver is installed from ``Device Manager`` -> ``System Devices`` -> ``AMD IPU Device`` as shown in the following image.
@@ -63,7 +63,7 @@ Before installing the Ryzen AI Software, ensure that all the prerequisites outli
 
 Download the :download:`ryzen-ai-sw-1.0.1.zip <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ryzen-ai-sw-1.0.1.zip>` Ryzen AI Software installation package and extract it. 
 
-Open an Anaconda or Windows command prompt in the extracted folder and run the installation script as shown below. Make sure to enter "Y" when prompted to accept the EULA. 
+Open an Anaconda or Windows command prompt in the extracted folder and run the installation script as follows. Make sure to enter "Y" when prompted to accept the EULA. 
 
 .. code:: 
 

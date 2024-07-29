@@ -2,10 +2,10 @@
 ONNX End-to-End Flow
 ####################
 
-AI models often require pre/post-processing operations that are not part of the model itself. To run the pre/post-processing operations on the NPU, we have developed a mechanism for integrating them into the original ONNX model. This allows for end-to-end model inference using Vitis AI Execution Provider. The feature is built by leveraging the ONNX Runtime feature `ONNXRuntime-Extensions <https://onnxruntime.ai/docs/extensions/>`_. Typical pre-processing (or post-processing) tasks, such as resizing, normalization, etc can be expressed as custom operators. The pre-trained model can then be extended by absorbing these custom operators. The resulting model that contains the pre/post-processing operations can then be run on NPU. This helps improve end-to-end latency and facilitates PC power saving by reducing CPU utilization.
+AI models often require pre/post-processing operations that are not part of the model itself. To run the pre/post-processing operations on the NPU, we have developed a mechanism for integrating them into the original ONNX model. This allows for end-to-end model inference using Vitis AI Execution Provider. The feature is built by leveraging the ONNX Runtime feature `ONNXRuntime-Extensions <https://onnxruntime.ai/docs/extensions/>`_. Typical pre-processing (or post-processing) tasks, such as resizing and normalization can be expressed as custom operators. The pre-trained model can then be extended by absorbing these custom operators. The resulting model that contains the pre/post-processing operations can then be run on NPU. This helps improve end-to-end latency and facilitates PC power saving by reducing CPU utilization.
 
 
-We provide the ``vitis_customop`` library that supports some common tasks such as resizing, normalization, NMS, etc. These operations are accessible through high-level API calls. The user will need to specify the following:
+We provide the ``vitis_customop`` library that supports some common tasks such as resizing, normalization, and NMS. These operations are accessible through high-level API calls. The user will need to specify the following:
 
 - pre/postprocessing operations
 - operation-specific parameters
@@ -17,7 +17,7 @@ The following steps describe how to use the pre and post-processor APIs:
 **Step 1:**
 
 
-Create PreProcessor and PostProcessor instances:
+Create Pre-Processor and Post-Processor instances:
 
 .. code-block:: python
 
@@ -31,7 +31,7 @@ Create PreProcessor and PostProcessor instances:
 
 **Step 2:**
 
-Specify the operations to perform, and pass the required parameters. 
+Specify the operations to perform and pass the required parameters:
 
 .. code-block:: python
 
@@ -43,7 +43,7 @@ Specify the operations to perform, and pass the required parameters.
 
 **Step 3:**
 
-Generate and save the new model
+Generate and save the new model:
 
 .. code-block:: python
 
@@ -51,7 +51,7 @@ Generate and save the new model
   postprocessor.build()
 
 
-Examples to utilize the ONNX end-to-end flow can be found `here <https://github.com/amd/RyzenAI-SW/tree/main/example/onnx-e2e>`_.
+For examples to utilize the ONNX end-to-end flow, click `here <https://github.com/amd/RyzenAI-SW/tree/main/example/onnx-e2e>`_.
 
 ..
   ------------

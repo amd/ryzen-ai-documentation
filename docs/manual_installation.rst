@@ -8,7 +8,7 @@ This page explains how to install each component manually.
 
 .. note::
 
-   Make sure to follow the installation steps in the order explained below.
+   Ensure to follow the installation steps in the specified order.
 
 ********************
 Download the Package
