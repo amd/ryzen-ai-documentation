@@ -6,9 +6,9 @@ Vitis AI Quantizer for ONNX
 Overview
 ********
 
-The AMD-Xilinx Vitis AI Quantizer for ONNX models. It supports various configuration and functions to quantize models targeting for deployment on IPU_CNN, IPU_Transformer and CPU. It is customized based on `Quantization Tool <https://github.com/microsoft/onnxruntime/tree/main/onnxruntime/python/tools/quantization>`_ in ONNX Runtime.
+The AMD Vitis AI Quantizer for ONNX models supports various configurations and functions to quantize models for deployment on IPU_CNN, IPU_Transformer, and CPU. It is customized based on the `Quantization Tool <https://github.com/microsoft/onnxruntime/tree/main/onnxruntime/python/tools/quantization>`_ in ONNX Runtime.
 
-The Vitis AI Quantizer for ONNX supports Post Training Quantization. This static quantization method first runs the model using a set of inputs called calibration data. During these runs, the flow computes the quantization parameters for each activation. These quantization parameters are written as constants to the quantized model and used for all inputs. The quantization tool supports the following calibration methods: MinMax, Entropy and Percentile, and MinMSE.
+The Vitis AI Quantizer for ONNX supports Post Training Quantization. This static quantization method first runs the model using a set of inputs called calibration data. During these runs, the tool computes the quantization parameters for each activation. These quantization parameters are written as constants to the quantized model and used for all inputs. The quantization tool supports the following calibration methods: MinMax, Entropy, Percentile, and MinMSE.
 
 .. note::
    In this documentation, **"NPU"** is used in descriptions, while **"IPU"** is retained in the tool's language, code, screenshots, and commands. This intentional 
@@ -37,18 +37,18 @@ Use the following steps to run PTQ with vai_q_onnx.
 
 Before running ``vai_q_onnx``, prepare the float model and calibration set, including these files:
 
-- float model: Floating-point models in ONNX format.
-- calibration dataset: A subset of the training dataset or validation dataset to represent the input data distribution; usually 100 to 1000 images are enough.
+- Float model: Floating-point models in ONNX format.
+- Calibration dataset: A subset of the training dataset or validation dataset to represent the input data distribution; usually 100 to 1000 images are enough.
 
 **Exporting PyTorch Models to ONNX**
 
-For PyTorch models, it is recommended to use the TorchScript-based onnx exporter for exporting ONNX models. Please refer to the `PyTorch documentation for guidance <https://pytorch.org/docs/stable/onnx_torchscript.html#torchscript-based-onnx-exporte>`_
+For PyTorch models, it is recommended to use the TorchScript-based onnx exporter for exporting ONNX models. For more details, refer to the `PyTorch documentation <https://pytorch.org/docs/stable/onnx_torchscript.html#torchscript-based-onnx-exporte>`_
 
 Tips:
 
-- Before exporting, please perform model.eval().
+- Before exporting, perform model.eval().
 - Models with opset 13 are recommended.
-- For CNN's on NPU platform, dynamic input shapes are currently not supported and only a batch size of 1 is allowed. Please ensure that the shape of input is a fixed value, and the batch dimension is set to 1.
+- For CNN's on NPU platform, dynamic input shapes are currently not supported and only a batch size of 1 is allowed. Ensure that the shape of input is a fixed value, and the batch dimension is set to 1.
 
 Example code:
 
@@ -67,7 +67,7 @@ Example code:
 .. note::
    * **Opset Versions**:The ONNX models must be opset 10 or higher (recommended setting 13) to be quantized by Vitis AI ONNX Quantizer. Models with opset < 10 must be reconverted to ONNX from their original framework using opset 10 or above. Alternatively, you can refer to the usage of the version converter for `ONNX Version Converter <https://github.com/onnx/onnx/blob/main/docs/VersionConverter.md>`_
    
-   * **Large Models > 2GB**: Due to the 2GB file size limit of Protobuf, for ONNX models exceeding 2GB, additional data will be stored separately. Please ensure that the .onnx file and the data file are placed in the same directory. Also, please set the use_external_data_format parameter to True for large models when quantizing.
+   * **Large Models > 2GB**: Due to the 2GB file size limit of Protobuf, for ONNX models exceeding 2GB, additional data is stored separately. Please ensure that the .ONNX file and the data file are placed in the same directory. Also, set the `use_external_data_format` parameter to True for large models when quantizing.
 
 
 2. (Recommended) Pre-processing on the Float Model
@@ -176,31 +176,31 @@ The static quantization method first runs the model using a set of inputs called
 
 **Arguments**
 
-* **model_input**: (String) This parameter specifies the file path of the model that is to be quantized.
-* **model_output**: (String) This parameter specifies the file path where the quantized model will be saved.
-* **calibration_data_reader**: (Object or None) This parameter is a calibration data reader that enumerates the calibration data and generates inputs for the original model. If you wish to use random data for a quick test, you can set calibration_data_reader to None.
-* **quant_format**: (String) This parameter is used to specify the quantization format of the model. It has the following options:
+* **model_input**: (String) Specifies the file path of the model that is to be quantized.
+* **model_output**: (String) Specifies the file path where the quantized model will be saved.
+* **calibration_data_reader**: (Object or None) A calibration data reader that enumerates the calibration data and generates inputs for the original model. If you wish to use random data for a quick test, you can set calibration_data_reader to None.
+* **quant_format**: (String) Specifies the quantization format of the model. It has the following options:
 
-  -  ``vai_q_onnx.QuantFormat.QOperator``: This option quantizes the model directly using quantized operators.
-  -  ``vai_q_onnx.QuantFormat.QDQ``: This option quantizes the model by inserting QuantizeLinear/DeQuantizeLinear into the tensor. It supports 8-bit quantization only.
-  -  ``vai_q_onnx.VitisQuantFormat.QDQ``: This option quantizes the model by inserting VitisQuantizeLinear/VitisDequantizeLinear into the tensor. It supports a wider range of bit-widths and precisions.
-  -  ``vai_q_onnx.VitisQuantFormat.FixNeuron``: (Experimental) This option quantizes the model by inserting FixNeuron (a combination of QuantizeLinear and DeQuantizeLinear) into the tensor. This quant format is currently experimental and should not be used for actual deployment.
+  -  ``vai_q_onnx.QuantFormat.QOperator``: Quantizes the model directly using quantized operators.
+  -  ``vai_q_onnx.QuantFormat.QDQ``: Quantizes the model by inserting QuantizeLinear/DeQuantizeLinear into the tensor. It supports 8-bit quantization only.
+  -  ``vai_q_onnx.VitisQuantFormat.QDQ``: Quantizes the model by inserting VitisQuantizeLinear/VitisDequantizeLinear into the tensor. It supports a wider range of bit-widths and precisions.
+  -  ``vai_q_onnx.VitisQuantFormat.FixNeuron``: (Experimental) Quantizes the model by inserting FixNeuron (a combination of QuantizeLinear and DeQuantizeLinear) into the tensor. This quant format is currently experimental and should not be used for actual deployment.
 
 * **calibrate_method**: (String) The method used in calibration, default to ``vai_q_onnx.PowerOfTwoMethod.MinMSE``.
 
   - For CNNs running on the NPU, power-of-two methods should be used, options are:
 
-    - ``vai_q_onnx.PowerOfTwoMethod.NonOverflow``: This method get the power-of-two quantize parameters for each tensor to make sure min/max values not overflow.
-    - ``vai_q_onnx.PowerOfTwoMethod.MinMSE``: This method get the power-of-two quantize parameters for each tensor to minimize the mean-square-loss of quantized values and float values. This takes longer time but usually gets better accuracy.
+    - ``vai_q_onnx.PowerOfTwoMethod.NonOverflow``: Gets the power-of-two quantize parameters for each tensor to make sure min/max values not overflow.
+    - ``vai_q_onnx.PowerOfTwoMethod.MinMSE``: Gets the power-of-two quantize parameters for each tensor to minimize the mean-square-loss of quantized values and float values. This takes longer time but usually gets better accuracy.
 
   - For Transformers running on the NPU, or for CNNs running on the CPU, float scale methods should be used, options are:
 
-    -  ``vai_q_onnx.CalibrationMethod.MinMax``: This method obtains the quantization parameters based on the minimum and maximum values of each tensor.
-    -  ``vai_q_onnx.CalibrationMethod.Entropy``: This method determines the quantization parameters by considering the entropy algorithm of each tensor's distribution.
-    -  ``vai_q_onnx.CalibrationMethod.Percentile``: This method calculates quantization parameters using percentiles of the tensor values.
+    -  ``vai_q_onnx.CalibrationMethod.MinMax``: Obtains the quantization parameters based on the minimum and maximum values of each tensor.
+    -  ``vai_q_onnx.CalibrationMethod.Entropy``: Determines the quantization parameters by considering the entropy algorithm of each tensor's distribution.
+    -  ``vai_q_onnx.CalibrationMethod.Percentile``: Calculates quantization parameters using percentiles of the tensor values.
 
-* **input_nodes**: (List of Strings) This parameter is a list of the names of the starting nodes to be quantized. Nodes in the model before these nodes will not be quantized. For example, this argument can be used to skip some pre-processing nodes or stop the first node from being quantized. The default value is an empty list ([]).
-* **output_nodes**: (List of Strings) This parameter is a list of the names of the end nodes to be quantized. Nodes in the model after these nodes will not be quantized. For example, this argument can be used to skip some post-processing nodes or stop the last node from being quantized. The default value is an empty list ([]).
+* **input_nodes**: (List of Strings) A list of the names of the starting nodes to be quantized. Nodes in the model before these nodes will not be quantized. For example, this argument can be used to skip some pre-processing nodes or stop the first node from being quantized. The default value is an empty list ([]).
+* **output_nodes**: (List of Strings) A list of the names of the end nodes to be quantized. Nodes in the model after these nodes will not be quantized. For example, this argument can be used to skip some post-processing nodes or stop the last node from being quantized. The default value is an empty list ([]).
 * **op_types_to_quantize**: (List of Strings or None) If specified, only operators of the given types will be quantized (e.g., ['Conv'] to only quantize Convolutional layers). By default, all supported operators will be quantized.
 * **random_data_reader_input_shape**: (List or Tuple of Int) If dynamic axes of inputs require specific value, users should provide its shapes when using internal random data reader (That is, set calibration_data_reader to None). The basic format of shape for single input is list (Int) or tuple (Int) and all dimensions should have concrete values (batch dimensions can be set to 1). For example, random_data_reader_input_shape=[1, 3, 224, 224] or random_data_reader_input_shape=(1, 3, 224, 224) for single input. If the model has multiple inputs, it can be fed in list (shape) format, where the list order is the same as the onnxruntime got inputs. For example, random_data_reader_input_shape=[[1, 1, 224, 224], [1, 2, 224, 224]] for 2 inputs. Moreover, it is possible to use dict {name : shape} to specify a certain input, for example, random_data_reader_input_shape={"image" : [1, 3, 224, 224]} for the input named "image". The default value is an empty list ([]).
 * **per_channel**: (Boolean) Determines whether weights should be quantized per channel. The default value is False. For DPU/NPU devices, this must be set to False as they currently do not support per-channel quantization.
@@ -211,12 +211,12 @@ The static quantization method first runs the model using a set of inputs called
 * **nodes_to_exclude**: (List of Strings or None) If specified, the nodes in this list will be excluded from quantization. The default value is an empty list ([]).
 * **optimize_model**: (Boolean) If True, optimizes the model before quantization. The default value is True.
 * **use_external_data_format**: (Boolean) This option is used for large size (>2GB) model. The model proto and data will be stored in separate files. The default is False.
-* **execution_providers**: (List of Strings) This parameter defines the execution providers that will be used by ONNX Runtime to do calibration for the specified model. The default value ``CPUExecutionProvider`` implies that the model will be computed using the CPU as the execution provider. You can also set this to other execution providers supported by ONNX Runtime such as ``CUDAExecutionProvider`` for GPU-based computation, if they are available in your environment. The default is ['CPUExecutionProvider'].
-* **enable_dpu**: (Boolean) This parameter is a flag that determines whether to generate a quantized model that is suitable for the DPU/NPU. If set to True, the quantization process will consider the specific limitations and requirements of the DPU/NPU, thus creating a model that is optimized for DPU/NPU computations. The default is False.
-* **convert_fp16_to_fp32**: (Boolean) This parameter controls whether to convert the input model from float16 to float32 before quantization. For float16 models, it is recommended to set this parameter to True. The default value is False.
-* **convert_nchw_to_nhwc**: (Boolean) This parameter controls whether to convert the input NCHW model to input NHWC model before quantization. For input NCHW models, it is recommended to set this parameter to True. The default value is False.
-* **include_cle**: (Boolean) This parameter is a flag that determines whether to optimize the models using CrossLayerEqualization; it can improve the accuracy of some models. The default is False.
-* **extra_options**: (Dictionary or None) Contains key-value pairs for various options in different cases. Current used:
+* **execution_providers**: (List of Strings) Defines the execution providers that will be used by ONNX Runtime to do calibration for the specified model. The default value ``CPUExecutionProvider`` implies that the model will be computed using the CPU as the execution provider. You can also set this to other execution providers supported by ONNX Runtime such as ``CUDAExecutionProvider`` for GPU-based computation, if they are available in your environment. The default is ['CPUExecutionProvider'].
+* **enable_dpu**: (Boolean) A flag that determines whether to generate a quantized model that is suitable for the DPU/NPU. If set to True, the quantization process will consider the specific limitations and requirements of the DPU/NPU, thus creating a model that is optimized for DPU/NPU computations. The default is False.
+* **convert_fp16_to_fp32**: (Boolean) Controls whether to convert the input model from float16 to float32 before quantization. For float16 models, it is recommended to set this parameter to True. The default value is False.
+* **convert_nchw_to_nhwc**: (Boolean) Controls whether to convert the input NCHW model to input NHWC model before quantization. For input NCHW models, it is recommended to set this parameter to True. The default value is False.
+* **include_cle**: (Boolean) A flag that determines whether to optimize the models using CrossLayerEqualization; it can improve the accuracy of some models. The default is False.
+* **extra_options**: (Dictionary or None) Contains key-value pairs for various options in different cases. Currently used:
 
   - **ActivationSymmetric**: (Boolean) If True, symmetrize calibration data for activations. The default is False.
   - **WeightSymmetric**: (Boolean) If True, symmetrize calibration data for weights. The default is True.
@@ -380,7 +380,7 @@ Quantizing to Other Precisions
    The current release of the Vitis AI Execution Provider ingests quantized ONNX models with INT8/UINT8 data types only. No support is provided for direct deployment of models with other precisions, including FP32.
 
 
-In addition to the INT8/UINT8, the VAI_Q_ONNX API supports quantizing models to other data formats, including INT16/UINT16, INT32/UINT32, Float16 and BFloat16, which can provide better accuracy or be used for experimental purposes. These new data formats are achieved by a customized version of QuantizeLinear and DequantizeLinear named "VitisQuantizeLinear" and "VitisDequantizeLinear", which expands onnxruntime's UInt8 and Int8 quantization to support UInt16, Int16, UInt32, Int32, Float16 and BFloat16. This customized Q/DQ was implemented by a custom operations library in VAI_Q_ONNX using onnxruntime's custom operation C API.
+In addition to the INT8/UINT8, the VAI_Q_ONNX API supports quantizing models to other data formats, including INT16/UINT16, INT32/UINT32, Float16, and BFloat16, which can provide better accuracy or be used for experimental purposes. These new data formats are achieved by a customized version of QuantizeLinear and DequantizeLinear named "VitisQuantizeLinear" and "VitisDequantizeLinear", which expand onnxruntime's UInt8 and Int8 quantization to support UInt16, Int16, UInt32, Int32, Float16, and BFloat16. This customized Q/DQ was implemented by a custom operations library in VAI_Q_ONNX using onnxruntime's custom operation C API.
 
 The custom operations library was developed based on Linux and does not currently support compilation on Windows. If you want to run the quantized model that has the custom Q/DQ on Windows, it is recommended to switch to WSL as a workaround.
 
@@ -411,7 +411,7 @@ The quantizer supports quantizing float32 models to Int16 and Int32 data formats
 ===================================================
 
 
-Besides integer data formats, the quantizer also supports quantizing float32 models to float16 and bfloat16 data formats, by setting the "activation_type" and "weight_type" to ```VitisQuantType.QFloat16``` or ```VitisQuantType.QBFloat16``` respectively.
+Besides integer data formats, the quantizer also supports quantizing float32 models to float16 and bfloat16 data formats by setting the "activation_type" and "weight_type" to ```VitisQuantType.QFloat16``` or ```VitisQuantType.QBFloat16``` respectively.
 
 .. code-block::
 

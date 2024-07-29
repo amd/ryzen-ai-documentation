@@ -12,7 +12,7 @@ Vitis AI Quantizer for TensorFlow
 Enabling Quantization
 *********************
 
-Ensure that the Vitis AI Quantizer for TensorFlow is correctly installed. For more information, see the :ref:`installation instructions <install-pt-tf>`.
+Ensure that the Vitis AI Quantizer for TensorFlow is correctly installed. For more information, see :ref:`installation instructions <install-pt-tf>`.
 
 To enable the Vitis AI Quantizer for TensorFlow, activate the conda environment in the Vitis AI Pytorch TensorFlow 2 container:
 
@@ -27,7 +27,7 @@ Post-Training Quantization
 
 Post-Training Quantization requires the following files:
 
-1. Float model : Floating-point TensorFlow models, either in h5 format or a saved model format.
+1. Float model: Floating-point TensorFlow models, either in h5 format or a saved model format.
 2. Calibration dataset: A subset of the training dataset containing 100 to 1000 images.
  
  
@@ -46,11 +46,11 @@ Vitis AI provides the ``vitis_activation`` module into Tensorflow library for qu
    quantized_model = quantizer.quantize_model(calib_dataset=calib_dataset,calib_steps=100,calib_batch_size=10, **kwargs)
    
 
-- calib_dataset: Used as a representative calibration dataset for calibration. 
-- calib_steps: Total number of steps for calibration. 
-- calib_batch_size: Number of samples per batch for calibration. 
-- input_shape: Input shape for each input layer. 
-- kwargs: Dictionary of the user-defined configurations of quantize strategy. 
+- calib_dataset: Used as a representative calibration dataset for calibration
+- calib_steps: Total number of steps for calibration 
+- calib_batch_size: Number of samples per batch for calibration
+- input_shape: Input shape for each input layer
+- kwargs: Dictionary of the user-defined configurations of quantize strategy
 
 Exporting the Model for Deployment
 ==================================
@@ -77,7 +77,7 @@ After post-training quantization, usually there is a small accuracy loss. If the
                                               
 Fast finetuning related parameters are as follows:
 
-- include_fast_ft: indicates whether to do fast finetuning or not.
+- include_fast_ft: indicates whether to perform fast finetuning or not.
 - fast_ft_epochs: indicates the number of finetuning epochs for each layer.
 
 

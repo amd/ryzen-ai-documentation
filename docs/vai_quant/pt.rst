@@ -96,7 +96,7 @@ The ``target`` of current version of NPU is ``AMD_AIE2_Nx4_Overlay_cfg0``
 Partial Quantization
 ====================
 
-Partial quantization can be enabled by using ``QuantStab`` and ``DeQuantStub`` operator from the ``pytorch_nndct`` library. In the following example, we are quantizing the layers ``subm0`` and ``subm2``, but not the ``subm1``: 
+Partial quantization can be enabled by using ``QuantStab`` and ``DeQuantStub`` operators from the ``pytorch_nndct`` library. The following example quantizes the  ``subm0`` and ``subm2`` layers, but not ``subm1``: 
 
 .. code-block::
 
@@ -161,7 +161,7 @@ General approaches are:
 
 2. If some modules are called multiple times, uniqify them by defining multiple such modules and call them separately in the foward pass.
 
-3. Insert ``QuantStub`` and ``DeQuantStub``. Any sub-network from QuantStub to DeQuantStub in a forward pass will be quantized. Multiple QuantStub-DeQuantStub pairs are allowed.
+3. Insert ``QuantStub`` and ``DeQuantStub``. Any sub-network from QuantStub to DeQuantStub in a forward pass is quantized. Multiple QuantStub-DeQuantStub pairs are allowed.
 
 4. Create Quantizer module from the ``QatProcessor`` library:
 
