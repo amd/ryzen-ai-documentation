@@ -8,7 +8,7 @@ Installation Instructions
 Supported Configurations
 ************************
 
-The Ryzen AI Software supports the following processors running Windows 11
+The Ryzen AI Software supports the following processors running Windows 11 (Win 11 build>=22621.3527 is required for Ryzen AI Software 1.2.) 
 
 - Phoenix (PHX): AMD Ryzen™ 7940HS, 7840HS, 7640HS, 7840U, 7640U.
 - Hawk (HPT): AMD Ryzen™ 8640U, 8640HS, 8645H, 8840U, 8840HS, 8845H, 8945H.
