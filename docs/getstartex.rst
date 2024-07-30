@@ -1,3 +1,5 @@
+:orphan:
+
 ########################
 Getting Started Tutorial
 ########################
@@ -5,10 +7,10 @@ Getting Started Tutorial
 This tutorial uses a fine-tuned version of the ResNet model (using the CIFAR-10 dataset) to demonstrate the process of preparing, quantizing, and deploying a model using Ryzen AI Software. The tutorial features deployment using both Python and C++ ONNX runtime code. 
 
 .. note::
-   In this documentation, "NPU" is used in descriptions, while "IPU" is retained in the tool's language, code, screenshots, and commands. This intentional 
+   In this documentation, "NPU" is used in descriptions, while "IPU" is retained in some of the tool's language, code, screenshots, and commands. This intentional 
    distinction aligns with existing tool references and does not affect functionality. Avoid making replacements in the code.
 
-- The source code files can be downloaded from `this link <https://github.com/amd/RyzenAI-SW/tree/main/tutorial/getting_started_resnet>`_. Alternatively, you can clone the RyzenAI-SW repo and change the directory into the tutorial code directory. 
+- The source code files can be downloaded from `this link <https://github.com/amd/RyzenAI-SW/tree/main/tutorial/getting_started_resnet>`_. Alternatively, you can clone the RyzenAI-SW repo and change the directory into "tutorial". 
 
 .. code-block::
 
@@ -75,7 +77,7 @@ Step 1: Install Packages
 Step 2: Prepare dataset and ONNX model
 **************************************
 
-In this example, we utilize the a custom ResNet model finetuned using the CIFAR-10 dataset
+In this example, we utilize a custom ResNet model finetuned using the CIFAR-10 dataset
 
 The ``prepare_model_data.py`` script downloads the CIFAR-10 dataset in pickle format (for python) and binary format (for C++). This dataset will be used in the subsequent steps for quantization and inference. The script also exports the provided PyTorch model into ONNX format. The following snippet from the script shows how the ONNX model is exported:
 
@@ -126,7 +128,7 @@ Quantizing AI models from floating-point to 8-bit integers reduces computational
 
 This generates a quantized model using QDQ quant format and UInt8 activation type and Int8 weight type. After the completion of the run, the quantized ONNX model ``resnet.qdq.U8S8.onnx`` is saved to models/resnet.qdq.U8S8.onnx. 
 
-The :file:`resnet_quantize.py` file has ``quantize_static`` function (line 95) that applies static quantization to the model. 
+The :file:`resnet_quantize.py` file has ``quantize_static`` function that applies static quantization to the model. 
 
 .. code-block::
 
@@ -187,7 +189,7 @@ By default, ``predict.py`` runs the model on CPU.
 
 .. code-block::
   
-        > python predict.py
+        python predict.py
 
 Typical output
 
@@ -210,28 +212,26 @@ Deploy the Model on the Ryzen AI NPU
 
 To successfully run the model on the NPU, run the following setup steps:
 
-- Ensure that the ``XLNX_VART_FIRMWARE`` environment variable is correctly pointing to the :file:`1x4.xclbin` file located in the ``voe-4.0-win_amd64`` folder of the Ryzen AI software installation package. If you installed the Ryzen AI software using automatic installer, this variable is already correctly set. However, if you did the installation manually, you must set the variable as follows: 
+- Make sure to set the XLNX_VART_FIRMWARE environment variable based to your APU type. Refer to :ref:`runtime setup instructions <npu-configurations>` on how to do this.
+
+- Ensure ``RYZEN_AI_INSTALLATION_PATH`` points to ``path\to\ryzen-ai-sw-<version>\``. If you installed Ryzen-AI software using the MSI installer, this variable should already be set. Ensure that the Ryzen-AI software package has not been moved post installation, in which case ``RYZEN_AI_INSTALLATION_PATH`` will have to be set again. 
+
+- Copy the ``vaip_config.json`` runtime configuration file from the installation package to the current directory. The ``vaip_config.json`` is used by the source file ``predict.py`` to configure the Vitis AI Execution Provider.
 
 .. code-block:: bash 
 
-   set XLNX_VART_FIRMWARE=path\to\RyzenAI\installation\files\ryzen-ai-sw-1.1\voe-4.0-win_amd64\1x4.xclbin
-
-- Copy the :file:`vaip_config.json` runtime configuration file from the ``voe-4.0-win_amd64`` folder of the Ryzen AI software installation package to the current directory. The :file:`vaip_config.json` is used by the :file:`predict.py` script to configure the Vitis AI Execution Provider.
-
-
-The following section of the :file:`predict.py` script shows how ONNX Runtime is configured to deploy the model on the Ryzen AI NPU:
-
+   xcopy %RYZEN_AI_INSTALLATION_PATH%\voe-4.0-win_amd64\vaip_config.json .
 
 .. code-block::
 
   parser = argparse.ArgumentParser()
-  parser.add_argument('--ep', type=str, default ='cpu',choices = ['cpu','ipu'], help='EP backend selection')
+  parser.add_argument('--ep', type=str, default ='cpu',choices = ['cpu','npu'], help='EP backend selection')
   opt = parser.parse_args()
   
   providers = ['CPUExecutionProvider']
   provider_options = [{}]
 
-  if opt.ep == 'ipu':
+  if opt.ep == 'npu':
      providers = ['VitisAIExecutionProvider']
      cache_dir = Path(__file__).parent.resolve()
      provider_options = [{
@@ -244,35 +244,17 @@ The following section of the :file:`predict.py` script shows how ONNX Runtime is
                                  provider_options=provider_options)
 
 
-Run the ``predict.py`` with the ``--ep ipu`` switch to run the custom ResNet model on the Ryzen AI NPU:
+Run the ``predict.py`` with the ``--ep npu`` switch to run the custom ResNet model on the Ryzen AI NPU:
 
 
 .. code-block::
 
-    >python predict.py --ep ipu
+    python predict.py --ep npu
 
 Typical output
 
 .. code-block::
 
-    I20231129 12:50:18.631383 16736 vitisai_compile_model.cpp:336] Vitis AI EP Load ONNX Model Success
-    I20231129 12:50:18.631383 16736 vitisai_compile_model.cpp:337] Graph Input Node Name/Shape (1)
-    I20231129 12:50:18.631383 16736 vitisai_compile_model.cpp:341]   input : [-1x3x32x32]
-    I20231129 12:50:18.631383 16736 vitisai_compile_model.cpp:347] Graph Output Node Name/Shape (1)
-    I20231129 12:50:18.631383 16736 vitisai_compile_model.cpp:351]   output : [-1x10]
-    I20231129 12:50:18.631383 16736 vitisai_compile_model.cpp:226] use cache key modelcachekey
-    I20231129 12:50:23.717264 16736 compile_pass_manager.cpp:352] Compile mode: aie
-    I20231129 12:50:23.717264 16736 compile_pass_manager.cpp:353] Debug mode: performance
-    I20231129 12:50:23.717264 16736 compile_pass_manager.cpp:357] Target architecture: AMD_AIE2_Nx4_Overlay
-    I20231129 12:50:23.717264 16736 compile_pass_manager.cpp:540] Graph name: main_graph, with op num: 438
-    I20231129 12:50:23.717264 16736 compile_pass_manager.cpp:553] Begin to compile...
-    W20231129 12:50:27.786000 16736 RedundantOpReductionPass.cpp:663] xir::Op{name = /avgpool/GlobalAveragePool_output_0_DequantizeLinear_Output_vaip_315, type = pool-fix}'s input and output is unchanged, so it will be removed.              
-    I20231129 12:50:27.945919 16736 PartitionPass.cpp:6142] xir::Op{name = output_, type = fix2float} is not supported by current target. Target name: AMD_AIE2_Nx4_Overlay, target type: IPU_PHX. Assign it to CPU.
-    I20231129 12:50:29.098559 16736 compile_pass_manager.cpp:565] Total device subgraph number 3, CPU subgraph number 1
-    I20231129 12:50:29.098559 16736 compile_pass_manager.cpp:574] Total device subgraph number 3, DPU subgraph number 1
-    I20231129 12:50:29.098559 16736 compile_pass_manager.cpp:583] Total device subgraph number 3, USER subgraph number 1
-    I20231129 12:50:29.098559 16736 compile_pass_manager.cpp:639] Compile done.
-    .... 
     [Vitis AI EP] No. of Operators :   CPU     2    IPU   398  99.50% 
     [Vitis AI EP] No. of Subgraphs :   CPU     1    IPU     1 Actually running on IPU     1  
     ...
@@ -296,7 +278,7 @@ Deployment - C++
 Prerequisites
 -------------
 
-1. Visual Studio 2019 Community edition, ensure "Desktop Development with C++" is installed
+1. Visual Studio 2022 Community edition, ensure "Desktop Development with C++" is installed
 2. cmake (version >= 3.26)
 3. opencv (version=4.6.0) required for the custom resnet example
 
@@ -309,33 +291,31 @@ It is recommended to build OpenCV from the source code and use static build. The
 
    git clone https://github.com/opencv/opencv.git -b 4.6.0
    cd opencv
-   cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DBUILD_SHARED_LIBS=OFF -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DCMAKE_CONFIGURATION_TYPES=Release -A x64 -T host=x64 -G "Visual Studio 16 2019" "-DCMAKE_INSTALL_PREFIX=C:\opencv" "-DCMAKE_PREFIX_PATH=C:\opencv" -DCMAKE_BUILD_TYPE=Release -DBUILD_opencv_python2=OFF -DBUILD_opencv_python3=OFF -DBUILD_WITH_STATIC_CRT=OFF -B build
+   cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DBUILD_SHARED_LIBS=OFF -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DCMAKE_CONFIGURATION_TYPES=Release -A x64 -T host=x64 -G "Visual Studio 17 2022" "-DCMAKE_INSTALL_PREFIX=C:\opencv" "-DCMAKE_PREFIX_PATH=C:\opencv" -DCMAKE_BUILD_TYPE=Release -DBUILD_opencv_python2=OFF -DBUILD_opencv_python3=OFF -DBUILD_WITH_STATIC_CRT=OFF -B build
    cmake --build build --config Release
    cmake --install build --config Release
+
+The build files will be written to ``build\``.
 
 Build and Run Custom Resnet C++ sample
 --------------------------------------
 
-.. note::
-   In this documentation, **"NPU"** is used in descriptions, while **"IPU"** is retained in the tool's language, code, screenshots, and commands. This intentional 
-   distinction aligns with existing tool references and does not affect functionality. Avoid making replacements in the code.
+The C++ source files, CMake list files and related artifacts are provided in the ``cpp/resnet_cifar/*`` folder. The source file ``cpp/resnet_cifar/resnet_cifar.cpp`` takes 10 images from the CIFAR-10 test set, converts them to .png format, preprocesses them, and performs model inference. The example has onnxruntime dependencies, that are provided in ``%RYZEN_AI_INSTALLATION_PATH%/onnxruntime/*``.
 
-The C++ source files, CMake list files and related artifacts are provided in the ``cpp/resnet_cifar/*`` folder. The source file ``cpp/resnet_cifar/resnet_cifar.cpp`` takes 10 images from the CIFAR-10 test set, converts them to .png format, preprocesses them, and performs model inference. The example has onnxruntime dependencies, that are provided in ``cpp/resnet_cifar/onnxruntime/*``. 
-
-Run the following command to build the resnet example. Assign ``-DOpenCV_DIR`` to the OpenCV installation directory.
+Run the following command to build the resnet example. Assign ``-DOpenCV_DIR`` to the OpenCV build directory.
 
 .. code-block:: bash
 
    cd getting_started_resnet/cpp
-   cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DBUILD_SHARED_LIBS=OFF -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DCMAKE_CONFIGURATION_TYPES=Release -A x64 -T host=x64 -DCMAKE_INSTALL_PREFIX=. -DCMAKE_PREFIX_PATH=. -B build -S resnet_cifar -DOpenCV_DIR="C:/opencv" -G "Visual Studio 16 2019"
+   cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DBUILD_SHARED_LIBS=OFF -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DCMAKE_CONFIGURATION_TYPES=Release -A x64 -T host=x64 -DCMAKE_INSTALL_PREFIX=. -DCMAKE_PREFIX_PATH=. -B build -S resnet_cifar -DOpenCV_DIR="C:/opencv/build" -G "Visual Studio 17 2022"
 
-This should generate the build directory with the ``resnet_cifar.sln`` solution file along with other project files. Open the solution file using Visual Studio 2019 and build to compile. You can also use "Developer Command Prompt for VS 2019" to open the solution file in Visual Studio.
+This should generate the build directory with the ``resnet_cifar.sln`` solution file along with other project files. Open the solution file using Visual Studio 2022 and build to compile. You can also use "Developer Command Prompt for VS 2022" to open the solution file in Visual Studio.
 
 .. code-block:: bash 
 
    devenv build/resnet_cifar.sln
 
-Now to deploy our model, we will go back to the parent directory (getting_started_resnet) of this example. After compilation, the executable should be generated in ``cpp/resnet_cifar/build/Release/resnet_cifar.exe``. We will copy this application over to the parent directory:
+Now to deploy our model, we will go back to the parent directory (getting_started_resnet) of this example. After compilation, the executable should be generated in ``cpp/build/Release/resnet_cifar.exe``. We will copy this application over to the parent directory:
 
 .. code-block:: bash 
 
@@ -346,10 +326,7 @@ Additionally, we will also need to copy the onnxruntime DLLs from the Vitis AI E
 
 .. code-block:: bash 
 
-   xcopy %RYZEN_AI_INSTALLER%\onnxruntime\bin\onnxruntime.dll .
-   xcopy %RYZEN_AI_INSTALLER%\onnxruntime\bin\onnxruntime_vitisai_ep.dll .
-
-Here, ``RYZEN_AI_INSTALLER`` is an environment variable that should point to the ``path\to\ryzen-ai-sw-xx\ryzen-ai-sw-xx``. If you installed Ryzen-AI software using the automatic installer, this variable should already be set. Ensure that the Ryzen-AI software package has not been moved post installation, in which case ``RYZEN_AI_INSTALLER`` will have to be set again. 
+   xcopy %RYZEN_AI_INSTALLATION_PATH%\onnxruntime\bin\* /E /I
 
 
 The C++ application that was generated takes 3 arguments: 
@@ -395,14 +372,15 @@ Deploy the Model on the NPU
 
 To successfully run the model on the NPU:
 
-- Ensure that the ``XLNX_VART_FIRMWARE`` environment variable is correctly pointing to the XCLBIN file included in the ONNX Vitis AI Execution Provider package. If you installed Ryzen-AI software by automatic installer, the NPU binary path is already set, however if you did the installation manually, ensure the NPU binary path is set using the following command: 
+- Make sure to set the XLNX_VART_FIRMWARE environment variable based to your APU type. Refer to :ref:`runtime setup instructions <npu-configurations>` on how to do this.
+
+- Ensure ``RYZEN_AI_INSTALLATION_PATH`` points to ``path\to\ryzen-ai-sw-<version>\``. If you installed Ryzen-AI software using the MSI installer, this variable should already be set. Ensure that the Ryzen-AI software package has not been moved post installation, in which case ``RYZEN_AI_INSTALLATION_PATH`` will have to be set again. 
+
+- Copy the ``vaip_config.json`` runtime configuration file from the installation package to the current directory. The ``vaip_config.json`` is used by the source file ``resnet_cifar.cpp`` to configure the Vitis AI Execution Provider.
 
 .. code-block:: bash 
 
-   set XLNX_VART_FIRMWARE=path\to\RyzenAI\installation\ryzen-ai-sw-1.1\ryzen-ai-sw-1.1\voe-4.0-win_amd64\1x4.xclbin
-
-
-- Copy the ``vaip_config.json`` runtime configuration file from the Vitis AI Execution Provider package to the current directory. The ``vaip_config.json`` is used by the source file ``resnet_cifar.cpp`` to configure the Vitis AI Execution Provider.
+   xcopy %RYZEN_AI_INSTALLATION_PATH%\voe-4.0-win_amd64\vaip_config.json .
 
 
 The following code block from ``reset_cifar.cpp`` shows how ONNX Runtime is configured to deploy the model on the Ryzen AI NPU:
@@ -414,43 +392,25 @@ The following code block from ``reset_cifar.cpp`` shows how ONNX Runtime is conf
     auto config_key = std::string{ "config_file" };
     auto cache_dir = std::filesystem::current_path().string(); 
  
-    if(ep=="ipu")
+    if(ep=="npu")
     {
     auto options =
         std::unordered_map<std::string, std::string>{ {config_key, json_config}, {"cacheDir", cache_dir}, {"cacheKey", "modelcachekey"} };
-    session_options.AppendExecutionProvider("VitisAI", options);
+    session_options.AppendExecutionProvider_VitisAI(options)
     }
 
-    auto session = Ort::Experimental::Session(env, model_name, session_options);
+    auto session = Ort::Session(env, model_name.data(), session_options);
 
-To run the model on the NPU, we will pass the ipu flag and the vaip_config.json file as arguments to the C++ application. Use the following command to run the model on the NPU: 
+To run the model on the NPU, we will pass the npu flag and the vaip_config.json file as arguments to the C++ application. Use the following command to run the model on the NPU: 
 
 .. code-block:: bash 
 
-   resnet_cifar.exe models\resnet.qdq.U8S8.onnx ipu vaip_config.json
+   resnet_cifar.exe models\resnet.qdq.U8S8.onnx npu vaip_config.json
 
 Typical output: 
 
 .. code-block::
 
-   I20231129 13:19:47.882169 14796 vitisai_compile_model.cpp:336] Vitis AI EP Load ONNX Model Success
-   I20231129 13:19:47.882169 14796 vitisai_compile_model.cpp:337] Graph Input Node Name/Shape (1)
-   I20231129 13:19:47.882169 14796 vitisai_compile_model.cpp:341]   input : [-1x3x32x32]
-   I20231129 13:19:47.882169 14796 vitisai_compile_model.cpp:347] Graph Output Node Name/Shape (1)
-   I20231129 13:19:47.882169 14796 vitisai_compile_model.cpp:351]   output : [-1x10]
-   I20231129 13:19:53.161406 14796 compile_pass_manager.cpp:352] Compile mode: aie
-   I20231129 13:19:53.161406 14796 compile_pass_manager.cpp:353] Debug mode: performance
-   I20231129 13:19:53.161406 14796 compile_pass_manager.cpp:357] Target architecture: AMD_AIE2_Nx4_Overlay
-   I20231129 13:19:53.161406 14796 compile_pass_manager.cpp:540] Graph name: main_graph, with op num: 438
-   I20231129 13:19:53.161406 14796 compile_pass_manager.cpp:553] Begin to compile...
-   W20231129 13:19:57.223416 14796 RedundantOpReductionPass.cpp:663] xir::Op{name = /avgpool/GlobalAveragePool_output_0_DequantizeLinear_Output_vaip_315, type = pool-fix}'s input and output is unchanged, so it will be removed.
-   I20231129 13:19:57.389281 14796 PartitionPass.cpp:6142] xir::Op{name = output_, type = fix2float} is not supported by current target. Target name: AMD_AIE2_Nx4_Overlay, target type: IPU_PHX. Assign it to CPU.
-   I20231129 13:19:58.546655 14796 compile_pass_manager.cpp:565] Total device subgraph number 3, CPU subgraph number 1
-   I20231129 13:19:58.546655 14796 compile_pass_manager.cpp:574] Total device subgraph number 3, DPU subgraph number 1
-   I20231129 13:19:58.546655 14796 compile_pass_manager.cpp:583] Total device subgraph number 3, USER subgraph number 1
-   I20231129 13:19:58.547658 14796 compile_pass_manager.cpp:639] Compile done.
-   I20231129 13:19:58.583139 14796 anchor_point.cpp:444] before optimization:
-   ... 
    [Vitis AI EP] No. of Operators :   CPU     2    IPU   398  99.50%
    [Vitis AI EP] No. of Subgraphs :   CPU     1    IPU     1 Actually running on IPU     1
    ...

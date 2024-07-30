@@ -6,18 +6,18 @@ Other Quantizers
 
 The Ryzen AI software provides support for these additional quantizers:
 
-1. **Vitis AI Quantizer for PyTorch/TensorFlow/TensorFlow 2**: If you require Quantization Aware Training using the original model training framework, you can use Vitis AI PyTorch/Tensorflow 2/Tensorflow quantizer.
+1. **Vitis AI Quantizer for PyTorch/TensorFlow 2**: If you require Quantization Aware Training using the original model training framework, you can use Vitis AI PyTorch/Tensorflow 2 quantizer.
 2. **Olive Quantizer**: If you are already familiar with the Olive framework and using it for other model transformations, quantization through Olive is also an option. 
 
 
 .. _install-pt-tf:
 
 
-******************************************************
-Vitis AI Quantizer for PyTorch/TensorFlow/TensorFlow 2
-******************************************************
+*******************************************
+Vitis AI Quantizer for PyTorch/TensorFlow 2
+*******************************************
 
-The Vitis AI Quantizer, integrated as a component of either PyTorch, TensorFlow, or TensorFlow 2, is distributed through framework-specific Docker containers.
+The Vitis AI Quantizer, integrated as a component of either PyTorch or TensorFlow 2, is distributed through framework-specific Docker containers.
 
 The Vitis AI Docker containers can be installed on Ubuntu 20.04, CentOS 7.8, 7.9, 8.1, and RHEL 8.3, 8.4. For developers working on Windows 11, WSL can be used to install the Vitis AI Docker containers.
 
@@ -36,8 +36,7 @@ Multiple versions of the Docker container are available, each tailored to specif
      - https://hub.docker.com/r/amdih/ryzen-ai-pytorch
    * - TensorFlow 2
      - https://hub.docker.com/r/amdih/ryzen-ai-tensorflow2
-   * - TensorFlow 1
-     - https://hub.docker.com/r/amdih/ryzen-ai-tensorflow 
+
 
 
 GPU-Accelerated Quantization Containers
@@ -45,7 +44,7 @@ GPU-Accelerated Quantization Containers
 
 The standard Vitis AI Docker containers do not support GPU-accelerated quantization. To create a container with GPU-accelerated quantization enabled, download the following archive and follow the instructions in the README file.
 
-`Download and build GPU Docker containers <https://account.amd.com/en/forms/downloads/xef.html?filename=ipu-rel-3.5.0-276.tar.gz>`_
+`Download and build GPU Docker containers <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ipu-rel-3.5.0-325-20240726.tar.gz>`_
 
 .. note::
    In this documentation, **"NPU"** is used in descriptions, while **"IPU"** is retained in the tool's language, code, screenshots, and commands. This intentional 

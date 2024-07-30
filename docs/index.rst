@@ -2,15 +2,11 @@
 Ryzen AI Software   
 ##########################
 
-AMD Ryzen™ AI Software enables developers to take full advantage of AMD XDNA™ architecture integrated in select AMD Ryzen AI processors. Ryzen AI software intelligently optimizes AI tasks and workloads, freeing-up CPU and GPU resources, providing optimal performance at lower power.
-
-**Bring your own model**: Ryzen AI software lets developers take machine learning models trained in PyTorch or TensorFlow and deploy them on laptops powered by Ryzen AI processors using ONNX Runtime.
-
-**Use optimized library functions**: The Ryzen AI Library provides ready-made functions optimized for Ryzen AI processors so that developers can integrate these functions in their applications with no machine learning experience required.
+AMD Ryzen™ AI Software includes the tools and runtime libraries for optimizing and deploying AI inference on AMD Ryzen™ AI powered PCs. Ryzen AI software enables applications to run on the neural processing unit (NPU) built in the AMD XDNA™ architecture, as well as on the integrated GPU. This allows developers to build and deploy models trained in PyTorch or TensorFlow and run them directly on laptops powered by Ryzen AI using ONNX Runtime and the Vitis™ AI Execution Provider (EP).
 
 |
 
-.. image:: images/landing_new.png
+.. image:: images/landing_npu_gpu_1.png
    :scale: 75%
    :align: center
 
@@ -27,7 +23,7 @@ AMD Ryzen™ AI Software enables developers to take full advantage of AMD XDNA�
 
 .. toctree::
    :maxdepth: 1
-   :caption: Getting Started
+   :caption: Getting Started on the NPU
 
    inst.rst
    runtime_setup.rst
@@ -36,17 +32,29 @@ AMD Ryzen™ AI Software enables developers to take full advantage of AMD XDNA�
 
 .. toctree::
    :maxdepth: 1
-   :caption: Using Your CNN Model
+   :caption: Using Your CNN on the NPU
 
    modelcompat.rst
    modelport.rst
    modelrun.rst
 
+
 .. toctree::
    :maxdepth: 1
-   :caption: Ryzen AI Library
+   :caption: Running on the GPU
 
-   Quick Start Guide <ryzen_ai_libraries.rst>
+   gpu/ryzenai_gpu.rst
+   gpu/gpu_blogs.rst
+
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Early Access Features
+
+   llm_flow.rst
+   xrt_smi.rst
+   ai_analyzer.rst
+
 
 .. toctree::
    :maxdepth: 1
@@ -56,7 +64,6 @@ AMD Ryzen™ AI Software enables developers to take full advantage of AMD XDNA�
    manual_installation.rst
    alternate_quantization_setup.rst 
    onnx_e2e.rst
-   early_access_features.rst
 
 
 ..

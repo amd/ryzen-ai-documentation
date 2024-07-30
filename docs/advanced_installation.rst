@@ -18,7 +18,7 @@ The Vitis AI PyTorch and TensorFlow Quantizer, which is part of the Vitis AI too
 
 The Vitis AI Docker container can be installed on Ubuntu 20.04, CentOS 7.8, 7.9, 8.1, and RHEL 8.3, 8.4. The developers working on Windows 11 can use WSL for installing Vitis AI Docker.
 
-Multiple versions of the Docker container are available, each tailored to specific frameworks. Follow the Docker download and running instructions as per the following links:
+Multiple versions of the Docker container are available, each tailored to specific frameworks. Follow the Docker download and running instructions from the following links:
 
 .. list-table:: 
    :widths: 25 25 
@@ -43,7 +43,7 @@ https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?f
 **Olive Quantization**
 
 
-Microsoft Olive framework supports quantization with Vitis AI ONNX Quantization. If you're interested in exploring Olive Quantization as an advanced quantization method, you can follow the steps below:
+Microsoft Olive framework supports quantization with Vitis AI ONNX Quantization. If you are interested in exploring Olive Quantization as an advanced quantization method, you can follow the steps below:
 
 1. Install Olive Quantization by running the following command:
 

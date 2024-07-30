@@ -10,11 +10,15 @@ This page explains how to install each component manually.
 
    Make sure to follow the installation steps in the order explained below.
 
-********************
-Download the Package
-********************
+******************************
+Perform a Default Installation
+******************************
 
-Download the :download:`ryzen-ai-sw-1.1.zip <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ryzen-ai-sw-1.1.zip>` Ryzen AI Software installation package and extract it. 
+Download the :download:`ryzenai-1.2.0.msi <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ryzen-ai-1.2.0-20240726.msi>` installer.
+
+Install the RyzenAI Software using the default settings. 
+
+This will copy in the ``C:Program Files\RyzenAI\1.2.0`` folder all the files required for a manual installation.
 
 
 **************************
@@ -27,9 +31,49 @@ Start a conda prompt. In the conda prompt, create and activate an environment fo
 
 .. code-block:: 
 
-  conda create --name <name> python=3.9
+  conda create --name <name> python=3.10
   conda activate <name> 
 
+
+*************************
+Set Environment Variables
+*************************
+
+Configure the environment variables to be automatically set upon activation of the conda environment.
+
+First, create a directory for the activation scripts:
+
+.. code-block:: shell
+
+   mkdir %CONDA_PREFIX%\etc\conda\activate.d
+
+Create script to load ``RYZEN_AI_INSTALLER_PATH`` environment. This script will be executed every time the conda environment is activated.
+
+.. code-block:: shell
+
+   notepad %CONDA_PREFIX\etc\conda\activate.d\load_ryzenai_installer_path.bat
+
+
+Add the following line to the script:
+
+.. code-block:: shell
+
+   set "RYZEN_AI_INSTALLER_PATH=%RYZEN_AI_INSTALLER_PATH%"
+
+
+Set the XLNX_VART_FIRMWARE environment variable based on your APU type:
+
+For STX APUs:
+
+.. code-block::
+
+   set XLNX_VART_FIRMWARE=%RYZEN_AI_INSTALLATION_PATH%/voe-4.0-win_amd64/xclbins/strix/AMD_AIE2P_Nx4_Overlay.xclbin
+
+For PHX/HPT APUls:
+
+.. code-block::
+
+   set XLNX_VART_FIRMWARE=%RYZEN_AI_INSTALLATION_PATH%/voe-4.0-win_amd64/xclbins/phoenix/1x4.xclbin
 
 .. _install-onnx-quantizer:
 
@@ -43,7 +87,7 @@ Install the Vitis AI Quantizer for ONNX as follows:
 
 .. code-block:: shell
 
-   cd ryzen-ai-sw-1.1\ryzen-ai-sw-1.1
+   cd %RYZEN_AI_INSTALLATION_PATH%
    pip install vai_q_onnx-1.16.0+69bc4f2-py2.py3-none-any.whl
 
 To install other quantization tools (Vitis AI PyTorch/TensorFlow 2/TensorFlow Quantization or Olive Quantization), refer to the :doc:`alternate_quantization_setup` page. 
@@ -64,7 +108,54 @@ Install the Vitis AI Execution Provider
 
 .. code-block:: 
 
-     cd ryzen-ai-sw-1.1\ryzen-ai-sw-1.1\voe-4.0-win_amd64
+     cd %RYZEN_AI_INSTALLATION_PATH%/voe-4.0-win_amd64
      pip install voe-0.1.0-cp39-cp39-win_amd64.whl
      pip install onnxruntime_vitisai-1.15.1-cp39-cp39-win_amd64.whl
      python installer.py
+
+*********************************
+Optional: Install the AI Analyzer
+*********************************
+
+.. code-block::
+
+     cd %RYZEN_AI_INSTALLATION_PATH%/voe-4.0-win_amd64
+     pip install aianalyzer-1.2.0.dev202407022336+g2f0e1b-py3-none-any.whl
+
+*************
+Runtime Setup
+*************
+
+Set the following environment variable in the conda environment created above:
+
+For STX: (default)
+
+.. code-block::
+
+   set XLNX_VART_FIRMWARE=%RYZEN_AI_INSTALLATION_PATH%\voe-4.0-win_amd64\xclbins\strix\AMD_AIE2P_Nx4_Overlay.xclbin
+
+
+For PHX/HPT:
+
+.. code-block::
+
+   set XLNX_VART_FIRMWARE=%RYZEN_AI_INSTALLATION_PATH%\voe-4.0-win_amd64\xclbins\phoenix\1x4.xclbin
+
+
+The ``*.xclbin`` files are located in the ``voe-4.0-win_amd64\xclbins`` folder of the Ryzen AI Software installation package. For detailed information and other available options refer to the :doc:`runtime_setup` page.
+
+*********************
+Test the Installation
+*********************
+
+The Ryzen AI Software installation folder contains a test to verify that the Ryzen AI software is correctly installed. Instructions on how to run this test can be found :ref:`here <quicktest>`.
+
+
+..
+  ------------
+
+  #####################################
+  License
+  #####################################
+
+ Ryzen AI is licensed under `MIT License <https://github.com/amd/ryzen-ai-documentation/blob/main/License>`_ . Refer to the `LICENSE File <https://github.com/amd/ryzen-ai-documentation/blob/main/License>`_ for the full license text and copyright notice.
