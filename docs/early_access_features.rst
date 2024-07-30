@@ -14,8 +14,6 @@ The following LLMs and transformers are supported and provided as examples:
 - `OPT-1.3B with PyTorch <https://github.com/amd/RyzenAI-SW/tree/main/example/transformers>`_  
 - `OPT-1.3B with ONNXRuntime <https://github.com/amd/RyzenAI-SW/tree/main/example/transformers>`_  
 
-
-
 ..
   ------------
 
