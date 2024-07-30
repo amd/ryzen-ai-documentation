@@ -4,8 +4,7 @@ Release Information
 
 ***********
 Version 1.2
-***********
-- New features:
+***********- New features:
   - Smart installer for Ryzen AI 1.2
   - NPU DPM based on power slider
 
@@ -37,7 +36,7 @@ Version 1.2
     - Enhanced convolution AT fusion
     - Enhanced data movement op performance
 
-**BIOS**
+BIOS
 
 - New features:
   - Smart installer for Ryzen AI 1.2
