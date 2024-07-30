@@ -38,11 +38,6 @@ Version 1.2
     - Enhanced convolution AT fusion
     - Enhanced data movement op performance
 
-BIOS
-
-- New features:
-  - Smart installer for Ryzen AI 1.2
-
 - Resolved issues:
   - NPU SW stack will fail to initialize when the system is out of memory. This could impact camera functionality when Microsoft Effect Pack is enabled.
   - If Microsoft Effects Pack is overloaded with other 4+ applications that use NPU to do inference, then camera functionality can be impacted. Can be fixed with a reboot. This will be fixed in the next release.
