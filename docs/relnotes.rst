@@ -6,6 +6,8 @@ Release Information
 Version 1.2
 ***********
 
+(update in progress)
+
 - New features
 
   - Smart installer for Ryzen AI 1.2
