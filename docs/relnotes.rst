@@ -5,55 +5,46 @@ Release Information
 ***********
 Version 1.2
 ***********
-
-(update in progress)
-
-- New features
-
+- New features:
   - Smart installer for Ryzen AI 1.2
   - NPU DPM based on power slider
- 
+
 - New model support:
-
-  - LLM flow support for multiple models in both PyTorch and ONNX flow (optimized model support will be released asynchronously.)
+  - Llama 3 7B, Qwen 1.5 7B, Llama 3 8B, and Phi-3 mini (optimized model support will be released asynchronously.)
   - SDXL-T on EA lounge with limited optimization
- 
-- New EoU tools:
 
+- New EoU tools:
   - NPU model execution profiler (AI Profiler)
   - Platform/NPU inspection and management tool (xrt-smi)
   - Onnx_Benchmarking tool
 
 - New Demos:
- 
   - NPU-GPU multi-model pipeline application demo
- 
-- NPU and Compiler
 
+- NPU and Compiler
   - New device support: Strix Nx4 and 4x4 Overlay
-  - New Op support: 
-    
-    - InstanceNorm 
+  - New Op support:
+    - InstanceNorm
     - Silu
     - Floating scale quantization operators (INT8, INT16)
-
   - Support new rounding mode (Round to even)
-  - Performance Improvement: 
-
+  - Performance Improvement:
     - Reduced the model compilation time
-    - Improve instruction loading
-    - Improve synchronization in large overlay
-    - Enhance strided_slice performance
+    - Improved instruction loading
+    - Improved synchronization in large overlay
+    - Enhanced strided_slice performance
     - Enhanced convolution MT fusion
     - Enhanced convolution AT fusion
     - Enhanced data movement op performance
- 
- 
-- Resolved issues:
-  
-  - NPU SW stack will fail to initialize when the system is out of memory. This could impact camera functionality when Microsoft Effect Pack is enabled.
-  - If Microsoft Effects Pack is overloaded with other 4+ applications that use NPU to do inference then camera functionality can be impacted. Can be fixed with a reboot. This will be fixed in next release
 
+**BIOS**
+
+- New features:
+  - Smart installer for Ryzen AI 1.2
+
+- Resolved issues:
+  - NPU SW stack will fail to initialize when the system is out of memory. This could impact camera functionality when Microsoft Effect Pack is enabled.
+  - If Microsoft Effects Pack is overloaded with other 4+ applications that use NPU to do inference, then camera functionality can be impacted. Can be fixed with a reboot. This will be fixed in the next release.
 
 ***********
 Version 1.1
@@ -93,8 +84,6 @@ Quantizer
   - Fix for useless initializers not being cleaned up during optimization.
   - Fix for external data cannot be found when using use_external_data_format.
   - Fix for custom Ops cannot be registered due to GLIBC version mismatch
-
-
 
 NPU and Compiler
 ================
