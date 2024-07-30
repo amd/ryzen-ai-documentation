@@ -8,6 +8,8 @@ Version 1.2
 
 - New features:
 
+  - Support added for Strix Point NPUs
+  - Support added for integrated GPU
   - Smart installer for Ryzen AI 1.2
   - NPU DPM based on power slider
 
@@ -20,7 +22,7 @@ Version 1.2
   
   - NPU model execution profiler (AI Profiler)
   - Platform/NPU inspection and management tool (xrt-smi)
-  - Onnx_Benchmarking tool
+  - Onnx Benchmarking tool
 
 - New Demos:
   
@@ -44,7 +46,24 @@ Version 1.2
     - Enhanced convolution MT fusion
     - Enhanced convolution AT fusion
     - Enhanced data movement op performance
+  - ONNX Quantizer updates
 
+    - Improved usability with various features and tools, including weights-only quantization, graph optimization, dynamic shape fixing, and format transformations.
+    - Improved the accuracy of quantized models through automatic mixed precision and enhanced AdaRound and AdaQuant techniques.
+    - Enhanced support for the BFP data type, including more attributes and shape inference capability.
+    - Optimized the NPU workflow by aligning with the hardware constraints of the NPU.
+    - Supported compilation for Windows and Linux.
+    - Bugfix:
+
+      - Fixed the problem where per-channel quantization is not compatible with onnxruntime 1.17.
+      - Fixed the bug of CLE when conv with groups.
+      - Fixed the bug of bias correction.
+  - Pytorch Quantizer updates
+
+    - Tiny value quantization protection.
+    - Higher onnx version support in quantized model exporting.
+    - Relu6 hardware constrains support.
+    - Support of mean operation with keepdim=True.
 - Resolved issues:
   
   - NPU SW stack will fail to initialize when the system is out of memory. This could impact camera functionality when Microsoft Effect Pack is enabled.
