@@ -13,7 +13,7 @@ Version 1.2
  
 - New model support:
 
-  - Llama 3 7B, Qwen1.5 7B, Llama3 8B and Phi-3 mini (optimized model support will be releases asynchronously.)
+  - LLM flow support for multiple models in both PyTorch and ONNX flow (optimized model support will be released asynchronously.)
   - SDXL-T on EA lounge with limited optimization
  
 - New EoU tools:
