@@ -20,7 +20,7 @@ Version 1.2
 
 - New EoU tools:
   
-  - NPU model execution profiler (AI Profiler)
+  - AI Analyzer: Analysis and visualization of model compilation and inference profiling  
   - Platform/NPU inspection and management tool (xrt-smi)
   - Onnx Benchmarking tool
 
