@@ -6,7 +6,7 @@ AMD Ryzen™ AI Software includes the tools and runtime libraries for optimizing
 
 |
 
-.. image:: images/landing_npu_gpu_1.png
+.. image:: images/ryzen_ai_stack_3.png
    :scale: 75%
    :align: center
 
