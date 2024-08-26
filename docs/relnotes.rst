@@ -15,18 +15,18 @@ Version 1.2
 
 - New model support:
 
-  - LLM flow support for multiple models in both PyTorch and ONNX flow (optimized model support will be released asynchronously)
-  - SDXL-T on EA lounge with limited optimization
+  - `LLM flow support <https://ryzenai.docs.amd.com/en/latest/llm_flow.html>`_ for multiple models in both PyTorch and ONNX flow (optimized model support will be released asynchronously)
+  - SDXL-T with limited performance optimization available on `AMD secure download site <https://account.amd.com/en/member/ryzenai-sw-ea.html>`_
 
 - New EoU tools:
   
-  - AI Analyzer: Analysis and visualization of model compilation and inference profiling  
-  - Platform/NPU inspection and management tool (xrt-smi)
-  - Onnx Benchmarking tool
+  - `AI Analyzer <https://ryzenai.docs.amd.com/en/latest/ai_analyzer.html>`_ : Analysis and visualization of model compilation and inference profiling  
+  - Platform/NPU inspection and management tool (`xrt-smi <https://ryzenai.docs.amd.com/en/latest/xrt_smi.html>`_)
+  - `Onnx Benchmarking tool <https://github.com/amd/RyzenAI-SW/tree/main/onnx-benchmark>`_
 
 - New Demos:
   
-  - NPU-GPU multi-model pipeline application demo
+  - NPU-GPU multi-model pipeline application `demo <https://github.com/amd/RyzenAI-SW/tree/main/demo/multi-model-exec>`_
 
 - NPU and Compiler
   
