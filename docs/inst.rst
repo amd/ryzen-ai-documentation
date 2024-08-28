@@ -76,7 +76,7 @@ Install the Ryzen AI Software
 
 - Launch the MSI installer and follow the instructions on the installation wizard:
 
-  - Accept the terms of the `End User License Agreement <https://github.com/amd/ryzen-ai-documentation/blob/main/docs/end-user-license-agreement.rst>`.
+  - Accept the terms of the `End User License Agreement <https://github.com/amd/ryzen-ai-documentation/blob/main/docs/end-user-license-agreement.rst>`_.
   - Provide the destination folder for Ryzen AI installation (default: ``C:\Program Files\RyzenAI\1.2.0``)
   - Specify the name for the conda environment (default: ``ryzen-ai-1.2.0``)
 
