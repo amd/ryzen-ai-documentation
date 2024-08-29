@@ -16,7 +16,7 @@ Version 1.2
 - New model support:
 
   - `LLM flow support <https://ryzenai.docs.amd.com/en/latest/llm_flow.html>`_ for multiple models in both PyTorch and ONNX flow (optimized model support will be released asynchronously)
-  - SDXL-T with limited performance optimization available on `AMD secure download site <https://account.amd.com/en/member/ryzenai-sw-ea.html>`_
+  - SDXL-T with limited performance optimization 
 
 - New EoU tools:
   
