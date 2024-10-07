@@ -29,4 +29,13 @@ The Ryzen AI Software supports other quantization tools that can be used in spec
 **Vitis AI Quantizer for Olive**: The Microsoft Olive framework provides a plugin allowing to use the Vitis AI Quantizer. Developers familiar with the Olive framework may use this flow to quantize their models. For more detail, refer to the :doc:`olive_quant` section of this documentation.
 
 
+..
+  ------------
+
+  #####################################
+  License
+  #####################################
+
+ Ryzen AI is licensed under `MIT License <https://github.com/amd/ryzen-ai-documentation/blob/main/License>`_ . Refer to the `LICENSE File <https://github.com/amd/ryzen-ai-documentation/blob/main/License>`_ for the full license text and copyright notice.
+
 
