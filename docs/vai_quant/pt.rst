@@ -2,6 +2,8 @@
 Vitis AI Quantizer for PyTorch
 ##############################
 
+.. note::
+   The Vitis AI Quantizer has been deprecated as of the Ryzen AI 3.0 release. Users are strongly recommended to use the new Quantizer Quark (please refer to the main Quantization documentation).
 
 *********************
 Enabling Quantization
