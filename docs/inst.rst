@@ -131,7 +131,6 @@ Additional Considerations
 
 - To install the Ryzen AI Software in a pre-existing conda environment, follow the :doc:`manual_installation` instructions.
 
-- If you need to install the Vitis AI PyTorch/TensorFlow Quantizer or the Microsoft Olive Quantizer, refer to the :doc:`alternate_quantization_setup` page. 
 
 
 ..
