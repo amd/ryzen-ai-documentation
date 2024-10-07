@@ -2,6 +2,9 @@
 Vitis AI Quantizer for TensorFlow
 #################################
 
+.. note::
+   The Vitis AI Quantizer has been deprecated as of the Ryzen AI 3.0 release. Users are strongly recommended to use the new Quantizer Quark (please refer to the main Quantization documentation).
+
 .. note:: 
 
     All TensorFlow related documentation is applicable to the TensorFlow 2 version. 
