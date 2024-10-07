@@ -6,9 +6,10 @@ Quark is a comprehensive cross-platform deep learning toolkit designed to simpli
 
 For comprehensive Quark Documentation please refer to https://quark.docs.amd.com/latest/ 
 
-From Ryzen AI 3.0, the Vitis AI Quantization deprecated. The users are strongly recommended to use Quark for the primary quantization tool. 
+.. note::
+   The Vitis AI Quantizer has been deprecated as of the Ryzen AI 3.0 release. Users are strongly recommended to use the new Quantizer Quark (please refer to the main Quantization documentation).
 
-For legacy Vitis AI Quantizer documentation access here: :doc:`vai_quant/vai_q_quantizer`
+Deprecated Vitis AI Quantizer documentation: :doc:`vai_quant/vai_q_quantizer`
    
 ..
   ------------
