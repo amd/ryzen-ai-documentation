@@ -6,6 +6,9 @@ Model Quantization
 
 For comprehensive Quark Documentation please refer to https://quark.docs.amd.com/latest/ 
 
+Quark tutorial for Ryzen AI Deployment: (Link TBD)
+
+
 .. note::
    The Vitis AI Quantizer has been deprecated as of the Ryzen AI 3.0 release. Users are strongly recommended to use the new Quantizer Quark (please refer to the main Quantization documentation).
 
