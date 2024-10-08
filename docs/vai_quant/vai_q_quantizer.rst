@@ -16,20 +16,16 @@ This is the recommended quantization flow for CNN-based models.
 For more details, refer to the :doc:`vai_q_onnx` section of this documentation.
 
 
-************************
-Other Quantization Flows
-************************
+**********************************************
+Vitis AI Quantizer for PyTorch or Tensorflow 2
+**********************************************
 
-The Ryzen AI Software supports other quantization tools that can be used in specific situations. To install any of these quantization tool refer to :doc:`additional_quantizer_setup`
+To install Vitis AI PyTorch/Tensorflow 2 refer to :doc:`additional_quantizer_setup`
 
 
 **Vitis AI Quantizer for PyTorch**: Allows quantizing models through the PyTorch framework. This flow supports both post-training quantization (PTQ) and quantization-aware training (QAT) to improve model accuracy. For more details, refer to the :doc:`pt` section of this documentation.
 
-**Vitis AI Quantizer for TensorFlow**: Allows quantizing models through the TensorFlow framework. This flow supports both post-training quantization (PTQ) and quantization-aware training (QAT) to improve model accuracy. For more details, refer to the :doc:`tf2` section of this documentation.
-
-**Vitis AI Quantizer for Olive**: The Microsoft Olive framework provides a plugin allowing to use the Vitis AI Quantizer. Developers familiar with the Olive framework may use this flow to quantize their models. For more detail, refer to the :doc:`olive_quant` section of this documentation.
-
-
+**Vitis AI Quantizer for TensorFlow 2**: Allows quantizing models through the TensorFlow framework. This flow supports both post-training quantization (PTQ) and quantization-aware training (QAT) to improve model accuracy. For more details, refer to the :doc:`tf2` section of this documentation.
 
 ..
   ------------
