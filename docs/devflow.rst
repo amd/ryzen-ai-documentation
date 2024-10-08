@@ -23,9 +23,7 @@ Quantization
 ************
 Quantization involves converting the AI model's parameters from floating-point to lower-precision representations, such as 16-bit or 8-bit integers. Quantized models are more power-efficient, utilize less memory, and offer better performance. 
 
-The :doc:`Vitis AI Quantizer for ONNX <vai_quant/vai_q_onnx>` provides an easy-to-use Post Training Quantization (PTQ) flow on the pre-trained model saved in the ONNX format. It generates a quantized ONNX model ready to be deployed with the Ryzen AI Software. This is the recommended quantization flow for CNN-based models.
-
-The Ryzen AI Software also supports other quantization tools that can be used in specific situations. 
+**Quark** is a comprehensive cross-platform deep learning toolkit designed to simplify and enhance the quantization of deep learning models. Supporting both PyTorch and ONNX models, Quark empowers developers to optimize their models for deployment on a wide range of hardware backends, achieving significant performance gains without compromising accuracy.
 
 For more details, refer to the :doc:`modelport` page.
 
