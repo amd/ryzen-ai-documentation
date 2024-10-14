@@ -120,44 +120,37 @@ Run the following command to prepare the dataset and export the ONNX model:
 Step 3: Quantize the Model
 **************************
 
-Quantizing AI models from floating-point to 8-bit integers reduces computational power and the memory footprint required for inference. This example utilizes the Vitis AI ONNX quantizer workflow. Quantization tool takes the pre-trained float32 model from the previous step (``resnet_trained_for_cifar10.onnx``) and produces a quantized model.
+Quantizing AI models from floating-point to 8-bit integers reduces computational power and the memory footprint required for inference. This example utilizes Quark for ONNX quantizer workflow. Quark takes the pre-trained float32 model from the previous step (``resnet_trained_for_cifar10.onnx``) and provides a quantized model.
 
 .. code-block::
 
    python resnet_quantize.py
 
-This generates a quantized model using QDQ quant format and UInt8 activation type and Int8 weight type. After the completion of the run, the quantized ONNX model ``resnet.qdq.U8S8.onnx`` is saved to models/resnet.qdq.U8S8.onnx. 
+This generates a quantized model using QDQ quant format and generate Quantized model with default configuration. After the completion of the run, the quantized ONNX model ``resnet_quantized.onnx`` is saved to models/resnet_quantized.onnx 
 
-The :file:`resnet_quantize.py` file has ``quantize_static`` function that applies static quantization to the model. 
+The :file:`resnet_quantize.py` file has ``ModelQuantizer::quantize_model`` function that applies quantization to the model. 
 
 .. code-block::
 
-   from onnxruntime.quantization import QuantFormat, QuantType
-   import vai_q_onnx
+   from quark.onnx.quantization.config import (Config, get_default_config)
+   from quark.onnx import ModelQuantizer
 
-   vai_q_onnx.quantize_static(
-        input_model_path,
-        output_model_path,
-        dr,
-        quant_format=vai_q_onnx.QuantFormat.QDQ,
-        calibrate_method=vai_q_onnx.PowerOfTwoMethod.MinMSE,
-        activation_type=vai_q_onnx.QuantType.QUInt8,
-        weight_type=vai_q_onnx.QuantType.QInt8,
-        enable_dpu=True, 
-        extra_options={'ActivationSymmetric': True} 
-    )
+   # Get quantization configuration
+   quant_config = get_default_config("XINT8")
+   config = Config(global_quant_config=quant_config)
+   
+   # Create an ONNX quantizer
+   quantizer = ModelQuantizer(config)
+
+   # Quantize the ONNX model
+   quantizer.quantize_model(input_model_path, output_model_path, dr)
 
 The parameters of this function are:
 
 * **input_model_path**: (String) The file path of the model to be quantized.
 * **output_model_path**: (String) The file path where the quantized model is saved.
 * **dr**: (Object or None) Calibration data reader that enumerates the calibration data and producing inputs for the original model. In this example, CIFAR10 dataset is used for calibration during the quantization process.
-* **quant_format**: (String) Specifies the quantization format of the model. In this example we have used the QDQ quant format.
-* **calibrate_method**: (String) In this example this parameter is set to ``vai_q_onnx.PowerOfTwoMethod.MinMSE`` to apply power-of-2 scale quantization. 
-* **activation_type**: (String) Data type of activation tensors after quantization. In this example, it's set to QInt8 (Quantized Integer 8).
-* **weight_type**: (String) Data type of weight tensors after quantization. In this example, it's set to QInt8 (Quantized Integer 8).
-* **enable_dpu**: (Boolean) Determines whether to generate a quantized model that is suitable for the NPU/DPU. If set to True, the quantization process will create a model that is optimized for NPU/DPU computations.
-* **extra_options**: (Dict or None) Dictionary of additional options that can be passed to the quantization process. In this example, ``ActivationSymmetric`` is set to True. It means calibration data for activations is symmetrized. 
+
 
 |
 |
