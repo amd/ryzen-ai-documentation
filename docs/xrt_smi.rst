@@ -101,6 +101,7 @@ Executing a Sanity Check on the NPU
     
   .. image:: images/validate.png
 
+Note: Some sanity check may fail when other application (for example MEP, Microsoft Experience Package) is using NPU. 
 
 Managing the Performance Level of the NPU
 -----------------------------------------
