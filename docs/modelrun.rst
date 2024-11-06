@@ -77,6 +77,9 @@ Additionally, the following environment variables can be used control the Ryzen 
      
 |
 
+.. note::
+   Make sure to create a new cache directory when migrating from the old Ryzen AI Software or driver to the new ones. Don't use the cache directory from the earlier version of the software.
+
 ******************
 Python API Example
 ******************
