@@ -77,20 +77,13 @@ For PHX/HPT APUls:
 
 .. _install-onnx-quantizer:
 
-******************************
-Install the Vitis AI Quantizer
-******************************
+***********************
+Install Quark Quantizer
+***********************
 
-The :doc:`Vitis AI Quantizer for ONNX <vai_quant/vai_q_onnx>` supports a post-training quantization method that works on models saved in the ONNX format. 
+Install Quark quantizer wheel  
 
-Install the Vitis AI Quantizer for ONNX as follows:
-
-.. code-block:: shell
-
-   cd %RYZEN_AI_INSTALLATION_PATH%
-   pip install vai_q_onnx-1.16.0+69bc4f2-py2.py3-none-any.whl
-
-To install other quantization tools (Vitis AI PyTorch/TensorFlow 2/TensorFlow Quantization or Olive Quantization), refer to the :doc:`alternate_quantization_setup` page. 
+https://quark.docs.amd.com/latest/install.html#installation
 
 
 ************************
