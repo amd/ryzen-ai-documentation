@@ -48,6 +48,28 @@ Profiling and Visualization can be enabled by passing additional provider option
 
 The ``ai_analyzer_profiling`` flag enables generation of artifacts related to the inference profile. The ``ai_analyzer_visualization`` flag enables generation of artifacts related to graph partitions and operator fusion. These artifacts are generated as .json files in the current run directory.
 
+AI Analyzer also supports native ONNX Runtime profiling, which can be used to analyze the parts of the session running on the CPU. Users can enable ONNX Runtime profiling through session options and pass it alongside the provider options as shown below:
+
+.. code-block::
+
+   # Configure session options for profiling
+   sess_options = rt.SessionOptions()
+   sess_options.enable_profiling = True
+
+   provider_options = [{
+                'config_file': 'vaip_config.json',
+                'cacheDir': str(cache_dir),
+                'cacheKey': 'modelcachekey', 
+                'ai_analyzer_visualization': True,
+                'ai_analyzer_profiling': True,
+            }]
+
+  session = ort.InferenceSession(model.SerializeToString(), sess_options, providers=providers,
+                               provider_options=provider_options)
+
+
+
+
 *********************
 Launching AI Analyzer
 *********************
