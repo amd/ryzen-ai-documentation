@@ -62,7 +62,6 @@ AMD Ryzen™ AI Software includes the tools and runtime libraries for optimizing
 
    Model Zoo <https://huggingface.co/models?other=RyzenAI>
    manual_installation.rst
-   onnx_e2e.rst
 
 
 ..
