@@ -249,6 +249,8 @@ Vitis AI EP generates a file named ``vitisai_ep_report.json`` that provides a re
     ],
     ...
 
+|
+
 *************************************************************    
 Package Requirements for Applications Running Ryzen AI Models
 **************************************************************
@@ -257,6 +259,7 @@ A C++ application built on the Ryzen AI ONNX Runtime requires the following comp
 
 - Compiled Model: Located in the cache folder.
 - Runtime DLLs (located inside <Ryzen AI Installation folder>/onnxruntime/bin):
+
   - `onnxruntime.dll`
   - `onnxruntime_providers_shared.dll`
   - `onnxruntime_providers_vitisai.dll`
