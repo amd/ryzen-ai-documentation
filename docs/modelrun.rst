@@ -273,7 +273,7 @@ A C++ application built on the Ryzen AI ONNX Runtime requires the following comp
 
 .. note:: 
    
-   With any change in the Ryzen AI software or driver, the model must be recompiled to generate a new cache folder.
+   With any change in the Ryzen AI software or NPU driver, the model must be recompiled to generate a new cache folder.
 
 
 
