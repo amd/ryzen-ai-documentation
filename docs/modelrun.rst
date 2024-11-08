@@ -253,9 +253,9 @@ Vitis AI EP generates a file named ``vitisai_ep_report.json`` that provides a re
 
 |
 
-**************************
-Operator Assignment Report
-**************************
+*************************************************************
+Package Requirements for Applications Running Ryzen AI Models
+*************************************************************
 
 
 A C++ application built on the Ryzen AI ONNX Runtime requires the following components to be included in its distribution package:
