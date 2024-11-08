@@ -14,11 +14,11 @@ This page explains how to install each component manually.
 Perform a Default Installation
 ******************************
 
-Download the :download:`ryzenai-1.2.0.msi <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ryzen-ai-1.2.0-20240726.msi>` installer.
+Download the :download:`ryzenai-1.3.0.msi <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ryzen-ai-1.2.0-20240726.msi>` installer.
 
 Install the RyzenAI Software using the default settings. 
 
-This will copy in the ``C:Program Files\RyzenAI\1.2.0`` folder all the files required for a manual installation.
+This will copy in the ``C:Program Files\RyzenAI\1.3.0`` folder all the files required for a manual installation.
 
 
 **************************
