@@ -1,6 +1,6 @@
-########
-LLM Flow
-########
+#######################
+Running LLMs on the NPU
+#######################
 
 
 The Ryzen AI Software includes support for deploying quantized LLMs on the NPU using an eager execution mode, simplifying the model ingestion process. Instead of compiling and executing as a complete graph, the model is processed on an operator-by-operator basis. Compute-intensive operations, such as GEMM/MATMUL, are dynamically offloaded to the NPU, while the remaining operators are executed on the CPU. Eager mode for LLMs is supported in both PyTorch and the ONNX Runtime. 
