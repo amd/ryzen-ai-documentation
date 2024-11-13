@@ -36,6 +36,7 @@ AMD Ryzen™ AI Software includes the tools and runtime libraries for optimizing
    modelcompat.rst
    modelport.rst
    modelrun.rst
+   app_development.rst
 
 
 .. toctree::

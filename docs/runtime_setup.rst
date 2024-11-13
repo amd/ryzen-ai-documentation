@@ -110,5 +110,5 @@ Runtime Configuration File
 
 The Vitis AI Execution Provider (VAI EP) requires a runtime configuration file. A default version of this runtime configuration file can be found in the Ryzen AI Software installation tree: :file:`%RYZEN_AI_INSTALLATION_PATH%\\voe-4.0-win_amd64\\vaip_config.json`. 
 
-It is recommended to create a copy of the :file:`vaip_config.json` file in your project directory and point to this copy when initializing the inference session. Refer to the :doc:`modelrun` page for more details on how to set up an inference session with the Vitis AI Execution Provider.
+It is required to create a copy of the :file:`vaip_config.json` file in your project directory and use this copy when initializing the inference session. The Vitis AI EP and the runtime configuration file used by the application must be taken from the same Ryzen AI Software release package. Refer to the :doc:`modelrun` page for more details on how to set up an inference session with the Vitis AI EP.
 
