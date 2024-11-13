@@ -24,7 +24,7 @@ AMD Ryzen™ AI Software includes the tools and runtime libraries for optimizing
 Development Flow Overview
 *************************
 
-The Ryzen AI development flow does not require any modifications to the existing model training processes and methods. The pre-trained model (in PyTorch or TensorFlow) can be used as the starting point of the Ryzen AI flow.
+The Ryzen AI development flow does not require any modifications to the existing model training processes and methods. The pre-trained model can be used as the starting point of the Ryzen AI flow.
 
 Quantization
 ============
@@ -65,7 +65,7 @@ For more details, refer to the :doc:`modelrun` page.
 .. toctree::
    :maxdepth: 1
    :hidden:
-   :caption: Using Your CNN on the NPU
+   :caption: Running CNNs on the NPU
 
    modelcompat.rst
    modelport.rst
@@ -76,7 +76,7 @@ For more details, refer to the :doc:`modelrun` page.
 .. toctree::
    :maxdepth: 1
    :hidden:
-   :caption: Using Models on the GPU
+   :caption: Running Models on the GPU
 
    gpu/ryzenai_gpu.rst
 
