@@ -40,10 +40,9 @@ AMD Ryzen™ AI Software includes the tools and runtime libraries for optimizing
 
 .. toctree::
    :maxdepth: 1
-   :caption: Running on the GPU
+   :caption: Using Models on the GPU
 
    gpu/ryzenai_gpu.rst
-   gpu/gpu_blogs.rst
 
 
 .. toctree::
