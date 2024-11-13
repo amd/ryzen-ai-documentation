@@ -1,5 +1,19 @@
+..
+.. Heading guidelines
+..
+..     # with overline, for parts
+..     * with overline, for chapters
+..     =, for sections
+..     -, for subsections
+..     ^, for subsubsections
+..     “, for paragraphs
+..
+
+.. include:: icons.txt
+
+########################
 NPU Management Interface
-========================
+########################
 
 .. note::
    
@@ -13,106 +27,132 @@ It is installed in ``C:\Windows\System32\AMD`` and it can be directly invoked fr
 
 The ``xrt-smi`` utility currently supports three primary commands:
 
-- **examine:** Examines the state of the AI PC and the NPU.
-- **validate:** Executes sanity tests on the NPU.
-- **configure:** Manages the performance level of the NPU.
+- ``examine``: Examines the state of the AI PC and the NPU.
+- ``validate``: Executes sanity tests on the NPU.
+- ``configure``: Manages the performance level of the NPU.
 
 
 You can use ``--help`` with any command, such as ``xrt-smi examine --help``, to view all supported subcommands and their details. 
 
-Both examine and validate support an additional option --format which takes JSON (``-f JSON``) and can be used to get JSON output (``-o <example.json>``) for automation purposes.
+By default, the output of the ``xrt-smi examine`` and ``xrt-smi validate`` commands goes to the terminal. It can also be written to file in JSON format as shown below:  
 
-Examining the AI PC and the NPU
--------------------------------
+.. code-block:: shell
 
-- To provide OS/system information of the AI PC and confirm the presence of the AMD NPU:
+    xrt-smi examine -f JSON -o <path/to/output.json>
 
-  .. code-block:: shell
+*******************************
+xrt-smi examine
+*******************************
 
-     xrt-smi examine
+System Information
+==================
 
-  *Sample Command Line Output:*
+To get OS/system information of the AI PC and confirm the presence of the AMD NPU:
 
-  .. image:: images/examine.png
+.. code-block:: shell
 
-  To get output in JSON format:
+    xrt-smi examine
 
-  .. code-block:: shell
+*Sample Command Line Output:*
 
-     xrt-smi examine -f JSON -o <specify path to create json file examine.json>
+.. image:: images/examine.png
 
-- To provide more detailed information about the NPU, such as its performance mode and clocks:
 
-  .. code-block:: shell
+Platform Information
+====================
 
-     xrt-smi examine --report platform
+To get more detailed information about the NPU, such as its performance mode and clocks:
 
-  *Sample Command Line Output:*
+.. code-block:: shell
 
-  .. image:: images/report_platform.png
+    xrt-smi examine --report platform
 
-- To show details about the NPU partition and column occupancy on the NPU:
+*Sample Command Line Output:*
 
-  .. code-block:: shell
+.. image:: images/report_platform.png
 
-     xrt-smi examine --report aie-partitions
+NPU Partitions
+==============
 
-  *Sample Command Line Output:*
+To get details about the NPU partition and column occupancy on the NPU:
 
-  .. image:: images/aie_partitions.png
+.. code-block:: shell
 
-- To show details about the columns to NPU HW context binding:
+    xrt-smi examine --report aie-partitions
 
-  .. code-block:: shell
+*Sample Command Line Output:*
 
-     xrt-smi examine --report aie-partitions --verbose
+.. image:: images/aie_partitions.png
 
-  *Sample Command Line Output:*
 
-  .. image:: images/aie_partitions_verbose.png
+NPU Context Bindings
+====================
 
-- To show details about the ctrlcode opcode trace (on Strix NPU) or stream buffer tokens (on Phonix NPU):
+To get details about the columns to NPU HW context binding:
 
-  .. code-block:: shell
+.. code-block:: shell
 
-     xrt-smi examine -r telemetry
+    xrt-smi examine --report aie-partitions --verbose
+
+*Sample Command Line Output:*
+
+.. image:: images/aie_partitions_verbose.png
+
+
+Telemetry
+=========
+
+To get details about the ctrlcode opcode trace (on Strix NPU) or stream buffer tokens (on Phonix NPU):
+
+.. code-block:: shell
+
+    xrt-smi examine -r telemetry
   
-  *Sample Command Line Output on Strix NPU:*
+*Sample Command Line Output on Strix NPU:*
 
-  .. image:: images/telemetry_stx.png
+.. image:: images/telemetry_stx.png
 
-  *Sample Command Line Output on Phoenix NPU:*
+*Sample Command Line Output on Phoenix NPU:*
 
-  .. image:: images/telemetry_phx.png
+.. image:: images/telemetry_phx.png
 
 
-**Note:** To view ``aie-partition`` and ``telemetry`` reports, the model must be run concurrently on the NPU. For models running for a shorter timespan, you can run the model or xrt-smi commands in a loop to see the output of these commands.
+|memo| **NOTE**: To view ``aie-partition`` and ``telemetry`` reports, the model must be run concurrently on the NPU. For models running for a shorter timespan, you can run the model or xrt-smi commands in a loop to see the output of these commands.
+
+*******************************
+xrt-smi validate
+*******************************
 
 Executing a Sanity Check on the NPU
------------------------------------
+===================================
 
-- To validate AMD NPU, run a set of built-in sanity tests which includes verify, df-bw, tct and gemm:
+To run a set of built-in NPU sanity tests which includes verify, df-bw, tct and gemm:
 
-  .. code-block:: shell
+.. code-block:: shell
 
-     xrt-smi validate --run <all>
+    xrt-smi validate --run <all>
+
+|memo| **NOTE**: Some sanity checks may fail if other applications (for example MEP, Microsoft Experience Package) are also using the NPU. 
 
 *Sample Command Line Output:*
     
-  .. image:: images/validate.png
+.. image:: images/validate.png
 
-Note: Some sanity check may fail when other application (for example MEP, Microsoft Experience Package) is using NPU. 
+
+*******************************
+xrt-smi configure
+*******************************
 
 Managing the Performance Level of the NPU
------------------------------------------
+=========================================
 
-- To set the performance level of the NPU. You can choose powersaver mode, balanced mode, performance mode, or use the default:
+To set the performance level of the NPU. You can choose powersaver mode, balanced mode, performance mode, or use the default:
 
-  .. code-block:: shell
+.. code-block:: shell
 
-     xrt-smi configure --pmode <powersaver | balanced | performance | default>
+    xrt-smi configure --pmode <powersaver | balanced | performance | default>
 
-  *Sample Command Line Output:*
+*Sample Command Line Output:*
 
-  .. image:: images/configure_pmode.png
+.. image:: images/configure_pmode.png
 
