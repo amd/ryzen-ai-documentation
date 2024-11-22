@@ -15,12 +15,6 @@
 NPU Management Interface
 ########################
 
-.. note::
-   
-   This feature is currently in the Early Access stage. Early Access features are features which are still undergoing some optimization and fine-tuning. These features are not in their final form and may change 
-   as we continue to work in order to mature them into full-fledged features.
-
-
 The ``xrt-smi`` utility is a command-line interface to monitor and manage the NPU integrated AMD CPUs. 
 
 It is installed in ``C:\Windows\System32\AMD`` and it can be directly invoked from within the conda environment created by the Ryzen AI Software installer.
@@ -146,13 +140,26 @@ xrt-smi configure
 Managing the Performance Level of the NPU
 =========================================
 
-To set the performance level of the NPU. You can choose powersaver mode, balanced mode, performance mode, or use the default:
+To set the performance level of the NPU, you can choose from the following modes: powersaver, balanced, performance, or default. Use the command below:
 
 .. code-block:: shell
 
-    xrt-smi configure --pmode <powersaver | balanced | performance | default>
+   xrt-smi configure --pmode <powersaver | balanced | performance | default>
 
-*Sample Command Line Output:*
+- *Powersaver* mode: Configures the NPU to prioritize power saving, preserving laptop battery life.
+- *Performance* mode: Configures the NPU to maximize performance, consuming more power.
+- *Balanced* mode: Configures the NPU to provide a compromise between power saving and performance.
+- *Default* mode: Adapts to the Windows Power Mode setting, which can be adjusted under System -> Power and Battery -> Power Mode.
 
-.. image:: images/configure_pmode.png
+Example: Setting the NPU to high-performance mode
+
+.. code-block:: shell
+
+   xrt-smi configure --pmode performance
+
+To check the current performance level, use the following command:
+
+.. code-block:: shell
+
+   xrt-smi examine --report platform
 
