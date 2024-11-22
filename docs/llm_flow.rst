@@ -3,7 +3,16 @@ Running LLMs on the NPU
 #######################
 
 
-The Ryzen AI Software includes support for deploying quantized LLMs on the NPU using an eager execution mode, simplifying the model ingestion process. Instead of compiling and executing as a complete graph, the model is processed on an operator-by-operator basis. Compute-intensive operations, such as GEMM/MATMUL, are dynamically offloaded to the NPU, while the remaining operators are executed on the CPU. Eager mode for LLMs is supported in both PyTorch and the ONNX Runtime. 
+The Ryzen AI Software includes support for deploying quantized LLMs on the NPU using an eager execution mode, simplifying the model ingestion process. Instead of compiling and executing as a complete graph, the model is processed on an operator-by-operator basis. Compute-intensive operations, such as GEMM/MATMUL, are dynamically offloaded to the NPU, while the remaining operators are executed on the CPU. 
+
+A set of performance-optimized models is available upon request on the AMD secure download site: https://account.amd.com/en/member/ryzenai-sw-ea.html 
+
+- Applicability: benchmarking and deployment of specific LLMs 
+- Performance: highly optimized 
+- Supported platforms: STX (and onwards) 
+- Supported frameworks: ONNX Runtime GenAI 
+- Supported models: Llama2, Llama3, Qwen1.5 
+
 
 A general-purpose flow can be found here: https://github.com/amd/RyzenAI-SW/blob/main/example/transformers/models/llm/docs/README.md 
 
@@ -13,13 +22,7 @@ A general-purpose flow can be found here: https://github.com/amd/RyzenAI-SW/blob
 - Supported frameworks: Pytorch 
 - Supported models: Many 
 
-A set of performance-optimized models is available upon request on the AMD secure download site: https://account.amd.com/en/member/ryzenai-sw-ea.html 
 
-- Applicability: benchmarking and deployment of specific LLMs 
-- Performance: highly optimized 
-- Supported platforms: STX (and onwards) 
-- Supported frameworks: Pytorch and ONNX Runtime 
-- Supported models: Llama2, Llama3, Qwen1.5 
 
 
 ..
