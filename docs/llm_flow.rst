@@ -11,7 +11,6 @@ A set of performance-optimized models is available upon request on the AMD secur
 - Performance: highly optimized 
 - Supported platforms: STX (and onwards) 
 - Supported frameworks: ONNX Runtime GenAI 
-- Supported models: Llama2, Llama3, Qwen1.5 
 
 
 A general-purpose flow can be found here: https://github.com/amd/RyzenAI-SW/blob/main/example/transformers/models/llm/docs/README.md 
@@ -20,7 +19,6 @@ A general-purpose flow can be found here: https://github.com/amd/RyzenAI-SW/blob
 - Performance: functional support only, not to be used for benchmarking 
 - Supported platforms: PHX, HPT, STX (and onwards) 
 - Supported frameworks: Pytorch 
-- Supported models: Many 
 
 
 
