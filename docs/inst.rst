@@ -61,7 +61,7 @@ Install NPU Drivers
   - Extract the downloaded ``NPU_RAI1.2.zip`` zip file.
   - Open a terminal in administrator mode and execute the ``.\npu_sw_installer.exe`` exe file.
 
-- Ensure that NPU MCDM driver (Version:32.0.201.204, Date:7/26/2024) is correctly installed by opening ``Device Manager`` -> ``Neural processors`` -> ``NPU Compute Accelerator Device``.
+- Ensure that NPU MCDM driver (Version:32.0.203.237, Date:11/8/2024) is correctly installed by opening ``Device Manager`` -> ``Neural processors`` -> ``NPU Compute Accelerator Device``.
 
 
 
