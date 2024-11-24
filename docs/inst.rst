@@ -12,7 +12,7 @@ The Ryzen AI Software supports the following processors running Windows 11 (Win 
 
 - Phoenix (PHX): AMD Ryzen™ 7940HS, 7840HS, 7640HS, 7840U, 7640U.
 - Hawk (HPT): AMD Ryzen™ 8640U, 8640HS, 8645H, 8840U, 8840HS, 8845H, 8945H.
-- Strix (STX): AMD Ryzen™ Ryzen AI 9 HX370, Ryzen AI 9 365
+- Strix (STX): AMD Ryzen™ Ryzen AI 9 HX375, Ryzen AI 9 HX370, Ryzen AI 9 365 
 
 The rest of this document will refer to Phoenix as PHX, Hawk as HPT, and Strix as STX.
 
