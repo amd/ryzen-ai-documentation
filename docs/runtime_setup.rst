@@ -38,7 +38,10 @@ To programmatically determine the type of the local APU, it is possible to enume
      - 0x17F0
      - 0x11
      - STX 
-
+   * - 0x1022
+     - 0x17F0
+     - 0x20
+     - KRK
 
 .. _npu-configurations:
 
@@ -60,7 +63,7 @@ The standard configuration is designed to minimize NPU hardware resource usage, 
 
 To select this configuration, set the following environment variables based on your PC APU type:
 
-For STX APUs:
+For STX/KRK APUs:
 
 .. code-block::
 
@@ -85,7 +88,7 @@ The benchmark configuration maximizes NPU hardware resource usage, resulting in 
 
 To select this configuration, set the following environment variables based on your PC APU type:
 
-For STX APUs:
+For STX/KRK APUs:
 
 .. code-block::
 
