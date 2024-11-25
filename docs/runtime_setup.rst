@@ -5,13 +5,38 @@
 Runtime Setup
 #############
 
+.. _driver-compatibility:
+
+
+*************************************
+VitisAI EP / NPU Driver Compatibility
+*************************************
+
+The VitisAI EP requires a compatible version of the NPU drivers. For each version of the VitisAI EP, compatible drivers are bounded by a minimum version and a maximum release date. NPU drivers are backward compatible with VitisAI EP released up to 3 years before. The maximum driver release date is therefore set to 3 years after the release date of the corresponding VitisAI EP.
+
+The table below summarizes the driver requirements for the different versions of the VitisAI EP.
+
+.. list-table:: 
+   :header-rows: 1
+
+   * - VitisAI EP version
+     - Minimum NPU Driver version
+     - Maximum NPU Driver release date 
+   * - 1.2
+     - 32.0.201.204
+     - July 30th, 2027
+   * - 1.3
+     - 32.0.201.234
+     - November 26th, 2027
+
+
 .. _apu-types:
 
 *****************
 APU Types
 *****************
 
-The Ryzen AI Software supports different types of NPU-enabled APUs. These APU types are referred to as PHX, HPT and STX. 
+The Ryzen AI Software supports different types of NPU-enabled APUs. These APU types are referred to as PHX, HPT, STX and KRK. 
 
 To programmatically determine the type of the local APU, it is possible to enumerate the PCI devices and check for an instance with a matching Hardware ID.
 
@@ -38,7 +63,10 @@ To programmatically determine the type of the local APU, it is possible to enume
      - 0x17F0
      - 0x11
      - STX 
-
+   * - 0x1022
+     - 0x17F0
+     - 0x20
+     - KRK
 
 .. _npu-configurations:
 
@@ -60,7 +88,7 @@ The standard configuration is designed to minimize NPU hardware resource usage, 
 
 To select this configuration, set the following environment variables based on your PC APU type:
 
-For STX APUs:
+For STX/KRK APUs:
 
 .. code-block::
 
@@ -85,7 +113,7 @@ The benchmark configuration maximizes NPU hardware resource usage, resulting in 
 
 To select this configuration, set the following environment variables based on your PC APU type:
 
-For STX APUs:
+For STX/KRK APUs:
 
 .. code-block::
 

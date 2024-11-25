@@ -63,7 +63,7 @@ Add the following line to the script:
 
 Set the XLNX_VART_FIRMWARE environment variable based on your APU type:
 
-For STX APUs:
+For STX/KRK APUs:
 
 .. code-block::
 
@@ -121,7 +121,7 @@ Runtime Setup
 
 Set the following environment variable in the conda environment created above:
 
-For STX: (default)
+For STX/KRK: (default)
 
 .. code-block::
 
