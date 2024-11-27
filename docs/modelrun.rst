@@ -1,3 +1,5 @@
+.. include:: icons.txt
+
 ###################
 Model Deployment
 ###################
@@ -41,7 +43,7 @@ The Vitis AI Execution Provider supports the following options:
      - The cache directory.
    * - cacheKey
      - Optional 
-     - {onnx_model_md5}
+     - {md5sum of onnx model}
      - Compiled model directory generated inside the cache directory. Use string to specify the desired name of the compiler model directory. 
        For example: ``'cacheKey': 'resnet50_cache'``.
 
@@ -76,9 +78,6 @@ Additionally, the following environment variables can be used control the Ryzen 
      - If unset, the runtime flow ignores the cache directory and recompiles the model.
      
 |
-
-.. note::
-   Make sure to create a new cache directory when migrating from the old Ryzen AI Software or driver to the new ones. Don't use the cache directory from the earlier version of the software.
 
 ******************
 Python API Example
@@ -135,7 +134,7 @@ C++ API Example
         {"cacheKey",    "cacheName"}           // Optional
     };
     session_options.AppendExecutionProvider_VitisAI(options);
-    auto session = Ort::Session(env, model_name.data(), session_options);
+    auto session = Ort::Session(env, model_path.data(), session_options);
 
     // preprocess input data
     // ...
@@ -250,35 +249,6 @@ Vitis AI EP generates a file named ``vitisai_ep_report.json`` that provides a re
     ],
     ...
 
-
-|
-
-**********************************
-Application Packaging Requirements
-**********************************
-
-
-A C++ application built on the Ryzen AI ONNX Runtime requires the following components to be included in its distribution package:
-
-- Compiled Model: Located in the cache folder.
-- Runtime DLLs (located inside ``%RYZEN_AI_INSTALLATION_PATH%/onnxruntime/bin``):
-
-  - ``onnxruntime.dll``
-  - ``onnxruntime_providers_shared.dll``
-  - ``onnxruntime_providers_vitisai.dll``
-  - ``onnxruntime_vitisai_ep.dll``
-  - ``DirectML.dll``
-- NPU Binary (XCLBIN) file, set by the ``XLNX_VART_FIRMWARE`` environment variable.
-- Vitis AI Execution Provider Configuration File: ``vaip_config.json``
-
-.. note:: 
-   
-   With any change in the Ryzen AI software or NPU driver, the model must be recompiled to generate a new cache folder.
-
-
-
-
- 
 ..
   ------------
 

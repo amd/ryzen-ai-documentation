@@ -8,11 +8,11 @@ Installation Instructions
 Supported Configurations
 ************************
 
-The Ryzen AI Software supports the following processors running Windows 11 (Win 11 build>=22621.3527 is required for Ryzen AI Software 1.2.) 
+The Ryzen AI Software supports the following processors running Windows 11 (Win 11 build>=22621.3527 is required for Ryzen AI Software 1.3.) 
 
 - Phoenix (PHX): AMD Ryzen™ 7940HS, 7840HS, 7640HS, 7840U, 7640U.
 - Hawk (HPT): AMD Ryzen™ 8640U, 8640HS, 8645H, 8840U, 8840HS, 8845H, 8945H.
-- Strix (STX): AMD Ryzen™ Ryzen AI 9 HX370, Ryzen AI 9 365
+- Strix (STX): AMD Ryzen™ Ryzen AI 9 HX375, Ryzen AI 9 HX370, Ryzen AI 9 365 
 
 The rest of this document will refer to Phoenix as PHX, Hawk as HPT, and Strix as STX.
 
@@ -54,14 +54,14 @@ To enable the development and deployment of applications leveraging the NPU, you
 Install NPU Drivers
 *******************
 
-- Download the NPU driver installation package :download:`NPU Driver <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=NPU_RAI1.2_20240729.zip>`
+- Download the NPU driver installation package :download:`NPU Driver <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=NPU_RAI1.3.zip  >`
 
 - Install the NPU drivers by following these steps:
 
-  - Extract the downloaded ``NPU_RAI1.2.zip`` zip file.
+  - Extract the downloaded ``NPU_RAI1.3.zip`` zip file.
   - Open a terminal in administrator mode and execute the ``.\npu_sw_installer.exe`` exe file.
 
-- Ensure that NPU MCDM driver (Version:32.0.201.204, Date:7/26/2024) is correctly installed by opening ``Device Manager`` -> ``Neural processors`` -> ``NPU Compute Accelerator Device``.
+- Ensure that NPU MCDM driver (Version:32.0.203.237, Date:11/8/2024) is correctly installed by opening ``Device Manager`` -> ``Neural processors`` -> ``NPU Compute Accelerator Device``.
 
 
 
@@ -72,7 +72,7 @@ Install NPU Drivers
 Install the Ryzen AI Software
 *****************************
 
-- Download the RyzenAI Software MSI installer :download:`ryzenai-1.3.0.msi <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ryzen-ai-1.2.0-20240726.msi>`.
+- Download the RyzenAI Software MSI installer :download:`ryzen-ai-rt-1.3.0-20241126.msi <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ryzen-ai-rt-1.3.0-20241126.msi>`.
 
 - Launch the MSI installer and follow the instructions on the installation wizard:
 

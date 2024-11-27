@@ -106,10 +106,10 @@ Once the artifacts are generated, `aianalyzer` can be invoked through the comman
     Setting to an empty string disables authentication altogether, which is NOT RECOMMENDED.
 
 ******************
-Analyzing ResNet50 
+Tutorial
 ******************
 
-We can enable the AI Analyzer in the :doc:`Getting started with ResNet50 <getstartex>` example. To do this, modify the provider options as shown above in the ``predict.py`` script. When this script is run, the profiling and visualization artifacts will be dumped as .json files in the current run directory.
+We can enable the AI Analyzer in the :doc:`Getting started with ResNet50 <getstartex>` example. To do this, open the ``predict.py`` script and modify the provider options as shown above . When this script is run, the profiling and visualization artifacts will be dumped as .json files in the current run directory.
 
 
 Launch the AI Analyzer: 

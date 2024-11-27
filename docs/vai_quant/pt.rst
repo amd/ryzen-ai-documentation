@@ -1,15 +1,34 @@
+:orphan:
+
 ##############################
 Vitis AI Quantizer for PyTorch
 ##############################
 
 .. note::
-   The Vitis AI Quantizer has been deprecated as of the Ryzen AI 1.3 release. Users are strongly recommended to use the new Quantizer Quark (please refer to the main Quantization documentation).
+   The Vitis AI Quantizer has been deprecated as of the Ryzen AI 1.3 release. AMD strongly recommends using the new AMD Quark Quantizer instead (please refer to the main documentation about :doc:`/modelport`).
+
+
+************
+Installation
+************
+The Vitis AI Quantizer for PyTorch is distributed through a Docker containers which can be installed on Ubuntu 20.04, CentOS 7.8, 7.9, 8.1, and RHEL 8.3, 8.4. For developers working on Windows 11, WSL can be used to install the Vitis AI Docker container.
+
+Standard Container
+==================
+
+To install the Docker container for the Vitis AI Quantizer for PyTorch, follow the instructions provided here: https://hub.docker.com/r/amdih/ryzen-ai-pytorch
+
+GPU-Accelerated Container
+=========================
+
+The standard Vitis AI Docker container does not support GPU-accelerated quantization. To create a container with GPU-accelerated quantization enabled, download the following archive and follow the instructions in the README file.
+
+`Download and build GPU Docker containers <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ipu-rel-3.5.0-325-20240726.tar.gz>`_
+
 
 *********************
 Enabling Quantization
 *********************
-
-Ensure that the Vitis AI Quantizer for PyTorch is correctly installed. For more information, see the :ref:`installation instructions <install-pt-tf>`.
 
 To enable the Vitis AI Quantizer for PyTorch, activate the conda environment in the Vitis AI Pytorch Docker container:
 
