@@ -14,11 +14,11 @@ This page explains how to install each component manually.
 Perform a Default Installation
 ******************************
 
-Download the :download:`ryzenai-1.2.0.msi <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ryzen-ai-1.2.0-20240726.msi>` installer.
+Download the :download:`ryzen-ai-rt-1.3.0-20241126.msi <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ryzen-ai-rt-1.3.0-20241126.msi>` installer.
 
 Install the RyzenAI Software using the default settings. 
 
-This will copy in the ``C:Program Files\RyzenAI\1.2.0`` folder all the files required for a manual installation.
+This will copy in the ``C:\Program Files\RyzenAI\1.3.0`` folder all the files required for a manual installation.
 
 
 **************************
@@ -83,16 +83,9 @@ Install Quark Quantizer
 
 Install Quark quantizer wheel  
 
-https://quark.docs.amd.com/latest/install.html#installation
-
-
-************************
-Install the ONNX Runtime
-************************
-
 .. code-block::
-   
-   pip install onnxruntime 
+        cd %RYZEN_AI_INSTALLATION_PATH%
+        pip install quark-0.6.0-py3-none-any.whl
 
 
 ***************************************
@@ -101,10 +94,10 @@ Install the Vitis AI Execution Provider
 
 .. code-block:: 
 
-     cd %RYZEN_AI_INSTALLATION_PATH%/voe-4.0-win_amd64
-     pip install voe-0.1.0-cp39-cp39-win_amd64.whl
-     pip install onnxruntime_vitisai-1.15.1-cp39-cp39-win_amd64.whl
-     python installer.py
+     cd %RYZEN_AI_INSTALLATION_PATH%
+     pip install voe-1.3.0-cp310-cp310-win_amd64.whl
+     pip install onnxruntime_vitisai-1.19.0-cp310-cp310-win_amd64.whl
+     
 
 *********************************
 Optional: Install the AI Analyzer
@@ -112,8 +105,8 @@ Optional: Install the AI Analyzer
 
 .. code-block::
 
-     cd %RYZEN_AI_INSTALLATION_PATH%/voe-4.0-win_amd64
-     pip install aianalyzer-1.2.0.dev202407022336+g2f0e1b-py3-none-any.whl
+     cd %RYZEN_AI_INSTALLATION_PATH%
+     pip install aianalyzer-1.3.0-py3-none-any.whl
 
 *************
 Runtime Setup
