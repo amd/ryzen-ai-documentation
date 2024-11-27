@@ -98,7 +98,7 @@ Install the Vitis AI Execution Provider
      cd %RYZEN_AI_INSTALLATION_PATH%
      pip install voe-1.3.0-cp310-cp310-win_amd64.whl
      pip install onnxruntime_vitisai-1.19.0-cp310-cp310-win_amd64.whl
-     pip install numpy=1.26.4
+     pip install numpy==1.26.4
      
 
 *********************************
