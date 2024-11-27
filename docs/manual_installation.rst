@@ -84,6 +84,7 @@ Install Quark Quantizer
 Install Quark quantizer wheel  
 
 .. code-block::
+
         cd %RYZEN_AI_INSTALLATION_PATH%
         pip install quark-0.6.0-py3-none-any.whl
 
