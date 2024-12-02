@@ -1,4 +1,4 @@
-..
+.
 .. Heading guidelines
 ..
 ..     # with overline, for parts
@@ -106,7 +106,7 @@ For more details, refer to the :doc:`modelrun` page.
    :hidden:
    :caption: License
 
-   apache_license.rst
+   License <https://github.com/amd/ryzen-ai-documentation/blob/develop/docs/ryzenai-1.3-ga-tpn-license.pdf>
 
 ..
   ------------
