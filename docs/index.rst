@@ -100,6 +100,12 @@ For more details, refer to the :doc:`modelrun` page.
    Model Zoo <https://huggingface.co/models?other=RyzenAI>
    manual_installation.rst
 
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+   :caption: License
+
+   apache_license.rst
 
 ..
   ------------
