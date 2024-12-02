@@ -2,6 +2,104 @@
 Release Notes
 #############
 
+***********  
+Version 1.3  
+***********  
+  
+- New Features:  
+  
+  - Initial release of the Quark quantizer  
+  - Support for mixed precision data types  
+  - Compatibility with Copilot+ applications  
+  
+- New Model Support for OGA Flow:  
+  
+  - `Llama2-7B-Chat / Meta-Llama-3.1-8B <https://ryzenai.docs.amd.com/en/latest/oga_flow.html#llama2-7b-chat>`_  
+  - `Phi-3-Mini-4K-Instruct / Phi-3.5-Mini-Instruct <https://ryzenai.docs.amd.com/en/latest/oga_flow.html#phi-3-mini-4k-instruct>`_  
+  - `Mistral-7B-Instruct-v0.3 <https://ryzenai.docs.amd.com/en/latest/oga_flow.html#mistral-7b-instruct-v0-3>`_  
+  
+- New EoU Tools:  
+  
+  - CNN profiling tool for VAI-ML flow  
+  - Idle detection and suspension of contexts  
+  - Rebalance feature for AIE hardware resource optimization  
+  
+- NPU and Compiler:  
+  
+  - New Op Support:  
+    
+    - MAC  
+    - QResize Bilinear  
+    - LUT Q-Power  
+    - Expand  
+    - Q-Hsoftmax  
+    - A16 Q-Pad  
+    - Q-Reduce-Mean along H/W dimension  
+    - A16 Q-Global-AvgPool  
+    - A16 Padding with non-zero values  
+    - A16 Q-Sqrt  
+    - Support for XINT8/XINT16 MatMul and A16W16/A8W8 Q-MatMul  
+  
+  - Performance Improvements:  
+      
+    - Q-Conv, Q-Pool, Q-Add, Q-Mul, Q-InstanceNorm  
+    - Enhanced QDQ support for a range of operations  
+    - Enhanced the tiling algorithm  
+    - Improved graph-level optimization with extra transpose removal  
+    - Enhanced AT/MT fusion  
+    - Optimized memory usage and compile time  
+    - Improved compilation messages  
+  
+- Quark for PyTorch:  
+  
+  - Model Support:  
+    
+    - Examples of LLM PTQ, such as Llama3.2 and Llama3.2-Vision models  
+    - Example of YOLO-NAS detection model PTQ/QAT  
+    - Example of SDXL v1.0 with weight INT8 activation INT8  
+  
+  - PyTorch Quantizer Enhancements:  
+    
+    - Partial model quantization by user configuration under FX mode  
+    - Quantization of ConvTranspose2d in Eager Mode and FX mode  
+    - Advanced Quantization Algorithms with auto-generated configurations  
+    - Optimized Configuration with DataTypeSpec for ease of use  
+    - Accelerated in-place replacement under Eager Mode  
+    - Loading configuration from file of algorithms and pre-optimizations  
+  
+- Quark for ONNX:  
+  
+  - New Features:  
+    
+    - Compatibility with ONNX Runtime version 1.18, 1.19  
+    - Support for int4, uint4, Microscaling data types  
+    - Quantization for arbitrary specified operators  
+    - Quantization type alignment of element-wise operators for mixed precision  
+    - ONNX graph cleaning  
+    - Int32 bias quantization  
+  
+  - ONNX Quantizer Enhancements:  
+    
+    - Fast fine-tuning support for the MatMul operator, BFP data type, and GPU acceleration  
+    - Improved ONNX quantization of LLM models  
+    - Optimized quantization of FP16 models  
+    - Custom operator compilation process  
+    - Default parameters for auto mixed precision  
+    - Optimized Ryzen AI workflow by aligning with hardware constraints of the NPU  
+  
+- ONNX Runtime EP:  
+  
+  - Support for ONNX Runtime EP shared libraries  
+  - Python dependency removal  
+  - Memory optimization during the compile phase  
+  - Pattern API enhancement with multiple outputs and commutable arguments support  
+  
+- Known Issues:  
+  
+  - Extended compile time for some models with BF16/BFP16 data types  
+  - LLM models with 4K sequence length may revert to CPU execution  
+  - Accuracy drop in some Transformer models using BF16/BFP16 data types, requiring Quark intervention  
+
 ***********
 Version 1.2
 ***********
