@@ -9,6 +9,15 @@ AMD Ryzen™ AI Software includes the tools and runtime libraries for optimizing
    :align: center
 
 
+***********
+Quick Start
+***********
+
+- :doc:`inst`
+- :doc:`examples`
+
+|
+
 *************************
 Development Flow Overview
 *************************
