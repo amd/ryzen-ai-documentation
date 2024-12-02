@@ -105,7 +105,7 @@ For more details, refer to the :doc:`modelrun` page.
    :hidden:
    :caption: License
 
-   apache_license.rst
+   apache-license.rst
 
 ..
   ------------
