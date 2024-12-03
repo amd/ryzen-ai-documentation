@@ -14,9 +14,15 @@ Version 1.3
   
 - New Model Support for OGA Flow:  
   
-  - `Llama2-7B-Chat / Meta-Llama-3.1-8B <https://ryzenai.docs.amd.com/en/latest/oga_flow.html#llama2-7b-chat>`_  
-  - `Phi-3-Mini-4K-Instruct / Phi-3.5-Mini-Instruct <https://ryzenai.docs.amd.com/en/latest/oga_flow.html#phi-3-mini-4k-instruct>`_  
-  - `Mistral-7B-Instruct-v0.3 <https://ryzenai.docs.amd.com/en/latest/oga_flow.html#mistral-7b-instruct-v0-3>`_  
+  - `Qwen1.5-7B-Chat <https://huggingface.co/amd/Qwen1.5-7B-Chat-awq-g128-int4-asym-bf16-onnx-ryzen-strix>`_
+  - `Mistral-7B-Instruct-v0.3 <https://huggingface.co/amd/Mistral-7B-Instruct-v0.3-awq-g128-int4-asym-bf16-onnx-ryzen-strix>`_
+  - https://huggingface.co/amd/Llama2-7b-chat-awq-g128-int4-asym-bf16-onnx-ryzen-strix
+  - https://huggingface.co/amd/Llama-2-7b-hf-awq-g128-int4-asym-bf16-onnx-ryzen-strix
+  - https://huggingface.co/amd/Meta-Llama-3-8B-awq-g128-int4-asym-bf16-onnx-ryzen-strix
+  - https://huggingface.co/amd/Llama-3.1-8B-awq-g128-int4-asym-bf16-onnx-ryzen-strix
+  - https://huggingface.co/amd/Phi-3-mini-4k-instruct-awq-g128-int4-asym-bf16-onnx-ryzen-strix
+  - https://huggingface.co/amd/Phi-3.5-mini-instruct-awq-g128-int4-asym-bf16-onnx-ryzen-strix
+
   
 - New EoU Tools:  
   
