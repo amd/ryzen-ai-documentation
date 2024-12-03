@@ -16,12 +16,12 @@ Version 1.3
   
   - `Qwen1.5-7B-Chat <https://huggingface.co/amd/Qwen1.5-7B-Chat-awq-g128-int4-asym-bf16-onnx-ryzen-strix>`_
   - `Mistral-7B-Instruct-v0.3 <https://huggingface.co/amd/Mistral-7B-Instruct-v0.3-awq-g128-int4-asym-bf16-onnx-ryzen-strix>`_
-  - https://huggingface.co/amd/Llama2-7b-chat-awq-g128-int4-asym-bf16-onnx-ryzen-strix
-  - https://huggingface.co/amd/Llama-2-7b-hf-awq-g128-int4-asym-bf16-onnx-ryzen-strix
-  - https://huggingface.co/amd/Meta-Llama-3-8B-awq-g128-int4-asym-bf16-onnx-ryzen-strix
-  - https://huggingface.co/amd/Llama-3.1-8B-awq-g128-int4-asym-bf16-onnx-ryzen-strix
-  - https://huggingface.co/amd/Phi-3-mini-4k-instruct-awq-g128-int4-asym-bf16-onnx-ryzen-strix
-  - https://huggingface.co/amd/Phi-3.5-mini-instruct-awq-g128-int4-asym-bf16-onnx-ryzen-strix
+  - `Llama2-7b-chat-hf <https://huggingface.co/amd/Llama2-7b-chat-awq-g128-int4-asym-bf16-onnx-ryzen-strix>`_
+  - `Llama-2-7b-hf <https://huggingface.co/amd/Llama-2-7b-hf-awq-g128-int4-asym-bf16-onnx-ryzen-strix>`_
+  - `Meta-Llama-3-8B <https://huggingface.co/amd/Meta-Llama-3-8B-awq-g128-int4-asym-bf16-onnx-ryzen-strix>`_
+  - `Llama-3.1-8B <https://huggingface.co/amd/Llama-3.1-8B-awq-g128-int4-asym-bf16-onnx-ryzen-strix>`_
+  - `Phi-3-mini-4k-instruct <https://huggingface.co/amd/Phi-3-mini-4k-instruct-awq-g128-int4-asym-bf16-onnx-ryzen-strix>`_
+  - `Phi-3.5-mini-instruct <https://huggingface.co/amd/Phi-3.5-mini-instruct-awq-g128-int4-asym-bf16-onnx-ryzen-strix>`_
 
   
 - New EoU Tools:  
