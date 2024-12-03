@@ -96,12 +96,6 @@ For more details, refer to the :doc:`modelrun` page.
    manual_installation.rst
 
 
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-   :caption: License
-
-   License <https://github.com/amd/ryzen-ai-documentation/blob/develop/docs/ryzenai-1.3-ga-tpn-license.pdf>
 
 ..
   ------------
