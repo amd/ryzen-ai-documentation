@@ -8,7 +8,7 @@ Prerequisites
 
 - DirectX12 capable Windows OS (Windows 11 recommended)
 - Latest AMD `GPU device driver <https://www.amd.com/en/support>`_ installed
-- `Microsoft Olive <https://microsoft.github.io/Olive/getstarted/installation.html#>`_ for model conversion and optimization
+- `Microsoft Olive <https://microsoft.github.io/Olive/how-to/installation.html>`_ for model conversion and optimization
 - Latest `ONNX Runtime DirectML EP <https://onnxruntime.ai/docs/execution-providers/DirectML-ExecutionProvider.html>`_ 
 
 You can ensure GPU driver and DirectX version from ``Windows Task Manager`` -> ``Performance`` -> ``GPU`` 
@@ -33,7 +33,7 @@ For additional information, refer to the `ONNX Runtime documentation for the Dir
 Examples
 ********
 
-- Optimizing and running `ResNet on Ryzen AI GPU <https://github.com/amd/RyzenAI-SW/tree/main/iGPU/getting_started>`_
+- Optimizing and running `ResNet on Ryzen AI GPU <https://github.com/amd/RyzenAI-SW/tree/main/example/iGPU/getting_started>`_
 
 
 ********************
