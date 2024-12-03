@@ -2,9 +2,6 @@
 AI Analyzer
 ###################
 
-.. note::
-   This feature is currently in the Early Access stage. Early Access features are features which are still undergoing some optimization and fine-tuning. These features are not in their final form and may change as we continue to work in order to mature them into full-fledged features.
-
 AMD AI Analyzer is a tool that supports analysis and visualization of model compilation and inference on the the Ryzen AI NPU. The primary goal of the tool is to help users better understand how the models are processed by the hardware, and to identify performance bottlenecks that may be present during model inference. Using the AI Analyzer, users can effectively visualize graph and operator partitions between the NPU and CPU. 
 
 ********
@@ -51,6 +48,28 @@ Profiling and Visualization can be enabled by passing additional provider option
 
 The ``ai_analyzer_profiling`` flag enables generation of artifacts related to the inference profile. The ``ai_analyzer_visualization`` flag enables generation of artifacts related to graph partitions and operator fusion. These artifacts are generated as .json files in the current run directory.
 
+AI Analyzer also supports native ONNX Runtime profiling, which can be used to analyze the parts of the session running on the CPU. Users can enable ONNX Runtime profiling through session options and pass it alongside the provider options as shown below:
+
+.. code-block::
+
+   # Configure session options for profiling
+   sess_options = rt.SessionOptions()
+   sess_options.enable_profiling = True
+
+   provider_options = [{
+                'config_file': 'vaip_config.json',
+                'cacheDir': str(cache_dir),
+                'cacheKey': 'modelcachekey', 
+                'ai_analyzer_visualization': True,
+                'ai_analyzer_profiling': True,
+            }]
+
+  session = ort.InferenceSession(model.SerializeToString(), sess_options, providers=providers,
+                               provider_options=provider_options)
+
+
+
+
 *********************
 Launching AI Analyzer
 *********************
@@ -87,10 +106,10 @@ Once the artifacts are generated, `aianalyzer` can be invoked through the comman
     Setting to an empty string disables authentication altogether, which is NOT RECOMMENDED.
 
 ******************
-Analyzing ResNet50 
+Tutorial
 ******************
 
-We can enable the AI Analyzer in the :doc:`Getting started with ResNet50 <getstartex>` example. To do this, modify the provider options as shown above in the ``predict.py`` script. When this script is run, the profiling and visualization artifacts will be dumped as .json files in the current run directory.
+We can enable the AI Analyzer in the :doc:`Getting started with ResNet50 <getstartex>` example. To do this, open the ``predict.py`` script and modify the provider options as shown above . When this script is run, the profiling and visualization artifacts will be dumped as .json files in the current run directory.
 
 
 Launch the AI Analyzer: 

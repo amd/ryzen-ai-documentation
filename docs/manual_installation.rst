@@ -2,7 +2,8 @@
 Manual Installation
 ###################
 
-The main :doc:`inst` page shows a one-step installation process that checks the prerequisite and installs Vitis AI quantizer, ONNX Runtime and Vitis AI execution provider.
+
+The main :doc:`inst` page shows a one-step installation process that checks the prerequisite and installs Quark quantizer and Vitis AI execution provider.
 
 This page explains how to install each component manually. 
 
@@ -14,11 +15,11 @@ This page explains how to install each component manually.
 Perform a Default Installation
 ******************************
 
-Download the :download:`ryzenai-1.2.0.msi <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ryzen-ai-1.2.0-20240726.msi>` installer.
+Download the :download:`ryzen-ai-rt-1.3.0-20241126.msi <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ryzen-ai-rt-1.3.0-20241126.msi>` installer.
 
 Install the RyzenAI Software using the default settings. 
 
-This will copy in the ``C:Program Files\RyzenAI\1.2.0`` folder all the files required for a manual installation.
+This will copy in the ``C:\Program Files\RyzenAI\1.3.0`` folder all the files required for a manual installation.
 
 
 **************************
@@ -63,7 +64,7 @@ Add the following line to the script:
 
 Set the XLNX_VART_FIRMWARE environment variable based on your APU type:
 
-For STX APUs:
+For STX/KRK APUs:
 
 .. code-block::
 
@@ -77,29 +78,16 @@ For PHX/HPT APUls:
 
 .. _install-onnx-quantizer:
 
-******************************
-Install the Vitis AI Quantizer
-******************************
+***********************
+Install Quark Quantizer
+***********************
 
-The :doc:`Vitis AI Quantizer for ONNX <vai_quant/vai_q_onnx>` supports a post-training quantization method that works on models saved in the ONNX format. 
-
-Install the Vitis AI Quantizer for ONNX as follows:
-
-.. code-block:: shell
-
-   cd %RYZEN_AI_INSTALLATION_PATH%
-   pip install vai_q_onnx-1.16.0+69bc4f2-py2.py3-none-any.whl
-
-To install other quantization tools (Vitis AI PyTorch/TensorFlow 2/TensorFlow Quantization or Olive Quantization), refer to the :doc:`alternate_quantization_setup` page. 
-
-
-************************
-Install the ONNX Runtime
-************************
+Install Quark quantizer wheel  
 
 .. code-block::
-   
-   pip install onnxruntime 
+
+        cd %RYZEN_AI_INSTALLATION_PATH%
+        pip install quark-0.6.0-py3-none-any.whl
 
 
 ***************************************
@@ -108,10 +96,11 @@ Install the Vitis AI Execution Provider
 
 .. code-block:: 
 
-     cd %RYZEN_AI_INSTALLATION_PATH%/voe-4.0-win_amd64
-     pip install voe-0.1.0-cp39-cp39-win_amd64.whl
-     pip install onnxruntime_vitisai-1.15.1-cp39-cp39-win_amd64.whl
-     python installer.py
+     cd %RYZEN_AI_INSTALLATION_PATH%
+     pip install voe-1.3.0-cp310-cp310-win_amd64.whl
+     pip install onnxruntime_vitisai-1.19.0-cp310-cp310-win_amd64.whl
+     pip install numpy==1.26.4
+     
 
 *********************************
 Optional: Install the AI Analyzer
@@ -119,8 +108,8 @@ Optional: Install the AI Analyzer
 
 .. code-block::
 
-     cd %RYZEN_AI_INSTALLATION_PATH%/voe-4.0-win_amd64
-     pip install aianalyzer-1.2.0.dev202407022336+g2f0e1b-py3-none-any.whl
+     cd %RYZEN_AI_INSTALLATION_PATH%
+     pip install aianalyzer-1.3.0-py3-none-any.whl
 
 *************
 Runtime Setup
@@ -128,7 +117,7 @@ Runtime Setup
 
 Set the following environment variable in the conda environment created above:
 
-For STX: (default)
+For STX/KRK: (default)
 
 .. code-block::
 
