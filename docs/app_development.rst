@@ -19,7 +19,7 @@ The application should only use the Vitis AI Execution Provider if the following
 - The application is running on an AMD processor with a :ref:`NPU type supported by the version of the Vitis AI EP<apu-types>` being used.
 - :ref:`NPU drivers compatible with the version of the Vitis AI EP <driver-compatibility>` being used are installed.
 
-|memo| **NOTE**: Sample C++ code implementing the compatibility checks to be performed before using the VitisAI EP is provided here: https://github.com/amd/RyzenAI-SW/tree/main/utilities_tools
+|memo| **NOTE**: Sample C++ code implementing the compatibility checks to be performed before using the VitisAI EP is provided here: https://github.com/amd/RyzenAI-SW/tree/main/utilities/npu_check
 
 The application is responsible for setting the NPU configuration (set the XLNX_VART_FIRMWARE environment variable) correctly according to the APU type.
 
