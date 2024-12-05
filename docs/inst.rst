@@ -4,6 +4,9 @@
 Installation Instructions
 #########################
 
+.. note::
+   An update was made the the RyzenAI 1.3 release package. AMD recommends downloading and installing this newer version (ref: ryzen-ai-rt-1.3.0-20241204.msi) and replacing any installation based on the previous package (ref: ryzen-ai-rt-1.3.0-20241126.msi)
+
 ************************
 Supported Configurations
 ************************
@@ -15,10 +18,6 @@ The Ryzen AI Software supports the following processors running Windows 11 (Win 
 - Strix (STX): AMD Ryzen™ Ryzen AI 9 HX375, Ryzen AI 9 HX370, Ryzen AI 9 365 
 
 The rest of this document will refer to Phoenix as PHX, Hawk as HPT, and Strix as STX.
-
-.. note::
-   In this documentation, "NPU" is used in descriptions, while "IPU" is retained in the tool's language, code, screenshots, and commands. This intentional 
-   distinction aligns with existing tool references and does not affect functionality. Avoid making replacements in the code.
 
 
 ******************
@@ -72,7 +71,7 @@ Install NPU Drivers
 Install the Ryzen AI Software
 *****************************
 
-- Download the RyzenAI Software MSI installer :download:`ryzen-ai-rt-1.3.0-20241126.msi <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ryzen-ai-rt-1.3.0-20241126.msi>`.
+- Download the RyzenAI Software MSI installer :download:`ryzen-ai-rt-1.3.0-20241204.msi <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ryzen-ai-rt-1.3.0-20241204.msi>`.
 
 - Launch the MSI installer and follow the instructions on the installation wizard:
 
@@ -115,8 +114,8 @@ The Ryzen AI Software installation folder contains test to verify that the softw
 
 .. code-block::
   
-   [Vitis AI EP] No. of Operators :   CPU     2    IPU   398  99.50%
-   [Vitis AI EP] No. of Subgraphs :   CPU     1    IPU     1 Actually running on IPU     1
+   [Vitis AI EP] No. of Operators :   CPU     2    NPU   398
+   [Vitis AI EP] No. of Subgraphs :   NPU     1 Actually running on NPU     1  
    ...
    Test Passed
    ...

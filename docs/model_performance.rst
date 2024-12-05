@@ -61,15 +61,13 @@ This configuration can only be used as an experimental trial.
 
 
 .. note::
-
    In this documentation, "NPU" is used in descriptions, while "IPU" is retained in the tool's language, code, screenshots, and commands. This intentional distinction aligns with existing tool references and does not affect functionality. Avoid making replacements in the code.
 
+..
   ------------
 
   #####################################
   License
   #####################################
 
-  Ryzen AI is licensed under MIT License. Refer to the LICENSE file for the full license text and copyright notice.
-
-    
+ Ryzen AI is licensed under `MIT License <https://github.com/amd/ryzen-ai-documentation/blob/main/License>`_ . Refer to the `LICENSE File <https://github.com/amd/ryzen-ai-documentation/blob/main/License>`_ for the full license text and copyright notice.
