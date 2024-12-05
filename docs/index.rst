@@ -94,7 +94,7 @@ For more details, refer to the :doc:`modelrun` page.
 
    Model Zoo <https://huggingface.co/models?other=RyzenAI>
    manual_installation.rst
-   licenses.rst
+   Licenses <licenses.rst>
 
 
 
