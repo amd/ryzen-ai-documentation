@@ -130,7 +130,7 @@ Version 1.2
 
 - New Demos:
   
-  - NPU-GPU multi-model pipeline application `demo <https://github.com/amd/RyzenAI-SW/tree/main/demo/multi-model-exec>`_
+  - NPU-GPU multi-model pipeline application `demo <https://github.com/amd/RyzenAI-SW/tree/main/demo/NPU-GPU-Pipeline>`_
 
 - NPU and Compiler
   

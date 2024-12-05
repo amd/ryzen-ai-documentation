@@ -22,7 +22,7 @@ NPU
 iGPU
 ~~~~
 
-- `ResNet50 on iGPU <https://github.com/amd/RyzenAI-SW/tree/main/iGPU/getting_started>`_
+- `ResNet50 on iGPU <https://github.com/amd/RyzenAI-SW/tree/main/example/iGPU/getting_started>`_
 
 
 ************************************
