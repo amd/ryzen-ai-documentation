@@ -53,7 +53,7 @@ To enable the development and deployment of applications leveraging the NPU, you
 Install NPU Drivers
 *******************
 
-- Download the NPU driver installation package :download:`NPU Driver <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=NPU_RAI1.3.zip  >`
+- Download the NPU driver installation package :download:`NPU Driver <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=NPU_RAI1.3.zip>`
 
 - Install the NPU drivers by following these steps:
 
