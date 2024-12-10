@@ -59,7 +59,7 @@ Overview of Key Commands
    * - examine 
      - system config, device name
    * - examine --report platform   
-     - performance mode, clocks
+     - performance mode, power
    * - examine --report aie-partitions 
      - hw contexts
    * - examine --report telemetry  
@@ -172,7 +172,7 @@ Sample JSON Output::
 Platform Information
 ====================
 
-Reports more detailed information about the NPU, such as its performance mode and clocks.
+Reports more detailed information about the NPU, such as the performance mode and power consumption.
 
 .. code-block:: shell
 
