@@ -406,12 +406,13 @@ To set the performance level of the NPU, you can choose from the following modes
 
 .. code-block:: shell
 
-   xrt-smi configure --pmode <powersaver | balanced | performance | default>
+   xrt-smi configure --pmode <default | powersaver | balanced | performance | turbo>
 
-- ``Powersaver`` - configures the NPU to prioritize power saving, preserving laptop battery life.
-- ``Performance`` - configures the NPU to maximize performance, consuming more power.
-- ``Balanced`` - configures the NPU to provide a compromise between power saving and performance.
-- ``Default`` - adapts to the Windows Power Mode setting, which can be adjusted under System -> Power & battery -> Power mode. For finer control of the NPU settings, it is recommended to use the xrt-smi mode setting, which overrides the Windows Power mode and ensures optimal results.
+- ``default`` - adapts to the Windows Power Mode setting, which can be adjusted under System -> Power & battery -> Power mode. For finer control of the NPU settings, it is recommended to use the xrt-smi mode setting, which overrides the Windows Power mode and ensures optimal results.
+- ``powersaver`` - configures the NPU to prioritize power saving, preserving laptop battery life.
+- ``balanced`` - configures the NPU to provide a compromise between power saving and performance.
+- ``performance`` - configures the NPU to prioritize performance, consuming more power.
+- ``turbo`` - configures the NPU for maximum performance performance, requires AC power to be plugged in otherwise uses ``performance`` mode.
 
 Example: Setting the NPU to high-performance mode
 
