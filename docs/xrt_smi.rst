@@ -189,6 +189,7 @@ Sample Command Line Output::
      
     Power                  : 1.277 Watts
 
+|memo| **NOTE**: Power reporting is not supported on PHX and HPT NPUs. Power reporting is only available on STX devices and onwards.
 
 NPU Partitions
 ==============
