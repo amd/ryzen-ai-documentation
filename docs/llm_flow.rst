@@ -49,7 +49,7 @@ In addition to the OGA flow, a flow based on PyTorch is available here: https://
 
 This flow provides functional support for a broad set of LLMs. It is intended for prototyping and experimental purposes only. It is not optimized for performance and it should not be used for benchmarking. 
 
-The Pytorch-based flow is support on PHX, HPT and STX platforms.
+The Pytorch-based flow is supported on PHX, HPT and STX platforms.
 
 
 ..
