@@ -25,49 +25,55 @@ NOTE: Phoenix (PHX) and Hawk (HPT) processors are not supported.
 
 Requirements
 ~~~~~~~~~~~~
-NPU Drivers (version .237)
-RyzenAI 1.3 MSI installer
-Hybrid LLM artifacts package: hybrid-llm-artifacts_1.3.0.zip  
-Linux machine with an AMD or Nvidia GPU (only required for the quantization process, when working with custom models)
+- NPU Drivers (version .237)
+- RyzenAI 1.3 MSI installer
+- Hybrid LLM artifacts package: hybrid-llm-artifacts_1.3.0.zip  
+- Linux machine with an AMD or Nvidia GPU (only required for the quantization process, when working with custom models)
+
 Package Contents
+~~~~~~~~~~~~~~~~
 
 Hybrid LLM artifacts package contains the files required to build and run applications using the ONNX Runtime generate() API (OGA) to deploy LLMs using the Hybrid execution mode. The list below describes which files are needed for the different use cases:
 
-Python flow
-onnx_utils\bin\onnx_custom_ops.dll
-onnxruntime_genai\wheel\onnxruntime_genai_directml-0.4.0.dev0-cp310-cp310-win_amd64.whl
-onnxruntime_genai\benchmark\DirectML.dll
-C++ Runtime
-onnx_utils\bin\onnx_custom_ops.dll
-onnxruntime_genai\benchmark\DirectML.dll
-onnxruntime_genai\benchmark\D3D13Core.dll
-onnxruntime_genai\benchmark\onnxruntime.dll
-onnxruntime_genai\benchmark\ryzenai_onnx_utils.dll
-C++ Dev headers
-onnx_utils
-onnxruntime_genai
-Examples
+**Python flow**
 
+- onnx_utils\bin\onnx_custom_ops.dll
+- onnxruntime_genai\wheel\onnxruntime_genai_directml-0.4.0.dev0-cp310-cp310-win_amd64.whl
+- onnxruntime_genai\benchmark\DirectML.dll
 
+**C++ Runtime**
 
+- onnx_utils\bin\onnx_custom_ops.dll
+- onnxruntime_genai\benchmark\DirectML.dll
+- onnxruntime_genai\benchmark\D3D13Core.dll
+- onnxruntime_genai\benchmark\onnxruntime.dll
+- onnxruntime_genai\benchmark\ryzenai_onnx_utils.dll
+
+**C++ Dev headers**
+
+- onnx_utils
+- onnxruntime_genai
+
+**Examples**
 
 Pre-optimized Models
+~~~~~~~~~~~~~~~~~~~~
 
 AMD provides a set of pre-optimized LLMs ready to be deployed with Ryzen AI Software and the supporting runtime for hybrid execution. These models can be found on Hugging Face in the following collection:
 
 https://huggingface.co/collections/amd/quark-awq-g128-int4-asym-fp16-onnx-hybrid-674b307d2ffa21dd68fa41d5
 
-https://huggingface.co/amd/Phi-3-mini-4k-instruct-awq-g128-int4-asym-fp16-onnx-hybrid
-https://huggingface.co/amd/Phi-3.5-mini-instruct-awq-g128-int4-asym-fp16-onnx-hybrid
-https://huggingface.co/amd/Mistral-7B-Instruct-v0.3-awq-g128-int4-asym-fp16-onnx-hybrid
-https://huggingface.co/amd/Qwen1.5-7B-Chat-awq-g128-int4-asym-fp16-onnx-hybrid
-https://huggingface.co/amd/chatglm3-6b-awq-w-int4-asym-gs128-a-fp16-onnx-ryzen-strix-hybrid
-https://huggingface.co/amd/Llama-2-7b-hf-awq-g128-int4-asym-fp16-onnx-hybrid
-https://huggingface.co/amd/Llama-2-7b-chat-hf-awq-g128-int4-asym-fp16-onnx-hybrid
-https://huggingface.co/amd/Llama-3-8B-awq-g128-int4-asym-fp16-onnx-hybrid/tree/main
-https://huggingface.co/amd/Llama-3.1-8B-awq-g128-int4-asym-fp16-onnx-hybrid/tree/main
-https://huggingface.co/amd/Llama-3.2-1B-Instruct-awq-g128-int4-asym-fp16-onnx-hybrid
-https://huggingface.co/amd/Llama-3.2-3B-Instruct-awq-g128-int4-asym-fp16-onnx-hybrid
+- https://huggingface.co/amd/Phi-3-mini-4k-instruct-awq-g128-int4-asym-fp16-onnx-hybrid
+- https://huggingface.co/amd/Phi-3.5-mini-instruct-awq-g128-int4-asym-fp16-onnx-hybrid
+- https://huggingface.co/amd/Mistral-7B-Instruct-v0.3-awq-g128-int4-asym-fp16-onnx-hybrid
+- https://huggingface.co/amd/Qwen1.5-7B-Chat-awq-g128-int4-asym-fp16-onnx-hybrid
+- https://huggingface.co/amd/chatglm3-6b-awq-w-int4-asym-gs128-a-fp16-onnx-ryzen-strix-hybrid
+- https://huggingface.co/amd/Llama-2-7b-hf-awq-g128-int4-asym-fp16-onnx-hybrid
+- https://huggingface.co/amd/Llama-2-7b-chat-hf-awq-g128-int4-asym-fp16-onnx-hybrid
+- https://huggingface.co/amd/Llama-3-8B-awq-g128-int4-asym-fp16-onnx-hybrid/tree/main
+- https://huggingface.co/amd/Llama-3.1-8B-awq-g128-int4-asym-fp16-onnx-hybrid/tree/main
+- https://huggingface.co/amd/Llama-3.2-1B-Instruct-awq-g128-int4-asym-fp16-onnx-hybrid
+- https://huggingface.co/amd/Llama-3.2-3B-Instruct-awq-g128-int4-asym-fp16-onnx-hybrid
 
 The steps for deploying the pre-optimized models using Python or C++ are described in the following sections.
 
