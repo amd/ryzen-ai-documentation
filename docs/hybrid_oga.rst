@@ -86,7 +86,7 @@ Setup
 
 3. Activate the Ryzen AI 1.3 Conda environment:
 
-..code-block:: 
+.. code-block:: 
     
     conda activate ryzen-ai-1.3.0
 
