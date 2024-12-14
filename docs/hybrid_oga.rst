@@ -133,11 +133,11 @@ Setup
 
 1. Download and unzip the hybrid LLM artifacts package.
 
-2. Copy everything from hybrid-llm-artifacts/onnxruntime-genai/lib to hybrid-llm-artifacts\examples\c\lib 
+2. Copy everything from ``hybrid-llm-artifacts/onnxruntime-genai/lib`` to ``hybrid-llm-artifacts\examples\c\lib`` 
 
-3. Copy hybrid-llm-artifacts/onnx_utils/bin/ryzenai_onnx_utils.dll  to hybrid-llm-artifacts\examples\c\lib 
+3. Copy ``hybrid-llm-artifacts/onnx_utils/bin/ryzenai_onnx_utils.dll``  to ``hybrid-llm-artifacts\examples\c\lib`` 
 
-4. Copy everything from hybrid-llm-artifacts/onnxruntime-genai/include to hybrid-llm-artifacts\examples\c\include
+4. Copy everything from ``hybrid-llm-artifacts/onnxruntime-genai/include`` to ``hybrid-llm-artifacts\examples\c\include``
 
 5. Build the model_benchmark.exe application
 
@@ -157,9 +157,6 @@ The model_benchmark.exe test application serves two purposes:
 
 It provides a very simple mechanism for running and evaluating Hybrid OGA models
 The source code for this application provides a reference implementation for how to integrate Hybrid OGA models in custom C++ programs
-
-
-
 
 To evaluate models using the model_benchmark.exe test application:
 
