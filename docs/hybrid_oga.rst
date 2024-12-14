@@ -87,8 +87,8 @@ Setup
 3. Activate the Ryzen AI 1.3 Conda environment:
 
 ..code-block:: 
-  
-     conda activate ryzen-ai-1.3.0
+    
+    conda activate ryzen-ai-1.3.0
 
 4. Install the wheel file included in the hybrid-llm-artifacts package:  
 
