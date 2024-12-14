@@ -153,12 +153,12 @@ Setup
 Run Models
 @@@@@@@@@@
 
-The model_benchmark.exe test application serves two purposes:
+The ``model_benchmark.exe`` test application serves two purposes:
 
-It provides a very simple mechanism for running and evaluating Hybrid OGA models
-The source code for this application provides a reference implementation for how to integrate Hybrid OGA models in custom C++ programs
+- It provides a very simple mechanism for running and evaluating Hybrid OGA models
+- The source code for this application provides a reference implementation for how to integrate Hybrid OGA models in custom C++ programs
 
-To evaluate models using the model_benchmark.exe test application:
+To evaluate models using the ``model_benchmark.exe`` test application:
 
 .. code-block::
 
