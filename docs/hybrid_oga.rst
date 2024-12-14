@@ -237,7 +237,8 @@ Setup
      cd <extracted quark 0.6.0>
      pip install quark-0.6.0+<>.whl
 
-Perform quantization 
+Perform quantization
+********************
 
 The model is quantized using the following command and quantization settings:
 
@@ -286,6 +287,7 @@ Setup
     pip install sentencepiece
 
 Build the OGA Model
+*******************
 
 Run the OGA model builder utility as shown below:
 
@@ -299,7 +301,7 @@ Run the OGA model builder utility as shown below:
         -p int4 \
         -e dml
 
-The OGA model is generated in the <oga model output dir> folder. 
+The OGA model is generated in the ``<oga model output dir>`` folder. 
 
 Generating the final model
 @@@@@@@@@@@@@@@@@@@@@@@@@@
