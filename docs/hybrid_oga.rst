@@ -42,15 +42,15 @@ Hybrid LLM artifacts package contains the files required to build and run applic
   - onnxruntime_genai\benchmark\DirectML.dll
 - **C++ Runtime**
 
- - onnx_utils\bin\onnx_custom_ops.dll
- - onnxruntime_genai\benchmark\DirectML.dll
- - onnxruntime_genai\benchmark\D3D13Core.dll
- - onnxruntime_genai\benchmark\onnxruntime.dll
- - onnxruntime_genai\benchmark\ryzenai_onnx_utils.dll
+  - onnx_utils\bin\onnx_custom_ops.dll
+  - onnxruntime_genai\benchmark\DirectML.dll
+  - onnxruntime_genai\benchmark\D3D13Core.dll
+  - onnxruntime_genai\benchmark\onnxruntime.dll
+  - onnxruntime_genai\benchmark\ryzenai_onnx_utils.dll
 - **C++ Dev headers**
 
- - onnx_utils
- - onnxruntime_genai
+  - onnx_utils
+  - onnxruntime_genai
 - **Examples**
 
 Pre-optimized Models
