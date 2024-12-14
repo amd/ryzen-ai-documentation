@@ -362,7 +362,7 @@ Phi-3-mini-4k_jit.pb.bin
 
 Original
 
-code-block::
+.. code-block::
 
 	"session_options": {
          "log_id": "onnxruntime-genai",
