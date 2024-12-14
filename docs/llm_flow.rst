@@ -21,17 +21,17 @@ The required libraries and the supporting documentation are available upon reque
 
 The OGA-based flow currently supports the following models:
 
-- Chatglm3-6b
-- Llama-2-7b-chat-hf
-- Llama-2-7b-hf
-- Llama-3.1-8b
-- Llama-3.2-1b-instruct
-- Llama-3.2-3b-instruct
-- Llama-3-8b
-- Mistral-7b-instruct-v0.3
-- Phi-3-mini-4k-instruct
-- Phi-3.5-mini-instruct
-- Qwen1.5-7b-chat
+- microsoft/Phi-3-mini-4k-instruct
+- microsoft/Phi-3.5-mini-instruct
+- mistralai/Mistral-7B-Instruct-v0.3
+- Qwen/Qwen1.5-7B-Chat	
+- THUDM/chatglm3-6b
+- meta-llama/Llama-2-7b-hf
+- meta-llama/Llama-2-7b-chat-hf
+- meta-llama/Meta-Llama-3-8B
+- meta-llama/Llama-3.1-8B
+- meta-llama/Llama-3.2-1B-Instruct
+- meta-llama/Llama-3.2-3B-Instruct
 
 Pre-optimized models are available on Hugging Face:
 
