@@ -200,9 +200,9 @@ The section below describes an LLM model-building recipe for deployment on a Ryz
 
 Preparing a LLM for deployment on a Ryzen AI PC using the hybrid execution mode involves 3 steps:
 
--  Quantizing the model: The pretrained model is quantized to reduce memory footprint and better map to compute resources in the hardware accelerators
-- Generating the OGA model: A model suitable for use with the ONNX Runtime generate() API (OGA) is generated from the quantized model.
-- Generating the final model for Hybrid execution: A model specialized for the hybrid execution mode is generated from the OGA model.
+1. Quantizing the model: The pretrained model is quantized to reduce memory footprint and better map to compute resources in the hardware accelerators
+2. Generating the OGA model: A model suitable for use with the ONNX Runtime generate() API (OGA) is generated from the quantized model.
+3. Generating the final model for Hybrid execution: A model specialized for the hybrid execution mode is generated from the OGA model.
 
 Quantizing the model
 @@@@@@@@@@@@@@@@@@@@
