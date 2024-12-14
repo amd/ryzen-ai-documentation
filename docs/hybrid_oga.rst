@@ -19,7 +19,7 @@ Supported Configurations
 
 The Ryzen AI OGA flow supports the following processors running Windows 11:
 
-Strix (STX): AMD Ryzen™ Ryzen AI 9 HX375, Ryzen AI 9 HX370, Ryzen AI 9 365
+- Strix (STX): AMD Ryzen™ Ryzen AI 9 HX375, Ryzen AI 9 HX370, Ryzen AI 9 365
 
 NOTE: Phoenix (PHX) and Hawk (HPT) processors are not supported.
 
