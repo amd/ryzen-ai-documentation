@@ -148,7 +148,7 @@ Setup
      cd build
      cmake --build . --config Release
 
-**Note**: The `model_benchmark.exe` executable is generated in the `hybrid-llm-artifacts\examples\c\build\Release` folder
+**Note**: The ``model_benchmark.exe`` executable is generated in the ``hybrid-llm-artifacts\examples\c\build\Release`` folder
 
 Run Models
 @@@@@@@@@@
