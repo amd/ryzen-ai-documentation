@@ -37,9 +37,9 @@ Hybrid LLM artifacts package contains the files required to build and run applic
 
 - **Python flow**
 
- - onnx_utils\bin\onnx_custom_ops.dll
- - onnxruntime_genai\wheel\onnxruntime_genai_directml-0.4.0.dev0-cp310-cp310-win_amd64.whl
- - onnxruntime_genai\benchmark\DirectML.dll
+- onnx_utils\bin\onnx_custom_ops.dll
+- onnxruntime_genai\wheel\onnxruntime_genai_directml-0.4.0.dev0-cp310-cp310-win_amd64.whl
+- onnxruntime_genai\benchmark\DirectML.dll
 - **C++ Runtime**
 
  - onnx_utils\bin\onnx_custom_ops.dll
