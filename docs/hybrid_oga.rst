@@ -95,7 +95,7 @@ Setup
 
 4. Install the wheel file included in the hybrid-llm-artifacts package:  
 
-  .. code-block::
+.. code-block::
   
        cd path_to\\hybrid-llm-artifacts\onnxruntime_genai\wheel
        pip install onnxruntime_genai_directml-0.4.0.dev0-cp310-cp310-win_amd64.whl
