@@ -268,7 +268,7 @@ Setup
 
 1. Clone the onnxruntime-genai repo:
 
-..code-block::
+.. code-block::
 
      git clone --branch v0.5.1 https://github.com/microsoft/onnxruntime-genai.git
 
@@ -284,7 +284,7 @@ Setup
      pip install onnx
      pip install transformers
      pip install torch
-    pip install sentencepiece
+     pip install sentencepiece
 
 Build the OGA Model
 *******************
@@ -328,6 +328,8 @@ Setup
 Generate the final model
 ************************
 
+**NOTE**: The commands below use the ``Phi-3-mini-4k-instruct`` model (denoted as ``Phi-3-mini-4k`` for brevity) as an example to demonstrate the steps for generating the final model.
+
 1. Generate the Raw model: 
 
 .. code-block::
@@ -337,9 +339,8 @@ Generate the final model
      onnx_utils --external-data-extension "onnx.data" partition model.onnx ./tmp hybrid_llm.yaml -v --save-as-external --model-name Phi-3-mini-4k_raw 
 
 The command generates:
-
-tmp/Phi-3-mini-4k_raw.onnx
-tmp/Phi-3-mini-4k_raw.onnx.data
+- `tmp/Phi-3-mini-4k_raw.onnx`
+- `tmp/Phi-3-mini-4k_raw.onnx.data`
 
 2. Post-process the raw model to generate the JIT model: 
 
@@ -349,18 +350,18 @@ tmp/Phi-3-mini-4k_raw.onnx.data
 
 The command generates
 
-Phi-3-mini-4k_jit.bin
-Phi-3-mini-4k_jit.onnx
-Phi-3-mini-4k_jit.onnx.data
-Phi-3-mini-4k_jit.pb.bin
+- `Phi-3-mini-4k_jit.bin`
+- `Phi-3-mini-4k_jit.onnx`
+- `Phi-3-mini-4k_jit.onnx.data`
+- `Phi-3-mini-4k_jit.pb.bin`
 
-3. Move the files related to the JIT model (.bin , .onnx , .onnx.data and .pb.bin) to the original model directory and remove tmp
+3. Move the files related to the JIT model (``.bin`` , ``.onnx`` , ``.onnx.data`` and ``.pb.bin``) to the original model directory and remove tmp
 
-4. Remove original model.onnx  and original model.onnx.data
+4. Remove original ``model.onnx`` and original ``model.onnx.data``
 
-5. Open genai_config.json  and change the contents of the file as show below:
+5. Open ``genai_config.json``  and change the contents of the file as show below:
 
-Original
+**Before**
 
 .. code-block::
 
@@ -374,7 +375,7 @@ Original
       },
    "filename": "model.onnx",
 
-Modified
+**Modified**
 
 .. code-block::
 
@@ -391,7 +392,7 @@ Modified
 
 
 
-6. The final model is now ready and can be tested with the model_benchmark.exe test application.
+6. The final model is now ready and can be tested with the ``model_benchmark.exe`` test application.
 
 
 
