@@ -325,7 +325,7 @@ Setup
 Generate the final model
 ************************
 
-**Note**: The commands below use the ``Phi-3-mini-4k-instruct`` model (denoted as ``Phi-3-mini-4k`` for brevity) as an example to demonstrate the steps for generating the final model.
+The commands below use the ``Phi-3-mini-4k-instruct`` model (denoted as ``Phi-3-mini-4k`` for brevity) as an example to demonstrate the steps for generating the final model.
 
 1. Generate the Raw model: 
 
