@@ -2,17 +2,7 @@
 OGA Flow for NPU Execution of LLMs
 ##################################
 
-Introduction
-~~~~~~~~~~~~
-
-Starting with version 1.3, the Ryzen AI Software includes support for deploying quantized LLMs on Ryzen AI PCs using the ONNX Runtime generate() API (OGA).
-
-Two different execution modes are supported:
-
-- Hybrid mode: LLM generation flow that leverages both the NPU and GPU.
-- NPU-only mode: LLM generation flow that leverage only NPU for compute intensive operations.
-
-This user guide applies to the NPU-only execution mode.
+Starting with version 1.3, the Ryzen AI Software includes support for deploying LLMs on Ryzen AI PCs using the ONNX Runtime generate() API (OGA). This documentation is for the NPU execution of LLMs when using the OGA API.
 
 Supported Configurations
 ~~~~~~~~~~~~~~~~~~~~~~~~
