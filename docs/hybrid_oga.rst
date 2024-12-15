@@ -1,6 +1,6 @@
-##############################################
-Ryzen AI OGA Flow for Hybrid Execution of LLMs
-##############################################
+#####################################
+OGA Flow for Hybrid Execution of LLMs
+#####################################
 
 Introduction
 ~~~~~~~~~~~~
@@ -203,8 +203,10 @@ For example:
  
 
 
-Appendix: Preparing your own OGA model for hybrid execution (experimental)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Preparing OGA model for hybrid execution
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**Note**: Currently this flow is experimental.
 
 The section below describes an LLM model-building recipe for deployment on a Ryzen AI PC using the hybrid flow. Currently, the flow supports only fine-tuned versions of LLMs for models already supported (as listed in "Pre-optimized Models" section of this guide) in the hybrid flow. For example, fine-tuned versions of LLaMA2 or LLaMA3 can be used. However, different model families with architectures not supported by the hybrid flow cannot be used.
 
