@@ -104,7 +104,7 @@ Run Models
 
 1. Clone model from the Hugging Face repository and switch to the model directory
 
-2. Open the genai_config.json file located in the in the folder of the downloaded model. Update the value of the "custom_ops_library"key with the full path to the onnx_custom_ops.dll,located in the hybrid-llm-artifacts\onnx_utils\bin folder:  
+2. Open the ``genai_config.json`` file located in the folder of the downloaded model. Update the value of the "custom_ops_library" key with the full path to the ``onnx_custom_ops.dll``,located in the ``hybrid-llm-artifacts\onnx_utils\bin`` folder:  
 
 .. code-block::
   
@@ -114,7 +114,7 @@ Run Models
                 ...
       }
 
-3. Copy the directml.dll file to the folder where the onnx_custom_ops.dll is located (note: this step is only required on some systems)
+3. Copy the ``DirectML.dll`` file to the folder where the ``onnx_custom_ops.dll`` is located (note: this step is only required on some systems)
 
 .. code-block::
   
@@ -141,7 +141,7 @@ Setup
 
 4. Copy everything from ``hybrid-llm-artifacts/onnxruntime-genai/include`` to ``hybrid-llm-artifacts\examples\c\include``
 
-5. Build the model_benchmark.exe application
+5. Build the ``model_benchmark.exe`` application
 
 .. code-block::
 
@@ -361,7 +361,7 @@ The command generates
 - ``Phi-3-mini-4k_jit.onnx.data``
 - ``Phi-3-mini-4k_jit.pb.bin``
 
-3. Move the files related to the JIT model (``.bin`` , ``.onnx`` , ``.onnx.data`` and ``.pb.bin``) to the original model directory and remove tmp
+3. Move the files related to the JIT model (``.bin`` , ``.onnx`` , ``.onnx.data`` and ``.pb.bin``) to the original model directory and remove ``tmp``
 
 4. Remove original ``model.onnx`` and original ``model.onnx.data``
 
@@ -371,7 +371,7 @@ The command generates
 
 .. code-block::
 
-	"session_options": {
+   "session_options": {
          "log_id": "onnxruntime-genai",
          "provider_options": [
              {
