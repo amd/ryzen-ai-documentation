@@ -387,9 +387,6 @@ The command generates
       },
       "filename": "Phi-3-mini-4k_jit.onnx",
 
-
-
-
 6. The final model is now ready and can be tested with the ``model_benchmark.exe`` test application.
 
 
