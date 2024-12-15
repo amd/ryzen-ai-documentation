@@ -30,6 +30,19 @@ Requirements
 - Hybrid LLM artifacts package: hybrid-llm-artifacts_1.3.0.zip  
 - Linux machine with an AMD or Nvidia GPU (only required for the quantization process, when working with custom models)
 
+Setting performance mode (Optional)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To run the LLMs in the best performance mode, follow these steps:
+
+- Go to ``Windows`` → ``Settings`` → ``System`` → ``Power`` and set the power mode to Best Performance.
+- Execute the following commands in the terminal:
+
+.. code-block::
+
+   cd C:\Windows\System32\AMD
+   xrt-smi configure --pmode performance
+
 Package Contents
 ~~~~~~~~~~~~~~~~
 
