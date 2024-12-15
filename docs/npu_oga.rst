@@ -25,7 +25,7 @@ The Ryzen AI OGA flow supports the following processors running Windows 11:
 
 Requirements
 ~~~~~~~~~~~~
-- NPU Drivers (version .237)
+- NPU Driver (version .237): Install according to the instructions: https://ryzenai.docs.amd.com/en/latest/inst.html
 - Hybrid LLM artifacts package: npu-llm-artifacts_1.3.0.zip  
 
 Package Contents
