@@ -99,8 +99,8 @@ https://huggingface.co/collections/amd/quark-awq-g128-int4-asym-bf16-onnx-npu-13
 
 The steps for deploying the pre-optimized models using C++ are described in the following sections.
 
-NPU Execution of OGA Models using C++
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+NPU Execution of OGA Models
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Build the Test Applications 
 @@@@@@@@@@@@@@@@@@@@@@@@@@@
