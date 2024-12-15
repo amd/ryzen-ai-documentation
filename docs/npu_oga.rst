@@ -25,8 +25,22 @@ The Ryzen AI OGA flow supports the following processors running Windows 11:
 
 Requirements
 ~~~~~~~~~~~~
-- NPU Driver (version .237): Install according to the instructions: https://ryzenai.docs.amd.com/en/latest/inst.html
-- Hybrid LLM artifacts package: npu-llm-artifacts_1.3.0.zip  
+- NPU Driver (version .237): Install according to the instructions https://ryzenai.docs.amd.com/en/latest/inst.html
+- Hybrid LLM artifacts package: npu-llm-artifacts_1.3.0.zip
+
+Setting performance mode (Optional)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To run the LLMs in the best performance mode, follow these steps:
+
+- Go to ``Windows`` → ``Settings`` → ``System`` → ``Power`` and set the power mode to Best Performance.
+- Execute the following commands in the terminal:
+
+.. code-block::
+
+   cd C:\Windows\System32\AMD
+   xrt-smi configure --pmode performance
+
 
 Package Contents
 ~~~~~~~~~~~~~~~~
@@ -129,6 +143,8 @@ Set the environment variables
 
 Run the models
 @@@@@@@@@@@@@@
+
+**Note**: Ensure the models are cloned in the amd_oga folder.
 
 Run using a batch file
 **********************
