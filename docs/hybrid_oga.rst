@@ -25,7 +25,7 @@ The Ryzen AI OGA flow supports the following processors running Windows 11:
 
 Requirements
 ~~~~~~~~~~~~
-- NPU Drivers (version .237)
+- NPU Drivers (version .237): Install according to the instructions: https://ryzenai.docs.amd.com/en/latest/inst.html
 - RyzenAI 1.3 MSI installer
 - Hybrid LLM artifacts package: hybrid-llm-artifacts_1.3.0.zip  
 - Linux machine with an AMD or Nvidia GPU (only required for the quantization process, when working with custom models)
@@ -80,7 +80,7 @@ Hybrid Execution of OGA Models using Python
 Setup
 @@@@@
 
-1. Install the NPU Drivers (version .237) and Ryzen AI 1.3 according to the instructions in the public documentation: https://ryzenai.docs.amd.com/en/latest/inst.html
+1. Install Ryzen AI 1.3 according to the instructions: https://ryzenai.docs.amd.com/en/latest/inst.html
 
 2. Download and unzip the hybrid LLM artifacts package 
 
