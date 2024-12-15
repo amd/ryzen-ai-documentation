@@ -53,7 +53,7 @@ NPU LLM artifacts package contains the files required to build and run applicati
   - onnxruntime-genai.lib 
 - NPU binary file 
   
-  - amd_oga\bins\xclbin\stx\llama2_mladf_2x4x4_v1_gemmbfp16_silu_mul_mha_rms_rope.xclbin 
+  - amd_oga/bins/xclbin/stx/llama2_mladf_2x4x4_v1_gemmbfp16_silu_mul_mha_rms_rope.xclbin 
 - Executables 
  
   - amd_oga/exe/run_llm.exe 
