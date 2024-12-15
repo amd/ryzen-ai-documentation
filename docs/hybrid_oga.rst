@@ -18,7 +18,6 @@ Requirements
 - NPU Drivers (version .237): Install according to the instructions https://ryzenai.docs.amd.com/en/latest/inst.html
 - RyzenAI 1.3 MSI installer
 - Hybrid LLM artifacts package: hybrid-llm-artifacts_1.3.0.zip  
-- Linux machine with an AMD or Nvidia GPU (only required for the quantization process, when working with custom models)
 
 Setting performance mode (Optional)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -215,7 +214,7 @@ Quantizing the model
 
 Prerequisites
 *************
-Linux machine with Nvidia/AMD GPUs
+Linux machine with AMD or Nvidia GPUs
 
 Setup
 *****
