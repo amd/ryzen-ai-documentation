@@ -115,7 +115,7 @@ NOTE: pre-built versions of the ``run_llm.exe`` and ``model_generate.exe`` execu
 **Note**: The executable created ``run_llm.exe`` and ``model_generate.exe`` can be found in ``amd_oga/cpp/build/Release`` folder 
 
  
-3. Copy the executables ``run_llm.exe`` and ``model_generate.exe`` to the ``amd_oga/libs`` folder. The ``amd_oga/libs`` should contain both: ``run_llm.exe``, ``model_benchmark.exe`` along with the *.``dll``s it contains. 
+3. Copy the executables ``run_llm.exe`` and ``model_generate.exe`` to the ``amd_oga/libs`` folder. The ``amd_oga/libs`` should contain both: ``run_llm.exe``, ``model_benchmark.exe`` along with the ``dll` it contains. 
  
 .. code-block::
 
