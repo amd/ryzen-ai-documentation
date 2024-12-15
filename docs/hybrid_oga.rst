@@ -21,7 +21,7 @@ The Ryzen AI OGA flow supports the following processors running Windows 11:
 
 - Strix (STX): AMD Ryzen™ Ryzen AI 9 HX375, Ryzen AI 9 HX370, Ryzen AI 9 365
 
-**NOTE**: Phoenix (PHX) and Hawk (HPT) processors are not supported.
+**Note**: Phoenix (PHX) and Hawk (HPT) processors are not supported.
 
 Requirements
 ~~~~~~~~~~~~
@@ -195,9 +195,6 @@ Appendix: Preparing your own OGA model for hybrid execution (experimental)
 
 The section below describes an LLM model-building recipe for deployment on a Ryzen AI PC using the hybrid flow. Currently, the flow supports only fine-tuned versions of LLMs for models already supported (as listed in "Pre-optimized Models" section of this guide) in the hybrid flow. For example, fine-tuned versions of LLaMA2 or LLaMA3 can be used. However, different model families with architectures not supported by the hybrid flow cannot be used.
 
-
-
-
 Preparing a LLM for deployment on a Ryzen AI PC using the hybrid execution mode involves 3 steps:
 
 1. Quantizing the model: The pretrained model is quantized to reduce memory footprint and better map to compute resources in the hardware accelerators
@@ -328,7 +325,7 @@ Setup
 Generate the final model
 ************************
 
-**NOTE**: The commands below use the ``Phi-3-mini-4k-instruct`` model (denoted as ``Phi-3-mini-4k`` for brevity) as an example to demonstrate the steps for generating the final model.
+**Note**: The commands below use the ``Phi-3-mini-4k-instruct`` model (denoted as ``Phi-3-mini-4k`` for brevity) as an example to demonstrate the steps for generating the final model.
 
 1. Generate the Raw model: 
 
@@ -339,8 +336,9 @@ Generate the final model
      onnx_utils --external-data-extension "onnx.data" partition model.onnx ./tmp hybrid_llm.yaml -v --save-as-external --model-name Phi-3-mini-4k_raw 
 
 The command generates:
-- `tmp/Phi-3-mini-4k_raw.onnx`
-- `tmp/Phi-3-mini-4k_raw.onnx.data`
+
+- ``tmp/Phi-3-mini-4k_raw.onnx``
+- ``tmp/Phi-3-mini-4k_raw.onnx.data``
 
 2. Post-process the raw model to generate the JIT model: 
 
@@ -350,10 +348,10 @@ The command generates:
 
 The command generates
 
-- `Phi-3-mini-4k_jit.bin`
-- `Phi-3-mini-4k_jit.onnx`
-- `Phi-3-mini-4k_jit.onnx.data`
-- `Phi-3-mini-4k_jit.pb.bin`
+- ``Phi-3-mini-4k_jit.bin``
+- ``Phi-3-mini-4k_jit.onnx``
+- ``Phi-3-mini-4k_jit.onnx.data``
+- ``Phi-3-mini-4k_jit.pb.bin``
 
 3. Move the files related to the JIT model (``.bin`` , ``.onnx`` , ``.onnx.data`` and ``.pb.bin``) to the original model directory and remove tmp
 
