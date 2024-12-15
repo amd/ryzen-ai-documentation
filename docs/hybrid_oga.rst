@@ -17,7 +17,7 @@ Requirements
 ~~~~~~~~~~~~
 - NPU Drivers (version .237): Install according to the instructions https://ryzenai.docs.amd.com/en/latest/inst.html
 - RyzenAI 1.3 MSI installer
-- Hybrid LLM artifacts package: hybrid-llm-artifacts_1.3.0.zip  
+- Hybrid LLM artifacts package: ``hybrid-llm-artifacts_1.3.0.zip`` from https://account.amd.com/en/member/ryzenai-sw-ea.html 
 
 Setting performance mode (Optional)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
