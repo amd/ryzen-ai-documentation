@@ -16,7 +16,7 @@ The Ryzen AI OGA flow supports the following processors running Windows 11:
 Requirements
 ~~~~~~~~~~~~
 - NPU Driver (version .237): Install according to the instructions https://ryzenai.docs.amd.com/en/latest/inst.html
-- NPU LLM artifacts package: npu-llm-artifacts_1.3.0.zip
+- NPU LLM artifacts package: ``npu-llm-artifacts_1.3.0.zip`` from https://account.amd.com/en/member/ryzenai-sw-ea.html
 
 Setting performance mode (Optional)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -95,9 +95,9 @@ NPU Execution of OGA Models
 Build the Test Applications 
 @@@@@@@@@@@@@@@@@@@@@@@@@@@
 
-NOTE: pre-built versions of the ``run_llm.exe`` and model_generate.exe executables are already available in the amd_oga/exe folder. If you choose to use them directly, you can skip to step 3 and copy the executables to amd_oga/libs. Otherwise follow the steps below to build the applications from source. 
+NOTE: pre-built versions of the ``run_llm.exe`` and ``model_generate.exe`` executables are already available in the ``amd_oga/exe`` folder. If you choose to use them directly, you can skip to step 3 and copy the executables to ``amd_oga/libs``. Otherwise follow the steps below to build the applications from source. 
 
-1. Open command prompt and navigate to the amd_oga/cpp folder 
+1. Open command prompt and navigate to the ``amd_oga/cpp`` folder 
 
 .. code-block::
 
@@ -115,7 +115,7 @@ NOTE: pre-built versions of the ``run_llm.exe`` and model_generate.exe executabl
 **Note**: The executable created ``run_llm.exe`` and ``model_generate.exe`` can be found in ``amd_oga/cpp/build/Release`` folder 
 
  
-3. Copy the executables run_llm.exe and model_generate.exe to the amd_oga/libs folder. The amd_oga/libs should contain both: run_llm.exe, model_benchmark.exe along with the *.dlls it contains. 
+3. Copy the executables ``run_llm.exe`` and ``model_generate.exe`` to the ``amd_oga/libs`` folder. The ``amd_oga/libs`` should contain both: ``run_llm.exe``, ``model_benchmark.exe`` along with the ``*.dll``s it contains. 
  
 .. code-block::
 
@@ -134,14 +134,14 @@ Set the environment variables
 Run the models
 @@@@@@@@@@@@@@
 
-**Note**: Ensure the models are cloned in the amd_oga folder.
+**Note**: Ensure the models are cloned in the ``amd_oga`` folder.
 
 Run using a batch file
 **********************
 
 The ``run.bat`` batch file located in the ``amd_oga`` directory contains commands for running multiple models. If you wish to run only a specific model, you can do so by uncommenting the corresponding command and commenting out others.  
  
-For example, to run only ``Llama2-7b``, ensure the line shown below is uncommented, and other commands are commented (preceded by REM). 
+For example, to run only Llama2-7b, ensure the line shown below is uncommented, and other commands are commented (preceded by REM). 
 
 .. code-block::
 
@@ -158,7 +158,7 @@ Run the models using run.bat:
 Run manually
 ************
 
-To run the models using the run_llm.exe file 
+To run the models using the ``run_llm.exe`` file 
 
 .. code-block::
 
