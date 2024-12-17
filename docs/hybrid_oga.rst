@@ -135,11 +135,23 @@ Setup
 
 1. Download and unzip the hybrid LLM artifacts package.
 
-2. Copy everything from ``hybrid-llm-artifacts/onnxruntime-genai/lib`` to ``hybrid-llm-artifacts\examples\c\lib`` 
+2. Copy required library files from ``onnxruntime-genai\lib`` to ``examples\c\lib`` 
 
-3. Copy ``hybrid-llm-artifacts/onnx_utils/bin/ryzenai_onnx_utils.dll``  to ``hybrid-llm-artifacts\examples\c\lib`` 
+.. code-block::
 
-4. Copy everything from ``hybrid-llm-artifacts/onnxruntime-genai/include`` to ``hybrid-llm-artifacts\examples\c\include``
+    copy onnxruntime_genai\lib\*.* examples\c\lib\
+
+3. Copy ``onnx_utils\bin\ryzenai_onnx_utils.dll``  to ``examples\c\lib`` 
+
+.. code-block::
+
+    copy onnx_utils\bin\ryzenai_onnx_utils.dll examples\c\lib\
+
+4. Copy required header files from ``onnxruntime-genai\include`` to ``examples\c\include``
+
+.. code-block::
+
+     copy onnxruntime_genai\include\*.* examples\c\include\
 
 5. Build the ``model_benchmark.exe`` application
 
