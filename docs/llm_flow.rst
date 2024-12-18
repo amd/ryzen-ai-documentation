@@ -14,8 +14,12 @@ Starting with version 1.3, the Ryzen AI Software supports deploying quantized LL
 
 Two different execution modes are supported:
 
-- Hybrid mode: leverages both the NPU and GPU.
+- Hybrid mode: leverages both the NPU and GPU 
+
+  - Detailed documentation: :doc:`hybrid_oga`
 - NPU-only mode: leverages only the NPU.
+
+  - Detailed documentation: :doc:`npu_oga`
 
 The required libraries and the supporting documentation are available upon request on the AMD secure download site: https://account.amd.com/en/member/ryzenai-sw-ea.html 
 
