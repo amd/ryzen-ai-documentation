@@ -2,6 +2,10 @@
 OGA Flow for Hybrid Execution of LLMs
 #####################################
 
+.. note::
+   
+   Support for LLMs is currently in the Early Access stage. Early Access features are features which are still undergoing some optimization and fine-tuning. These features are not in their final form and may change as we continue to work in order to mature them into full-fledged features.
+
 Starting with version 1.3, the Ryzen AI Software includes support for deploying LLMs on Ryzen AI PCs using the ONNX Runtime generate() API (OGA). This documentation is for the Hybrid execution mode of LLMs, which leverages both the NPU and GPU.
 
 Supported Configurations
@@ -204,16 +208,10 @@ For example:
  
 
 
-Preparing OGA model for hybrid execution
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Preparing OGA Models for Hybrid Execution
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The section below describes an LLM model-building recipe for deployment on a Ryzen AI PC using the hybrid flow. Currently, the flow supports only fine-tuned versions of LLMs for models already supported (as listed in "Pre-optimized Models" section of this guide) in the hybrid flow. For example, fine-tuned versions of Llama2 or Llama3 can be used. However, different model families with architectures not supported by the hybrid flow cannot be used.
-
-.. note::
-
-   This model preparation flow is experimental and should be used on an experimental basis.
-
-
+This section describes the process for preparing LLMs for deployment on a Ryzen AI PC using the hybrid execution mode. Currently, the flow supports only fine-tuned versions of the models already supported (as listed in "Pre-optimized Models" section of this guide) in the hybrid flow. For example, fine-tuned versions of Llama2 or Llama3 can be used. However, different model families with architectures not supported by the hybrid flow cannot be used.
 
 Preparing a LLM for deployment on a Ryzen AI PC using the hybrid execution mode involves 3 steps:
 
@@ -338,9 +336,9 @@ Setup
 .. code-block::
 
     cd <hybrid package>\preprocessing
-    >pip install ryzenai_dynamic_dispatch-1.1.0.dev0-cp310-cp310-win_amd64.whl
-    >pip install ryzenai_onnx_utils-0.5.0-py3-none-any.whl
-    >pip install onnxruntime
+    pip install ryzenai_dynamic_dispatch-1.1.0.dev0-cp310-cp310-win_amd64.whl
+    pip install ryzenai_onnx_utils-0.5.0-py3-none-any.whl
+    pip install onnxruntime
 
 Generate the final model
 ************************
