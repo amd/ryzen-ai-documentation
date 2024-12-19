@@ -2,6 +2,10 @@
 OGA Flow for NPU Execution of LLMs
 ##################################
 
+.. note::
+   
+   Support for LLMs is currently in the Early Access stage. Early Access features are features which are still undergoing some optimization and fine-tuning. These features are not in their final form and may change as we continue to work in order to mature them into full-fledged features.
+
 Starting with version 1.3, the Ryzen AI Software includes support for deploying LLMs on Ryzen AI PCs using the ONNX Runtime generate() API (OGA). This documentation is for the NPU execution of LLMs when using the OGA API.
 
 Supported Configurations
