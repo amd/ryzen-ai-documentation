@@ -5,7 +5,7 @@ Installation Instructions
 #########################
 
 .. note::
-   An update was made the the RyzenAI 1.3 release package. AMD recommends downloading and installing this newer version (ref: ryzen-ai-rt-1.3.0.1-20241217.msi) and replacing any installation based on the previous packages
+   An update was made the RyzenAI 1.3 release package. AMD recommends downloading and installing this newer version (ref: ryzen-ai-rt-1.3.0.1-20241217.msi) and replacing any installation based on the previous packages
 
 ************************
 Supported Configurations
