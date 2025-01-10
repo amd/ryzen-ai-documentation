@@ -64,8 +64,8 @@ Use following command to run Quantization. In a GPU equipped Linux machine the q
         --custom_mode awq
 
 
-- To generate OGA model for NPU only execution mode use `--datatype float32`
-- To generate OGA model for Hybrid execution mode use `--datatype float16`
+- To generate OGA model for NPU only execution mode use ``--datatype float32``
+- To generate OGA model for Hybrid execution mode use ``--datatype float16``
 
 The quantized model is generated in the <quantized safetensor output dir> folder.
 
