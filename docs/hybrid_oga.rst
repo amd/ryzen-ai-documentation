@@ -280,7 +280,7 @@ Generating the OGA model
   
 Setup
 *****
-Copy the quantized model generated in the previous step to the RyzenAI system where you will be running the model.
+Copy the quantized model generated in the previous step to the RyzenAI system where you will be running the model for post-processing.
 
 1. Clone the onnxruntime-genai repo:
 
