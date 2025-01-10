@@ -2,7 +2,7 @@
 Preparing OGA Models
 ####################
 
-This section describes the process for preparing LLMs for deployment on a Ryzen AI PC using the hybrid or NPU-only execution mode. Currently, the flow supports only fine-tuned versions of the models already supported (as listed in "Pre-optimized Models" section of this guide). For example, fine-tuned versions of Llama2 or Llama3 can be used. However, different model families with architectures not supported by the hybrid flow cannot be used.
+This section describes the process for preparing LLMs for deployment on a Ryzen AI PC using the hybrid or NPU-only execution mode. Currently, the flow supports only fine-tuned versions of the models already supported (as listed in :doc:`llm_flow` page). For example, fine-tuned versions of Llama2 or Llama3 can be used. However, different model families with architectures not supported by the hybrid flow cannot be used.
 
 Preparing a LLM for deployment on a Ryzen AI PC involves 2 steps:
 
@@ -19,7 +19,7 @@ Linux machine with AMD or Nvidia GPUs
 Setup
 *****
 
-1. Create Conda Environment 
+1. Create and activate Conda Environment 
 
 .. code-block::
 
@@ -42,10 +42,10 @@ Setup
      cd <extracted quark 0.6.0>
      pip install quark-0.6.0+<>.whl
 
-Perform quantization
-********************
+Generate quantized Model
+************************
 
-To generate OGA model for Hybrid execution use the following command
+Use following command to run Quantization. In a GPU equipped Linux machine the quantization can take about 30-60 minutes. 
 
 .. code-block::
 
@@ -63,34 +63,19 @@ To generate OGA model for Hybrid execution use the following command
         --exclude_layers []
         --custom_mode awq
 
-To generate OGA model for NPU only execution use the following command
 
-.. code-block::
-
-   cd examples/torch/language_modeling/llm_ptq/
-   python3 quantize_quark.py
-        --model_dir "meta-llama/Llama-2-7b-chat-hf"
-        --output_dir <quantized safetensor output dir>
-        --quant_scheme w_uint4_per_group_asym
-        --num_calib_data 128
-        --quant_algo awq
-        --dataset pileval_for_awq_benchmark
-        --seq_len 512
-        --model_export quark_safetensors
-        --data_type float32
-        --exclude_layers []
-        --custom_mode awq
+- To generate OGA model for NPU only execution mode use `--datatype float32`
+- To generate OGA model for Hybrid execution mode use `--datatype float16`
 
 The quantized model is generated in the <quantized safetensor output dir> folder.
 
-Generating the model
-~~~~~~~~~~~~~~~~~~~~
-
+Generating the final model
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Setup
 *****
 
-1. Create and activate environment
+1. Create and activate Conda environment
 
 .. code-block:: 
 
@@ -106,8 +91,8 @@ Setup
     pip install ryzenai_onnx_utils-0.5.0-py3-none-any.whl
 
 
-Generate Model
-**************
+Generate final model
+********************
 
 To generate final model use the command below
 
