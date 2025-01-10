@@ -2,15 +2,12 @@
 Preparing OGA Models
 ####################
 
-Preparing OGA Models for Hybrid Execution
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 This section describes the process for preparing LLMs for deployment on a Ryzen AI PC using the hybrid or NPU-only execution mode. Currently, the flow supports only fine-tuned versions of the models already supported (as listed in "Pre-optimized Models" section of this guide). For example, fine-tuned versions of Llama2 or Llama3 can be used. However, different model families with architectures not supported by the hybrid flow cannot be used.
 
 Preparing a LLM for deployment on a Ryzen AI PC involves 2 steps:
 
 1. Quantizing the model: The pretrained model is quantized to reduce memory footprint and better map to compute resources in the hardware accelerators
-2. Generating the final model for Hybrid execution: A model specialized for the hybrid or NPU only execution mode is generated from the OGA model.
+2. Generating the final model: A model specialized for the hybrid or NPU only execution mode is generated from the OGA model.
 
 Quantizing the model
 ~~~~~~~~~~~~~~~~~~~~
@@ -48,7 +45,7 @@ Setup
 Perform quantization
 ********************
 
-The model is quantized using the following command and quantization settings:
+To generate OGA model for Hybrid execution use the following command
 
 .. code-block::
 
@@ -66,141 +63,63 @@ The model is quantized using the following command and quantization settings:
         --exclude_layers []
         --custom_mode awq
 
+To generate OGA model for NPU only execution use the following command
+
+.. code-block::
+
+   cd examples/torch/language_modeling/llm_ptq/
+   python3 quantize_quark.py
+        --model_dir "meta-llama/Llama-2-7b-chat-hf"
+        --output_dir <quantized safetensor output dir>
+        --quant_scheme w_uint4_per_group_asym
+        --num_calib_data 128
+        --quant_algo awq
+        --dataset pileval_for_awq_benchmark
+        --seq_len 512
+        --model_export quark_safetensors
+        --data_type float32
+        --exclude_layers []
+        --custom_mode awq
+
 The quantized model is generated in the <quantized safetensor output dir> folder.
 
-Generating the OGA model
-@@@@@@@@@@@@@@@@@@@@@@@@
-  
-Setup
-*****
+Generating the model
+~~~~~~~~~~~~~~~~~~~~
 
-1. Clone the onnxruntime-genai repo:
-
-.. code-block::
-
-     git clone --branch v0.5.1 https://github.com/microsoft/onnxruntime-genai.git
-
-2. Install the packages
-
-.. code-block::
-
-     conda create --name oga_051 python=3.11
-     conda activate oga_051
-
-     pip install numpy
-     pip install onnxruntime-genai
-     pip install onnx
-     pip install transformers
-     pip install torch
-     pip install sentencepiece
-
-Build the OGA Model
-*******************
-
-Run the OGA model builder utility as shown below:
-
-.. code-block::
-
-     cd onnxruntime-genai/src/python/py/models 
-
-     python builder.py \
-        -i <quantized safetensor model dir> \
-        -o <oga model output dir> \
-        -p int4 \
-        -e dml
-
-The OGA model is generated in the ``<oga model output dir>`` folder. 
-
-Generating the final model
-@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 Setup
 *****
 
-1. Create and activate postprocessing environment
+1. Create and activate environment
+
+.. code-block:: 
+
+    # create conda env
+    conda create -n oga-model-gen python==3.10
+    # activate env
+    conda activate oga-model-gen
+
+2. Install necessary wheels
 
 .. code-block::
 
-     conda create -n oga_to_hybrid python=3.10
-     conda activate oga_to_hybrid
-
-2. Install wheels 
-
-.. code-block::
-
-    cd <hybrid package>\preprocessing
+    pip install model_generate-1.0.0-py3-none-any.whl
     pip install ryzenai_dynamic_dispatch-1.1.0.dev0-cp310-cp310-win_amd64.whl
     pip install ryzenai_onnx_utils-0.5.0-py3-none-any.whl
-    pip install onnxruntime
 
-Generate the final model
-************************
 
-The commands below use the ``Phi-3-mini-4k-instruct`` model (denoted as ``Phi-3-mini-4k`` for brevity) as an example to demonstrate the steps for generating the final model.
+Generate Model
+**************
 
-1. Generate the Raw model: 
+To generate final model use the command below
 
 .. code-block::
 
-     cd <oga dml model folder>
-     mkdir tmp
-     onnx_utils --external-data-extension "onnx.data" partition model.onnx ./tmp hybrid_llm.yaml -v --save-as-external --model-name Phi-3-mini-4k_raw 
+   # Generate NPU model
+   model_generate --npu <output_dir> <quantized_model_path>
 
-The command generates:
-
-- ``tmp/Phi-3-mini-4k_raw.onnx``
-- ``tmp/Phi-3-mini-4k_raw.onnx.data``
-
-2. Post-process the raw model to generate the JIT model: 
-
-.. code-block::
-  
-     onnx_utils postprocess .\tmp\Phi-3-mini-4k_raw.onnx .\tmp\Phi-3-mini-4k_jit.onnx hybrid_llm --script-options jit_npu
-
-The command generates
-
-- ``Phi-3-mini-4k_jit.bin``
-- ``Phi-3-mini-4k_jit.onnx``
-- ``Phi-3-mini-4k_jit.onnx.data``
-- ``Phi-3-mini-4k_jit.pb.bin``
-
-3. Move the files related to the JIT model (``.bin`` , ``.onnx`` , ``.onnx.data`` and ``.pb.bin``) to the original model directory and remove ``tmp``
-
-4. Remove original ``model.onnx`` and original ``model.onnx.data``
-
-5. Open ``genai_config.json``  and change the contents of the file as show below:
-
-**Before**
-
-.. code-block::
-
-   "session_options": {
-         "log_id": "onnxruntime-genai",
-         "provider_options": [
-             {
-               "dml": {}
-             }
-          ]
-      },
-   "filename": "model.onnx",
-
-**Modified**
-
-.. code-block::
-
-     "session_options": {
-        "log_id": "onnxruntime-genai",
-        "custom_ops_library": "onnx_custom_ops.dll",
-        "custom_allocator": "shared_d3d_xrt",
-        "external_data_file": "Phi-3-mini-4k_jit.pb.bin",
-        "provider_options": [
-         ]
-      },
-      "filename": "Phi-3-mini-4k_jit.onnx",
-
-6. The final model is now ready and can be tested with the ``model_benchmark.exe`` test application.
-
-
+   # Generate OGA model
+   model_generate --hybrid <output_dir> <quantized_model_path>
 
 
 
