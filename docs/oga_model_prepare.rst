@@ -6,11 +6,11 @@ This section describes the process for preparing LLMs for deployment on a Ryzen 
 
 Preparing a LLM for deployment on a Ryzen AI PC involves 2 steps:
 
-1. Quantizing the model: The pretrained model is quantized to reduce memory footprint and better map to compute resources in the hardware accelerators
-2. Generating the final model: A model specialized for the hybrid or NPU only execution mode is generated from the OGA model.
+1. **Quantization**: The pretrained model is quantized to reduce memory footprint and better map to compute resources in the hardware accelerators
+2. **Postprocessing**: During the postprocessing the model is exported to OGA followed by NPU-only or Hybrid execution mode specific postprocess to obtain the final deployable model.
 
-Quantizing the model
-~~~~~~~~~~~~~~~~~~~~
+Quantization
+~~~~~~~~~~~~
 
 Prerequisites
 *************
@@ -42,7 +42,7 @@ Setup
      cd <extracted quark 0.6.0>
      pip install quark-0.6.0+<>.whl
 
-Generate quantized Model
+Generate Quantized Model
 ************************
 
 Use following command to run Quantization. In a GPU equipped Linux machine the quantization can take about 30-60 minutes. 
@@ -69,8 +69,8 @@ Use following command to run Quantization. In a GPU equipped Linux machine the q
 
 The quantized model is generated in the <quantized safetensor output dir> folder.
 
-Generating the final model
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+Postprocess
+~~~~~~~~~~~
 
 Setup
 *****
@@ -79,7 +79,7 @@ Setup
 
 .. code-block:: 
 
-    conda create -n oga-model-gen python==3.10
+    conda create -n oga-model-gen python=3.10
     conda activate oga-model-gen
 
 2. Install necessary wheels
@@ -91,7 +91,7 @@ Setup
     pip install ryzenai_onnx_utils-0.5.0-py3-none-any.whl
 
 
-Generate final model
+Generate Final Model
 ********************
 
 To generate final model use the command below
