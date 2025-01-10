@@ -94,9 +94,7 @@ Setup
 
 .. code-block:: 
 
-    # create conda env
     conda create -n oga-model-gen python==3.10
-    # activate env
     conda activate oga-model-gen
 
 2. Install necessary wheels
