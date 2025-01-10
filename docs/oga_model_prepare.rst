@@ -59,7 +59,7 @@ Use following command to run Quantization. In a GPU equipped Linux machine the q
         --dataset pileval_for_awq_benchmark 
         --seq_len 512 
         --model_export quark_safetensors 
-        --data_type float16 
+        --data_type <datatype> 
         --exclude_layers []
         --custom_mode awq
 
