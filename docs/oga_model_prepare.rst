@@ -14,7 +14,7 @@ Quantization
 
 Prerequisites
 *************
-Linux machine with AMD or Nvidia GPUs
+Linux machine with AMD (e.g., AMD Instinct MI Series) or Nvidia GPUs
 
 Setup
 *****
@@ -71,6 +71,7 @@ The quantized model is generated in the <quantized safetensor output dir> folder
 
 Postprocess
 ~~~~~~~~~~~
+Copy the quantized model generated in the previous step to the RyzenAI system where you will be running the model for post-processing.
 
 Setup
 *****

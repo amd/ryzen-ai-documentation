@@ -43,16 +43,16 @@ Hybrid LLM artifacts package contains the files required to build and run applic
 
 - **Python flow**
 
-  - onnx_utils\bin\onnx_custom_ops.dll
-  - onnxruntime_genai\wheel\onnxruntime_genai_directml-0.4.0.dev0-cp310-cp310-win_amd64.whl
-  - onnxruntime_genai\benchmark\DirectML.dll
+  - onnx_utils\\bin\\onnx_custom_ops.dll
+  - onnxruntime_genai\\wheel\\onnxruntime_genai_directml-0.4.0.dev0-cp310-cp310-win_amd64.whl
+  - onnxruntime_genai\\benchmark\\DirectML.dll
 - **C++ Runtime**
 
-  - onnx_utils\bin\onnx_custom_ops.dll
-  - onnxruntime_genai\benchmark\DirectML.dll
-  - onnxruntime_genai\benchmark\D3D13Core.dll
-  - onnxruntime_genai\benchmark\onnxruntime.dll
-  - onnxruntime_genai\benchmark\ryzenai_onnx_utils.dll
+  - onnx_utils\\bin\\onnx_custom_ops.dll
+  - onnxruntime_genai\\benchmark\\DirectML.dll
+  - onnxruntime_genai\\benchmark\\D3D13Core.dll
+  - onnxruntime_genai\\benchmark\\onnxruntime.dll
+  - onnxruntime_genai\\benchmark\\ryzenai_onnx_utils.dll
 - **C++ Dev headers**
 
   - onnx_utils
@@ -211,4 +211,6 @@ For example:
 Preparing OGA Models for Hybrid Execution
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To prepare the OGA model for hybrid execution please refer :doc:`oga_model_prepare` 
+To prepare the OGA model for hybrid execution please refer :doc:`oga_model_prepare`
+
+
