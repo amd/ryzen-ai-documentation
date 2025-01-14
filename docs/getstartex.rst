@@ -44,7 +44,7 @@ The following are the steps and the required files to run the example:
      - The ResNet model trained using CIFAR-10 is provided in .pt format.
    * - Quantization 
      - ``resnet_quantize.py``
-     - Convert the model to the NPU-deployable model by performing Post-Training Quantization flow using VitisAI ONNX Quantization.
+     - Convert the model to the NPU-deployable model by performing Post-Training Quantization flow using Quark Quantization.
    * - Deployment - Python
      - ``predict.py``
      -  Run the Quantized model using the ONNX Runtime code. We demonstrate running the model on both CPU and NPU. 
