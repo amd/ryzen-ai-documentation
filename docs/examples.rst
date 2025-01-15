@@ -14,7 +14,7 @@ NPU
 - The :doc:`Getting Started Tutorial <getstartex>` deploys a custom ResNet model demonstrating: 
 
   - Pretrained model conversion to ONNX 
-  - Quantization using Vitis AI ONNX quantizer 
+  - Quantization using AMD Quark quantizer 
   - Deployment using ONNX Runtime C++ and Python code
 
 - `Hello World Jupyter Notebook Tutorial <https://github.com/amd/RyzenAI-SW/tree/main/tutorial/hello_world>`_
