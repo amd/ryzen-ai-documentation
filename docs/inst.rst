@@ -5,7 +5,8 @@ Installation Instructions
 #########################
 
 .. note::
-   An update was made the the RyzenAI 1.3 release package. AMD recommends downloading and installing this newer version of driver (ref: NPU_242_WHQL.zip) and MSI installer (ref: ryzen-ai-1.3.1.msi) and replacing any installation based on the previous packages
+   An update was made the the RyzenAI 1.3 release package. AMD recommends downloading and installing this newer version (ref: ryzen-ai-rt-1.3.0.1-20241217.msi) and replacing any installation based on the previous packages
+
 
 ************************
 Supported Configurations
@@ -53,7 +54,7 @@ To enable the development and deployment of applications leveraging the NPU, you
 Install NPU Drivers
 *******************
 
-- Download the NPU driver installation package :download:`NPU Driver <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=NPU_242_WHQL.zip>`
+- Download the NPU driver installation package :download:`NPU Driver <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=NPU_RAI1.3.zip>`
 
 - Install the NPU drivers by following these steps:
 
@@ -71,13 +72,13 @@ Install NPU Drivers
 Install the Ryzen AI Software
 *****************************
 
-- Download the RyzenAI Software MSI installer :download:`ryzen-ai-1.3.1.msi <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ryzen-ai-1.3.1.msi>`.
+- Download the RyzenAI Software MSI installer :download:`ryzen-ai-rt-1.3.0.1-20241217.msi <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ryzen-ai-rt-1.3.0.1-20241217.msi>`.
 
 - Launch the MSI installer and follow the instructions on the installation wizard:
 
   - Accept the terms of the Licence agreement  
-  - Provide the destination folder for Ryzen AI installation (default: ``C:\Program Files\RyzenAI\1.3.1``)  
-  - Specify the name for the conda environment (default: ``ryzen-ai-1.3.1``)  
+  - Provide the destination folder for Ryzen AI installation (default: ``C:\Program Files\RyzenAI\1.3.0``)  
+  - Specify the name for the conda environment (default: ``ryzen-ai-1.3.0``)  
 
 The Ryzen AI Software packages are now installed in the conda environment created by the installer. Refer to the :doc:`runtime_setup` page for more details about setting up the environment before running an inference session on the NPU.
 
