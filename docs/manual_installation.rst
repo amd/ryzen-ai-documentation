@@ -2,10 +2,7 @@
 Manual Installation
 ###################
 
-
-The main :doc:`inst` page shows a one-step installation process that checks the prerequisite and installs Quark quantizer and Vitis AI execution provider.
-
-This page explains how to install each component manually. 
+The primary :doc:`inst` explain how to automatically install all components of the Ryzen AI Software in a new Conda environment. This page explains how to manually each component in a custom Conda environment.
 
 .. note::
 
@@ -15,11 +12,10 @@ This page explains how to install each component manually.
 Perform a Default Installation
 ******************************
 
-Download the :download:`ryzen-ai-rt-1.3.0.1-20241217.msi <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ryzen-ai-rt-1.3.0.1-20241217.msi>` installer.
+Install the latest NPU driver and Ryzen AI Software by following the steps in the primary :doc:`inst`. 
 
-Install the RyzenAI Software using the default settings. 
-
-This will copy in the ``C:\Program Files\RyzenAI\1.3.0`` folder all the files required for a manual installation.
+- When installing the Ryzen AI Software, use the default settings.
+- This will copy in the ``C:\Program Files\RyzenAI\1.3.1`` folder all the files required for a manual installation.
 
 
 **************************
