@@ -23,9 +23,7 @@ To install the Docker container for the Vitis AI Quantizer for TensorFlow, follo
 GPU-Accelerated Container
 =========================
 
-The standard Vitis AI Docker container does not support GPU-accelerated quantization. To create a container with GPU-accelerated quantization enabled, download the following archive and follow the instructions in the README file.
-
-`Download and build GPU Docker containers <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ipu-rel-3.5.0-325-20240726.tar.gz>`_
+The standard Vitis AI Docker container does not support GPU-accelerated quantization. To create a container with GPU-accelerated quantization enabled, download the following archive and follow the instructions in the README file: https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ipu-rel-3.5.0-353.tar.gz
 
 
 *********************
