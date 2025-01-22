@@ -9,3 +9,5 @@
 .. |roundpin|     unicode:: U+1F4CD .. Round Pushpin
 .. |memo|         unicode:: U+1F4DD .. Memo
 .. |info|         unicode:: U+1F6C8 .. Circled Information Source
+.. |checkmark|    unicode:: U+2705  .. White Heavy Check Mark
+.. |crossmark|    unicode:: U+274C  .. Red Cross Mark
