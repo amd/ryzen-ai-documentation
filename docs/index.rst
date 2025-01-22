@@ -11,6 +11,7 @@ AMD Ryzen™ AI Software includes the tools and runtime libraries for optimizing
 Quick Start
 ***********
 
+- :ref:`Supported Configurations <supported-configurations>`
 - :doc:`inst`
 - :doc:`examples`
 
