@@ -10,64 +10,17 @@ Currently, the NPU supports a subset of the ONNX operators. At runtime, the ONNX
 
 |memo| **NOTE**: Models with ONNX opset 17 are recommended. If your model uses a different opset version, consider converting it using the `ONNX Version Converter <https://github.com/onnx/onnx/blob/main/docs/VersionConverter.md>`_
 
+
+The Ryzen AI compiler supports input models quantized to either INT8 or BF16 format:
+
+- CNN models: INT8 or BF16
+- Transformer models: BF16
+
+BF16 models (CNN or Transformer) require processing power in terms of core count and memory, depending on model size. If a larger model cannot be compiled on a Windows machine due to hardware limitations (e.g., insufficient RAM), an alternative Linux-based compilation flow is supported. More details can be found here: <link>.
+
 The list of the ONNX operators currently supported by the NPU is as follows:
 
-- Abs
-- Add
-- And
-- Argmax
-- Argmin
-- Average pool_2D
-- Channel Shuffle
-- Clip
-- Concat
-- Convolution
-- ConvTranspose
-- Depthwise_Convolution
-- Div
-- Elu
-- Equal
-- Exp
-- Fully-Connected
-- Gemm
-- GlobalAveragePool
-- Greater
-- GreaterOrEqual
-- Gstiling
-- Hard-Sigmoid
-- Hard-Swish
-- Identity
-- LeakyRelu
-- Less
-- LessOrEqual
-- MatMul
-- Max
-- Min
-- MaxPool
-- Mul
-- Neg
-- Not
-- Or
-- Pad: constant or symmetric
-- Pixel-Shuffle
-- Pixel-Unshuffle
-- Prelu
-- ReduceMax
-- ReduceMin
-- ReduceMean
-- ReduceSum
-- Relu
-- Reshape
-- Resize
-- Slice
-- Softmax
-- SpaceToDepth
-- Sqrt
-- Squeeze
-- Strided-Slice
-- Sub
-- Tanh
-- Upsample
+<TBD>
 
 ..
   ------------
