@@ -21,8 +21,10 @@ Requirements
 ~~~~~~~~~~~~
 - NPU Drivers (version .237): Install according to the instructions https://ryzenai.docs.amd.com/en/latest/inst.html
 - RyzenAI 1.3 MSI installer
+- Latest AMD `GPU device driver <https://www.amd.com/en/support>`_ installed
 - Hybrid LLM artifacts package: ``hybrid-llm-artifacts_1.3.0.zip`` from https://account.amd.com/en/member/ryzenai-sw-ea.html 
 - Deepseek - Hybrid LLM artifacts package: ``hybrid-llm-artifacts_1.3.0.zip`` from https://account.amd.com/en/member/ryzenai-sw-ea.html 
+
 Setting performance mode (Optional)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -35,8 +37,6 @@ To run the LLMs in the best performance mode, follow these steps:
 
    cd C:\Windows\System32\AMD
    xrt-smi configure --pmode performance
-
-- **Examples**
 
 Pre-optimized Models
 ~~~~~~~~~~~~~~~~~~~~
@@ -57,7 +57,7 @@ Collection: https://huggingface.co/collections/amd/quark-awq-g128-int4-asym-fp16
 - https://huggingface.co/amd/Llama-3.2-1B-Instruct-awq-g128-int4-asym-fp16-onnx-hybrid
 - https://huggingface.co/amd/Llama-3.2-3B-Instruct-awq-g128-int4-asym-fp16-onnx-hybrid
 
-Deepseek Models
+Deepseek Models (New)
 
 Collection: https://huggingface.co/collections/amd/amd-ryzenai-deepseek-r1-distill-hybrid-67a53471e9d5f14bece775d2
 
@@ -90,7 +90,7 @@ Setup
 
 .. code-block::
   
-       cd path_to\\hybrid-llm-artifacts\onnxruntime_genai\wheel
+       cd path_to\hybrid-llm-artifacts\onnxruntime_genai\wheel
        pip install onnxruntime_genai_directml-0.4.0.dev0-cp310-cp310-win_amd64.whl
 
 .. _deepseek_setup:
@@ -117,10 +117,10 @@ Setup for Deepseek Models
 
 .. code-block::
   
-       cd path_to\\hybrid-llm-artifacts\onnxruntime_genai\wheel
+       cd path_to\hybrid-llm-artifacts\onnxruntime_genai\wheel
        pip install onnxruntime_genai-0.4.0.dev0-cp310-cp310-win_amd64.whl
 
-       cd path_to\\hybrid-llm-artifacts\onnxruntime
+       cd path_to\hybrid-llm-artifacts\onnxruntime
        pip install onnxruntime_directml-1.20.1-cp310-cp310-win_amd64.whl
      
 
@@ -192,9 +192,10 @@ Setup
 
 6. Clone model from the Hugging Face repository and switch to the model directory
 
-7. Open the ``genai_config.json`` file located in the folder of the downloaded model. Update the value of the "custom_ops_library" key with the full path to the ``onnx_custom_ops.dll``,located in the ``hybrid-llm-artifacts\onnx_utils\bin`` folder:  
+7. Open the ``genai_config.json`` file located in the folder of the downloaded model. Update the value of the "custom_ops_library" key with the full path to the ``onnx_custom_ops.dll``, located in the ``hybrid-llm-artifacts\onnx_utils\bin`` folder:  
 
 .. code-block::
+
       "session_options": {
                 ...
                 "custom_ops_library": "path_to\\hybrid-llm-artifacts\\onnx_utils\\bin\\onnx_custom_ops.dll",
@@ -239,7 +240,7 @@ For example:
      .\model_benchmark.exe -i <path_to>/Llama-3.2-1B-Instruct-awq-g128-int4-asym-fp16-onnx-hybrid -f <path_to>/prompt.txt -l "128, 256, 512, 1024, 2048" --verbose
 
  
-**Note:** A sample prompt file is provided in the package at `hybrid-llm-artifacts\examples\amd_genai_prompt.txt`
+**Note:** A sample prompt file is provided in the package at ``hybrid-llm-artifacts\examples\amd_genai_prompt.txt``
 
 Preparing OGA Models for Hybrid Execution
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
