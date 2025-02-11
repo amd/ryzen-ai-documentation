@@ -11,21 +11,17 @@ Starting with version 1.3, the Ryzen AI Software includes support for deploying 
 Supported Configurations
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-The Ryzen AI OGA flow supports the following processors running Windows 11:
-
-- Strix (STX): AMD Ryzen™ Ryzen AI 9 HX375, Ryzen AI 9 HX370, Ryzen AI 9 365
-
-**Note**: Phoenix (PHX) and Hawk (HPT) processors are not supported.
+The OGA-based flow supports Strix (STX) and Krackan Point (KRK) processors running Windows 11. Phoenix (PHX) and HawkPoint (HPT) processors are not supported.
 
 Requirements
 ~~~~~~~~~~~~
 - NPU Drivers (version .242): Install according to the instructions https://ryzenai.docs.amd.com/en/latest/inst.html
-- RyzenAI 1.3 MSI installer
-
-  - RyzenAI installer not required for DeepSeek models
+- RyzenAI 1.3 MSI installer (NOTE: the installer is not required to run DeepSeek models)
 - Latest AMD `GPU device driver <https://www.amd.com/en/support>`_ installed
-- Hybrid LLM artifacts package: ``hybrid-llm-artifacts_1.3.0.zip`` from https://account.amd.com/en/member/ryzenai-sw-ea.html 
-- DeepSeek - Hybrid LLM artifacts package: ``TBD`` from https://account.amd.com/en/member/ryzenai-sw-ea.html 
+- Hybrid LLM artifacts packages from https://account.amd.com/en/member/ryzenai-sw-ea.html: 
+
+  - ``hybrid-llm-artifacts_1.3.0.zip`` for general LLMs 
+  - ``TBD`` for DeepSeek-R1-Distill models 
 
 Setting performance mode (Optional)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -43,9 +39,9 @@ To run the LLMs in the best performance mode, follow these steps:
 Pre-optimized Models
 ~~~~~~~~~~~~~~~~~~~~
 
-AMD provides a set of pre-optimized LLMs ready to be deployed with Ryzen AI Software and the supporting runtime for hybrid execution. These models can be found on Hugging Face in the following collection:
+AMD provides a set of pre-optimized LLMs ready to be deployed with Ryzen AI Software and the supporting runtime for hybrid execution. These models can be found on Hugging Face in the following collections:
 
-Collection: https://huggingface.co/collections/amd/quark-awq-g128-int4-asym-fp16-onnx-hybrid-674b307d2ffa21dd68fa41d5
+General models: https://huggingface.co/collections/amd/quark-awq-g128-int4-asym-fp16-onnx-hybrid-674b307d2ffa21dd68fa41d5
 
 - https://huggingface.co/amd/Phi-3-mini-4k-instruct-awq-g128-int4-asym-fp16-onnx-hybrid
 - https://huggingface.co/amd/Phi-3.5-mini-instruct-awq-g128-int4-asym-fp16-onnx-hybrid
@@ -59,9 +55,7 @@ Collection: https://huggingface.co/collections/amd/quark-awq-g128-int4-asym-fp16
 - https://huggingface.co/amd/Llama-3.2-1B-Instruct-awq-g128-int4-asym-fp16-onnx-hybrid
 - https://huggingface.co/amd/Llama-3.2-3B-Instruct-awq-g128-int4-asym-fp16-onnx-hybrid
 
-DeepSeek Models (New)
-
-Collection: https://huggingface.co/collections/amd/amd-ryzenai-deepseek-r1-distill-hybrid-67a53471e9d5f14bece775d2
+DeepSeek-R1-Distill models: https://huggingface.co/collections/amd/amd-ryzenai-deepseek-r1-distill-hybrid-67a53471e9d5f14bece775d2
 
 - https://huggingface.co/amd/DeepSeek-R1-Distill-Llama-8B-awq-asym-uint4-g128-lmhead-onnx-hybrid
 - https://huggingface.co/amd/DeepSeek-R1-Distill-Qwen-1.5B-awq-asym-uint4-g128-lmhead-onnx-hybrid
@@ -73,10 +67,10 @@ The steps for deploying the pre-optimized models using Python or C++ are describ
 Hybrid Execution of OGA Models using Python
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Setup
-@@@@@
+Setup for General Models
+@@@@@@@@@@@@@@@@@@@@@@@@
 
-.. note:: This section covers the setup required for for Hybrid LLM execution, except for DeepSeek models. For setup needed for DeepSeek models refer to :ref:`deepseek_setup` section.
+.. note:: This section covers the setup required for hybrid execution of general LLMs. The setup steps for DeepSeek-R1-Distill models are covered in the :ref:`deepseek_setup` section.
 
 1. Install Ryzen AI 1.3 according to the instructions: https://ryzenai.docs.amd.com/en/latest/inst.html
 
@@ -96,10 +90,11 @@ Setup
        pip install onnxruntime_genai_directml-0.4.0.dev0-cp310-cp310-win_amd64.whl
 
 .. _deepseek_setup:
+
 Setup for DeepSeek Models
 @@@@@@@@@@@@@@@@@@@@@@@@@
 
-.. note:: This section covers the setup required for for Hybrid LLM execution of DeepSeek models.
+.. note:: This section covers the setup required for for hybrid execution of DeepSeek-R1-Distill models.
 
 1. Download and unzip the hybrid LLM artifacts package 
 
