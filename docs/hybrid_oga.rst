@@ -76,7 +76,7 @@ Hybrid Execution of OGA Models using Python
 Setup
 @@@@@
 
-.. note:: This section covers the setup required for for Hybrid LLM execution, except for Deepseek models. For setup needed for Deepseek models refer to :ref:`deepseek_setup` section.
+.. note:: This section covers the setup required for for Hybrid LLM execution, except for DeepSeek models. For setup needed for DeepSeek models refer to :ref:`deepseek_setup` section.
 
 1. Install Ryzen AI 1.3 according to the instructions: https://ryzenai.docs.amd.com/en/latest/inst.html
 
