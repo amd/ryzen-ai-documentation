@@ -19,11 +19,13 @@ The Ryzen AI OGA flow supports the following processors running Windows 11:
 
 Requirements
 ~~~~~~~~~~~~
-- NPU Drivers (version .237): Install according to the instructions https://ryzenai.docs.amd.com/en/latest/inst.html
+- NPU Drivers (version .242): Install according to the instructions https://ryzenai.docs.amd.com/en/latest/inst.html
 - RyzenAI 1.3 MSI installer
+
+  - RyzenAI installer not required for DeepSeek models
 - Latest AMD `GPU device driver <https://www.amd.com/en/support>`_ installed
 - Hybrid LLM artifacts package: ``hybrid-llm-artifacts_1.3.0.zip`` from https://account.amd.com/en/member/ryzenai-sw-ea.html 
-- Deepseek - Hybrid LLM artifacts package: ``hybrid-llm-artifacts_1.3.0.zip`` from https://account.amd.com/en/member/ryzenai-sw-ea.html 
+- DeepSeek - Hybrid LLM artifacts package: ``TBD`` from https://account.amd.com/en/member/ryzenai-sw-ea.html 
 
 Setting performance mode (Optional)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -57,7 +59,7 @@ Collection: https://huggingface.co/collections/amd/quark-awq-g128-int4-asym-fp16
 - https://huggingface.co/amd/Llama-3.2-1B-Instruct-awq-g128-int4-asym-fp16-onnx-hybrid
 - https://huggingface.co/amd/Llama-3.2-3B-Instruct-awq-g128-int4-asym-fp16-onnx-hybrid
 
-Deepseek Models (New)
+DeepSeek Models (New)
 
 Collection: https://huggingface.co/collections/amd/amd-ryzenai-deepseek-r1-distill-hybrid-67a53471e9d5f14bece775d2
 
@@ -94,10 +96,10 @@ Setup
        pip install onnxruntime_genai_directml-0.4.0.dev0-cp310-cp310-win_amd64.whl
 
 .. _deepseek_setup:
-Setup for Deepseek Models
+Setup for DeepSeek Models
 @@@@@@@@@@@@@@@@@@@@@@@@@
 
-.. note:: This section covers the setup required for for Hybrid LLM execution of Deepseek models.
+.. note:: This section covers the setup required for for Hybrid LLM execution of DeepSeek models.
 
 1. Download and unzip the hybrid LLM artifacts package 
 
