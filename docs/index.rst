@@ -76,6 +76,14 @@ For more details, refer to the :doc:`modelrun` page.
 
    gpu/ryzenai_gpu.rst
 
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+   :caption: Running LLMs
+
+   llm_flow.rst
+   hybrid_oga.rst
+   npu_oga.rst
 
 .. toctree::
    :maxdepth: 1
@@ -84,7 +92,6 @@ For more details, refer to the :doc:`modelrun` page.
 
    xrt_smi.rst
    ai_analyzer.rst
-   llm_flow.rst
 
 
 
