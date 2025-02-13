@@ -18,10 +18,10 @@ Requirements
 - NPU Drivers (version .242): Install according to the instructions https://ryzenai.docs.amd.com/en/latest/inst.html
 - RyzenAI 1.3 MSI installer (NOTE: the installer is not required to run DeepSeek models)
 - Latest AMD `GPU device driver <https://www.amd.com/en/support>`_ installed
-- Hybrid LLM artifacts packages from https://account.amd.com/en/member/ryzenai-sw-ea.html: 
+- Hybrid LLM artifacts packages: 
 
-  - ``hybrid-llm-artifacts_1.3.0.zip`` for general LLMs 
-  - ``TBD`` for DeepSeek-R1-Distill models 
+  - For general LLMs: ``hybrid-llm-artifacts_1.3.0.zip`` from https://account.amd.com/en/member/ryzenai-sw-ea.htm 
+  - For DeepSeek-R1-Distill models: https://amd.com/bin/public/amdOpenDownload?filename=hybrid-llm-deepseek-Feb05.zip 
 
 Setting performance mode (Optional)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
