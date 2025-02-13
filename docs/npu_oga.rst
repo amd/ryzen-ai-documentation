@@ -1,6 +1,6 @@
-##################################
-OGA Flow for NPU Execution of LLMs
-##################################
+######################
+OGA NPU Execution Mode
+######################
 
 .. note::
    
@@ -262,4 +262,8 @@ To run the models using the ``model_benchmark.exe`` file
    .\libs\model_benchmark.exe -i <model_path> -p <model_path>\<prompts.txt> --verbose 
 
  
+Preparing OGA Models for NPU-only Execution
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To prepare the OGA model for NPU-only execution please refer :doc:`oga_model_prepare` 
 
