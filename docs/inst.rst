@@ -5,7 +5,7 @@ Installation Instructions
 #########################
 
 .. note::
-   An update was made the RyzenAI 1.3 release package. AMD recommends downloading and installing the newer version of driver (ref: RAI_1.3.1_242_WHQL.zip) and MSI installer (ref: ryzen-ai-1.3.1.msi) and replacing any installation based on the previous packages
+   Version 1.3.1 (released on January 17th, 2025) is the latest update of the Ryzen AI Software. AMD recommends downloading and installing the newer version of driver (ref: RAI_1.3.1_242_WHQL.zip) and MSI installer (ref: ryzen-ai-1.3.1.msi) and replacing any installation based on the previous packages.
 
 
 *************
