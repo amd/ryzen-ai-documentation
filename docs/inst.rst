@@ -5,7 +5,7 @@ Installation Instructions
 #########################
 
 .. note::
-   An update was made the RyzenAI 1.3 release package. AMD recommends downloading and installing the newer version of driver (ref: RAI_1.3.1_242_WHQL.zip) and MSI installer (ref: ryzen-ai-1.3.1.msi) and replacing any installation based on the previous packages
+   Version 1.3.1 (released on January 17th, 2025) is the latest update of the Ryzen AI Software. AMD recommends downloading and installing the newer version of driver (ref: RAI_1.3.1_242_WHQL.zip) and MSI installer (ref: ryzen-ai-1.3.1.msi) and replacing any installation based on the previous packages.
 
 
 *************
@@ -45,7 +45,7 @@ The following dependencies must be present on the system before installing the R
 Install NPU Drivers
 *******************
 
-- Download the NPU driver installation package :download:`NPU Driver 1.3.1_242 <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=RAI_1.3.1_242_WHQL.zip>`
+- Download the NPU driver installation package :download:`NPU Driver 1.3.1_242 <https://account.amd.com/en/forms/downloads/amd-end-user-license-xef.html?filename=RAI_1.3.1_242_WHQL.zip>`
 - Extract the downloaded zip file.
 - Open a terminal in administrator mode and execute ``.\npu_sw_installer.exe``.
 - Check the installation messages to ensure that NPU MCDM driver version 32.0.203.242 (12/31/2024) is correctly installed.
@@ -56,7 +56,7 @@ Install NPU Drivers
 Install the Ryzen AI Software
 *****************************
 
-- Download the RyzenAI Software MSI installer :download:`ryzen-ai-1.3.1.msi <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ryzen-ai-1.3.1.msi>`.
+- Download the RyzenAI Software MSI installer :download:`ryzen-ai-1.3.1.msi <https://account.amd.com/en/forms/downloads/amd-end-user-license-xef.html?filename=ryzen-ai-1.3.1.msi>`.
 
 - Launch the MSI installer and follow the instructions on the installation wizard:
 
