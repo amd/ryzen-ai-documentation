@@ -147,8 +147,16 @@ Run Models
 
 .. code-block::
 
-     cd hybrid-llm-artifacts\scripts\llama3
+     cd <path_to_hybrid-package>\examples\python\llama3
      python run_model.py --model_dir path_to\Meta-Llama-3-8B-awq-w-int4-asym-gs128-a-fp16-onnx-ryzen-strix-hybrid
+
+.. note:: The ``run_model.py`` script included in the hybrid-llm-artefacts package is a **general-purpose inference script**. To optimize it for specific models, adjust the ``get_prompt()`` function in the inference script. For example for DeepSeek-R1 models, you can modify the chat template to include ``<think>\n`` at the start of the assistants response `(See: Usage Recommendations) <https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B#usage-recommendations>`_ as shown below:
+
+.. code-block::
+
+   def get_prompt():
+      chat_template = f'<|user|>\n{{input}} <|end|>\n<|assistant|>\n<think>\n'
+      ...
 
 Hybrid Execution of OGA Models using C++
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
