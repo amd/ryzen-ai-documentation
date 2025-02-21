@@ -23,10 +23,10 @@ The table below summarizes the driver requirements for the different versions of
      - Minimum NPU Driver version
      - Maximum NPU Driver release date 
    * - 1.3.1
-     - 32.0.201.242
+     - 32.0.203.242
      - January 17th, 2028
    * - 1.3
-     - 32.0.201.237
+     - 32.0.203.237
      - November 26th, 2027
    * - 1.2
      - 32.0.201.204
