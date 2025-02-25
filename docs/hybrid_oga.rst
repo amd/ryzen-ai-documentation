@@ -20,8 +20,8 @@ Requirements
 - Latest AMD `GPU device driver <https://www.amd.com/en/support>`_ installed
 - Hybrid LLM artifacts packages: 
 
-  - For general LLMs: ``hybrid-llm-artifacts_1.3.0.zip`` from https://account.amd.com/en/member/ryzenai-sw-ea.htm 
-  - For DeepSeek-R1-Distill models: https://amd.com/bin/public/amdOpenDownload?filename=hybrid-llm-deepseek-Feb05.zip 
+  - For general LLMs: ``hybrid-llm-artifacts_1.3.0.zip`` from https://account.amd.com/en/member/ryzenai-sw-ea.html 
+  - For DeepSeek-R1-Distill models: https://www.xilinx.com/bin/public/openDownload?filename=hybrid-llm-deepseek-Feb05.zip 
 
 Setting performance mode (Optional)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
