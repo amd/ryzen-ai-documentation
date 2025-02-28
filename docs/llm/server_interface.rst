@@ -14,7 +14,7 @@ The ``lemonade`` SDK server interface allows your application to load an LLM on 
 
 Server interfaces are used across the LLM ecosystem because they allow for no-code plug-and-play between the higher level of the application stack (GUIs, agents, RAG, etc.) with the LLM and hardware that have been abstracted by the server. 
 
-For example, open source projects such as `Open WebUI <https://github.com/open-webui/open-webui>`_ and `LM Eval <https://github.com/EleutherAI/lm-evaluation-harness>`_ have out-of-box support for connecting to a variety of server interfaces, which allow users to quickly start working with LLMs in a GUI or run a variety of validation tasks, respectively.
+For example, open source projects such as `Open WebUI <#open-webui-demo>`_ have out-of-box support for connecting to a variety of server interfaces, which in turn allows users to quickly start working with LLMs in a GUI.
 
 ************
 Server Setup
@@ -52,23 +52,28 @@ The `OpenAI API documentation <https://platform.openai.com/docs/api-reference/st
 Open WebUI Demo
 ===============
 
-The best way to experience the ``lemonade`` server is to try it with an OpenAI-compatible application, like Open WebUI.  
+The best way to experience the lemonade server is to try it with an OpenAI-compatible application, like Open WebUI.
 
 Instructions:
+-------------
 
-1. In a terminal, install Open WebUI:
+In a terminal, install Open WebUI using the following commands:
 
-  #. conda create -n webui python=3.11
-  #. pip install open-webui
-  #. open-webui serve
+.. code-block:: bash
 
-2. Open http://localhost:8080/ in your browser to launch the UI.
-3. In the UI:
+    conda create -n webui python=3.11
+    pip install open-webui
+    open-webui serve
 
-  #. Go to ``Settings -> Connections -> Add Connection``
-  #. Set http://localhost:8000/api/v0 as the URL, "-" as the key, and press save.
+To launch the UI, open a browser and navigate to `http://localhost:8080/`.
 
-Done! You are now able to run Open WebUI with Hybrid models. Feel free to choose any of the available "-Hybrid" models on the model selection menu.
+In the top-right corner of the UI, click the profile icon and then:
+
+1. Go to Settings -> Connections.
+2. Click the '+' button to Add Connection.
+3. In the URL field, enter http://localhost:8000/api/v0, and in the key field put “-”, then press save.
+
+Done! You are now able to run Open WebUI with Hybrid models. Feel free to choose any of the available “-Hybrid” models in the model selection menu.
 
 **********
 Next Steps
