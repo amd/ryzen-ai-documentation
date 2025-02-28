@@ -64,6 +64,7 @@ In a terminal, install Open WebUI using the following commands:
 .. code-block:: bash
 
     conda create -n webui python=3.11
+    conda activate webui
     pip install open-webui
     open-webui serve
 
