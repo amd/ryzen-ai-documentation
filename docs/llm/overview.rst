@@ -141,70 +141,70 @@ The pre-optimized models for hybrid execution used in these examples are availab
      - `Link <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/cpu/Llama_3_2_1B_Instruct.md>`__
      - 🟢
      - `Link <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/hybrid/Llama_3_2_1B_Instruct.md>`__
-     - 1.8x
-     - 5.6x
+     - 2.7x
+     - 5.2x
      - 🟢
    * - `Llama-3.2-3B-Instruct <https://huggingface.co/meta-llama/Llama-3.2-3B-Instruct>`_
      - `Link <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/cpu/Llama_3_2_3B_Instruct.md>`__
      - 🟢
      - `Link <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/hybrid/Llama_3_2_3B_Instruct.md>`__
      - 2.7x
-     - 8.9x
+     - 8.5x
      - 🟢
    * - `Phi-3-mini-4k-instruct <https://huggingface.co/microsoft/Phi-3-mini-4k-instruct>`_
      - `Link <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/cpu/Phi_3_mini_4k_instruct.md>`__
      - 🟢
      - `Link <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/hybrid/Phi_3_mini_4k_instruct.md>`__
-     - 2.8x
-     - 9.1x
+     - 3.9x
+     - 7.7x
      - 🟢
    * - `Phi-3.5-mini-instruct <https://huggingface.co/microsoft/Phi-3.5-mini-instruct>`_
      - `Link <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/cpu/Phi_3_5_mini_instruct.md>`__
      - 🟢
      - `Link <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/hybrid/Phi_3_5_mini_instruct.md>`__
-     - 2.6x
-     - 7.8x
+     - 2.9x
+     - 7.6x
      - 🟢
    * - `Mistral-7B-Instruct-v0.3 <https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3>`_
      - `Link <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/cpu/Mistral_7B_Instruct_v0_3.md>`__
      - 🟢
      - `Link <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/hybrid/Mistral_7B_Instruct_v0_3.md>`__
-     - 4.8x
+     - 4.4x
      - 9.7x
      - 🟢
    * - `Qwen1.5-7B-Chat <https://huggingface.co/Qwen/Qwen1.5-7B-Chat>`_
      - `Link <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/cpu/Qwen1_5_7B_Chat.md>`__
      - 🟢
      - `Link <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/hybrid/Qwen1_5_7B_Chat.md>`__
-     - 3.5x
-     - 8.6x
+     - 4.0x
+     - 7.9x
      - 🟢
    * - `Llama-2-7b-hf <https://huggingface.co/meta-llama/Llama-2-7b-hf>`_
      - `Link <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/cpu/Llama_2_7b_hf.md>`__
      - 🟢
      - `Link <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/hybrid/Llama_2_7b_hf.md>`__
-     - 4.6x
+     - 4.8x
      - 8.3x
      - 🟢
    * - `Llama-2-7b-chat-hf <https://huggingface.co/meta-llama/Llama-2-7b-chat-hf>`_
      - `Link <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/cpu/Llama_2_7b_chat_hf.md>`__
      - 🟢
      - `Link <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/hybrid/Llama_2_7b_chat_hf.md>`__
-     - 4.7x
-     - 9.0x
+     - 5.1x
+     - 8.1x
      - 🟢
    * - `Meta-Llama-3-8B <https://huggingface.co/meta-llama/Meta-Llama-3-8B>`_
      - `Link <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/cpu/Meta_Llama_3_8B.md>`__
      - 🟢
      - `Link <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/hybrid/Meta_Llama_3_8B.md>`__
-     - 4.9x
-     - 8.7x
+     - 4.4x
+     - 9.3x
      - 🟢
    * - `Llama-3.1-8B <https://huggingface.co/meta-llama/Llama-3.1-8B>`_
      - `Link <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/cpu/Llama_3_1_8B.md>`__
      - 🟢
      - `Link <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/hybrid/Llama_3_1_8B.md>`__
-     - 4.1x
+     - 4.0x
      - 9.1x
      - 🟢
 
