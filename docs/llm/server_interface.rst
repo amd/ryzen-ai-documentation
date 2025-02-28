@@ -35,7 +35,7 @@ The ``lemonade`` server provides the following OpenAI-compatible endpoints:
 - POST ``/api/v0/chat/completions`` - Chat Completions (messages to completions)
 - GET ``/api/v0/models`` - List available models
 
-Please refer to the `server specification <https://github.com/aigdat/genai/blob/main/docs/lemonade/server_spec.md>`_ document in the lemonade repository for details about the request and response formats for each endpoint. 
+Please refer to the `server specification <https://github.com/onnx/turnkeyml/blob/main/docs/lemonade/server_spec.md>`_ document in the lemonade repository for details about the request and response formats for each endpoint. 
 
 The `OpenAI API documentation <https://platform.openai.com/docs/api-reference/streaming>`_ also has code examples for integrating streaming completions into an application. 
 
@@ -65,7 +65,7 @@ Next Steps
 **********
 
 - Visit the :ref:`supported-llms` table to see the set of hybrid checkpoints that can be used with the server.
-- Check out the `lemonade server specification <https://github.com/aigdat/genai/blob/main/docs/lemonade/server_spec.md>`_ to learn more about supported features.
+- Check out the `lemonade server specification <https://github.com/onnx/turnkeyml/blob/main/docs/lemonade/server_spec.md>`_ to learn more about supported features.
 - Try out your ``lemonade server`` install with any application that uses the OpenAI chat completions API.
 
 
