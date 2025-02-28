@@ -73,7 +73,7 @@ To launch the UI, open a browser and navigate to `<http://localhost:8080/>`_.
 In the top-right corner of the UI, click the profile icon and then:
 
 1. Go to Settings -> Connections.
-2. Click the '+' button to Add Connection.
+2. Click the '+' button to add our OpenAI-compatible connection.
 3. In the URL field, enter http://localhost:8000/api/v0, and in the key field put “-”, then press save.
 
 Done! You are now able to run Open WebUI with Hybrid models. Feel free to choose any of the available “-Hybrid” models in the model selection menu.
