@@ -1,24 +1,19 @@
-..
-.. Heading guidelines
-..
-..     # with overline, for parts
-..     * with overline, for chapters
-..     =, for sections
-..     -, for subsections
-..     ^, for subsubsections
-..     “, for paragraphs
-..
-
 ##########################
 Ryzen AI Software   
 ##########################
 
 AMD Ryzen™ AI Software includes the tools and runtime libraries for optimizing and deploying AI inference on AMD Ryzen™ AI powered PCs. Ryzen AI software enables applications to run on the neural processing unit (NPU) built in the AMD XDNA™ architecture, as well as on the integrated GPU. This allows developers to build and deploy models trained in PyTorch or TensorFlow and run them directly on laptops powered by Ryzen AI using ONNX Runtime and the Vitis™ AI Execution Provider (EP).
 
-
 .. image:: images/rai-sw-1.3.png
    :align: center
 
+***********
+Quick Start
+***********
+
+- :ref:`Supported Configurations <supported-configurations>`
+- :doc:`inst`
+- :doc:`examples`
 
 *************************
 Development Flow Overview
@@ -43,6 +38,7 @@ The AI model is deployed using the ONNX Runtime with either C++ or Python APIs. 
 For more details, refer to the :doc:`modelrun` page.
 
 
+|
 |
 
 
@@ -80,6 +76,14 @@ For more details, refer to the :doc:`modelrun` page.
 
    gpu/ryzenai_gpu.rst
 
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+   :caption: Running LLMs
+
+   llm_flow.rst
+   hybrid_oga.rst
+   npu_oga.rst
 
 .. toctree::
    :maxdepth: 1
@@ -88,7 +92,6 @@ For more details, refer to the :doc:`modelrun` page.
 
    xrt_smi.rst
    ai_analyzer.rst
-   llm_flow.rst
 
 
 
@@ -99,6 +102,8 @@ For more details, refer to the :doc:`modelrun` page.
 
    Model Zoo <https://huggingface.co/models?other=RyzenAI>
    manual_installation.rst
+   Licensing Information <licenses.rst>
+
 
 
 ..

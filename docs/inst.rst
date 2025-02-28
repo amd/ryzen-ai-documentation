@@ -4,28 +4,17 @@
 Installation Instructions
 #########################
 
-************************
-Supported Configurations
-************************
-
-The Ryzen AI Software supports the following processors running Windows 11 (Win 11 build>=22621.3527 is required for Ryzen AI Software 1.3.)
-
-- Phoenix (PHX): AMD Ryzen™ 7940HS, 7840HS, 7640HS, 7840U, 7640U.
-- Hawk (HPT): AMD Ryzen™ 8640U, 8640HS, 8645H, 8840U, 8840HS, 8845H, 8945H.
-- Strix (STX): AMD Ryzen™ Ryzen AI 9 HX375, Ryzen AI 9 HX370, Ryzen AI 9 365
-
-The rest of this document will refer to Phoenix as PHX, Hawk as HPT, and Strix as STX.
-
 .. note::
-   In this documentation, "NPU" is used in descriptions, while "IPU" is retained in the tool's language, code, screenshots, and commands. This intentional
-   distinction aligns with existing tool references and does not affect functionality. Avoid making replacements in the code.
+   Version 1.3.1 (released on January 17th, 2025) is the latest update of the Ryzen AI Software. AMD recommends downloading and installing the newer version of driver (ref: RAI_1.3.1_242_WHQL.zip) and MSI installer (ref: ryzen-ai-1.3.1.msi) and replacing any installation based on the previous packages.
 
 
-******************
+*************
 Prerequisites
-******************
+*************
 
-To enable the development and deployment of applications leveraging the NPU, you must have the following software installed on the system.
+The Ryzen AI Software supports AMD processors with a Neural Processing Unit (NPU). Consult the release notes for the full list of :ref:`supported configurations <supported-configurations>`. 
+
+The following dependencies must be present on the system before installing the Ryzen AI Software:
 
 .. list-table:: 
    :widths: 25 25 
@@ -33,6 +22,8 @@ To enable the development and deployment of applications leveraging the NPU, you
 
    * - Dependencies
      - Version Requirement
+   * - Windows 11
+     - build >= 22621.3527
    * - Visual Studio
      - 2022
    * - cmake
@@ -127,8 +118,8 @@ The Ryzen AI Software installation folder contains test to verify that the softw
 
 .. code-block::
 
-   [Vitis AI EP] No. of Operators :   CPU     2    IPU   398  99.50%
-   [Vitis AI EP] No. of Subgraphs :   CPU     1    IPU     1 Actually running on IPU     1
+   [Vitis AI EP] No. of Operators :   CPU     2    NPU   398
+   [Vitis AI EP] No. of Subgraphs :   NPU     1 Actually running on NPU     1
    ...
    Test Passed
    ...
@@ -148,6 +139,7 @@ Ryzen AI Software: Linux Installation
 *************************************
 
 - Download the RyzenAI Software Linux installer :download:`ryzen_ai-1.4.0.tgz <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=ryzen_ai-1.4.0-ea.tgz>`.
+
 - Download install script to your Ubuntu (22.04) host
 
 .. code-block::
@@ -160,6 +152,7 @@ Ryzen AI Software: Linux Installation
     source <TARGET PATH TO VENV>/bin/activate
 
 - Use Docker to install the Ryzen AI Software :download:`ryzen_ai_docker-1.4.0-ea_2025_02_21_3914.tgz <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=ryzen_ai_docker-1.4.0-ea_2025_02_21_3914.tgz>`.
+
 - Installation command:
 
 .. code-block::

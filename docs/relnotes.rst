@@ -1,6 +1,147 @@
+.. include:: icons.txt
+
 #############
 Release Notes
 #############
+
+.. _supported-configurations:
+
+************************
+Supported Configurations
+************************
+
+Version 1.3 of the Ryzen AI Software supports AMD processors codenamed Phoenix, Hawk Point, Strix, Strix Halo and Krackan Point. These processors can be found in the following Ryzen series:
+
+- Ryzen 200 Series
+- Ryzen 7000 Series, Ryzen PRO 7000 Series
+- Ryzen 8000 Series, Ryzen PRO 8000 Series
+- Ryzen AI 300 Series, Ryzen AI PRO Series, Ryzen AI Max 300 Series
+
+For a complete list of supported devices, refer to the `processor specifications <https://www.amd.com/en/products/specifications/processors.html>`_ page (look for the "AMD Ryzen AI" column towards the right side of the table, and select "Available" from the pull-down menu).
+
+The rest of this document will refer to Phoenix as PHX, Hawk Point as HPT, Strix and Strix Halo as STX, and Krackan Point as KRK.
+
+
+*************************
+Model Compatibility Table
+*************************
+
+The following table lists which types of models are supported on what hardware platforms.
+
+.. list-table:: 
+   :header-rows: 1
+
+   * - Model Type
+     - PHX/HPT
+     - STX/KRK 
+   * - CNN INT8/INT16
+     - |checkmark|
+     - |checkmark|
+   * - CNN Floating-Point
+     - 
+     - |checkmark|
+   * - LLM (OGA)
+     - 
+     - |checkmark|
+   * - LLM (PyTorch)
+     - |checkmark|
+     - |checkmark|
+
+
+
+***********  
+Version 1.3  
+***********  
+  
+- New Features:  
+  
+  - Initial release of the Quark quantizer  
+  - Support for mixed precision data types  
+  - Compatibility with Copilot+ applications  
+  
+- Improved support for :doc:`LLMs using OGA <llm_flow>` (Early Access)  
+  
+- New EoU Tools:  
+  
+  - CNN profiling tool for VAI-ML flow  
+  - Idle detection and suspension of contexts  
+  - Rebalance feature for AIE hardware resource optimization  
+  
+- NPU and Compiler:  
+  
+  - New Op Support:  
+    
+    - MAC  
+    - QResize Bilinear  
+    - LUT Q-Power  
+    - Expand  
+    - Q-Hsoftmax  
+    - A16 Q-Pad  
+    - Q-Reduce-Mean along H/W dimension  
+    - A16 Q-Global-AvgPool  
+    - A16 Padding with non-zero values  
+    - A16 Q-Sqrt  
+    - Support for XINT8/XINT16 MatMul and A16W16/A8W8 Q-MatMul  
+  
+  - Performance Improvements:  
+      
+    - Q-Conv, Q-Pool, Q-Add, Q-Mul, Q-InstanceNorm  
+    - Enhanced QDQ support for a range of operations  
+    - Enhanced the tiling algorithm  
+    - Improved graph-level optimization with extra transpose removal  
+    - Enhanced AT/MT fusion  
+    - Optimized memory usage and compile time  
+    - Improved compilation messages  
+  
+- Quark for PyTorch:  
+  
+  - Model Support:  
+    
+    - Examples of LLM PTQ, such as Llama3.2 and Llama3.2-Vision models  
+    - Example of YOLO-NAS detection model PTQ/QAT  
+    - Example of SDXL v1.0 with weight INT8 activation INT8  
+  
+  - PyTorch Quantizer Enhancements:  
+    
+    - Partial model quantization by user configuration under FX mode  
+    - Quantization of ConvTranspose2d in Eager Mode and FX mode  
+    - Advanced Quantization Algorithms with auto-generated configurations  
+    - Optimized Configuration with DataTypeSpec for ease of use  
+    - Accelerated in-place replacement under Eager Mode  
+    - Loading configuration from file of algorithms and pre-optimizations  
+  
+- Quark for ONNX:  
+  
+  - New Features:  
+    
+    - Compatibility with ONNX Runtime version 1.18, 1.19  
+    - Support for int4, uint4, Microscaling data types  
+    - Quantization for arbitrary specified operators  
+    - Quantization type alignment of element-wise operators for mixed precision  
+    - ONNX graph cleaning  
+    - Int32 bias quantization  
+  
+  - ONNX Quantizer Enhancements:  
+    
+    - Fast fine-tuning support for the MatMul operator, BFP data type, and GPU acceleration  
+    - Improved ONNX quantization of LLM models  
+    - Optimized quantization of FP16 models  
+    - Custom operator compilation process  
+    - Default parameters for auto mixed precision  
+    - Optimized Ryzen AI workflow by aligning with hardware constraints of the NPU  
+  
+- ONNX Runtime EP:  
+  
+  - Support for ONNX Runtime EP shared libraries  
+  - Python dependency removal  
+  - Memory optimization during the compile phase  
+  - Pattern API enhancement with multiple outputs and commutable arguments support  
+  
+- Known Issues:  
+  
+  - Extended compile time for some models with BF16/BFP16 data types  
+  - LLM models with 4K sequence length may revert to CPU execution  
+  - Accuracy drop in some Transformer models using BF16/BFP16 data types, requiring Quark intervention  
 
 ***********
 Version 1.2
@@ -26,7 +167,7 @@ Version 1.2
 
 - New Demos:
   
-  - NPU-GPU multi-model pipeline application `demo <https://github.com/amd/RyzenAI-SW/tree/main/demo/multi-model-exec>`_
+  - NPU-GPU multi-model pipeline application `demo <https://github.com/amd/RyzenAI-SW/tree/main/demo/NPU-GPU-Pipeline>`_
 
 - NPU and Compiler
   
