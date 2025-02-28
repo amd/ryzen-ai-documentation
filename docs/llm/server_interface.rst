@@ -22,7 +22,17 @@ Server Setup
 
 The fastest way to set up the server is with the ``lemonade server installer``.
 
-#. Make sure your system has the Ryzen AI 1.3 driver installed: :ref:`install-npu-drivers`.
+1. Make sure your system has the Ryzen AI 1.3 driver installed:
+
+  - Download the NPU driver installation package :download:`NPU Driver <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=NPU_RAI1.3.zip>`
+
+  - Install the NPU drivers by following these steps:
+
+    - Extract the downloaded ``NPU_RAI1.3.zip`` zip file.
+    - Open a terminal in administrator mode and execute the ``.\npu_sw_installer.exe`` exe file.
+
+  - Ensure that NPU MCDM driver (Version:32.0.203.237 or 32.0.203.240) is correctly installed by opening ``Device Manager`` -> ``Neural processors`` -> ``NPU Compute Accelerator Device``.
+
 #. Download and install ``Lemonade_Server_Installer.exe`` from the `latest TurnkeyML release <https://github.com/onnx/turnkeyml/releases>`_.
 #. Launch the server by double-clicking the ``lemonade_server`` shortcut added to your desktop.
 

@@ -22,9 +22,19 @@ System-level pre-requisites
 
 You only need to do this once per computer:
 
-#. Make sure your system has the Ryzen AI 1.3 driver installed: :ref:`install-npu-drivers`.
-#. `Download and install miniconda for Windows <https://repo.anaconda.com/miniconda/Miniconda3-latest-Windows-x86_64.exe>`_.
-#. Launch a terminal and call ``conda init``.
+1. Make sure your system has the Ryzen AI 1.3 driver installed:
+
+  - Download the NPU driver installation package :download:`NPU Driver <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=NPU_RAI1.3.zip>`
+
+  - Install the NPU drivers by following these steps:
+
+    - Extract the downloaded ``NPU_RAI1.3.zip`` zip file.
+    - Open a terminal in administrator mode and execute the ``.\npu_sw_installer.exe`` exe file.
+
+  - Ensure that NPU MCDM driver (Version:32.0.203.237 or 32.0.203.240) is correctly installed by opening ``Device Manager`` -> ``Neural processors`` -> ``NPU Compute Accelerator Device``.
+
+2. `Download and install miniconda for Windows <https://repo.anaconda.com/miniconda/Miniconda3-latest-Windows-x86_64.exe>`_.
+3. Launch a terminal and call ``conda init``.
 
 *****************
 Environment Setup

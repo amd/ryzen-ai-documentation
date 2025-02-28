@@ -41,8 +41,6 @@ The following dependencies must be present on the system before installing the R
 
 |
 
-.. _install-npu-drivers:
-
 *******************
 Install NPU Drivers
 *******************
@@ -69,7 +67,7 @@ Install the Ryzen AI Software
 The Ryzen AI Software packages are now installed in the conda environment created by the installer. Refer to the :doc:`runtime_setup` page for more details about setting up the environment before running an inference session on the NPU.
 
 
-|memo| **NOTE**: This installation is only for CNN models. The LLM models flow installation is hosted in the GitHub repo; for details, please check :doc:`llm_flow`
+|memo| **NOTE**: This installation is only for CNN models. The LLM models flow installation is hosted in the GitHub repo; for details, please check :doc:`llm/overview`
 
 
 .. _quicktest:

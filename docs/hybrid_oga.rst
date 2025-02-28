@@ -247,6 +247,8 @@ For example:
  
 **Note:** A sample prompt file is provided in the package at ``hybrid-llm-artifacts\examples\amd_genai_prompt.txt``
 
+.. _hybrid-prepare-models:
+
 Preparing OGA Models for Hybrid Execution
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
