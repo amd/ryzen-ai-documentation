@@ -33,8 +33,8 @@ The fastest way to set up the server is with the ``lemonade server installer``.
 
   - Ensure that NPU MCDM driver (Version:32.0.203.237 or 32.0.203.240) is correctly installed by opening ``Device Manager`` -> ``Neural processors`` -> ``NPU Compute Accelerator Device``.
 
-#. Download and install ``Lemonade_Server_Installer.exe`` from the `latest TurnkeyML release <https://github.com/onnx/turnkeyml/releases>`_.
-#. Launch the server by double-clicking the ``lemonade_server`` shortcut added to your desktop.
+2. Download and install ``Lemonade_Server_Installer.exe`` from the `latest TurnkeyML release <https://github.com/onnx/turnkeyml/releases>`_.
+3. Launch the server by double-clicking the ``lemonade_server`` shortcut added to your desktop.
 
 ************
 Server Usage
@@ -57,6 +57,8 @@ The best way to experience the lemonade server is to try it with an OpenAI-compa
 Instructions:
 -------------
 
+First, launch the ``lemonade_server`` (see: `server setup <#server-setup>`_).
+
 In a terminal, install Open WebUI using the following commands:
 
 .. code-block:: bash
@@ -65,7 +67,7 @@ In a terminal, install Open WebUI using the following commands:
     pip install open-webui
     open-webui serve
 
-To launch the UI, open a browser and navigate to `http://localhost:8080/`.
+To launch the UI, open a browser and navigate to `<http://localhost:8080/>`_.
 
 In the top-right corner of the UI, click the profile icon and then:
 
