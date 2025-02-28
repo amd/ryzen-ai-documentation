@@ -1,0 +1,75 @@
+/* Software Stack Table */
+
+.center-table {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+
+/* Supported Lemonade LLMs Table */
+
+/* Vertical lines for the first and second position in the first row */
+.llm-table thead tr:nth-of-type(1) th:nth-of-type(1),
+.llm-table thead tr:nth-of-type(1) th:nth-of-type(2) {
+    border-right: 1px solid #ffffff; /* White color for the border */
+}
+
+/* Vertical lines for the first and second position in the second row */
+.llm-table thead tr:nth-of-type(2) th:nth-of-type(1),
+.llm-table thead tr:nth-of-type(2) th:nth-of-type(3) {
+    border-right: 1px solid #ffffff; /* White color for the border */
+}
+
+/* Vertical lines for the first and third position in all other rows */
+.llm-table tbody tr td:nth-of-type(1),
+.llm-table tbody tr td:nth-of-type(3) {
+    border-right: 1px solid #ffffff; /* White color for the border */
+}
+
+/* Remove horizontal line between the two heading rows */
+.llm-table thead tr:nth-of-type(1) th {
+    border-bottom: none;
+}
+
+/* Supported DeepSeek LLMs Table */
+
+/* Add vertical border to the right of the models column */
+.deepseek-table td:nth-child(1) {
+    border-right: 1px solid white;
+}
+
+/* Vertical lines for the first and second position in the first row */
+.deepseek-table thead tr:nth-of-type(1) th:nth-of-type(1) {
+    border-right: 1px solid #ffffff; /* White color for the border */
+}
+
+/* Vertical lines for the first and second position in the second row */
+.deepseek-table thead tr:nth-of-type(2) th:nth-of-type(1){
+    border-right: 1px solid #ffffff; /* White color for the border */
+}
+
+/* Vertical lines for the first and third position in all other rows */
+.deepseek-table tbody tr td:nth-of-type(1){
+    border-right: 1px solid #ffffff; /* White color for the border */
+}
+
+/* Add vertical lines around the hybrid_oga cell */
+.deepseek-table td:nth-child(2) {
+    border-right: 1px solid white;
+}
+
+/* Remove right border between TTFT and TPS columns in the bottom two rows */
+.deepseek-table tbody tr:nth-child(2) td:nth-child(2),
+.deepseek-table tbody tr:nth-child(3) td:nth-child(2) {
+    border-right: none;
+}
+
+
+
+
+
+
+
+
+
