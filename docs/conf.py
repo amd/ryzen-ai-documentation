@@ -63,6 +63,7 @@ extensions = [
     'sphinx.ext.ifconfig',
     'sphinx.ext.viewcode',
     'sphinx.ext.githubpages',
+    'linuxdoc.rstFlatTable',
     "notfound.extension",
 	#'recommonmark',
 	#'sphinx_markdown_tables',
