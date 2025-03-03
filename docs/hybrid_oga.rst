@@ -1,10 +1,10 @@
-#########################
-OGA Hybrid Execution Mode
-#########################
+##########################
+OGA API for C++ and Python
+##########################
 
 .. note::
    
-   Support for LLMs is currently in the Early Access stage. Early Access features are features which are still undergoing some optimization and fine-tuning. These features are not in their final form and may change as we continue to work in order to mature them into full-fledged features.
+   Support for the OGA API is currently in the Early Access stage. Early Access features are features which are still undergoing some optimization and fine-tuning. These features are not in their final form and may change as we continue to work in order to mature them into full-fledged features.
 
 Starting with version 1.3, the Ryzen AI Software includes support for deploying LLMs on Ryzen AI PCs using the ONNX Runtime generate() API (OGA). This documentation is for the Hybrid execution mode of LLMs, which leverages both the NPU and GPU.
 
@@ -246,6 +246,8 @@ For example:
 
  
 **Note:** A sample prompt file is provided in the package at ``hybrid-llm-artifacts\examples\amd_genai_prompt.txt``
+
+.. _hybrid-prepare-models:
 
 Preparing OGA Models for Hybrid Execution
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
