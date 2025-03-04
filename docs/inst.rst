@@ -37,6 +37,8 @@ The following dependencies must be present on the system before installing the R
 
 - Visual Studio 2022 Community: ensure that "Desktop Development with C++" is installed
 
+- Visual Studio 2022 Professional Edition is needed for compilation of BF16 models
+
 - Anaconda or Miniconda: ensure that the following path is set in the System PATH variable: ``path\to\anaconda3\Scripts`` or ``path\to\miniconda3\Scripts`` (The System PATH variable should be set in the *System Variables* section of the *Environment Variables* window). 
 
 |
@@ -45,30 +47,47 @@ The following dependencies must be present on the system before installing the R
 Install NPU Drivers
 *******************
 
-- Download the NPU driver installation package :download:`NPU Driver 1.3.1_242 <https://account.amd.com/en/forms/downloads/amd-end-user-license-xef.html?filename=RAI_1.3.1_242_WHQL.zip>`
-- Extract the downloaded zip file.
-- Open a terminal in administrator mode and execute ``.\npu_sw_installer.exe``.
-- Check the installation messages to ensure that NPU MCDM driver version 32.0.203.242 (12/31/2024) is correctly installed.
+- Download the NPU driver installation package :download:`NPU Driver <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=NPU_RAI1.4_EA_255_WHQL.zip >`
+
+- Install the NPU drivers by following these steps:
+
+  - Extract the downloaded ``NPU_RAI1.4.zip`` zip file.
+  - Open a terminal in administrator mode and execute the ``.\npu_sw_installer.exe`` exe file.
+
+- Ensure that NPU MCDM driver (Version:32.0.203.255, Date:02/20/2025) is correctly installed by opening ``Device Manager`` -> ``Neural processors`` -> ``NPU Compute Accelerator Device``.
+
 
 .. _install-bundled:
 
-*****************************
-Install the Ryzen AI Software
-*****************************
+***************************************
+Ryzen AI Software: Windows Installation
+***************************************
 
-- Download the RyzenAI Software MSI installer :download:`ryzen-ai-1.3.1.msi <https://account.amd.com/en/forms/downloads/amd-end-user-license-xef.html?filename=ryzen-ai-1.3.1.msi>`.
+- Download the RyzenAI Software MSI installer :download:`ryzen-ai-1.4.0.exe <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=ryzen-ai-1.4.0-us.exe>`.
 
 - Launch the MSI installer and follow the instructions on the installation wizard:
 
-  - Accept the terms of the Licence agreement  
-  - Provide the destination folder for Ryzen AI installation (default: ``C:\Program Files\RyzenAI\1.3.1``)  
-  - Specify the name for the conda environment (default: ``ryzen-ai-1.3.1``)  
+  - Accept the terms of the Licence agreement
+  - Provide the destination folder for Ryzen AI installation (default: ``C:\Program Files\RyzenAI\1.4.0``)
+  - Specify the name for the conda environment (default: ``ryzen-ai-1.4.0``)
+
 
 The Ryzen AI Software packages are now installed in the conda environment created by the installer. Refer to the :doc:`runtime_setup` page for more details about setting up the environment before running an inference session on the NPU.
 
 
 |memo| **NOTE**: This installation is only for CNN models. The LLM models flow installation is hosted in the GitHub repo; for details, please check :doc:`llm_flow`
 
+***********************************************
+Ryzen AI Software: Windows Runtime Installation
+***********************************************
+
+- Download the RyzenAI Software Runtime MSI installer :download:`ryzen-ai-rt-1.4.0-ea.msi <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=ryzen-ai-rt-1.4.0-ea.msi>`.
+
+- Launch the MSI installer and follow the instructions on the installation wizard:
+
+  - Accept the terms of the Licence agreement
+  - Provide the destination folder for Ryzen AI installation (default: ``C:\Program Files\RyzenAI\1.4.0-rt``)
+  - Specify the name for the conda environment (default: ``ryzen-ai-rt-1.4.0``)
 
 .. _quicktest:
 
@@ -87,7 +106,7 @@ The Ryzen AI Software installation folder contains test to verify that the softw
 
    conda activate <env_name>
 
-- Run the test: 
+- Run the test:
 
 .. code-block::
 
@@ -98,9 +117,9 @@ The Ryzen AI Software installation folder contains test to verify that the softw
 - The quicktest.py script sets up the environment and runs a simple CNN model. On a successful run, you will see an output similar to the one shown below. This indicates that the model is running on the NPU and that the installation of the Ryzen AI Software was successful:
 
 .. code-block::
-  
+
    [Vitis AI EP] No. of Operators :   CPU     2    NPU   398
-   [Vitis AI EP] No. of Subgraphs :   NPU     1 Actually running on NPU     1  
+   [Vitis AI EP] No. of Subgraphs :   NPU     1 Actually running on NPU     1
    ...
    Test Passed
    ...
@@ -110,11 +129,37 @@ The Ryzen AI Software installation folder contains test to verify that the softw
 Additional Considerations
 *************************
 
-- The full path to the Ryzen AI Software installation folder is stored in the ``RYZEN_AI_INSTALLATION_PATH`` environment variable. 
+- The full path to the Ryzen AI Software installation folder is stored in the ``RYZEN_AI_INSTALLATION_PATH`` environment variable.
 
 - To install the Ryzen AI Software in a pre-existing conda environment, follow the :doc:`manual_installation` instructions.
 
 
+*************************************
+Ryzen AI Software: Linux Installation
+*************************************
+
+- Download the RyzenAI Software Linux installer :download:`ryzen_ai-1.4.0.tgz <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=ryzen_ai-1.4.0-ea.tgz>`.
+
+- Download install script to your Ubuntu (22.04) host
+
+.. code-block::
+
+    tar -xvzf ryzen_ai-1.4.0.tgz -C <EXTRACT TO DIR>
+    cd <TARGET DIR>
+    chmod a+x install_ryzen_ai_1_4.sh
+    cd <TARGET DIR>
+    ./install_ryzen_ai_1_4.sh -a yes -p <TARGET PATH TO VENV> -l
+    source <TARGET PATH TO VENV>/bin/activate
+
+- Use Docker to install the Ryzen AI Software :download:`ryzen_ai_docker-1.4.0-ea_2025_02_21_3914.tgz <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=ryzen_ai_docker-1.4.0-ea_2025_02_21_3914.tgz>`.
+
+- Installation command:
+
+.. code-block::
+
+    gunzip -c ryzen_ai_docker-1.4.0-ea_2025_02_21_3914.tgz | docker load
+
+|memo| **NOTE**: Linux installer can be used to compile the larger models.
 
 ..
   ------------
