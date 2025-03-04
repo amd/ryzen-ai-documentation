@@ -43,8 +43,9 @@ A key benefit of both OGA and ``lemonade`` is that software developed against th
      - Your Native Application
    * - `Lemonade Python API* <#high-level-python-sdk>`_
      - `Lemonade Server Interface* <#server-interface-rest-api>`_
-     - `OGA C++ Headers <../hybrid_oga.html>`_
-   * - :cspan:`2` `AMD VitisAI build of OnnxRuntime GenAI (OGA) <https://github.com/microsoft/onnxruntime-genai>`_
+     - :rspan:`1` `OGA C++ Headers <../hybrid_oga.html>`_
+   * - :cspan:`1` `OGA Python API* <https://onnxruntime.ai/docs/genai/api/python.html>`_
+   * - :cspan:`2` `Custom AMD OnnxRuntime GenAI (OGA) <https://github.com/microsoft/onnxruntime-genai>`_
    * - :cspan:`2` `AMD Ryzen AI Driver and Hardware <https://www.amd.com/en/products/processors/consumer/ryzen-ai.html>`_
 
 \* indicates open-source software (OSS).
@@ -95,34 +96,9 @@ The following tables contain a comprehensive list of all LLMs that have been val
 
 The pre-optimized models for hybrid execution used in these examples are available in the `AMD hybrid collection on Hugging Face <https://huggingface.co/collections/amd/quark-awq-g128-int4-asym-fp16-onnx-hybrid-674b307d2ffa21dd68fa41d5>`_. It is also possible to run fine-tuned versions of the models listed (for example, fine-tuned versions of Llama2 or Llama3). For instructions on how to prepare a fine-tuned OGA model for hybrid execution, refer to :ref:`Preparing Models <hybrid-prepare-models>`.
 
-.. flat-table:: OGA API DeepSeek Supported LLMs
-  :header-rows: 2
-  :class: deepseek-table
-  
-  * -
-    - :cspan:`3` Ryzen AI Hybrid (OGA int4, ISL = 1024)
-  * - Model
-    - Instructions
-    - TTFT [s]
-    - TPS [tok/s]
-    - Validation
-  * - `DeepSeek-R1-Distill-Qwen-1.5B <https://huggingface.co/amd/DeepSeek-R1-Distill-Qwen-1.5B-awq-asym-uint4-g128-lmhead-onnx-hybrid>`_
-    - :rspan:`2` :doc:`../hybrid_oga`
-    - 0.68
-    - 60.0
-    - 🟢
-  * - `DeepSeek-R1-Distill-Qwen-7B <https://huggingface.co/amd/DeepSeek-R1-Distill-Qwen-7B-awq-asym-uint4-g128-lmhead-onnx-hybrid>`_
-    - 2.64
-    - 20.1
-    - 🟢
-  * - `DeepSeek-R1-Distill-Llama-8B <https://huggingface.co/amd/DeepSeek-R1-Distill-Llama-8B-awq-asym-uint4-g128-lmhead-onnx-hybrid>`_
-    - 2.68
-    - 19.2
-    - 🟢
+.. _ryzen-ai-oga-supported-llms:
 
-
-
-.. flat-table:: Lemonade SDK Supported LLMs
+.. flat-table:: Ryzen AI OGA Supported LLMs
    :header-rows: 2
    :class: llm-table
 
@@ -207,9 +183,20 @@ The pre-optimized models for hybrid execution used in these examples are availab
      - 4.0x
      - 9.1x
      - 🟢
+   * - `DeepSeek-R1-Distill-Qwen-1.5B <https://huggingface.co/amd/DeepSeek-R1-Distill-Qwen-1.5B-awq-asym-uint4-g128-lmhead-onnx-hybrid>`_
+     - `Link <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/cpu/Llama_3_1_8B.md>`__
+     - 🟢
+     - :cspan:`3` :rspan:`3` DeepSeek models are currently in Early Access.
+       Read about them on the `blog here <https://www.amd.com/en/developer/resources/technical-articles/deepseek-distilled-models-on-ryzen-ai-processors.html>`_.
+       Visit the `OGA API page <https://onnxruntime.ai/docs/genai/api/python.html>`_ for instructions.
+   * - `DeepSeek-R1-Distill-Qwen-7B <https://huggingface.co/amd/DeepSeek-R1-Distill-Qwen-7B-awq-asym-uint4-g128-lmhead-onnx-hybrid>`_
+     - `Link <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/cpu/Llama_3_1_8B.md>`__
+     - 🟢
+   * - `DeepSeek-R1-Distill-Llama-8B <https://huggingface.co/amd/DeepSeek-R1-Distill-Llama-8B-awq-asym-uint4-g128-lmhead-onnx-hybrid>`_
+     - `Link <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/cpu/Llama_3_1_8B.md>`__
+     - 🟢
 
-
-The lemonade SDK table was compiled using validation, benchmarking, and accuracy metrics as measured by the `ONNX TurnkeyML v6.0.0 <https://pypi.org/project/turnkeyml/6.0.0/>`_ ``lemonade`` commands in each example link.
+The :ref:`ryzen-ai-oga-supported-llms` table was compiled using validation, benchmarking, and accuracy metrics as measured by the `ONNX TurnkeyML v6.0.0 <https://pypi.org/project/turnkeyml/6.0.0/>`_ ``lemonade`` commands in each example link.
 
 Data collection details:
 
