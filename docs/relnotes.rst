@@ -59,7 +59,7 @@ Version 1.3
   - Support for mixed precision data types  
   - Compatibility with Copilot+ applications  
   
-- Improved support for :doc:`LLMs using OGA <llm_flow>` (Early Access)  
+- Improved support for :doc:`LLMs using OGA <llm/overview>`
   
 - New EoU Tools:  
   

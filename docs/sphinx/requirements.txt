@@ -38,6 +38,8 @@ docutils==0.19
     #   sphinx
 fastjsonschema==2.18.0
     # via rocm-docs-core
+fspath==20230629
+    # via linuxdoc
 gitdb==4.0.10
     # via gitpython
 gitpython==3.1.37
@@ -54,6 +56,8 @@ jinja2==3.1.2
     # via
     #   myst-parser
     #   sphinx
+linuxdoc==20240924
+    # via sphinx
 markdown-it-py==2.2.0
     # via
     #   mdit-py-plugins
@@ -100,6 +104,8 @@ requests==2.31.0
     #   sphinx
 rocm-docs-core==0.24.2
     # via -r requirements.in
+six==1.17.0
+    # via linuxdoc
 smmap==5.0.1
     # via gitdb
 snowballstemmer==2.2.0

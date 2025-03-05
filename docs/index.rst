@@ -79,11 +79,12 @@ For more details, refer to the :doc:`modelrun` page.
 .. toctree::
    :maxdepth: 1
    :hidden:
-   :caption: Running LLMs
+   :caption: Running LLMs on the NPU
 
-   llm_flow.rst
+   llm/overview.rst
+   llm/high_level_python.rst
+   llm/server_interface.rst
    hybrid_oga.rst
-   npu_oga.rst
 
 .. toctree::
    :maxdepth: 1
