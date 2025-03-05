@@ -6,6 +6,10 @@
     text-align: center;
 }
 
+.center-table th,
+.center-table td {
+    border: 1px solid #ffffff; /* Adds vertical and horizontal lines */
+}
 
 /* Supported Lemonade LLMs Table */
 
