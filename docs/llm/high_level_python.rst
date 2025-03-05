@@ -61,7 +61,7 @@ Run this command in a terminal that has your environment activated:
 
     lemonade -i amd/Llama-3.2-1B-Instruct-awq-g128-int4-asym-fp16-onnx-hybrid oga-load --device hybrid --dtype int4 llm-prompt --max-new-tokens 64 -p PROMPT
 
-Each example linked in the :ref:`supported-llms` table also has `example commands <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/hybrid/Llama_3_2_1B_Instruct.md#validation>`_ for validating the speed and accuracy of each model.
+Each example linked in the :ref:`supported-llms` table also has `example commands <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/lemonade/hybrid/Llama_3_2_1B_Instruct.md#validation>`_ for validating the speed and accuracy of each model.
 
 **********
 Python API
@@ -81,13 +81,13 @@ You can also run this code to try out the high-level ``lemonade`` API in a Pytho
 
   print(tokenizer.decode(response[0]))
 
-Each example linked in the :ref:`supported-llms` table also has an `example script <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/hybrid/Llama_3_2_1B_Instruct.md#streaming>`_ for streaming the text output of the LLM.
+Each example linked in the :ref:`supported-llms` table also has an `example script <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/lemonade/hybrid/Llama_3_2_1B_Instruct.md#streaming>`_ for streaming the text output of the LLM.
 
 **********
 Next Steps
 **********
 
-From here, you can check out `an example <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/hybrid/Llama_3_2_1B_Instruct.md>`_ or any of the other :ref:`supported-llms`. 
+From here, you can check out `an example <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/lemonade/hybrid/Llama_3_2_1B_Instruct.md>`_ or any of the other :ref:`supported-llms`. 
 
 The examples pages also provide code for: 
 
