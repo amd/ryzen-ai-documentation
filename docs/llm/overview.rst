@@ -183,16 +183,20 @@ The pre-optimized models for hybrid execution used in these examples are availab
      - 4.0x
      - 9.1x
      - 🟢
-   * - `DeepSeek-R1-Distill-Qwen-1.5B <https://huggingface.co/amd/DeepSeek-R1-Distill-Qwen-1.5B-awq-asym-uint4-g128-lmhead-onnx-hybrid>`_
-     - `Link <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/cpu/Llama_3_1_8B.md>`__
+   * - `DeepSeek-R1-Distill-Qwen-1.5B <https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B>`_
+     - `Link <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/cpu/DeepSeek_R1_Distill_Qwen_1_5B.md>`__
      - 🟢
-     - :cspan:`3` :rspan:`3` DeepSeek models are currently in Early Access.
+     - :cspan:`3` :rspan:`3`
+       
+       DeepSeek models are currently in Early Access.
+
        Read about them on the `blog here <https://www.amd.com/en/developer/resources/technical-articles/deepseek-distilled-models-on-ryzen-ai-processors.html>`_.
-       Visit the `OGA API page <https://onnxruntime.ai/docs/genai/api/python.html>`_ for instructions.
-   * - `DeepSeek-R1-Distill-Qwen-7B <https://huggingface.co/amd/DeepSeek-R1-Distill-Qwen-7B-awq-asym-uint4-g128-lmhead-onnx-hybrid>`_
-     - `Link <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/cpu/Llama_3_1_8B.md>`__
+     
+       Visit the `OGA API page <https://vgodsoe.github.io/ryzen-ai-documentation/hybrid_oga.html>`_ for instructions.
+   * - `DeepSeek-R1-Distill-Qwen-7B <https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B>`_
+     - `Link <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/cpu/DeepSeek_R1_Distill_Qwen_7B.md>`__
      - 🟢
-   * - `DeepSeek-R1-Distill-Llama-8B <https://huggingface.co/amd/DeepSeek-R1-Distill-Llama-8B-awq-asym-uint4-g128-lmhead-onnx-hybrid>`_
+   * - `DeepSeek-R1-Distill-Llama-8B <https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Llama-8B>`_
      - `Link <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/cpu/Llama_3_1_8B.md>`__
      - 🟢
 
