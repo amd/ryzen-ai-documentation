@@ -197,7 +197,7 @@ The pre-optimized models for hybrid execution used in these examples are availab
      - `Link <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/cpu/DeepSeek_R1_Distill_Qwen_7B.md>`__
      - 🟢
    * - `DeepSeek-R1-Distill-Llama-8B <https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Llama-8B>`_
-     - `Link <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/cpu/Llama_3_1_8B.md>`__
+     - `Link <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/cpu/DeepSeek_R1_Distill_Llama_8B.md>`__
      - 🟢
 
 The :ref:`ryzen-ai-oga-supported-llms` table was compiled using validation, benchmarking, and accuracy metrics as measured by the `ONNX TurnkeyML v6.0.0 <https://pypi.org/project/turnkeyml/6.0.0/>`_ ``lemonade`` commands in each example link.
