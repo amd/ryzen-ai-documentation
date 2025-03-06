@@ -87,6 +87,7 @@ Setup
 
 .. code-block::
 
+    cd C:\Program Files\RyzenAI\1.4.0
     pip install model_generate-1.0.0-py3-none-any.whl
     pip install ryzenai_dynamic_dispatch-1.1.0.dev0-cp310-cp310-win_amd64.whl
     pip install ryzenai_onnx_utils-0.5.0-py3-none-any.whl
