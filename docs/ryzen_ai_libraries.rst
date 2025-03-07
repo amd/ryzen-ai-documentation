@@ -35,6 +35,14 @@ LICENSE.txt
 ***********************************************
 Executing Ryzen AI Library enabled applications
 ***********************************************
+The Ryzen AI Library selects the appropriate hardware (e.g., GPU or NPU) and framework for performing inference operations by default. An API is also available to set the preferred inference backend for those applications that wish to do so.
+ 
+In order to execute applications that utilize the Ryzen AI Library, the appropriate drivers must first be installed on the target system, and the Ryzen AI Library files must be included with the application itself.
+
+.. note::
+  Ryzen AI Library features that utilize the ONNX backend for NPU operations may experience a longer startup latency the first time they are executed on a device. This increased startup latency does not occur for
+  subsequent runs the feature.
+
 Prerequisites and dependencies
 ==============================
 The AMD Adrenalin and Ryzen AI drivers should be installed before attempting to execute Ryzen AI Library applications.
@@ -143,9 +151,7 @@ folder is part of the compiler's include paths, and that the library's,
 
 folder has been added to the linker's library paths.
 
-Depending on the application's build environment, you might also need to
-explicitly list which of the Ryzen AI Library's .LIB files (when building for
-Windows applications) need to be linked.
+Depending on the application's build environment, it may also be necessary to explicitly list which of the Ryzen AI Library's .LIB files (when building for Windows applications) need to be linked.
 
 *************************************************
 Building Ryzen AI Library applications with CMake
