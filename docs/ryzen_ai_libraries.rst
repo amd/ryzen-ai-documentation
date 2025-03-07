@@ -27,14 +27,10 @@ include/
   C++ header files
 windows/
   Binary files for Windows, including both compile time .LIB files and runtime .DLL files
-thirdparty_lib/
-  Additional dependent libraries for sample applications (e.g., OpenCV binaries)
 samples/
   Individual sample applications
 LICENSE.txt
   License file
-README.rst
-  This file
 
 ***********************************************
 Executing Ryzen AI Library enabled applications
@@ -182,7 +178,7 @@ The batch file assumes that the following prerequisites have been set up:
 *******
 License
 *******
-Ryzen AI is licensed under the MIT License. Refer to the LICENSE.txt file for the full license text and copyright notice.
+Refer to the LICENSE.txt file for the full license text and copyright notice.
 
 *************************
 Copyrights and Trademarks
