@@ -4,8 +4,6 @@
 Installation Instructions
 #########################
 
-.. note::
-   Version 1.3.1 (released on January 17th, 2025) is the latest update of the Ryzen AI Software. AMD recommends downloading and installing the newer version of driver (ref: RAI_1.3.1_242_WHQL.zip) and MSI installer (ref: ryzen-ai-1.3.1.msi) and replacing any installation based on the previous packages.
 
 
 *************
@@ -37,8 +35,6 @@ The following dependencies must be present on the system before installing the R
 
 - Visual Studio 2022 Community: ensure that "Desktop Development with C++" is installed
 
-- Visual Studio 2022 Professional Edition is needed for compilation of BF16 models
-
 - Anaconda or Miniconda: ensure that the following path is set in the System PATH variable: ``path\to\anaconda3\Scripts`` or ``path\to\miniconda3\Scripts`` (The System PATH variable should be set in the *System Variables* section of the *Environment Variables* window). 
 
 |
@@ -59,11 +55,11 @@ Install NPU Drivers
 
 .. _install-bundled:
 
-***************************************
-Ryzen AI Software: Windows Installation
-***************************************
+*************************
+Install Ryzen AI Software
+*************************
 
-- Download the RyzenAI Software MSI installer :download:`ryzen-ai-1.4.0.exe <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=ryzen-ai-1.4.0-us.exe>`.
+- Download the RyzenAI Software installer :download:`ryzen-ai-1.4.0.exe <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=ryzen-ai-1.4.0-us.exe>`.
 
 - Launch the MSI installer and follow the instructions on the installation wizard:
 
@@ -74,20 +70,6 @@ Ryzen AI Software: Windows Installation
 
 The Ryzen AI Software packages are now installed in the conda environment created by the installer. Refer to the :doc:`runtime_setup` page for more details about setting up the environment before running an inference session on the NPU.
 
-
-|memo| **NOTE**: This installation is only for CNN models. The LLM models flow installation is hosted in the GitHub repo; for details, please check :doc:`llm/overview`
-
-***********************************************
-Ryzen AI Software: Windows Runtime Installation
-***********************************************
-
-- Download the RyzenAI Software Runtime MSI installer :download:`ryzen-ai-rt-1.4.0-ea.msi <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=ryzen-ai-rt-1.4.0-ea.msi>`.
-
-- Launch the MSI installer and follow the instructions on the installation wizard:
-
-  - Accept the terms of the Licence agreement
-  - Provide the destination folder for Ryzen AI installation (default: ``C:\Program Files\RyzenAI\1.4.0-rt``)
-  - Specify the name for the conda environment (default: ``ryzen-ai-rt-1.4.0``)
 
 .. _quicktest:
 
@@ -161,6 +143,18 @@ Ryzen AI Software: Linux Installation
 
 |memo| **NOTE**: Linux installer can be used to compile the larger models.
 
+
+**************************************
+Ryzen AI Software Runtime Installation
+**************************************
+
+- Download the RyzenAI Software Runtime MSI installer :download:`ryzen-ai-rt-1.4.0-ea.msi <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=ryzen-ai-rt-1.4.0-ea.msi>`.
+
+- Launch the MSI installer and follow the instructions on the installation wizard:
+
+  - Accept the terms of the Licence agreement
+  - Provide the destination folder for Ryzen AI installation (default: ``C:\Program Files\RyzenAI\1.4.0-rt``)
+  - Specify the name for the conda environment (default: ``ryzen-ai-rt-1.4.0``)
 ..
   ------------
 
