@@ -89,9 +89,6 @@ To generate final model use the command below
 
 .. code-block::
 
-   # Generate NPU execution mode model
-   model_generate --npu <output_dir> <quantized_model_path>
-
    # Generate Hybrid execution mode model
    model_generate --hybrid <output_dir> <quantized_model_path>
 
