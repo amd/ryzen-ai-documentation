@@ -1,5 +1,5 @@
 ##########################
-Ryzen AI Software   
+Ryzen AI Software
 ##########################
 
 AMD Ryzen™ AI Software includes the tools and runtime libraries for optimizing and deploying AI inference on AMD Ryzen™ AI powered PCs. Ryzen AI software enables applications to run on the neural processing unit (NPU) built in the AMD XDNA™ architecture, as well as on the integrated GPU. This allows developers to build and deploy models trained in PyTorch or TensorFlow and run them directly on laptops powered by Ryzen AI using ONNX Runtime and the Vitis™ AI Execution Provider (EP).
@@ -23,7 +23,7 @@ The Ryzen AI development flow does not require any modifications to the existing
 
 Quantization
 ============
-Quantization involves converting the AI model's parameters from floating-point to lower-precision representations, such as 16-bit or 8-bit integers. Quantized models are more power-efficient, utilize less memory, and offer better performance. 
+Quantization involves converting the AI model's parameters from floating-point to lower-precision representations, such as 16-bit or 8-bit integers. Quantized models are more power-efficient, utilize less memory, and offer better performance.
 
 **AMD Quark** is a comprehensive cross-platform deep learning toolkit designed to simplify and enhance the quantization of deep learning models. Supporting both PyTorch and ONNX models, Quark empowers developers to optimize their models for deployment on a wide range of hardware backends, achieving significant performance gains without compromising accuracy.
 
@@ -63,8 +63,7 @@ For more details, refer to the :doc:`modelrun` page.
    :hidden:
    :caption: Running Models on the NPU
 
-   modelcompat.rst
-   modelport.rst
+   model_quantization.rst
    modelrun.rst
    app_development.rst
 
@@ -112,5 +111,5 @@ For more details, refer to the :doc:`modelrun` page.
   #####################################
   License
   #####################################
-  
+
   Ryzen AI is licensed under `MIT License <https://github.com/amd/ryzen-ai-documentation/blob/main/License>`_ . Refer to the `LICENSE File <https://github.com/amd/ryzen-ai-documentation/blob/main/License>`_ for the full license text and copyright notice.

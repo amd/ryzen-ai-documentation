@@ -117,7 +117,7 @@ Additional Considerations
 
 
 *************************************
-Ryzen AI Software: Linux Installation
+Ryzen AI Software Linux Installation
 *************************************
 
 - Download the RyzenAI Software Linux installer :download:`ryzen_ai-1.4.0.tgz <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=ryzen_ai-1.4.0-ea.tgz>`.
@@ -141,7 +141,8 @@ Ryzen AI Software: Linux Installation
 
     gunzip -c ryzen_ai_docker-1.4.0-ea_2025_02_21_3914.tgz | docker load
 
-|memo| **NOTE**: Linux installer can be used to compile the larger models.
+|memo| **NOTE**: BF16 models (CNN or Transformer) require processing power in terms of core count and memory, depending on model size. If a larger model cannot be compiled on a Windows machine due to hardware limitations (e.g., insufficient RAM), an alternative Linux-based compilation flow is supported. More details can be found here: <link>.
+
 
 
 **************************************
