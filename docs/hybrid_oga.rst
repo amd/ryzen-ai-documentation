@@ -1,12 +1,8 @@
-###################################
-Native OnnxRuntime GenAI (OGA) Flow 
-###################################
+############################
+OnnxRuntime GenAI (OGA) Flow 
+############################
 
-.. note::
-   
-   Support for LLMs is currently in the Early Access stage. Early Access features are features which are still undergoing some optimization and fine-tuning. These features are not in their final form and may change as we continue to work in order to mature them into full-fledged features.
-
-Ryzen AI Software includes support for deploying LLMs on Ryzen AI PCs using the ONNX Runtime generate() API (OGA). This documentation is for the Hybrid execution mode of LLMs, which leverages both the NPU and GPU.
+Ryzen AI Software supports deploying LLMs on Ryzen AI PCs using the native ONNX Runtime Generate (OGA) C++ or Python API. The OGA API is the lowest-level API available for running LLMs on a Ryzen AI PC. This documentation covers the Hybrid execution mode for LLMs, which utilizes both the NPU and GPU.
 
 Supported Configurations
 ~~~~~~~~~~~~~~~~~~~~~~~~
