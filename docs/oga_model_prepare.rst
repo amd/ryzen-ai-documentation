@@ -33,14 +33,14 @@ Setup
      pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm6.1
      python -c "import torch; print(torch.cuda.is_available())" # Must return `True`
 
-3. Download :download:`Quark 0.6.0 <https://www.xilinx.com/bin/public/openDownload?filename=quark-0.6.0.zip>` and unzip the archive
+3. Download :download:`Quark 0.8.0 <https://www.xilinx.com/bin/public/openDownload?filename=quark-0.6.0.zip>` and unzip the archive
 
 4. Install Quark: 
 
 .. code-block::
 
-     cd <extracted quark 0.6.0>
-     pip install quark-0.6.0+<>.whl
+     cd <extracted quark 0.8.0>
+     pip install quark-0.8.0+<>.whl
 
 Generate Quantized Model
 ************************
@@ -50,18 +50,17 @@ Use following command to run Quantization. In a GPU equipped Linux machine the q
 .. code-block::
 
      cd examples/torch/language_modeling/llm_ptq/
-     python3 quantize_quark.py 
-        --model_dir "meta-llama/Llama-2-7b-chat-hf" 
-        --output_dir <quantized safetensor output dir> 
-        --quant_scheme w_uint4_per_group_asym 
-        --num_calib_data 128 
-        --quant_algo awq 
-        --dataset pileval_for_awq_benchmark 
-        --seq_len 512 
-        --model_export quark_safetensors 
-        --data_type <datatype> 
-        --exclude_layers []
-        --custom_mode awq
+     
+     python quantize_quark.py \
+          --model_dir "meta-llama/Llama-2-7b-chat-hf"  \
+          --output_dir <quantized safetensor output dir>  \
+          --quant_scheme w_uint4_per_group_asym \
+          --num_calib_data 128 \
+          --quant_algo awq \
+          --dataset pileval_for_awq_benchmark \
+          --model_export hf_format \
+          --data_type <datatype> \
+          --exclude_layers
 
 
 - To generate OGA model for NPU only execution mode use ``--datatype float32``
@@ -76,21 +75,11 @@ Copy the quantized model generated in the previous step to the RyzenAI system wh
 Setup
 *****
 
-1. Create and activate Conda environment
+Activate Ryzen-AI 1.4 environment
 
 .. code-block:: 
 
-    conda create -n oga-model-gen python=3.10
-    conda activate oga-model-gen
-
-2. Install necessary wheels
-
-.. code-block::
-
-    cd C:\Program Files\RyzenAI\1.4.0
-    pip install model_generate-1.0.0-py3-none-any.whl
-    pip install ryzenai_dynamic_dispatch-1.1.0.dev0-cp310-cp310-win_amd64.whl
-    pip install ryzenai_onnx_utils-0.5.0-py3-none-any.whl
+    conda activate ryzen-ai-1.4.0
 
 
 Generate Final Model
