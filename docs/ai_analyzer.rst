@@ -109,9 +109,9 @@ User Interface
 
 AI Analyzer has the following three sections as seen in the left-panel navigator
 
- 1. PARTITIONING - A breakdown of your model was assigned to execute inference across CPU and NPU
- 2. NPU INSIGHTS - A detailed look at the how your model was optimized for inference execution on NPU
- 3. PERFORMANCE - A breakdown of inference execution through the model
+1. PARTITIONING - A breakdown of your model was assigned to execute inference across CPU and NPU
+2. NPU INSIGHTS - A detailed look at the how your model was optimized for inference execution on NPU
+3. PERFORMANCE - A breakdown of inference execution through the model
 
 
 These sections are described in more detail below
