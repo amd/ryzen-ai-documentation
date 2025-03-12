@@ -1,12 +1,12 @@
-.. Copyright (C) 2023 Advanced Micro Devices, Inc. All rights reserved.
+.. Copyright (C) 2023-2025 Advanced Micro Devices, Inc. All rights reserved.
 
-##############################################
-Getting started with Ryzen AI Library features
-##############################################
+###################################################
+Getting started with Ryzen AI CVML library features
+###################################################
 
-The Ryzen AI Libraies build on top of the Ryzen AI drivers and execution infrastructure to provide powerful AI capabilities to C++ applications without having to worry about training specific AI models and integrating them to the Ryzen AI framework.
+The Ryzen AI CVML libraies build on top of the Ryzen AI drivers and execution infrastructure to provide powerful AI capabilities to C++ applications without having to worry about training specific AI models and integrating them to the Ryzen AI framework.
 
-Each Ryzen AI library feature offers a simple C++ application programming interface (API) that can be easily incorporated into existing applications.
+Each Ryzen AI CVML library feature offers a simple C++ application programming interface (API) that can be easily incorporated into existing applications.
 
 *************
 Prerequisites
@@ -17,20 +17,20 @@ Ensure that the following software tools/packages are installed on the developme
   2. Cmake (version >= 3.18)
   3. OpenCV (version=4.8.1 or newer)
 
-*********************************************
-Building Ryzen AI Library sample applications
-*********************************************
-This section covers the steps to build all sample applications.
+**************************************************
+Building Ryzen AI CVML library sample applications
+**************************************************
+This section describes the steps to build Ryzen AI CVML library sample applications.
 
 Navigate to the folder containing Ryzen AI samples
 ==================================================
-Go to the 'samples' sub-folder of the Ryzen AI Library. ::
+Go to the 'samples' sub-folder of the Ryzen AI CVML library. ::
   
   chdir samples
 
-Specify location of OpenCV libraries
+Specify the location of OpenCV libraries
 ====================================
-Ryzen AI Library samples make use of OpenCV, so set an environment variable to let the build scripts know where to find OpenCV. ::
+Ryzen AI CVML library samples make use of OpenCV, so set an environment variable to let the build scripts know where to find OpenCV. ::
 
   set OPENCV_INSTALL_ROOT=<location of OpenCV libraries>
 
@@ -44,25 +44,25 @@ Create a build folder and use CMAKE to build the sample(s). ::
 
 The compiled sample application(s) will be placed in the various build-samples\<application>\Release folder(s) under the 'samples' folder.
 
-*********************************************
-Running Ryzen AI Library sample applications
-*********************************************
-This section describes the steps to build Ryzen AI Library sample applications.
+*************************************************
+Running Ryzen AI CVML library sample applications
+*************************************************
+This section describes how to execute Ryzen AI CVML library sample applications.
 
 Update the console and/or system PATH
 =====================================
-Ryzen AI Library applications need to be able to find the library files. One way to do this is to add the location of the libraries to the system or console PATH environment variable.
+Ryzen AI CVML library applications need to be able to find the library files. One way to do this is to add the location of the libraries to the system or console PATH environment variable.
 
 In this example, the location of OpenCV's runtime libraries is also added to the PATH environment variable. ::
 
-  set PATH=%PATH%;<location of Ryzen AI Library package>\windows
+  set PATH=%PATH%;<location of Ryzen AI CVML library package>\windows
   set PATH=%PATH%;%OPENCV_INSTALL_ROOT%\x64\vc16\bin
 
 Adjust the aforementioned commands to match the actual location of Ryzen AI and OpenCV libraries, respectively.
 
 Select an input source/image/video
 ==================================
-Ryzen AI Library samples can accept a variety of image and video input formats, or even open the default camera on the system if "0" is specified as an input.
+Ryzen AI CVML library samples can accept a variety of image and video input formats, or even open the default camera on the system if "0" is specified as an input.
 
 In this example, a publically available video file is used for the application's input. ::
 
