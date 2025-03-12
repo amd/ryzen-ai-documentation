@@ -61,7 +61,7 @@ For more details, refer to the :doc:`modelrun` page.
 .. toctree::
    :maxdepth: 1
    :hidden:
-   :caption: Running CNNs on the NPU
+   :caption: Running Models on the NPU
 
    modelcompat.rst
    modelport.rst
