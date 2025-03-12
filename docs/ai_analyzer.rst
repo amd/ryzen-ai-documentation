@@ -12,6 +12,7 @@ If you installed the Ryzen AI software using automatic installer, AI Analyzer is
 If you manually installed the software, you will need to install the AI Analyzer wheel file in your environment. 
 
 
+.. code-block::
 
    python -m pip install path\to\RyzenAI\installation\files\aianalyzer-<version>.whl
 
@@ -69,26 +70,19 @@ Once the artifacts are generated, `aianalyzer` can be invoked through the comman
 
 **Positional Arguments**
 
-logdir``
-    Path to the folder containing generated artifacts 
+``logdir``: Path to the folder containing generated artifacts 
+
 Additional Options
 
--v, --version
-    Show the version info and exit.
+``-v``, ``--version``: Show the version info and exit.
 
--b ADDR, --bind ADDR
-    Hostname or IP address on which to listen, default is 'localhost'.
+``-b ADDR``, ``--bind ADDR``: Hostname or IP address on which to listen, default is 'localhost'.
 
--p PORT, --port PORT
-    TCP port on which to listen, default is '8000'.
+``-p PORT``, ``--port PORT``: TCP port on which to listen, default is '8000'.
 
--n, --no-browser
-    Prevent the opening of the default url in the browser.
+``-n``, ``--no-browser``: Prevent the opening of the default url in the browser.
 
--t TOKEN, --token TOKEN
-    Token used for authenticating first-time connections to the server.
-    The default is to generate a new, random token.
-    Setting to an empty string disables authentication altogether, which is NOT RECOMMENDED.
+``-t TOKEN``, ``--token TOKEN``: Token used for authenticating first-time connections to the server. The default is to generate a new, random token. Setting to an empty string disables authentication altogether, which is NOT RECOMMENDED.
 
 
 
