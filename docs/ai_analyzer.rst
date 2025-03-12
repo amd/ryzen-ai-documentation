@@ -96,8 +96,8 @@ Features
 
 AI Analyzer provides visibility into how your AI model is compiled and executed on Ryzen AI hardware. Its two main use cases are:
 
- 1. Analyzing how the model was partitioned and mapped onto Ryzen AI's CPU and NPU accelerator
- 2. Profiling model performance as it executes inferencing workloads
+1. Analyzing how the model was partitioned and mapped onto Ryzen AI's CPU and NPU accelerator
+2. Profiling model performance as it executes inferencing workloads
 
 When launched, the AI Analyzer server will scan the folder specified with the logdir argument and detect and an load all files relevant to compilation and/or inferencing  per the ai_analyzer_visualization and ai_anlayzer_profiling flags.
 
