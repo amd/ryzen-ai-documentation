@@ -124,17 +124,18 @@ These sections are described in more detail below
 
 
 
-**PARTITIONING**
+PARTITIONING
+@@@@@@@@@@@@
 
 This section is comprised of two pages: Summary and Graph
 
-*Summary*
+**Summary**
 
 The Summary page gives an overview of how the  models operators have been assigned to Ryzen's CPU and NPU along with charts capturing GigaOp (GOP) offloading by operator type .
 
 There is also table titled "CPU Because" that shows the reasons why certain operators were not offloaded to the NPU.
 
-*Graph*
+**Graph**
 
 The graph page shows an interactive diagram of the partitioned ONNX model, showing graphically how the layers are assigned to the Ryzen hardware.
 
@@ -167,18 +168,19 @@ This table below the graph lists all objects in the partitioned ONNX model:
 
 
 NPU INSIGHTS
+@@@@@@@@@@@@
 
 This section is comprised of three pages: Summary, Original Graph, and Optimized Graph.
 
 
 
-Summary
+**Summary**
 
 The Summary page gives an overview of how your model was mapped to the AMD Ryzen NPU. Charts are displayed showing statistics on the number of operators and total GMACs that have been mapped to the NPU (and if necessary, back to CPU via the "Failsafe CPU" mechanism). The statistics are shown per operator type and per NPU partition. 
 
 
 
-Original Graph
+**Original Graph**
 
 This is an interactive graph representing your model lowered to supported NPU primitive operators, and broken up into partitions if necessary. As with the PARTITIONING graph, there is a companion table containing all of the model elements that will cross-probe to the graph view. The obects in the graph and table will also cross-probe to the PARTITIONING graph.
 
@@ -193,7 +195,7 @@ Display options for the graph can be accessed with the "Settings" button
 
 
 
-Optimized Graph
+**Optimized Graph**
 
 This page shows the final model that will be mapped to the NPU after all transformations and optimizations such as fusion and chaining. It will also report the operators that had to be moved back to the CPU via the "Failsafe CPU" mechanism. As usual, there is a companion table below that contains all of the graph's elements, and cross-selection is supported to and from the PARTITION graph and the Original Graph.
 
@@ -206,20 +208,20 @@ Display options for the graph can be accessed with the "Settings" button
 
 
 PERFORMANCE
+@@@@@@@@@@@
 
 This section is used to view the performance of your model on RyzenAI when running one or more inferences. It is comprised of two pages: Summary and Timeline.
 
 
 
-Summary
+**Summary**
 
 The performance summary page shows several overall statistics on the inference(s) as well as charts breaking down operator runtime by operator. If you run with ONNX runtime profiler enabled, you will see overall inference time including layers that run on the CPU. If you have NPU profiling enabled via the ai_analyzer_profiling flag, you will see numerous NPU-based statistics, including GOP and MAC efficiency and a chart of runtime per NPU operator type.
 
 The clock frequency field shows the assumed NPU clock frequency, but it can be edited. If you change the frequency, all timestamp data that is collected as clock cycles but displayed in time units will be adjusted accordingly.
 
 
-
-Timeline
+**Timeline**
 
 The Performance timeline shows a layer-by-layer breakdown of your model's execution.  The upper section is a graphical depiction of layer execution across a timeline, while the lower section shows the same information in tabular format. It is important to note that the Timeline page shows one inference at a time, so if you have captured profiling data for two or more inferences, you can choose which one to display with the "Inferences" chooser.
 
