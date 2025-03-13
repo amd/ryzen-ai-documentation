@@ -2,7 +2,9 @@
 OnnxRuntime GenAI (OGA) Flow 
 ############################
 
-Ryzen AI Software supports deploying LLMs on Ryzen AI PCs using the native ONNX Runtime Generate (OGA) C++ or Python API. The OGA API is the lowest-level API available for building LLM applications on a Ryzen AI PC. This documentation covers the Hybrid execution mode for LLMs, which utilizes both the NPU and GPU (refer to :doc:`npu_oga` for NPU only execution mode).  
+Ryzen AI Software supports deploying LLMs on Ryzen AI PCs using the native ONNX Runtime Generate (OGA) C++ or Python API. The OGA API is the lowest-level API available for building LLM applications on a Ryzen AI PC. This documentation covers the Hybrid execution mode for LLMs, which utilizes both the NPU and GPU 
+
+**Note**: Refer to :doc:`npu_oga` for NPU only execution mode.  
 
 Supported Configurations
 ~~~~~~~~~~~~~~~~~~~~~~~~
