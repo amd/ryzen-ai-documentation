@@ -8,7 +8,7 @@ OGA NPU Execution Mode
    
    Support for LLMs is currently in the Early Access stage. Early Access features are features which are still undergoing some optimization and fine-tuning. These features are not in their final form and may change as we continue to work in order to mature them into full-fledged features.
 
-Starting with version 1.3, the Ryzen AI Software includes support for deploying LLMs on Ryzen AI PCs using the ONNX Runtime generate() API (OGA). This documentation is for the NPU execution of LLMs when using the OGA API.
+The Ryzen AI Software includes support for deploying LLMs on Ryzen AI PCs using the ONNX Runtime generate() API (OGA). This documentation is for the NPU execution of LLMs when using the OGA API.
 
 Supported Configurations
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -16,13 +16,15 @@ Supported Configurations
 The Ryzen AI OGA flow supports the following processors running Windows 11:
 
 - Strix (STX): AMD Ryzen™ Ryzen AI 9 HX375, Ryzen AI 9 HX370, Ryzen AI 9 365
+- Kracken (KRK)
 
 **Note**: Phoenix (PHX) and Hawk (HPT) processors are not supported.
 
 Requirements
 ~~~~~~~~~~~~
-- NPU Driver (version .237): Install according to the instructions https://ryzenai.docs.amd.com/en/latest/inst.html
-- NPU LLM artifacts package: ``npu-llm-artifacts_1.3.0.zip`` from https://account.amd.com/en/member/ryzenai-sw-ea.html
+- NPU Drivers (version .255): Install according to the instructions https://ryzenai.docs.amd.com/en/latest/inst.html
+- RyzenAI 1.4 MSI installer
+- Install Git for Windows (needed to download models from HF): https://git-scm.com/downloads
 
 Setting performance mode (Optional)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -37,42 +39,6 @@ To run the LLMs in the best performance mode, follow these steps:
    cd C:\Windows\System32\AMD
    xrt-smi configure --pmode performance
 
-
-Package Contents
-~~~~~~~~~~~~~~~~
-
-NPU LLM artifacts package contains the files required to build and run applications using the ONNX Runtime generate() API (OGA) to deploy LLMs on NPU. The list below describes which files are needed for the different use cases:
-
-- C++ code to run LLM on NPU 
-
-  - amd_oga/cpp/src/run_llm.cpp 
-- Runtime DLL and lib files in ``amd_oga/libs``
-
-  - onnxruntime.dll 
-  - onnxruntime_providers_shared.dll 
-  - onnxruntime_providers_vitisai.dll 
-  - onnxruntime_vitisai_ep.dll 
-  - onnxruntime_vitis_ai_custom_ops.dll 
-  - onnxruntime-genai.dll 
-  - dyn_dispatch_core.dll 
-  - transaction.dll 
-  - onnxruntime-genai.lib 
-- NPU binary file 
-  
-  - amd_oga/bins/xclbin/stx/llama2_mladf_2x4x4_v1_gemmbfp16_silu_mul_mha_rms_rope.xclbin 
-- Executables 
- 
-  - amd_oga/exe/run_llm.exe 
-  - amd_oga/exe/model_benchmark.exe 
-- Batch Files 
-
-  - run.bat 
-  - run_benchmark.bat 
-- Python wheel files (Python 3.10) 
-
-  - onnxruntime_genai-0.5.0.dev0-cp310-cp310-win_amd64.whl 
-  - onnxruntime_vitisai-1.20.0-cp310-cp310-win_amd64.whl 
-  - voe-1.3.1-cp310-cp310-win_amd64.whl 
 
 Pre-optimized Models
 ~~~~~~~~~~~~~~~~~~~~
@@ -93,7 +59,7 @@ https://huggingface.co/collections/amd/quark-awq-g128-int4-asym-bf16-onnx-npu-13
 - https://huggingface.co/amd/Llama-3.2-1B-Instruct-awq-g128-int4-asym-bf16-onnx-ryzen-strix
 - https://huggingface.co/amd/Llama-3.2-3B-Instruct-awq-g128-int4-asym-bf16-onnx-ryzen-strix
 
-The steps for deploying the pre-optimized models using C++ are described in the following sections.
+The steps for deploying the pre-optimized models using C++ and python are described in the following sections.
 
 NPU Execution of OGA Models
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -108,7 +74,7 @@ NOTE: pre-built versions of the ``run_llm.exe`` and ``model_generate.exe`` execu
 .. code-block::
 
   # Switch to cpp folder 
-  cd amd_oga/cpp 
+  cd %RYZEN_AI_INSTALLATION_PATH%/npu-llm/libs
 
 2. Compile 
 
@@ -118,14 +84,14 @@ NOTE: pre-built versions of the ``run_llm.exe`` and ``model_generate.exe`` execu
    cd build 
    cmake --build . --config Release 
 
-**Note**: The executable created ``run_llm.exe`` and ``model_generate.exe`` can be found in ``amd_oga/cpp/build/Release`` folder 
+**Note**: The executable created ``run_llm.exe`` and ``model_generate.exe`` can be found in ``%RYZEN_AI_INSTALLATION_PATH%/npu-llm/cpp/build/Release`` folder 
 
  
-3. Copy the executables ``run_llm.exe`` and ``model_generate.exe`` to the ``amd_oga/libs`` folder. The ``amd_oga/libs`` should contain both: ``run_llm.exe``, ``model_benchmark.exe`` along with the ``.dll`` files it contains. 
+3. Copy the executables ``run_llm.exe`` and ``model_generate.exe`` to the ``npu-llm/libs`` folder. The ``npu-llm/libs`` should contain both: ``run_llm.exe``, ``model_benchmark.exe`` along with the ``.dll`` files it contains. 
  
 .. code-block::
 
-   cd amd_oga 
+   cd %RYZEN_AI_INSTALLATION_PATH%\npu-llm
    xcopy .\cpp\build\Release\model_benchmark.exe .\libs 
    xcopy .\cpp\build\Release\run_llm.exe .\libs 
 
@@ -134,13 +100,12 @@ Set the environment variables
 
 .. code-block::
 
-   set DD_ROOT=./bins 
    set XLNX_ENABLE_CACHE=0 
 
-Run the models
-@@@@@@@@@@@@@@
+Run the models using C++
+@@@@@@@@@@@@@@@@@@@@@@@@
 
-**Note**: Ensure the models are cloned in the ``amd_oga`` folder.
+**Note**: Ensure the models are cloned in the ``%RYZEN_AI_INSTALLATION_PATH%\npu-llm`` folder.
 
 Run using a batch file
 **********************
@@ -158,7 +123,7 @@ Run the models using run.bat:
 .. code-block::
 
    # Run the batch file 
-   cd amd_oga 
+   cd %RYZEN_AI_INSTALLATION_PATH%/npu-llm 
    run.bat 
 
 Run manually
@@ -210,7 +175,7 @@ Run Benchmark
 Run using a batch file
 **********************
 
-The ``run_benchmark.bat`` batch file located in the ``amd_oga`` directory contains commands for running multiple models. If you wish to run only a specific model, you can do so by uncommenting the corresponding command and commenting out others.  
+The ``run_benchmark.bat`` batch file located in the ``%RYZEN_AI_INSTALLATION_PATH%\npu-llm`` directory contains commands for running multiple models. If you wish to run only a specific model, you can do so by uncommenting the corresponding command and commenting out others.  
  
 For example, to run only Llama2-7b, ensure the line shown below is uncommented, and other commands are commented (preceded by REM). 
 
@@ -224,7 +189,7 @@ Run the models using run_benchmark.bat:
 .. code-block::
 
    # Run the batch file 
-   cd amd_oga 
+   cd %RYZEN_AI_INSTALLATION_PATH%\npu-llm 
    run_benchmark.bat 
 
  
@@ -235,7 +200,7 @@ To run the models using the ``model_benchmark.exe`` file
  
 .. code-block::
 
-   cd amd_oga 
+   cd %RYZEN_AI_INSTALLATION_PATH%\npu-llm 
    # Help 
    .\libs\model_benchmark.exe -h 
    
@@ -262,6 +227,33 @@ To run the models using the ``model_benchmark.exe`` file
 
    # To show more informational output 
    .\libs\model_benchmark.exe -i <model_path> -p <model_path>\<prompts.txt> --verbose 
+
+Run the models using Python
+@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+1. In the model directory, open the ``genai_config.json`` file located in the folder of the downloaded model. Update the value of the "custom_ops_library" key with the full path to the ``onnxruntime_vitis_ai_custom_ops.dll``, located in the ``%RYZEN_AI_INSTALLATION_PATH%\npu-llm\libs`` folder:  
+
+.. code-block::
+  
+      "session_options": {
+                ...
+                "custom_ops_library": "%RYZEN_AI_INSTALLATION_PATH%\\npu-llm\\libs\\onnxruntime_vitis_ai_custom_ops.dll",
+                ...
+      }
+
+2. To run from the run folder using the native OGA Python APIs, use the following commands. 
+
+- To run any model other than chatglm: 
+
+.. code-block:: 
+
+     (ryzen-ai-1.4.0)python "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\examples\python\llama3\run_model.py" --model_dir <model folder>  
+
+- To run chatglm: 
+
+.. code-block:: 
+
+     (ryzen-ai-1.4.0)python "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\examples\python\chatglm\run_model.py" --model_dir <model folder>  
 
  
 Preparing OGA Models for NPU-only Execution
