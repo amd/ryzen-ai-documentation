@@ -13,9 +13,9 @@ Prerequisites
 *************
 Ensure that the following software tools/packages are installed on the development system.
 
-  1. Visual Studio 2022 Community edition or newer, ensure “Desktop Development with C++” is installed
-  2. Cmake (version >= 3.18)
-  3. OpenCV (version=4.8.1 or newer)
+1. Visual Studio 2022 Community edition or newer, ensure “Desktop Development with C++” is installed
+2. Cmake (version >= 3.18)
+3. OpenCV (version=4.8.1 or newer)
 
 **************************************************
 Building Ryzen AI CVML library sample applications
