@@ -1,8 +1,8 @@
 .. Copyright (C) 2023-2025 Advanced Micro Devices, Inc. All rights reserved.
 
-###################################################
-Getting started with Ryzen AI CVML library features
-###################################################
+#####################
+Ryzen AI CVML library
+#####################
 
 The Ryzen AI CVML libraies build on top of the Ryzen AI drivers and execution infrastructure to provide powerful AI capabilities to C++ applications without having to worry about training specific AI models and integrating them to the Ryzen AI framework.
 
