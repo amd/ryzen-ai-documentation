@@ -86,11 +86,6 @@ Additional Options
 
 
 
-Files
-~~~~~
-
-VAIML model compilation and inference will create all the files needed by AI Analyzer.
-
 Features
 ~~~~~~~~
 
