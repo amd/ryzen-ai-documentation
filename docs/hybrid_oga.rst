@@ -2,23 +2,18 @@
 OnnxRuntime GenAI (OGA) Flow 
 ############################
 
-Ryzen AI Software supports deploying LLMs on Ryzen AI PCs using the native ONNX Runtime Generate (OGA) C++ or Python API. The OGA API is the lowest-level API available for building LLM applications on a Ryzen AI PC. This documentation covers the Hybrid execution mode for LLMs, which utilizes both the NPU and GPU.
+Ryzen AI Software supports deploying LLMs on Ryzen AI PCs using the native ONNX Runtime Generate (OGA) C++ or Python API. The OGA API is the lowest-level API available for building LLM applications on a Ryzen AI PC. This documentation covers the Hybrid execution mode for LLMs, which utilizes both the NPU and GPU (refer to :doc:`npu_oga` for NPU only execution mode).  
 
 Supported Configurations
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-The Ryzen AI OGA flow supports the following processors running Windows 11:
+The Ryzen AI OGA flow supports Strix and Krackan Point processors. Phoenix (PHX) and Hawk (HPT) processors are not supported.
 
-- Strix (STX): AMD Ryzen™ Ryzen AI 9 HX375, Ryzen AI 9 HX370, Ryzen AI 9 365
-- Kracken (KRK)
-
-**Note**: Phoenix (PHX) and Hawk (HPT) processors are not supported.
 
 Requirements
 ~~~~~~~~~~~~
-- NPU Drivers (version .255): Install according to the instructions https://ryzenai.docs.amd.com/en/latest/inst.html
-- RyzenAI 1.4 MSI installer
-- GPU device driver: Ensure GPU device driver https://www.amd.com/en/support is installed 
+- Install NPU Drivers and RyzenAI MSI installer according to the instructions https://ryzenai.docs.amd.com/en/latest/inst.html. 
+- Install GPU device driver: Ensure GPU device driver https://www.amd.com/en/support is installed 
 - Install Git for Windows (needed to download models from HF): https://git-scm.com/downloads
 
 Setting performance mode (Optional)
