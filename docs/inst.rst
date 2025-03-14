@@ -123,9 +123,8 @@ BF16 models (CNN or Transformer) require processing power in terms of core count
 
 
 
-*****************
 Runtime Installer
-*****************
+~~~~~~~~~~~~~~~~~
 
 Ryzen AI Runtime installer is a lightweight installer. This installer cannot be used for compiling bf16 models. However, this installer is fully capable of running LLM using OGA.
 
