@@ -1,8 +1,8 @@
 .. include:: icons.txt
 
-###################
-Model Deployment
-###################
+################################
+Model Compilation and Deployment
+################################
 
 The Ryzen AI Software supports deploying quantized model saved in the ONNX format.
 
@@ -10,11 +10,11 @@ Currently, the NPU supports a subset of the ONNX operators. At runtime, the ONNX
 
 |memo| **NOTE**: Models with ONNX opset 17 are recommended. If your model uses a different opset version, consider converting it using the `ONNX Version Converter <https://github.com/onnx/onnx/blob/main/docs/VersionConverter.md>`_
 
-*********************************************
-ONNX Runtime with Vitis AI Execution Provider
-*********************************************
+*****************
+Model Compilation
+*****************
 
-Quantized models are deployed by creating an ONNX inference session and by leveraring the Vitis AI Execution Provider (VAI EP). Both the ONNX C++ and Python APIs are supported. 
+Quantized models are compiled targetting NPU when an ONNX inference session is created by leveraring the Vitis AI Execution Provider (VAI EP). 
 
 .. code-block:: python
 
@@ -23,64 +23,67 @@ Quantized models are deployed by creating an ONNX inference session and by lever
                                             providers = providers,
                                             provider_options = provider_options)
 
+Depending on the model, model compilation can take sometime. However, after compilation compiled model is saved inside the cache directory. Hence any susequent run of the onnxruntime script simply picks the compiled model from the cache directory. 
 
 Vitis AI Execution Provider Options
 ===================================
 
 The Vitis AI Execution Provider supports the following options:
 
-.. list-table:: 
-   :widths: 25 20 20 35
-   :header-rows: 1
+- config_file: Configuration file to guide model compilation and runtime. 
 
-   * - Provider Options
-     - Type
-     - Default 
-     - Description 
-   * - config_file
-     - Mandatory
-     - None
-     - The path and name of the runtime configuration file. 
-       A default version of this file can be found in the ``voe-4.0-win_amd64`` folder of the Ryzen AI software installation package under the name :file:`vaip_config.json`.
-   * - cacheDir
-     - Optional
-     - ``C:\temp\{user}\vaip\.cache``
-     - The cache directory.
-   * - cacheKey
-     - Optional 
-     - {md5sum of onnx model}
-     - Compiled model directory generated inside the cache directory. Use string to specify the desired name of the compiler model directory. 
-       For example: ``'cacheKey': 'resnet50_cache'``.
+  - For INT8 Model the configuration file is not required. 
+  - For BF16 Models configuration files are provided in the bf16 examples
 
-   * - encryptionKey
-     - Optional 
-     - None
-     - Encryption/Decryption key for the models generated. 
+- cache_dir: The top level cache directory of the compiled models. If not provided cache_dir is ``C:\temp\{user}\vaip\.cache``
+- cache_key: Compiled model directory generated inside the cache directory. Use string to specify the desired name of the compiler model directory. For example,  ``'cacheKey': 'resnet50_cache'``
+
+.. note::
+
+   unset XLNX_ENABLE_CACHE environment variable in the command prompt results ignoring the cache and recompile the model. 
+
+- encryptionKey (optional): Encryption/Decryption key for the models generated. 
+
+- xclbin : Target NPU configuration, only required for INT8 compilation. For INT8 compilation Ryzen AI supports two NPU configuration, standard and benchmark. 
+
+- Setting standard configuration for INT8 models
+
+  - For STX/KRK APUs:
+
+    .. code-block::
+
+      provider_options = [{
+          'xclbin' : 'C:\Program Files\RyzenAI\1.4.0\voe-4.0-win_amd64\xclbins\strix\C:\Program Files\RyzenAI\1.4.0\voe-4.0-win_amd64\xclbins\strix\AMD_AIE2P_Nx4_Overlay.xclbin'                    
+       }]
+
+  - For PHX/HPT APUs:
+
+    .. code-block::
+
+      provider_options = [{
+          'xclbin' : 'C:\Program Files\RyzenAI\1.4.0\voe-4.0-win_amd64\xclbins\strix\C:\Program Files\RyzenAI\1.4.0\voe-4.0-win_amd64\xclbins\phoenix/1x4.xclbin'                    
+        }]
 
 
-Environment Variables
-=====================
+- Setting benchmark configuration for INT8 models
 
-Additionally, the following environment variables can be used control the Ryzen AI ONNX Runtime-based deployment.
+  - For STX/KRK APUs:
+
+    .. code-block::
+
+      provider_options = [{
+          'xclbin' : 'C:\Program Files\RyzenAI\1.4.0\voe-4.0-win_amd64\xclbins\strix\C:\Program Files\RyzenAI\1.4.0\voe-4.0-win_amd64\xclbins\strix/AMD_AIE2P_4x4_Overlay.xclbin'                    
+       }]
+
+  - For PHX/HPT APUs:
+
+    .. code-block::
+
+      provider_options = [{
+          'xclbin' : 'C:\Program Files\RyzenAI\1.4.0\voe-4.0-win_amd64\xclbins\strix\C:\Program Files\RyzenAI\1.4.0\voe-4.0-win_amd64\xclbins\phoenix/4x4.xclbin'                    
+        }]
 
 
-.. list-table:: 
-   :widths: 25 20 20 35
-   :header-rows: 1
-
-   * - Environment Variable 
-     - Type
-     - Default 
-     - Description 
-   * - XLNX_VART_FIRMWARE
-     - Mandatory
-     - None
-     - Set it to one of the NPU configuration binaries. 
-       For more details, refer to the :doc:`runtime_setup` page.
-   * - XLNX_ENABLE_CACHE
-     - Optional
-     - 1
-     - If unset, the runtime flow ignores the cache directory and recompiles the model.
      
 |
 
