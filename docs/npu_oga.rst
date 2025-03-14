@@ -4,26 +4,16 @@
 OGA NPU Execution Mode
 ######################
 
-.. note::
-   
-   Support for LLMs is currently in the Early Access stage. Early Access features are features which are still undergoing some optimization and fine-tuning. These features are not in their final form and may change as we continue to work in order to mature them into full-fledged features.
-
-The Ryzen AI Software includes support for deploying LLMs on Ryzen AI PCs using the ONNX Runtime generate() API (OGA). This documentation is for the NPU execution of LLMs when using the OGA API.
+Ryzen AI Software supports deploying LLMs on Ryzen AI PCs using the native ONNX Runtime Generate (OGA) C++ or Python API. The OGA API is the lowest-level API available for building LLM applications on a Ryzen AI PC. This documentation covers the NPU execution mode for LLMs, which utilizes only the NPU (refer to :doc:`hybrid_oga` for NPU and GPU Hybrid execution mode).  
 
 Supported Configurations
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-The Ryzen AI OGA flow supports the following processors running Windows 11:
-
-- Strix (STX): AMD Ryzen™ Ryzen AI 9 HX375, Ryzen AI 9 HX370, Ryzen AI 9 365
-- Kracken (KRK)
-
-**Note**: Phoenix (PHX) and Hawk (HPT) processors are not supported.
+The Ryzen AI OGA flow supports Strix and Krackan Point processors. Phoenix (PHX) and Hawk (HPT) processors are not supported.
 
 Requirements
 ~~~~~~~~~~~~
-- NPU Drivers (version .255): Install according to the instructions https://ryzenai.docs.amd.com/en/latest/inst.html
-- RyzenAI 1.4 MSI installer
+- Install NPU Drivers and RyzenAI MSI installer according to the instructions https://ryzenai.docs.amd.com/en/latest/inst.html. 
 - Install Git for Windows (needed to download models from HF): https://git-scm.com/downloads
 
 Setting performance mode (Optional)
@@ -64,19 +54,27 @@ The steps for deploying the pre-optimized models using C++ and python are descri
 NPU Execution of OGA Models
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Build the Test Applications 
-@@@@@@@@@@@@@@@@@@@@@@@@@@@
+Setup
+@@@@@
 
-NOTE: pre-built versions of the ``run_llm.exe`` and ``model_generate.exe`` executables are already available in the ``amd_oga/exe`` folder. If you choose to use them directly, you can skip to step 3 and copy the executables to ``amd_oga/libs``. Otherwise follow the steps below to build the applications from source. 
+1. Install Ryzen AI 1.4 according to the instructions if not installed previously: https://ryzenai.docs.amd.com/en/latest/inst.html
 
-1. Open command prompt and navigate to the ``amd_oga/cpp`` folder 
+2. Activate the Ryzen AI 1.4 Conda environment:
+
+.. code-block:: 
+    
+    conda activate ryzen-ai-1.4.0
+
+NOTE: pre-built versions of the ``run_llm.exe`` and ``model_generate.exe`` executables are already available in the ``%RYZEN_AI_INSTALLATION_PATH%/npu-llm/exe`` folder. If you choose to use them directly, you can skip to step 5 and copy the executables to ``%RYZEN_AI_INSTALLATION_PATH%/npu-llm/libs``. Otherwise follow the steps below to build the applications from source. 
+
+3. Open command prompt and navigate to the ``%RYZEN_AI_INSTALLATION_PATH%/npu-llm/cpp`` folder 
 
 .. code-block::
 
   # Switch to cpp folder 
-  cd %RYZEN_AI_INSTALLATION_PATH%/npu-llm/libs
+  cd %RYZEN_AI_INSTALLATION_PATH%/npu-llm/cpp
 
-2. Compile 
+4. Compile 
 
 .. code-block::
  
@@ -87,7 +85,7 @@ NOTE: pre-built versions of the ``run_llm.exe`` and ``model_generate.exe`` execu
 **Note**: The executable created ``run_llm.exe`` and ``model_generate.exe`` can be found in ``%RYZEN_AI_INSTALLATION_PATH%/npu-llm/cpp/build/Release`` folder 
 
  
-3. Copy the executables ``run_llm.exe`` and ``model_generate.exe`` to the ``npu-llm/libs`` folder. The ``npu-llm/libs`` should contain both: ``run_llm.exe``, ``model_benchmark.exe`` along with the ``.dll`` files it contains. 
+5. Copy the executables ``run_llm.exe`` and ``model_generate.exe`` to the ``npu-llm/libs`` folder. The ``npu-llm/libs`` should contain both: ``run_llm.exe``, ``model_benchmark.exe`` along with the ``.dll`` files it contains. 
  
 .. code-block::
 
@@ -95,36 +93,35 @@ NOTE: pre-built versions of the ``run_llm.exe`` and ``model_generate.exe`` execu
    xcopy .\cpp\build\Release\model_benchmark.exe .\libs 
    xcopy .\cpp\build\Release\run_llm.exe .\libs 
 
-Set the environment variables
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+Download Models from HuggingFace
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
-.. code-block::
+1. Navigate to the newly created run folder: 
 
-   set XLNX_ENABLE_CACHE=0 
+.. code-block:: 
+    
+    cd \path\to\run_folder
+
+2. Download from Hugging Face the desired models (from the list of published models):
+
+.. code-block:: 
+    
+     # Make sure you have git-lfs installed (https://git-lfs.com) 
+     git lfs install  
+     git clone <link to hf model> 
+
+For example, for Llama-2-7b-chat:
+
+.. code-block:: 
+
+     git lfs install  
+     git clone https://huggingface.co/amd/Llama2-7b-chat-awq-g128-int4-asym-bf16-onnx-ryzen-strix
+
 
 Run the models using C++
 @@@@@@@@@@@@@@@@@@@@@@@@
 
-**Note**: Ensure the models are cloned in the ``%RYZEN_AI_INSTALLATION_PATH%\npu-llm`` folder.
-
-Run using a batch file
-**********************
-
-The ``run.bat`` batch file located in the ``amd_oga`` directory contains commands for running multiple models. If you wish to run only a specific model, you can do so by uncommenting the corresponding command and commenting out others.  
- 
-For example, to run only Llama2-7b, ensure the line shown below is uncommented, and other commands are commented (preceded by REM). 
-
-.. code-block::
-
-   .\libs\run_llm.exe -m .\Llama-2-7b-hf-awq-g128-int4-asym-bf16-onnx-ryzen-strix -f .\Llama-2-7b-hf-awq-g128-int4-asym-bf16-onnx-ryzen-strix\prompts.txt -c -t "2048,1024,512,256,128" 
-
-Run the models using run.bat: 
-
-.. code-block::
-
-   # Run the batch file 
-   cd %RYZEN_AI_INSTALLATION_PATH%/npu-llm 
-   run.bat 
+**Note**: Ensure the models are cloned in the ``%RYZEN_AI_INSTALLATION_PATH%/npu-llm`` folder.
 
 Run manually
 ************
@@ -133,7 +130,7 @@ To run the models using the ``run_llm.exe`` file
 
 .. code-block::
 
-   cd amd_oga 
+   cd %RYZEN_AI_INSTALLATION_PATH%/npu-llm 
    # Help 
    .\libs\run_llm.exe -h 
  
@@ -171,30 +168,6 @@ To run the models using the ``run_llm.exe`` file
  
 Run Benchmark
 @@@@@@@@@@@@@
-
-Run using a batch file
-**********************
-
-The ``run_benchmark.bat`` batch file located in the ``%RYZEN_AI_INSTALLATION_PATH%\npu-llm`` directory contains commands for running multiple models. If you wish to run only a specific model, you can do so by uncommenting the corresponding command and commenting out others.  
- 
-For example, to run only Llama2-7b, ensure the line shown below is uncommented, and other commands are commented (preceded by REM). 
-
-.. code-block::
-
-    .\libs\model_benchmark.exe -i .\Llama-2-7b-hf-awq-g128-int4-asym-bf16-onnx-ryzen-strix -g 20 -p .\Llama-2-7b-hf-awq-g128-int4-asym-bf16-onnx-ryzen-strix\prompts.txt -l "2048,1024,512,256,128" 
-
- 
-Run the models using run_benchmark.bat:  
-
-.. code-block::
-
-   # Run the batch file 
-   cd %RYZEN_AI_INSTALLATION_PATH%\npu-llm 
-   run_benchmark.bat 
-
- 
-Run manually
-************
 
 To run the models using the ``model_benchmark.exe`` file 
  
