@@ -19,9 +19,8 @@ AMD Quark
 
 For more challenging model quantization needs **AMD Quark** supports advanced quantization technique like **Fast Finetuning** that helps recover the lost accuracy of the quantized model. 
 
-******************
 Examples/Tutorials
-******************
+~~~~~~~~~~~~~~~~~~
 
 - `AMD Quark Tutorial <https://github.com/amd/RyzenAI-SW/tree/main/tutorial/quark_quantization>`_ for Ryzen AI Deployment
 - Running INT8 model on NPU using :doc:`Getting Started Tutorial <getstartex>`
