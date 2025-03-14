@@ -139,6 +139,73 @@ Ryzen AI Runtime installer is a lightweight installer. This installer cannot be 
 
 To install runtime installer packages in a pre-existing conda environment, follow the :doc:`manual_installation` instructions.
 
+
+.. _driver-compatibility:
+
+
+*************************************
+VitisAI EP / NPU Driver Compatibility
+*************************************
+
+The VitisAI EP requires a compatible version of the NPU drivers. For each version of the VitisAI EP, compatible drivers are bounded by a minimum version and a maximum release date. NPU drivers are backward compatible with VitisAI EP released up to 3 years before. The maximum driver release date is therefore set to 3 years after the release date of the corresponding VitisAI EP.
+
+The table below summarizes the driver requirements for the different versions of the VitisAI EP.
+
+.. list-table:: 
+   :header-rows: 1
+
+   * - VitisAI EP version
+     - Minimum NPU Driver version
+     - Maximum NPU Driver release date 
+   * - 1.3.1
+     - 32.0.201.242
+     - January 17th, 2028
+   * - 1.3
+     - 32.0.201.237
+     - November 26th, 2027
+   * - 1.2
+     - 32.0.201.204
+     - July 30th, 2027
+
+.. _apu-types:
+
+*****************
+APU Types
+*****************
+
+The Ryzen AI Software supports different types of NPU-enabled APUs. These APU types are referred to as PHX, HPT, STX and KRK. 
+
+To programmatically determine the type of the local APU, it is possible to enumerate the PCI devices and check for an instance with a matching Hardware ID.
+
+.. list-table:: 
+   :header-rows: 1
+
+   * - Vendor
+     - Device
+     - Revision
+     - APU Type
+   * - 0x1022
+     - 0x1502
+     - 0x00
+     - PHX or HPT 
+   * - 0x1022
+     - 0x17F0
+     - 0x00
+     - STX 
+   * - 0x1022
+     - 0x17F0
+     - 0x10
+     - STX 
+   * - 0x1022
+     - 0x17F0
+     - 0x11
+     - STX 
+   * - 0x1022
+     - 0x17F0
+     - 0x20
+     - KRK
+
+
 ..
   ------------
 
