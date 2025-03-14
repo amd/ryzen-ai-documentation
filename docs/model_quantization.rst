@@ -13,9 +13,14 @@ Quantization introduces several challenges, primarily revolving around the poten
 
 **AMD Quark** is a comprehensive cross-platform deep learning toolkit designed to simplify and enhance the quantization of deep learning models. Supporting both PyTorch and ONNX models, Quark empowers developers to optimize their models for deployment on a wide range of hardware backends, achieving significant performance gains without compromising accuracy.
 
-For comprehensive Quark Documentation please refer to https://quark.docs.amd.com/latest/
+Examples/Tutorial:
 
-`AMD Quark Tutorial <https://github.com/amd/RyzenAI-SW/tree/main/tutorial/quark_quantization>`_ for Ryzen AI Deployment:
+- `AMD Quark Tutorial <https://github.com/amd/RyzenAI-SW/tree/main/tutorial/quark_quantization>`_ for Ryzen AI Deployment
+- Running INT8 model on NPU using :doc:`Getting Started Tutorial <getstartex>`
+- Running BF16 model on NPU using `Image Classification <https://github.com/amd/RyzenAI-SW/tree/main/example/image_classification>`_ 
+
+
+For comprehensive Quark Documentation for Ryzen AI please refer to https://quark.docs.amd.com/latest/supported_accelerators/ryzenai/index.html
 
 .. note::
    The Vitis AI Quantizer has been deprecated as of the Ryzen AI 1.3 release. AMD strongly recommends using the new AMD Quark Quantizer instead.
