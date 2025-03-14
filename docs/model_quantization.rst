@@ -11,14 +11,23 @@ The Ryzen AI compiler supports input models quantized to either INT8 or BF16 for
 
 Quantization introduces several challenges, primarily revolving around the potential drop in model accuracy. Choosing the right quantization parameters—such as data type, bit-width, scaling factors, and the decision between per-channel or per-tensor quantization—adds layers of complexity to the design process.
 
+*********
+AMD Quark
+*********
+
 **AMD Quark** is a comprehensive cross-platform deep learning toolkit designed to simplify and enhance the quantization of deep learning models. Supporting both PyTorch and ONNX models, Quark empowers developers to optimize their models for deployment on a wide range of hardware backends, achieving significant performance gains without compromising accuracy.
 
-Examples/Tutorial:
+For more challenging model quantization needs **AMD Quark** supports advanced quantization technique like **Fast Finetuning** that helps recover the lost accuracy of the quantized model. 
+
+******************
+Examples/Tutorials
+******************
 
 - `AMD Quark Tutorial <https://github.com/amd/RyzenAI-SW/tree/main/tutorial/quark_quantization>`_ for Ryzen AI Deployment
 - Running INT8 model on NPU using :doc:`Getting Started Tutorial <getstartex>`
-- Running BF16 model on NPU using `Image Classification <https://github.com/amd/RyzenAI-SW/tree/main/example/image_classification>`_ 
-
+- Advanced quantization techniques `Fast Finetuning and Cross Layer Equalization <https://gitenterprise.xilinx.com/VitisAI/RyzenAI-SW/blob/dev/tutorial/quark_quantization/docs/advanced_quant_readme.md>`_ for INT8 model
+- `Image Classification <https://github.com/amd/RyzenAI-SW/tree/main/example/image_classification>`_ example running BF16 model on NPU
+- Advanced quantization techniques `Fast Finetuning <https://quark.docs.amd.com/latest/supported_accelerators/ryzenai/tutorial_convert_fp32_or_fp16_to_bf16.html>`_ for BF16 models.
 
 For comprehensive Quark Documentation for Ryzen AI please refer to https://quark.docs.amd.com/latest/supported_accelerators/ryzenai/index.html
 
