@@ -1,3 +1,7 @@
+#########################
+ONNX Supported Operations
+#########################
+
 The list of the ONNX operators currently supported by the NPU is as follows:
 
 - Abs
