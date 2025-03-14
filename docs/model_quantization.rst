@@ -29,7 +29,7 @@ Examples/Tutorials
 - `Image Classification <https://github.com/amd/RyzenAI-SW/tree/main/example/image_classification>`_ example running BF16 model on NPU
 - Advanced quantization techniques `Fast Finetuning <https://quark.docs.amd.com/latest/supported_accelerators/ryzenai/tutorial_convert_fp32_or_fp16_to_bf16.html>`_ for BF16 models.
 
-For comprehensive Quark Documentation for Ryzen AI please refer to https://quark.docs.amd.com/latest/supported_accelerators/ryzenai/index.html
+For comprehensive AMD Quark Documentation for Ryzen AI please refer to https://quark.docs.amd.com/latest/supported_accelerators/ryzenai/index.html
 
 .. note::
    The Vitis AI Quantizer has been deprecated as of the Ryzen AI 1.3 release. AMD strongly recommends using the new AMD Quark Quantizer instead.
