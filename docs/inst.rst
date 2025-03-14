@@ -109,8 +109,7 @@ The Ryzen AI Software installation folder contains test to verify that the softw
 
 .. note::
 
-   - The full path to the Ryzen AI Software installation folder is stored in the ``RYZEN_AI_INSTALLATION_PATH`` environment variable.
-   - To install the Ryzen AI Software in a pre-existing conda environment, follow the :doc:`manual_installation` instructions.
+    The full path to the Ryzen AI Software installation folder is stored in the ``RYZEN_AI_INSTALLATION_PATH`` environment variable.
 
 
 *****************************
@@ -137,6 +136,10 @@ Ryzen AI Runtime installer is a lightweight installer. This installer cannot be 
   - Accept the terms of the Licence agreement
   - Provide the destination folder for Ryzen AI installation (default: ``C:\Program Files\RyzenAI\1.4.0-rt``)
   - Specify the name for the conda environment (default: ``ryzen-ai-rt-1.4.0``)
+
+
+Runtime installer can be installed in a pre-existing conda environment, follow the :doc:`manual_installation` instructions.
+
 ..
   ------------
 
