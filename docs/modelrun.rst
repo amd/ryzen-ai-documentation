@@ -46,41 +46,41 @@ The Vitis AI Execution Provider supports the following options:
 
 - xclbin : Target NPU configuration, only required for INT8 compilation. For INT8 compilation Ryzen AI supports two NPU configuration, standard and benchmark. 
 
-- Setting standard configuration for INT8 models
+  - Setting standard configuration for INT8 models
 
-  - For STX/KRK APUs:
+    - For STX/KRK APUs:
 
-    .. code-block::
+      .. code-block::
 
-      provider_options = [{
-          'xclbin' : 'C:\Program Files\RyzenAI\1.4.0\voe-4.0-win_amd64\xclbins\strix\C:\Program Files\RyzenAI\1.4.0\voe-4.0-win_amd64\xclbins\strix\AMD_AIE2P_Nx4_Overlay.xclbin'                    
+           provider_options = [{
+               'xclbin' : 'C:\Program Files\RyzenAI\1.4.0\voe-4.0-win_amd64\xclbins\strix\C:\Program Files\RyzenAI\1.4.0\voe-4.0-win_amd64\xclbins\strix\AMD_AIE2P_Nx4_Overlay.xclbin'                    
        }]
 
-  - For PHX/HPT APUs:
+    - For PHX/HPT APUs:
 
-    .. code-block::
+      .. code-block::
 
-      provider_options = [{
-          'xclbin' : 'C:\Program Files\RyzenAI\1.4.0\voe-4.0-win_amd64\xclbins\strix\C:\Program Files\RyzenAI\1.4.0\voe-4.0-win_amd64\xclbins\phoenix/1x4.xclbin'                    
+          provider_options = [{
+              'xclbin' : 'C:\Program Files\RyzenAI\1.4.0\voe-4.0-win_amd64\xclbins\strix\C:\Program Files\RyzenAI\1.4.0\voe-4.0-win_amd64\xclbins\phoenix/1x4.xclbin'                    
         }]
 
 
-- Setting benchmark configuration for INT8 models
+  - Setting benchmark configuration for INT8 models
 
-  - For STX/KRK APUs:
+    - For STX/KRK APUs:
 
-    .. code-block::
+      .. code-block::
 
-      provider_options = [{
-          'xclbin' : 'C:\Program Files\RyzenAI\1.4.0\voe-4.0-win_amd64\xclbins\strix\C:\Program Files\RyzenAI\1.4.0\voe-4.0-win_amd64\xclbins\strix/AMD_AIE2P_4x4_Overlay.xclbin'                    
+           provider_options = [{
+               'xclbin' : 'C:\Program Files\RyzenAI\1.4.0\voe-4.0-win_amd64\xclbins\strix\C:\Program Files\RyzenAI\1.4.0\voe-4.0-win_amd64\xclbins\strix/AMD_AIE2P_4x4_Overlay.xclbin'                    
        }]
 
-  - For PHX/HPT APUs:
+    - For PHX/HPT APUs:
 
-    .. code-block::
+      .. code-block::
 
-      provider_options = [{
-          'xclbin' : 'C:\Program Files\RyzenAI\1.4.0\voe-4.0-win_amd64\xclbins\strix\C:\Program Files\RyzenAI\1.4.0\voe-4.0-win_amd64\xclbins\phoenix/4x4.xclbin'                    
+          provider_options = [{
+              'xclbin' : 'C:\Program Files\RyzenAI\1.4.0\voe-4.0-win_amd64\xclbins\strix\C:\Program Files\RyzenAI\1.4.0\voe-4.0-win_amd64\xclbins\phoenix/4x4.xclbin'                    
         }]
 
 
