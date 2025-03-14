@@ -101,7 +101,6 @@ For more details, refer to the :doc:`modelrun` page.
    :caption: Additional Topics
 
    Model Zoo <https://huggingface.co/models?other=RyzenAI>
-   manual_installation.rst
    Licensing Information <licenses.rst>
 
 
