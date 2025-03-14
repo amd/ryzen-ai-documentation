@@ -83,12 +83,11 @@ NPU Configurations
 
 The Ryzen AI Software currently supports two NPU configurations for INT8 models: the standard configuration and the benchmark configuration.
 
-|warning| **IMPORTANT**: Selecting a NPU configuration is a mandatory step before running an application using INT8 model. A configurations is selected by loading the corresponding NPU binary file (.xclbin) in the onnxruntime session. 
+|warning| **IMPORTANT**: Selecting a NPU configuration is a mandatory step before running an application that usese INT8 model. A configurations is selected by loading the corresponding NPU binary file (.xclbin) in onnxruntime session. 
 
 
 Standard Configuration
 ======================
-
 
 The standard configuration is designed to minimize NPU hardware resource usage, featuring a smaller footprint on the NPU. 
 
