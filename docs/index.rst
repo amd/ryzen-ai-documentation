@@ -55,7 +55,6 @@ For more details, refer to the :doc:`modelrun` page.
    :caption: Getting Started on the NPU
 
    inst.rst
-   runtime_setup.rst
    examples.rst
 
 .. toctree::
