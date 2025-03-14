@@ -68,7 +68,7 @@ Install Ryzen AI Software
   - Specify the name for the conda environment (default: ``ryzen-ai-1.4.0``)
 
 
-The Ryzen AI Software packages are now installed in the conda environment created by the installer. Refer to the :doc:`runtime_setup` page for more details about setting up the environment before running an inference session on the NPU.
+The Ryzen AI Software packages are now installed in the conda environment created by the installer. 
 
 
 .. _quicktest:
