@@ -31,7 +31,7 @@ The ``provider_options`` parameter allows passing compile-specific options for t
 Caching the Compiled Model
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Model compilation can take some time depending on the model's complexity. However, once compiled, the model is saved in the cache directory. Any subsequent execution of the ONNX Runtime script will load the precompiled model from this cache directory, reducing initialization time.
+Model compilation can take some time depending on the model's complexity. However, once compiled, the model is saved in the cache directory. Any subsequent execution of the ONNX Runtime script will load the precompiled model from this cache directory, reducing session creation time.
 
 To specify a model cache folder, it is recommended to use the ``cache_dir`` and ``cache_key`` provider options. Example:
 
@@ -49,14 +49,14 @@ To specify a model cache folder, it is recommended to use the ``cache_dir`` and 
                                   provider_options=provider_options)  
 
 
-In the example above, the cache directory is set to the absolute path of the folder containing the ONNX Runtime script being executed. Once the session is created, the compiled model is saved inside a subdirectory named compiled_resnet50 within the specified cache folder.
+In the example above, the cache directory is set to the absolute path of the folder containing the ONNX Runtime script being executed. Once the session is created, the compiled model is saved inside a subdirectory named `compiled_resnet50` within the specified cache folder.
 
-**Note**: In the current release, if cache_dir is not set, the default cache location varies depending on the input model:
+**Note**: In the current release, if ``cache_dir`` is not set, the default cache location varies depending on the input model:
 
-- INT8 models: Cached in C:\temp\{user}\vaip\.cache (on Windows).
+- INT8 models: Cached in ``C:\temp\{user}\vaip\.cache``
 - BF16 models: Cached in the current directory where the ONNX Runtime script is executed.
 
-**Note**: To force recompilation and ignore the cached model, unset the XLNX_ENABLE_CACHE environment variable before running the script:
+**Note**: To force recompilation and ignore the cached model, unset the ``XLNX_ENABLE_CACHE`` environment variable before running the script:
 
 .. code-block::
 
@@ -66,7 +66,7 @@ In the example above, the cache directory is set to the absolute path of the fol
 Compilation Configuration File for BF16 Models
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-For BF16 model compilation, a compilation configuration file must be provided through the config_file option in provider_options.
+For BF16 model compilation, a compilation configuration file must be provided through the ``config_file`` option in provider_options.
 
 .. code-block::
 
@@ -76,7 +76,7 @@ For BF16 model compilation, a compilation configuration file must be provided th
         'cache_key': 'compiled_resnet50'
      }]
 
-Below is an example of a standard compilation configuration file (vai_ep_config.json):
+Below is an example of a standard compilation configuration file:
 
 .. code-block::
 
@@ -98,11 +98,11 @@ Below is an example of a standard compilation configuration file (vai_ep_config.
 Setting NPU Configuration for INT8 Models
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In the current version of the Ryzen AI software, INT8 models require additional NPU configuration via the `xclbin` provider option. This configuration is not required for BF16 models.
+In the current version of the Ryzen AI software, INT8 models require additional NPU configuration via the ``xclbin`` provider option. This configuration is not required for BF16 models.
 
-There are two types of NPU configurations for INT8 models: standard and benchmark. Setting the NPU configuration involves specifying a specific `.xclbin` binary file, which is provided in the installer package.
+There are two types of NPU configurations for INT8 models: standard and benchmark. Setting the NPU configuration involves specifying a specific ``.xclbin`` binary file, which is provided in the installer package.
 
-Depending on the target processor and binary type (standard/benchmark), the following .xclbin files should be used:
+Depending on the target processor and binary type (standard/benchmark), the following ``.xclbin`` files should be used:
 
 **For STX/KRK APUs**:
 
@@ -114,7 +114,7 @@ Depending on the target processor and binary type (standard/benchmark), the foll
 - Standard binary: ``%RYZEN_AI_INSTALLATION_PATH%\voe-4.0-win_amd64\xclbins\phoenix\1x4.xclbin``
 - Benchmark binary: ``%RYZEN_AI_INSTALLATION_PATH%\voe-4.0-win_amd64\xclbins\phoenix\4x4.xclbin``
 
-Example code specifying standard NPU configuration setting through xclbin provider option.
+Example code specifying standard NPU configuration setting through ``xclbin`` provider option.
 
 .. code-block::
 
@@ -136,7 +136,7 @@ Example code specifying standard NPU configuration setting through xclbin provid
                                   provider_options=provider_options)
 
 
-By default, the Ryzen AI Conda environment automatically sets the STX/KRK standard binary for all inference sessions through the XLNX_VART_FIRMWARE environment variable. However, explicitly passing the xclbin option in provider_options overrides the default setting.
+By default, the Ryzen AI Conda environment automatically sets the STX/KRK standard binary for all inference sessions through the ``XLNX_VART_FIRMWARE`` environment variable. However, explicitly passing the xclbin option in provider_options overrides the default setting.
 
 .. code-block::
 
