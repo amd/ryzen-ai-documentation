@@ -88,52 +88,62 @@ Below is an example of a standard compilation configuration file (vai_ep_config.
    }
 
 
+Setting NPU Configuration for INT8 Models
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In the current version of the Ryzen AI software, INT8 models require additional NPU configuration via the `xclbin` provider option. This configuration is not required for BF16 models.
+
+There are two types of NPU configurations for INT8 models: standard and benchmark. Setting the NPU configuration involves specifying a specific `.xclbin` binary file, which is provided in the installer package.
+
+Depending on the target processor and binary type (standard/benchmark), the following .xclbin files should be used:
+
+**For STX/KRK APUs**:
+
+Standard binary: %RYZEN_AI_INSTALLATION_PATH%\voe-4.0-win_amd64\xclbins\strix\AMD_AIE2P_Nx4_Overlay.xclbin
+Benchmark binary: %RYZEN_AI_INSTALLATION_PATH%\voe-4.0-win_amd64\xclbins\strix\AMD_AIE2P_4x4_Overlay.xclbin
+
+**For PHX/HPT APUs**:
+
+Standard binary: %RYZEN_AI_INSTALLATION_PATH%\voe-4.0-win_amd64\xclbins\phoenix\1x4.xclbin
+Benchmark binary: %RYZEN_AI_INSTALLATION_PATH%\voe-4.0-win_amd64\xclbins\phoenix\4x4.xclbin
+
+Example code specifying standard NPU configuration setting through xclbin provider option.
+
+.. code-block::
+
+   import os
+   from pathlib import Path  
+
+   providers = ['VitisAIExecutionProvider']
+
+   cache_dir = Path(__file__).parent.resolve()
+
+   provider_options = [{
+    'cache_dir': str(cache_dir),  
+    'cache_key': 'compiled_resnet50', 
+    'xclbin': '{}\\voe-4.0-win_amd64\\xclbins\\strix\\AMD_AIE2P_Nx4_Overlay.xclbin'.format(os.environ["RYZEN_AI_INSTALLATION_PATH"]) 
+   }]
+
+   session = ort.InferenceSession(model.SerializeToString(),  
+                                  providers=providers,  
+                                  provider_options=provider_options)
+
+
+By default, the Ryzen AI Conda environment automatically sets the STX/KRK standard binary for all inference sessions through the XLNX_VART_FIRMWARE environment variable. However, explicitly passing the xclbin option in provider_options overrides the default setting.
+
+.. code-block::
+
+    > echo %XLNX_VART_FIRMWARE%
+      C:\Program Files\RyzenAI\1.4.0\voe-4.0-win_amd64\xclbins\strix\AMD_AIE2P_Nx4_Overlay.xclbin
+
+
 Additional Provider Options
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The Vitis AI Execution Provider supports the following options:
-
+Other supported provider options 
 
 - encryptionKey (optional): Encryption/Decryption key for the models generated. 
 
-- xclbin : Target NPU configuration, only required for INT8 compilation. For INT8 compilation Ryzen AI supports two NPU configuration, standard and benchmark. 
-
-  - Setting standard configuration for INT8 models
-
-    - For STX/KRK APUs:
-
-      .. code-block::
-
-           provider_options = [{
-               'xclbin' : 'C:\Program Files\RyzenAI\1.4.0\voe-4.0-win_amd64\xclbins\strix\C:\Program Files\RyzenAI\1.4.0\voe-4.0-win_amd64\xclbins\strix\AMD_AIE2P_Nx4_Overlay.xclbin'                    
-       }]
-
-    - For PHX/HPT APUs:
-
-      .. code-block::
-
-          provider_options = [{
-              'xclbin' : 'C:\Program Files\RyzenAI\1.4.0\voe-4.0-win_amd64\xclbins\strix\C:\Program Files\RyzenAI\1.4.0\voe-4.0-win_amd64\xclbins\phoenix/1x4.xclbin'                    
-        }]
-
-
-  - Setting benchmark configuration for INT8 models
-
-    - For STX/KRK APUs:
-
-      .. code-block::
-
-           provider_options = [{
-               'xclbin' : 'C:\Program Files\RyzenAI\1.4.0\voe-4.0-win_amd64\xclbins\strix\C:\Program Files\RyzenAI\1.4.0\voe-4.0-win_amd64\xclbins\strix/AMD_AIE2P_4x4_Overlay.xclbin'                    
-       }]
-
-    - For PHX/HPT APUs:
-
-      .. code-block::
-
-          provider_options = [{
-              'xclbin' : 'C:\Program Files\RyzenAI\1.4.0\voe-4.0-win_amd64\xclbins\strix\C:\Program Files\RyzenAI\1.4.0\voe-4.0-win_amd64\xclbins\phoenix/4x4.xclbin'                    
-        }]
 
 
      
