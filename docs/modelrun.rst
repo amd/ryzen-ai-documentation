@@ -115,7 +115,7 @@ If an FP32 model is passed, the compiler can automatically cast it to BF16. This
 
 **Optimizations for Transformer-Based Models**
 
-For better optimization of transformer-based models, set:
+By default, the compiler vectorizes the data to optimize performance for CNN models. However, transformers perform best with unvectorized data. To better optimize transformer-based models, set:
 
 .. code-block::
 
