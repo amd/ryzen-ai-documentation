@@ -5,7 +5,6 @@
 Runtime Setup
 #############
 
-.. _driver-compatibility:
 
 
 *************************************
@@ -32,7 +31,7 @@ The table below summarizes the driver requirements for the different versions of
      - 32.0.201.204
      - July 30th, 2027
 
-.. _apu-types:
+
 
 *****************
 APU Types
