@@ -12,7 +12,7 @@ The Ryzen AI Software supports deploying quantized model saved in the ONNX forma
 Model Compilation
 *****************
 
-Quantized models are compiled targetting NPU when an ONNX inference session is created by leveraring the Vitis AI Execution Provider (VAI EP). 
+Quantized models are compiled for the NPU when an ONNX inference session is created using the Vitis AI Execution Provider (VAI EP):
 
 .. code-block:: python
 
@@ -21,24 +21,78 @@ Quantized models are compiled targetting NPU when an ONNX inference session is c
                                             providers = providers,
                                             provider_options = provider_options)
 
-Depending on the model, model compilation can take sometime. However, after compilation compiled model is saved inside the cache directory. Hence any susequent run of the onnxruntime script simply picks the compiled model from the cache directory. 
+Caching the Compiled Model
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Vitis AI Execution Provider Options
-===================================
+Model compilation can take some time depending on the model's complexity. However, once compiled, the model is saved in the cache directory. Any subsequent execution of the ONNX Runtime script will load the precompiled model from this cache directory, reducing initialization time.
+
+To specify a model cache folder, it is recommended to use the ``cache_dir`` and ``cache_key`` provider options. Example:
+
+.. code-block::
+
+   from pathlib import Path  
+
+   providers = ['VitisAIExecutionProvider']  
+   cache_dir = Path(__file__).parent.resolve()  
+   provider_options = [{'cache_dir': str(cache_dir),  
+                        'cache_key': 'compiled_resnet50'}]  
+
+   session = ort.InferenceSession(model.SerializeToString(),  
+                                  providers=providers,  
+                                  provider_options=provider_options)  
+
+
+In the example above, the cache directory is set to the absolute path of the folder containing the ONNX Runtime script being executed. Once the session is created, the compiled model is saved inside a subdirectory named compiled_resnet50 within the specified cache folder.
+
+**Note**: In the current release, if cache_dir is not set, the default cache location varies depending on the input model:
+
+- INT8 models: Cached in C:\temp\{user}\vaip\.cache (on Windows).
+- BF16 models: Cached in the current directory where the ONNX Runtime script is executed.
+
+**Note**: To force recompilation and ignore the cached model, unset the XLNX_ENABLE_CACHE environment variable before running the script:
+
+.. code-block::
+
+    set XLNX_ENABLE_CACHE=
+
+
+Compilation Configuration File for BF16 Models
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For BF16 model compilation, a compilation configuration file must be provided through the config_file option in provider_options.
+
+.. code-block::
+
+     provider_options = [{
+        'config_file': 'vai_ep_config.json',
+        'cache_dir': str(cache_dir),  
+        'cache_key': 'compiled_resnet50'
+     }]
+
+Below is an example of a standard compilation configuration file (vai_ep_config.json):
+
+.. code-block::
+
+   {
+    "passes": [
+        {
+            "name": "init",
+            "plugin": "vaip-pass_init"
+        },
+        {
+            "name": "vaiml_partition",
+            "plugin": "vaip-pass_vaiml_partition",
+            "vaiml_config": {}
+        }
+    ]
+   }
+
+
+Additional Provider Options
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The Vitis AI Execution Provider supports the following options:
 
-- config_file: Configuration file to guide model compilation and runtime. 
-
-  - For INT8 Model the configuration file is not required. 
-  - For BF16 Models configuration files are provided in the bf16 examples
-
-- cache_dir: The top level cache directory of the compiled models. If not provided cache_dir is ``C:\temp\{user}\vaip\.cache``
-- cache_key: Compiled model directory generated inside the cache directory. Use string to specify the desired name of the compiler model directory. For example,  ``'cacheKey': 'resnet50_cache'``
-
-.. note::
-
-   unset XLNX_ENABLE_CACHE environment variable in the command prompt results ignoring the cache and recompile the model. 
 
 - encryptionKey (optional): Encryption/Decryption key for the models generated. 
 
