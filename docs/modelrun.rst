@@ -99,7 +99,7 @@ Depending on the target processor and binary type (standard/benchmark), the foll
 
 **For STX/KRK APUs**:
 
-- Standard binary: `%RYZEN_AI_INSTALLATION_PATH%\voe-4.0-win_amd64\xclbins\strix\AMD_AIE2P_Nx4_Overlay.xclbin`
+- Standard binary: ``%RYZEN_AI_INSTALLATION_PATH%\voe-4.0-win_amd64\xclbins\strix\AMD_AIE2P_Nx4_Overlay.xclbin``
 - Benchmark binary: `%RYZEN_AI_INSTALLATION_PATH%\voe-4.0-win_amd64\xclbins\strix\AMD_AIE2P_4x4_Overlay.xclbin`
 
 **For PHX/HPT APUs**:
