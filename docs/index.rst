@@ -27,7 +27,7 @@ Quantization involves converting the AI model's parameters from floating-point t
 
 **AMD Quark** is a comprehensive cross-platform deep learning toolkit designed to simplify and enhance the quantization of deep learning models. Supporting both PyTorch and ONNX models, Quark empowers developers to optimize their models for deployment on a wide range of hardware backends, achieving significant performance gains without compromising accuracy.
 
-For more details, refer to the :doc:`modelport` page.
+For more details, refer to the :doc:`model_quantization` page.
 
 Compilation and Deployment
 ==========================
