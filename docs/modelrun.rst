@@ -95,6 +95,42 @@ Below is an example of a standard compilation configuration file:
    }
 
 
+The ``vaiml_config`` section allows additional configurations in specific cases. Below are few such options:
+
+**Performance Optimization**: To enable a more performance-optimized compilation, set:
+
+.. code-block::
+
+    "vaiml_config": {"optimize_level": 2}
+
+
+**Automatic FP32 to BF16 Conversion** 
+
+If an FP32 model is passed, the compiler can automatically cast it to BF16. This method is not recommended, as it is advisable to quantize the model to BF16 using Quark for better accuracy control. However, it can be useful for quick compilation flow testing:
+
+.. code-block::
+
+    "vaiml_config": {"enable_f32_to_bf16_conversion": true}
+
+
+**Optimizations for Transformer-Based Models**
+
+For better optimization of transformer-based models, set:
+
+.. code-block::
+
+    "vaiml_config": {"preferred_data_storage": "unvectorized"}
+
+
+**Compiling BF16 Models on Windows**
+
+To enable compilation on Windows, add:
+
+.. code-block::
+
+     "vaiml_config": {"experiment_features": ["CompileOnWindows"]}
+
+
 Setting NPU Configuration for INT8 Models
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
