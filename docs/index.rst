@@ -23,16 +23,14 @@ The Ryzen AI development flow does not require any modifications to the existing
 
 Quantization
 ============
-Quantization involves converting the AI model's parameters from floating-point to lower-precision representations, such as 16-bit or 8-bit integers. Quantized models are more power-efficient, utilize less memory, and offer better performance.
+Quantization involves converting the AI model's parameters from floating-point to lower-precision representations, such as bfloat16 floating-point or 8-bit integer. Quantized models are more power-efficient, utilize less memory, and offer better performance.
 
 **AMD Quark** is a comprehensive cross-platform deep learning toolkit designed to simplify and enhance the quantization of deep learning models. Supporting both PyTorch and ONNX models, Quark empowers developers to optimize their models for deployment on a wide range of hardware backends, achieving significant performance gains without compromising accuracy.
 
 For more details, refer to the :doc:`modelport` page.
 
-Pre-optimized models can be found on the `Ryzen AI Model Zoo <https://huggingface.co/models?other=RyzenAI>`_ on Hugging Face.
-
-Deployment
-==========
+Compilation and Deployment
+==========================
 The AI model is deployed using the ONNX Runtime with either C++ or Python APIs. The Vitis AI Execution Provider included in the ONNX Runtime intelligently determines what portions of the AI model should run on the NPU, optimizing workloads to ensure optimal performance with lower power consumption.
 
 For more details, refer to the :doc:`modelrun` page.
