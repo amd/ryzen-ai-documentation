@@ -180,14 +180,6 @@ By default, the Ryzen AI Conda environment automatically sets the STX/KRK standa
       C:\Program Files\RyzenAI\1.4.0\voe-4.0-win_amd64\xclbins\strix\AMD_AIE2P_Nx4_Overlay.xclbin
 
 
-Additional Provider Options
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Other supported provider options 
-
-- encryptionKey (optional): Encryption/Decryption key for the models generated. 
-
-
 
 *********************
 Simultaneous Sessions
