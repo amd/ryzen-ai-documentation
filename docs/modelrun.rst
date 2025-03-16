@@ -229,6 +229,58 @@ The key is a 256-bit value represented as a 64-digit string. The model generated
 
 |
 
+************************************
+OnnxRuntime EP context cache support
+************************************
+
+Vitis AI Execution Provider (EP) supports the ONNX Runtime EP context cache feature. Currently, this feature is only available for INT8 model compilation.
+
+The user can enable context cache dumping by setting the session option ``ep.context_enable``. 
+
+Additionally, the following options can be used for more control:
+- ``ep.context_file_path`` – Specifies the output path for the dumped context model.
+- ``ep.context_embed_mode`` – Embeds the EP context into the ONNX model when set to 1.
+
+For further details, refer to the official ONNX Runtime documentation: https://onnxruntime.ai/docs/execution-providers/EP-Context-Design.html
+
+
+**Encryption Options for Context Cache**
+
+By default, an unencrypted context cache model is generated, which can be used directly during inference. Users can also apply custom encryption methods by manually encrypting and decrypting the context cache model.
+
+Alternatively, Vitis AI EP-managed encryption can be enabled by passing an encryption key via the ``encryptionKey`` provider option (discussed in a previous section). At runtime, the exact same encryption key must be provided to decrypt and load the context cache model.
+
+Example Code:
+
+.. code-block::
+
+   
+    # Compile session
+    session_options = ort.SessionOptions()
+    session_options.add_session_config_entry('ep.context_enable', '1') 
+    session_options.add_session_config_entry('ep.context_file_path', '</path/to/context_file>') 
+    session_options.add_session_config_entry('ep.context_embed_mode', '1') 
+
+    session = ort.InferenceSession(
+        model.SerializeToString(),
+        sess_options=session_options,
+        providers=['VitisAIExecutionProvider'],
+        provider_options=[{'encryptionKey': '89703f950ed9f738d956f6769d7e45a385d3c988ca753838b5afbc569ebf35b2'}]
+    )
+
+   # Inference session
+   session = ort.InferenceSession(
+       path_or_bytes='</path/to/context_file>',
+       sess_options=session_options,
+       providers=['VitisAIExecutionProvider'],
+       provider_options=[{'encryptionKey': '89703f950ed9f738d956f6769d7e45a385d3c988ca753838b5afbc569ebf35b2'}]
+   )
+
+
+**Note**: When compiling with encryptionKey, ensure that any existing cache directory (either the default cache directory or the directory specified by the cache_dir provider option) is deleted before running the compilation.
+
+|
+
 **************************
 Operator Assignment Report
 **************************
