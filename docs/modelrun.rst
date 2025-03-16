@@ -270,6 +270,7 @@ Example Code:
     )
 
    # Inference session
+   session_options = ort.SessionOptions()
    session = ort.InferenceSession(
        path_or_bytes='</path/to/context_file>',
        sess_options=session_options,
@@ -278,7 +279,7 @@ Example Code:
    )
 
 
-**Note**: When compiling with encryptionKey, ensure that any existing cache directory (either the default cache directory or the directory specified by the cache_dir provider option) is deleted before running the compilation.
+**Note**: When compiling with encryptionKey, ensure that any existing cache directory (either the default cache directory or the directory specified by the ``cache_dir`` provider option) is deleted before running the compilation.
 
 |
 
