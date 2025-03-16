@@ -238,6 +238,7 @@ Vitis AI Execution Provider (EP) supports the ONNX Runtime EP context cache feat
 The user can enable context cache dumping by setting the session option ``ep.context_enable``. 
 
 Additionally, the following options can be used for more control:
+
 - ``ep.context_file_path`` – Specifies the output path for the dumped context model.
 - ``ep.context_embed_mode`` – Embeds the EP context into the ONNX model when set to 1.
 
