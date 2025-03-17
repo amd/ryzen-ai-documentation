@@ -2,14 +2,14 @@
 Ryzen AI Linux Compile Flow
 ****************************
 
-BF16 models (CNN or Transformer) require processing power in terms of core count and memory, depending on model size. If a larger model cannot be compiled on a Windows machine due to hardware limitations (e.g., insufficient RAM), an alternative Linux-based compilation flow is supported.
+Here is a walk through of Linux and Windows Installation Requirements and an example that illustrates the flow of Model compilation and Model Runtime
 
-(More info)
-RyzenAI software extends beyond Windows to support ONNX models on Linux environment. Under the hood, VAIML compiler runs on CNNs and Transformer architectures and supports full precision (FP32) or Quark Quantized (BF16) input models.
-VAIML runs on RyzenAI 1.4 and using Strix Point AI PCs.
-
+Linux Setup
+~~~~~~~~~~~
 - Download the RyzenAI Software Linux installer :download:`ryzen_ai-1.4.0.tgz <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=ryzen_ai-1.4.0-ea.tgz>`.
-
+- Recommeded RAM 32GB or Higher
+- Minimum 8 CPU cores or Higher
+- Python 3.10 or Higher
 - Download install script to your Ubuntu (22.04) host
 
 .. code-block::
@@ -29,57 +29,60 @@ VAIML runs on RyzenAI 1.4 and using Strix Point AI PCs.
 
     gunzip -c ryzen_ai_docker-1.4.0-ea_2025_02_21_3914.tgz | docker load
 
+Windows Setup
+~~~~~~~~~~~~~
+- Please follow this page to install RyzenAI on windows :doc:`inst.rst`
 
-- Please refer GTE model to better under the instructions below
+
+**Note** -  We have choosen GTE Model as an example to walk you through the compilation and runtime flow. You can use any Model of your choice and replicate the steps below.
+
 
 Compiling model on Linux system
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- Download the GTE model files in your local linux directory :download:`https://gitenterprise.xilinx.com/VitisAI/RyzenAI-SW/tree/dev/example/GTE`
+- Activate your RyzenAI environment in your linux terminal.
+- Navigate to your downloaded model directory
 
-- Download the GTE model files in your local linux directory
-
-- Activate your RyzenAI environment from above commands
-
+Download the model from Huggingface and convert to Onnx format
 .. code-block::
 
-    python download_model.py --model_name <> --output_dir <>
+    python download_model_.py --model_name "Alibaba-NLP/gte-large-en-v1.5" --output_dir "models"
 
 
-This downloads your model under output_dir as model.onnx file
-
+The script creates a Session that calls VitisAIExecutionProvider to compile your model
 .. code-block::
 
-    python run.py --model_name <>
+    python run.py --model_path "models/model_quantized_bf16.onnx" --vaiml_compile
 
 
-This script creates a Session that calls VitisAIExecutionProvider to compile your model
+**Result**: 
 
-The compiled model will be saved under the same directory.
+- New folder with Modelname is created locally that contains all compiled model files.
 
-Result: 
+- You will observe few operators offloaded to CPU and few offloaded to VAIML (NPU)
 
-    - New folder with Modelname is created locally that contains all compiled model files.
 
-    - You will observe few operators offloaded to CPU and few offloaded to VAIML (NPU)
-
-    - However, there will be an error while attempting to run on NPU. Since Linux machines can only support Model compilation and not Model runtime, so please ignore the error.
 
 Running Model on Windows system
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Once you have your GTE mnodel compiled on Linux system, copy the whole directory to a STX based Windows Machine
+- Linux machines can only support Model compilation and not Model runtime.
+- After successful model compilation on Linux machine, copy the entire working directory to a STX based Windows machine
+
+Activate your RyzenAI Windows conda environment
 
 .. code-block::
 
-    Set flexml.dll path (check)
+    conda activate <env_name>
 
-Run the following command
+The script takes the compiled model and runs the inference on NPU
 
 .. code-block::
 
-    python run.py --model_name <>
+    python run.py --model_path "models/model_quantized_bf16.onnx"
 
-Result:
+**Result**:
 
-    - Session is created from compiled model directory
+- Session is created from compiled model directory
 
-    - The session will take texts as inputs and run on NPU hardware to generate text embeddings as outputs.
+- The session will take texts as inputs and run on NPU hardware to generate text embeddings as outputs.
