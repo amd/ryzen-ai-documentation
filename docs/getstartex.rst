@@ -225,7 +225,7 @@ To successfully run the model on the NPU, run the following setup steps:
      provider_options = [{
                 'cacheDir': str(cache_dir),
                 'cacheKey': 'modelcachekey',
-                'xclbin': 'path/to/NPU binary (.xclbin)'
+                'xclbin': 'path/to/xclbin'
                 }]
 
   session = ort.InferenceSession(model.SerializeToString(), providers=providers,
