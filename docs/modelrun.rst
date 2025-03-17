@@ -60,7 +60,7 @@ In the example above, the cache directory is set to the absolute path of the fol
 
 .. code-block::
 
-    set XLNX_ENABLE_CACHE=1
+    set XLNX_ENABLE_CACHE=
 
 
 Compilation Configuration File for BF16 Models
@@ -172,7 +172,7 @@ Example code specifying standard NPU configuration setting through ``xclbin`` pr
                                   provider_options=provider_options)
 
 
-By default, the Ryzen AI Conda environment automatically sets the STX/KRK standard binary for all inference sessions through the ``XLNX_VART_FIRMWARE`` environment variable. However, explicitly passing the xclbin option in provider_options overrides the default setting.
+By default, the Ryzen AI Conda environment automatically sets the standard binary for all inference sessions through the ``XLNX_VART_FIRMWARE`` environment variable. However, explicitly passing the xclbin option in provider_options overrides the default setting.
 
 .. code-block::
 
