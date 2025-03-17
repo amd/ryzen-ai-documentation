@@ -19,6 +19,8 @@ NPU
 
 - `Hello World Jupyter Notebook Tutorial <https://github.com/amd/RyzenAI-SW/tree/main/tutorial/hello_world>`_
 
+- `Image Classification <https://github.com/amd/RyzenAI-SW/tree/main/example/image_classification>`_, `GTE <https://github.com/amd/RyzenAI-SW/tree/main/example/GTE>`_ examples for BF16 models
+
 iGPU
 ~~~~
 
