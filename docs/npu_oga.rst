@@ -96,11 +96,11 @@ NOTE: pre-built versions of the ``run_llm.exe`` and ``model_generate.exe`` execu
 Download Models from HuggingFace
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
-1. Navigate to the newly created run folder: 
+1. Navigate to the ``npu-llm`` folder: 
 
 .. code-block:: 
     
-    cd \path\to\run_folder
+    cd %RYZEN_AI_INSTALLATION_PATH%\npu-llm
 
 2. Download from Hugging Face the desired models (from the list of published models):
 
