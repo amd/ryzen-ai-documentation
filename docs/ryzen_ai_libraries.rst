@@ -18,7 +18,7 @@ Ensure that the following software tools/packages are installed on the developme
 3. OpenCV (version=4.8.1 or newer)
 
 **************************************************
-Building Ryzen AI CVML library sample applications
+Building sample applications
 **************************************************
 This section describes the steps to build Ryzen AI CVML library sample applications.
 
@@ -28,14 +28,14 @@ Go to the 'samples' sub-folder of the Ryzen AI CVML library. ::
   
   chdir samples
 
-Specify the location of OpenCV libraries
-====================================
+OpenCV libraries
+================
 Ryzen AI CVML library samples make use of OpenCV, so set an environment variable to let the build scripts know where to find OpenCV. ::
 
   set OPENCV_INSTALL_ROOT=<location of OpenCV libraries>
 
-Build the sample applications
-=============================
+Build Instructions
+==================
 Create a build folder and use CMAKE to build the sample(s). ::
 
   mkdir build-samples
@@ -45,7 +45,7 @@ Create a build folder and use CMAKE to build the sample(s). ::
 The compiled sample application(s) will be placed in the various build-samples\<application>\Release folder(s) under the 'samples' folder.
 
 *************************************************
-Running Ryzen AI CVML library sample applications
+Running sample applications
 *************************************************
 This section describes how to execute Ryzen AI CVML library sample applications.
 
