@@ -207,8 +207,7 @@ To successfully run the model on the NPU, run the following setup steps:
 
 - Ensure ``RYZEN_AI_INSTALLATION_PATH`` points to ``path\to\ryzen-ai-sw-<version>\``. If you installed Ryzen-AI software using the MSI installer, this variable should already be set. Ensure that the Ryzen-AI software package has not been moved post installation, in which case ``RYZEN_AI_INSTALLATION_PATH`` will have to be set again. 
 
-.. note::
-   By default, the Ryzen AI Conda environment automatically sets the standard binary for all inference sessions through the XLNX_VART_FIRMWARE environment variable. However, explicitly passing the xclbin option in provider_options overrides the default setting.
+- By default, the Ryzen AI Conda environment automatically sets the standard binary for all inference sessions through the XLNX_VART_FIRMWARE environment variable. However, explicitly passing the xclbin option in provider_options overrides the default setting.
 
 .. code-block::
 
@@ -362,8 +361,7 @@ To successfully run the model on the NPU:
 
 - Ensure ``RYZEN_AI_INSTALLATION_PATH`` points to ``path\to\ryzen-ai-sw-<version>\``. If you installed Ryzen-AI software using the MSI installer, this variable should already be set. Ensure that the Ryzen-AI software package has not been moved post installation, in which case ``RYZEN_AI_INSTALLATION_PATH`` will have to be set again. 
 
-.. note::
-   By default, the Ryzen AI Conda environment automatically sets the standard binary for all inference sessions through the XLNX_VART_FIRMWARE environment variable. However, explicitly passing the xclbin option in provider_options overrides the default setting.
+- By default, the Ryzen AI Conda environment automatically sets the standard binary for all inference sessions through the XLNX_VART_FIRMWARE environment variable. However, explicitly passing the xclbin option in provider_options overrides the default setting.
 
 The following code block from ``reset_cifar.cpp`` shows how ONNX Runtime is configured to deploy the model on the Ryzen AI NPU:
 
