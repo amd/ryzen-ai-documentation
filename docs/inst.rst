@@ -137,8 +137,6 @@ Ryzen AI Runtime installer is a lightweight installer. This installer cannot be 
   - Specify the name for the conda environment (default: ``ryzen-ai-rt-1.4.0``)
 
 
-To install runtime installer packages in a pre-existing conda environment, follow the :doc:`manual_installation` instructions.
-
 
 .. _driver-compatibility:
 
