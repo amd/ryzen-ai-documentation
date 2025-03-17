@@ -46,6 +46,13 @@ Download the model from Huggingface and convert to Onnx format
     python download_model.py --model_name "Alibaba-NLP/gte-large-en-v1.5" --output_dir "models"
 
 
+Downloaded model is converted to BF16 using Quark quantizer
+
+.. code-block::
+
+    python quark_quantize.py --model_path "models/model.onnx" --output_dir "models"
+
+
 The script creates a Session that calls VitisAIExecutionProvider to compile your model
 
 .. code-block::
