@@ -121,7 +121,7 @@ For example, for Llama-2-7b-chat:
 Run the models using C++
 @@@@@@@@@@@@@@@@@@@@@@@@
 
-**Note**: Ensure the models are cloned in the ``%RYZEN_AI_INSTALLATION_PATH%/npu-llm/libs`` folder.
+**Note**: Ensure the models are cloned in the ``%RYZEN_AI_INSTALLATION_PATH%/npu-llm`` folder.
 
 Run manually
 ************
