@@ -205,15 +205,10 @@ Deploy the Model on the Ryzen AI NPU
 
 To successfully run the model on the NPU, run the following setup steps:
 
-- Make sure to set the XLNX_VART_FIRMWARE environment variable based to your APU type. Refer to :ref:`runtime setup instructions <npu-configurations>` on how to do this.
-
 - Ensure ``RYZEN_AI_INSTALLATION_PATH`` points to ``path\to\ryzen-ai-sw-<version>\``. If you installed Ryzen-AI software using the MSI installer, this variable should already be set. Ensure that the Ryzen-AI software package has not been moved post installation, in which case ``RYZEN_AI_INSTALLATION_PATH`` will have to be set again. 
 
-- Copy the ``vaip_config.json`` runtime configuration file from the installation package to the current directory. The ``vaip_config.json`` is used by the source file ``predict.py`` to configure the Vitis AI Execution Provider.
-
-.. code-block:: bash 
-
-   xcopy %RYZEN_AI_INSTALLATION_PATH%\voe-4.0-win_amd64\vaip_config.json .
+.. note::
+   By default, the Ryzen AI Conda environment automatically sets the STX/KRK standard binary for all inference sessions through the XLNX_VART_FIRMWARE environment variable. However, explicitly passing the xclbin option in provider_options overrides the default setting.
 
 .. code-block::
 
@@ -228,9 +223,9 @@ To successfully run the model on the NPU, run the following setup steps:
      providers = ['VitisAIExecutionProvider']
      cache_dir = Path(__file__).parent.resolve()
      provider_options = [{
-                'config_file': 'vaip_config.json',
                 'cacheDir': str(cache_dir),
-                'cacheKey': 'modelcachekey'
+                'cacheKey': 'modelcachekey',
+                'xclbin': 'path/to/NPU binary (.xclbin)'
                 }]
 
   session = ort.InferenceSession(model.SerializeToString(), providers=providers,
