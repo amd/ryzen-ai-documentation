@@ -32,8 +32,8 @@ VAIML runs on RyzenAI 1.4 and using Strix Point AI PCs.
 
 - Please refer GTE model to better under the instructions below
 
-``Compiling model on Linux system``
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Compiling model on Linux system
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - Download the GTE model files in your local linux directory
 
@@ -63,8 +63,8 @@ Result:
 
     - However, there will be an error while attempting to run on NPU. Since Linux machines can only support Model compilation and not Model runtime, so please ignore the error.
 
-``Running Model on Windows system``
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Running Model on Windows system
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Once you have your GTE mnodel compiled on Linux system, copy the whole directory to a STX based Windows Machine
 
