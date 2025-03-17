@@ -76,7 +76,7 @@ For BF16 model compilation, a compilation configuration file must be provided th
         'cache_key': 'compiled_resnet50'
      }]
 
-Below is an example of a standard compilation configuration file:
+Below is an example of a standard BF16 model compilation configuration file:
 
 .. code-block::
 
@@ -279,7 +279,7 @@ Example Code:
    )
 
 
-**Note**: When compiling with encryptionKey, ensure that any existing cache directory (either the default cache directory or the directory specified by the ``cache_dir`` provider option) is deleted before running the compilation.
+**Note**: When compiling with encryptionKey, ensure that any existing cache directory (either the default cache directory or the directory specified by the ``cache_dir`` provider option) is deleted before compiling.
 
 |
 
