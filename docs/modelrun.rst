@@ -60,7 +60,7 @@ In the example above, the cache directory is set to the absolute path of the fol
 
 .. code-block::
 
-    set XLNX_ENABLE_CACHE=
+    set XLNX_ENABLE_CACHE=1
 
 
 Compilation Configuration File for BF16 Models
