@@ -25,7 +25,7 @@ Examples/Tutorials
 - `AMD Quark Tutorial <https://github.com/amd/RyzenAI-SW/tree/main/tutorial/quark_quantization>`_ for Ryzen AI Deployment
 - Running INT8 model on NPU using :doc:`Getting Started Tutorial <getstartex>`
 - Advanced quantization techniques `Fast Finetuning and Cross Layer Equalization <https://gitenterprise.xilinx.com/VitisAI/RyzenAI-SW/blob/dev/tutorial/quark_quantization/docs/advanced_quant_readme.md>`_ for INT8 model
-- `Image Classification <https://github.com/amd/RyzenAI-SW/tree/main/example/image_classification>`_, `GTE <https://github.com/amd/RyzenAI-SW/tree/main/example/GTE>`_ example running BF16 model on NPU
+- `Image Classification <https://github.com/amd/RyzenAI-SW/tree/main/example/image_classification>`_, `GTE <https://github.com/amd/RyzenAI-SW/tree/main/example/GTE>`_ examples run BF16 models on NPU
 - Advanced quantization techniques `Fast Finetuning <https://quark.docs.amd.com/latest/supported_accelerators/ryzenai/tutorial_convert_fp32_or_fp16_to_bf16.html>`_ for BF16 models.
 
 For comprehensive AMD Quark Documentation for Ryzen AI please refer to https://quark.docs.amd.com/latest/supported_accelerators/ryzenai/index.html
