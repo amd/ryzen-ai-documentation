@@ -123,10 +123,10 @@ BF16 models (CNN or Transformer) require processing power in terms of core count
 
 
 
-Runtime Installer
-~~~~~~~~~~~~~~~~~
+Lightweight Installer
+~~~~~~~~~~~~~~~~~~~~~
 
-Ryzen AI Runtime installer is a lightweight installer. This installer cannot be used for compiling bf16 models. However, this installer is fully capable of running LLM using OGA.
+A lightweight installer is available with reduced features. It cannot be used for compiling BF16 models but fully supports compiling and running INT8 models and running LLM models.
 
 - Download the RyzenAI Software Runtime MSI installer :download:`ryzen-ai-rt-1.4.0-ea.msi <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=ryzen-ai-rt-1.4.0-ea.msi>`.
 
@@ -154,7 +154,10 @@ The table below summarizes the driver requirements for the different versions of
 
    * - VitisAI EP version
      - Minimum NPU Driver version
-     - Maximum NPU Driver release date 
+     - Maximum NPU Driver release date
+   * - 1.4
+     - 32.0.203.257
+     - March 25th, 2028
    * - 1.3.1
      - 32.0.201.242
      - January 17th, 2028
