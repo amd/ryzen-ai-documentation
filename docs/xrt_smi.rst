@@ -118,52 +118,55 @@ Sample Command Line Output::
 
 Sample JSON Output::
 
+
     {
-        "schema_version": {
-            "schema": "JSON",
-            "creation_date": "Tue Nov  5 16:34:17 2024 GMT"
-        },
-        "system": {
-            "host": {
-                "os": {
-                    "sysname": "Windows NT",
-                    "release": "26100",
-                    "machine": "x86_64",
-                    "distribution": "Microsoft Windows 11 Pro",
-                    "model": "BIRMANPLUS",
-                    "hostname": "XSJSTRIX23",
-                    "memory_bytes": "0x7d6e0a000",
-                    "cores": "24",
-                    "bios_vendor": "AMD",
-                    "bios_version": "TXB1001C"
-                },
-                "xrt": {
-                    "version": "2.18.0",
-                    "branch": "HEAD",
-                    "hash": "090e3faccd90abd21e59a4edbf7ed9d9c1016d0b",
-                    "build_date": "2024-10-30 19:53:17",
-                    "drivers": [
-                        {
-                            "name": "NPU Driver",
-                            "version": "32.0.203.237"
-                        }
-                    ]
-                },
-                "devices": [
+    "schema_version": {
+        "schema": "JSON",
+        "creation_date": "Tue Mar 18 22:43:38 2025 GMT"
+    },
+    "system": {
+        "host": {
+            "os": {
+                "sysname": "Windows NT",
+                "release": "26100",
+                "machine": "x86_64",
+                "distribution": "Microsoft Windows 11 Enterprise",
+                "model": "HP OmniBook Ultra Laptop 14-fd0xxx",
+                "hostname": "XCOUDAYD02",
+                "memory_bytes": "0x7d3f62000",
+                "cores": "20",
+                "bios_vendor": "HP",
+                "bios_version": "W81 Ver. 01.01.14"
+            },
+            "xrt": {
+                "version": "2.19.0",
+                "branch": "HEAD",
+                "hash": "f62307ddadf65b54acbed420a9f0edc415fefafc",
+                "build_date": "2025-03-12 16:34:48",
+                "drivers": [
                     {
-                        "bdf": "00c5:00:01.1",
-                        "device_class": "Ryzen",
-                        "name": "NPU",
-                        "id": "0x0",
-                        "firmware_version": "1.0.0.61",
-                        "instance": "mgmt(inst=1)",
-                        "is_ready": "true"
+                        "name": "NPU Driver",
+                        "version": "32.0.203.257"
                     }
                 ]
-            }
+            },
+            "devices": [
+                {
+                    "bdf": "00c4:00:01.1",
+                    "device_class": "Ryzen",
+                    "name": "NPU Strix",
+                    "id": "0x0",
+                    "firmware_version": "1.0.7.97",
+                    "instance": "mgmt(inst=1)",
+                    "is_ready": "true"
+                }
+            ]
         }
+      }
     }
 
+
+    
 
 Platform Information
 ====================
