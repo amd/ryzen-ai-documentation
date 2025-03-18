@@ -237,14 +237,6 @@ The OGA-based NPU-only execution mode is supported on STX and KRK platforms.
 To get started with the OGA-based NPU-only execution mode, follow these instructions :doc:`../npu_oga`.
 
 
-PyTorch-based Flow
-==================
-
-An experimental flow based on PyTorch is available here: https://github.com/amd/RyzenAI-SW/blob/main/example/transformers/models/llm/docs/README.md 
-
-This flow provides functional support for a broad set of LLMs. It is intended for prototyping and experimental purposes only. It is not optimized for performance and it should not be used for benchmarking. 
-
-The Pytorch-based flow is supported on PHX, HPT and STX platforms.
 
 
 ..
