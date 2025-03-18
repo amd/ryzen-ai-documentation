@@ -21,9 +21,9 @@ NPU
 
 - New BF16 Model examples: 
 
-  - `Image Classification <https://github.com/amd/RyzenAI-SW/tree/main/example/image_classification>`_, 
+  - `Image Classification <https://github.com/amd/RyzenAI-SW/tree/main/example/image_classification>`_
+  - `Finetuned DistilBERT for Text Classification <https://github.com/amd/RyzenAI-SW/tree/main/example/DistilBERT_text_classification_bf16>`_ 
   - `Text Embedding Model Alibaba-NLP/gte-large-en-v1.5  <https://github.com/amd/RyzenAI-SW/tree/main/example/GTE>`_ 
-  - `Finetuned DistilBERT for text classification <https://github.com/amd/RyzenAI-SW/tree/main/example/DistilBERT_text_classification_bf16>`_ 
 
 iGPU
 ~~~~
