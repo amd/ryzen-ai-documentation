@@ -218,13 +218,9 @@ Data collection details:
 * We assign the 🟢 validation score based on this criteria: all commands in the example guide ran successfully.
 
 
-******************
-Alternate Flows
-******************
-
-.. note::
-   
-   The alternate flows for LLMs described below are currently in the Early Access stage. Early Access features are features which are still undergoing some optimization and fine-tuning. These features are not in their final form and may change as we continue to work in order to mature them into full-fledged features.
+**************
+Alternate Flow
+**************
 
 
 OGA-based Flow with NPU-only Execution
