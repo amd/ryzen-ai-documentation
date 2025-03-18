@@ -258,20 +258,14 @@ xrt-smi validate
 Executing a Sanity Check on the NPU
 ===================================
 
-Runs a set of built-in NPU sanity tests which includes verify, df-bw, tct and gemm.
+Runs a set of built-in NPU sanity tests which includes latency, throughput, and gemm.
 
 Note: All tests are run in performance mode.
 
 - ``latency`` - this test executes a no-op control code and measures the end-to-end latency on all columns
 - ``throughput`` - this test loops back the input data from DDR through a MM2S Shim DMA channel back to DDR through a S2MM Shim DMA channel. The data movement within the AIE array follows the lowest latency path i.e. movement is restricted to just the Shim tile.
-- ``cmd-chain-latency`` - this runs the same latency test as above but uses command chaining APIs
-- ``cmd-chain-throughput`` - this runs the same throughout test as above but uses command chaining APIs
-- ``tct-one-col`` - This test runs a control code with one time DMA bd config and 10K transfer iterations with token_check on one column. It then measures the average time that NPU takes to receive TCT (Task Completion Token)
-- ``tct-all-col`` - This test runs a similar DPU sequence as tct-one-col on multiple concurrent contexts on different columns, It measures the of concurrent TCT processing.
 - ``gemm`` - An INT8 GeMM kernel is deployed on all 32 cores by the application. Each core is storing cycle count in the core data memory. The cycle count is read by the firmware. The TOPS application uses the "XBUTIL" tool to capture the IPUHCLK while the workload runs. Once all cores are executed, the cycle count from all cores will be synced back to the host. Finally, the application uses IPUHCLK, core cycle count, and GeMM kernel size to calculate the TOPS. This is a full array test and it should not be run while another workload is running. **NOTE**: This command is not supported on PHX and HPT NPUs.
-- ``aie-reconfig-overhead`` - This test runs a DPU sequence which configures the NPU array. This test calculates the overhead for this reconfiguration.
-- ``spatial-sharing-overhead`` - This test calculates the time overhead it takes for context switching when a workload runs through spatial-sharing of AIE columns. This is the case, where a workload has exclusive ownership of the partition. No other workload can execute on that partition.
-- ``temporal-sharing-overhead`` - This test calculates the time overhead it takes for context switching when a workload runs through temporal sharing of AIE columns. This is the case, where multiple workloads share the same partition. When a workload is executing on the partition, no other workload sharing the same partition can be scheduled.
+- ``all`` - All applicable validate tests will be executed (default)
 
 
 .. code-block:: shell
