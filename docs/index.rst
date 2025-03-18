@@ -81,6 +81,7 @@ For more details, refer to the :doc:`modelrun` page.
    llm/high_level_python.rst
    llm/server_interface.rst
    hybrid_oga.rst
+   oga_model_prepare.rst
 
 .. toctree::
    :maxdepth: 1
