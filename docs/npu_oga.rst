@@ -4,7 +4,11 @@
 OGA NPU Execution Mode
 ######################
 
-Ryzen AI Software supports deploying LLMs on Ryzen AI PCs using the native ONNX Runtime Generate (OGA) C++ or Python API. The OGA API is the lowest-level API available for building LLM applications on a Ryzen AI PC. This documentation covers the NPU execution mode for LLMs, which utilizes only the NPU (refer to :doc:`hybrid_oga` for NPU and GPU Hybrid execution mode).  
+Ryzen AI Software supports deploying LLMs on Ryzen AI PCs using the native ONNX Runtime Generate (OGA) C++ or Python API. The OGA API is the lowest-level API available for building LLM applications on a Ryzen AI PC. This documentation covers the NPU execution mode for LLMs, which utilizes only the NPU.  
+
+**Note**: Refer to :doc:`hybrid_oga` for NPU only execution mode.
+
+
 
 Supported Configurations
 ~~~~~~~~~~~~~~~~~~~~~~~~
