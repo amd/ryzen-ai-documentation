@@ -6,7 +6,7 @@ Overview
 OGA-based Flow with Hybrid Execution
 ************************************
 
-Ryzen AI Software is the best way to deploy quantized 4-bit LLMs on Ryzen AI 300-series PCs. This solution uses a hybrid execution mode, which leverages both the NPU and integrated GPU (iGPU), and is built on the OnnxRuntime GenAI (OGA) framework. 
+Ryzen AI Software supports deploying quantized 4-bit LLMs on Ryzen AI 300-series PCs. This solution uses a hybrid execution mode, which leverages both the NPU and integrated GPU (iGPU), and is built on the OnnxRuntime GenAI (OGA) framework. 
 
 Hybrid execution mode optimally partitions the model such that different operations are scheduled on NPU vs. iGPU. This minimizes time-to-first-token (TTFT) in the prefill-phase and maximizes token generation (tokens per second, TPS) in the decode phase.
 
