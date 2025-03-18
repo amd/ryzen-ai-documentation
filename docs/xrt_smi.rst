@@ -62,8 +62,6 @@ Overview of Key Commands
      - performance mode, power
    * - examine --report aie-partitions 
      - hw contexts
-   * - examine --report telemetry  
-     - opcode trace (Strix NPU) or stream buffer tokens (Phoenix NPU)
    * - validate --run latency  
      - latency test
    * - validate --run throughput   
@@ -78,7 +76,7 @@ Overview of Key Commands
      - set performance mode
 
 
-|memo| **NOTE**: The ``examine --report aie-partition`` and ``examine --report telemetry`` commands report runtime information. These commands should be used when a model is running on the NPU. You can run these commands in a loop to see live updates of the reported data.
+|memo| **NOTE**: The ``examine --report aie-partition`` report runtime information. These commands should be used when a model is running on the NPU. You can run these commands in a loop to see live updates of the reported data.
 
 
 *******************************
@@ -250,68 +248,7 @@ Sample Command Line Output::
       |3       ||[1]              |
 
 
-Telemetry
-=========
 
-Reports details about the ctrlcode opcode trace (on Strix NPU) or stream buffer tokens (on Phoenix NPU).
-
-.. code-block:: shell
-
-    xrt-smi examine -r telemetry
-  
-Sample Command Line Output on a STX NPU::
-
-    ---------------------
-    [00c5:00:01.1] : NPU
-    ---------------------
-    Telemetry
-      |Mailbox Opcode  |Count  |
-      |----------------|-------|
-      |0               |264    |
-      |1               |4      |
-      |2               |266    |
-      |3               |266    |
-      |4               |266    |
-      |5               |2      |
-      |6               |262    |
-      |7               |264    |
-      |8               |3      |
-      |9               |266    |
-      |10              |266    |
-      |11              |266    |
-      |12              |266    |
-      |13              |257    |
-      |14              |257    |
-      |15              |0      |
-      |16              |0      |
-      |17              |0      |
-      |18              |0      |
-      |19              |0      |
-      |20              |0      |
-      |21              |0      |
-      |22              |0      |
-      |23              |0      |
-      |24              |0      |
-      |25              |0      |
-      |26              |0      |
-      |27              |0      |
-      |28              |0      |
-      |29              |0      |
-
-
-
-Sample Command Line Output on a PHX NPU::
-
-    ---------------------
-    [00c3:00:01.1] : NPU
-    ---------------------
-    Telemetry
-      |Stream Buffer  |Tokens  |
-      |---------------|--------|
-      |0              |194     |
-      |1              |194     |
-      |2              |194     |
-      |3              |194     |
 
 
 *******************************
