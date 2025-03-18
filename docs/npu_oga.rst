@@ -35,8 +35,6 @@ Pre-optimized Models
 
 AMD provides a set of pre-optimized LLMs ready to be deployed with Ryzen AI Software and the supporting runtime for NPU execution. These models can be found on Hugging Face in the following collection:
 
-https://huggingface.co/collections/amd/quark-awq-g128-int4-asym-bf16-onnx-npu-13-6759f510b8132db53e044aaf
-
 - https://huggingface.co/amd/Phi-3-mini-4k-instruct-awq-g128-int4-asym-bf16-onnx-ryzen-strix
 - https://huggingface.co/amd/Phi-3.5-mini-instruct-awq-g128-int4-asym-bf16-onnx-ryzen-strix
 - https://huggingface.co/amd/Mistral-7B-Instruct-v0.3-awq-g128-int4-asym-bf16-onnx-ryzen-strix
@@ -48,6 +46,10 @@ https://huggingface.co/collections/amd/quark-awq-g128-int4-asym-bf16-onnx-npu-13
 - https://huggingface.co/amd/Llama-3.1-8B-awq-g128-int4-asym-bf16-onnx-ryzen-strix
 - https://huggingface.co/amd/Llama-3.2-1B-Instruct-awq-g128-int4-asym-bf16-onnx-ryzen-strix
 - https://huggingface.co/amd/Llama-3.2-3B-Instruct-awq-g128-int4-asym-bf16-onnx-ryzen-strix
+- https://huggingface.co/amd/DeepSeek-R1-Distill-Llama-8B-awq-g128-int4-asym-bf16-onnx-ryzen-strix	
+- https://huggingface.co/amd/DeepSeek-R1-Distill-Qwen-1.5B-awq-g128-int4-asym-bf16-onnx-ryzen-strix	
+- https://huggingface.co/amd/DeepSeek-R1-Distill-Qwen-7B-awq-g128-int4-asym-bf16-onnx-ryzen-strix	
+- https://huggingface.co/amd/AMD-OLMo-1B-SFT-DPO-awq-g128-int4-asym-bf16-onnx-ryzen-strix
 
 The steps for deploying the pre-optimized models using C++ and python are described in the following sections.
 
