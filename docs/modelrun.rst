@@ -122,13 +122,6 @@ By default, the compiler vectorizes the data to optimize performance for CNN mod
     "vaiml_config": {"preferred_data_storage": "unvectorized"}
 
 
-**Compiling BF16 Models on Windows**
-
-To enable compilation on Windows, add:
-
-.. code-block::
-
-     "vaiml_config": {"experiment_features": ["CompileOnWindows"]}
 
 
 Setting NPU Configuration for INT8 Models
