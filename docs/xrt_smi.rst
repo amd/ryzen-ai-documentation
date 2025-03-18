@@ -90,29 +90,31 @@ Reports OS/system information of the AI PC and confirm the presence of the AMD N
 
 Sample Command Line Output::
 
+
     System Configuration
       OS Name              : Windows NT
       Release              : 26100
       Machine              : x86_64
-      CPU Cores            : 16
-      Memory               : 64879 MB
-      Distribution         : Microsoft Windows 11 Pro
-      Model                : KoratPlus-KRK
-      BIOS Vendor          : AMD
-      BIOS Version         : WXC4A30N
-     
+      CPU Cores            : 20
+      Memory               : 32063 MB
+      Distribution         : Microsoft Windows 11 Enterprise
+      Model                : HP OmniBook Ultra Laptop 14-fd0xxx
+      BIOS Vendor          : HP
+      BIOS Version         : W81 Ver. 01.01.14
+
     XRT
       Version              : 2.19.0
       Branch               : HEAD
-      Hash                 : 090e3faccd90abd21e59a4edbf7ed9d9c1016d0b
-      Hash Date            : 2024-11-08 19:54:53
-      NPU Driver Version   : 32.0.203.237
-      NPU Firmware Version : 1.0.0.63
-     
+      Hash                 : f62307ddadf65b54acbed420a9f0edc415fefafc
+      Hash Date            : 2025-03-12 16:34:48
+      NPU Driver Version   : 32.0.203.257
+      NPU Firmware Version : 1.0.7.97
+
     Device(s) Present
-    |BDF             |Name  |
-    |----------------|------|
-    |[00c5:00:01.1]  |NPU   |
+    |BDF             |Name       |
+    |----------------|-----------|
+    |[00c4:00:01.1]  |NPU Strix  |
+    
 
 Sample JSON Output::
 
