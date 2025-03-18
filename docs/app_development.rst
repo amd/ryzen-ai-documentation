@@ -43,8 +43,8 @@ A C++ application built on the Ryzen AI ONNX Runtime requires the following comp
 
 - Runtime DLLs from the Ryzen AI installation area (Installed by the full installer)
 
-  - For INT8, BF16 Models include DLLs from `C:\Program Files\RyzenAI\<version>\deployment\voe` 
-  - For LLM include DLLs from `C:\Program Files\RyzenAI\<version>\deployment\npu-llm` and `C:\Program Files\RyzenAI\<version>\deployment\hybrid-llm` 
+  - For INT8, BF16 Models include DLLs from ``C:\Program Files\RyzenAI\<version>\deployment\voe`` 
+  - For LLM include DLLs from ``C:\Program Files\RyzenAI\<version>\deployment\npu-llm`` and ``C:\Program Files\RyzenAI\<version>\deployment\hybrid-llm`` 
 - NPU Binary files (XCLBIN) for INT8 Models.
 - Vitis AI Execution Provider Configuration File: ``vaip_config.json`` for bf16 models
 - Pre-compiled models: From the Vitis AI EP cache folder or using Onnx Runtime EP context model 
