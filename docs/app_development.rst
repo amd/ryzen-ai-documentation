@@ -41,20 +41,17 @@ Application Packaging Requirements
 
 A C++ application built on the Ryzen AI ONNX Runtime requires the following components to be included in its distribution package:
 
-- Runtime DLLs (located inside ``%RYZEN_AI_INSTALLATION_PATH%/onnxruntime/bin``):
+- Runtime DLLs from the Ryzen AI installation area (Installed by the full installer)
 
-  - ``onnxruntime.dll``
-  - ``onnxruntime_providers_shared.dll``
-  - ``onnxruntime_providers_vitisai.dll``
-  - ``onnxruntime_vitisai_ep.dll``
-  - ``DirectML.dll``
-- NPU Binary files (XCLBIN) to be used with the ``XLNX_VART_FIRMWARE`` environment variable.
-- Vitis AI Execution Provider Configuration File: ``vaip_config.json``
+  - For INT8, BF16 Models include DLLs from `C:\Program Files\RyzenAI\<version>\deployment\voe` 
+  - For LLM include DLLs from `C:\Program Files\RyzenAI\<version>\deployment\npu-llm` and `C:\Program Files\RyzenAI\<version>\deployment\hybrid-llm` 
+- NPU Binary files (XCLBIN) for INT8 Models.
+- Vitis AI Execution Provider Configuration File: ``vaip_config.json`` for bf16 models
+- Pre-compiled models: From the Vitis AI EP cache folder or using Onnx Runtime EP context model 
 
 
-The following components can be optionally included in the distribution package:
 
-- Vitis AI Execution Provider cache folder: containing pre-compiled models
+
 
 ..
   ------------
