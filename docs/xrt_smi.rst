@@ -281,58 +281,26 @@ Note: All tests are run in performance mode.
 |memo| **NOTE**: Some sanity checks may fail if other applications (for example MEP, Microsoft Experience Package) are also using the NPU. 
 
 Sample Command Line Output::
-    
-    Validate Device           : [00c5:00:01.1]
-        Platform              : NPU
-        Power Mode            : Performance
+
+
+    Validate Device           : [00c4:00:01.1]
+       Platform              : NPU Strix
+       Power Mode            : Performance
     -------------------------------------------------------------------------------
-    Test 1 [00c5:00:01.1]     : latency
-        Details               : Average latency: 79.8 us
-        Test Status           : [PASSED]
+    Test 1 [00c4:00:01.1]     : gemm
+       Details               : TOPS: 51.3
+       Test Status           : [PASSED]
     -------------------------------------------------------------------------------
-    Test 2 [00c5:00:01.1]     : throughput
-        Details               : Average throughput: 62169.1 ops
-        Test Status           : [PASSED]
+    Test 2 [00c4:00:01.1]     : latency
+       Details               : Average latency: 84.2 us
+       Test Status           : [PASSED]
     -------------------------------------------------------------------------------
-    Test 3 [00c5:00:01.1]     : cmd-chain-latency
-        Details               : Average latency: 18.7 us
-        Test Status           : [PASSED]
-    -------------------------------------------------------------------------------
-    Test 4 [00c5:00:01.1]     : cmd-chain-throughput
-        Details               : Average throughput: 50869.4 ops
-        Test Status           : [PASSED]
-    -------------------------------------------------------------------------------
-    Test 5 [00c5:00:01.1]     : df-bw
-        Details               : Average bandwidth per shim DMA: 47.1 GB/s
-        Test Status           : [PASSED]
-    -------------------------------------------------------------------------------
-    Test 6 [00c5:00:01.1]     : tct-one-col
-        Details               : Average TCT throughput: 374708.7 TCT/s
-        Test Status           : [PASSED]
-    -------------------------------------------------------------------------------
-    Test 7 [00c5:00:01.1]     : tct-all-col
-        Details               : Average TCT throughput: 749150.7 TCT/s
-        Test Status           : [PASSED]
-    -------------------------------------------------------------------------------
-    Test 8 [00c5:00:01.1]     : gemm
-        Details               : Kernel name is 'DPU_1x4'
-                                TOPS: 51.3
-        Test Status           : [PASSED]
-    -------------------------------------------------------------------------------
-    Test 9 [00c5:00:01.1]     : aie-reconfig-overhead
-        Details               : Array reconfiguration overhead: 3.8 ms
-        Test Status           : [PASSED]
-    -------------------------------------------------------------------------------
-    Test 10 [00c5:00:01.1]    : spatial-sharing-overhead
-        Details               : Overhead: 1543.8 ms
-        Test Status           : [PASSED]
-    -------------------------------------------------------------------------------
-    Test 11 [00c5:00:01.1]    : temporal-sharing-overhead
-        Details               : Overhead: '4614.7' ms
-        Test Status           : [PASSED]
+    Test 3 [00c4:00:01.1]     : throughput
+       Details               : Average throughput: 59891.0 ops
+       Test Status           : [PASSED]
     -------------------------------------------------------------------------------
     Validation completed. Please run the command '--verbose' option for more details
-
+    
 *******************************
 xrt-smi configure
 *******************************
