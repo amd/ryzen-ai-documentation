@@ -19,7 +19,11 @@ NPU
 
 - `Hello World Jupyter Notebook Tutorial <https://github.com/amd/RyzenAI-SW/tree/main/tutorial/hello_world>`_
 
-- `Image Classification <https://github.com/amd/RyzenAI-SW/tree/main/example/image_classification>`_, `GTE <https://github.com/amd/RyzenAI-SW/tree/main/example/GTE>`_ examples for BF16 models
+- New BF16 Model examples: 
+
+   - `Image Classification <https://github.com/amd/RyzenAI-SW/tree/main/example/image_classification>`_, 
+   - `Text Embedding Model Alibaba-NLP/gte-large-en-v1.5  <https://github.com/amd/RyzenAI-SW/tree/main/example/GTE>`_ 
+   - `Finetuned DistilBERT for text classification <https://github.com/amd/RyzenAI-SW/tree/main/example/DistilBERT_text_classification_bf16>` 
 
 iGPU
 ~~~~
