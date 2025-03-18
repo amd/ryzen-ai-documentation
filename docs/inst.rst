@@ -43,14 +43,14 @@ The following dependencies must be present on the system before installing the R
 Install NPU Drivers
 *******************
 
-- Download the NPU driver installation package :download:`NPU Driver <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=NPU_RAI1.4_EA_255_WHQL.zip >`
+- Download the NPU driver installation package :download:`NPU Driver <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=NPU_RAI1.4_GA_257_WHQL.zip>`
 
 - Install the NPU drivers by following these steps:
 
-  - Extract the downloaded ``NPU_RAI1.4.zip`` zip file.
+  - Extract the downloaded ``NPU_RAI1.4_GA_257_WHQL.zip`` zip file.
   - Open a terminal in administrator mode and execute the ``.\npu_sw_installer.exe`` exe file.
 
-- Ensure that NPU MCDM driver (Version:32.0.203.255, Date:02/20/2025) is correctly installed by opening ``Device Manager`` -> ``Neural processors`` -> ``NPU Compute Accelerator Device``.
+- Ensure that NPU MCDM driver (Version:32.0.203.257, Date:3/12/2025) is correctly installed by opening ``Device Manager`` -> ``Neural processors`` -> ``NPU Compute Accelerator Device``.
 
 
 .. _install-bundled:
