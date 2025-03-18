@@ -68,10 +68,6 @@ Overview of Key Commands
      - throughput test
    * - validate --run gemm
      - INT8 GEMM test TOPS. This is a full array test and it should not be run while another workload is running. **NOTE**: This command is not supported on PHX and HPT NPUs.
-   * - validate --run aie-reconfig-overhead
-     - NPU array reconfiguration overhead
-   * - validate --run quick    
-     - runs a small test suite
    * - configure --pmode <mode>    
      - set performance mode
 
