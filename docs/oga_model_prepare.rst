@@ -70,30 +70,19 @@ The quantized model is generated in the <quantized safetensor output dir> folder
 
 Postprocess
 ~~~~~~~~~~~
-Copy the quantized model generated in the previous step to the RyzenAI system where you will be running the model for post-processing.
 
-Setup
-*****
-
-Activate Ryzen-AI 1.4 environment
-
-.. code-block:: 
-
-    conda activate ryzen-ai-1.4.0
-
-
-Generate Final Model
-********************
-
-To generate final model use the command below
+Copy the quantized model to the Windows PC with Ryzen AI installed, activate the Ryzen AI Conda environment, and execute ``model_generate`` command to generate the final model
 
 .. code-block::
 
+   conda activate ryzen-ai-<version>
+
    # Generate Hybrid execution mode model
-   model_generate --hybrid <output_dir> <quantized_model_path>
+   model_generate --hybrid <output_dir> <quantized_model_path>  
 
    # Generate NPU execution mode model
-   model_generate --npu <output_dir> <quantized_model_path>
+   model_generate --npu <output_dir> <quantized_model_path>  
+
 
 
 
