@@ -21,9 +21,9 @@ The application should only use the Vitis AI Execution Provider if the following
 
 |memo| **NOTE**: Sample C++ code implementing the compatibility checks to be performed before using the VitisAI EP is provided here: https://github.com/amd/RyzenAI-SW/tree/main/utilities/npu_check
 
-The application is responsible for setting the NPU configuration (set the XLNX_VART_FIRMWARE environment variable) correctly according to the APU type.
+The application should use XCLBIN file (through ``xclbin`` provider option) correctly according to the APU type (for INT8 models)
 
-The application should use the Vitis AI EP with the corresponding configuration file (``vaip_config.json``) taken from the same Ryzen AI Software release package. The Vitis AI EP should not be used with a configuration file coming from a different version of the Ryzen AI Software. 
+The application should use ``vaip_config.json`` which was used to compile BF16 model (for bf16 models). 
 
 
 Cache Management
