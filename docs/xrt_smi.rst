@@ -179,11 +179,11 @@ Reports more detailed information about the NPU, such as the performance mode an
 
 Sample Command Line Output::
 
-    ---------------------
-    [00c5:00:01.1] : NPU
-    ---------------------
+    --------------------------
+    [00c5:00:01.1] : NPU Strix
+    --------------------------
     Platform
-      Name                   : NPU
+      Name                   : NPU Strix
       Performance Mode       : Default
      
     Power                  : 1.277 Watts
@@ -201,11 +201,10 @@ Reports details about the NPU partition and column occupancy on the NPU.
 
 Sample Command Line Output::
 
-    ---------------------
-    [00c5:00:01.1] : NPU
-    ---------------------
+    --------------------------
+    [00c5:00:01.1] : NPU Strix
+    --------------------------
     AIE Partitions
-    Total Column Utilization: 50%
       Partition Index: 0
         Columns: [0, 1, 2, 3]
         HW Contexts:
@@ -228,11 +227,10 @@ Sample Command Line Output::
     Verbose: Enabling Verbosity
     Verbose: SubCommand: examine
      
-    ---------------------
-    [00c5:00:01.1] : NPU
-    ---------------------
+    --------------------------
+    [00c5:00:01.1] : NPU Strix
+    --------------------------
     AIE Partitions
-    Total Column Utilization: 50%
       Partition Index: 0
         Columns: [0, 1, 2, 3]
         HW Contexts:
