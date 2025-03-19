@@ -33,14 +33,14 @@ Setup
      pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm6.1
      python -c "import torch; print(torch.cuda.is_available())" # Must return `True`
 
-3. Download :download:`Quark 0.8.0 <https://www.xilinx.com/bin/public/openDownload?filename=amd_quark-0.8rc4.zip>` and unzip the archive
+3. Download :download:`AMD Quark 0.8 <https://www.xilinx.com/bin/public/openDownload?filename=amd_quark-0.8.zip>` and unzip the archive
 
 4. Install Quark: 
 
 .. code-block::
 
-     cd <extracted quark 0.8.0>
-     pip install quark-0.8.0+<>.whl
+     cd <extracted amd quark 0.8>
+     pip install amd_quark-0.8+<>.whl
 
 Generate Quantized Model
 ************************
