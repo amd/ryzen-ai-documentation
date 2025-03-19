@@ -196,7 +196,7 @@ In the example above, the cache directory is set to the absolute path of the fol
 
 
 Cache Encryption
-****************
+~~~~~~~~~~~~~~~~
 
 To protect developers’ intellectual property, encryption is supported as a provider option. With this enabled, all the compiled models generated are encrypted using AES256. To enable encryption, you need to pass the encryption key through the VAI EP options as follows:
 
