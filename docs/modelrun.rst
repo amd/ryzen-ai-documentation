@@ -22,11 +22,25 @@ Quantized models are compiled for the NPU when an ONNX inference session is crea
                                             provider_options = provider_options)
 
 
-The ``provider_options`` parameter allows passing compile-specific options for the Vitis AI Execution Provider (VAI EP). Below, we review three important options:
+The ``provider_options`` parameter allows passing compile-specific options for the Vitis AI Execution Provider (VAI EP). Below are some commonly used options:
 
-- **Caching the Compiled Model** – Applicable for both INT8 and BF16 models. 
-- **Passing a Compilation Configuration File** – Applicable only for BF16 models. 
-- **Setting NPU Configuration** – Applicable only for INT8 models. 
+.. list-table:: 
+   :widths: 20 35
+   :header-rows: 1
+
+   * - Options
+     - Description 
+   * - config_file
+     - Configuration file to pass certain compile-specific options, used for BF16 compilation.
+   * - xclbin
+     - NPU binary file to specify NPU configuration, used for INT8 models.
+   * - cache_dir / cache_key
+     - Specifies the cache folder for storing the compiled model.
+   * - encryptionKey
+     - Used for generating an encrypted compiled model.
+
+Detailed usage of these options is discussed in the subsequent section of this page.
+
 
 Caching the Compiled Model
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
