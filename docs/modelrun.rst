@@ -42,43 +42,10 @@ The ``provider_options`` parameter allows passing compile-specific options for t
 Detailed usage of these options is discussed in the subsequent section of this page.
 
 
-Caching the Compiled Model
+
+
+Compilation of BF16 models
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Model compilation can take some time depending on the model's complexity. However, once compiled, the model is saved in the cache directory. Any subsequent execution of the ONNX Runtime script will load the precompiled model from this cache directory, reducing session creation time.
-
-To specify a model cache folder, it is recommended to use the ``cache_dir`` and ``cache_key`` provider options. Example:
-
-.. code-block::
-
-   from pathlib import Path  
-
-   providers = ['VitisAIExecutionProvider']  
-   cache_dir = Path(__file__).parent.resolve()  
-   provider_options = [{'cache_dir': str(cache_dir),  
-                        'cache_key': 'compiled_resnet50'}]  
-
-   session = ort.InferenceSession(model.SerializeToString(),  
-                                  providers=providers,  
-                                  provider_options=provider_options)  
-
-
-In the example above, the cache directory is set to the absolute path of the folder containing the ONNX Runtime script being executed. Once the session is created, the compiled model is saved inside a subdirectory named `compiled_resnet50` within the specified cache folder.
-
-**Note**: In the current release, if ``cache_dir`` is not set, the default cache location varies depending on the input model:
-
-- INT8 models: Cached in ``C:\temp\{user}\vaip\.cache``
-- BF16 models: Cached in the current directory where the ONNX Runtime script is executed.
-
-**Note**: To force recompilation and ignore the cached model, unset the ``XLNX_ENABLE_CACHE`` environment variable before running the script:
-
-.. code-block::
-
-    set XLNX_ENABLE_CACHE=
-
-
-Compilation Configuration File for BF16 Models
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 For BF16 model compilation, a compilation configuration file must be provided through the ``config_file`` option in provider_options.
 
@@ -138,8 +105,8 @@ By default, the compiler vectorizes the data to optimize performance for CNN mod
 
 
 
-Setting NPU Configuration for INT8 Models
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Compilation of INT8 models
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In the current version of the Ryzen AI software, INT8 models require additional NPU configuration via the ``xclbin`` provider option. This configuration is not required for BF16 models.
 
@@ -197,6 +164,42 @@ Up to eight simultaneous inference sessions can be run on the NPU. The runtime a
 The performance of individual inference sessions is impacted by multiple factors, including the APU type, the NPU configuration used, the number of other inference sessions running on the NPU, and the applications running the inference sessions.
 
 |
+
+Caching the Compiled Model
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Model compilation can take some time depending on the model's complexity. However, once compiled, the model is saved in the cache directory. Any subsequent execution of the ONNX Runtime script will load the precompiled model from this cache directory, reducing session creation time.
+
+To specify a model cache folder, it is recommended to use the ``cache_dir`` and ``cache_key`` provider options. Example:
+
+.. code-block::
+
+   from pathlib import Path  
+
+   providers = ['VitisAIExecutionProvider']  
+   cache_dir = Path(__file__).parent.resolve()  
+   provider_options = [{'cache_dir': str(cache_dir),  
+                        'cache_key': 'compiled_resnet50'}]  
+
+   session = ort.InferenceSession(model.SerializeToString(),  
+                                  providers=providers,  
+                                  provider_options=provider_options)  
+
+
+In the example above, the cache directory is set to the absolute path of the folder containing the ONNX Runtime script being executed. Once the session is created, the compiled model is saved inside a subdirectory named `compiled_resnet50` within the specified cache folder.
+
+**Note**: In the current release, if ``cache_dir`` is not set, the default cache location varies depending on the input model:
+
+- INT8 models: Cached in ``C:\temp\{user}\vaip\.cache``
+- BF16 models: Cached in the current directory where the ONNX Runtime script is executed.
+
+**Note**: To force recompilation and ignore the cached model, unset the ``XLNX_ENABLE_CACHE`` environment variable before running the script:
+
+.. code-block::
+
+    set XLNX_ENABLE_CACHE=
+
+
 
 ****************
 Model Encryption
