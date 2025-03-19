@@ -155,18 +155,11 @@ By default, the Ryzen AI Conda environment automatically sets the standard binar
 
 
 
-*********************
-Simultaneous Sessions
-*********************
-
-Up to eight simultaneous inference sessions can be run on the NPU. The runtime automatically schedules each inference session on available slots to maximize performance of the application. 
-
-The performance of individual inference sessions is impacted by multiple factors, including the APU type, the NPU configuration used, the number of other inference sessions running on the NPU, and the applications running the inference sessions.
-
 |
 
+**************************
 Caching the Compiled Model
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+**************************
 
 Model compilation can take some time depending on the model's complexity. However, once compiled, the model is saved in the cache directory. Any subsequent execution of the ONNX Runtime script will load the precompiled model from this cache directory, reducing session creation time.
 
@@ -201,13 +194,11 @@ In the example above, the cache directory is set to the absolute path of the fol
 
 
 
-****************
-Model Encryption
+
+Cache Encryption
 ****************
 
-To protect developers’ intellectual property, encryption is supported as a session option.
-With this enabled, all the compiled models generated are encrypted using AES256.
-To enable encryption, you need to pass the encryption key through the VAI EP options as follows:
+To protect developers’ intellectual property, encryption is supported as a provider option. With this enabled, all the compiled models generated are encrypted using AES256. To enable encryption, you need to pass the encryption key through the VAI EP options as follows:
 
 In Python:
 
@@ -237,6 +228,9 @@ In C++:
 
 The key is a 256-bit value represented as a 64-digit string. The model generated in the cache directory cannot be opened with Netron currently. Additionally, there is a side effect: dumping is disabled to prevent the leakage of sensitive information about the model.
 
+It is possible to use the OnnxRuntime EP context cache feature instead of the Vitis AI cache system to manage precompiled models (discussed in the next section)
+
+
 |
 
 ************************************
@@ -259,7 +253,7 @@ For further details, refer to the official ONNX Runtime documentation: https://o
 
 By default, an unencrypted context cache model is generated, which can be used directly during inference. Users can also apply custom encryption methods by manually encrypting and decrypting the context cache model.
 
-Alternatively, Vitis AI EP-managed encryption can be enabled by passing an encryption key via the ``encryptionKey`` provider option (discussed in a previous section). At runtime, the exact same encryption key must be provided to decrypt and load the context cache model.
+Alternatively, Vitis AI EP-managed encryption can be enabled by passing an encryption key via the ``encryptionKey`` provider option (discussed in the previous section). At runtime, the exact same encryption key must be provided to decrypt and load the context cache model.
 
 Example Code:
 
