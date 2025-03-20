@@ -63,8 +63,8 @@ The following are the required system setting for runing the compiled model on R
 - Strix Point AI PC, Windows 11 with latest NPU driver (Version:32.0.203.255, Date:02/20/2025) installed
 - Ensure Anaconda is installed and Conda/Scripts is set to the windows System PATH variable
 - LLVM/clang driver: https://github.com/llvm/llvm-project/releases/download/llvmorg-17.0.1/LLVM-17.0.1-win64.exe
-  - Check "Add LLVM to the System PATH for all users"
-  - Use the default installation: C:\Program Files\LLVM
+      - Check "Add LLVM to the System PATH for all users"
+      - Use the default installation: C:\Program Files\LLVM
 - Visual Studio 2022 Community: Install "Desktop Development with C++"
 
 Model Deployment
@@ -72,7 +72,8 @@ Model Deployment
 
 The compiled model in the working directory is used by the ONNX runtime session and run inference using VitisAI Execution provider.
 
-For more details about how to run BF16 model on NPU refer to: 
+For more details about how to run BF16 models on NPU refer to:
+
   - `Image Classification <https://github.com/amd/RyzenAI-SW/tree/main/example/image_classification>`_
   - `Finetuned DistilBERT for Text Classification <https://github.com/amd/RyzenAI-SW/tree/main/example/DistilBERT_text_classification_bf16>`_ 
   - `Text Embedding Model Alibaba-NLP/gte-large-en-v1.5  <https://github.com/amd/RyzenAI-SW/tree/main/example/GTE>`_ 
