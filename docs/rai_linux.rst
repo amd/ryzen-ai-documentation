@@ -47,8 +47,6 @@ The input FP32/BF16 models are compiled for the NPU when an ONNX inference sessi
                                             providers = providers,
                                             provider_options = provider_options)
 
-.. note::
-   Linux machines only support model compilation. They don't have the model runtime to run inference on the compiled model
 
 Running Model on Windows system
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
