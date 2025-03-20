@@ -47,6 +47,67 @@ The following table lists which types of models are supported on what hardware p
      - |checkmark|
      - |checkmark|
 
+***********
+Version 1.4    
+***********  
+  
+- New Features:    
+  
+  - Unified support for LLMs, INT8, and BF16 models in a single release package.    
+  - Public release for compilation of BF16 CNN and NLP models on Windows.    
+  - Public release of the LLM OGA flow.    
+  - Streamlined support for fine-tuned LLMs - [VAI-8142] Grey box model deployment - AECG Jira.    
+  - Support for up to 16 hardware contexts on Ryzen AI 300 Series processors - [VITIS-14253] Virtual contexts support in driver.    
+  - Vitis AI EP now supports the OnnxRuntime EP context cache feature (for custom handling of pre-compiled models).    
+  - Ryzen AI environment variables converted to VitisAI EP session options.    
+  - Improved exception handling and fallback to CPU.    
+  - Driver and runtime stack supported on Linux.    
+    
+- New Models:    
+  
+  - DeepSeek-R1-Distill-Qwen-1.5B    
+  - DeepSeek-R1-Distill-Qwen-7B    
+  - Gemma2-2B    
+  - New models added for LLM hybrid flow:    
+    - Mistral-7B-Instruct-v0.1    
+    - Mistral-7B-Instruct-v0.2    
+    - Mistral-7B-v0.3    
+    - Llama3.1-8B-Instruct    
+    - Codellama-7B-Instruct    
+  
+- Quark-torch:    
+  
+  - Added Rouge and Meteor evaluation metrics for LLMs.    
+  - Support for evaluating ONNX models exported using OGA.    
+  - Support for offline evaluation (evaluation without generation) for LLMs.    
+  - Support for Hugging Face integration.    
+  - Support for Gemma2 quantization using the OGA flow.    
+  - Support for Llama-3.2 quantization with FP8 (weights, activation, and KV-Cache) for the vision and language components.    
+  
+- Quark-onnx:    
+  
+  - Support compatibility with ONNX Runtime version 1.20.0, and 1.20.1.    
+  - Support for Microexponents (MX) data types, including MX4, MX6, and MX9.    
+  - Support for BF16 data type for VAIML.    
+  - Support for excluding pre and post-processing from quantization.    
+  - Support for mixed precision with any data type.    
+  - Support for Quarot Rotation R1 algorithm.    
+  - Support for Microexponents and Microscaling AdaQuant.    
+  - Support for an auto-search algorithm to automatically find the best accuracy quantized model.    
+  - Added tools for evaluating L2, PSNR, VMAF, and cosine.    
+  
+- ONNX Runtime EP:    
+  
+  - Support for Chinese characters in the filename/cache_dir/cache_key/xclbin.    
+  - Support for int4/uint4 data type.    
+  - Support for Configurable Failure Handling: CPU Fallback or Exception.    
+  - Update for encrypt/decrypt feature.    
+  
+- Known Issues:    
+  
+  - Extended compile time for some models with BF16/BFP16 data types.    
+  - LLM models with 4K sequence length may revert to CPU execution.    
+  - Accuracy drop in some Transformer models using BF16/BFP16 data types, requiring Quark intervention.  
 
 
 ***********  
