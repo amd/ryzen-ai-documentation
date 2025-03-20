@@ -1,22 +1,27 @@
-****************************
-Ryzen AI Linux Compile Flow
-****************************
+************************
+Ryzen AI Linux Installer
+************************
 
-Here is a walk through of compiling a BF16 model on Linux using RyzenAI Linux installer and followed by running inference on windows
+This guide provides instructions for using Ryzen AI 1.4 on Linux for model compilation and followed by running inference on windows.
 
-Linux Setup
-~~~~~~~~~~~
-- Download the RyzenAI Software Linux installer :download:`ryzen_ai-1.4.0.tgz <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=ryzen_ai-1.4.0-ea.tgz>`.
+Prerequisites
+~~~~~~~~~~~~~
+The following are the recommended system configuration for RyzenAI Linux installer
+
 - Recommeded RAM 32GB or Higher
 - Minimum 8 CPU cores or Higher
+- Ubuntu 22.04
 - Python 3.10 or Higher
-- Download install script to your Ubuntu (22.04) host
+
+Linux Installation
+~~~~~~~~~~~~~~~~~~
+- Download the RyzenAI Software Linux installer :download:`ryzen_ai-1.4.0.tgz <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=ryzen_ai-1.4.0-ea.tgz>`.
+
+- Use the installation script as shown below:
 
 .. code-block::
 
     tar -xvzf ryzen_ai-1.4.0.tgz -C <EXTRACT TO DIR>
-    cd <TARGET DIR>
-    chmod a+x install_ryzen_ai_1_4.sh
     cd <TARGET DIR>
     ./install_ryzen_ai_1_4.sh -a yes -p <TARGET PATH TO VENV> -l
     source <TARGET PATH TO VENV>/bin/activate
@@ -30,64 +35,45 @@ Linux Setup
     gunzip -c ryzen_ai_docker-1.4.0-ea_2025_02_21_3914.tgz | docker load
 
 
-**Note** -  We have choosen GTE Model as an example to walk you through the compilation and runtime flow. You can use any Model of your choice and replicate the steps below.
+Model Compilation
+~~~~~~~~~~~~~~~~~
 
+The input FP32/BF16 models are compiled for the NPU when an ONNX inference session is created using the Vitis AI Execution Provider (VAI EP):
 
-Compiling model on Linux system
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-- Download the GTE model files in your local linux directory :download:`https://github.com/amd/RyzenAI-SW/tree/main/example/GTE`
-- Activate your RyzenAI environment in your linux terminal.
-- Navigate to your downloaded model directory
+.. code-block:: python
 
-Download the model from Huggingface and convert to Onnx format
+  providers = ['VitisAIExecutionProvider']
+  session = ort.InferenceSession(model, sess_options = sess_opt,
+                                            providers = providers,
+                                            provider_options = provider_options)
 
-.. code-block::
-
-    python download_model.py --model_name "Alibaba-NLP/gte-large-en-v1.5" --output_dir "models"
-
-
-Downloaded model is converted to BF16 using Quark quantizer
-
-.. code-block::
-
-    python quark_quantize.py --model_path "models/model.onnx" --output_dir "models"
-
-
-The script creates a Session that calls VitisAIExecutionProvider to compile your model
-
-.. code-block::
-
-    python run.py --model_path "models/model_quantized_bf16.onnx" --vaiml_compile
-
-
-**Result**: 
-
-- New folder with Modelname is created locally that contains all compiled model files
-
-- You will observe few operators offloaded to CPU and few offloaded to VAIML (NPU)
-
-
+.. note::
+   Linux machines only support model compilation. They don't have the model runtime to run inference on the compiled model
 
 Running Model on Windows system
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- Linux machines can only support Model compilation and not Model runtime
-- After successful model compilation on Linux machine, copy the entire working directory to a STX based Windows machine
+After successful model compilation on Linux machine, copy the entire working directory to a STX based Windows machine
 
-Activate your RyzenAI Windows conda environment
+Prerequisites
+~~~~~~~~~~~~~
 
-.. code-block::
+The following are the required system setting for runing the compiled model on RyzenAI windows system
 
-    conda activate <env_name>
+- Strix Point AI PC, Windows 11 with latest NPU driver (Version:32.0.203.255, Date:02/20/2025) installed
+- Ensure Anaconda is installed and Conda/Scripts is set to the windows System PATH variable
+- LLVM/clang driver: https://github.com/llvm/llvm-project/releases/download/llvmorg-17.0.1/LLVM-17.0.1-win64.exe
+  - Check "Add LLVM to the System PATH for all users"
+  - Use the default installation: C:\Program Files\LLVM
+- Visual Studio 2022 Community: Install "Desktop Development with C++"
 
-The script takes the compiled model and runs the inference on NPU
+Model Deployment
+~~~~~~~~~~~~~~~~
 
-.. code-block::
+The compiled model in the working directory is used by the ONNX runtime session and run inference using VitisAI Execution provider.
 
-    python run.py --model_path "models/model_quantized_bf16.onnx"
+For more details about how to run BF16 model on NPU refer to: 
+  - `Image Classification <https://github.com/amd/RyzenAI-SW/tree/main/example/image_classification>`_
+  - `Finetuned DistilBERT for Text Classification <https://github.com/amd/RyzenAI-SW/tree/main/example/DistilBERT_text_classification_bf16>`_ 
+  - `Text Embedding Model Alibaba-NLP/gte-large-en-v1.5  <https://github.com/amd/RyzenAI-SW/tree/main/example/GTE>`_ 
 
-**Result**:
-
-- Session is created from compiled model directory
-
-- The session will take texts as inputs and run on NPU hardware to generate text embeddings as outputs.
