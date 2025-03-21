@@ -28,9 +28,9 @@ Development Interfaces
 
 The Ryzen AI LLM software stack is available through three development interfaces, each suited for specific use cases as outlined in the sections below. All three interfaces are built on top of native OnnxRuntime GenAI (OGA) libraries, as shown in the :ref:`software-stack-table` diagram below. 
 
-The high-level Python APIs, as well as the Server Interface, also leverage the ``lemonade`` SDK, which is multi-vendor open-source software that provides everything necessary for quickly getting started with LLMs on OGA.
+The high-level Python APIs, as well as the Server Interface, also leverage the Lemonade SDK, which is multi-vendor open-source software that provides everything necessary for quickly getting started with LLMs on OGA.
 
-A key benefit of both OGA and ``lemonade`` is that software developed against their interfaces is portable to many other execution backends.
+A key benefit of both OGA and Lemonade is that software developed against their interfaces is portable to many other execution backends.
 
 .. _software-stack-table:
 
@@ -53,9 +53,9 @@ A key benefit of both OGA and ``lemonade`` is that software developed against th
 High-Level Python SDK
 =====================
 
-The high-level Python SDK, ``lemonade``, can get you started in under 5 minutes with PyPI installation.
+The high-level Python SDK, Lemonade, allows you to get started using PyPI installation in approximately 5 minutes.
 
-This SDK is the fastest way to:
+This SDK allows you to:
 
 - Experiment with models in hybrid execution mode on Ryzen AI hardware.
 - Validate inference speed and task performance.
@@ -69,7 +69,7 @@ Server Interface (REST API)
 
 The Server Interface provides a convenient means to integrate with applications that:
 
-- Already support an LLM server interface, such as the ollama server or OpenAI API.
+- Already support an LLM server interface, such as the Ollama server or OpenAI API.
 - Are written in any language (C++, C#, Javascript, etc.) that supports REST APIs.
 - Benefits from process isolation for the LLM backend.
 

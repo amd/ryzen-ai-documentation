@@ -10,7 +10,7 @@
 Server Interface (REST API)
 ###########################
 
-The ``lemonade`` SDK server interface allows your application to load an LLM on Ryzen AI hardware in a process, and then communicate with this process using standard ``REST`` APIs. This allows applications written in any language (C#, JavaScript, Python, C++, etc.) to easily integrate with Ryzen AI LLMs.
+The Lemonade SDK offers a server interface that allows your application to load an LLM on Ryzen AI hardware in a process, and then communicate with this process using standard ``REST`` APIs. This allows applications written in any language (C#, JavaScript, Python, C++, etc.) to easily integrate with Ryzen AI LLMs.
 
 Server interfaces are used across the LLM ecosystem because they allow for no-code plug-and-play between the higher level of the application stack (GUIs, agents, RAG, etc.) with the LLM and hardware that have been abstracted by the server. 
 
@@ -20,44 +20,36 @@ For example, open source projects such as `Open WebUI <#open-webui-demo>`_ have 
 Server Setup
 ************
 
-The fastest way to set up the server is with the ``lemonade server installer``.
+Lemonade Server can be installed via the Lemonade Server executable by following these steps:
 
-1. Make sure your system has the Ryzen AI 1.3 driver installed:
-
-  - Download the NPU driver installation package :download:`NPU Driver <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=NPU_RAI1.3.zip>`
-
-  - Install the NPU drivers by following these steps:
-
-    - Extract the downloaded ``NPU_RAI1.3.zip`` zip file.
-    - Open a terminal in administrator mode and execute the ``.\npu_sw_installer.exe`` exe file.
-
-  - Ensure that NPU MCDM driver (Version:32.0.203.237 or 32.0.203.240) is correctly installed by opening ``Device Manager`` -> ``Neural processors`` -> ``NPU Compute Accelerator Device``.
-
+1. Make sure your system has the recommended Ryzen AI driver installed as described in the `Ryzen AI Installation Guide <https://ryzenai.docs.amd.com/en/latest/inst.html#install-npu-drivers>`_.
 2. Download and install ``Lemonade_Server_Installer.exe`` from the `latest TurnkeyML release <https://github.com/onnx/turnkeyml/releases>`_.
 3. Launch the server by double-clicking the ``lemonade_server`` shortcut added to your desktop.
+
+See the `Lemonade Server Installation Guide <https://github.com/onnx/turnkeyml/blob/main/docs/lemonade/lemonade_server_exe.md>`_ for more details.
 
 ************
 Server Usage
 ************
 
-The ``lemonade`` server provides the following OpenAI-compatible endpoints:
+The Lemonade Server provides the following OpenAI-compatible endpoints:
 
 - POST ``/api/v0/chat/completions`` - Chat Completions (messages to completions)
 - GET ``/api/v0/models`` - List available models
 
-Please refer to the `server specification <https://github.com/onnx/turnkeyml/blob/main/docs/lemonade/server_spec.md>`_ document in the lemonade repository for details about the request and response formats for each endpoint. 
+Please refer to the `server specification <https://github.com/onnx/turnkeyml/blob/main/docs/lemonade/server_spec.md>`_ document in the Lemonade repository for details about the request and response formats for each endpoint. 
 
 The `OpenAI API documentation <https://platform.openai.com/docs/api-reference/streaming>`_ also has code examples for integrating streaming completions into an application. 
 
 Open WebUI Demo
 ===============
 
-The best way to experience the lemonade server is to try it with an OpenAI-compatible application, like Open WebUI.
+To experience the Lemonade Server, try using it with an OpenAI-compatible application, such as Open WebUI.
 
 Instructions:
 -------------
 
-First, launch the ``lemonade_server`` (see: `server setup <#server-setup>`_).
+First, launch the Lemonade Server by double-clicking the lemon icon on your desktop. See the following for installation: `server setup <#server-setup>`_.
 
 In a terminal, install Open WebUI using the following commands:
 
@@ -82,7 +74,6 @@ Done! You are now able to run Open WebUI with Hybrid models. Feel free to choose
 Next Steps
 **********
 
-- Visit the :ref:`supported-llms` table to see the set of hybrid checkpoints that can be used with the server.
 - Check out the `lemonade server specification <https://github.com/onnx/turnkeyml/blob/main/docs/lemonade/server_spec.md>`_ to learn more about supported features.
 - Try out your ``lemonade server`` install with any application that uses the OpenAI chat completions API.
 

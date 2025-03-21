@@ -10,9 +10,9 @@
 High-Level Python SDK
 #####################
 
-A Python environment is a great way to get started because it provides maximum flexibility for trying out models, profiling models, and integration into Python applications.
+A Python environment offers flexibility for experimenting with models, profiling them, and integrating them into Python applications
 
-We use the ``lemonade`` SDK from the `ONNX TurnkeyML project <https://github.com/onnx/turnkeyml>`_ to get up and running quickly.
+We use the Lemonade SDK from the `ONNX TurnkeyML project <https://github.com/onnx/turnkeyml>`_ to get up and running quickly.
 
 To get started, follow these instructions.
 
@@ -22,19 +22,10 @@ System-level pre-requisites
 
 You only need to do this once per computer:
 
-1. Make sure your system has the Ryzen AI 1.3 driver installed:
-
-  - Download the NPU driver installation package :download:`NPU Driver <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=NPU_RAI1.3.zip>`
-
-  - Install the NPU drivers by following these steps:
-
-    - Extract the downloaded ``NPU_RAI1.3.zip`` zip file.
-    - Open a terminal in administrator mode and execute the ``.\npu_sw_installer.exe`` exe file.
-
-  - Ensure that NPU MCDM driver (Version:32.0.203.237 or 32.0.203.240) is correctly installed by opening ``Device Manager`` -> ``Neural processors`` -> ``NPU Compute Accelerator Device``.
-
-2. `Download and install miniconda for Windows <https://repo.anaconda.com/miniconda/Miniconda3-latest-Windows-x86_64.exe>`_.
+1. Make sure your system has the recommended Ryzen AI driver installed as described in the `Ryzen AI Installation Guide <https://ryzenai.docs.amd.com/en/latest/inst.html#install-npu-drivers>`_.
+2. Download and install `Miniconda for Windows <https://repo.anaconda.com/miniconda/Miniconda3-latest-Windows-x86_64.exe>`_.
 3. Launch a terminal and call ``conda init``.
+
 
 *****************
 Environment Setup
@@ -66,7 +57,7 @@ Each example linked in the :ref:`supported-llms` table also has `example command
 **********
 Python API
 **********
-You can also run this code to try out the high-level ``lemonade`` API in a Python script:
+You can also run this code to try out the high-level Lemonade API in a Python script:
 
 .. code-block:: python
 
