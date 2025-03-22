@@ -239,7 +239,7 @@ Run the models using Python
 
      #chatglm needs transformers 4.44.0 
      (ryzen-ai-1.4.0)pip install transformers==4.44.0  
-     (ryzen-ai-1.4.0)python "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\examples\python\chatglm\run_model.py" --model_dir <model folder>  
+     (ryzen-ai-1.4.0)python "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\examples\python\chatglm\model-generate-chatglm3.py" -m <model folder>  
 
  
 Preparing OGA Models for NPU-only Execution
