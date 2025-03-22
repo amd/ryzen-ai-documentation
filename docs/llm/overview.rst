@@ -16,7 +16,7 @@ Supported Configurations
 ========================
 
 - Only Ryzen AI 300-series Strix Point (STX) and Krackan Point (KRK) processors support OGA-based hybrid execution.
-- Developers with Ryzen AI 7000- and 8000-series processors can get started using the CPU-based examples linked in the :ref:`supported-llms` table.
+- Developers with Ryzen AI 7000- and 8000-series processors can get started using the CPU-based examples linked in the :ref:`featured-llms` table.
 - Windows 11 is the required operating system.
 
 
@@ -86,19 +86,19 @@ The Python bindings for OGA also provide a customizable interface for Python dev
 To get started with the OGA APIs, follow these instructions :doc:`../hybrid_oga`.
 
 
-.. _supported-llms:
+.. _featured-llms:
 
 *******************************
-Supported LLMs
+Featured LLMs
 *******************************
 
-The following tables contain a comprehensive list of all LLMs that have been validated on Ryzen AI hybrid execution mode. The hybrid examples are built on top of OnnxRuntime GenAI (OGA).
+The following tables contain a currated list of LLMs that have been validated on Ryzen AI hybrid execution mode. The hybrid examples are built on top of OnnxRuntime GenAI (OGA).
 
-The pre-optimized models for hybrid execution used in these examples are available in the `AMD hybrid collection on Hugging Face <https://huggingface.co/collections/amd/quark-awq-g128-int4-asym-fp16-onnx-hybrid-674b307d2ffa21dd68fa41d5>`_. It is also possible to run fine-tuned versions of the models listed (for example, fine-tuned versions of Llama2 or Llama3). For instructions on how to prepare a fine-tuned OGA model for hybrid execution, refer to :ref:`Preparing Models <hybrid-prepare-models>`.
+The comprehensive set of pre-optimized models for hybrid execution used in these examples are available in the `AMD hybrid collection on Hugging Face <https://huggingface.co/collections/amd/quark-awq-g128-int4-asym-fp16-onnx-hybrid-674b307d2ffa21dd68fa41d5>`_. It is also possible to run fine-tuned versions of the models listed (for example, fine-tuned versions of Llama2 or Llama3). For instructions on how to prepare a fine-tuned OGA model for hybrid execution, refer to :ref:`Preparing Models <hybrid-prepare-models>`.
 
-.. _ryzen-ai-oga-supported-llms:
+.. _ryzen-ai-oga-featured-llms:
 
-.. flat-table:: Ryzen AI OGA Supported LLMs
+.. flat-table:: Ryzen AI OGA Featured LLMs
    :header-rows: 2
    :class: llm-table
 
@@ -113,94 +113,78 @@ The pre-optimized models for hybrid execution used in these examples are availab
      - Tokens/S Speedup
      - Validation
      
+   * - `DeepSeek-R1-Distill-Qwen-7B <https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B>`_
+     - `Link <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/lemonade/cpu/DeepSeek_R1_Distill_Qwen_7B.md>`__
+     - 🟢
+     - `Link <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/lemonade/hybrid/DeepSeek_R1_Distill_Qwen_7B.md>`__
+     - 3.4x
+     - 8.4x
+     - 🟢
+   * - `DeepSeek-R1-Distill-Qwen-1.5B <https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B>`_
+     - `Link <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/lemonade/cpu/DeepSeek_R1_Distill_Qwen_1_5B.md>`__
+     - 🟢
+     - `Link <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/lemonade/hybrid/DeepSeek_R1_Distill_Qwen_1_5B.md>`__
+     - 2.8x
+     - 5.9x
+     - 🟢
+   * - `DeepSeek-R1-Distill-Llama-8B <https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Llama-8B>`_
+     - `Link <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/lemonade/cpu/DeepSeek_R1_Distill_Llama_8B.md>`__
+     - 🟢
+     - `Link <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/lemonade/hybrid/DeepSeek_R1_Distill_Llama_8B.md>`__
+     - 4.2x
+     - 7.6x
+     - 🟢
+   * - `CodeLlama-7b-Instruct-hf <https://huggingface.co/meta-llama/CodeLlama-7b-Instruct-hf>`_
+     - `Link <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/lemonade/cpu/CodeLlama_7b_Instruct_hf.md>`__
+     - 🟢
+     - `Link <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/lemonade/hybrid/CodeLlama_7b_Instruct_hf.md>`__
+     - 4.3x
+     - 8.5x
+     - 🟢
    * - `Llama-3.2-1B-Instruct <https://huggingface.co/meta-llama/Llama-3.2-1B-Instruct>`_
      - `Link <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/lemonade/cpu/Llama_3_2_1B_Instruct.md>`__
      - 🟢
      - `Link <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/lemonade/hybrid/Llama_3_2_1B_Instruct.md>`__
-     - 2.7x
-     - 5.2x
+     - 1.9x
+     - 5.1x
      - 🟢
    * - `Llama-3.2-3B-Instruct <https://huggingface.co/meta-llama/Llama-3.2-3B-Instruct>`_
      - `Link <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/lemonade/cpu/Llama_3_2_3B_Instruct.md>`__
      - 🟢
      - `Link <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/lemonade/hybrid/Llama_3_2_3B_Instruct.md>`__
-     - 2.7x
-     - 8.5x
+     - 2.8x
+     - 8.1x
      - 🟢
    * - `Phi-3-mini-4k-instruct <https://huggingface.co/microsoft/Phi-3-mini-4k-instruct>`_
      - `Link <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/lemonade/cpu/Phi_3_mini_4k_instruct.md>`__
      - 🟢
      - `Link <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/lemonade/hybrid/Phi_3_mini_4k_instruct.md>`__
-     - 3.9x
-     - 7.7x
-     - 🟢
-   * - `Phi-3.5-mini-instruct <https://huggingface.co/microsoft/Phi-3.5-mini-instruct>`_
-     - `Link <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/lemonade/cpu/Phi_3_5_mini_instruct.md>`__
-     - 🟢
-     - `Link <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/lemonade/hybrid/Phi_3_5_mini_instruct.md>`__
-     - 2.9x
-     - 7.6x
-     - 🟢
-   * - `Mistral-7B-Instruct-v0.3 <https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3>`_
-     - `Link <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/lemonade/cpu/Mistral_7B_Instruct_v0_3.md>`__
-     - 🟢
-     - `Link <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/lemonade/hybrid/Mistral_7B_Instruct_v0_3.md>`__
-     - 4.4x
-     - 9.7x
+     - 3.6x
+     - 7.8x
      - 🟢
    * - `Qwen1.5-7B-Chat <https://huggingface.co/Qwen/Qwen1.5-7B-Chat>`_
      - `Link <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/lemonade/cpu/Qwen1_5_7B_Chat.md>`__
      - 🟢
      - `Link <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/lemonade/hybrid/Qwen1_5_7B_Chat.md>`__
      - 4.0x
-     - 7.9x
+     - 7.3x
      - 🟢
-   * - `Llama-2-7b-hf <https://huggingface.co/meta-llama/Llama-2-7b-hf>`_
-     - `Link <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/lemonade/cpu/Llama_2_7b_hf.md>`__
+   * - `Mistral-7B-Instruct-v0.3 <https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3>`_
+     - `Link <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/lemonade/cpu/Mistral_7B_Instruct_v0_3.md>`__
      - 🟢
-     - `Link <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/lemonade/hybrid/Llama_2_7b_hf.md>`__
-     - 4.8x
-     - 8.3x
-     - 🟢
-   * - `Llama-2-7b-chat-hf <https://huggingface.co/meta-llama/Llama-2-7b-chat-hf>`_
-     - `Link <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/lemonade/cpu/Llama_2_7b_chat_hf.md>`__
-     - 🟢
-     - `Link <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/lemonade/hybrid/Llama_2_7b_chat_hf.md>`__
-     - 5.1x
+     - `Link <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/lemonade/hybrid/Mistral_7B_Instruct_v0_3.md>`__
+     - 5.0x
      - 8.1x
      - 🟢
-   * - `Meta-Llama-3-8B <https://huggingface.co/meta-llama/Meta-Llama-3-8B>`_
-     - `Link <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/lemonade/cpu/Meta_Llama_3_8B.md>`__
+   * - `Llama-3.1-8B-Instruct <https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct>`_
+     - `Link <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/lemonade/cpu/Llama_3_1_8B_Instruct.md>`__
      - 🟢
-     - `Link <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/lemonade/hybrid/Meta_Llama_3_8B.md>`__
-     - 4.4x
-     - 9.3x
-     - 🟢
-   * - `Llama-3.1-8B <https://huggingface.co/meta-llama/Llama-3.1-8B>`_
-     - `Link <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/lemonade/cpu/Llama_3_1_8B.md>`__
-     - 🟢
-     - `Link <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/lemonade/hybrid/Llama_3_1_8B.md>`__
-     - 4.0x
-     - 9.1x
-     - 🟢
-   * - `DeepSeek-R1-Distill-Qwen-1.5B <https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B>`_
-     - `Link <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/lemonade/cpu/DeepSeek_R1_Distill_Qwen_1_5B.md>`__
-     - 🟢
-     - :cspan:`3` :rspan:`3`
-       
-       DeepSeek models are currently in Early Access.
-
-       Read about them on the `blog here <https://www.amd.com/en/developer/resources/technical-articles/deepseek-distilled-models-on-ryzen-ai-processors.html>`_.
-     
-       Visit the `OGA API page <https://vgodsoe.github.io/ryzen-ai-documentation/hybrid_oga.html>`_ for instructions.
-   * - `DeepSeek-R1-Distill-Qwen-7B <https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B>`_
-     - `Link <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/lemonade/cpu/DeepSeek_R1_Distill_Qwen_7B.md>`__
-     - 🟢
-   * - `DeepSeek-R1-Distill-Llama-8B <https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Llama-8B>`_
-     - `Link <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/lemonade/cpu/DeepSeek_R1_Distill_Llama_8B.md>`__
+     - `Link <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/lemonade/hybrid/Llama_3_1_8B_Instruct.md>`__
+     - 3.9x
+     - 8.9x
      - 🟢
 
-The :ref:`ryzen-ai-oga-supported-llms` table was compiled using validation, benchmarking, and accuracy metrics as measured by the `ONNX TurnkeyML v6.0.0 <https://pypi.org/project/turnkeyml/6.0.0/>`_ ``lemonade`` commands in each example link.
+The :ref:`ryzen-ai-oga-featured-llms` table was compiled using validation, benchmarking, and accuracy metrics as measured by the `ONNX TurnkeyML v6.1.0 <https://pypi.org/project/turnkeyml/6.0.0/>`_ ``lemonade`` commands in each example link.
 
 Data collection details:
 
