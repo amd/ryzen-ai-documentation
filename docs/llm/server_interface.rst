@@ -20,7 +20,7 @@ For example, open source projects such as `Open WebUI <#open-webui-demo>`_ have 
 Server Setup
 ************
 
-Lemonade Server can be installed via the Lemonade Server executable by following these steps:
+Lemonade Server can be installed via the Lemonade Server Installer executable by following these steps:
 
 1. Make sure your system has the recommended Ryzen AI driver installed as described in the `Ryzen AI Installation Guide <https://ryzenai.docs.amd.com/en/latest/inst.html#install-npu-drivers>`_.
 2. Download and install ``Lemonade_Server_Installer.exe`` from the `latest TurnkeyML release <https://github.com/onnx/turnkeyml/releases>`_.
@@ -35,6 +35,7 @@ Server Usage
 The Lemonade Server provides the following OpenAI-compatible endpoints:
 
 - POST ``/api/v0/chat/completions`` - Chat Completions (messages to completions)
+- POST ``/api/v0/completions`` - Text Completions (prompt to completion)
 - GET ``/api/v0/models`` - List available models
 
 Please refer to the `server specification <https://github.com/onnx/turnkeyml/blob/main/docs/lemonade/server_spec.md>`_ document in the Lemonade repository for details about the request and response formats for each endpoint. 
@@ -74,8 +75,8 @@ Done! You are now able to run Open WebUI with Hybrid models. Feel free to choose
 Next Steps
 **********
 
-- Check out the `lemonade server specification <https://github.com/onnx/turnkeyml/blob/main/docs/lemonade/server_spec.md>`_ to learn more about supported features.
-- Try out your ``lemonade server`` install with any application that uses the OpenAI chat completions API.
+- Check out the `Lemonade Server specification <https://github.com/onnx/turnkeyml/blob/main/docs/lemonade/server_spec.md>`_ to learn more about supported features.
+- Try out your Lemonade Server install with any application that uses the OpenAI chat completions API.
 
 
 ..
