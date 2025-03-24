@@ -10,9 +10,7 @@
 High-Level Python SDK
 #####################
 
-A Python environment offers flexibility for experimenting with LLMs, profiling them, and integrating them into Python applications
-
-We use the `Lemonade SDK <https://github.com/onnx/turnkeyml/blob/main/docs/lemonade/README.md>`_ to get up and running quickly.
+A Python environment offers flexibility for experimenting with LLMs, profiling them, and integrating them into Python applications. We use the `Lemonade SDK <https://github.com/onnx/turnkeyml/blob/main/docs/lemonade/README.md>`_ to get up and running quickly.
 
 To get started, follow these instructions.
 
@@ -22,7 +20,7 @@ System-level pre-requisites
 
 You only need to do this once per computer:
 
-1. Make sure your system has the recommended Ryzen AI driver installed as described in the :ref:`install-driver`.
+1. Make sure your system has the recommended Ryzen AI driver installed as described in :ref:`install-driver`.
 2. Download and install `Miniconda for Windows <https://repo.anaconda.com/miniconda/Miniconda3-latest-Windows-x86_64.exe>`_.
 3. Launch a terminal and call ``conda init``.
 

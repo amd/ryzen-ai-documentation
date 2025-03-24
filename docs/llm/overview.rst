@@ -83,7 +83,7 @@ Native C++ libraries for OGA are available to give full customizability for depl
 
 The Python bindings for OGA also provide a customizable interface for Python development.
 
-To get started with the OGA APIs, follow these instructions :doc:`../hybrid_oga`.
+To get started with the OGA APIs, follow these instructions: :doc:`../hybrid_oga`.
 
 
 .. _featured-llms:
@@ -94,7 +94,7 @@ Featured LLMs
 
 The following tables contain a currated list of LLMs that have been validated on Ryzen AI hybrid execution mode. The hybrid examples are built on top of OnnxRuntime GenAI (OGA).
 
-The comprehensive set of pre-optimized models for hybrid execution used in these examples are available in the `AMD hybrid collection on Hugging Face <https://huggingface.co/collections/amd/quark-awq-g128-int4-asym-fp16-onnx-hybrid-674b307d2ffa21dd68fa41d5>`_. It is also possible to run fine-tuned versions of the models listed (for example, fine-tuned versions of Llama2 or Llama3). For instructions on how to prepare a fine-tuned OGA model for hybrid execution, refer to :ref:`Preparing Models <hybrid-prepare-models>`.
+The comprehensive set of pre-optimized models for hybrid execution used in these examples are available in the `AMD hybrid collection on Hugging Face <https://huggingface.co/collections/amd/ryzenai-14-llm-hybrid-models-67da31231bba0f733750a99c>`_. It is also possible to run fine-tuned versions of the models listed (for example, fine-tuned versions of Llama2 or Llama3). For instructions on how to prepare a fine-tuned OGA model for hybrid execution, refer to :ref:`Preparing Models <hybrid-prepare-models>`.
 
 .. _ryzen-ai-oga-featured-llms:
 
@@ -184,7 +184,7 @@ The comprehensive set of pre-optimized models for hybrid execution used in these
      - 8.9x
      - 🟢
 
-The :ref:`ryzen-ai-oga-featured-llms` table was compiled using validation, benchmarking, and accuracy metrics as measured by the `ONNX TurnkeyML v6.1.0 <https://pypi.org/project/turnkeyml/6.0.0/>`_ ``lemonade`` commands in each example link.
+The :ref:`ryzen-ai-oga-featured-llms` table was compiled using validation, benchmarking, and accuracy metrics as measured by the `ONNX TurnkeyML v6.1.0 <https://pypi.org/project/turnkeyml/6.1.0/>`_ ``lemonade`` commands in each example link.
 
 Data collection details:
 

@@ -22,7 +22,7 @@ Server Setup
 
 Lemonade Server can be installed via the Lemonade Server Installer executable by following these steps:
 
-1. Make sure your system has the recommended Ryzen AI driver installed as described in the `Ryzen AI Installation Guide <https://ryzenai.docs.amd.com/en/latest/inst.html#install-npu-drivers>`_.
+1. Make sure your system has the recommended Ryzen AI driver installed as described in :ref:`install-driver`.
 2. Download and install ``Lemonade_Server_Installer.exe`` from the `latest TurnkeyML release <https://github.com/onnx/turnkeyml/releases>`_.
 3. Launch the server by double-clicking the ``lemonade_server`` shortcut added to your desktop.
 
