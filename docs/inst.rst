@@ -39,6 +39,8 @@ The following dependencies must be present on the system before installing the R
 
 |
 
+.. _install-driver:
+
 *******************
 Install NPU Drivers
 *******************
