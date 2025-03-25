@@ -73,6 +73,7 @@ Execute the sample application
 Finally, the previously built sample application can be executed with the selected input source. ::
 
   build-samples\cvml-sample-depth-estimation\Release\cvml-sample-depth-estimation.exe -i dancing.mp4
+  
 ..
   ------------
 

@@ -9,7 +9,7 @@
 ..     “, for paragraphs
 ..
 
-.. include:: icons.txt
+.. include:: /icons.txt
 
 ########################
 NPU Management Interface
