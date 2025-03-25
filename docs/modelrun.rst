@@ -45,6 +45,7 @@ Detailed usage of these options is discussed in the subsequent section of this p
 
 
 
+.. _compile-bf16:
 
 Compilation of BF16 models
 ==========================
@@ -106,6 +107,7 @@ By default, the compiler vectorizes the data to optimize performance for CNN mod
 
 
 
+.. _compile-int8:
 
 Compilation of INT8 models
 ==========================

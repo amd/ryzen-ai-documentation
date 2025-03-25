@@ -114,14 +114,14 @@ The Ryzen AI Software installation folder contains test to verify that the softw
     The full path to the Ryzen AI Software installation folder is stored in the ``RYZEN_AI_INSTALLATION_PATH`` environment variable.
 
 
-*****************************
-Additional Ryzen AI Installer
-*****************************
+**************************
+Other Installation Options
+**************************
 
 Linux Installer
 ~~~~~~~~~~~~~~~
 
-BF16 models (CNN or Transformer) require processing power in terms of core count and memory, depending on model size. If a larger model cannot be compiled on a Windows machine due to hardware limitations (e.g., insufficient RAM), an alternative Linux-based compilation flow is supported. More details can be found here: :doc:`rai_linux`
+Compiling BF16 models requires more processing power than compiling INT8 models. If a larger BF16 model cannot be compiled on a Windows machine due to hardware limitations (e.g., insufficient RAM), an alternative Linux-based compilation flow is supported. More details can be found here: :doc:`rai_linux`
 
 
 
@@ -138,75 +138,6 @@ A lightweight installer is available with reduced features. It cannot be used fo
   - Provide the destination folder for Ryzen AI installation (default: ``C:\Program Files\RyzenAI\1.4.0-rt``)
   - Specify the name for the conda environment (default: ``ryzen-ai-rt-1.4.0``)
 
-
-
-.. _driver-compatibility:
-
-
-*************************************
-VitisAI EP / NPU Driver Compatibility
-*************************************
-
-The VitisAI EP requires a compatible version of the NPU drivers. For each version of the VitisAI EP, compatible drivers are bounded by a minimum version and a maximum release date. NPU drivers are backward compatible with VitisAI EP released up to 3 years before. The maximum driver release date is therefore set to 3 years after the release date of the corresponding VitisAI EP.
-
-The table below summarizes the driver requirements for the different versions of the VitisAI EP.
-
-.. list-table:: 
-   :header-rows: 1
-
-   * - VitisAI EP version
-     - Minimum NPU Driver version
-     - Maximum NPU Driver release date
-   * - 1.4
-     - 32.0.203.257
-     - March 25th, 2028
-   * - 1.3.1
-     - 32.0.201.242
-     - January 17th, 2028
-   * - 1.3
-     - 32.0.201.237
-     - November 26th, 2027
-   * - 1.2
-     - 32.0.201.204
-     - July 30th, 2027
-
-.. _apu-types:
-
-*****************
-APU Types
-*****************
-
-The Ryzen AI Software supports different types of NPU-enabled APUs. These APU types are referred to as PHX, HPT, STX and KRK. 
-
-To programmatically determine the type of the local APU, it is possible to enumerate the PCI devices and check for an instance with a matching Hardware ID.
-
-.. list-table:: 
-   :header-rows: 1
-
-   * - Vendor
-     - Device
-     - Revision
-     - APU Type
-   * - 0x1022
-     - 0x1502
-     - 0x00
-     - PHX or HPT 
-   * - 0x1022
-     - 0x17F0
-     - 0x00
-     - STX 
-   * - 0x1022
-     - 0x17F0
-     - 0x10
-     - STX 
-   * - 0x1022
-     - 0x17F0
-     - 0x11
-     - STX 
-   * - 0x1022
-     - 0x17F0
-     - 0x20
-     - KRK
 
 
 ..
