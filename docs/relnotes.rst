@@ -28,193 +28,193 @@ Model Compatibility Table
 
 The following table lists which types of models are supported on what hardware platforms.
 
-.. list-table:: 
+.. list-table::
    :header-rows: 1
 
    * - Model Type
      - PHX/HPT
-     - STX/KRK 
+     - STX/KRK
    * - CNN INT8
      - |checkmark|
      - |checkmark|
    * - CNN BF16
-     - 
+     -
      - |checkmark|
    * - LLM (OGA)
-     - 
+     -
      - |checkmark|
 
 
 ***********
-Version 1.4    
-***********  
-  
-- New Features:    
+Version 1.4
+***********
 
-  - `New Architecture support for Ryzen AI 300 Series Processors <https://www.amd.com/en/products/software/ryzen-ai-software.html#tabs-2733982b05-item-7720bb7a69-tab>`_
-  - Unified support for LLMs, INT8, and BF16 models in a single release package.    
-  - Public release for compilation of BF16 CNN and NLP models on Windows.    
-  - `Public release of the LLM OGA flow <https://ryzenai.docs.amd.com/en/latest/hybrid_oga.html>`_    
-  - `LLM building flow for Finetuned LLM <https://ryzenai.docs.amd.com/en/latest/oga_model_prepare.html>`_
-  - Support for up to 16 hardware contexts on Ryzen AI 300 Series processors     
-  - Vitis AI EP now supports the OnnxRuntime EP context cache feature (for custom handling of pre-compiled models).    
-  - Ryzen AI environment variables converted to VitisAI EP session options.    
-  - Improved exception handling and fallback to CPU.    
-    
-- New LLMs:    
-  
+- New Features:
+
+  - `New architecture support for Ryzen AI 300 series processors <https://www.amd.com/en/products/software/ryzen-ai-software.html#tabs-2733982b05-item-7720bb7a69-tab>`_
+  - Unified support for LLMs, INT8, and BF16 models in a single release package
+  - Public release for compilation of BF16 CNN and NLP models on Windows
+  - `Public release of the LLM OGA flow <https://ryzenai.docs.amd.com/en/latest/hybrid_oga.html>`_
+  - `LLM building flow for finetuned LLM <https://ryzenai.docs.amd.com/en/latest/oga_model_prepare.html>`_
+  - Support for up to 16 hardware contexts on Ryzen AI 300 series processors
+  - Vitis AI EP now supports the ONNX Runtime EP context cache feature (for custom handling of pre-compiled models)
+  - Ryzen AI environment variables converted to VitisAI EP session options
+  - Improved exception handling and fallback to CPU
+
+- New LLMs:
+
   - DeepSeek-R1-Distill-Llama-8B
-  - DeepSeek-R1-Distill-Qwen-1.5B 
+  - DeepSeek-R1-Distill-Qwen-1.5B
   - DeepSeek-R1-Distill-Qwen-7B
   - Gemma2-2B
-  - Qwen2-1.5B 
+  - Qwen2-1.5B
   - Qwen2-7B
   - AMD-OLMO-1B-SFT-DPO
   - Mistral-7B-Instruct-v0.1
   - Mistral-7B-Instruct-v0.2
-  - Mistral-7B-v0.3 
+  - Mistral-7B-v0.3
   - Llama3.1-8B-Instruct
-  - Codellama-7B-Instruct  
+  - Codellama-7B-Instruct
 
-- `New BF16 Model Examples <https://ryzenai.docs.amd.com/en/latest/examples.html>`_
-  
-  - Image Classification
-  - Finetuned DistilBERT for Text Classification
-  - Text Embedding Model Alibaba-NLP/gte-large-en-v1.5
+- `New BF16 model examples <https://ryzenai.docs.amd.com/en/latest/examples.html>`_:
 
-- New Tools
+  - Image classification
+  - Finetuned DistilBERT for text classification
+  - Text embedding model Alibaba-NLP/gte-large-en-v1.5
 
-  - Introduction to Lemonade and Lemonade Server 
+- New Tools:
+
+  - Introduction to Lemonade and Lemonade Server
   - Introduction to Digest AI
-  
-- Quark-torch:    
-  
-  - Added Rouge and Meteor evaluation metrics for LLMs.    
-  - Support for evaluating ONNX models exported using OGA.    
-  - Support for offline evaluation (evaluation without generation) for LLMs.    
-  - Support for Hugging Face integration.    
-  - Support for Gemma2 quantization using the OGA flow.    
-  - Support for Llama-3.2 quantization with FP8 (weights, activation, and KV-Cache) for the vision and language components.    
-  
-- Quark-onnx:    
-  
-  - Support compatibility with ONNX Runtime version 1.20.0, and 1.20.1.    
-  - Support for Microexponents (MX) data types, including MX4, MX6, and MX9.    
-  - Support for BF16 data type for VAIML.    
-  - Support for excluding pre and post-processing from quantization.    
-  - Support for mixed precision with any data type.    
-  - Support for Quarot Rotation R1 algorithm.    
-  - Support for Microexponents and Microscaling AdaQuant.    
-  - Support for an auto-search algorithm to automatically find the best accuracy quantized model.    
-  - Added tools for evaluating L2, PSNR, VMAF, and cosine.    
-  
-- ONNX Runtime EP:    
-  
-  - Support for Chinese characters in the filename/cache_dir/cache_key/xclbin.    
-  - Support for int4/uint4 data type.    
-  - Support for Configurable Failure Handling: CPU Fallback or Exception.    
-  - Update for encrypt/decrypt feature.    
-  
-- Known Issues:    
-  
-  - LT may cause warnings or crash when running concurrently with other MSFT Copilot Apps.
-  - Recall app may stops functioning, NPU driver and workloads expected to continue to work.
-  - Cocreator app does not close contexts quickly and might cause contexts to be limited due to remaining context still open. 
-  
 
-***********  
-Version 1.3  
-***********  
-  
-- New Features:  
-  
-  - Initial release of the Quark quantizer  
-  - Support for mixed precision data types  
-  - Compatibility with Copilot+ applications  
-  
+- Quark-torch:
+
+  - Added ROUGE and METEOR evaluation metrics for LLMs
+  - Support for evaluating ONNX models exported using OGA
+  - Support for offline evaluation (evaluation without generation) for LLMs
+  - Support for Hugging Face integration
+  - Support for Gemma2 quantization using the OGA flow
+  - Support for Llama-3.2 quantization with FP8 (weights, activation, and KV-cache) for the vision and language components
+
+- Quark-onnx:
+
+  - Support compatibility with ONNX Runtime version 1.20.0, and 1.20.1
+  - Support for microexponents (MX) data types, including MX4, MX6, and MX9
+  - Support for BF16 data type for VAIML
+  - Support for excluding pre and post-processing from quantization
+  - Support for mixed precision with any data type
+  - Support for Quarot rotation R1 algorithm
+  - Support for microexponents and microscaling AdaQuant
+  - Support for an auto-search algorithm to automatically find the best accuracy quantized model
+  - Added tools for evaluating L2, PSNR, VMAF, and cosine
+
+- ONNX Runtime EP:
+
+  - Support for Chinese characters in the ``filename/cache_dir/cache_key/xclbin``
+  - Support for ``int4/uint4`` data type
+  - Support for configurable failure handling: CPU fallback or exception
+  - Update for encrypt/decrypt feature
+
+- Known Issues:
+
+  - LT might cause warnings or crashes when running concurrently with other MSFT Copilot apps
+  - Recall app might stop functioning; NPU driver and workloads are expected to continue to work
+  - Cocreator app does not close contexts quickly and might cause contexts to be limited due to remaining contexts still open
+
+
+***********
+Version 1.3
+***********
+
+- New Features:
+
+  - Initial release of the Quark quantizer
+  - Support for mixed precision data types
+  - Compatibility with Copilot+ applications
+
 - Improved support for :doc:`LLMs using OGA <llm/overview>`
-  
-- New EoU Tools:  
-  
-  - CNN profiling tool for VAI-ML flow  
-  - Idle detection and suspension of contexts  
-  - Rebalance feature for AIE hardware resource optimization  
-  
-- NPU and Compiler:  
-  
-  - New Op Support:  
-    
-    - MAC  
-    - QResize Bilinear  
-    - LUT Q-Power  
-    - Expand  
-    - Q-Hsoftmax  
-    - A16 Q-Pad  
-    - Q-Reduce-Mean along H/W dimension  
-    - A16 Q-Global-AvgPool  
-    - A16 Padding with non-zero values  
-    - A16 Q-Sqrt  
-    - Support for XINT8/XINT16 MatMul and A16W16/A8W8 Q-MatMul  
-  
-  - Performance Improvements:  
-      
-    - Q-Conv, Q-Pool, Q-Add, Q-Mul, Q-InstanceNorm  
-    - Enhanced QDQ support for a range of operations  
-    - Enhanced the tiling algorithm  
-    - Improved graph-level optimization with extra transpose removal  
-    - Enhanced AT/MT fusion  
-    - Optimized memory usage and compile time  
-    - Improved compilation messages  
-  
-- Quark for PyTorch:  
-  
-  - Model Support:  
-    
-    - Examples of LLM PTQ, such as Llama3.2 and Llama3.2-Vision models  
-    - Example of YOLO-NAS detection model PTQ/QAT  
-    - Example of SDXL v1.0 with weight INT8 activation INT8  
-  
-  - PyTorch Quantizer Enhancements:  
-    
-    - Partial model quantization by user configuration under FX mode  
-    - Quantization of ConvTranspose2d in Eager Mode and FX mode  
-    - Advanced Quantization Algorithms with auto-generated configurations  
-    - Optimized Configuration with DataTypeSpec for ease of use  
-    - Accelerated in-place replacement under Eager Mode  
-    - Loading configuration from file of algorithms and pre-optimizations  
-  
-- Quark for ONNX:  
-  
-  - New Features:  
-    
-    - Compatibility with ONNX Runtime version 1.18, 1.19  
-    - Support for int4, uint4, Microscaling data types  
-    - Quantization for arbitrary specified operators  
-    - Quantization type alignment of element-wise operators for mixed precision  
-    - ONNX graph cleaning  
-    - Int32 bias quantization  
-  
-  - ONNX Quantizer Enhancements:  
-    
-    - Fast fine-tuning support for the MatMul operator, BFP data type, and GPU acceleration  
-    - Improved ONNX quantization of LLM models  
-    - Optimized quantization of FP16 models  
-    - Custom operator compilation process  
-    - Default parameters for auto mixed precision  
-    - Optimized Ryzen AI workflow by aligning with hardware constraints of the NPU  
-  
-- ONNX Runtime EP:  
-  
-  - Support for ONNX Runtime EP shared libraries  
-  - Python dependency removal  
-  - Memory optimization during the compile phase  
-  - Pattern API enhancement with multiple outputs and commutable arguments support  
-  
-- Known Issues:  
-  
-  - Extended compile time for some models with BF16/BFP16 data types  
-  - LLM models with 4K sequence length may revert to CPU execution  
-  - Accuracy drop in some Transformer models using BF16/BFP16 data types, requiring Quark intervention  
+
+- New EoU Tools:
+
+  - CNN profiling tool for VAI-ML flow
+  - Idle detection and suspension of contexts
+  - Rebalance feature for AIE hardware resource optimization
+
+- NPU and Compiler:
+
+  - New Op Support:
+
+    - MAC
+    - QResize Bilinear
+    - LUT Q-Power
+    - Expand
+    - Q-Hsoftmax
+    - A16 Q-Pad
+    - Q-Reduce-Mean along H/W dimension
+    - A16 Q-Global-AvgPool
+    - A16 Padding with non-zero values
+    - A16 Q-Sqrt
+    - Support for XINT8/XINT16 MatMul and A16W16/A8W8 Q-MatMul
+
+  - Performance Improvements:
+
+    - Q-Conv, Q-Pool, Q-Add, Q-Mul, Q-InstanceNorm
+    - Enhanced QDQ support for a range of operations
+    - Enhanced the tiling algorithm
+    - Improved graph-level optimization with extra transpose removal
+    - Enhanced AT/MT fusion
+    - Optimized memory usage and compile time
+    - Improved compilation messages
+
+- Quark for PyTorch:
+
+  - Model Support:
+
+    - Examples of LLM PTQ, such as Llama3.2 and Llama3.2-Vision models
+    - Example of YOLO-NAS detection model PTQ/QAT
+    - Example of SDXL v1.0 with weight INT8 activation INT8
+
+  - PyTorch Quantizer Enhancements:
+
+    - Partial model quantization by user configuration under FX mode
+    - Quantization of ConvTranspose2d in Eager Mode and FX mode
+    - Advanced Quantization Algorithms with auto-generated configurations
+    - Optimized Configuration with DataTypeSpec for ease of use
+    - Accelerated in-place replacement under Eager Mode
+    - Loading configuration from file of algorithms and pre-optimizations
+
+- Quark for ONNX:
+
+  - New Features:
+
+    - Compatibility with ONNX Runtime version 1.18, 1.19
+    - Support for int4, uint4, Microscaling data types
+    - Quantization for arbitrary specified operators
+    - Quantization type alignment of element-wise operators for mixed precision
+    - ONNX graph cleaning
+    - Int32 bias quantization
+
+  - ONNX Quantizer Enhancements:
+
+    - Fast fine-tuning support for the MatMul operator, BFP data type, and GPU acceleration
+    - Improved ONNX quantization of LLM models
+    - Optimized quantization of FP16 models
+    - Custom operator compilation process
+    - Default parameters for auto mixed precision
+    - Optimized Ryzen AI workflow by aligning with hardware constraints of the NPU
+
+- ONNX Runtime EP:
+
+  - Support for ONNX Runtime EP shared libraries
+  - Python dependency removal
+  - Memory optimization during the compile phase
+  - Pattern API enhancement with multiple outputs and commutable arguments support
+
+- Known Issues:
+
+  - Extended compile time for some models with BF16/BFP16 data types
+  - LLM models with 4K sequence length may revert to CPU execution
+  - Accuracy drop in some Transformer models using BF16/BFP16 data types, requiring Quark intervention
 
 ***********
 Version 1.2
@@ -230,29 +230,29 @@ Version 1.2
 - New model support:
 
   - `LLM flow support <https://ryzenai.docs.amd.com/en/latest/llm_flow.html>`_ for multiple models in both PyTorch and ONNX flow (optimized model support will be released asynchronously)
-  - SDXL-T with limited performance optimization 
+  - SDXL-T with limited performance optimization
 
 - New EoU tools:
-  
-  - `AI Analyzer <https://ryzenai.docs.amd.com/en/latest/ai_analyzer.html>`_ : Analysis and visualization of model compilation and inference profiling  
+
+  - `AI Analyzer <https://ryzenai.docs.amd.com/en/latest/ai_analyzer.html>`_ : Analysis and visualization of model compilation and inference profiling
   - Platform/NPU inspection and management tool (`xrt-smi <https://ryzenai.docs.amd.com/en/latest/xrt_smi.html>`_)
   - `Onnx Benchmarking tool <https://github.com/amd/RyzenAI-SW/tree/main/onnx-benchmark>`_
 
 - New Demos:
-  
+
   - NPU-GPU multi-model pipeline application `demo <https://github.com/amd/RyzenAI-SW/tree/main/demo/NPU-GPU-Pipeline>`_
 
 - NPU and Compiler
-  
+
   - New device support: Strix Nx4 and 4x4 Overlay
   - New Op support:
-  
+
     - InstanceNorm
     - Silu
     - Floating scale quantization operators (INT8, INT16)
   - Support new rounding mode (Round to even)
   - Performance Improvement:
-    
+
     - Reduced the model compilation time
     - Improved instruction loading
     - Improved synchronization in large overlay
@@ -279,7 +279,7 @@ Version 1.2
   - Relu6 hardware constrains support.
   - Support of mean operation with keepdim=True.
 - Resolved issues:
-  
+
   - NPU SW stack will fail to initialize when the system is out of memory. This could impact camera functionality when Microsoft Effect Pack is enabled.
   - If Microsoft Effects Pack is overloaded with other 4+ applications that use NPU to do inference, then camera functionality can be impacted. Can be fixed with a reboot. This will be fixed in the next release.
 
@@ -302,7 +302,7 @@ Quantizer
 
 - ONNX Quantizer:
 
-  - Improved usability with various features and tools, including diverse parameter configurations, graph optimization, shape fixing, and format transformations. 
+  - Improved usability with various features and tools, including diverse parameter configurations, graph optimization, shape fixing, and format transformations.
   - Improved quantization accuracy through the implementation of experimental algorithmic improvements, including AdaRound and AdaQuant.
   - Optimized the NPU workflow by distinguishing between different targets and aligning with the hardware constraints of the NPU.
   - Introduced new utilities for model conversion.
@@ -375,9 +375,9 @@ Version 1.0
 ***********
 Quantizer
 =========
-   
+
 - ONNX Quantizer
-  
+
   - Support for ONNXRuntime 1.16.
   - Support for the Cross-Layer-Equalization (CLE) algorithm in quantization, which can balance the weights of consecutive Conv nodes to make it more quantize-friendly in per-tensor quantization.
   - Support for mixed precision quantization including UINT16/INT16/UINT32/INT32/FLOAT16/BFLOAT16, and support asymmetric quantization for BFLOAT16.
@@ -413,7 +413,7 @@ Quantizer
     - Fix a bug that weights are quantized with the "NonOverflow" method when using the "MinMSE" method.
 
 - Pytorch Quantizer
-  
+
   - Support of some operations quantization in quantizer: inplace div, inplace sub
   - Log and document enhancement to emphasize fast-finetune
   - Timm models quantization script example
@@ -424,7 +424,7 @@ Quantizer
   - New QAT examples
 
 - TF2 Quantizer
-  
+
   - Support for Tensorflow 2.11 and 2.12.
   - Support for the 'tf.linalg.matmul' operator.
   - Updated shift_bias constraints for NPU workflow.
@@ -437,7 +437,7 @@ Quantizer
     - Fix a bug in the sequential model when a layer has multiple consumers.
 
 - TF1 Quantizer
-  
+
   - Update shift_bias constraints for NPU workflow.
   - Bugfixes:
 
@@ -448,7 +448,7 @@ Quantizer
 
 ONNXRuntime Execution Provider
 ==============================
-  
+
 - Support new OPs, such as PRelu, ReduceSum, LpNormlization, DepthToSpace(DCR).
 - Increase the percentage of model operators performed on the NPU.
 - Fixed some issues causing model operators allocation to CPU.
@@ -468,7 +468,7 @@ ONNXRuntime Execution Provider
 
 NPU and Compiler
 ==============================
-  
+
 - New operators support
 
   - Global average pooling with large spatial dimensions
@@ -549,13 +549,13 @@ NPU and Compiler
 LLM
 ===
 
-- Smoothquant for OPT1.3b, 2.7b, 6.7b, 13b models. 
+- Smoothquant for OPT1.3b, 2.7b, 6.7b, 13b models.
 - Huggingface Optimum ORT Quantizer for ONNX and Pytorch dynamic quantizer for Pytorch
 - Enabled Flash attention v2 for larger prompts as a custom torch.nn.Module
 - Enabled all CPU ops in bfloat16 or float32 with Pytorch
 - int32 accumulator in AIE (previously int16)
 - DynamicQuantLinear op support in ONNX
-- Support different compute primitives for prefill/prompt and token phases 
+- Support different compute primitives for prefill/prompt and token phases
 - Zero copy of weights shared between different op primitives
 - Model saving after quantization and loading at runtime for both Pytorch and ONNX
 - Enabled profiling prefill/prompt and token time using local copy of OPT Model with additional timer instrumentation
@@ -610,7 +610,7 @@ Quantizer
   - Supports saving the S8S8 model in U8S8 format for NPU
   - Supports simulation of Sigmoid, Swish, Softmax, AvgPool, GlobalAvgPool, ReduceMean and LeakyRelu for NPU
   - Supports node fusions for NPU
-  
+
 ONNXRuntime Execution Provider 
 ==============================
 
@@ -692,7 +692,7 @@ Quantizer
   - Supports power-of-two quantization with both QDQ and QOP format
   - Supports Non-overflow and Min-MSE quantization methods
   - Supports various quantization configurations in power-of-two quantization in both QDQ and QOP format.
-   
+
     - Supports signed and unsigned configurations.
     - Supports symmetry and asymmetry configurations.
     - Supports per-tensor and per-channel configurations.
@@ -723,14 +723,14 @@ ONNX Runtime Execution Provider
 
   - Supports ONNX Opset version 18, ONNX Runtime 1.16.0, and ONNX version 1.13
   - Supports both C++ and Python APIs(Python version 3)
-  - Supports deploy model with other EPs 
+  - Supports deploy model with other EPs
   - Supports falling back to CPU EP
   - Open source and upstreamed to ONNX Runtime Github repo
   - Compiler
 
     - Multiple Level op fusion
-    - Supports the  same muti-output operator like chunk split 
-    - Supports split big pooling to small pooling        
+    - Supports the  same muti-output operator like chunk split
+    - Supports split big pooling to small pooling
     - Supports 2-channel writeback feature for Hard-Sigmoid and Depthwise-Convolution
     - Supports 1-channel GStiling
     - Explicit pad-fix in CPU subgraph for 4-byte alignment
@@ -742,12 +742,12 @@ NPU
 - Two configurations
 
   - Power Optimized Overlay
-      
+
     - Suitable for smaller AI models (1x4.xclbin)
     - Supports spatial sharing, up to 4 concurrent AI workloads
 
   - Performance Optimized Overlay (5x4.xclbin)
-       
+
     - Suitable for larger AI models
 
 Known issues
@@ -757,7 +757,7 @@ Known issues
 - Tensorflow 2.x quantizer supports models within tf.keras.model only
 - Running quantizer docker in WSL on Ryzen AI laptops may encounter OOM (Out-of-memory) issue
 - Run multiple concurrent models by temporal sharing on the Performance optimized overlay (5x4.xclbin) is not supported
- 
+
 
 
 
