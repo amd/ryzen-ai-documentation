@@ -76,7 +76,7 @@ Version 1.4
   - Llama3.1-8B-Instruct
   - Codellama-7B-Instruct
 
-- `New BF16 model examples <https://ryzenai.docs.amd.com/en/latest/examples.html>`_:
+- :doc:`New BF16 model examples <examples>`_:
 
   - Image classification
   - Finetuned DistilBERT for text classification
