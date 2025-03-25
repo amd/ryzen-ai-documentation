@@ -94,7 +94,7 @@ Featured LLMs
 
 The following tables contain a curated list of LLMs that have been validated on Ryzen AI hybrid execution mode. The hybrid examples are built on top of OnnxRuntime GenAI (OGA).
 
-The comprehensive set of pre-optimized models for hybrid execution used in these examples are available in the `AMD hybrid collection on Hugging Face <https://huggingface.co/collections/amd/ryzenai-14-llm-hybrid-models-67da31231bba0f733750a99c>`_. It is also possible to run fine-tuned versions of the models listed (for example, fine-tuned versions of Llama2 or Llama3). For instructions on how to prepare a fine-tuned OGA model for hybrid execution, refer to :ref:`Preparing Models <hybrid-prepare-models>`.
+The comprehensive set of pre-optimized models for hybrid execution used in these examples are available in the `AMD hybrid collection on Hugging Face <https://huggingface.co/collections/amd/ryzenai-14-llm-hybrid-models-67da31231bba0f733750a99c>`_. It is also possible to run fine-tuned versions of the models listed (for example, fine-tuned versions of Llama2 or Llama3). For instructions on how to prepare a fine-tuned OGA model for hybrid execution, refer to :doc:`oga_model_prepare`.
 
 .. _ryzen-ai-oga-featured-llms:
 
