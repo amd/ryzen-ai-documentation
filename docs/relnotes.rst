@@ -117,10 +117,10 @@ Version 1.4
   
 - Known Issues:    
   
-  - Extended compile time for some models with BF16/BFP16 data types.    
-  - LLM models with 4K sequence length may revert to CPU execution.    
-  - Accuracy drop in some Transformer models using BF16/BFP16 data types, requiring Quark intervention.  
-
+  - LT may cause warnings or crash when running concurrently with other MSFT Copilot Apps.
+  - Recall app may stops functioning, NPU driver and workloads expected to continue to work.
+  - Cocreator app does not close contexts quickly and might cause contexts to be limited due to remaining context still open. 
+  
 
 ***********  
 Version 1.3  
