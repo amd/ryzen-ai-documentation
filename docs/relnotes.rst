@@ -53,7 +53,7 @@ Version 1.4
   
   - Unified support for LLMs, INT8, and BF16 models in a single release package.    
   - Public release for compilation of BF16 CNN and NLP models on Windows.    
-  - `Public release of the LLM OGA flow <https://ryzenai.docs.amd.com/en/develop/hybrid_oga.html>`_    
+  - `Public release of the LLM OGA flow <https://ryzenai.docs.amd.com/en/latest/hybrid_oga.html>`_    
   - `LLM building flow for Finetuned LLM <https://ryzenai.docs.amd.com/en/latest/oga_model_prepare.html>`_
   - Support for up to 16 hardware contexts on Ryzen AI 300 Series processors     
   - Vitis AI EP now supports the OnnxRuntime EP context cache feature (for custom handling of pre-compiled models).    
@@ -75,7 +75,7 @@ Version 1.4
   - Llama3.1-8B-Instruct
   - Codellama-7B-Instruct  
 
-- New BF16 Model Examples
+- `New BF16 Model Examples <https://ryzenai.docs.amd.com/en/latest/examples.html>`_
   
   - Image Classification
   - Finetuned DistilBERT for Text Classification
