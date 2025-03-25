@@ -1,3 +1,5 @@
+:orphan:
+
 ************************
 Ryzen AI Linux Installer
 ************************
@@ -72,7 +74,7 @@ The compiled model in the working directory is used by the ONNX runtime session 
 
 For more details about how to run BF16 models on NPU refer to:
 
-  - `Image Classification <https://github.com/amd/RyzenAI-SW/tree/main/example/image_classification>`_
-  - `Finetuned DistilBERT for Text Classification <https://github.com/amd/RyzenAI-SW/tree/main/example/DistilBERT_text_classification_bf16>`_ 
-  - `Text Embedding Model Alibaba-NLP/gte-large-en-v1.5  <https://github.com/amd/RyzenAI-SW/tree/main/example/GTE>`_ 
+- `Image Classification <https://github.com/amd/RyzenAI-SW/tree/main/example/image_classification>`_
+- `Finetuned DistilBERT for Text Classification <https://github.com/amd/RyzenAI-SW/tree/main/example/DistilBERT_text_classification_bf16>`_ 
+- `Text Embedding Model Alibaba-NLP/gte-large-en-v1.5  <https://github.com/amd/RyzenAI-SW/tree/main/example/GTE>`_ 
 
