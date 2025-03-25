@@ -34,18 +34,16 @@ The following table lists which types of models are supported on what hardware p
    * - Model Type
      - PHX/HPT
      - STX/KRK 
-   * - CNN INT8/INT16
+   * - CNN INT8
      - |checkmark|
      - |checkmark|
-   * - CNN Floating-Point
+   * - CNN BF16
      - 
      - |checkmark|
    * - LLM (OGA)
      - 
      - |checkmark|
-   * - LLM (PyTorch)
-     - |checkmark|
-     - |checkmark|
+
 
 ***********
 Version 1.4    
