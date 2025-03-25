@@ -7,6 +7,80 @@ Application Development
 This page captures requirements and recommendations for developers looking to create, package and distribute applications targeting NPU-enabled AMD processors.
 
 
+
+.. _driver-compatibility:
+
+*************************************
+VitisAI EP / NPU Driver Compatibility
+*************************************
+
+The VitisAI EP requires a compatible version of the NPU drivers. For each version of the VitisAI EP, compatible drivers are bounded by a minimum version and a maximum release date. NPU drivers are backward compatible with VitisAI EP released up to 3 years before. The maximum driver release date is therefore set to 3 years after the release date of the corresponding VitisAI EP.
+
+The table below summarizes the driver requirements for the different versions of the VitisAI EP.
+
+.. list-table:: 
+   :header-rows: 1
+
+   * - VitisAI EP version
+     - Minimum NPU Driver version
+     - Maximum NPU Driver release date
+   * - 1.4
+     - 32.0.203.257
+     - March 25th, 2028
+   * - 1.3.1
+     - 32.0.201.242
+     - January 17th, 2028
+   * - 1.3
+     - 32.0.201.237
+     - November 26th, 2027
+   * - 1.2
+     - 32.0.201.204
+     - July 30th, 2027
+
+The application must check that NPU drivers compatible with the version of the Vitis AI EP being used are installed.
+
+.. _apu-types:
+
+*****************
+APU Types
+*****************
+
+The Ryzen AI Software supports different types of NPU-enabled APUs. These APU types are referred to as PHX, HPT, STX and KRK. 
+
+To programmatically determine the type of the local APU, it is possible to enumerate the PCI devices and check for an instance with a matching Hardware ID.
+
+.. list-table:: 
+   :header-rows: 1
+
+   * - Vendor
+     - Device
+     - Revision
+     - APU Type
+   * - 0x1022
+     - 0x1502
+     - 0x00
+     - PHX or HPT 
+   * - 0x1022
+     - 0x17F0
+     - 0x00
+     - STX 
+   * - 0x1022
+     - 0x17F0
+     - 0x10
+     - STX 
+   * - 0x1022
+     - 0x17F0
+     - 0x11
+     - STX 
+   * - 0x1022
+     - 0x17F0
+     - 0x20
+     - KRK
+
+The application must check that it is running on an AMD processor with an NPU, and that the NPU type is supported by the version of the Vitis AI EP being used.
+
+
+
 ************************************
 Application Development Requirements
 ************************************
@@ -16,14 +90,18 @@ ONNX-RT Session
 
 The application should only use the Vitis AI Execution Provider if the following conditions are met:
 
-- The application is running on an AMD processor with a :ref:`NPU type supported by the version of the Vitis AI EP<apu-types>` being used.
-- :ref:`NPU drivers compatible with the version of the Vitis AI EP <driver-compatibility>` being used are installed.
+- The application is running on an AMD processor with a NPU type supported by the version of the Vitis AI EP being used. See :ref:`list <apu-types>` above in this page.
+- NPU drivers compatible with the version of the Vitis AI EP being used are installed. See :ref:`compatibility table <driver-compatibility>` above in this page.
 
 |memo| **NOTE**: Sample C++ code implementing the compatibility checks to be performed before using the VitisAI EP is provided here: https://github.com/amd/RyzenAI-SW/tree/main/utilities/npu_check
 
-The application should use XCLBIN file (through ``xclbin`` provider option) correctly according to the APU type (for INT8 models)
 
-The application should use ``vaip_config.json`` which was used to compile BF16 model (for bf16 models). 
+VitisAI EP Provider Options
+===========================
+
+For INT8 models, the application should detect which type of APU is present (PHX/HPT/STX/KRK) and set the ``xclbin`` provider option accordingly. Refer to the section about :ref:`compilation of INT8 models <compile-int8>` for details about this.
+
+For BF16 models, the application should set the ``config_file`` provider option to use the same file as the one which was used to precompile the BF16 model. Refer to the section about :ref:`compilation of BF16 models <compile-bf16>` for details about this.
 
 
 Cache Management
