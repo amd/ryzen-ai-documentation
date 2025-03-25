@@ -76,7 +76,7 @@ Version 1.4
   - Llama3.1-8B-Instruct
   - Codellama-7B-Instruct
 
-- :doc:`New BF16 model examples <examples>`_:
+- :doc:`New BF16 model examples <examples>`:
 
   - Image classification
   - Finetuned DistilBERT for text classification
