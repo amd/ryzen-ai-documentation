@@ -53,25 +53,38 @@ Version 1.4
   
   - Unified support for LLMs, INT8, and BF16 models in a single release package.    
   - Public release for compilation of BF16 CNN and NLP models on Windows.    
-  - Public release of the LLM OGA flow.    
-  - Streamlined support for fine-tuned LLMs - [VAI-8142] Grey box model deployment - AECG Jira.    
-  - Support for up to 16 hardware contexts on Ryzen AI 300 Series processors - [VITIS-14253] Virtual contexts support in driver.    
+  - `Public release of the LLM OGA flow <https://ryzenai.docs.amd.com/en/develop/hybrid_oga.html>`_    
+  - `LLM building flow for Finetuned LLM <https://ryzenai.docs.amd.com/en/latest/oga_model_prepare.html>`_
+  - Support for up to 16 hardware contexts on Ryzen AI 300 Series processors     
   - Vitis AI EP now supports the OnnxRuntime EP context cache feature (for custom handling of pre-compiled models).    
   - Ryzen AI environment variables converted to VitisAI EP session options.    
   - Improved exception handling and fallback to CPU.    
-  - Driver and runtime stack supported on Linux.    
     
-- New Models:    
+- New LLMs:    
   
-  - DeepSeek-R1-Distill-Qwen-1.5B    
-  - DeepSeek-R1-Distill-Qwen-7B    
-  - Gemma2-2B    
-  - New models added for LLM hybrid flow:    
-    - Mistral-7B-Instruct-v0.1    
-    - Mistral-7B-Instruct-v0.2    
-    - Mistral-7B-v0.3    
-    - Llama3.1-8B-Instruct    
-    - Codellama-7B-Instruct    
+  - DeepSeek-R1-Distill-Llama-8B
+  - DeepSeek-R1-Distill-Qwen-1.5B 
+  - DeepSeek-R1-Distill-Qwen-7B
+  - Gemma2-2B
+  - Qwen2-1.5B 
+  - Qwen2-7B
+  - AMD-OLMO-1B-SFT-DPO
+  - Mistral-7B-Instruct-v0.1
+  - Mistral-7B-Instruct-v0.2
+  - Mistral-7B-v0.3 
+  - Llama3.1-8B-Instruct
+  - Codellama-7B-Instruct  
+
+- New BF16 Model Examples
+  
+  - Image Classification
+  - Finetuned DistilBERT for Text Classification
+  - Text Embedding Model Alibaba-NLP/gte-large-en-v1.5
+
+- New Tools
+
+  - Introduction to Lemonade and Lemonade Server 
+  - Introduction to DIgest AI
   
 - Quark-torch:    
   
