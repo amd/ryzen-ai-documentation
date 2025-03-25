@@ -85,7 +85,7 @@ Version 1.4
 - New Tools
 
   - Introduction to Lemonade and Lemonade Server 
-  - Introduction to DIgest AI
+  - Introduction to Digest AI
   
 - Quark-torch:    
   
