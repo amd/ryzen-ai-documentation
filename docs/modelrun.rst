@@ -1,4 +1,4 @@
-.. include:: icons.txt
+.. include:: /icons.txt
 
 ################################
 Model Compilation and Deployment
@@ -28,14 +28,16 @@ The ``provider_options`` parameter allows passing compile-specific options for t
    :widths: 20 35
    :header-rows: 1
 
-   * - Options
+   * - Provider Options
      - Description 
    * - config_file
      - Configuration file to pass certain compile-specific options, used for BF16 compilation.
    * - xclbin
      - NPU binary file to specify NPU configuration, used for INT8 models.
-   * - cache_dir / cache_key
-     - Specifies the cache folder for storing the compiled model.
+   * - cache_dir
+     - The path and name of the cache directory.
+   * - cache_key
+     - The subfolder in the cache directory where the compiled model is stored.
    * - encryptionKey
      - Used for generating an encrypted compiled model.
 
@@ -45,7 +47,7 @@ Detailed usage of these options is discussed in the subsequent section of this p
 
 
 Compilation of BF16 models
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+==========================
 
 For BF16 model compilation, a compilation configuration file must be provided through the ``config_file`` option in provider_options.
 
@@ -106,7 +108,7 @@ By default, the compiler vectorizes the data to optimize performance for CNN mod
 
 
 Compilation of INT8 models
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+==========================
 
 In the current version of the Ryzen AI software, INT8 models require additional NPU configuration via the ``xclbin`` provider option. This configuration is not required for BF16 models.
 
@@ -161,9 +163,25 @@ By default, the Ryzen AI Conda environment automatically sets the standard binar
 Caching the Compiled Model
 **************************
 
-Model compilation can take some time depending on the model's complexity. However, once compiled, the model is saved in the cache directory. Any subsequent execution of the ONNX Runtime script will load the precompiled model from this cache directory, reducing session creation time.
+To avoid the overhead of recompiling models, it can be advantegeous to work with pre-compiled models. The pre-compiled models can be loaded instantenously and immediately executed on the NPU. This greatly improves the session creation time and overall end-user experience. 
 
-To specify a model cache folder, it is recommended to use the ``cache_dir`` and ``cache_key`` provider options. Example:
+The RyzenAI Software supports two mechanisms for caching compiled models:
+
+- VitisAI EP Cache
+- OnnxRuntime EP Context Cache
+
+
+VitisAI EP Cache
+================
+
+The VitisAI EP supports a built-in caching mechanism. This mechanism is enabled by default. When a model is compiled for the first time, it is automatically saved in the VitisAI EP cache directory. Any subsequent creation of an ONNX Runtime session using the same model will load the precompiled model from this cache directory, thereby reducing session creation time.
+
+To VitisAI EP cache directory is specified with the ``cache_dir`` and ``cache_key`` provider options:
+
+- ``cache_dir`` - Specifies the path and name of the cache directory.
+- ``cache_key`` - Specifies the subfolder in the cache directory where the compiled model is stored.
+
+Example:
 
 .. code-block::
 
@@ -179,14 +197,14 @@ To specify a model cache folder, it is recommended to use the ``cache_dir`` and 
                                   provider_options=provider_options)  
 
 
-In the example above, the cache directory is set to the absolute path of the folder containing the ONNX Runtime script being executed. Once the session is created, the compiled model is saved inside a subdirectory named `compiled_resnet50` within the specified cache folder.
+In the example above, the cache directory is set to the absolute path of the folder containing the ONNX Runtime script being executed. Once the session is created, the compiled model is saved inside a subdirectory named ``compiled_resnet50`` within the specified cache folder.
 
-**Note**: In the current release, if ``cache_dir`` is not set, the default cache location varies depending on the input model:
+|memo| **NOTE**: In the current release, if ``cache_dir`` is not set, the default cache location varies based on the type of model:
 
-- INT8 models: Cached in ``C:\temp\{user}\vaip\.cache``
-- BF16 models: Cached in the current directory where the ONNX Runtime script is executed.
+- INT8 models - ``C:\temp\{user}\vaip\.cache``
+- BF16 models - The current directory where the ONNX Runtime script is executed.
 
-**Note**: To force recompilation and ignore the cached model, unset the ``XLNX_ENABLE_CACHE`` environment variable before running the script:
+|memo| **NOTE**: To force recompilation and ignore the cached model, unset the ``XLNX_ENABLE_CACHE`` environment variable before running the application:
 
 .. code-block::
 
@@ -195,8 +213,8 @@ In the example above, the cache directory is set to the absolute path of the fol
 
 
 
-Cache Encryption
-~~~~~~~~~~~~~~~~
+VitisAI EP Cache Encryption
+---------------------------
 
 To protect developers’ intellectual property, encryption is supported as a provider option. With this enabled, all the compiled models generated are encrypted using AES256. To enable encryption, you need to pass the encryption key through the VAI EP options as follows:
 
@@ -228,20 +246,15 @@ In C++:
 
 The key is a 256-bit value represented as a 64-digit string. The model generated in the cache directory cannot be opened with Netron currently. Additionally, there is a side effect: dumping is disabled to prevent the leakage of sensitive information about the model.
 
-It is possible to use the OnnxRuntime EP context cache feature instead of the Vitis AI cache system to manage precompiled models (discussed in the next section)
 
+OnnxRuntime EP Context Cache
+============================
 
-|
+The Vitis AI EP supports the ONNX Runtime EP context cache feature. This features allows dumping and reloading a snapshot of the EP context before deployment. Currently, this feature is only available for INT8 models.
 
-************************************
-OnnxRuntime EP context cache support
-************************************
+The user can enable dumping of the EP context by setting the ``ep.context_enable`` session option to 1. 
 
-Vitis AI Execution Provider (EP) supports the ONNX Runtime EP context cache feature. Currently, this feature is only available for INT8 model compilation.
-
-The user can enable context cache dumping by setting the session option ``ep.context_enable``. 
-
-Additionally, the following options can be used for more control:
+The following options can be used for additional control:
 
 - ``ep.context_file_path`` – Specifies the output path for the dumped context model.
 - ``ep.context_embed_mode`` – Embeds the EP context into the ONNX model when set to 1.
@@ -249,9 +262,12 @@ Additionally, the following options can be used for more control:
 For further details, refer to the official ONNX Runtime documentation: https://onnxruntime.ai/docs/execution-providers/EP-Context-Design.html
 
 
-**Encryption Options for Context Cache**
+EP Context Encryption
+---------------------
 
-By default, an unencrypted context cache model is generated, which can be used directly during inference. Users can also apply custom encryption methods by manually encrypting and decrypting the context cache model.
+By default, an unencrypted context model is generated, which can be used directly during inference. 
+
+After the context model is generated, developers can use custom methods for encrypting the generated file and decrypting it before using it at runtime.
 
 Alternatively, Vitis AI EP-managed encryption can be enabled by passing an encryption key via the ``encryptionKey`` provider option (discussed in the previous section). At runtime, the exact same encryption key must be provided to decrypt and load the context cache model.
 
