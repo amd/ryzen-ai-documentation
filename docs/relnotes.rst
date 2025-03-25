@@ -50,7 +50,8 @@ Version 1.4
 ***********  
   
 - New Features:    
-  
+
+  - `New Architecture support for Ryzen AI 300 Series Processors <https://www.amd.com/en/products/software/ryzen-ai-software.html#tabs-2733982b05-item-7720bb7a69-tab>`_
   - Unified support for LLMs, INT8, and BF16 models in a single release package.    
   - Public release for compilation of BF16 CNN and NLP models on Windows.    
   - `Public release of the LLM OGA flow <https://ryzenai.docs.amd.com/en/latest/hybrid_oga.html>`_    
