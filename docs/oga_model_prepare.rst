@@ -42,6 +42,18 @@ Setup
      cd <extracted amd quark 0.8>
      pip install amd_quark-0.8+<>.whl
 
+5. Install other dependencies
+
+.. code-block::
+
+   pip install datasets
+   pip install transformers
+   pip install accelerate
+   pip install evaluate
+
+
+Some models may require a specific version of ``transformers``. For example, ChatGLM3 requires version 4.44.0.   
+
 Generate Quantized Model
 ************************
 
@@ -65,6 +77,7 @@ Use following command to run Quantization. In a GPU equipped Linux machine the q
 
 - To generate OGA model for NPU only execution mode use ``--datatype float32``
 - To generate OGA model for Hybrid execution mode use ``--datatype float16``
+- For a BF16 pretrained model, you can use ``--data_type bfloat16``.
 
 The quantized model is generated in the <quantized safetensor output dir> folder.
 
