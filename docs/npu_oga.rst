@@ -11,17 +11,17 @@ Ryzen AI Software supports deploying LLMs on Ryzen AI PCs using the native ONNX 
 
 
 Supported Configurations
-~~~~~~~~~~~~~~~~~~~~~~~~
+************************
 
 The Ryzen AI OGA flow supports Strix and Krackan Point processors. Phoenix (PHX) and Hawk (HPT) processors are not supported.
 
 Requirements
-~~~~~~~~~~~~
+************
 - Install NPU Drivers and RyzenAI MSI installer according to the instructions https://ryzenai.docs.amd.com/en/latest/inst.html. 
 - Install Git for Windows (needed to download models from HF): https://git-scm.com/downloads
 
 Setting performance mode (Optional)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+***********************************
 
 To run the LLMs in the best performance mode, follow these steps:
 
@@ -35,7 +35,7 @@ To run the LLMs in the best performance mode, follow these steps:
 
 
 Pre-optimized Models
-~~~~~~~~~~~~~~~~~~~~
+********************
 
 AMD provides a set of pre-optimized LLMs ready to be deployed with Ryzen AI Software and the supporting runtime for NPU execution. These models can be found on Hugging Face in the following collection:
 
@@ -58,10 +58,10 @@ AMD provides a set of pre-optimized LLMs ready to be deployed with Ryzen AI Soft
 The steps for deploying the pre-optimized models using C++ and python are described in the following sections.
 
 NPU Execution of OGA Models
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+***************************
 
 Setup
-@@@@@
+=====
 
 1. Install Ryzen AI 1.4 according to the instructions if not installed previously: https://ryzenai.docs.amd.com/en/latest/inst.html
 
@@ -100,7 +100,7 @@ NOTE: pre-built versions of the ``run_llm.exe`` and ``model_generate.exe`` execu
    xcopy .\cpp\build\Release\run_llm.exe .\libs 
 
 Download Models from HuggingFace
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+================================
 
 1. Navigate to the ``npu-llm`` folder: 
 
@@ -125,7 +125,7 @@ For example, for Llama-2-7b-chat:
 
 
 Run the models using C++
-@@@@@@@@@@@@@@@@@@@@@@@@
+========================
 
 **Note**: Ensure the models are cloned in the ``%RYZEN_AI_INSTALLATION_PATH%/npu-llm`` folder.
 
@@ -173,7 +173,7 @@ To run the models using the ``run_llm.exe`` file
 
  
 Run Benchmark
-@@@@@@@@@@@@@
+=============
 
 To run the models using the ``model_benchmark.exe`` file 
  
@@ -208,7 +208,7 @@ To run the models using the ``model_benchmark.exe`` file
    .\libs\model_benchmark.exe -i <model_path> -p <model_path>\<prompts.txt> --verbose 
 
 Run the models using Python
-@@@@@@@@@@@@@@@@@@@@@@@@@@@
+===========================
 
 1. In the model directory, open the ``genai_config.json`` file located in the folder of the downloaded model. Update the value of the "custom_ops_library" key with the full path to the ``onnxruntime_vitis_ai_custom_ops.dll``, located in the ``%RYZEN_AI_INSTALLATION_PATH%\npu-llm\libs`` folder:  
 
@@ -243,6 +243,6 @@ Run the models using Python
 
  
 Preparing OGA Models for NPU-only Execution
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+*******************************************
 
 To prepare the OGA model for NPU-only execution please refer :doc:`oga_model_prepare` 

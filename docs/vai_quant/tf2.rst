@@ -5,7 +5,7 @@ Vitis AI Quantizer for TensorFlow
 #################################
 
 .. note::
-   The Vitis AI Quantizer has been deprecated as of the Ryzen AI 1.3 release. AMD strongly recommends using the new AMD Quark Quantizer instead (please refer to the main documentation about :doc:`/modelport`).
+   The Vitis AI Quantizer has been deprecated as of the Ryzen AI 1.3 release. AMD strongly recommends using the new AMD Quark Quantizer instead (please refer to the main documentation about :doc:`/model_quantization`).
 
 .. note:: 
    All TensorFlow related documentation is applicable to the TensorFlow 2 version. 

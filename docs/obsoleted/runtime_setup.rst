@@ -1,5 +1,5 @@
 
-.. include:: icons.txt
+.. include:: /icons.txt
 
 #############
 Runtime Setup

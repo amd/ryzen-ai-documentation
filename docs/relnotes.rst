@@ -1,4 +1,4 @@
-.. include:: icons.txt
+.. include:: /icons.txt
 
 #############
 Release Notes
