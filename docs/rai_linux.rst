@@ -19,7 +19,7 @@ Linux Installation
 ~~~~~~~~~~~~~~~~~~
 - Download the RyzenAI Software Linux installer :download:`ryzen_ai-1.4.0.tgz <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=ryzen_ai-1.4.0-ea.tgz>`.
 
-- Use the installation script as shown below:
+- Installation commands:
 
 .. code-block::
 
@@ -28,7 +28,7 @@ Linux Installation
     ./install_ryzen_ai_1_4.sh -a yes -p <TARGET PATH TO VENV> -l
     source <TARGET PATH TO VENV>/bin/activate
 
-- Use Docker to install the Ryzen AI Software :download:`ryzen_ai_docker-1.4.0-ea_2025_02_21_3914.tgz <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=ryzen_ai_docker-1.4.0-ea_2025_02_21_3914.tgz>`.
+Alternatively, you can use the Docker based installer for Ryzen AI Software :download:`ryzen_ai_docker-1.4.0-ea_2025_02_21_3914.tgz <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=ryzen_ai_docker-1.4.0-ea_2025_02_21_3914.tgz>`.
 
 - Installation command:
 
@@ -37,40 +37,14 @@ Linux Installation
     gunzip -c ryzen_ai_docker-1.4.0-ea_2025_02_21_3914.tgz | docker load
 
 
-Model Compilation
-~~~~~~~~~~~~~~~~~
+After installing on Linux machine, the process for model compilation on Linux is similar to that on Windows. For detailed guidance, please refer to the :doc:`modelrun` page.
 
-The input FP32/BF16 models are compiled for the NPU when an ONNX inference session is created using the Vitis AI Execution Provider (VAI EP):
+Once the model has been successfully compiled on your Linux machine, proceed to copy the entire working directory to a Windows machine that operates on an STX-based system.
 
-.. code-block:: python
+Prior to running the model on the Windows machine, ensure that all required prerequisites are satisfied as listed in the :doc:inst documentation page.
 
-  providers = ['VitisAIExecutionProvider']
-  session = ort.InferenceSession(model, sess_options = sess_opt,
-                                            providers = providers,
-                                            provider_options = provider_options)
+To deploy the model on the Windows machine, follow the instructions provided in the :doc:`modelrun` page.
 
-
-Running Model on Windows system
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-After successful model compilation on Linux machine, copy the entire working directory to a STX based Windows machine
-
-Prerequisites
-~~~~~~~~~~~~~
-
-The following are the required system setting for runing the compiled model on RyzenAI windows system
-
-- Strix Point AI PC, Windows 11 with latest NPU driver (Version:32.0.203.255, Date:02/20/2025) installed
-- Ensure Anaconda is installed and Conda/Scripts is set to the windows System PATH variable
-- LLVM/clang driver: https://github.com/llvm/llvm-project/releases/download/llvmorg-17.0.1/LLVM-17.0.1-win64.exe
-      - Check "Add LLVM to the System PATH for all users"
-      - Use the default installation: C:\Program Files\LLVM
-- Visual Studio 2022 Community: Install "Desktop Development with C++"
-
-Model Deployment
-~~~~~~~~~~~~~~~~
-
-The compiled model in the working directory is used by the ONNX runtime session and run inference using VitisAI Execution provider.
 
 For more details about how to run BF16 models on NPU refer to:
 
