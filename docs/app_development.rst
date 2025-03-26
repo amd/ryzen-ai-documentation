@@ -119,7 +119,7 @@ Application Packaging Requirements
 
 A C++ application built on the Ryzen AI ONNX Runtime requires the following components to be included in its distribution package:
 
-- Runtime DLLs from the Ryzen AI installation area (Installed by the full installer)
+- Runtime DLLs from the Ryzen AI installation area 
 
   - For INT8, BF16 Models include DLLs from ``C:\Program Files\RyzenAI\<version>\deployment\voe`` 
   - For LLM include DLLs from ``C:\Program Files\RyzenAI\<version>\deployment\npu-llm`` and ``C:\Program Files\RyzenAI\<version>\deployment\hybrid-llm`` 
