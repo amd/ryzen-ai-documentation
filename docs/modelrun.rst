@@ -81,20 +81,26 @@ Below is an example of a standard BF16 model compilation configuration file:
 
 The ``vaiml_config`` section allows additional configurations in specific cases. Below are few such options:
 
-**Performance Optimization**: To enable a more performance-optimized compilation, set:
+**Performance Optimization**
+
+The default compilation optimization level is 1. The optimization level can be changed as follows:
 
 .. code-block::
 
     "vaiml_config": {"optimize_level": 2}
 
+Supported values: 1 (default), 2
+
 
 **Automatic FP32 to BF16 Conversion** 
 
-If an FP32 model is passed, the compiler can automatically cast it to BF16. This method is not recommended, as it is advisable to quantize the model to BF16 using Quark for better accuracy control. However, it can be useful for quick compilation flow testing:
+If a FP32 model is passed, the compiler can automatically cast it to BF16. This method is not recommended, as it is advisable to quantize the model to BF16 using Quark for better accuracy control. However, this method can be useful for quick prototyping.
 
 .. code-block::
 
     "vaiml_config": {"enable_f32_to_bf16_conversion": true}
+
+Supported values: false (default), true
 
 
 **Optimizations for Transformer-Based Models**
@@ -105,6 +111,7 @@ By default, the compiler vectorizes the data to optimize performance for CNN mod
 
     "vaiml_config": {"preferred_data_storage": "unvectorized"}
 
+Supported values: "vectorized" (default), "unvectorized"
 
 
 .. _compile-int8:
@@ -114,7 +121,7 @@ Compilation of INT8 models
 
 In the current version of the Ryzen AI software, INT8 models require additional NPU configuration via the ``xclbin`` provider option. This configuration is not required for BF16 models.
 
-There are two types of NPU configurations for INT8 models: standard and benchmark. Setting the NPU configuration involves specifying a specific ``.xclbin`` binary file, which is provided in the installer package.
+There are two types of NPU configurations for INT8 models: standard and benchmark. Setting the NPU configuration involves specifying a specific ``.xclbin`` binary file, which is located in the Ryzen AI Software installation tree.
 
 Depending on the target processor and binary type (standard/benchmark), the following ``.xclbin`` files should be used:
 
@@ -128,7 +135,7 @@ Depending on the target processor and binary type (standard/benchmark), the foll
 - Standard binary: ``%RYZEN_AI_INSTALLATION_PATH%\voe-4.0-win_amd64\xclbins\phoenix\1x4.xclbin``
 - Benchmark binary: ``%RYZEN_AI_INSTALLATION_PATH%\voe-4.0-win_amd64\xclbins\phoenix\4x4.xclbin``
 
-Example code specifying standard NPU configuration setting through ``xclbin`` provider option.
+Example code selecting the standard NPU configuration for STX/KRK through the ``xclbin`` provider option.
 
 .. code-block::
 
@@ -150,7 +157,7 @@ Example code specifying standard NPU configuration setting through ``xclbin`` pr
                                   provider_options=provider_options)
 
 
-By default, the Ryzen AI Conda environment automatically sets the standard binary for all inference sessions through the ``XLNX_VART_FIRMWARE`` environment variable. However, explicitly passing the xclbin option in provider_options overrides the default setting.
+By default, the Ryzen AI Conda environment automatically sets the standard binary for all inference sessions through the ``XLNX_VART_FIRMWARE`` environment variable. However, explicitly passing the xclbin option in the provider options overrides the environment variable.
 
 .. code-block::
 
@@ -165,7 +172,7 @@ By default, the Ryzen AI Conda environment automatically sets the standard binar
 Caching the Compiled Model
 **************************
 
-To avoid the overhead of recompiling models, it can be advantegeous to work with pre-compiled models. The pre-compiled models can be loaded instantenously and immediately executed on the NPU. This greatly improves the session creation time and overall end-user experience. 
+To avoid the overhead of recompiling models, it can be advantageous to work with pre-compiled models. The pre-compiled models can be loaded instantenously and immediately executed on the NPU. This greatly improves the session creation time and overall end-user experience. 
 
 The RyzenAI Software supports two mechanisms for caching compiled models:
 
