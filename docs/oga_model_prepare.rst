@@ -9,15 +9,16 @@ Preparing a LLM for deployment on a Ryzen AI PC involves 2 steps:
 1. **Quantization**: The pretrained model is quantized to reduce memory footprint and better map to compute resources in the hardware accelerators
 2. **Postprocessing**: During the postprocessing the model is exported to OGA followed by NPU-only or Hybrid execution mode specific postprocess to obtain the final deployable model.
 
+************
 Quantization
-~~~~~~~~~~~~
+************
 
 Prerequisites
-*************
+=============
 Linux machine with AMD (e.g., AMD Instinct MI Series) or Nvidia GPUs
 
 Setup
-*****
+=====
 
 1. Create and activate Conda Environment 
 
@@ -55,7 +56,7 @@ Setup
 Some models may require a specific version of ``transformers``. For example, ChatGLM3 requires version 4.44.0.   
 
 Generate Quantized Model
-************************
+========================
 
 Use following command to run Quantization. In a GPU equipped Linux machine the quantization can take about 30-60 minutes. 
 
@@ -81,21 +82,34 @@ Use following command to run Quantization. In a GPU equipped Linux machine the q
 
 The quantized model is generated in the <quantized safetensor output dir> folder.
 
-Postprocess
-~~~~~~~~~~~
+**************
+Postprocessing
+**************
 
-Copy the quantized model to the Windows PC with Ryzen AI installed, activate the Ryzen AI Conda environment, and execute ``model_generate`` command to generate the final model
+Copy the quantized model to the Windows PC with Ryzen AI installed, activate the Ryzen AI Conda environment, and execute ``model_generate`` command to generate the final model.
+
+Generate the final model for Hybrid execution mode:
 
 .. code-block::
 
    conda activate ryzen-ai-<version>
 
-   # Generate Hybrid execution mode model
    model_generate --hybrid <output_dir> <quantized_model_path>  
 
-   # Generate NPU execution mode model
+ 
+Generate the final model for NPU execution mode:
+
+.. code-block::
+
+   conda activate ryzen-ai-<version>
+
    model_generate --npu <output_dir> <quantized_model_path>  
 
+..
+  ------------
 
+  #####################################
+  License
+  #####################################
 
-
+  Ryzen AI is licensed under `MIT License <https://github.com/amd/ryzen-ai-documentation/blob/main/License>`_ . Refer to the `LICENSE File <https://github.com/amd/ryzen-ai-documentation/blob/main/License>`_ for the full license text and copyright notice.
