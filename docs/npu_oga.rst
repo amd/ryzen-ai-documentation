@@ -9,31 +9,21 @@ Ryzen AI Software supports deploying LLMs on Ryzen AI PCs using the native ONNX 
 **Note**: Refer to :doc:`hybrid_oga` for Hybrid NPU + GPU execution mode.
 
 
-
+************************
 Supported Configurations
 ************************
 
-The Ryzen AI OGA flow supports Strix and Krackan Point processors. Phoenix (PHX) and Hawk (HPT) processors are not supported.
+The Ryzen AI OGA flow supports Strix and Krackan Point processors. Phoenix (PHX) and Hawk (HPT) processors are not supported.
 
+
+************
 Requirements
 ************
 - Install NPU Drivers and RyzenAI MSI installer according to the instructions https://ryzenai.docs.amd.com/en/latest/inst.html. 
 - Install Git for Windows (needed to download models from HF): https://git-scm.com/downloads
 
-Setting performance mode (Optional)
-***********************************
 
-To run the LLMs in the best performance mode, follow these steps:
-
-- Go to ``Windows`` → ``Settings`` → ``System`` → ``Power`` and set the power mode to Best Performance.
-- Execute the following commands in the terminal:
-
-.. code-block::
-
-   cd C:\Windows\System32\AMD
-   xrt-smi configure --pmode performance
-
-
+********************
 Pre-optimized Models
 ********************
 
@@ -57,6 +47,7 @@ AMD provides a set of pre-optimized LLMs ready to be deployed with Ryzen AI Soft
 
 The steps for deploying the pre-optimized models using C++ and python are described in the following sections.
 
+***************************
 NPU Execution of OGA Models
 ***************************
 
@@ -99,6 +90,7 @@ NOTE: pre-built versions of the ``run_llm.exe`` and ``model_generate.exe`` execu
    xcopy .\cpp\build\Release\model_benchmark.exe .\libs 
    xcopy .\cpp\build\Release\run_llm.exe .\libs 
 
+
 Download Models from HuggingFace
 ================================
 
@@ -124,13 +116,28 @@ For example, for Llama-2-7b-chat:
      git clone https://huggingface.co/amd/Llama2-7b-chat-awq-g128-int4-asym-bf16-onnx-ryzen-strix
 
 
-Run the models using C++
+Enabling Performance Mode (Optional)
+====================================
+
+To run the LLMs in the best performance mode, follow these steps:
+
+- Go to ``Windows`` → ``Settings`` → ``System`` → ``Power`` and set the power mode to Best Performance.
+- Execute the following commands in the terminal:
+
+.. code-block::
+
+   cd C:\Windows\System32\AMD
+   xrt-smi configure --pmode performance
+
+
+
+Run the Models using C++
 ========================
 
 **Note**: Ensure the models are cloned in the ``%RYZEN_AI_INSTALLATION_PATH%/npu-llm`` folder.
 
-Run manually
-************
+Individual Runs
+---------------
 
 To run the models using the ``run_llm.exe`` file 
 
@@ -172,8 +179,8 @@ To run the models using the ``run_llm.exe`` file
    .\libs\run_llm.exe -m .\Llama-2-7b-hf-awq-g128-int4-asym-bf16-onnx-ryzen-strix -n 20 -f .\Llama-2-7b-hf-awq-g128-int4-asym-bf16-onnx-ryzen-strix\prompts.txt -t "2048,1024,512,256,128" 
 
  
-Run Benchmark
-=============
+Benchmark Runs
+--------------
 
 To run the models using the ``model_benchmark.exe`` file 
  
@@ -207,7 +214,8 @@ To run the models using the ``model_benchmark.exe`` file
    # To show more informational output 
    .\libs\model_benchmark.exe -i <model_path> -p <model_path>\<prompts.txt> --verbose 
 
-Run the models using Python
+
+Run the Models using Python
 ===========================
 
 1. In the model directory, open the ``genai_config.json`` file located in the folder of the downloaded model. Update the value of the "custom_ops_library" key with the full path to the ``onnxruntime_vitis_ai_custom_ops.dll``, located in the ``%RYZEN_AI_INSTALLATION_PATH%\npu-llm\libs`` folder:  
@@ -242,6 +250,7 @@ Run the models using Python
      (ryzen-ai-1.4.0)python "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\examples\python\chatglm\model-generate-chatglm3.py" -m <model folder>  
 
  
+*******************************************
 Preparing OGA Models for NPU-only Execution
 *******************************************
 
