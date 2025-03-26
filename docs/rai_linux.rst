@@ -40,16 +40,22 @@ Option 1: Local Installation
 
 .. code-block::
 
-    tar -xvzf ryzen_ai-1.4.0.tgz -C <TARGET DIR>
+    tar -xvzf ryzen_ai-1.4.0.tgz
 
-- The installer will prompt to agree to the EULA. Re-run after reading the EULA:
+- Run the installer with default settings. This will prompt to read and agree to the EULA:
 
 .. code-block::
 
-    cd <TARGET DIR>
-    ./install_ryzen_ai_1_4.sh -a yes -p <TARGET PATH TO VENV> -l
+    cd ryzen_ai-1.4.0
+    ./install_ryzen_ai_1_4.sh 
 
-- Activate the virtual environment:  
+- After reading the EULA, re-run the installer with options to agree to the EULA and create a Python virtual environment:
+
+.. code-block::
+
+    ./install_ryzen_ai_1_4.sh -a yes -p <PATH TO VENV> -l
+
+- Activate the virtual environment to start using the Ryzen AI Software:  
 
 .. code-block::
 
