@@ -1,13 +1,14 @@
 :orphan:
 
-************************
-Ryzen AI Linux Installer
-************************
+##########################
+Ryzen AI Software on Linux
+##########################
 
-This guide provides instructions for using Ryzen AI 1.4 on Linux for model compilation and followed by running inference on windows.
+This guide provides instructions for using Ryzen AI 1.4 on Linux for model compilation and followed by running inference on Windows.
 
+*************
 Prerequisites
-~~~~~~~~~~~~~
+*************
 The following are the recommended system configuration for RyzenAI Linux installer
 
 .. list-table:: 
@@ -26,10 +27,14 @@ The following are the recommended system configuration for RyzenAI Linux install
      - 3.10 or Higher
 
 
-Linux Installation
-~~~~~~~~~~~~~~~~~~
+*************************
+Installation Instructions
+*************************
 
-- Download the RyzenAI Software Linux installer :download:`ryzen_ai-1.4.0.tgz <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=ryzen_ai-1.4.0-ea.tgz>`.
+Option 1: Local Installation
+============================
+
+- Download the Ryzen AI Software Linux installer: :download:`ryzen_ai-1.4.0.tgz <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=ryzen_ai-1.4.0-ea.tgz>`.
 
 - Extract the .tgz using the following command: 
 
@@ -37,7 +42,7 @@ Linux Installation
 
     tar -xvzf ryzen_ai-1.4.0.tgz -C <TARGET DIR>
 
-- Installer will prompted to agree to the EULA. Re-run after reading the EULA:
+- The installer will prompt to agree to the EULA. Re-run after reading the EULA:
 
 .. code-block::
 
@@ -51,23 +56,24 @@ Linux Installation
    source <PATH TO VENV>/bin/activate
 
 
+Option 2: Docker Image
+======================
 
-Alternatively, you can use **Docker based installer** for Ryzen AI software :download:`ryzen_ai_docker-1.4.0-ea_2025_02_21_3914.tgz <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=ryzen_ai_docker-1.4.0-ea_2025_02_21_3914.tgz>`.
+- Download the Ryzen AI Software Docker image: :download:`ryzen_ai_docker-1.4.0-ea_2025_02_21_3914.tgz <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=ryzen_ai_docker-1.4.0-ea_2025_02_21_3914.tgz>`.
 
-
-- Installation command:
+- Load the Docker image:
 
 .. code-block::
 
     gunzip -c ryzen_ai_docker-1.4.0-ea_2025_02_21_3914.tgz | docker load
 
 
-After installing on Linux machine, the process for model compilation on Linux is similar to that on Windows.
+******************
+Usage Instructions
+******************
+
+The process for model compilation on Linux is similar to that on Windows. Refer to the instructions provided in the :doc:`modelrun` page for complete details.
 
 Once the model has been successfully compiled on your Linux machine, proceed to copy the entire working directory to a Windows machine that operates on an STX-based system.
 
-Prior to running the model on the Windows machine, ensure that all required prerequisites are satisfied as listed in the :doc:`inst` documentation page.
-
-To deploy the model on the Windows machine, follow the instructions provided in the :doc:`modelrun` page.
-
-
+Prior to running the compiled model on the Windows machine, ensure that all required prerequisites are satisfied as listed in the :doc:`inst` page.
