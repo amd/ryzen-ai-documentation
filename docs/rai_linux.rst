@@ -54,7 +54,7 @@ After installing on Linux machine, the process for model compilation on Linux is
 
 Once the model has been successfully compiled on your Linux machine, proceed to copy the entire working directory to a Windows machine that operates on an STX-based system.
 
-Prior to running the model on the Windows machine, ensure that all required prerequisites are satisfied as listed in the :doc:inst documentation page.
+Prior to running the model on the Windows machine, ensure that all required prerequisites are satisfied as listed in the :doc:`inst` documentation page.
 
 To deploy the model on the Windows machine, follow the instructions provided in the :doc:`modelrun` page.
 
