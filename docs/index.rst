@@ -64,14 +64,6 @@ For more details, refer to the :doc:`modelrun` page.
    modelrun.rst
    app_development.rst
 
-
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-   :caption: Running Models on the GPU
-
-   gpu/ryzenai_gpu.rst
-
 .. toctree::
    :maxdepth: 1
    :hidden:
@@ -82,6 +74,13 @@ For more details, refer to the :doc:`modelrun` page.
    llm/server_interface.rst
    hybrid_oga.rst
    oga_model_prepare.rst
+
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+   :caption: Running Models on the GPU
+
+   gpu/ryzenai_gpu.rst
 
 .. toctree::
    :maxdepth: 1
