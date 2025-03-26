@@ -10,10 +10,21 @@ Prerequisites
 ~~~~~~~~~~~~~
 The following are the recommended system configuration for RyzenAI Linux installer
 
-- Recommeded RAM 32GB or Higher
-- Minimum 8 CPU cores or Higher
-- Ubuntu 22.04
-- Python 3.10 or Higher
+.. list-table:: 
+   :widths: 25 25 
+   :header-rows: 1
+
+   * - Dependencies
+     - Version Requirement
+   * - Ubuntu
+     - 22.04
+   * - RAM
+     - 32GB or Higher
+   * - CPU cores
+     - >= 8 
+   * - Python
+     - 3.10 or Higher
+
 
 Linux Installation
 ~~~~~~~~~~~~~~~~~~
