@@ -50,13 +50,13 @@ Linux Installation
     gunzip -c ryzen_ai_docker-1.4.0-ea_2025_02_21_3914.tgz | docker load
 
 
-After installing on Linux machine, the process for model compilation on Linux is similar to that on Windows. For detailed guidance, please refer to the :doc:`modelrun` page.
+- After installing on Linux machine, the process for model compilation on Linux is similar to that on Windows.
 
-Once the model has been successfully compiled on your Linux machine, proceed to copy the entire working directory to a Windows machine that operates on an STX-based system.
+- Once the model has been successfully compiled on your Linux machine, proceed to copy the entire working directory to a Windows machine that operates on an STX-based system.
 
-Prior to running the model on the Windows machine, ensure that all required prerequisites are satisfied as listed in the :doc:`inst` documentation page.
+- Prior to running the model on the Windows machine, ensure that all required prerequisites are satisfied as listed in the :doc:`inst` documentation page.
 
-To deploy the model on the Windows machine, follow the instructions provided in the :doc:`modelrun` page.
+- To deploy the model on the Windows machine, follow the instructions provided in the :doc:`modelrun` page.
 
 
 For more details about how to run BF16 models on NPU refer to:
