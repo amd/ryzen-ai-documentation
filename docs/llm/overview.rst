@@ -202,13 +202,9 @@ Data collection details:
 * We assign the 🟢 validation score based on this criteria: all commands in the example guide ran successfully.
 
 
-**************
-Alternate Flow
-**************
-
-
+**************************************
 OGA-based Flow with NPU-only Execution
-======================================
+**************************************
 
 The primary OGA-based flow for LLMs employs a hybrid execution mode which leverages both the NPU and iGPU. AMD also provides support for an OGA-based flow where the iGPU is not solicited and where the compute-intensive operations are exclusively offloaded to the NPU.
 
