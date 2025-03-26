@@ -132,7 +132,7 @@ Run Models with OGA python APIs
 
      #chatglm needs transformer==4.44.0
      (ryzen-ai-1.4.0)pip install transformer==4.44.0 
-     (ryzen-ai-1.4.0)python "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\examples\python\chatglm\run_model.py" --model_dir <model folder>  
+     (ryzen-ai-1.4.0)python "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\examples\python\chatglm\model-generate-chatglm3.py" --model_dir <model folder>  
 
 
 
