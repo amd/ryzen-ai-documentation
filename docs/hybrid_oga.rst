@@ -177,7 +177,7 @@ For example:
      cd run_folder
      .\model_benchmark.exe -i Llama-3.2-1B-Instruct-awq-g128-int4-asym-fp16-onnx-hybrid -f amd_genai_prompt.txt -l "128, 256, 512, 1024, 2048" --verbose
 
-**Note**: The C++ source code for the ``model_benchmark.exe`` executable can be found in the ``C:\Program Files\RyzenAI\1.4.0\hybrid-llm\examples\c\benchmark\c`` folder. This source code can be modified and recompiled if necessary using the below commands.
+**Note**: The C++ source code for the ``model_benchmark.exe`` executable can be found in the ``%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\examples\c`` folder. This source code can be modified and recompiled if necessary using the below commands.
 
 .. code-block::
   
