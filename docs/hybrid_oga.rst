@@ -21,21 +21,6 @@ Requirements
 - Install GPU device driver: Ensure GPU device driver https://www.amd.com/en/support is installed 
 - Install Git for Windows (needed to download models from HF): https://git-scm.com/downloads
 
-***********************************
-Setting performance mode (Optional)
-***********************************
-
-To run the LLMs in the best performance mode, follow these steps:
-
-- Go to ``Windows`` → ``Settings`` → ``System`` → ``Power`` and set the power mode to Best Performance.
-- Execute the following commands in the terminal:
-
-.. code-block::
-
-   cd C:\Windows\System32\AMD
-   xrt-smi configure --pmode performance
-
-
 ********************
 Pre-optimized Models
 ********************
@@ -121,7 +106,21 @@ For example, for Llama-2-7b-chat:
      git clone https://huggingface.co/amd/Llama-2-7b-chat-hf-awq-g128-int4-asym-fp16-onnx-hybrid
 
 
-Run Models with OGA python APIs
+Setting performance mode (Optional)
+===================================
+
+To run the LLMs in the best performance mode, follow these steps:
+
+- Go to ``Windows`` → ``Settings`` → ``System`` → ``Power`` and set the power mode to Best Performance.
+- Execute the following commands in the terminal:
+
+.. code-block::
+
+   cd C:\Windows\System32\AMD
+   xrt-smi configure --pmode performance
+
+
+Run Models with OGA Python APIs
 ===============================
 
 To run from the run folder using the native OGA Python APIs, use the following commands. 
