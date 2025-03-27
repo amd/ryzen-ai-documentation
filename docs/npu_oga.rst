@@ -64,41 +64,25 @@ Setup
 
 NOTE: pre-built versions of the ``run_llm.exe`` and ``model_generate.exe`` executables are already available in the ``%RYZEN_AI_INSTALLATION_PATH%/npu-llm/exe`` folder. If you choose to use them directly, you can skip to step 5 and copy the executables to ``%RYZEN_AI_INSTALLATION_PATH%/npu-llm/libs``. Otherwise follow the steps below to build the applications from source. 
 
-3. Open command prompt and navigate to the ``%RYZEN_AI_INSTALLATION_PATH%/npu-llm/cpp`` folder 
+3. Create a folder to run the LLMs from, and copy the required files:
 
 .. code-block::
 
-  # Switch to cpp folder 
-  cd %RYZEN_AI_INSTALLATION_PATH%/npu-llm/cpp
-
-4. Compile 
-
-.. code-block::
- 
-   cmake -G "Visual Studio 17 2022" -A x64 -S . -B build 
-   cd build 
-   cmake --build . --config Release 
-
-**Note**: The executable created ``run_llm.exe`` and ``model_generate.exe`` can be found in ``%RYZEN_AI_INSTALLATION_PATH%/npu-llm/cpp/build/Release`` folder 
-
- 
-5. Copy the executables ``run_llm.exe`` and ``model_generate.exe`` to the ``npu-llm/libs`` folder. The ``npu-llm/libs`` should contain both: ``run_llm.exe``, ``model_benchmark.exe`` along with the ``.dll`` files it contains. 
- 
-.. code-block::
-
-   cd %RYZEN_AI_INSTALLATION_PATH%\npu-llm
-   xcopy .\cpp\build\Release\model_benchmark.exe .\libs 
-   xcopy .\cpp\build\Release\run_llm.exe .\libs 
+  mkdir run_folder
+  cd run_folder
+  xcopy "%RYZEN_AI_INSTALLATION_PATH%\npu-llm\libs" .\libs
+  xcopy "%RYZEN_AI_INSTALLATION_PATH%\deployment\voe"  .\libs
+  xcopy "%RYZEN_AI_INSTALLATION_PATH%\npu-llm\exe" .\libs
 
 
 Download Models from HuggingFace
 ================================
 
-1. Navigate to the ``npu-llm`` folder: 
+1. Navigate to the ``run_folder`` folder: 
 
 .. code-block:: 
     
-    cd %RYZEN_AI_INSTALLATION_PATH%\npu-llm
+    cd \path\to\run_folder
 
 2. Download from Hugging Face the desired models (from the list of published models):
 
@@ -134,7 +118,7 @@ To run the LLMs in the best performance mode, follow these steps:
 Run the Models using C++
 ========================
 
-**Note**: Ensure the models are cloned in the ``%RYZEN_AI_INSTALLATION_PATH%/npu-llm`` folder.
+**Note**: Ensure the models are cloned in the ``run_folder`` folder.
 
 
 The ``run_llm.exe`` program provides a simple interface to run LLMs. It supports the following command line options:: 
@@ -184,6 +168,17 @@ Example usage:
    
    .\libs\model_benchmark.exe -i .\Llama-2-7b-hf-awq-g128-int4-asym-bf16-onnx-ryzen-strix -g 20 -p .\Llama-2-7b-hf-awq-g128-int4-asym-bf16-onnx-ryzen-strix\prompts.txt -l "2048,1024,512,256,128" 
 
+**NOTE**: The C++ source code for the run_llm.exe and model_benchmark.exe executable can be found in the ``%RYZEN_AI_INSTALLATION_PATH%\npu-llm\cpp`` folder. This source code can be modified and recompiled if necessary using the below commands.
+
+.. code-block::
+
+   cd \path\to\run_folder
+   xcopy "%RYZEN_AI_INSTALLATION_PATH%\npu-llm\cpp"  .\cpp
+   cd cpp
+   cmake -G "Visual Studio 17 2022" -A x64 -S . -B build
+   cmake --build build --config Release
+
+**Note**: The executable created ``run_llm.exe`` and ``model_generate.exe`` can be found in ``run_folder\cpp\build\Release`` folder 
 
 
 Run the Models using Python
@@ -195,7 +190,7 @@ Run the Models using Python
   
       "session_options": {
                 ...
-                "custom_ops_library": "C:\\Program Files\\RyzenAI\\1.4.0\\npu-llm\\libs\\onnxruntime_vitis_ai_custom_ops.dll",
+                "custom_ops_library": "libs\\onnxruntime_vitis_ai_custom_ops.dll",
                 ...
       }
 
