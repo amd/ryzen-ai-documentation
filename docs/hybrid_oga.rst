@@ -106,8 +106,8 @@ For example, for Llama-2-7b-chat:
      git clone https://huggingface.co/amd/Llama-2-7b-chat-hf-awq-g128-int4-asym-fp16-onnx-hybrid
 
 
-Setting performance mode (Optional)
-===================================
+Enabling Performance Mode (Optional)
+====================================
 
 To run the LLMs in the best performance mode, follow these steps:
 
