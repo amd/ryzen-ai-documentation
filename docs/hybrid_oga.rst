@@ -6,20 +6,24 @@ Ryzen AI Software supports deploying LLMs on Ryzen AI PCs using the native ONNX 
 
 **Note**: Refer to :doc:`npu_oga` for NPU only execution mode.  
 
+************************
 Supported Configurations
-~~~~~~~~~~~~~~~~~~~~~~~~
+************************
 
 The Ryzen AI OGA flow supports Strix and Krackan Point processors. Phoenix (PHX) and Hawk (HPT) processors are not supported.
 
 
+************
 Requirements
-~~~~~~~~~~~~
+************
+
 - Install NPU Drivers and RyzenAI MSI installer according to the instructions https://ryzenai.docs.amd.com/en/latest/inst.html. 
 - Install GPU device driver: Ensure GPU device driver https://www.amd.com/en/support is installed 
 - Install Git for Windows (needed to download models from HF): https://git-scm.com/downloads
 
+***********************************
 Setting performance mode (Optional)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+***********************************
 
 To run the LLMs in the best performance mode, follow these steps:
 
@@ -31,8 +35,10 @@ To run the LLMs in the best performance mode, follow these steps:
    cd C:\Windows\System32\AMD
    xrt-smi configure --pmode performance
 
+
+********************
 Pre-optimized Models
-~~~~~~~~~~~~~~~~~~~~
+********************
 
 AMD provides a set of pre-optimized LLMs ready to be deployed with Ryzen AI Software and the supporting runtime for hybrid execution. These models can be found on Hugging Face: 
 
@@ -65,11 +71,12 @@ Published models:
 
 The steps for deploying the pre-optimized models using Python or C++ are described in the following sections.
 
+******************************
 Hybrid Execution of OGA Models
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+******************************
 
 Setup
-@@@@@
+=====
 
 1. Install Ryzen AI 1.4 according to the instructions if not installed previously: https://ryzenai.docs.amd.com/en/latest/inst.html
 
@@ -79,24 +86,24 @@ Setup
     
     conda activate ryzen-ai-1.4.0
 
-3. Create a folder to run the LLMs from, and copy the required files:
+3. Copy the required files in a local folder to run the LLMs from:
 
 .. code-block::
   
-       xcopy "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\onnxruntime_genai\benchmark" .\run_folder /e /i  
-       xcopy "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\examples\amd_genai_prompt.txt" run_folder\. 
-       xcopy "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\onnx_utils\bin\onnx_custom_ops.dll" run_folder\.
-       xcopy "%RYZEN_AI_INSTALLATION_PATH%\onnxruntime\bin\onnxruntime.dll" run_folder\. 
-       xcopy "%RYZEN_AI_INSTALLATION_PATH%\onnxruntime\bin\DirectML.dll" run_folder\.
+     xcopy "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\onnxruntime_genai\benchmark" .\run_folder /e /i
+     xcopy "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\examples\amd_genai_prompt.txt" run_folder\.
+     xcopy "%RYZEN_AI_INSTALLATION_PATH%\deployment\hybrid-llm" run_folder\. /s /y
+     xcopy "%RYZEN_AI_INSTALLATION_PATH%\deployment\voe\onnxruntime.dll" run_folder\.
+     xcopy "%RYZEN_AI_INSTALLATION_PATH%\deployment\voe\DirectML.dll" run_folder\.
 
 Download Models from HuggingFace
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+================================
 
-1. Navigate to the newly created run folder: 
+1. Navigate to the newly created folder: 
 
 .. code-block:: 
     
-    cd \path\to\run_folder
+    cd run_folder
 
 2. Download from Hugging Face the desired models (from the list of published models):
 
@@ -115,43 +122,42 @@ For example, for Llama-2-7b-chat:
 
 
 Run Models with OGA python APIs
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+===============================
 
-1. To run from the run folder using the native OGA Python APIs, use the following commands. 
+To run from the run folder using the native OGA Python APIs, use the following commands. 
 
 - To run any model other than chatglm: 
 
 .. code-block:: 
 
-     (ryzen-ai-1.4.0)python "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\examples\python\llama3\run_model.py" --model_dir <model folder>  
+     python "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\examples\python\llama3\run_model.py" --model_dir <model folder>  
 
 - To run chatglm: 
 
 
 .. code-block:: 
 
-     #chatglm needs transformer==4.44.0
-     (ryzen-ai-1.4.0)pip install transformer==4.44.0 
-     (ryzen-ai-1.4.0)python "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\examples\python\chatglm\model-generate-chatglm3.py" --model_dir <model folder>  
+     pip install transformers==4.44.0 
+     python "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\examples\python\chatglm\model-generate-chatglm3.py" --model <model folder>  
 
+
+For example, for Llama-2-7b-chat:
+
+.. code-block:: 
+
+    python "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\examples\python\llama3\run_model.py" --model_dir Llama-2-7b-chat-hf-awq-g128-int4-asym-fp16-onnx-hybrid 
 
 
 Run Models with OGA C++ APIs 
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+============================
 
-The ``model_benchmark.exe`` test application serves two purposes:
+The ``model_benchmark.exe`` test application provides a simple mechanism for running and evaluating Hybrid OGA models using the native OGA C++ APIs. The source code for this application also provides a reference implementation for how to integrate Hybrid OGA models in custom C++ programs.
 
-- It provides a very simple mechanism for running and evaluating Hybrid OGA models using the native OGA C++ APIs
-- The source code for this application provides a reference implementation for how to integrate Hybrid OGA models in custom C++ programs
-
-To evaluate models using the ``model_benchmark.exe`` test application:
+The ``model_benchmark.exe`` test application can be used as follows:
 
 .. code-block::
 
-     # Switch to the run folder
-     cd run_folder
-
-     # To see settings info
+     # To see available options and default settings
      .\model_benchmark.exe -h
 
      # To run with default settings
@@ -170,14 +176,13 @@ To evaluate models using the ``model_benchmark.exe`` test application:
      .\model_benchmark.exe -i $path_to_model_dir  -f $prompt_file -l $list_of_prompt_lengths -r $num_iterations
 
 
-For example:
+For example, for Llama-2-7b-chat:
 
 .. code-block::
   
-     cd run_folder
-     .\model_benchmark.exe -i Llama-3.2-1B-Instruct-awq-g128-int4-asym-fp16-onnx-hybrid -f amd_genai_prompt.txt -l "128, 256, 512, 1024, 2048" --verbose
+     .\model_benchmark.exe -i Llama-2-7b-chat-hf-awq-g128-int4-asym-fp16-onnx-hybrid -f amd_genai_prompt.txt -l "128, 256, 512, 1024, 2048" --verbose
 
-**Note**: The C++ source code for the ``model_benchmark.exe`` executable can be found in the ``%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\examples\c`` folder. This source code can be modified and recompiled if necessary using the below commands.
+**Note**: The C++ source code for the ``model_benchmark.exe`` executable can be found in the ``%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\examples\c`` folder. This source code can be modified and recompiled if necessary using the commands below.
 
 .. code-block::
   
@@ -187,9 +192,8 @@ For example:
       cmake --build build --config Release
 
 
+*****************************************
 Preparing OGA Models for Hybrid Execution
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+*****************************************
 
 To prepare the OGA model for hybrid execution please refer :doc:`oga_model_prepare`
-
-
