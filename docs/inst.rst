@@ -135,8 +135,8 @@ A lightweight installer is available with reduced features. It cannot be used fo
 - Launch the MSI installer and follow the instructions on the installation wizard:
 
   - Accept the terms of the Licence agreement
-  - Provide the destination folder for Ryzen AI installation (default: ``C:\Program Files\RyzenAI\1.4.0-rt``)
-  - Specify the name for the conda environment (default: ``ryzen-ai-rt-1.4.0``)
+  - Provide the destination folder for Ryzen AI installation
+  - Specify the name for the conda environment
 
 
 
