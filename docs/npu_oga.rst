@@ -40,9 +40,9 @@ AMD provides a set of pre-optimized LLMs ready to be deployed with Ryzen AI Soft
 - https://huggingface.co/amd/Llama-3.1-8B-awq-g128-int4-asym-bf16-onnx-ryzen-strix
 - https://huggingface.co/amd/Llama-3.2-1B-Instruct-awq-g128-int4-asym-bf16-onnx-ryzen-strix
 - https://huggingface.co/amd/Llama-3.2-3B-Instruct-awq-g128-int4-asym-bf16-onnx-ryzen-strix
-- https://huggingface.co/amd/DeepSeek-R1-Distill-Llama-8B-awq-g128-int4-asym-bf16-onnx-ryzen-strix	
-- https://huggingface.co/amd/DeepSeek-R1-Distill-Qwen-1.5B-awq-g128-int4-asym-bf16-onnx-ryzen-strix	
-- https://huggingface.co/amd/DeepSeek-R1-Distill-Qwen-7B-awq-g128-int4-asym-bf16-onnx-ryzen-strix	
+- https://huggingface.co/amd/DeepSeek-R1-Distill-Llama-8B-awq-g128-int4-asym-bf16-onnx-ryzen-strix  
+- https://huggingface.co/amd/DeepSeek-R1-Distill-Qwen-1.5B-awq-g128-int4-asym-bf16-onnx-ryzen-strix 
+- https://huggingface.co/amd/DeepSeek-R1-Distill-Qwen-7B-awq-g128-int4-asym-bf16-onnx-ryzen-strix   
 - https://huggingface.co/amd/AMD-OLMo-1B-SFT-DPO-awq-g128-int4-asym-bf16-onnx-ryzen-strix
 
 The steps for deploying the pre-optimized models using C++ and python are described in the following sections.
@@ -136,83 +136,54 @@ Run the Models using C++
 
 **Note**: Ensure the models are cloned in the ``%RYZEN_AI_INSTALLATION_PATH%/npu-llm`` folder.
 
-Individual Runs
----------------
 
-To run the models using the ``run_llm.exe`` file 
+The ``run_llm.exe`` program provides a simple interface to run LLMs. It supports the following command line options:: 
+
+    -m: model path
+    -f: prompt file
+    -n: max new tokens
+    -c: use chat template
+    -t: input prompt token length
+    -l: max length to be set in search options
+    -h: help
+
+
+Example usage:
 
 .. code-block::
 
-   cd %RYZEN_AI_INSTALLATION_PATH%/npu-llm 
-   # Help 
-   .\libs\run_llm.exe -h 
- 
-   # To enter prompt through command prompt, and default max new tokens 
-   .\libs\run_llm.exe -m <model_path> 
+   .\libs\run_llm.exe -m .\Llama-2-7b-hf-awq-g128-int4-asym-bf16-onnx-ryzen-strix -f .\Llama-2-7b-hf-awq-g128-int4-asym-bf16-onnx-ryzen-strix\prompts.txt -t "1024" -n 20 
 
-   # For example,  
-   .\libs\run_llm.exe -m .\Llama-2-7b-hf-awq-g128-int4-asym-bf16-onnx-ryzen-strix 
+|
 
-   # To provide max new tokens value which is set to 32 by default 
-   .\libs\run_llm.exe -m <model_path> -n <max_new_tokens>  
+The ``model_benchmark.exe`` program can be used to profile the execution of LLMs and report various metrics. It supports the following command line options:: 
 
-   # For example, 
-   .\libs\run_llm.exe -m .\Llama-2-7b-hf-awq-g128-int4-asym-bf16-onnx-ryzen-strix -n 20 
+    -i,--input_folder <path>
+      Path to the ONNX model directory to benchmark, compatible with onnxruntime-genai.
+    -l,--prompt_length <numbers separated by commas>
+      List of number of tokens in the prompt to use.
+    -p,--prompt_file <filename>
+      Name of prompt file (txt) expected in the input model directory.
+    -g,--generation_length <number>
+      Number of tokens to generate. Default: 128
+    -r,--repetitions <number>
+      Number of times to repeat the benchmark. Default: 5
+    -w,--warmup <number>
+      Number of warmup runs before benchmarking. Default: 1
+    -t,--cpu_util_time_interval <number in ms>
+      Sampling time interval for peak cpu utilization calculation, in milliseconds. Default: 250
+    -v,--verbose
+      Show more informational output.
+    -h,--help
+      Show this help message and exit.
 
-   # To provide prompts through a prompt file 
-   .\libs\run_llm.exe -m <model_path> -n <max_new_tokens> -f <model_path>\<prompts.txt> 
 
-   # For example:  
-   .\libs\run_llm.exe -m .\Llama-2-7b-hf-awq-g128-int4-asym-bf16-onnx-ryzen-strix -n 20 -f .\Llama-2-7b-hf-awq-g128-int4-asym-bf16-onnx-ryzen-strix\prompts.txt 
+Example usage:
 
-   # To use chat template 
-   .\libs\run_llm.exe -m <model_path> -n <max_new_tokens> -f <model_path>\<prompts.txt> -c 
-
-   # For example:  
-   .\libs\run_llm.exe -m .\Llama-2-7b-hf-awq-g128-int4-asym-bf16-onnx-ryzen-strix -n 20 -f .\Llama-2-7b-hf-awq-g128-int4-asym-bf16-onnx-ryzen-strix\prompts.txt -c 
-
-   # To specify prompt length 
-   .\libs\run_llm.exe -m <model_path> -n <max_new_tokens> -f <model_path>\<prompts.txt> -t "list_prompt_lengths" 
-
-   # For example,  
-
-   .\libs\run_llm.exe -m .\Llama-2-7b-hf-awq-g128-int4-asym-bf16-onnx-ryzen-strix -n 20 -f .\Llama-2-7b-hf-awq-g128-int4-asym-bf16-onnx-ryzen-strix\prompts.txt -t "2048,1024,512,256,128" 
-
- 
-Benchmark Runs
---------------
-
-To run the models using the ``model_benchmark.exe`` file 
- 
 .. code-block::
-
-   cd %RYZEN_AI_INSTALLATION_PATH%\npu-llm 
-   # Help 
-   .\libs\model_benchmark.exe -h 
    
-   # Run with default settings 
-   .\libs\model_benchmark.exe -i <model_path> -p <model_path>\<prompts.txt> -l "list_of_prompt_lengths" 
-   
-   # For example:  
-   .\libs\model_benchmark.exe -i .\Llama-2-7b-hf-awq-g128-int4-asym-bf16-onnx-ryzen-strix -p .\Llama-2-7b-hf-awq-g128-int4-asym-bf16-onnx-ryzen-strix\prompts.txt -l "2048,1024,512,256,128" 
-
-   # To specify number of tokens to generate, default 128 
-   .\libs\model_benchmark.exe -i <model_path> -p <model_path>\<prompts.txt> -l "list_of_prompt_lengths" -g num_tokens 
-
-   # For example:  
    .\libs\model_benchmark.exe -i .\Llama-2-7b-hf-awq-g128-int4-asym-bf16-onnx-ryzen-strix -g 20 -p .\Llama-2-7b-hf-awq-g128-int4-asym-bf16-onnx-ryzen-strix\prompts.txt -l "2048,1024,512,256,128" 
 
-   # To specify number of warmup iterations before benchmarking, default: 1 
-   .\libs\model_benchmark.exe -i <model_path> -p <model_path>\<prompts.txt> -l "list_of_prompt_lengths" -w num_warmup 
-
-   # To specify number of times to repeat the benchmark, default: 5 
-   .\libs\model_benchmark.exe -i <model_path> -p <model_path>\<prompts.txt> -l "list_of_prompt_lengths" -r num_iterations 
-
-   # To specify sampling time interval for peak cpu utilization calculation, in milliseconds. Default: 250 
-   .\libs\model_benchmark.exe -i <model_path> -p <model_path>\<prompts.txt> -l "list_of_prompt_lengths" -t time_in_milliseconds 
-
-   # To show more informational output 
-   .\libs\model_benchmark.exe -i <model_path> -p <model_path>\<prompts.txt> --verbose 
 
 
 Run the Models using Python
