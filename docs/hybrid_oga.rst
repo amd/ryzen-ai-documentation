@@ -181,7 +181,7 @@ For example, for Llama-2-7b-chat:
   
      .\model_benchmark.exe -i Llama-2-7b-chat-hf-awq-g128-int4-asym-fp16-onnx-hybrid -f amd_genai_prompt.txt -l "128, 256, 512, 1024, 2048" --verbose
 
-**Note**: The C++ source code for the ``model_benchmark.exe`` executable can be found in the ``%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\examples\c`` folder. This source code can be modified and recompiled if necessary using the commands below.
+**NOTE**: The C++ source code for the ``model_benchmark.exe`` executable can be found in the ``%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\examples\c`` folder. This source code can be modified and recompiled if necessary using the commands below.
 
 .. code-block::
   
