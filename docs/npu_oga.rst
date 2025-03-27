@@ -168,17 +168,16 @@ Example usage:
    
    .\libs\model_benchmark.exe -i .\Llama-2-7b-hf-awq-g128-int4-asym-bf16-onnx-ryzen-strix -g 20 -p .\Llama-2-7b-hf-awq-g128-int4-asym-bf16-onnx-ryzen-strix\prompts.txt -l "2048,1024,512,256,128" 
 
-**NOTE**: The C++ source code for the run_llm.exe and model_benchmark.exe executable can be found in the ``%RYZEN_AI_INSTALLATION_PATH%\npu-llm\cpp`` folder. This source code can be modified and recompiled if necessary using the below commands.
+**NOTE**: The C++ source code for the ``run_llm.exe`` and ``model_benchmark.exe`` executables can be found in the ``%RYZEN_AI_INSTALLATION_PATH%\npu-llm\cpp`` folder. This source code can be modified and recompiled using the commands below.
 
 .. code-block::
 
-   cd \path\to\run_folder
-   xcopy "%RYZEN_AI_INSTALLATION_PATH%\npu-llm\cpp"  .\cpp
-   cd cpp
+   xcopy /E /I "%RYZEN_AI_INSTALLATION_PATH%\npu-llm\cpp" .\sources
+   cd sources
    cmake -G "Visual Studio 17 2022" -A x64 -S . -B build
    cmake --build build --config Release
 
-**Note**: The executable created ``run_llm.exe`` and ``model_generate.exe`` can be found in ``run_folder\cpp\build\Release`` folder 
+The ``run_llm.exe`` and ``model_generate.exe`` executables can be found in the ``build\Release`` folder. 
 
 
 Run the Models using Python
