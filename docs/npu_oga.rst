@@ -108,12 +108,12 @@ Download Models from HuggingFace
      git lfs install  
      git clone <link to hf model> 
 
-For example, for Llama-2-7b-chat:
+For example, for Llama-2-7b:
 
 .. code-block:: 
 
      git lfs install  
-     git clone https://huggingface.co/amd/Llama2-7b-chat-awq-g128-int4-asym-bf16-onnx-ryzen-strix
+     >git clone https://huggingface.co/amd/Llama-2-7b-hf-awq-g128-int4-asym-bf16-onnx-ryzen-strix
 
 
 Enabling Performance Mode (Optional)
