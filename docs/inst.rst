@@ -45,7 +45,7 @@ The following dependencies must be present on the system before installing the R
 Install NPU Drivers
 *******************
 
-- Download the NPU driver installation package :download:`NPU Driver <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=NPU_RAI1.4_GA_257_WHQL.zip>`
+- Download the NPU driver installation package :download:`NPU Driver <https://account.amd.com/en/forms/downloads/amd-end-user-license-xef.html?filename=NPU_RAI1.4_GA_257_WHQL.zip>`
 
 - Install the NPU drivers by following these steps:
 
@@ -61,7 +61,7 @@ Install NPU Drivers
 Install Ryzen AI Software
 *************************
 
-- Download the RyzenAI Software installer :download:`ryzen-ai-1.4.0.exe <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=ryzen-ai-1.4.0-us.exe>`.
+- Download the RyzenAI Software installer :download:`ryzen-ai-1.4.0.exe <https://account.amd.com/en/forms/downloads/amd-end-user-license-xef.html?filename=ryzen-ai-1.4.0.exe>`.
 
 - Launch the MSI installer and follow the instructions on the installation wizard:
 
@@ -130,7 +130,7 @@ Lightweight Installer
 
 A lightweight installer is available with reduced features. It cannot be used for compiling BF16 models but fully supports compiling and running INT8 models and running LLM models.
 
-- Download the RyzenAI Software Runtime MSI installer :download:`ryzen-ai-rt-1.4.0-ea.msi <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=ryzen-ai-rt-1.4.0-ea.msi>`.
+- Download the RyzenAI Software Runtime MSI installer :download:`ryzen-ai-rt-1.4.0-ea.msi <https://account.amd.com/en/forms/downloads/amd-end-user-license-xef.html?filename=ryzen-ai-rt-1.4.0.msi>`.
 
 - Launch the MSI installer and follow the instructions on the installation wizard:
 
