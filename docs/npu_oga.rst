@@ -54,7 +54,9 @@ NPU Execution of OGA Models
 Setup
 =====
 
-1. Install Ryzen AI 1.4 according to the instructions if not installed previously: https://ryzenai.docs.amd.com/en/latest/inst.html
+1. Install Ryzen AI 1.4 according to the instructions if not installed previously: https://ryzenai.docs.amd.com/en/latest/inst.html 
+
+::
 
 2. Activate the Ryzen AI 1.4 Conda environment:
 
@@ -62,27 +64,25 @@ Setup
     
     conda activate ryzen-ai-1.4.0
 
-NOTE: pre-built versions of the ``run_llm.exe`` and ``model_generate.exe`` executables are already available in the ``%RYZEN_AI_INSTALLATION_PATH%/npu-llm/exe`` folder. If you choose to use them directly, you can skip to step 5 and copy the executables to ``%RYZEN_AI_INSTALLATION_PATH%/npu-llm/libs``. Otherwise follow the steps below to build the applications from source. 
-
 3. Create a folder to run the LLMs from, and copy the required files:
 
 .. code-block::
 
-  mkdir run_folder
-  cd run_folder
-  xcopy "%RYZEN_AI_INSTALLATION_PATH%\npu-llm\libs" .\libs
-  xcopy "%RYZEN_AI_INSTALLATION_PATH%\deployment\voe"  .\libs
-  xcopy "%RYZEN_AI_INSTALLATION_PATH%\npu-llm\exe" .\libs
+  mkdir npu_run
+  cd npu_run
+  xcopy /E /I "%RYZEN_AI_INSTALLATION_PATH%\npu-llm\libs" .\libs
+  xcopy /E /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\voe"  .\libs
+  xcopy /s "%RYZEN_AI_INSTALLATION_PATH%\npu-llm\exe" .\libs
 
 
 Download Models from HuggingFace
 ================================
 
-1. Navigate to the ``run_folder`` folder: 
+1. Navigate to the ``npu_run`` folder: 
 
 .. code-block:: 
     
-    cd \path\to\run_folder
+    cd \path\to\npu_run
 
 2. Download from Hugging Face the desired models (from the list of published models):
 
@@ -118,7 +118,7 @@ To run the LLMs in the best performance mode, follow these steps:
 Run the Models using C++
 ========================
 
-**Note**: Ensure the models are cloned in the ``run_folder`` folder.
+**Note**: Ensure the models are cloned in the ``npu_run`` folder.
 
 
 The ``run_llm.exe`` program provides a simple interface to run LLMs. It supports the following command line options:: 
@@ -136,7 +136,7 @@ Example usage:
 
 .. code-block::
 
-   .\libs\run_llm.exe -m .\Llama-2-7b-hf-awq-g128-int4-asym-bf16-onnx-ryzen-strix -f .\Llama-2-7b-hf-awq-g128-int4-asym-bf16-onnx-ryzen-strix\prompts.txt -t "1024" -n 20 
+   .\libs\run_llm.exe -m "Llama-2-7b-hf-awq-g128-int4-asym-bf16-onnx-ryzen-strix" -f "Llama-2-7b-hf-awq-g128-int4-asym-bf16-onnx-ryzen-strix\prompts.txt" -t "1024" -n 20 
 
 |
 
@@ -166,7 +166,7 @@ Example usage:
 
 .. code-block::
    
-   .\libs\model_benchmark.exe -i .\Llama-2-7b-hf-awq-g128-int4-asym-bf16-onnx-ryzen-strix -g 20 -p .\Llama-2-7b-hf-awq-g128-int4-asym-bf16-onnx-ryzen-strix\prompts.txt -l "2048,1024,512,256,128" 
+   .\libs\model_benchmark.exe -i "Llama-2-7b-hf-awq-g128-int4-asym-bf16-onnx-ryzen-strix" -g 20 -p "Llama-2-7b-hf-awq-g128-int4-asym-bf16-onnx-ryzen-strix\prompts.txt" -l "2048,1024,512,256,128" 
 
 **NOTE**: The C++ source code for the ``run_llm.exe`` and ``model_benchmark.exe`` executables can be found in the ``%RYZEN_AI_INSTALLATION_PATH%\npu-llm\cpp`` folder. This source code can be modified and recompiled using the commands below.
 
@@ -183,7 +183,7 @@ The ``run_llm.exe`` and ``model_generate.exe`` executables can be found in the `
 Run the Models using Python
 ===========================
 
-1. In the model directory, open the ``genai_config.json`` file located in the folder of the downloaded model. Update the value of the "custom_ops_library" key with the full path to the ``onnxruntime_vitis_ai_custom_ops.dll``, located in the ``%RYZEN_AI_INSTALLATION_PATH%\npu-llm\libs`` folder:  
+1. In the model directory, open the ``genai_config.json`` file located in the folder of the downloaded model. Update the value of the "custom_ops_library" key with the path to the ``onnxruntime_vitis_ai_custom_ops.dll``, located in the ``npu_run\libs`` folder:  
 
 .. code-block::
   
@@ -194,11 +194,6 @@ Run the Models using Python
       }
 
 2. To run using the native OGA Python APIs, use the following commands. 
-
-.. code-block::
-
-   (ryzen-ai-1.4.0) cd %RYZEN_AI_INSTALLATION_PATH%/npu-llm
-   
 
 - To run any model other than chatglm: 
 
