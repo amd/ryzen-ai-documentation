@@ -54,14 +54,14 @@ Version 1.4
   - `New architecture support for Ryzen AI 300 series processors <https://www.amd.com/en/products/software/ryzen-ai-software.html#tabs-2733982b05-item-7720bb7a69-tab>`_
   - Unified support for LLMs, INT8, and BF16 models in a single release package
   - Public release for compilation of BF16 CNN and NLP models on Windows
-  - `Public release of the LLM OGA flow <https://ryzenai.docs.amd.com/en/latest/hybrid_oga.html>`_
+  - `Public release of the LLM Hybrid OGA flow <https://ryzenai.docs.amd.com/en/latest/hybrid_oga.html>`_
   - `LLM building flow for finetuned LLM <https://ryzenai.docs.amd.com/en/latest/oga_model_prepare.html>`_
   - Support for up to 16 hardware contexts on Ryzen AI 300 series processors
   - Vitis AI EP now supports the ONNX Runtime EP context cache feature (for custom handling of pre-compiled models)
   - Ryzen AI environment variables converted to VitisAI EP session options
   - Improved exception handling and fallback to CPU
 
-- New LLMs:
+- `New Hybrid execution mode LLMs <https://huggingface.co/collections/amd/ryzenai-14-llm-hybrid-models-67da31231bba0f733750a99c>`_:
 
   - DeepSeek-R1-Distill-Llama-8B
   - DeepSeek-R1-Distill-Qwen-1.5B
