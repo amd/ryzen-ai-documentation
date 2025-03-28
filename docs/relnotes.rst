@@ -84,13 +84,13 @@ Version 1.4
 
 - New Tools:
 
-  - `Lemonade SDK <https://github.com/onnx/turnkeyml/blob/main/docs/lemonade/README.md>`: Lemonade Server: A server interface that uses the standard Open AI API, allowing applications in any language to integrate with Lemonade Server for local LLM deployment and compatibility with existing Open AI apps.
+  - `Lemonade SDK <https://github.com/onnx/turnkeyml/blob/main/docs/lemonade/README.md>`_: Lemonade Server: A server interface that uses the standard Open AI API, allowing applications in any language to integrate with Lemonade Server for local LLM deployment and compatibility with existing Open AI apps.
 
-    - `Lemonade Python API <https://github.com/onnx/turnkeyml/blob/main/docs/lemonade/README.md#api>`: Offers High-Level API for easy integration of Lemonade LLMs into Python applications and Low-Level API for custom experiments with specific checkpoints, devices, and tools. 
-    - `Lemonade Command Line <https://github.com/onnx/turnkeyml/blob/main/docs/lemonade/getting_started.md#cli-commands>` Interface easily benchmark, measure accuracy, prompt or gather memory usage of your LLM. 
-  - `TurnkeyML <https://github.com/onnx/turnkeyml>` – Open-source tool that includes low-code APIs for general ONNX workflows. 
-  - `Digest AI <https://github.com/onnx/digestai>` – A Model Ingestion and Analysis Tool in collaboration with the Linux Foundation. 
-  - `GAIA <https://github.com/amd/gaia/tree/main>` – An open-source application designed for the quick setup and execution of generative AI applications on local PC hardware. 
+    - `Lemonade Python API <https://github.com/onnx/turnkeyml/blob/main/docs/lemonade/README.md#api>`_: Offers High-Level API for easy integration of Lemonade LLMs into Python applications and Low-Level API for custom experiments with specific checkpoints, devices, and tools. 
+    - `Lemonade Command Line <https://github.com/onnx/turnkeyml/blob/main/docs/lemonade/getting_started.md#cli-commands>`_ Interface easily benchmark, measure accuracy, prompt or gather memory usage of your LLM. 
+  - `TurnkeyML <https://github.com/onnx/turnkeyml>`_ – Open-source tool that includes low-code APIs for general ONNX workflows. 
+  - `Digest AI <https://github.com/onnx/digestai>`_ – A Model Ingestion and Analysis Tool in collaboration with the Linux Foundation. 
+  - `GAIA <https://github.com/amd/gaia/tree/main>`_ – An open-source application designed for the quick setup and execution of generative AI applications on local PC hardware. 
 
 - Quark-torch:
 
