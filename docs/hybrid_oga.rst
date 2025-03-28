@@ -17,7 +17,7 @@ The Ryzen AI OGA flow supports Strix and Krackan Point processors. Phoenix (PHX)
 Requirements
 ************
 
-- Install NPU Drivers and RyzenAI MSI installer according to the instructions https://ryzenai.docs.amd.com/en/latest/inst.html. 
+- Install NPU Drivers and Ryzen AI MSI installer according to the :doc:`inst`
 - Install GPU device driver: Ensure GPU device driver https://www.amd.com/en/support is installed 
 - Install Git for Windows (needed to download models from HF): https://git-scm.com/downloads
 
@@ -26,8 +26,6 @@ Pre-optimized Models
 ********************
 
 AMD provides a set of pre-optimized LLMs ready to be deployed with Ryzen AI Software and the supporting runtime for hybrid execution. These models can be found on Hugging Face: 
-
-Published models: 
 
 - https://huggingface.co/amd/Phi-3-mini-4k-instruct-awq-g128-int4-asym-fp16-onnx-hybrid 
 - https://huggingface.co/amd/Phi-3.5-mini-instruct-awq-g128-int4-asym-fp16-onnx-hybrid 
@@ -63,15 +61,13 @@ Hybrid Execution of OGA Models
 Setup
 =====
 
-1. Install Ryzen AI 1.4 according to the instructions if not installed previously: https://ryzenai.docs.amd.com/en/latest/inst.html
-
-2. Activate the Ryzen AI 1.4 Conda environment:
+1. Activate the Ryzen AI 1.4 Conda environment:
 
 .. code-block:: 
     
     conda activate ryzen-ai-1.4.0
 
-3. Copy the required files in a local folder to run the LLMs from:
+2. Copy the required files in a local folder to run the LLMs from:
 
 .. code-block::
   
