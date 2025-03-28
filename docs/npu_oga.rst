@@ -54,13 +54,13 @@ NPU Execution of OGA Models
 Setup
 =====
 
-1. Activate the Ryzen AI 1.4 Conda environment:
+Activate the Ryzen AI 1.4 Conda environment:
 
 .. code-block:: 
     
     conda activate ryzen-ai-1.4.0
 
-2. Create a folder to run the LLMs from, and copy the required files:
+Create a folder to run the LLMs from, and copy the required files:
 
 .. code-block::
 
@@ -74,13 +74,7 @@ Setup
 Download Models from HuggingFace
 ================================
 
-1. Navigate to the ``npu_run`` folder: 
-
-.. code-block:: 
-    
-    cd \path\to\npu_run
-
-2. Download from Hugging Face the desired models (from the list of published models):
+Download the desired models from the list of pre-optimized models on Hugging Face:
 
 .. code-block:: 
     
@@ -94,6 +88,9 @@ For example, for Llama-2-7b:
 
      git lfs install  
      git clone https://huggingface.co/amd/Llama-2-7b-hf-awq-g128-int4-asym-bf16-onnx-ryzen-strix
+
+
+**NOTE**: Ensure the models are cloned in the ``npu_run`` folder.
 
 
 Enabling Performance Mode (Optional)
@@ -111,13 +108,12 @@ To run the LLMs in the best performance mode, follow these steps:
 
 
 
-Run the Models using C++
-========================
+Sample C++ Programs 
+===================
 
-**Note**: Ensure the models are cloned in the ``npu_run`` folder.
+The ``run_llm.exe`` test application provides a simple interface to run LLMs. The source code for this application can also be used a reference for how to integrate LLMs using the native OGA C++ APIs. 
 
-
-The ``run_llm.exe`` program provides a simple interface to run LLMs. It supports the following command line options:: 
+It supports the following command line options:: 
 
     -m: model path
     -f: prompt file
@@ -158,11 +154,13 @@ The ``model_benchmark.exe`` program can be used to profile the execution of LLMs
       Show this help message and exit.
 
 
-Example usage:
+For example, for Llama-2-7b:
 
 .. code-block::
    
    .\libs\model_benchmark.exe -i "Llama-2-7b-hf-awq-g128-int4-asym-bf16-onnx-ryzen-strix" -g 20 -p "Llama-2-7b-hf-awq-g128-int4-asym-bf16-onnx-ryzen-strix\prompts.txt" -l "2048,1024,512,256,128" 
+
+|
 
 **NOTE**: The C++ source code for the ``run_llm.exe`` and ``model_benchmark.exe`` executables can be found in the ``%RYZEN_AI_INSTALLATION_PATH%\npu-llm\cpp`` folder. This source code can be modified and recompiled using the commands below.
 
@@ -173,13 +171,12 @@ Example usage:
    cmake -G "Visual Studio 17 2022" -A x64 -S . -B build
    cmake --build build --config Release
 
-The ``run_llm.exe`` and ``model_generate.exe`` executables can be found in the ``build\Release`` folder. 
 
 
-Run the Models using Python
-===========================
+Sample Python Scripts
+=====================
 
-1. In the model directory, open the ``genai_config.json`` file located in the folder of the downloaded model. Update the value of the "custom_ops_library" key with the path to the ``onnxruntime_vitis_ai_custom_ops.dll``, located in the ``npu_run\libs`` folder:  
+In the model directory, open the ``genai_config.json`` file located in the folder of the downloaded model. Update the value of the "custom_ops_library" key with the path to the ``onnxruntime_vitis_ai_custom_ops.dll``, located in the ``npu_run\libs`` folder:
 
 .. code-block::
   
@@ -189,25 +186,33 @@ Run the Models using Python
                 ...
       }
 
-2. To run using the native OGA Python APIs, use the following commands. 
-
-- To run any model other than chatglm: 
+To run LLMs other than ChatGLM, use the following command:
 
 .. code-block:: 
 
-     (ryzen-ai-1.4.0)python "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\examples\python\llama3\run_model.py" --model_dir <model folder>  
+     python "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\examples\python\llama3\run_model.py" --model_dir <model folder>  
 
-- To run chatglm: 
+To run ChatGLM, use the following command:
 
 .. code-block:: 
 
-     #chatglm needs transformers 4.44.0 
-     (ryzen-ai-1.4.0)pip install transformers==4.44.0  
-     (ryzen-ai-1.4.0)python "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\examples\python\chatglm\model-generate-chatglm3.py" -m <model folder>  
+     pip install transformers==4.44.0  
+     python "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\examples\python\chatglm\model-generate-chatglm3.py" -m <model folder>  
+
+For example, for Llama-2-7b:
+
+.. code-block::
+   
+   python "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\examples\python\llama3\run_model.py" --model_dir Llama-2-7b-hf-awq-g128-int4-asym-bf16-onnx-ryzen-strix
+
 
  
-*******************************************
-Preparing OGA Models for NPU-only Execution
-*******************************************
+***********************
+Using Fine-Tuned Models
+***********************
 
-To prepare the OGA model for NPU-only execution please refer :doc:`oga_model_prepare` 
+It is also possible to run fine-tuned versions of the pre-optimized OGA models. 
+
+To do this, the fine-tuned models must first be prepared for execution with the OGA NPU-only flow. For instructions on how to do this, refer to the page about :doc:`oga_model_prepare`.
+
+Once a fine-tuned model has been prepared for NPU-only execution, it can be deployed by following the steps described above in this page.
