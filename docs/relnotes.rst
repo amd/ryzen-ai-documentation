@@ -86,6 +86,13 @@ Version 1.4
 
   - Introduction to Lemonade and Lemonade Server
   - Introduction to Digest AI
+  - Lemonade SDK: Lemonade Server: A server interface that uses the standard Open AI API, allowing applications in any language to integrate with Lemonade Server for local LLM deployment and compatibility with existing Open AI apps.
+
+    - Lemonade Python API: Offers High-Level API for easy integration of Lemonade LLMs into Python applications and Low-Level API for custom experiments with specific checkpoints, devices, and tools. 
+    - Lemonade Command Line Interface easily benchmark, measure accuracy, prompt or gather memory usage of your LLM. 
+  - TurnkeyML – Open-source tool that includes low-code APIs for general ONNX workflows. 
+  - Digest AI – A Model Ingestion and Analysis Tool in collaboration with the Linux Foundation. 
+  - GAIA - An open-source application designed for the quick setup and execution of generative AI applications on local PC hardware. 
 
 - Quark-torch:
 
