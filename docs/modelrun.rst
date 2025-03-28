@@ -4,25 +4,28 @@
 Model Compilation and Deployment
 ################################
 
-The Ryzen AI Software supports deploying quantized model saved in the ONNX format. NPU supports a subset of the ONNX operators. At runtime, the ONNX graph is automatically partitioned into multiple subgraphs by the Vitis AI ONNX Execution Provider (VAI EP). The subgraph(s) containing operators supported by the NPU are executed on the NPU. The remaining subgraph(s) are executed on the CPU. This graph partitioning and deployment technique across CPU and NPU is fully automated by the VAI EP and is totally transparent to the end-user.
+*****************
+Introduction
+*****************
+
+The Ryzen AI Software supports compiling and deploying quantized model saved in the ONNX format. The ONNX graph is automatically partitioned into multiple subgraphs by the VitisAI Execution Provider (EP). The subgraph(s) containing operators supported by the NPU are executed on the NPU. The remaining subgraph(s) are executed on the CPU. This graph partitioning and deployment technique across CPU and NPU is fully automated by the VAI EP and is totally transparent to the end-user.
 
 |memo| **NOTE**: Models with ONNX opset 17 are recommended. If your model uses a different opset version, consider converting it using the `ONNX Version Converter <https://github.com/onnx/onnx/blob/main/docs/VersionConverter.md>`_
 
-*****************
-Model Compilation
-*****************
-
-Quantized models are compiled for the NPU when an ONNX inference session is created using the Vitis AI Execution Provider (VAI EP):
+Models are compiled for the NPU by creaitng an ONNX inference session using the Vitis AI Execution Provider (VAI EP):
 
 .. code-block:: python
 
-  providers = ['VitisAIExecutionProvider']
-  session = ort.InferenceSession(model, sess_options = sess_opt,
-                                            providers = providers,
-                                            provider_options = provider_options)
+    providers = ['VitisAIExecutionProvider']
+    session = ort.InferenceSession(
+        model, 
+        sess_options = sess_opt, 
+        providers = providers, 
+        provider_options = provider_options
+    )
 
 
-The ``provider_options`` parameter allows passing compile-specific options for the Vitis AI Execution Provider (VAI EP). Below are some commonly used options:
+The ``provider_options`` parameter allows passing special options to the Vitis AI EP.
 
 .. list-table:: 
    :widths: 20 35
@@ -41,28 +44,37 @@ The ``provider_options`` parameter allows passing compile-specific options for t
    * - encryptionKey
      - Used for generating an encrypted compiled model.
 
-Detailed usage of these options is discussed in the subsequent section of this page.
-
+Detailed usage of these options is discussed in the following sections of this page.
 
 
 .. _compile-bf16:
 
-Compilation of BF16 models
-==========================
+**************************
+Compiling BF16 models
+**************************
 
-For BF16 model compilation, a compilation configuration file must be provided through the ``config_file`` option in provider_options.
+|memo| **NOTE**: For compiling large BF16 models a machine with at least 32GB of memory is recommended. The machine does not need to have an NPU. It is also possible to compile BF16 models on a Linux workstation. More details can be found here: :doc:`rai_linux`
 
-.. code-block::
+When compiling BF16 models, a compilation configuration file must be provided through the ``config_file`` provider options.
 
-     provider_options = [{
-        'config_file': 'vai_ep_config.json',
-        'cache_dir': str(cache_dir),  
-        'cache_key': 'compiled_resnet50'
-     }]
+.. code-block:: python
 
-Below is an example of a standard BF16 model compilation configuration file:
+    providers = ['VitisAIExecutionProvider']
 
-.. code-block::
+    provider_options = [{ 
+        'config_file': 'vai_ep_config.json'
+    }]
+
+    session = ort.InferenceSession(
+        "resnet50.onnx", 
+        providers=providers, 
+        provider_options=provider_options
+    )
+
+
+By default, the configuration file for compiling BF16 models should contain the following:
+
+.. code-block:: json
 
    {
     "passes": [
@@ -79,13 +91,13 @@ Below is an example of a standard BF16 model compilation configuration file:
    }
 
 
-The ``vaiml_config`` section allows additional configurations in specific cases. Below are few such options:
+Additional options can be specified in the ``vaiml_config`` section of the configuration file, as described below.
 
 **Performance Optimization**
 
 The default compilation optimization level is 1. The optimization level can be changed as follows:
 
-.. code-block::
+.. code-block:: json
 
     "vaiml_config": {"optimize_level": 2}
 
@@ -94,9 +106,9 @@ Supported values: 1 (default), 2
 
 **Automatic FP32 to BF16 Conversion** 
 
-If a FP32 model is passed, the compiler can automatically cast it to BF16. This method is not recommended, as it is advisable to quantize the model to BF16 using Quark for better accuracy control. However, this method can be useful for quick prototyping.
+If a FP32 model is used, the compiler will automatically cast it to BF16 if this option is enabled. For better control over accuracy, it is recommended to quantize the model to BF16 using Quark.
 
-.. code-block::
+.. code-block:: json
 
     "vaiml_config": {"enable_f32_to_bf16_conversion": true}
 
@@ -107,7 +119,7 @@ Supported values: false (default), true
 
 By default, the compiler vectorizes the data to optimize performance for CNN models. However, transformers perform best with unvectorized data. To better optimize transformer-based models, set:
 
-.. code-block::
+.. code-block:: json
 
     "vaiml_config": {"preferred_data_storage": "unvectorized"}
 
@@ -116,10 +128,11 @@ Supported values: "vectorized" (default), "unvectorized"
 
 .. _compile-int8:
 
-Compilation of INT8 models
-==========================
+**************************
+Compiling INT8 models
+**************************
 
-In the current version of the Ryzen AI software, INT8 models require additional NPU configuration via the ``xclbin`` provider option. This configuration is not required for BF16 models.
+When compiling INT8 models, the NPU configuration must be specified through the ``xclbin`` provider option. This option is not required for BF16 models.
 
 There are two types of NPU configurations for INT8 models: standard and benchmark. Setting the NPU configuration involves specifying a specific ``.xclbin`` binary file, which is located in the Ryzen AI Software installation tree.
 
@@ -135,27 +148,23 @@ Depending on the target processor and binary type (standard/benchmark), the foll
 - Standard binary: ``%RYZEN_AI_INSTALLATION_PATH%\voe-4.0-win_amd64\xclbins\phoenix\1x4.xclbin``
 - Benchmark binary: ``%RYZEN_AI_INSTALLATION_PATH%\voe-4.0-win_amd64\xclbins\phoenix\4x4.xclbin``
 
-Example code selecting the standard NPU configuration for STX/KRK through the ``xclbin`` provider option.
+Python example selecting the standard NPU configuration for STX/KRK:
 
-.. code-block::
+.. code-block:: python
 
-   import os
-   from pathlib import Path  
+    providers = ['VitisAIExecutionProvider']
 
-   providers = ['VitisAIExecutionProvider']
+    provider_options = [{ 
+        'xclbin': '{}\\voe-4.0-win_amd64\\xclbins\\strix\\AMD_AIE2P_Nx4_Overlay.xclbin'.format(os.environ["RYZEN_AI_INSTALLATION_PATH"]) 
+    }]
 
-   cache_dir = Path(__file__).parent.resolve()
+    session = ort.InferenceSession(
+        "resnet50.onnx",  
+        providers=providers,  
+        provider_options=provider_options
+    )
 
-   provider_options = [{
-    'cache_dir': str(cache_dir),  
-    'cache_key': 'compiled_resnet50', 
-    'xclbin': '{}\\voe-4.0-win_amd64\\xclbins\\strix\\AMD_AIE2P_Nx4_Overlay.xclbin'.format(os.environ["RYZEN_AI_INSTALLATION_PATH"]) 
-   }]
-
-   session = ort.InferenceSession(model.SerializeToString(),  
-                                  providers=providers,  
-                                  provider_options=provider_options)
-
+|
 
 By default, the Ryzen AI Conda environment automatically sets the standard binary for all inference sessions through the ``XLNX_VART_FIRMWARE`` environment variable. However, explicitly passing the xclbin option in the provider options overrides the environment variable.
 
@@ -168,13 +177,13 @@ By default, the Ryzen AI Conda environment automatically sets the standard binar
 
 |
 
-**************************
-Caching the Compiled Model
-**************************
+************************************
+Managing Compiled Models
+************************************
 
-To avoid the overhead of recompiling models, it can be advantageous to work with pre-compiled models. The pre-compiled models can be loaded instantenously and immediately executed on the NPU. This greatly improves the session creation time and overall end-user experience. 
+To avoid the overhead of recompiling models, it is very advantageous to save the compiled models and use these pre-compiled versions in the final application. Pre-compiled models can be loaded instantaneously and immediately executed on the NPU. This greatly improves the session creation time and overall end-user experience. 
 
-The RyzenAI Software supports two mechanisms for caching compiled models:
+The RyzenAI Software supports two mechanisms for saving and reloading compiled models:
 
 - VitisAI EP Cache
 - OnnxRuntime EP Context Cache
@@ -183,37 +192,44 @@ The RyzenAI Software supports two mechanisms for caching compiled models:
 VitisAI EP Cache
 ================
 
-The VitisAI EP supports a built-in caching mechanism. This mechanism is enabled by default. When a model is compiled for the first time, it is automatically saved in the VitisAI EP cache directory. Any subsequent creation of an ONNX Runtime session using the same model will load the precompiled model from this cache directory, thereby reducing session creation time.
+The VitisAI EP includes a built-in caching mechanism. This mechanism is enabled by default. When a model is compiled for the first time, it is automatically saved in the VitisAI EP cache directory. Any subsequent creation of an ONNX Runtime session using the same model will load the precompiled model from the cache directory, thereby reducing session creation time.
 
-To VitisAI EP cache directory is specified with the ``cache_dir`` and ``cache_key`` provider options:
+The location of the VitisAI EP cache is specified with the ``cache_dir`` and ``cache_key`` provider options:
 
 - ``cache_dir`` - Specifies the path and name of the cache directory.
 - ``cache_key`` - Specifies the subfolder in the cache directory where the compiled model is stored.
 
-Example:
+Python example:
 
-.. code-block::
+.. code-block:: python
 
-   from pathlib import Path  
+    from pathlib import Path  
 
-   providers = ['VitisAIExecutionProvider']  
-   cache_dir = Path(__file__).parent.resolve()  
-   provider_options = [{'cache_dir': str(cache_dir),  
+    providers = ['VitisAIExecutionProvider']  
+    cache_dir = Path(__file__).parent.resolve()  
+    provider_options = [{'cache_dir': str(cache_dir),  
                         'cache_key': 'compiled_resnet50'}]  
 
-   session = ort.InferenceSession(model.SerializeToString(),  
-                                  providers=providers,  
-                                  provider_options=provider_options)  
+    session = ort.InferenceSession(
+        "resnet50.onnx",  
+        providers=providers,  
+        provider_options=provider_options
+    )  
 
 
-In the example above, the cache directory is set to the absolute path of the folder containing the ONNX Runtime script being executed. Once the session is created, the compiled model is saved inside a subdirectory named ``compiled_resnet50`` within the specified cache folder.
+In the example above, the cache directory is set to the absolute path of the folder containing the script being executed. Once the session is created, the compiled model is saved inside a subdirectory named ``compiled_resnet50`` within the specified cache folder.
 
-|memo| **NOTE**: In the current release, if ``cache_dir`` is not set, the default cache location varies based on the type of model:
+Default Settings
+----------------
+In the current release, if ``cache_dir`` is not set, the default cache location is determined by the type of model:
 
-- INT8 models - ``C:\temp\{user}\vaip\.cache``
-- BF16 models - The current directory where the ONNX Runtime script is executed.
+- INT8 models - ``C:\temp\%USERNAME%\vaip\.cache``
+- BF16 models - The directory where the script or program is executed
 
-|memo| **NOTE**: To force recompilation and ignore the cached model, unset the ``XLNX_ENABLE_CACHE`` environment variable before running the application:
+
+Disabling the Cache
+-------------------
+To ignore cached models and force recompilation, unset the ``XLNX_ENABLE_CACHE`` environment variable before running the application:
 
 .. code-block::
 
@@ -221,30 +237,29 @@ In the example above, the cache directory is set to the absolute path of the fol
 
 
 
-
 VitisAI EP Cache Encryption
 ---------------------------
 
-To protect developers’ intellectual property, encryption is supported as a provider option. With this enabled, all the compiled models generated are encrypted using AES256. To enable encryption, you need to pass the encryption key through the VAI EP options as follows:
+The contents of the VitisAI EP cache folder can be encrypted using AES256. Cache encryption is enabled by passing an encryption key through the VAI EP provider options. The same key must be used to decrypt the model when loading it from the cache. The key is a 256-bit value represented as a 64-digit string.
 
-In Python:
+Python example:
 
 .. code-block:: python
  
     session = onnxruntime.InferenceSession(
-        '[model_file].onnx',
+        "resnet50.onnx",
         providers=["VitisAIExecutionProvider"],
         provider_options=[{
             "config_file":"/path/to/vaip_config.json",
             "encryptionKey": "89703f950ed9f738d956f6769d7e45a385d3c988ca753838b5afbc569ebf35b2"
     }])
 
-In C++:
+C++ example:
 
 .. code-block:: cpp
 
-    auto onnx_model_path = "resnet50_pt.onnx"
-    Ort::Env env(ORT_LOGGING_LEVEL_WARNING, "resnet50_pt");
+    auto onnx_model_path = "resnet50.onnx"
+    Ort::Env env(ORT_LOGGING_LEVEL_WARNING, "resnet50");
     auto session_options = Ort::SessionOptions();
     auto options = std::unorderd_map<std::string,std::string>({});
     options["config_file"] = "/path/to/vaip_config.json";
@@ -253,7 +268,7 @@ In C++:
     session_options.AppendExecutionProvider("VitisAI", options);
     auto session = Ort::Experimental::Session(env, model_name, session_options);
 
-The key is a 256-bit value represented as a 64-digit string. The model generated in the cache directory cannot be opened with Netron currently. Additionally, there is a side effect: dumping is disabled to prevent the leakage of sensitive information about the model.
+As a result of encryption, the model generated in the cache directory cannot be opened with Netron. Additionally, dumping is disabled to prevent the leakage of sensitive information about the model.
 
 
 OnnxRuntime EP Context Cache
@@ -274,41 +289,43 @@ For further details, refer to the official ONNX Runtime documentation: https://o
 EP Context Encryption
 ---------------------
 
-By default, an unencrypted context model is generated, which can be used directly during inference. 
+By default, the generated context model is unencrypted and can be used directly during inference. If needed, the context model can be encrypted using one the methods described below. 
 
-After the context model is generated, developers can use custom methods for encrypting the generated file and decrypting it before using it at runtime.
+User-managed encryption
+~~~~~~~~~~~~~~~~~~~~~~~
+After the context model is generated, the developer can encrypt the generated file using a method of choice. At runtime, the encrypted file can be loaded by the application, decrypted in memory and passed as a serialized string to the inference session. This method gives complete control to the developer over the encryption process.
 
-Alternatively, Vitis AI EP-managed encryption can be enabled by passing an encryption key via the ``encryptionKey`` provider option (discussed in the previous section). At runtime, the exact same encryption key must be provided to decrypt and load the context cache model.
+EP-managed encryption
+~~~~~~~~~~~~~~~~~~~~~~~
+The Vitis AI EP encryption mechanism can be used to encrypt the context model. This is enabled by passing an encryption key via the ``encryptionKey`` provider option (discussed in the previous section). The model is encrypted using AES256. At runtime, the same encryption key must be provided to decrypt and load the context model. With this method, encryption and decryption is seamlessly managed by the VitisAI EP.
 
-Example Code:
+Python example:
 
-.. code-block::
+.. code-block:: python
 
-   
-    # Compile session
+    # Compilation session
     session_options = ort.SessionOptions()
     session_options.add_session_config_entry('ep.context_enable', '1') 
-    session_options.add_session_config_entry('ep.context_file_path', '</path/to/context_file>') 
-    session_options.add_session_config_entry('ep.context_embed_mode', '1') 
-
+    session_options.add_session_config_entry('ep.context_file_path', 'context_model.onnx') 
+    session_options.add_session_config_entry('ep.context_embed_mode', '1')
     session = ort.InferenceSession(
-        model.SerializeToString(),
+        path_or_bytes='resnet50.onnx',
         sess_options=session_options,
         providers=['VitisAIExecutionProvider'],
         provider_options=[{'encryptionKey': '89703f950ed9f738d956f6769d7e45a385d3c988ca753838b5afbc569ebf35b2'}]
     )
 
-   # Inference session
-   session_options = ort.SessionOptions()
-   session = ort.InferenceSession(
-       path_or_bytes='</path/to/context_file>',
-       sess_options=session_options,
-       providers=['VitisAIExecutionProvider'],
-       provider_options=[{'encryptionKey': '89703f950ed9f738d956f6769d7e45a385d3c988ca753838b5afbc569ebf35b2'}]
-   )
+    # Inference session
+    session_options = ort.SessionOptions()
+    session = ort.InferenceSession(
+        path_or_bytes='context_model.onnx',
+        sess_options=session_options,
+        providers=['VitisAIExecutionProvider'],
+        provider_options=[{'encryptionKey': '89703f950ed9f738d956f6769d7e45a385d3c988ca753838b5afbc569ebf35b2'}]        
+    )
 
 
-**Note**: When compiling with encryptionKey, ensure that any existing cache directory (either the default cache directory or the directory specified by the ``cache_dir`` provider option) is deleted before compiling.
+**NOTE**: When compiling with encryptionKey, ensure that any existing cache directory (either the default cache directory or the directory specified by the ``cache_dir`` provider option) is deleted before compiling.
 
 |
 
@@ -320,7 +337,7 @@ Operator Assignment Report
 Vitis AI EP generates a file named ``vitisai_ep_report.json`` that provides a report on model operator assignments across CPU and NPU. This file is automatically generated in the cache directory if no explicit cache location is specified in the code. This report includes information such as the total number of nodes, the list of operator types in the model, and which nodes and operators runs on the NPU or on the CPU. Additionally, the report includes node statistics, such as input to a node, the applied operation, and output from the node.
 
 
-.. code-block:: 
+.. code-block::
 
   {
    "deviceStat": [
