@@ -31,9 +31,6 @@ The following are the recommended system configuration for RyzenAI Linux install
 Installation Instructions
 *************************
 
-Option 1: Local Installation
-============================
-
 - Download the Ryzen AI Software Linux installer: :download:`ryzen_ai-1.4.0.tgz <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=ryzen_ai-1.4.0-ea.tgz>`.
 
 - Extract the .tgz using the following command: 
@@ -60,18 +57,6 @@ Option 1: Local Installation
 .. code-block::
 
    source <PATH TO VENV>/bin/activate
-
-
-Option 2: Docker Image
-======================
-
-- Download the Ryzen AI Software Docker image: :download:`ryzen_ai_docker-1.4.0-ea_2025_02_21_3914.tgz <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=ryzen_ai_docker-1.4.0-ea_2025_02_21_3914.tgz>`.
-
-- Load the Docker image:
-
-.. code-block::
-
-    gunzip -c ryzen_ai_docker-1.4.0-ea_2025_02_21_3914.tgz | docker load
 
 
 ******************
