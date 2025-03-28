@@ -34,10 +34,10 @@ The following table lists which types of models are supported on what hardware p
    * - Model Type
      - PHX/HPT
      - STX/KRK
-   * - CNN INT8
+   * - INT8
      - |checkmark|
      - |checkmark|
-   * - CNN BF16
+   * - BF16
      -
      - |checkmark|
    * - LLM (OGA)
