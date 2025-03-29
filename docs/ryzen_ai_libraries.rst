@@ -8,6 +8,8 @@ The Ryzen AI CVML libraies build on top of the Ryzen AI drivers and execution in
 
 Each Ryzen AI CVML library feature offers a simple C++ application programming interface (API) that can be easily incorporated into existing applications.
 
+The Ryzen AI CVML library is distributed through the RyzenAI-SW Github repository: https://github.com/amd/RyzenAI-SW/tree/main/Ryzen-AI-CVML-Library
+
 *************
 Prerequisites
 *************
@@ -24,9 +26,10 @@ This section describes the steps to build Ryzen AI CVML library sample applicati
 
 Navigate to the folder containing Ryzen AI samples
 ==================================================
-Go to the 'samples' sub-folder of the Ryzen AI CVML library. ::
+Download the Ryzen AI CVML sources, and go to the 'samples' sub-folder of the library. ::
   
-  chdir samples
+  git clone https://github.com/amd/RyzenAI-SW.git -b main --depth-1
+  chdur RyzenAI-SW\Ryzen-AI-CVML-Library\samples
 
 OpenCV libraries
 ================
