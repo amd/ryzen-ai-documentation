@@ -130,7 +130,7 @@ Lightweight Installer
 
 A lightweight installer is available with reduced features. It cannot be used for compiling BF16 models but fully supports compiling and running INT8 models and running LLM models.
 
-- Download the RyzenAI Software Runtime MSI installer :download:`ryzen-ai-rt-1.4.0-ea.msi <https://account.amd.com/en/forms/downloads/amd-end-user-license-xef.html?filename=ryzen-ai-rt-1.4.0.msi>`.
+- Download the RyzenAI Software Runtime MSI installer :download:`ryzen-ai-rt-1.4.0.msi <https://account.amd.com/en/forms/downloads/amd-end-user-license-xef.html?filename=ryzen-ai-rt-1.4.0.msi>`.
 
 - Launch the MSI installer and follow the instructions on the installation wizard:
 
