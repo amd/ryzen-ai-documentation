@@ -29,7 +29,7 @@ Navigate to the folder containing Ryzen AI samples
 Download the Ryzen AI CVML sources, and go to the 'samples' sub-folder of the library. ::
   
   git clone https://github.com/amd/RyzenAI-SW.git -b main --depth-1
-  chdur RyzenAI-SW\Ryzen-AI-CVML-Library\samples
+  chdir RyzenAI-SW\Ryzen-AI-CVML-Library\samples
 
 OpenCV libraries
 ================
