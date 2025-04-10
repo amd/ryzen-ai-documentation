@@ -131,12 +131,12 @@ A C++ application built on the Ryzen AI ONNX Runtime requires the following comp
 
   - DLLs from the ``%RYZEN_AI_INSTALLATION_PATH%\deployment\voe`` folder
   - NPU Binary files (.xclbin) from the ``%RYZEN_AI_INSTALLATION_PATH%\voe-4.0-win_amd64\xclbins`` folder
-  - Recommended but not mandatory: pre-compiled models in the form of Vitis AI EP cache folders or Onnx Runtime EP context models 
+  - Recommended but not mandatory: pre-compiled models in the form of :ref:`Vitis AI EP cache folders <vitisai-ep-cache>` or :ref:`Onnx Runtime EP context models <ort-ep-context-cache>` 
 
 - For BF16 models:
 
   - DLLs from the ``%RYZEN_AI_INSTALLATION_PATH%\deployment\voe`` folder
-  - Pre-compiled models in the form of Vitis AI EP cache folders
+  - Pre-compiled models in the form of :ref:`Vitis AI EP cache folders <vitisai-ep-cache>`
 
 - For LLMs:
 
