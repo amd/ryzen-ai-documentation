@@ -188,6 +188,7 @@ The RyzenAI Software supports two mechanisms for saving and reloading compiled m
 - VitisAI EP Cache
 - OnnxRuntime EP Context Cache
 
+.. _vitisai-ep-cache:
 
 VitisAI EP Cache
 ================
@@ -270,6 +271,7 @@ C++ example:
 
 As a result of encryption, the model generated in the cache directory cannot be opened with Netron. Additionally, dumping is disabled to prevent the leakage of sensitive information about the model.
 
+.. _ort-ep-context-cache:
 
 OnnxRuntime EP Context Cache
 ============================
