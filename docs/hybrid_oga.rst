@@ -2,121 +2,87 @@
 OnnxRuntime GenAI (OGA) Flow 
 ############################
 
-Ryzen AI Software supports deploying LLMs on Ryzen AI PCs using the native ONNX Runtime Generate (OGA) C++ or Python API. The OGA API is the lowest-level API available for building LLM applications on a Ryzen AI PC. This documentation covers the Hybrid execution mode for LLMs, which utilizes both the NPU and GPU.
+Ryzen AI Software supports deploying LLMs on Ryzen AI PCs using the native ONNX Runtime Generate (OGA) C++ or Python API. The OGA API is the lowest-level API available for building LLM applications on a Ryzen AI PC. This documentation covers the Hybrid execution mode for LLMs, which utilizes both the NPU and GPU 
 
+**Note**: Refer to :doc:`npu_oga` for NPU only execution mode.  
+
+************************
 Supported Configurations
-~~~~~~~~~~~~~~~~~~~~~~~~
+************************
 
-The Ryzen AI OGA flow supports the following processors running Windows 11:
+The Ryzen AI OGA flow supports Strix and Krackan Point processors. Phoenix (PHX) and Hawk (HPT) processors are not supported.
 
-- Strix (STX): AMD Ryzen™ Ryzen AI 9 HX375, Ryzen AI 9 HX370, Ryzen AI 9 365
-- Kracken (KRK)
 
-**Note**: Phoenix (PHX) and Hawk (HPT) processors are not supported.
-
+************
 Requirements
-~~~~~~~~~~~~
-- NPU Drivers (version .255): Install according to the instructions https://ryzenai.docs.amd.com/en/latest/inst.html
-- RyzenAI 1.4 MSI installer
-- GPU device driver: Ensure GPU device driver https://www.amd.com/en/support is installed 
+************
+
+- Install NPU Drivers and Ryzen AI MSI installer according to the :doc:`inst`
+- Install GPU device driver: Ensure GPU device driver https://www.amd.com/en/support is installed 
 - Install Git for Windows (needed to download models from HF): https://git-scm.com/downloads
 
-Setting performance mode (Optional)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-To run the LLMs in the best performance mode, follow these steps:
-
-- Go to ``Windows`` → ``Settings`` → ``System`` → ``Power`` and set the power mode to Best Performance.
-- Execute the following commands in the terminal:
-
-.. code-block::
-
-   cd C:\Windows\System32\AMD
-   xrt-smi configure --pmode performance
-
+********************
 Pre-optimized Models
-~~~~~~~~~~~~~~~~~~~~
+********************
 
 AMD provides a set of pre-optimized LLMs ready to be deployed with Ryzen AI Software and the supporting runtime for hybrid execution. These models can be found on Hugging Face: 
 
-Published models: 
+- https://huggingface.co/amd/Phi-3-mini-4k-instruct-awq-g128-int4-asym-fp16-onnx-hybrid 
+- https://huggingface.co/amd/Phi-3.5-mini-instruct-awq-g128-int4-asym-fp16-onnx-hybrid 
+- https://huggingface.co/amd/Mistral-7B-Instruct-v0.3-awq-g128-int4-asym-fp16-onnx-hybrid 
+- https://huggingface.co/amd/Qwen1.5-7B-Chat-awq-g128-int4-asym-fp16-onnx-hybrid 
+- https://huggingface.co/amd/chatglm3-6b-awq-g128-int4-asym-fp16-onnx-hybrid 
+- https://huggingface.co/amd/Llama-2-7b-hf-awq-g128-int4-asym-fp16-onnx-hybrid 
+- https://huggingface.co/amd/Llama-2-7b-chat-hf-awq-g128-int4-asym-fp16-onnx-hybrid 
+- https://huggingface.co/amd/Llama-3-8B-awq-g128-int4-asym-fp16-onnx-hybrid/tree/main 
+- https://huggingface.co/amd/Llama-3.1-8B-awq-g128-int4-asym-fp16-onnx-hybrid/tree/main 
+- https://huggingface.co/amd/Llama-3.2-1B-Instruct-awq-g128-int4-asym-fp16-onnx-hybrid 
+- https://huggingface.co/amd/Llama-3.2-3B-Instruct-awq-g128-int4-asym-fp16-onnx-hybrid 
+- https://huggingface.co/amd/Mistral-7B-Instruct-v0.1-hybrid 
+- https://huggingface.co/amd/Mistral-7B-Instruct-v0.2-hybrid 
+- https://huggingface.co/amd/Mistral-7B-v0.3-hybrid 
+- https://huggingface.co/amd/Llama-3.1-8B-Instruct-hybrid 
+- https://huggingface.co/amd/CodeLlama-7b-instruct-g128-hybrid 
+- https://huggingface.co/amd/DeepSeek-R1-Distill-Llama-8B-awq-asym-uint4-g128-lmhead-onnx-hybrid 
+- https://huggingface.co/amd/DeepSeek-R1-Distill-Qwen-1.5B-awq-asym-uint4-g128-lmhead-onnx-hybrid
+- https://huggingface.co/amd/DeepSeek-R1-Distill-Qwen-7B-awq-asym-uint4-g128-lmhead-onnx-hybrid
+- https://huggingface.co/amd/AMD-OLMo-1B-SFT-DPO-hybrid
+- https://huggingface.co/amd/Qwen2-7B-awq-uint4-asym-g128-lmhead-fp16-onnx-hybrid
+- https://huggingface.co/amd/Qwen2-1.5B-awq-uint4-asym-global-g128-lmhead-g32-fp16-onnx-hybrid
+- https://huggingface.co/amd/gemma-2-2b-awq-uint4-asym-g128-lmhead-g32-fp16-onnx-hybrid
 
-https://huggingface.co/amd/DeepSeek-R1-Distill-Llama-8B-awq-asym-uint4-g128-lmhead-onnx-hybrid 
-
-https://huggingface.co/amd/Phi-3-mini-4k-instruct-awq-g128-int4-asym-fp16-onnx-hybrid 
-
-https://huggingface.co/amd/Phi-3.5-mini-instruct-awq-g128-int4-asym-fp16-onnx-hybrid 
-
-https://huggingface.co/amd/Mistral-7B-Instruct-v0.3-awq-g128-int4-asym-fp16-onnx-hybrid 
-
-https://huggingface.co/amd/Qwen1.5-7B-Chat-awq-g128-int4-asym-fp16-onnx-hybrid 
-
-https://huggingface.co/amd/chatglm3-6b-awq-g128-int4-asym-fp16-onnx-hybrid 
-
-https://huggingface.co/amd/Llama-2-7b-hf-awq-g128-int4-asym-fp16-onnx-hybrid 
-
-https://huggingface.co/amd/Llama-2-7b-chat-hf-awq-g128-int4-asym-fp16-onnx-hybrid 
-
-https://huggingface.co/amd/Llama-3-8B-awq-g128-int4-asym-fp16-onnx-hybrid/tree/main 
-
-https://huggingface.co/amd/Llama-3.1-8B-awq-g128-int4-asym-fp16-onnx-hybrid/tree/main 
-
-https://huggingface.co/amd/Llama-3.2-1B-Instruct-awq-g128-int4-asym-fp16-onnx-hybrid 
-
-https://huggingface.co/amd/Llama-3.2-3B-Instruct-awq-g128-int4-asym-fp16-onnx-hybrid 
-
-https://huggingface.co/uday610/Mistral-7B-Instruct-v0.1-hybrid 
-
-https://huggingface.co/uday610/Mistral-7B-Instruct-v0.2-hybrid 
-
-https://huggingface.co/uday610/Mistral-7B-v0.3-hybrid 
-
-https://huggingface.co/uday610/Llama-3.1-8B-Instruct-hybrid 
-
-https://huggingface.co/amd/CodeLlama-7b-instruct-g128-hybrid 
-
-DeepSeek-R1-Distill-Qwen-1.5B (will be enabled)
-
-DeepSeek-R1-Distill-Qwen-7B (will be enabled)
-
-Gemma2-2B (will be enabled)
 
 The steps for deploying the pre-optimized models using Python or C++ are described in the following sections.
 
+******************************
 Hybrid Execution of OGA Models
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+******************************
 
 Setup
-@@@@@
+=====
 
-1. Install Ryzen AI 1.4 according to the instructions if not installed previously: https://ryzenai.docs.amd.com/en/latest/inst.html
-
-2. Activate the Ryzen AI 1.4 Conda environment:
+Activate the Ryzen AI 1.4 Conda environment:
 
 .. code-block:: 
     
     conda activate ryzen-ai-1.4.0
 
-3. Create a folder to run the LLMs from, and copy the required files:
+Copy the required files in a local folder to run the LLMs from:
 
 .. code-block::
   
-       xcopy "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\onnxruntime_genai\benchmark" .\run_folder /e /i  
-       xcopy "%RYZEN_AI_INSTALLATION_PATH%\onnxruntime\bin\onnxruntime.dll" run_folder\. 
-       xcopy "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\examples\amd_genai_prompt.txt" run_folder\. 
-       xcopy "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\onnx_utils\bin\onnx_custom_ops.dll" run_folder\.
-       xcopy "%RYZEN_AI_INSTALLATION_PATH%\onnxruntime\bin\DirectML.dll run_folder\.
+     mkdir hybrid_run
+     cd hybrid_run
+     xcopy "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\onnxruntime_genai\benchmark" . /e /i
+     xcopy "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\examples\amd_genai_prompt.txt" .
+     xcopy "%RYZEN_AI_INSTALLATION_PATH%\deployment\hybrid-llm" . /s /y
+     xcopy "%RYZEN_AI_INSTALLATION_PATH%\deployment\voe\onnxruntime.dll" .
+     xcopy "%RYZEN_AI_INSTALLATION_PATH%\deployment\voe\DirectML.dll" .
 
 Download Models from HuggingFace
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+================================
 
-1. Navigate to the newly created run folder: 
-
-.. code-block:: 
-    
-    cd \path\to\run_folder
-
-2. Download from Hugging Face the desired models (from the list of published models):
+Download the desired models from the list of pre-optimized models on Hugging Face:
 
 .. code-block:: 
     
@@ -132,42 +98,30 @@ For example, for Llama-2-7b-chat:
      git clone https://huggingface.co/amd/Llama-2-7b-chat-hf-awq-g128-int4-asym-fp16-onnx-hybrid
 
 
-Run Models with OGA python APIs
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+Enabling Performance Mode (Optional)
+====================================
 
-1. To run from the run folder using the native OGA Python APIs, use the following commands. 
+To run the LLMs in the best performance mode, follow these steps:
 
-- To run any model other than chatglm: 
-
-.. code-block:: 
-
-     (ryzen-ai-1.4.0)python "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\examples\python\llama3\run_model.py" --model_dir <model folder>  
-
-- To run chatglm: 
-
-
-.. code-block:: 
-
-     (ryzen-ai-1.4.0)python "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\examples\python\chatglm\run_model.py" --model_dir <model folder>  
-
-
-
-Run Models with OGA C++ APIs 
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-
-The ``model_benchmark.exe`` test application serves two purposes:
-
-- It provides a very simple mechanism for running and evaluating Hybrid OGA models using the native OGA C++ APIs
-- The source code for this application provides a reference implementation for how to integrate Hybrid OGA models in custom C++ programs
-
-To evaluate models using the ``model_benchmark.exe`` test application:
+- Go to ``Windows`` → ``Settings`` → ``System`` → ``Power`` and set the power mode to Best Performance.
+- Execute the following commands in the terminal:
 
 .. code-block::
 
-     # Switch to the run folder
-     cd run_folder
+   cd C:\Windows\System32\AMD
+   xrt-smi configure --pmode performance
 
-     # To see settings info
+
+Sample C++ Program 
+==================
+
+The ``model_benchmark.exe`` test application provides a simple mechanism for running and evaluating Hybrid OGA models using the native OGA C++ APIs. The source code for this application can be used a reference implementation for how to integrate LLMs using the native OGA C++ APIs.
+ 
+The ``model_benchmark.exe`` test application can be used as follows:
+
+.. code-block::
+
+     # To see available options and default settings
      .\model_benchmark.exe -h
 
      # To run with default settings
@@ -186,26 +140,54 @@ To evaluate models using the ``model_benchmark.exe`` test application:
      .\model_benchmark.exe -i $path_to_model_dir  -f $prompt_file -l $list_of_prompt_lengths -r $num_iterations
 
 
-For example:
+For example, for Llama-2-7b-chat:
 
 .. code-block::
   
-     cd run_folder
-     .\model_benchmark.exe -i <path_to>/Llama-3.2-1B-Instruct-awq-g128-int4-asym-fp16-onnx-hybrid -f amd_genai_prompt.txt -l "128, 256, 512, 1024, 2048" --verbose
+     .\model_benchmark.exe -i Llama-2-7b-chat-hf-awq-g128-int4-asym-fp16-onnx-hybrid -f amd_genai_prompt.txt -l "1024" --verbose
 
-**Note**: The C++ source code for the ``model_benchmark.exe`` executable can be found in the ``C:\Program Files\RyzenAI\1.4.0\hybrid-llm\examples\c\benchmark\c`` folder. This source code can be modified and recompiled if necessary using the below commands.
+|
+
+**NOTE**: The C++ source code for the ``model_benchmark.exe`` executable can be found in the ``%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\examples\c`` folder. This source code can be modified and recompiled if necessary using the commands below.
 
 .. code-block::
   
-      cd C:\Program Files\RyzenAI\1.4.0\hybrid-llm\examples\c
+      xcopy /E /I "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\examples\c"  .\sources
+      cd sources
       cmake -G "Visual Studio 17 2022" -A x64 -S . -B build
-      cd build
-      cmake --build . --config Release
+      cmake --build build --config Release
 
 
-Preparing OGA Models for Hybrid Execution
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Sample Python Scripts
+=====================
 
-To prepare the OGA model for hybrid execution please refer :doc:`oga_model_prepare`
+To run LLMs other than ChatGLM, use the following command:
+
+.. code-block:: 
+
+     python "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\examples\python\llama3\run_model.py" --model_dir <model folder>  
+
+To run ChatGLM, use the following command:
+
+.. code-block:: 
+
+     pip install transformers==4.44.0 
+     python "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\examples\python\chatglm\model-generate-chatglm3.py" --model <model folder>  
 
 
+For example, for Llama-2-7b-chat:
+
+.. code-block:: 
+
+    python "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\examples\python\llama3\run_model.py" --model_dir Llama-2-7b-chat-hf-awq-g128-int4-asym-fp16-onnx-hybrid 
+
+
+***********************
+Using Fine-Tuned Models
+***********************
+
+It is also possible to run fine-tuned versions of the pre-optimized OGA models. 
+
+To do this, the fine-tuned models must first be prepared for execution with the OGA Hybrid flow. For instructions on how to do this, refer to the page about :doc:`oga_model_prepare`.
+
+Once a fine-tuned model has been prepared for Hybrid execution, it can be deployed by following the steps described above in this page.

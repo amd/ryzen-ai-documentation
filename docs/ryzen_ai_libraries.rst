@@ -1,41 +1,44 @@
 .. Copyright (C) 2023-2025 Advanced Micro Devices, Inc. All rights reserved.
 
-###################################################
-Getting started with Ryzen AI CVML library features
-###################################################
+#####################
+Ryzen AI CVML library
+#####################
 
 The Ryzen AI CVML libraies build on top of the Ryzen AI drivers and execution infrastructure to provide powerful AI capabilities to C++ applications without having to worry about training specific AI models and integrating them to the Ryzen AI framework.
 
 Each Ryzen AI CVML library feature offers a simple C++ application programming interface (API) that can be easily incorporated into existing applications.
+
+The Ryzen AI CVML library is distributed through the RyzenAI-SW Github repository: https://github.com/amd/RyzenAI-SW/tree/main/Ryzen-AI-CVML-Library
 
 *************
 Prerequisites
 *************
 Ensure that the following software tools/packages are installed on the development system.
 
-  1. Visual Studio 2022 Community edition or newer, ensure “Desktop Development with C++” is installed
-  2. Cmake (version >= 3.18)
-  3. OpenCV (version=4.8.1 or newer)
+1. Visual Studio 2022 Community edition or newer, ensure “Desktop Development with C++” is installed
+2. Cmake (version >= 3.18)
+3. OpenCV (version=4.8.1 or newer)
 
 **************************************************
-Building Ryzen AI CVML library sample applications
+Building sample applications
 **************************************************
 This section describes the steps to build Ryzen AI CVML library sample applications.
 
 Navigate to the folder containing Ryzen AI samples
 ==================================================
-Go to the 'samples' sub-folder of the Ryzen AI CVML library. ::
+Download the Ryzen AI CVML sources, and go to the 'samples' sub-folder of the library. ::
   
-  chdir samples
+  git clone https://github.com/amd/RyzenAI-SW.git -b main --depth-1
+  chdir RyzenAI-SW\Ryzen-AI-CVML-Library\samples
 
-Specify the location of OpenCV libraries
-====================================
+OpenCV libraries
+================
 Ryzen AI CVML library samples make use of OpenCV, so set an environment variable to let the build scripts know where to find OpenCV. ::
 
   set OPENCV_INSTALL_ROOT=<location of OpenCV libraries>
 
-Build the sample applications
-=============================
+Build Instructions
+==================
 Create a build folder and use CMAKE to build the sample(s). ::
 
   mkdir build-samples
@@ -45,7 +48,7 @@ Create a build folder and use CMAKE to build the sample(s). ::
 The compiled sample application(s) will be placed in the various build-samples\<application>\Release folder(s) under the 'samples' folder.
 
 *************************************************
-Running Ryzen AI CVML library sample applications
+Running sample applications
 *************************************************
 This section describes how to execute Ryzen AI CVML library sample applications.
 
@@ -73,6 +76,7 @@ Execute the sample application
 Finally, the previously built sample application can be executed with the selected input source. ::
 
   build-samples\cvml-sample-depth-estimation\Release\cvml-sample-depth-estimation.exe -i dancing.mp4
+  
 ..
   ------------
 

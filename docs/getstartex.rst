@@ -205,15 +205,9 @@ Deploy the Model on the Ryzen AI NPU
 
 To successfully run the model on the NPU, run the following setup steps:
 
-- Make sure to set the XLNX_VART_FIRMWARE environment variable based to your APU type. Refer to :ref:`runtime setup instructions <npu-configurations>` on how to do this.
-
 - Ensure ``RYZEN_AI_INSTALLATION_PATH`` points to ``path\to\ryzen-ai-sw-<version>\``. If you installed Ryzen-AI software using the MSI installer, this variable should already be set. Ensure that the Ryzen-AI software package has not been moved post installation, in which case ``RYZEN_AI_INSTALLATION_PATH`` will have to be set again. 
 
-- Copy the ``vaip_config.json`` runtime configuration file from the installation package to the current directory. The ``vaip_config.json`` is used by the source file ``predict.py`` to configure the Vitis AI Execution Provider.
-
-.. code-block:: bash 
-
-   xcopy %RYZEN_AI_INSTALLATION_PATH%\voe-4.0-win_amd64\vaip_config.json .
+- By default, the Ryzen AI Conda environment automatically sets the standard binary for all inference sessions through the ``XLNX_VART_FIRMWARE`` environment variable. However, explicitly passing the xclbin option in provider_options overrides the default setting.
 
 .. code-block::
 
@@ -228,9 +222,9 @@ To successfully run the model on the NPU, run the following setup steps:
      providers = ['VitisAIExecutionProvider']
      cache_dir = Path(__file__).parent.resolve()
      provider_options = [{
-                'config_file': 'vaip_config.json',
                 'cacheDir': str(cache_dir),
-                'cacheKey': 'modelcachekey'
+                'cacheKey': 'modelcachekey',
+                'xclbin': 'path/to/xclbin'
                 }]
 
   session = ort.InferenceSession(model.SerializeToString(), providers=providers,
@@ -336,13 +330,13 @@ To run the model on the CPU, use the following command:
 
 .. code-block:: bash 
 
-   resnet_cifar.exe models\resnet.qdq.U8S8.onnx cpu None
+   resnet_cifar.exe models\resnet_quantized.onnx cpu
 
 Typical output: 
 
 .. code-block:: bash 
 
-   model name:models\resnet.qdq.U8S8.onnx
+   model name:models\resnet_quantized.onnx
    ep:cpu
    Input Node Name/Shape (1):
            input : -1x3x32x32
@@ -365,16 +359,9 @@ Deploy the Model on the NPU
 
 To successfully run the model on the NPU:
 
-- Make sure to set the XLNX_VART_FIRMWARE environment variable based to your APU type. Refer to :ref:`runtime setup instructions <npu-configurations>` on how to do this.
-
 - Ensure ``RYZEN_AI_INSTALLATION_PATH`` points to ``path\to\ryzen-ai-sw-<version>\``. If you installed Ryzen-AI software using the MSI installer, this variable should already be set. Ensure that the Ryzen-AI software package has not been moved post installation, in which case ``RYZEN_AI_INSTALLATION_PATH`` will have to be set again. 
 
-- Copy the ``vaip_config.json`` runtime configuration file from the installation package to the current directory. The ``vaip_config.json`` is used by the source file ``resnet_cifar.cpp`` to configure the Vitis AI Execution Provider.
-
-.. code-block:: bash 
-
-   xcopy %RYZEN_AI_INSTALLATION_PATH%\voe-4.0-win_amd64\vaip_config.json .
-
+- By default, the Ryzen AI Conda environment automatically sets the standard binary for all inference sessions through the ``XLNX_VART_FIRMWARE`` environment variable. However, explicitly passing the xclbin option in provider_options overrides the default setting.
 
 The following code block from ``reset_cifar.cpp`` shows how ONNX Runtime is configured to deploy the model on the Ryzen AI NPU:
 
@@ -382,13 +369,12 @@ The following code block from ``reset_cifar.cpp`` shows how ONNX Runtime is conf
 
     auto session_options = Ort::SessionOptions();
 
-    auto config_key = std::string{ "config_file" };
     auto cache_dir = std::filesystem::current_path().string(); 
- 
+
     if(ep=="npu")
     {
     auto options =
-        std::unordered_map<std::string, std::string>{ {config_key, json_config}, {"cacheDir", cache_dir}, {"cacheKey", "modelcachekey"} };
+        std::unordered_map<std::string, std::string>{ {"cacheDir", cache_dir}, {"cacheKey", "modelcachekey"}, {"xclbin", "path/to/xclbin"}};
     session_options.AppendExecutionProvider_VitisAI(options)
     }
 
@@ -398,7 +384,7 @@ To run the model on the NPU, we will pass the npu flag and the vaip_config.json 
 
 .. code-block:: bash 
 
-   resnet_cifar.exe models\resnet.qdq.U8S8.onnx npu vaip_config.json
+   resnet_cifar.exe models\resnet_quantized.onnx npu
 
 Typical output: 
 
