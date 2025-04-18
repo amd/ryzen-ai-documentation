@@ -26,6 +26,23 @@ The complete documentation for AMD Quark for Ryzen AI can be found here: https:/
 
 INT8 Examples
 =============
+**AMD Quark** provides default configrations that support INT8 quantization configuration. For example, `XINT8` uses symmetric INT8 activation and weights quantization with power-of-two scales using the MinMSE calibration method.
+The quantization configuration can be customized using the `QuantizationConfig` class. The following example shows how to set up the quantization configuration for INT8 quantization:
+
+.. code-block::
+
+   quant_config = QuantizationConfig(calibrate_method=PowerOfTwoMethod.MinMSE,
+                                     activation_type=QuantType.QUInt8,
+                                     weight_type=QuantType.QInt8,
+                                     enable_npu_cnn=True,
+                                     extra_options={'ActivationSymmetric': True})
+   config = Config(global_quant_config=quant_config)
+   print("The configuration of the quantization is {}".format(config))
+
+The user can use the `get_default_config('XINT8')` function to get the default configuration for INT8 quantization.
+
+For more details
+~~~~~~~~~~~~~~~~
 - `AMD Quark Tutorial <https://github.com/amd/RyzenAI-SW/tree/main/tutorial/quark_quantization>`_ for Ryzen AI Deployment
 - Running INT8 model on NPU using :doc:`Getting Started Tutorial <getstartex>`
 - Advanced quantization techniques `Fast Finetuning and Cross Layer Equalization <https://gitenterprise.xilinx.com/VitisAI/RyzenAI-SW/blob/dev/tutorial/quark_quantization/docs/advanced_quant_readme.md>`_ for INT8 model
@@ -33,6 +50,18 @@ INT8 Examples
 
 BF16 Examples
 =============
+**AMD Quark** provides default configrations that support BFLOAT16 (BF16) model quantization. For example, BF16 is a 16-bit floating-point format designed to have same exponent size as FP32, allowing a wide dynamic range, but with reduced precision to save memory and speed up computations.
+The BFLOAT16 (BF16) model needs to be converted from QDQ nodes to Cast operations to run with VAIML compiler. AMD Quark support this conversion with the configuration option `BF16QDQToCast`.
+
+.. code-block::
+
+   quant_config = get_default_config("BF16")
+   quant_config.extra_options["BF16QDQToCast"] = True
+   config = Config(global_quant_config=quant_config)
+   print("The configuration of the quantization is {}".format(config))
+
+For more details
+~~~~~~~~~~~~~~~~
 - `Image Classification <https://github.com/amd/RyzenAI-SW/tree/main/example/image_classification>`_ using ResNet50 to run BF16 model on NPU
 - `Finetuned DistilBERT for Text Classification <https://github.com/amd/RyzenAI-SW/tree/main/example/DistilBERT_text_classification_bf16>`_ 
 - `Text Embedding Model Alibaba-NLP/gte-large-en-v1.5  <https://github.com/amd/RyzenAI-SW/tree/main/example/GTE>`_ 
