@@ -152,10 +152,12 @@ For example, for Llama-2-7b-chat:
 
 .. code-block::
   
-      xcopy /E /I "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\examples\c"  .\sources
-      cd sources
-      cmake -G "Visual Studio 17 2022" -A x64 -S . -B build
-      cmake --build build --config Release
+     xcopy /E /I "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\examples\c" .\sources
+     xcopy /E /I "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\onnxruntime_genai\include" .\sources\include
+     xcopy /E /I "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\onnxruntime_genai\lib" .\sources\lib
+     cd sources
+     cmake -G "Visual Studio 17 2022" -A x64 -S . -B build
+     cmake --build build --config Release
 
 
 Sample Python Scripts
