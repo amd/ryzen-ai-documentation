@@ -158,6 +158,9 @@ For example, for Llama-2-7b-chat:
      cd sources
      cmake -G "Visual Studio 17 2022" -A x64 -S . -B build
      cmake --build build --config Release
+     xcopy /E /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\hybrid-llm" .\build\Release
+     xcopy "%RYZEN_AI_INSTALLATION_PATH%\deployment\voe\onnxruntime.dll" .\build\Release
+     xcopy "%RYZEN_AI_INSTALLATION_PATH%\deployment\voe\DirectML.dll" .\build\Release
 
 
 Sample Python Scripts

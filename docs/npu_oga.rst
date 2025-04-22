@@ -171,7 +171,9 @@ For example, for Llama-2-7b:
    cmake -G "Visual Studio 17 2022" -A x64 -S . -B build
    cmake --build build --config Release
 
-
+   xcopy /E /I "%RYZEN_AI_INSTALLATION_PATH%\npu-llm\libs" .\libs
+   xcopy /E /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\voe"  .\libs
+   xcopy /E /I build\Release .\libs
 
 Sample Python Scripts
 =====================
