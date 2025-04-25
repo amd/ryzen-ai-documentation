@@ -120,26 +120,12 @@ The comprehensive set of pre-optimized models for hybrid execution used in these
      - 3.4x
      - 8.4x
      - 🟢
-   * - `DeepSeek-R1-Distill-Qwen-1.5B <https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B>`_
-     - `Link <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/lemonade/cpu/DeepSeek_R1_Distill_Qwen_1_5B.md>`__
-     - 🟢
-     - `Link <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/lemonade/hybrid/DeepSeek_R1_Distill_Qwen_1_5B.md>`__
-     - 2.8x
-     - 5.9x
-     - 🟢
    * - `DeepSeek-R1-Distill-Llama-8B <https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Llama-8B>`_
      - `Link <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/lemonade/cpu/DeepSeek_R1_Distill_Llama_8B.md>`__
      - 🟢
      - `Link <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/lemonade/hybrid/DeepSeek_R1_Distill_Llama_8B.md>`__
      - 4.2x
      - 7.6x
-     - 🟢
-   * - `CodeLlama-7b-Instruct-hf <https://huggingface.co/meta-llama/CodeLlama-7b-Instruct-hf>`_
-     - `Link <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/lemonade/cpu/CodeLlama_7b_Instruct_hf.md>`__
-     - 🟢
-     - `Link <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/lemonade/hybrid/CodeLlama_7b_Instruct_hf.md>`__
-     - 4.3x
-     - 8.5x
      - 🟢
    * - `Llama-3.2-1B-Instruct <https://huggingface.co/meta-llama/Llama-3.2-1B-Instruct>`_
      - `Link <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/lemonade/cpu/Llama_3_2_1B_Instruct.md>`__
