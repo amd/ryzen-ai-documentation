@@ -73,11 +73,14 @@ Copy the required files in a local folder to run the LLMs from:
   
      mkdir hybrid_run
      cd hybrid_run
-     xcopy "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\onnxruntime_genai\benchmark" . /e /i
-     xcopy "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\examples\amd_genai_prompt.txt" .
-     xcopy "%RYZEN_AI_INSTALLATION_PATH%\deployment\hybrid-llm" . /s /y
-     xcopy "%RYZEN_AI_INSTALLATION_PATH%\deployment\voe\onnxruntime.dll" .
-     xcopy "%RYZEN_AI_INSTALLATION_PATH%\deployment\voe\DirectML.dll" .
+     xcopy /Y /E "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\onnxruntime_genai\benchmark" .
+     xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\examples\amd_genai_prompt.txt" .
+     xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\hybrid-llm\onnxruntime-genai.dll" .
+     xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\hybrid-llm\onnx_custom_ops.dll" .
+     xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\hybrid-llm\ryzen_mm.dll" .
+     xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\hybrid-llm\ryzenai_onnx_utils.dll" .
+     xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\voe\DirectML.dll" .
+     xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\voe\onnxruntime.dll" .
 
 Download Models from HuggingFace
 ================================
@@ -152,15 +155,23 @@ For example, for Llama-2-7b-chat:
 
 .. code-block::
   
+     :: Copy project files
      xcopy /E /I "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\examples\c" .\sources
      xcopy /E /I "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\onnxruntime_genai\include" .\sources\include
      xcopy /E /I "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\onnxruntime_genai\lib" .\sources\lib
+
+     :: Build project
      cd sources
      cmake -G "Visual Studio 17 2022" -A x64 -S . -B build
      cmake --build build --config Release
-     xcopy /E /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\hybrid-llm" .\build\Release
-     xcopy "%RYZEN_AI_INSTALLATION_PATH%\deployment\voe\onnxruntime.dll" .\build\Release
-     xcopy "%RYZEN_AI_INSTALLATION_PATH%\deployment\voe\DirectML.dll" .\build\Release
+
+     :: Copy runtime DLLs
+     xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\hybrid-llm\onnxruntime-genai.dll" .\build\Release
+     xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\hybrid-llm\onnx_custom_ops.dll" .\build\Release
+     xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\hybrid-llm\ryzen_mm.dll" .\build\Release
+     xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\hybrid-llm\ryzenai_onnx_utils.dll" .\build\Release
+     xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\voe\DirectML.dll" .\build\Release
+     xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\voe\onnxruntime.dll" .\build\Release
 
 
 Sample Python Scripts

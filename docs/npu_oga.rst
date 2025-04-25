@@ -66,9 +66,7 @@ Create a folder to run the LLMs from, and copy the required files:
 
   mkdir npu_run
   cd npu_run
-  :: Copy executables in the "libs" folder
   xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\npu-llm\exe" .\libs
-  :: Copy runtime dependencies in the "libs" folder
   xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\npu-llm\libs\vaip_llm.json" libs
   xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\npu-llm\onnxruntime-genai.dll" libs
   xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\voe\onnxruntime_vitis_ai_custom_ops.dll" libs
@@ -176,13 +174,17 @@ For example, for Llama-2-7b:
 
 .. code-block::
 
+   :: Copy project files
    xcopy /E /I "%RYZEN_AI_INSTALLATION_PATH%\npu-llm\cpp" .\sources
+
+   :: Build project
    cd sources
    cmake -G "Visual Studio 17 2022" -A x64 -S . -B build
    cmake --build build --config Release
 
    :: Copy executables in the "libs" folder 
    xcopy /I build\Release .\libs
+
    :: Copy runtime dependencies in the "libs" folder
    xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\npu-llm\libs\vaip_llm.json" libs
    xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\npu-llm\onnxruntime-genai.dll" libs
