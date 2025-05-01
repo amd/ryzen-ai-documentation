@@ -171,7 +171,7 @@ A C++ application built on the Ryzen AI ONNX Runtime requires the following comp
   - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\voe\\DirectML.dll
   - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\voe\\onnxruntime.dll
 
-.. rubric:: For Hybrid LLMs
+.. rubric:: For NPU-only LLMs
 
 - DLLs:
 
