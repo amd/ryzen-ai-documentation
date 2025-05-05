@@ -40,7 +40,7 @@ The Lemonade Server provides the following OpenAI-compatible endpoints:
 
 Please refer to the `server specification <https://github.com/onnx/turnkeyml/blob/main/docs/lemonade/server_spec.md>`_ document in the Lemonade repository for details about the request and response formats for each endpoint. 
 
-The `OpenAI API documentation <https://platform.openai.com/docs/api-reference/streaming>`_ also has code examples for integrating streaming completions into an application. 
+The `OpenAI API documentation <https://platform.openai.com/docs/guides/streaming-responses?api-mode=chat>`_ also has code examples for integrating streaming completions into an application. 
 
 Open WebUI Demo
 ===============
@@ -50,9 +50,9 @@ To experience the Lemonade Server, try using it with an OpenAI-compatible applic
 Instructions:
 -------------
 
-First, launch the Lemonade Server by double-clicking the lemon icon on your desktop. See the following for installation: `server setup <#server-setup>`_.
+1. **Launch Lemonade Server:** Double-click the lemon icon on your desktop. See `server setup <#server-setup>`_ for installation instructions.
 
-In a terminal, install Open WebUI using the following commands:
+2. **Install and Run Open WebUI:** In a terminal, install Open WebUI using the following commands:
 
 .. code-block:: bash
 
@@ -61,20 +61,21 @@ In a terminal, install Open WebUI using the following commands:
     pip install open-webui
     open-webui serve
 
-To launch the UI, open a browser and navigate to `<http://localhost:8080/>`_.
+3. **Launch Open WebUI**: In a browser, navigate to `<http://localhost:8080/>`_.
 
-In the top-right corner of the UI, click the profile icon and then:
+4. **Connect Open WebUI to Lemonade Server:** In the top-right corner of the UI, click the profile icon and then:
 
-1. Go to Settings -> Connections.
-2. Click the '+' button to add our OpenAI-compatible connection.
-3. In the URL field, enter http://localhost:8000/api/v0, and in the key field put “-”, then press save.
+   - Go to ``Settings`` → ``Connections``.
+   - Click the ``+`` button to add our OpenAI-compatible connection.
+   - In the URL field, enter ``http://localhost:8000/api/v0``, and in the key field put ``-``, then press save.
 
-Done! You are now able to run Open WebUI with Hybrid models. Feel free to choose any of the available “-Hybrid” models in the model selection menu.
+**Done!** You are now able to run Open WebUI with Hybrid models. Feel free to choose any of the available “-Hybrid” models in the model selection menu.
 
 **********
 Next Steps
 **********
 
+- See `Lemonade Server Examples <https://github.com/onnx/turnkeyml/tree/main/examples/lemonade/server>`_ to find applications that have been tested with Lemonade Server.
 - Check out the `Lemonade Server specification <https://github.com/onnx/turnkeyml/blob/main/docs/lemonade/server_spec.md>`_ to learn more about supported features.
 - Try out your Lemonade Server install with any application that uses the OpenAI chat completions API.
 

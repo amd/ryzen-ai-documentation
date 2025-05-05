@@ -24,8 +24,6 @@ Supported Configurations
 Development Interfaces
 *******************************
 
-.. note:: Only the OGA APIs interface provides support for DeepSeek-R1-Distill models at this time.
-
 The Ryzen AI LLM software stack is available through three development interfaces, each suited for specific use cases as outlined in the sections below. All three interfaces are built on top of native OnnxRuntime GenAI (OGA) libraries, as shown in the :ref:`software-stack-table` diagram below. 
 
 The high-level Python APIs, as well as the Server Interface, also leverage the Lemonade SDK, which is multi-vendor open-source software that provides everything necessary for quickly getting started with LLMs on OGA.
@@ -74,6 +72,8 @@ The Server Interface provides a convenient means to integrate with applications 
 - Benefits from process isolation for the LLM backend.
 
 To get started with the server interface, follow these instructions: :doc:`server_interface`.
+
+For example applications that have been tested with Lemonade Server, see the `Lemonade Server Examples <https://github.com/onnx/turnkeyml/tree/main/examples/lemonade/server>`_.
 
 
 OGA APIs for C++ Libraries and Python
