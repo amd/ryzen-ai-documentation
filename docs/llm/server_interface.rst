@@ -40,7 +40,7 @@ The Lemonade Server provides the following OpenAI-compatible endpoints:
 
 Please refer to the `server specification <https://github.com/onnx/turnkeyml/blob/main/docs/lemonade/server_spec.md>`_ document in the Lemonade repository for details about the request and response formats for each endpoint. 
 
-The `OpenAI API documentation <https://platform.openai.com/docs/api-reference/streaming>`_ also has code examples for integrating streaming completions into an application. 
+The `OpenAI API documentation <https://platform.openai.com/docs/guides/streaming-responses?api-mode=chat>`_ also has code examples for integrating streaming completions into an application. 
 
 Open WebUI Demo
 ===============
@@ -50,8 +50,13 @@ To experience the Lemonade Server, try using it with an OpenAI-compatible applic
 Instructions:
 -------------
 
-First, launch the Lemonade Server by double-clicking the lemon icon on your desktop. See the following for installation: `server setup <#server-setup>`_.
+Launch Lemonade Server:
+^^^^^^^^^^^^^^^^^^^^^^
 
+Double-click the lemon icon on your desktop. See the following for installation: `server setup <#server-setup>`_.
+
+Launch Open WebUI:
+^^^^^^^^^^^^^^^^^^
 In a terminal, install Open WebUI using the following commands:
 
 .. code-block:: bash
@@ -62,6 +67,9 @@ In a terminal, install Open WebUI using the following commands:
     open-webui serve
 
 To launch the UI, open a browser and navigate to `<http://localhost:8080/>`_.
+
+Connect Open WebUI to Lemonade Server:
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In the top-right corner of the UI, click the profile icon and then:
 
