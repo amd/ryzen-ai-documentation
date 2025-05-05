@@ -73,6 +73,8 @@ The Server Interface provides a convenient means to integrate with applications 
 
 To get started with the server interface, follow these instructions: :doc:`server_interface`.
 
+For example applications that have been tested with Lemonade Server, see the `Lemonade Server Examples <https://github.com/onnx/turnkeyml/tree/main/examples/lemonade/server>`_.
+
 
 OGA APIs for C++ Libraries and Python
 =====================================
