@@ -37,7 +37,7 @@ The following are the steps and the required files to run the example:
      - The script ``prepare_model_data.py`` prepares the model and the data for the rest of the tutorial.
 
        1. To prepare the model the script converts pre-trained PyTorch model to ONNX format.
-       2. To prepare the necessary data the script downloads and extract CIFAR-10 dataset. 
+       2. To prepare the necessary data the script downloads and extracts CIFAR-10 dataset. 
 
    * - Pretrained model
      - ``models/resnet_trained_for_cifar10.pt``
@@ -50,7 +50,7 @@ The following are the steps and the required files to run the example:
      -  Run the Quantized model using the ONNX Runtime code. We demonstrate running the model on both CPU and NPU. 
    * - Deployment - C++
      - ``cpp/resnet_cifar/.``
-     -  This folder contains the source code ``resnet_cifar.cpp`` that demonstrates running inference using C++ APIs. We additionally provide the infrastructure (required libraries, CMake files and headerfiles) required by the example. 
+     -  This folder contains the source code ``resnet_cifar.cpp`` that demonstrates running inference using C++ APIs. We additionally provide the infrastructure (required libraries, CMake files and header files) required by the example. 
 
 
 |
@@ -272,7 +272,7 @@ Prerequisites
 Install OpenCV 
 --------------
 
-It is recommended to build OpenCV from the source code and use static build. The default installation localtion is "\install" , the following instruction installs OpenCV in the location "C:\\opencv" as an example. You may first change the directory to where you want to clone the OpenCV repository.
+It is recommended to build OpenCV from the source code and use static build. The default installation location is "\install" , the following instruction installs OpenCV in the location "C:\\opencv" as an example. You may first change the directory to where you want to clone the OpenCV repository.
 
 .. code-block:: bash
 

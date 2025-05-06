@@ -12,7 +12,7 @@ The Ryzen AI Software supports compiling and deploying quantized model saved in 
 
 |memo| **NOTE**: Models with ONNX opset 17 are recommended. If your model uses a different opset version, consider converting it using the `ONNX Version Converter <https://github.com/onnx/onnx/blob/main/docs/VersionConverter.md>`_
 
-Models are compiled for the NPU by creaitng an ONNX inference session using the Vitis AI Execution Provider (VAI EP):
+Models are compiled for the NPU by creating an ONNX inference session using the Vitis AI Execution Provider (VAI EP):
 
 .. code-block:: python
 
@@ -291,7 +291,7 @@ For further details, refer to the official ONNX Runtime documentation: https://o
 EP Context Encryption
 ---------------------
 
-By default, the generated context model is unencrypted and can be used directly during inference. If needed, the context model can be encrypted using one the methods described below. 
+By default, the generated context model is unencrypted and can be used directly during inference. If needed, the context model can be encrypted using one of the methods described below. 
 
 User-managed encryption
 ~~~~~~~~~~~~~~~~~~~~~~~
