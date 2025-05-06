@@ -291,7 +291,7 @@ For further details, refer to the official ONNX Runtime documentation: https://o
 EP Context Encryption
 ---------------------
 
-By default, the generated context model is unencrypted and can be used directly during inference. If needed, the context model can be encrypted using one the methods described below.
+By default, the generated context model is unencrypted and can be used directly during inference. If needed, the context model can be encrypted using one of the methods described below.
 
 User-managed encryption
 ~~~~~~~~~~~~~~~~~~~~~~~
