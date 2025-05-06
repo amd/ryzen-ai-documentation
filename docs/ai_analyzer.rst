@@ -94,7 +94,7 @@ AI Analyzer provides visibility into how your AI model is compiled and executed 
 1. Analyzing how the model was partitioned and mapped onto Ryzen AI's CPU and NPU accelerator
 2. Profiling model performance as it executes inferencing workloads
 
-When launched, the AI Analyzer server will scan the folder specified with the logdir argument and detect and an load all files relevant to compilation and/or inferencing  per the ai_analyzer_visualization and ai_anlayzer_profiling flags.
+When launched, the AI Analyzer server will scan the folder specified with the logdir argument and detect and load all files relevant to compilation and/or inferencing  per the ai_analyzer_visualization and ai_anlayzer_profiling flags.
 
 You can instruct the AI Analyzer server to either start a browser on the same host or else return to you a URL that you can then load into a browser on any host.
 
@@ -171,7 +171,7 @@ The Summary page gives an overview of how your model was mapped to the AMD Ryzen
 
 **Original Graph**
 
-This is an interactive graph representing your model lowered to supported NPU primitive operators, and broken up into partitions if necessary. As with the PARTITIONING graph, there is a companion table containing all of the model elements that will cross-probe to the graph view. The obects in the graph and table will also cross-probe to the PARTITIONING graph.
+This is an interactive graph representing your model lowered to supported NPU primitive operators, and broken up into partitions if necessary. As with the PARTITIONING graph, there is a companion table containing all of the model elements that will cross-probe to the graph view. The objects in the graph and table will also cross-probe to the PARTITIONING graph.
 
 Toolbar 
 
@@ -186,7 +186,7 @@ Display options for the graph can be accessed with the "Settings" button
 
 **Optimized Graph**
 
-This page shows the final model that will be mapped to the NPU after all transformations and optimizations such as fusion and chaining. It will also report the operators that had to be moved back to the CPU via the "Failsafe CPU" mechanism. As usual, there is a companion table below that contains all of the graph's elements, and cross-selection is supported to and from the PARTITION graph and the Original Graph.
+This page shows the final model that will be mapped to the NPU after all transformations and optimizations such as fusion and chaining. It will also report the operators that had to be moved back to the CPU via the "Failsafe CPU" mechanism. As usual, there is a companion table below that contains all of the graph's elements, and cross-selection is supported to and from the PARTITIONING graph and the Original Graph.
 
 Toolbar 
 
@@ -224,7 +224,7 @@ Toolbar
 
 A panel that displays properties for selected objects can be shown or hidden via the "Show Properties" toggle button
 The table below can be shown and hidden via the "Show Table" toggle button.
-The graphical timeline can be download to SVG via the "Export to SVG" button
+The graphical timeline can be downloaded to SVG via the "Export to SVG" button
 
 
 ..

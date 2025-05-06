@@ -4,7 +4,7 @@
 Ryzen AI CVML library
 #####################
 
-The Ryzen AI CVML libraies build on top of the Ryzen AI drivers and execution infrastructure to provide powerful AI capabilities to C++ applications without having to worry about training specific AI models and integrating them to the Ryzen AI framework.
+The Ryzen AI CVML libraries build on top of the Ryzen AI drivers and execution infrastructure to provide powerful AI capabilities to C++ applications without having to worry about training specific AI models and integrating them to the Ryzen AI framework.
 
 Each Ryzen AI CVML library feature offers a simple C++ application programming interface (API) that can be easily incorporated into existing applications.
 
@@ -67,7 +67,7 @@ Select an input source/image/video
 ==================================
 Ryzen AI CVML library samples can accept a variety of image and video input formats, or even open the default camera on the system if "0" is specified as an input.
 
-In this example, a publically available video file is used for the application's input. ::
+In this example, a publicly available video file is used for the application's input. ::
 
   curl -o dancing.mp4 https://videos.pexels.com/video-files/4540332/4540332-hd_1920_1080_25fps.mp4
 
