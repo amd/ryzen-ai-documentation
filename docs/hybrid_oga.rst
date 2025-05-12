@@ -61,11 +61,11 @@ Hybrid Execution of OGA Models
 Setup
 =====
 
-Activate the Ryzen AI 1.4 Conda environment:
+Activate the Ryzen AI 1.4.1 Conda environment:
 
 .. code-block:: 
     
-    conda activate ryzen-ai-1.4.0
+    conda activate ryzen-ai-1.4.1
 
 Copy the required files in a local folder to run the LLMs from:
 
@@ -75,12 +75,12 @@ Copy the required files in a local folder to run the LLMs from:
      cd hybrid_run
      xcopy /Y /E "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\onnxruntime_genai\benchmark" .
      xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\examples\amd_genai_prompt.txt" .
-     xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\hybrid-llm\onnxruntime-genai.dll" .
-     xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\hybrid-llm\onnx_custom_ops.dll" .
-     xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\hybrid-llm\ryzen_mm.dll" .
-     xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\hybrid-llm\ryzenai_onnx_utils.dll" .
-     xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\voe\DirectML.dll" .
-     xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\voe\onnxruntime.dll" .
+     xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime-genai.dll" .
+     xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnx_custom_ops.dll" .
+     xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\ryzen_mm.dll" .
+     xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\ryzenai_onnx_utils.dll" .
+     xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\DirectML.dll" .
+     xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime.dll" .
 
 Download Models from HuggingFace
 ================================
@@ -166,36 +166,32 @@ For example, for Llama-2-7b-chat:
      cmake --build build --config Release
 
      :: Copy runtime DLLs
-     xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\hybrid-llm\onnxruntime-genai.dll" .\build\Release
-     xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\hybrid-llm\onnx_custom_ops.dll" .\build\Release
-     xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\hybrid-llm\ryzen_mm.dll" .\build\Release
-     xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\hybrid-llm\ryzenai_onnx_utils.dll" .\build\Release
-     xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\voe\DirectML.dll" .\build\Release
-     xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\voe\onnxruntime.dll" .\build\Release
+     xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime-genai.dll" .\build\Release
+     xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnx_custom_ops.dll" .\build\Release
+     xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\ryzen_mm.dll" .\build\Release
+     xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\ryzenai_onnx_utils.dll" .\build\Release
+     xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\DirectML.dll" .\build\Release
+     xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime.dll" .\build\Release
+
 
 
 Sample Python Scripts
 =====================
 
-To run LLMs other than ChatGLM, use the following command:
+To run LLMs use the following command:
 
 .. code-block:: 
 
-     python "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\examples\python\llama3\run_model.py" --model_dir <model folder>  
-
-To run ChatGLM, use the following command:
-
-.. code-block:: 
-
-     pip install transformers==4.44.0 
-     python "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\examples\python\chatglm\model-generate-chatglm3.py" --model <model folder>  
-
+     #To see available options and default setting:
+     python "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\examples\python\run_model.py"
+     #sample command
+     python "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\examples\python\run_model.py" -m <model_folder> -l <max_token to be generated including prompt>
 
 For example, for Llama-2-7b-chat:
 
 .. code-block:: 
 
-    python "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\examples\python\llama3\run_model.py" --model_dir Llama-2-7b-chat-hf-awq-g128-int4-asym-fp16-onnx-hybrid 
+    python "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\examples\python\llama3\run_model.py" -m "Llama-2-7b-chat-hf-awq-g128-int4-asym-fp16-onnx-hybrid" -l 128
 
 
 ***********************
