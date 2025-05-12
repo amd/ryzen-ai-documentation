@@ -185,7 +185,7 @@ To run LLMs use the following command:
 .. code-block:: 
 
      #To see available options and default setting:
-     python "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\examples\python\run_model.py"
+     python "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\examples\python\run_model.py" -h
      #sample command
      python "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\examples\python\run_model.py" -m <model_folder> -l <max_token to be generated including prompt>
 
@@ -193,7 +193,7 @@ For example, for Llama-2-7b-chat:
 
 .. code-block:: 
 
-    python "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\examples\python\llama3\run_model.py" -m "Llama-2-7b-chat-hf-awq-g128-int4-asym-fp16-onnx-hybrid" -l 128
+    python "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\examples\python\run_model.py" -m "Llama-2-7b-chat-hf-awq-g128-int4-asym-fp16-onnx-hybrid" -l 128
 
 
 ***********************
