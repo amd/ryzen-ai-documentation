@@ -219,7 +219,7 @@ To run LLMs, use the following command:
 .. code-block:: 
 
      #To see available options and default setting:
-     python "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\examples\python\run_model.py"
+     python "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\examples\python\run_model.py" -h
 
      python "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\examples\python\run_model.py" -m <model_folder> -l <max_token to be generated including prompt>
   
