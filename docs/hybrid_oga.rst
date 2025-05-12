@@ -50,7 +50,9 @@ AMD provides a set of pre-optimized LLMs ready to be deployed with Ryzen AI Soft
 - https://huggingface.co/amd/Qwen2-7B-awq-uint4-asym-g128-lmhead-fp16-onnx-hybrid
 - https://huggingface.co/amd/Qwen2-1.5B-awq-uint4-asym-global-g128-lmhead-g32-fp16-onnx-hybrid
 - https://huggingface.co/amd/gemma-2-2b-awq-uint4-asym-g128-lmhead-g32-fp16-onnx-hybrid
-
+- https://huggingface.co/amd/Qwen2.5-1.5B-Instruct-awq-uint4-asym-g128-lmhead-g32-fp16-onnx-hybrid
+- https://huggingface.co/amd/Qwen2.5-3B-Instruct-awq-uint4-asym-g128-lmhead-g32-fp16-onnx-hybrid
+- https://huggingface.co/amd/Qwen2.5-7B-Instruct-awq-uint4-asym-g128-lmhead-g32-fp16-onnx-hybrid
 
 The steps for deploying the pre-optimized models using Python or C++ are described in the following sections.
 
