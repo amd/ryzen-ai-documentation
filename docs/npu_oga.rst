@@ -69,17 +69,17 @@ Create a folder to run the LLMs from, and copy the required files:
   mkdir npu_run
   cd npu_run
   xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\npu-llm\exe" .\libs
-  xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\npu-llm\libs\vaip_llm.json" libs
-  xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\npu-llm\onnxruntime-genai.dll" libs
-  xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime_vitis_ai_custom_ops.dll" libs
+  xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime.dll" libs
+  xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime-genai.dll" libs
   xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime_providers_shared.dll" libs
+  xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime_providers_vitisai.dll" libs
+  xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime_vitis_ai_custom_ops.dll" libs
   xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime_vitisai_ep.dll" libs
   xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\dyn_dispatch_core.dll" libs
-  xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime_providers_vitisai.dll" libs
   xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\transaction.dll" libs
-  xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime.dll" libs
   xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\xclbin.dll" libs
   xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\ryzen_mm.dll" libs
+  xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\npu-llm\libs\vaip_llm.json" .
 
 
 Download Models from HuggingFace
@@ -189,7 +189,6 @@ For example, for Llama-2-7b:
    xcopy /I build\Release .\libs
 
    :: Copy runtime dependencies in the "libs" folder
-   xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\npu-llm\libs\vaip_llm.json" libs
    xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime-genai.dll" libs
    xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime_vitis_ai_custom_ops.dll" libs
    xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime_providers_shared.dll" libs
@@ -200,6 +199,7 @@ For example, for Llama-2-7b:
    xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime.dll" libs
    xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\xclbin.dll" libs
    xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\ryzen_mm.dll" libs
+   xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\npu-llm\libs\vaip_llm.json" .
 
 Sample Python Scripts
 =====================
