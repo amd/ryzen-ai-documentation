@@ -24,6 +24,9 @@ The table below summarizes the driver requirements for the different versions of
    * - VitisAI EP version
      - Minimum NPU Driver version
      - Maximum NPU Driver release date
+   * - 1.4.1
+     - 32.0.203.259
+     - May 13th, 2028
    * - 1.4
      - 32.0.203.257
      - March 25th, 2028
@@ -125,21 +128,19 @@ Although including pre-compiled versions of INT8 models is not mandatory, it is 
 Application Packaging Requirements
 **********************************
 
-|excl| **IMPORTANT**: A patched version of the ``%RYZEN_AI_INSTALLATION_PATH%\deployment`` folder is available for download at the following link: `Download Here <https://download.amd.com/opendownload/RyzenAI/RAI_1.4_python_dependency/deployment-rai-1.4.0.p1.zip>`_. This patched ``deployment`` folder is designed to replace the one included in the official installation of Ryzen AI 1.4. The following instructions assume that the original ``deployment`` folder has been replaced with the updated version.
-
 A C++ application built on the Ryzen AI ONNX Runtime requires the following components to be included in its distribution package.
 
 .. rubric:: For INT8 models
 
 - DLLs:
 
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\voe\\dyn_dispatch_core.dll 
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\voe\\onnxruntime.dll 
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\voe\\onnxruntime_providers_shared.dll 
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\voe\\onnxruntime_providers_vitisai.dll 
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\voe\\onnxruntime_vitisai_ep.dll 
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\voe\\transaction.dll 
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\voe\\xclbin.dll
+  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\onnxruntime.dll 
+  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\onnxruntime_providers_shared.dll 
+  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\onnxruntime_providers_vitisai.dll 
+  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\onnxruntime_vitisai_ep.dll 
+  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\dyn_dispatch_core.dll 
+  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\transaction.dll 
+  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\xclbin.dll
 
 - NPU Binary files (.xclbin) from the ``%RYZEN_AI_INSTALLATION_PATH%\voe-4.0-win_amd64\xclbins`` folder
 
@@ -149,14 +150,14 @@ A C++ application built on the Ryzen AI ONNX Runtime requires the following comp
 
 - DLLs:
 
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\voe\\dyn_dispatch_core.dll 
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\voe\\onnxruntime.dll 
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\voe\\onnxruntime_providers_shared.dll 
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\voe\\onnxruntime_providers_vitisai.dll 
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\voe\\onnxruntime_vitisai_ep.dll 
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\voe\\transaction.dll 
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\voe\\xclbin.dll 
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\flexmlrt\\flexmlrt.dll
+  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\onnxruntime.dll 
+  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\onnxruntime_providers_shared.dll 
+  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\onnxruntime_providers_vitisai.dll 
+  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\onnxruntime_vitisai_ep.dll 
+  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\dyn_dispatch_core.dll 
+  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\transaction.dll 
+  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\xclbin.dll
+  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\flexmlrt.dll
 
 - Pre-compiled models in the form of :ref:`Vitis AI EP cache folders <vitisai-ep-cache>`
 
@@ -164,28 +165,30 @@ A C++ application built on the Ryzen AI ONNX Runtime requires the following comp
 
 - DLLs:
 
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\hybrid-llm\\onnx_custom_ops.dll
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\hybrid-llm\\onnxruntime-genai.dll
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\hybrid-llm\\ryzen_mm.dll
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\hybrid-llm\\ryzenai_onnx_utils.dll
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\voe\\DirectML.dll
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\voe\\onnxruntime.dll
+  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\onnxruntime.dll
+  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\onnxruntime-genai.dll
+  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\onnx_custom_ops.dll
+  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\ryzen_mm.dll
+  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\ryzenai_onnx_utils.dll
+  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\DirectML.dll
+
 
 .. rubric:: For NPU-only LLMs
 
 - DLLs:
 
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\npu-llm\\onnxruntime-genai.dll
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\voe\\onnxruntime_vitis_ai_custom_ops.dll
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\voe\\onnxruntime_providers_shared.dll
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\voe\\onnxruntime_vitisai_ep.dll
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\voe\\dyn_dispatch_core.dll
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\voe\\onnxruntime_providers_vitisai.dll
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\voe\\transaction.dll
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\voe\\onnxruntime.dll
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\voe\\xclbin.dll
+  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\onnxruntime.dll
+  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\onnxruntime-genai.dll
+  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\onnxruntime_providers_shared.dll
+  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\onnxruntime_providers_vitisai.dll
+  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\onnxruntime_vitis_ai_custom_ops.dll
+  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\onnxruntime_vitisai_ep.dll
+  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\dyn_dispatch_core.dll
+  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\transaction.dll
+  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\xclbin.dll
+  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\ryzen_mm.dll
 
-- VAIP LLM configuration file: %RYZEN_AI_INSTALLATION_PATH%\\deployment\\npu-llm\\vaip_llm.json
+- VAIP LLM configuration file: %RYZEN_AI_INSTALLATION_PATH%\\npu-llm\\libs\\vaip_llm.json
  
 
 ..
