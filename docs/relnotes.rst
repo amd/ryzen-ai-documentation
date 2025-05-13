@@ -57,7 +57,7 @@ Version 1.4.1
 - Changes
 
   - The ``%RYZEN_AI_INSTALLATION_PATH%\\deployment`` folder has been reorganized and flattened. Deployment DLLs are not longer organized in subfolders. Application build scripts pulling DLLs from the ``deployment`` folder will need to be updated based on the new paths.
-  - OGA Version updated to 0.7 from 0.6 (Ryzen AI 1.4) 
+  - OGA Version updated to 0.7 (Ryzen AI 1.4.1) from 0.6 (Ryzen AI 1.4) 
 
 
 ***********
