@@ -159,8 +159,6 @@ For example, for Llama-2-7b-chat:
   
      :: Copy project files
      xcopy /E /I "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\examples\c" .\sources
-     xcopy /E /I "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\onnxruntime_genai\include" .\sources\include
-     xcopy /E /I "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\onnxruntime_genai\lib" .\sources\lib
 
      :: Build project
      cd sources
@@ -174,6 +172,8 @@ For example, for Llama-2-7b-chat:
      xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\ryzen_mm.dll" .\build\Release
      xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\ryzenai_onnx_utils.dll" .\build\Release
      xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\DirectML.dll" .\build\Release
+
+The compiled ``model_benchmark.exe`` and ``run_llm.exe`` will be saved in ``sources\build\Release``.
 
 
 Sample Python Scripts
