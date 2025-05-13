@@ -53,12 +53,12 @@ Version 1.4.1
 *************
 
 - Bug fixes
+- New LLM released: ``Qwen/Qwen2.5-1.5B-Instruct``, ``Qwen/Qwen2.5-3B-Instruct`` and ``Qwen/Qwen2.5-7B-Instruct``
 
 - Changes
 
   - The ``%RYZEN_AI_INSTALLATION_PATH%\\deployment`` folder has been reorganized and flattened. Deployment DLLs are not longer organized in subfolders. Application build scripts pulling DLLs from the ``deployment`` folder will need to be updated based on the new paths.
   - OGA Version updated to **v0.7.0** (Ryzen AI 1.4.1) from v0.6.0 (Ryzen AI 1.4) 
-  - New LLM released: ``Qwen/Qwen2.5-1.5B-Instruct``, ``Qwen/Qwen2.5-3B-Instruct`` and ``Qwen/Qwen2.5-7B-Instruct``
 
 
 ***********
