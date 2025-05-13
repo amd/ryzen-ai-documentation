@@ -48,6 +48,17 @@ The following table lists which types of models are supported on what hardware p
      - |checkmark|
 
 
+*************
+Version 1.4.1
+*************
+
+- Bug fixes
+
+- Changes
+
+  - The ``%RYZEN_AI_INSTALLATION_PATH%\\deployment`` folder has been reorganized and flattened. Deployment DLLs are not longer organized in subfolders. Application build scripts pulling DLLs from the ``deployment`` folder will need to be updated based on the new paths.
+
+
 ***********
 Version 1.4
 ***********
