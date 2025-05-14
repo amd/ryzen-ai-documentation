@@ -43,9 +43,7 @@ The following dependencies must be present on the system before installing the R
 1.4.1 Release Update
 ********************
 
-Ryzen AI 1.4.1 patch has been released on the Ryzen AI Software Early Access Secure Site: https://account.amd.com/en/member/ryzenai-sw-ea.html
-
-Please download all installers (NPU driver and software installers) from the above location and follow the installation steps below. The steps include links to publicly available Ryzen AI 1.4 installers.
+Ryzen AI 1.4.1 patch has been released on the Ryzen AI Software Early Access Secure Site: https://account.amd.com/en/member/ryzenai-sw-ea.html. If you like to install publicly available Ryzen AI 1.4 please follow documentation here: https://ryzenai.docs.amd.com/en/1.4/index.html 
 
 .. _install-driver:
 
@@ -69,7 +67,7 @@ Install NPU Drivers
 Install Ryzen AI Software
 *************************
 
-- Download the RyzenAI Software installer :download:`ryzen-ai-1.4.1.exe <https://account.amd.com/en/forms/downloads/amd-end-user-license-xef.html?filename=ryzen-ai-1.4.1.exe>`.
+- Download the RyzenAI Software installer from Ryzen AI Software Early Access Secure Site: https://account.amd.com/en/member/ryzenai-sw-ea.html.
 
 - Launch the MSI installer and follow the instructions on the installation wizard:
 
@@ -138,7 +136,7 @@ Lightweight Installer
 
 A lightweight installer is available with reduced features. It cannot be used for compiling BF16 models but fully supports compiling and running INT8 models and running LLM models.
 
-- Download the RyzenAI Software Runtime MSI installer :download:`ryzen-ai-rt-1.4.1.msi <https://account.amd.com/en/forms/downloads/amd-end-user-license-xef.html?filename=ryzen-ai-rt-1.4.1.msi>`.
+- Download the RyzenAI Software Runtime MSI installer from Ryzen AI Software Early Access Secure Site: https://account.amd.com/en/member/ryzenai-sw-ea.html.
 
 - Launch the MSI installer and follow the instructions on the installation wizard:
 
