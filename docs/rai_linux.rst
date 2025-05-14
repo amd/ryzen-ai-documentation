@@ -44,13 +44,13 @@ Installation Instructions
 .. code-block::
 
     cd <extracted directory>
-    ./install_ryzen_ai_<version>.sh 
+    ./install_ryzen_ai.sh 
 
 - After reading the EULA, re-run the installer with options to agree to the EULA and create a Python virtual environment:
 
 .. code-block::
 
-    ./install_ryzen_ai_<version>.sh -a yes -p <PATH TO VENV> -l
+    ./install_ryzen_ai.sh -a yes -p <PATH TO VENV> -l
 
 - Activate the virtual environment to start using the Ryzen AI Software:  
 
