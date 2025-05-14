@@ -79,7 +79,7 @@ Create a folder to run the LLMs from, and copy the required files:
   xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\transaction.dll" libs
   xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\xclbin.dll" libs
   xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\ryzen_mm.dll" libs
-  xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\npu-llm\libs\vaip_llm.json" .
+  xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\npu-llm\libs\vaip_llm.json" libs
 
 
 Download Models from HuggingFace
@@ -199,7 +199,7 @@ For example, for Llama-2-7b:
    xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime.dll" libs
    xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\xclbin.dll" libs
    xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\ryzen_mm.dll" libs
-   xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\npu-llm\libs\vaip_llm.json" .
+   xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\npu-llm\libs\vaip_llm.json" libs
 
 Sample Python Scripts
 =====================
