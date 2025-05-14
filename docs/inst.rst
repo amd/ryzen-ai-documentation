@@ -39,6 +39,14 @@ The following dependencies must be present on the system before installing the R
 
 |
 
+********************
+1.4.1 Release Update
+********************
+
+Ryzen AI 1.4.1 patch has been released on the `Ryzen AI Software Early Access Secure Site <https://account.amd.com/en/member/ryzenai-sw-ea.html>`.
+
+Please download all installers (NPU driver and software installers) from the above location and follow the installation steps below. The steps include links to publicly available Ryzen AI installers.
+
 .. _install-driver:
 
 *******************
