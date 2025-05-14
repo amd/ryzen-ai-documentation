@@ -31,7 +31,7 @@ The following are the recommended system configuration for RyzenAI Linux install
 Installation Instructions
 *************************
 
-- Download the Ryzen AI Software Linux installer from Ryzen AI Software Early Access Secure Site: https://account.amd.com/en/member/ryzenai-sw-ea.html
+- Download the Ryzen AI Software Linux installer ``ryzen_ai-1.4.1.tgz`` from Ryzen AI Software Early Access Secure Site: https://account.amd.com/en/member/ryzenai-sw-ea.html
 
 - Extract the .tgz using the following command: 
 
