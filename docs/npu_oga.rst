@@ -54,11 +54,11 @@ NPU Execution of OGA Models
 Setup
 =====
 
-Activate the Ryzen AI 1.4.1 Conda environment:
+Activate the Ryzen AI 1.4 Conda environment:
 
 .. code-block:: 
     
-    conda activate ryzen-ai-1.4.1
+    conda activate ryzen-ai-1.4.0
 
 Create a folder to run the LLMs from, and copy the required files:
 
@@ -69,15 +69,14 @@ Create a folder to run the LLMs from, and copy the required files:
   xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\npu-llm\exe" .\libs
   xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\npu-llm\libs\vaip_llm.json" libs
   xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\npu-llm\onnxruntime-genai.dll" libs
-  xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime_vitis_ai_custom_ops.dll" libs
-  xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime_providers_shared.dll" libs
-  xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime_vitisai_ep.dll" libs
-  xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\dyn_dispatch_core.dll" libs
-  xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime_providers_vitisai.dll" libs
-  xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\transaction.dll" libs
-  xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime.dll" libs
-  xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\xclbin.dll" libs
-  xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\ryzen_mm.dll" libs
+  xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\voe\onnxruntime_vitis_ai_custom_ops.dll" libs
+  xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\voe\onnxruntime_providers_shared.dll" libs
+  xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\voe\onnxruntime_vitisai_ep.dll" libs
+  xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\voe\dyn_dispatch_core.dll" libs
+  xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\voe\onnxruntime_providers_vitisai.dll" libs
+  xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\voe\transaction.dll" libs
+  xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\voe\onnxruntime.dll" libs
+  xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\voe\xclbin.dll" libs
 
 
 Download Models from HuggingFace
@@ -188,16 +187,15 @@ For example, for Llama-2-7b:
 
    :: Copy runtime dependencies in the "libs" folder
    xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\npu-llm\libs\vaip_llm.json" libs
-   xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime-genai.dll" libs
-   xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime_vitis_ai_custom_ops.dll" libs
-   xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime_providers_shared.dll" libs
-   xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime_vitisai_ep.dll" libs
-   xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\dyn_dispatch_core.dll" libs
-   xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime_providers_vitisai.dll" libs
-   xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\transaction.dll" libs
-   xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime.dll" libs
-   xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\xclbin.dll" libs
-   xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\ryzen_mm.dll" libs
+   xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\npu-llm\onnxruntime-genai.dll" libs
+   xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\voe\onnxruntime_vitis_ai_custom_ops.dll" libs
+   xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\voe\onnxruntime_providers_shared.dll" libs
+   xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\voe\onnxruntime_vitisai_ep.dll" libs
+   xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\voe\dyn_dispatch_core.dll" libs
+   xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\voe\onnxruntime_providers_vitisai.dll" libs
+   xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\voe\transaction.dll" libs
+   xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\voe\onnxruntime.dll" libs
+   xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\voe\xclbin.dll" libs
 
 Sample Python Scripts
 =====================
@@ -212,21 +210,24 @@ In the model directory, open the ``genai_config.json`` file located in the folde
                 ...
       }
 
-To run LLMs, use the following command:
+To run LLMs other than ChatGLM, use the following command:
 
 .. code-block:: 
 
-     #To see available options and default setting:
-     python "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\examples\python\run_model.py"
+     python "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\examples\python\llama3\run_model.py" --model_dir <model folder>  
 
-     python "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\examples\python\run_model.py" -m <model_folder> -l <max_token to be generated including prompt>
-  
+To run ChatGLM, use the following command:
+
+.. code-block:: 
+
+     pip install transformers==4.44.0  
+     python "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\examples\python\chatglm\model-generate-chatglm3.py" -m <model folder>  
 
 For example, for Llama-2-7b:
 
 .. code-block::
    
-   python "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\examples\python\run_model.py" -m "Llama-2-7b-hf-awq-g128-int4-asym-bf16-onnx-ryzen-strix" -l 128
+   python "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\examples\python\llama3\run_model.py" --model_dir Llama-2-7b-hf-awq-g128-int4-asym-bf16-onnx-ryzen-strix
 
 
  
