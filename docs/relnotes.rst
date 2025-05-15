@@ -53,9 +53,13 @@ Version 1.4.1
 *************
 
 - Bug fixes
-- New LLM released: ``Qwen/Qwen2.5-1.5B-Instruct``, ``Qwen/Qwen2.5-3B-Instruct`` and ``Qwen/Qwen2.5-7B-Instruct``
+- New LLM released
 
-- Changes
+  - Qwen/Qwen2.5-1.5B-Instruct
+  - Qwen/Qwen2.5-3B-Instruct
+  - Qwen/Qwen2.5-7B-Instruct
+
+- Breaking Changes
 
   - The ``%RYZEN_AI_INSTALLATION_PATH%\\deployment`` folder has been reorganized and flattened. Deployment DLLs are not longer organized in subfolders. Application build scripts pulling DLLs from the ``deployment`` folder will need to be updated based on the new paths.
   - OGA Version updated to **v0.7.0** (Ryzen AI 1.4.1) from v0.6.0 (Ryzen AI 1.4) 
@@ -139,9 +143,11 @@ Version 1.4
 
 - Known Issues:
 
-  - LT might cause warnings or crashes when running concurrently with other MSFT Copilot apps
-  - Recall app might stop functioning; NPU driver and workloads are expected to continue to work
-  - Cocreator app does not close contexts quickly and might cause contexts to be limited due to remaining contexts still open
+  - Microsoft Windows Insider Program (WIP) users may see warnings or need to restart when running all applications concurrently. 
+  
+    - NPU driver and workloads will continue to work.
+
+  - Context creation may appear to be limited when some application do not close contexts quickly.
 
 
 ***********
