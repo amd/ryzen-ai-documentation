@@ -66,20 +66,23 @@ Create a folder to run the LLMs from, and copy the required files:
 
 .. code-block::
 
-  mkdir npu_run
-  cd npu_run
-  xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\npu-llm\exe" .\libs
-  xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime.dll" libs
-  xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime-genai.dll" libs
-  xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime_providers_shared.dll" libs
-  xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime_providers_vitisai.dll" libs
-  xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime_vitis_ai_custom_ops.dll" libs
-  xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime_vitisai_ep.dll" libs
-  xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\dyn_dispatch_core.dll" libs
-  xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\transaction.dll" libs
-  xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\xclbin.dll" libs
-  xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\ryzen_mm.dll" libs
-  xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\npu-llm\libs\vaip_llm.json" libs
+    mkdir npu_run
+    cd npu_run
+    :: Copy the sample applications
+    xcopy /Y /I  "%RYZEN_AI_INSTALLATION_PATH%\npu-llm\exe" .
+    :: Copy runtime DLLs
+    xcopy /Y     "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime.dll" .
+    xcopy /Y     "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime-genai.dll" .
+    xcopy /Y     "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime_providers_shared.dll" .
+    xcopy /Y     "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime_providers_vitisai.dll" .
+    xcopy /Y     "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime_vitis_ai_custom_ops.dll" .
+    xcopy /Y     "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime_vitisai_ep.dll" .
+    xcopy /Y     "%RYZEN_AI_INSTALLATION_PATH%\deployment\dyn_dispatch_core.dll" .
+    xcopy /Y     "%RYZEN_AI_INSTALLATION_PATH%\deployment\transaction.dll" .
+    xcopy /Y     "%RYZEN_AI_INSTALLATION_PATH%\deployment\xclbin.dll" .
+    xcopy /Y     "%RYZEN_AI_INSTALLATION_PATH%\deployment\ryzen_mm.dll" .
+    :: Copy other runtime dependencies
+    xcopy /Y /-I "%RYZEN_AI_INSTALLATION_PATH%\npu-llm\libs\vaip_llm.json" libs\vaip_llm.json
 
 
 Download Models from HuggingFace
@@ -139,7 +142,7 @@ Example usage:
 
 .. code-block::
 
-   .\libs\run_llm.exe -m "Llama-2-7b-hf-awq-g128-int4-asym-bf16-onnx-ryzen-strix" -f "Llama-2-7b-hf-awq-g128-int4-asym-bf16-onnx-ryzen-strix\prompts.txt" -t "1024" -n 20 
+   .\run_llm.exe -m "Llama-2-7b-hf-awq-g128-int4-asym-bf16-onnx-ryzen-strix" -f "Llama-2-7b-hf-awq-g128-int4-asym-bf16-onnx-ryzen-strix\prompts.txt" -t "1024" -n 20 
 
 |
 
@@ -169,7 +172,7 @@ For example, for Llama-2-7b:
 
 .. code-block::
    
-   .\libs\model_benchmark.exe -i "Llama-2-7b-hf-awq-g128-int4-asym-bf16-onnx-ryzen-strix" -g 20 -p "Llama-2-7b-hf-awq-g128-int4-asym-bf16-onnx-ryzen-strix\prompts.txt" -l "2048,1024,512,256,128" 
+   .\model_benchmark.exe -i "Llama-2-7b-hf-awq-g128-int4-asym-bf16-onnx-ryzen-strix" -g 20 -p "Llama-2-7b-hf-awq-g128-int4-asym-bf16-onnx-ryzen-strix\prompts.txt" -l "2048,1024,512,256,128" 
 
 |
 
@@ -177,50 +180,41 @@ For example, for Llama-2-7b:
 
 .. code-block::
 
-   :: Copy project files
-   xcopy /E /I "%RYZEN_AI_INSTALLATION_PATH%\npu-llm\cpp" .\sources
+    :: Copy project files
+    xcopy /E /I "%RYZEN_AI_INSTALLATION_PATH%\npu-llm\cpp" .\sources
 
-   :: Build project
-   cd sources
-   cmake -G "Visual Studio 17 2022" -A x64 -S . -B build
-   cmake --build build --config Release
+    :: Build project
+    cd sources
+    cmake -G "Visual Studio 17 2022" -A x64 -S . -B build
+    cmake --build build --config Release
 
-   :: Copy executables in the "libs" folder 
-   xcopy /I build\Release .\libs
+    :: Copy runtime DLLs
+    xcopy /Y     "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime-genai.dll"               .\build\Release
+    xcopy /Y     "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime_vitis_ai_custom_ops.dll" .\build\Release
+    xcopy /Y     "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime_providers_shared.dll"    .\build\Release
+    xcopy /Y     "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime_vitisai_ep.dll"          .\build\Release
+    xcopy /Y     "%RYZEN_AI_INSTALLATION_PATH%\deployment\dyn_dispatch_core.dll"               .\build\Release
+    xcopy /Y     "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime_providers_vitisai.dll"   .\build\Release
+    xcopy /Y     "%RYZEN_AI_INSTALLATION_PATH%\deployment\transaction.dll"                     .\build\Release
+    xcopy /Y     "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime.dll"                     .\build\Release
+    xcopy /Y     "%RYZEN_AI_INSTALLATION_PATH%\deployment\xclbin.dll"                          .\build\Release
+    xcopy /Y     "%RYZEN_AI_INSTALLATION_PATH%\deployment\ryzen_mm.dll"                        .\build\Release
 
-   :: Copy runtime dependencies in the "libs" folder
-   xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime-genai.dll" libs
-   xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime_vitis_ai_custom_ops.dll" libs
-   xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime_providers_shared.dll" libs
-   xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime_vitisai_ep.dll" libs
-   xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\dyn_dispatch_core.dll" libs
-   xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime_providers_vitisai.dll" libs
-   xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\transaction.dll" libs
-   xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime.dll" libs
-   xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\deployment\xclbin.dll" libs
-   xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\ryzen_mm.dll" libs
-   xcopy /I "%RYZEN_AI_INSTALLATION_PATH%\npu-llm\libs\vaip_llm.json" libs
+    :: Copy other runtime dependencies
+    xcopy /Y /-I "%RYZEN_AI_INSTALLATION_PATH%\npu-llm\libs\vaip_llm.json"                     .\build\Release\libs\vaip_llm.json
 
-Sample Python Scripts
-=====================
 
-In the model directory, open the ``genai_config.json`` file located in the folder of the downloaded model. Update the value of the "custom_ops_library" key with the path to the ``onnxruntime_vitis_ai_custom_ops.dll``, located in the ``npu_run\libs`` folder:
+Sample Python Script
+====================
 
-.. code-block::
-  
-      "session_options": {
-                ...
-                "custom_ops_library": "libs\\onnxruntime_vitis_ai_custom_ops.dll",
-                ...
-      }
-
-To run LLMs, use the following command:
+The Ryzen AI installation includes a sample Python script to easily test LLMs. To use this Python script, go to the ``npu_run`` folder created during the initial Setup step and run the following command:
 
 .. code-block:: 
 
-     #To see available options and default setting:
+     :: To see available options and default setting:
      python "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\examples\python\run_model.py" -h
 
+     :: Run a model
      python "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\examples\python\run_model.py" -m <model_folder> -l <max_token to be generated including prompt>
   
 
@@ -229,6 +223,38 @@ For example, for Llama-2-7b:
 .. code-block::
    
    python "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\examples\python\run_model.py" -m "Llama-2-7b-hf-awq-g128-int4-asym-bf16-onnx-ryzen-strix" -l 128
+
+
+
+****************
+LLM Config Files
+****************
+
+Each OGA model folder contains a ``genai_config.json`` file. This file contains various configuration settings for the model. The ``session_option`` section is where information about specific runtime dependencies is specified. 
+
+- The ``custom_ops_library`` option sets the path to the ``onnxruntime_vitis_ai_custom_ops.dll`` file. 
+- The ``config_file`` option sets the path to the ``vaip_llm.json`` configuration file. 
+
+The sample below shows the defaults for the AMD pre-optimized NPU-only OGA LLMs:
+
+
+.. code-block:: json
+
+    "session_options": {
+        "log_id": "onnxruntime-genai",
+        "custom_ops_library": "onnxruntime_vitis_ai_custom_ops.dll",
+        "provider_options": [
+            {
+                "VitisAI": {
+                    "config_file": ".\\libs\\vaip_llm.json"
+                }
+            }
+        ]
+    },
+
+
+The paths are relative to the folder where the program is run from. The model will error out if the ``onnxruntime_vitis_ai_custom_ops.dll`` and ``vaip_llm.json`` files cannot be found at the specified locations. Replacing relative paths with absolute paths to these two files allows running the program from any location.
+
 
 
  
