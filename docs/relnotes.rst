@@ -126,9 +126,11 @@ Version 1.4
 
 - Known Issues:
 
-  - LT might cause warnings or crashes when running concurrently with other MSFT Copilot apps
-  - Recall app might stop functioning; NPU driver and workloads are expected to continue to work
-  - Cocreator app does not close contexts quickly and might cause contexts to be limited due to remaining contexts still open
+  - Microsoft Windows Insider Program (WIP) users may see warnings or need to restart when running all applications concurrently. 
+  
+    - NPU driver and workloads will continue to work.
+
+  - Context creation may appear to be limited when some application do not close contexts quickly.
 
 
 ***********
