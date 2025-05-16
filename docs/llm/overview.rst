@@ -73,7 +73,7 @@ The Server Interface provides a convenient means to integrate with applications 
 
 To get started with the server interface, follow these instructions: :doc:`server_interface`.
 
-For example applications that have been tested with Lemonade Server, see the `Lemonade Server Examples <https://github.com/lemonade-sdk/lemonade/tree/main/docs/server>`_.
+For example applications that have been tested with Lemonade Server, see the `Lemonade Server Examples <https://github.com/lemonade-sdk/lemonade/tree/main/docs/server/apps>`_.
 
 
 OGA APIs for C++ Libraries and Python
