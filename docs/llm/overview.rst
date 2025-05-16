@@ -73,7 +73,7 @@ The Server Interface provides a convenient means to integrate with applications 
 
 To get started with the server interface, follow these instructions: :doc:`server_interface`.
 
-For example applications that have been tested with Lemonade Server, see the `Lemonade Server Examples <https://github.com/onnx/turnkeyml/tree/main/examples/lemonade/server>`_.
+For example applications that have been tested with Lemonade Server, see the `Lemonade Server Examples <https://github.com/lemonade-sdk/lemonade/tree/main/docs/server/apps>`_.
 
 
 OGA APIs for C++ Libraries and Python
@@ -170,7 +170,7 @@ The comprehensive set of pre-optimized models for hybrid execution used in these
      - 8.9x
      - 🟢
 
-The :ref:`ryzen-ai-oga-featured-llms` table was compiled using validation, benchmarking, and accuracy metrics as measured by the `ONNX TurnkeyML v6.1.0 <https://pypi.org/project/turnkeyml/6.1.0/>`_ ``lemonade`` commands in each example link.
+The :ref:`ryzen-ai-oga-featured-llms` table was compiled using validation, benchmarking, and accuracy metrics as measured by the `ONNX TurnkeyML v6.1.0 <https://pypi.org/project/turnkeyml/6.1.0/>`_ ``lemonade`` commands in each example link. After this table was created, the Lemonade SDK moved to the new location found `here <https://github.com/lemonade-sdk/lemonade>`_.
 
 Data collection details:
 

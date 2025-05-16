@@ -10,7 +10,7 @@
 High-Level Python SDK
 #####################
 
-A Python environment offers flexibility for experimenting with LLMs, profiling them, and integrating them into Python applications. We use the `Lemonade SDK <https://github.com/onnx/turnkeyml/blob/main/docs/lemonade/README.md>`_ to get up and running quickly.
+A Python environment offers flexibility for experimenting with LLMs, profiling them, and integrating them into Python applications. We use the `Lemonade SDK <https://github.com/lemonade-sdk/lemonade>`_ to get up and running quickly.
 
 To get started, follow these instructions.
 
@@ -35,8 +35,7 @@ To create and set up an environment, run these commands in your terminal:
 
     conda create -n ryzenai-llm python=3.10
     conda activate ryzenai-llm
-    pip install turnkeyml[llm-oga-hybrid]
-    lemonade-install --ryzenai hybrid
+    pip install lemonade-sdk[llm]
 
 ****************
 Validation Tools
