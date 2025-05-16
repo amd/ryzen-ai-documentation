@@ -26,7 +26,7 @@ Lemonade Server can be installed via the Lemonade Server Installer executable by
 2. Download and install ``Lemonade_Server_Installer.exe`` from the `latest Lemonade release <https://github.com/lemonade-sdk/lemonade/releases>`_.
 3. Launch the server by double-clicking the ``lemonade_server`` shortcut added to your desktop.
 
-See the `Lemonade Server Installation Guide <https://github.com/lemonade-sdk/lemonade/blob/main/docs/server/README.md>`_ for more details.
+See the `Lemonade Server README <https://github.com/lemonade-sdk/lemonade/blob/main/docs/server/README.md>`_ for more details.
 
 ************
 Server Usage
