@@ -75,7 +75,7 @@ Instructions:
 Next Steps
 **********
 
-- See `Lemonade Server Examples <https://github.com/lemonade-sdk/lemonade/tree/main/docs/server>`_ to find applications that have been tested with Lemonade Server.
+- See `Lemonade Server Examples <https://github.com/lemonade-sdk/lemonade/tree/main/docs/server/apps>`_ to find applications that have been tested with Lemonade Server.
 - Check out the `Lemonade Server specification <https://github.com/lemonade-sdk/lemonade/blob/main/docs/server/server_spec.md>`_ to learn more about supported features.
 - Try out your Lemonade Server install with any application that uses the OpenAI chat completions API.
 
