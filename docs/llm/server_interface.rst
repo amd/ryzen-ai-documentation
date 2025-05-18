@@ -23,10 +23,10 @@ Server Setup
 Lemonade Server can be installed via the Lemonade Server Installer executable by following these steps:
 
 1. Make sure your system has the recommended Ryzen AI driver installed as described in :ref:`install-driver`.
-2. Download and install ``Lemonade_Server_Installer.exe`` from the `latest TurnkeyML release <https://github.com/onnx/turnkeyml/releases>`_.
+2. Download and install ``Lemonade_Server_Installer.exe`` from the `latest Lemonade release <https://github.com/lemonade-sdk/lemonade/releases>`_.
 3. Launch the server by double-clicking the ``lemonade_server`` shortcut added to your desktop.
 
-See the `Lemonade Server Installation Guide <https://github.com/onnx/turnkeyml/blob/main/docs/lemonade/lemonade_server_exe.md>`_ for more details.
+See the `Lemonade Server README <https://github.com/lemonade-sdk/lemonade/blob/main/docs/server/README.md>`_ for more details.
 
 ************
 Server Usage
@@ -38,7 +38,7 @@ The Lemonade Server provides the following OpenAI-compatible endpoints:
 - POST ``/api/v0/completions`` - Text Completions (prompt to completion)
 - GET ``/api/v0/models`` - List available models
 
-Please refer to the `server specification <https://github.com/onnx/turnkeyml/blob/main/docs/lemonade/server_spec.md>`_ document in the Lemonade repository for details about the request and response formats for each endpoint. 
+Please refer to the `server specification <https://github.com/lemonade-sdk/lemonade/blob/main/docs/server/server_spec.md>`_ document in the Lemonade repository for details about the request and response formats for each endpoint. 
 
 The `OpenAI API documentation <https://platform.openai.com/docs/guides/streaming-responses?api-mode=chat>`_ also has code examples for integrating streaming completions into an application. 
 
@@ -75,8 +75,8 @@ Instructions:
 Next Steps
 **********
 
-- See `Lemonade Server Examples <https://github.com/onnx/turnkeyml/tree/main/examples/lemonade/server>`_ to find applications that have been tested with Lemonade Server.
-- Check out the `Lemonade Server specification <https://github.com/onnx/turnkeyml/blob/main/docs/lemonade/server_spec.md>`_ to learn more about supported features.
+- See `Lemonade Server Examples <https://github.com/lemonade-sdk/lemonade/tree/main/docs/server/apps>`_ to find applications that have been tested with Lemonade Server.
+- Check out the `Lemonade Server specification <https://github.com/lemonade-sdk/lemonade/blob/main/docs/server/server_spec.md>`_ to learn more about supported features.
 - Try out your Lemonade Server install with any application that uses the OpenAI chat completions API.
 
 
