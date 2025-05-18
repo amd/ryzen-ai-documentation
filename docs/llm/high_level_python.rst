@@ -36,6 +36,7 @@ To create and set up an environment, run these commands in your terminal:
     conda create -n ryzenai-llm python=3.10
     conda activate ryzenai-llm
     pip install lemonade-sdk[llm]
+    lemonade-install --ryzenai hybrid
 
 ****************
 Validation Tools
