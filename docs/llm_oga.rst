@@ -128,13 +128,8 @@ Create a folder to run the LLM from, and copy the required files:
     
      # Make sure you have git-lfs installed (https://git-lfs.com) 
      git lfs install  
-     git clone <link to hf model> 
-
-For example, for Llama-2-7b-chat:
-
-.. code-block:: 
-
-     git lfs install  
+     
+     #git clone <link to hf model> 
      git clone https://huggingface.co/amd/Llama-2-7b-chat-hf-awq-g128-int4-asym-fp16-onnx-hybrid
 
 
