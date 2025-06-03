@@ -2,10 +2,11 @@
 OnnxRuntime GenAI (OGA) Flow 
 ############################
 
-Ryzen AI Software supports deploying LLMs on Ryzen AI PCs using the native ONNX Runtime Generate (OGA) C++ or Python API. The OGA API is the lowest-level API available for building LLM applications on a Ryzen AI PC. The two execution modes are supported
+Ryzen AI Software supports deploying LLMs on Ryzen AI PCs using the native ONNX Runtime Generate (OGA) C++ or Python API. The OGA API is the lowest-level API available for building LLM applications on a Ryzen AI PC. Two execution modes are supported:
 
-- Hybrid execution mode: This mode use both NPU and iGPU to get best TTFT and TPS in prefil and decode phase. 
-- NPU only execution mode: This mode use NPU only for both prefil and decode phase.
+- Hybrid execution mode: This mode uses both the NPU and iGPU to achieve the best TTFT and TPS during the prefill and decode phases.
+- NPU-only execution mode: This mode uses the NPU exclusively for both the prefill and decode phases.
+
 
 ************************
 Supported Configurations
@@ -26,7 +27,7 @@ Requirements
 Pre-optimized Models
 ********************
 
-AMD provides a set of pre-optimized LLMs ready to be deployed with Ryzen AI Software and the supporting runtime for hybrid execution. A list of currently supported models are below
+AMD provides a set of pre-optimized LLMs ready to be deployed with Ryzen AI Software and the supporting runtime for hybrid and/or NPU only execution. 
 
 - Phi-3-mini-4k-instruct
 - Phi-3.5-mini-instruct
@@ -56,9 +57,9 @@ AMD provides a set of pre-optimized LLMs ready to be deployed with Ryzen AI Soft
 - Qwen2.5-7B-Instruct
 
 
-Hugging Face collection of hybrid models: 
+Hugging Face collection of hybrid models: https://huggingface.co/collections/amd/ryzenai-14-llm-hybrid-models-67da31231bba0f733750a99c
 
-Hugging Face collection of NPU models: 
+Hugging Face collection of NPU models: https://huggingface.co/collections/amd/ryzenai-14-llm-npu-models-67da3494ec327bd3aa3c83d7
 
 The steps for deploying the pre-optimized models using Python or C++ are described in the following sections.
 
@@ -66,16 +67,23 @@ The steps for deploying the pre-optimized models using Python or C++ are describ
 C++ Execution of OGA Models
 ***************************
 
-Ryzen AI installer provides a sample C++ excutable which can be run to understand C++ DLL dependency. 
+The Ryzen AI installer provides a sample C++ executable `model_benchmark.exe` that can be run to understand the C++ DLL dependencies.
 
-Setup
-=====
+1. Enabling Performance Mode (Optional): To run the LLMs in the best performance mode, follow these steps:
 
-Activate the Ryzen AI 1.4.1 Conda environment:
+- Go to ``Windows`` → ``Settings`` → ``System`` → ``Power`` and set the power mode to Best Performance.
+- Execute the following commands in the terminal:
+
+.. code-block::
+
+   cd C:\Windows\System32\AMD
+   xrt-smi configure --pmode performance
+
+2. Activate the Ryzen AI 1.5.0 Conda environment:
 
 .. code-block:: 
     
-    conda activate ryzen-ai-1.4.1
+    conda activate ryzen-ai-1.5.0
 
 Copy the required files in a local folder to run the LLMs from:
 
@@ -111,18 +119,7 @@ For example, for Llama-2-7b-chat:
      git clone https://huggingface.co/amd/Llama-2-7b-chat-hf-awq-g128-int4-asym-fp16-onnx-hybrid
 
 
-Enabling Performance Mode (Optional)
-====================================
 
-To run the LLMs in the best performance mode, follow these steps:
-
-- Go to ``Windows`` → ``Settings`` → ``System`` → ``Power`` and set the power mode to Best Performance.
-- Execute the following commands in the terminal:
-
-.. code-block::
-
-   cd C:\Windows\System32\AMD
-   xrt-smi configure --pmode performance
 
 
 Sample C++ Program 
