@@ -67,7 +67,7 @@ The steps for deploying the pre-optimized models using Python or C++ are describ
 C++ Execution of OGA Models
 ***************************
 
-The Ryzen AI installer provides a test C++ executable `model_benchmark.exe` that can be run to understand the C++ DLL dependencies.
+The Ryzen AI installer provides a test C++ executable ``model_benchmark.exe`` that can be run to understand the C++ DLL dependencies.
 
 1. Enabling Performance Mode (Optional): To run the LLMs in the best performance mode, follow these steps:
 
