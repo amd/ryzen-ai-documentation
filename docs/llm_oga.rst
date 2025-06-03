@@ -67,7 +67,7 @@ The steps for deploying the pre-optimized models using Python or C++ are describ
 C++ Execution of OGA Models
 ***************************
 
-The Ryzen AI installer provides a sample C++ executable `model_benchmark.exe` that can be run to understand the C++ DLL dependencies.
+The Ryzen AI installer provides a test C++ executable `model_benchmark.exe` that can be run to understand the C++ DLL dependencies.
 
 1. Enabling Performance Mode (Optional): To run the LLMs in the best performance mode, follow these steps:
 
@@ -85,25 +85,44 @@ The Ryzen AI installer provides a sample C++ executable `model_benchmark.exe` th
     
     conda activate ryzen-ai-1.5.0
 
-Copy the required files in a local folder to run the LLMs from:
+3. Copy necessary DLLs
+
+Create a folder to run the LLM from, and copy the required files:
 
 .. code-block::
   
-     mkdir hybrid_run
-     cd hybrid_run
-     xcopy /Y /E "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\onnxruntime_genai\benchmark" .
-     xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\examples\amd_genai_prompt.txt" .
-     xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime.dll" .
+     mkdir llm_run
+     cd llm_run
+
+     #Copy sample C++ executable 
+     xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\LLM\onnxruntime_genai\benchmark\model_benchmark.exe" .
+
+     #Copy sample prompt file
+     xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\LLM\examples\amd_genai_prompt.txt" .
+
+     #Common DLL
+     #Copy onnxruntime-genai.dll
      xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime-genai.dll" .
+     xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime.dll" .
+
+     ## Hybrid DLL
+     # Copy DLLs required to run Hybrid, you may skip if running NPU-only model
+     xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\ryzen_mm.dll" . 
      xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnx_custom_ops.dll" .
-     xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\ryzen_mm.dll" .
      xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\ryzenai_onnx_utils.dll" .
      xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\DirectML.dll" .
 
-Download Models from HuggingFace
-================================
+     ## NPU-only DLL
+     # Copy DLLs required to run NPU-only, you may skip if running Hybrid model
+     xcopy /Y     "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime_providers_shared.dll" .
+     xcopy /Y     "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime_providers_vitisai.dll" .
+     xcopy /Y     "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime_vitis_ai_custom_ops.dll" .
+     xcopy /Y     "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime_vitisai_ep.dll" .
+     xcopy /Y     "%RYZEN_AI_INSTALLATION_PATH%\deployment\dyn_dispatch_core.dll" .
 
-Download the desired models from the list of pre-optimized models on Hugging Face:
+
+4. Download the desired models from the list of pre-optimized models on Hugging Face:
+
 
 .. code-block:: 
     
@@ -119,85 +138,38 @@ For example, for Llama-2-7b-chat:
      git clone https://huggingface.co/amd/Llama-2-7b-chat-hf-awq-g128-int4-asym-fp16-onnx-hybrid
 
 
+5. Run test ``model_benchmark.exe``
 
-
-
-Sample C++ Program 
-==================
-
-The ``model_benchmark.exe`` test application provides a simple mechanism for running and evaluating Hybrid OGA models using the native OGA C++ APIs. The source code for this application can be used a reference implementation for how to integrate LLMs using the native OGA C++ APIs.
- 
-The ``model_benchmark.exe`` test application can be used as follows:
 
 .. code-block::
 
-     # To see available options and default settings
-     .\model_benchmark.exe -h
+     # Example command
+     #.\model_benchmark.exe -i $path_to_model_dir  -f $prompt_file -l $list_of_prompt_lengths
 
-     # To run with default settings
-     .\model_benchmark.exe -i $path_to_model_dir  -f $prompt_file -l $list_of_prompt_lengths
- 
-     # To show more informational output
-     .\model_benchmark.exe -i $path_to_model_dir  -f $prompt_file --verbose
-
-     # To run with given number of generated tokens
-     .\model_benchmark.exe -i $path_to_model_dir  -f $prompt_file -l $list_of_prompt_lengths -g $num_tokens
-
-     # To run with given number of warmup iterations
-     .\model_benchmark.exe -i $path_to_model_dir  -f $prompt_file -l $list_of_prompt_lengths -w $num_warmup
-
-     # To run with given number of iterations
-     .\model_benchmark.exe -i $path_to_model_dir  -f $prompt_file -l $list_of_prompt_lengths -r $num_iterations
+     .\model_benchmark.exe -i Llama-2-7b-chat-hf-awq-g128-int4-asym-fp16-onnx-hybrid -f amd_genai_prompt.txt -l "1024" 
 
 
-For example, for Llama-2-7b-chat:
+******************************
+Python Execution of OGA Models
+******************************
 
-.. code-block::
-  
-     .\model_benchmark.exe -i Llama-2-7b-chat-hf-awq-g128-int4-asym-fp16-onnx-hybrid -f amd_genai_prompt.txt -l "1024" --verbose
-
-|
-
-**NOTE**: The C++ source code for the ``model_benchmark.exe`` executable can be found in the ``%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\examples\c`` folder. This source code can be modified and recompiled if necessary using the commands below.
-
-.. code-block::
-  
-     :: Copy project files
-     xcopy /E /I "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\examples\c" .\sources
-
-     :: Build project
-     cd sources
-     cmake -G "Visual Studio 17 2022" -A x64 -S . -B build
-     cmake --build build --config Release
-
-     :: Copy runtime DLLs
-     xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime.dll" .\build\Release
-     xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime-genai.dll" .\build\Release
-     xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnx_custom_ops.dll" .\build\Release
-     xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\ryzen_mm.dll" .\build\Release
-     xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\ryzenai_onnx_utils.dll" .\build\Release
-     xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\DirectML.dll" .\build\Release
-
-The compiled ``model_benchmark.exe`` and ``run_llm.exe`` will be saved in ``sources\build\Release``.
-
-
-Sample Python Scripts
-=====================
-
-To run LLMs use the following command:
+Run sample python script 
 
 .. code-block:: 
 
-     #To see available options and default setting:
-     python "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\examples\python\run_model.py" -h
-     #sample command
-     python "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\examples\python\run_model.py" -m <model_folder> -l <max_token to be generated including prompt>
+     #Example command
+     #python "%RYZEN_AI_INSTALLATION_PATH%\LLM\examples\python\run_model.py" -m <model_folder>
 
-For example, for Llama-2-7b-chat:
+     python "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\examples\python\run_model.py" -m "Llama-2-7b-chat-hf-awq-g128-int4-asym-fp16-onnx-hybrid" 
 
-.. code-block:: 
 
-    python "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\examples\python\run_model.py" -m "Llama-2-7b-chat-hf-awq-g128-int4-asym-fp16-onnx-hybrid" -l 128
+**************************************
+Build C++ application from OGA C++ API
+**************************************
+
+To see a sample C++ code and build process visit RyzenAI-SW repo: https://github.com/amd/RyzenAI-SW/tree/main/example/llm/oga_api 
+
+
 
 
 ****************
