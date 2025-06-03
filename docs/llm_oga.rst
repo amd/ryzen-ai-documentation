@@ -103,6 +103,9 @@ Create a folder to run the LLM from, and copy the required files:
      #Common DLL
      xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime-genai.dll" .
      xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime.dll" .
+     xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\libprotobuf.dll" .
+     xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\dyn_dispatch_core.dll" .
+
 
      ## Hybrid DLL
      # Copy DLLs required to run Hybrid, you may skip if running NPU-only model
@@ -117,7 +120,6 @@ Create a folder to run the LLM from, and copy the required files:
      xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime_providers_vitisai.dll" .
      xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime_vitis_ai_custom_ops.dll" .
      xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime_vitisai_ep.dll" .
-     xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\dyn_dispatch_core.dll" .
 
 
 4. Download the desired models from the list of pre-optimized models on Hugging Face:
