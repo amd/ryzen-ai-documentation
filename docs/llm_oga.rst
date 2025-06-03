@@ -39,12 +39,12 @@ AMD provides a set of pre-optimized LLMs ready to be deployed with Ryzen AI Soft
 - Llama-3.1-8B
 - Llama-3.2-1B-Instruct
 - Llama-3.2-3B-Instruct
-- Mistral-7B-Instruct-v0.1 
-- Mistral-7B-Instruct-v0.2 
-- Mistral-7B-v0.3 
-- Llama-3.1-8B-Instruct 
-- CodeLlama-7b-instruct 
-- DeepSeek-R1-Distill-Llama-8B 
+- Mistral-7B-Instruct-v0.1
+- Mistral-7B-Instruct-v0.2
+- Mistral-7B-v0.3
+- Llama-3.1-8B-Instruct
+- CodeLlama-7b-instruct-g128
+- DeepSeek-R1-Distill-Llama-8B
 - DeepSeek-R1-Distill-Qwen-1.5B
 - DeepSeek-R1-Distill-Qwen-7B
 - AMD-OLMo-1B-SFT-DPO
@@ -56,12 +56,17 @@ AMD provides a set of pre-optimized LLMs ready to be deployed with Ryzen AI Soft
 - Qwen2.5-7B-Instruct
 
 
+Hugging Face collection of hybrid models: 
+
+Hugging Face collection of NPU models: 
 
 The steps for deploying the pre-optimized models using Python or C++ are described in the following sections.
 
-******************************
-Hybrid Execution of OGA Models
-******************************
+***************************
+C++ Execution of OGA Models
+***************************
+
+Ryzen AI installer provides a sample C++ excutable which can be run to understand C++ DLL dependency. 
 
 Setup
 =====
