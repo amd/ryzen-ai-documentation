@@ -10,42 +10,58 @@ Each Ryzen AI CVML library feature offers a simple C++ application programming i
 
 The Ryzen AI CVML library is distributed through the RyzenAI-SW Github repository: https://github.com/amd/RyzenAI-SW/tree/main/Ryzen-AI-CVML-Library
 
-*************
-Prerequisites
-*************
-Ensure that the following software tools/packages are installed on the development system.
-
-1. Visual Studio 2022 Community edition or newer, ensure “Desktop Development with C++” is installed
-2. Cmake (version >= 3.18)
-3. OpenCV (version=4.8.1 or newer)
-
 **************************************************
 Building sample applications
 **************************************************
-This section describes the steps to build Ryzen AI CVML library sample applications.
+This section describes the steps to build Ryzen AI CVML library sample applications. Before starting, ensure that the following prerequisites are available in the build environment,
+
+- CMake, version 3.18 or newer
+- C++ compilation toolchain. On Windows, this may be Visual Studio's "Desktop development with C++" build tools, or a comparable C++ toolchain
+- OpenCV, version 4.11 or newer
 
 Navigate to the folder containing Ryzen AI samples
 ==================================================
-Download the Ryzen AI CVML sources, and go to the 'samples' sub-folder of the library. ::
-  
+Download the Ryzen AI CVML sources, and go to the 'samples' sub-folder of the library.
+
+On Windows, ::
+
   git clone https://github.com/amd/RyzenAI-SW.git -b main --depth-1
-  chdir RyzenAI-SW\Ryzen-AI-CVML-Library\samples
+  cd RyzenAI-SW\Ryzen-AI-CVML-Library\samples
+
+On Linux, ::
+
+  git clone https://github.com/amd/RyzenAI-SW.git -b main --depth-1
+  cd RyzenAI-SW/Ryzen-AI-CVML-Library/samples
 
 OpenCV libraries
 ================
 Ryzen AI CVML library samples make use of OpenCV, so set an environment variable to let the build scripts know where to find OpenCV. ::
 
+On Windows, ::
+
   set OPENCV_INSTALL_ROOT=<location of OpenCV libraries>
+
+On Linux, ::
+
+  export OPENCV_INSTALL_ROOT=<location of OpenCV libraries>
 
 Build Instructions
 ==================
-Create a build folder and use CMAKE to build the sample(s). ::
+Create a build folder and use CMAKE to build the sample(s).
 
-  mkdir build-samples
-  cmake -S %CD% -B %CD%\build-samples -DOPENCV_INSTALL_ROOT=%OPENCV_INSTALL_ROOT%
-  cmake --build %CD%\build-samples --config Release
+On Windows, ::
 
-The compiled sample application(s) will be placed in the various build-samples\<application>\Release folder(s) under the 'samples' folder.
+  mkdir build
+  cmake -S %CD% -B %CD%\build -DOPENCV_INSTALL_ROOT=%OPENCV_INSTALL_ROOT%
+  cmake --build %CD%\build --config Release
+
+On Linux, ::
+
+  mkdir build
+  cmake -S $PWD -B $PWD/build -DOPENCV_INSTALL_ROOT=$OPENCV_INSTALL_ROOT
+  cmake --build $PWD/build --config Release
+
+The compiled sample application(s) will be placed in the various build\<application>\Release folder(s) under the 'samples' folder (or build/<application>/Release for Linux).
 
 *************************************************
 Running sample applications
@@ -58,8 +74,15 @@ Ryzen AI CVML library applications need to be able to find the library files. On
 
 In this example, the location of OpenCV's runtime libraries is also added to the PATH environment variable. ::
 
+On Windows, ::
+
   set PATH=%PATH%;<location of Ryzen AI CVML library package>\windows
   set PATH=%PATH%;%OPENCV_INSTALL_ROOT%\x64\vc16\bin
+
+On Linux, ::
+
+  export PATH=$PATH;<location of Ryzen AI CVML library package>/linux
+  export PATH=$PATH;%OPENCV_INSTALL_ROOT%/bin
 
 Adjust the aforementioned commands to match the actual location of Ryzen AI and OpenCV libraries, respectively.
 
@@ -73,10 +96,16 @@ In this example, a publicly available video file is used for the application's i
 
 Execute the sample application
 ==============================
-Finally, the previously built sample application can be executed with the selected input source. ::
+Finally, the previously built sample application may be executed with the selected input source.
 
-  build-samples\cvml-sample-depth-estimation\Release\cvml-sample-depth-estimation.exe -i dancing.mp4
-  
+On Windows, ::
+
+  build\cvml-sample-depth-estimation\Release\cvml-sample-depth-estimation.exe -i dancing.mp4
+
+On Linux, ::
+
+  build/cvml-sample-depth-estimation/Release/cvml-sample-depth-estimation.exe -i dancing.mp4
+
 ..
   ------------
 
