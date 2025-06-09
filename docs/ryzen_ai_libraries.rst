@@ -85,11 +85,11 @@ On Linux, update LD_LIBRARY_PATH for the Ryzen AI CVML library location, OpenCV 
 
 Adjust the aforementioned commands to match the actual location of Ryzen AI and OpenCV libraries, respectively.
 
-Select an input source/image/video
-==================================
+Select an input source (image or video)
+=======================================
 Ryzen AI CVML library samples can accept a variety of image and video input formats, or even open the default camera on the system if "0" is specified as an input.
 
-In this example, a publicly available video file is used for the application's input. ::
+In this example, a publicly available video file is used for the application's input. The following command downloads a video file and saves it locally as 'dancing.mp4' ::
 
   curl -o dancing.mp4 https://videos.pexels.com/video-files/4540332/4540332-hd_1920_1080_25fps.mp4
 
