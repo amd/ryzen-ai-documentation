@@ -70,19 +70,18 @@ This section describes how to execute Ryzen AI CVML library sample applications.
 
 Update the console and/or system PATH
 =====================================
-Ryzen AI CVML library applications need to be able to find the library files. One way to do this is to add the location of the libraries to the system or console PATH environment variable.
+Ryzen AI CVML library applications need to be able to find the library files.
 
-In this example, the location of OpenCV's runtime libraries is also added to the PATH environment variable. ::
-
-On Windows, ::
+On Windows, update the PATH environment variable for both the Ryzen AI CVML library location and OpenCV ::
 
   set PATH=%PATH%;<location of Ryzen AI CVML library package>\windows
   set PATH=%PATH%;%OPENCV_INSTALL_ROOT%\x64\vc16\bin
 
-On Linux, ::
+On Linux, update LD_LIBRARY_PATH for the Ryzen AI CVML library location, OpenCV library location and NPU driver location, ::
 
-  export PATH=$PATH;<location of Ryzen AI CVML library package>/linux
-  export PATH=$PATH;%OPENCV_INSTALL_ROOT%/bin
+  export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:<location of Ryzen AI CVML library package>/linux
+  export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$OPENCV_INSTALL_ROOT/lib
+  export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/xilinx/xrt/lib
 
 Adjust the aforementioned commands to match the actual location of Ryzen AI and OpenCV libraries, respectively.
 
