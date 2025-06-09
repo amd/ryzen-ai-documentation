@@ -6,7 +6,11 @@ Ryzen AI CVML library
 
 The Ryzen AI CVML libraries build on top of the Ryzen AI drivers and execution infrastructure to provide powerful AI capabilities to C++ applications without having to worry about training specific AI models and integrating them to the Ryzen AI framework.
 
-Each Ryzen AI CVML library feature offers a simple C++ application programming interface (API) that can be easily incorporated into existing applications.
+Each Ryzen AI CVML library feature offers a simple C++ application programming interface (API) that can be easily incorporated into existing applications. The following AI features are currently available,
+
+- **Depth Estimation**: Generates a depth map to assess relative distances within a two-dimensional image.
+- **Face Detection**: Identifies and locates faces within an image.
+- **Face Mesh**: Constructs a mesh overlay of landmarks for a specified facial image.
 
 The Ryzen AI CVML library is distributed through the RyzenAI-SW Github repository: https://github.com/amd/RyzenAI-SW/tree/main/Ryzen-AI-CVML-Library
 
