@@ -156,14 +156,16 @@ Run sample python script
      #Example command
      #python "%RYZEN_AI_INSTALLATION_PATH%\LLM\examples\python\run_model.py" -m <model_folder>
 
-     python "%RYZEN_AI_INSTALLATION_PATH%\hybrid-llm\examples\python\run_model.py" -m "Llama-2-7b-chat-hf-awq-g128-int4-asym-fp16-onnx-hybrid" 
+     python "%RYZEN_AI_INSTALLATION_PATH%\LLM\examples\python\run_model.py" -m "Llama-2-7b-chat-hf-awq-g128-int4-asym-fp16-onnx-hybrid" 
 
 
 **************************************
 Build C++ application from OGA C++ API
 **************************************
 
-To see a sample C++ code and build process visit RyzenAI-SW repo: https://github.com/amd/RyzenAI-SW/tree/main/example/llm/oga_api 
+To see a sample C++ code and build process visit RyzenAI-SW repo: https://github.com/amd/RyzenAI-SW/tree/main/example/llm/oga_api
+
+**Testing note:** Currently the script is present in https://github.com/satreysa/RyzenAI-SW/tree/main/example/llm/oga_api . It will be merged with amd/RyzenAI-SW post testing.
 
 
 
@@ -172,7 +174,7 @@ To see a sample C++ code and build process visit RyzenAI-SW repo: https://github
 LLM Config Files
 ****************
 
-Each OGA model folder contains a ``genai_config.json`` file. This file contains various configuration settings for the model. The ``session_option`` section is where information about specific runtime dependencies is specified. Within this section, the ``custom_ops_library`` option sets the path to the ``onnxruntime_vitis_ai_custom_ops.dll`` file. 
+Each OGA model folder contains a ``genai_config.json`` file. This file contains various configuration settings for the model. The ``session_option`` section is where information about specific runtime dependencies is specified. Within this section, the ``custom_ops_library`` option sets the path to the ``onnxruntime_custom_ops.dll`` file. 
 
 The sample below shows the defaults for the AMD pre-optimized Hybrid OGA LLMs:
 
@@ -184,7 +186,7 @@ The sample below shows the defaults for the AMD pre-optimized Hybrid OGA LLMs:
            ...
 
 
-The paths is relative to the folder where the program is run from. The model will error out if the ``onnxruntime_vitis_ai_custom_ops.dll`` file cannot be found at the specified location. Replacing the relative path with an absolute path to this file allows running the program from any location.
+The paths is relative to the folder where the program is run from. The model will error out if the ``onnxruntime_custom_ops.dll`` file cannot be found at the specified location. Replacing the relative path with an absolute path to this file allows running the program from any location.
 
 
 ***********************
