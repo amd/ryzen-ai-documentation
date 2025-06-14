@@ -165,7 +165,7 @@ Build C++ application from OGA C++ API
 
 To see a sample C++ code and build process visit RyzenAI-SW repo: https://github.com/amd/RyzenAI-SW/tree/main/example/llm/oga_api
 
-**Testing note:** Currently the script is present in https://github.com/satreysa/RyzenAI-SW/tree/main/example/llm/oga_api . It will be merged with amd/RyzenAI-SW post testing.
+**Testing note:** Currently the script is present in https://gitenterprise.xilinx.com/VitisAI/RyzenAI-SW/tree/dev/example/llm/oga_api . It will be merged with amd/RyzenAI-SW post testing.
 
 
 
