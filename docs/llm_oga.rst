@@ -95,16 +95,17 @@ Create a folder to run the LLM from, and copy the required files:
      cd llm_run
 
      #Copy sample C++ executable 
-     xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\LLM\onnxruntime_genai\benchmark\model_benchmark.exe" .
+     xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\LLM\example\model_benchmark.exe" .
 
      #Copy sample prompt file
-     xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\LLM\examples\amd_genai_prompt.txt" .
+     xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\LLM\example\amd_genai_prompt.txt" .
 
      #Common DLL
      xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime-genai.dll" .
      xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime.dll" .
      xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\libprotobuf.dll" .
      xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\dyn_dispatch_core.dll" .
+     xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\xaiengine.dll" .
 
 
      ## Hybrid DLL
