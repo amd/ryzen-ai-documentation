@@ -155,9 +155,9 @@ Run sample python script
 .. code-block:: 
 
      #Example command
-     #python "%RYZEN_AI_INSTALLATION_PATH%\LLM\examples\python\run_model.py" -m <model_folder>
+     #python "%RYZEN_AI_INSTALLATION_PATH%\LLM\example\run_model.py" -m <model_folder> -l <max_length>
 
-     python "%RYZEN_AI_INSTALLATION_PATH%\LLM\examples\python\run_model.py" -m "Llama-2-7b-chat-hf-awq-g128-int4-asym-fp16-onnx-hybrid" 
+     python "%RYZEN_AI_INSTALLATION_PATH%\LLM\example\run_model.py" -m "Llama-2-7b-chat-hf-awq-g128-int4-asym-fp16-onnx-hybrid" -l 256
 
 
 **************************************
