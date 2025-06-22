@@ -61,6 +61,11 @@ Hugging Face collection of hybrid models: https://huggingface.co/collections/amd
 
 Hugging Face collection of NPU models: https://huggingface.co/collections/amd/ryzenai-14-llm-npu-models-67da3494ec327bd3aa3c83d7
 
+Any hybrid or NPU LLMs can be executed using the official OGA C++ and Python APIs. The current release is compatible with OGA version 0.7.0.
+For detailed documentation and examples, refer to the official OGA repository:
+🔗 https://github.com/microsoft/onnxruntime-genai/tree/rel-0.7.0
+
+
 The steps for deploying the pre-optimized models using Python or C++ are described in the following sections.
 
 ***************************
