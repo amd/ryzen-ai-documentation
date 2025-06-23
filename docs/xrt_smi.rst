@@ -348,7 +348,7 @@ Example: Setting the NPU to high-performance mode
 
    xrt-smi configure --pmode performance
 
-To check the current performance level, use the following command:
+To check the current power mode, use the following command:
 
 .. code-block:: shell
 
