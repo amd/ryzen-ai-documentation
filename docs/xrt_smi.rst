@@ -208,7 +208,7 @@ Sample Command Line Output::
       Partition Index: 0
         Columns: [0, 1, 2, 3]
         HW Contexts:
-          |PID    |Ctx ID  |Status  |Instr BO  |Sub  |Compl  |Migr  |Err  | Suspensions |Prio     |GOPS   |EGOPS  |FPS  |Latency  |
+          |PID    |Ctx ID  |Status  |Instr BO  |Sub  |Compl  |Migr  |Err  |Suspensions  |Prio     |GOPS   |EGOPS  |FPS  |Latency  |
           |-------|--------|--------|----------|-----|-------|------|-----|-------------|---------|-------|-------|-----|---------|
           |20696  |0       |Active  |64 KB     |57   |56     |0     |0    |0            | Normal  |0      |0      |0    |0        |
 
