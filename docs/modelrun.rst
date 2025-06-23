@@ -24,13 +24,13 @@ Models are loaded by creating an ONNX Runtime ``InferenceSession`` using the Vit
     import onnxruntime
 
     session_options = onnxruntime.SessionOptions()
-    provider_options = [{}]                       # Vitis AI EP options go here
+    vai_ep_options  = {}                          # Vitis AI EP options go here
 
     session = onnxruntime.InferenceSession(
         path_or_bytes = model,                    # Path to the ONNX model
         sess_options = session_options,           # Standard ORT options
         providers = ['VitisAIExecutionProvider'], # Use the Vitis AI Execution Provider
-        provider_options = provider_options       # Pass options to the Vitis AI Execution Provider
+        provider_options = [vai_ep_options]       # Pass options to the Vitis AI Execution Provider
     )
 
 
@@ -67,7 +67,8 @@ Vitis AI EP Options Reference Guide
 VitisAI EP Provider Options
 ===========================
 
-The ``provider_options`` parameter allows passing special options to the Vitis AI EP.
+The ``provider_options`` parameter of the ORT ``InferenceSession`` allows passing options to configure the Vitis AI EP. The following options are supported.
+
 
 - .. option:: config_file 
 
@@ -89,20 +90,29 @@ Default: N/A.
 
 - .. option:: cache_dir 
 
-Optional. The path and name of the VitisAI cache directory. For more details, refer to the section about :ref:`VitisAI cache <vitisai-ep-cache>`.
+Optional. The path and name of the VitisAI cache directory. For INT8 models, for this option to take affect, the :option:`enable_cache_file_io_in_mem` must be set to 0. For more details, refer to the section about :ref:`VitisAI cache <vitisai-ep-cache>`.
 
 Type: String
 
-Default: C:\temp\%USERNAME%\vaip\.cache
+Default: C:\\temp\\%USERNAME%\\vaip\\.cache
 
 
 - .. option:: cache_key 
 
-Optional. The subfolder in the VitisAI cache directory where the compiled model is stored. For more details, refer to the section about :ref:`VitisAI cache <vitisai-ep-cache>`.
+Optional. The subfolder in the VitisAI cache directory where the compiled model is stored. For INT8 models, for this option to take affect, the :option:`enable_cache_file_io_in_mem` must be set to 0. For more details, refer to the section about :ref:`VitisAI cache <vitisai-ep-cache>`.
 
 Type: String
 
 Default: MD5 hash of the input model.
+
+
+- .. option:: enable_cache_file_io_in_mem
+
+Optional. Applies to INT8 models only. By default, the VitisAI EP keeps the compiled model in memory. To enable saving the compiled model to disk in the :option:`cache_dir` folder, :option:`enable_cache_file_io_in_mem` must be set to 0.
+
+Supported Values: 0, 1
+
+Default: 1
 
 
 - .. option:: encryption_key 
@@ -112,6 +122,24 @@ Optional. 256-bit key used for generating an encrypted compiled model in the cac
 Type: String of 64 hexadecimal values representing the 256-bit encryption key.
 
 Default: None, the model is not encrypted.
+
+
+- .. option:: opt_level 
+
+Optional. Applies to INT8 models only. Controls the compiler optimization effort.
+
+Supported Values: 0, 1, 2, 3, 65536 (maximum effort, experimental)
+
+Default: 0
+
+
+- .. option:: log_level
+
+Optional. Controls what level of messages are reported by the VitisAI EP.
+
+Supported Values: "info", "warning", "warning", "error", "fatal"
+
+Default: "info"
 
 
 - .. option:: ai_analyzer_visualization 
@@ -136,7 +164,7 @@ Default: False
 Config File Options
 ===================
 
-When compiling BF16 models, the Vitis AI EP requires a JSON configuration file which is used to specify additional compilation options. This configuration file is provided using the :option:`config_file` provider option. 
+When compiling BF16 models, a JSON configuration file must be provided to the VitisAI EP using the :option:`config_file` provider option. This configuration file is used to specify additional options to the compiler. 
 
 The default the configuration file for compiling BF16 models should contain the following:
 
@@ -165,33 +193,36 @@ Additional options can be specified in the ``vaiml_config`` section of the confi
 
 Controls the compiler optiomization level. In Ryzen AI 1.5, the only supported value is 2. Optimization level 1 is no longer supported and should not be used.
 
+Supported values: 2
+
 .. code-block:: json
 
     "vaiml_config": {"optimize_level": 2}
 
-Supported values: 2
 
 
 - .. option:: preferred_data_storage
 
 Controls whether intermediate data is stored in vectorized or unvectorized format. Models dominated by convolutions (e.g., CNNs) perform better with vectorized data. Models dominated by GEMMs (e.g., Transformers) perform better with unvectorized data. When the ``auto`` mode is selected, the compiler tries to select the best layout.
 
+Supported values: "vectorized" (default), "unvectorized", "auto"
+
 .. code-block:: json
 
     "vaiml_config": {"preferred_data_storage": "vectorized"}
 
-Supported values: "vectorized" (default), "unvectorized", "auto"
 
 
 - .. option:: enable_f32_to_bf16_conversion
 
 Instructs the compiler to automatically convert FP32 models to BF16. For better control over accuracy, it is recommended to quantize the model to BF16 using Quark.
 
+Supported values: True (default), False
+
 .. code-block:: json
 
-    "vaiml_config": {"enable_f32_to_bf16_conversion": true}
+    "vaiml_config": {"enable_f32_to_bf16_conversion": True}
 
-Supported values: true (default), false
 
 
 
@@ -202,7 +233,7 @@ Supported values: true (default), false
 Using BF16 models
 **************************
 
-When compiling BF16 models, an additional configuration file is required. This file is specified using the :option:`config_file` provider option. For more details, refer to :ref:`Config File Options <configuration-file>` section.
+When compiling BF16 models, a configuration file must be provided to the VitisAI EP. This file is specified using the :option:`config_file` provider option. For more details, refer to :ref:`Config File Options <configuration-file>` section.
 
 Sample Python Code
 ==================
@@ -336,7 +367,7 @@ The RyzenAI Software supports two mechanisms for saving and reloading compiled m
 VitisAI EP Cache
 ================
 
-The VitisAI EP includes a built-in caching mechanism. This mechanism is enabled by default. When a model is compiled for the first time, it is automatically saved in the VitisAI EP cache directory. Any subsequent creation of an ONNX Runtime session using the same model will load the precompiled model from the cache directory, thereby reducing session creation time.
+The VitisAI EP includes a built-in caching mechanism. When a model is compiled for the first time, it is automatically saved in the VitisAI EP cache directory. Any subsequent creation of an ONNX Runtime session using the same model will load the precompiled model from the cache directory, thereby reducing session creation time.
 
 The VitisAI EP Cache mechanism can be used to quickly iterate during the development cycle, but it is not recommended for the final version of the application.
 
@@ -344,7 +375,8 @@ Cache directories generated by the Vitis AI Execution Provider should not be reu
 
 If using the VitisAI EP Cache the application should check the version of the Vitis AI EP and of the NPU drivers. If the application detects a version change, it should delete the cache, or create a new cache directory with a different name.
 
-The location of the VitisAI EP cache is specified with the :option:`cache_dir` and :option:`cache_key` provider options.
+The location of the VitisAI EP cache is specified with the :option:`cache_dir` and :option:`cache_key` provider options. For INT8 models, the :option:`enable_cache_file_io_in_mem` must be set to 0 otherwise the output of the compiler is kept in memory and is not saved to disk.
+
 
 Python example:
 
@@ -355,7 +387,8 @@ Python example:
 
     vai_ep_options = {
         'cache_dir': str(Path(__file__).parent.resolve()),
-        'cache_key': 'compiled_resnet50_int8'
+        'cache_key': 'compiled_resnet50_int8',
+        'enable_cache_file_io_in_mem': 0
     }
 
     session = onnxruntime.InferenceSession(
@@ -370,11 +403,12 @@ In the example above, the cache directory is set to the absolute path of the fol
 
 Disabling the Cache
 -------------------
-To ignore cached models and force recompilation, unset the ``XLNX_ENABLE_CACHE`` environment variable before running the application:
 
-.. code-block::
+To ignore cached models and force recompilation:
 
-    set XLNX_ENABLE_CACHE=
+- For INT8 models, set the :option:`enable_cache_file_io_in_mem` provider option to 1
+
+- For BF16 models, unset the ``XLNX_ENABLE_CACHE`` environment variable before running the application
 
 
 
@@ -423,7 +457,7 @@ C++ example:
 .. _ort-ep-context-cache:
 
 ONNX Runtime EP Context Cache
-============================
+=============================
 
 The Vitis AI EP supports the ONNX Runtime EP context cache feature. This features allows dumping and reloading a snapshot of the EP context before deployment. Currently, this feature is only available for INT8 models.
 

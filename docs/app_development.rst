@@ -127,6 +127,8 @@ Including pre-compiled versions of INT8 models is recommended but not mandatory.
 
 |
 
+.. _app-packaging:
+
 **********************************
 Application Packaging Requirements
 **********************************
