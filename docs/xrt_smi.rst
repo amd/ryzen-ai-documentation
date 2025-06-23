@@ -184,11 +184,11 @@ Sample Command Line Output::
     --------------------------
     Platform
       Name                   : NPU Strix
-      Performance Mode       : Default
+      Power Mode             : Default
      
-    Power                  : 1.277 Watts
+    Estimated Power          : 1.277 Watts
 
-|memo| **NOTE**: Power reporting is not supported on PHX and HPT NPUs. Power reporting is only available on STX devices and onwards.
+|memo| **NOTE**: Power reporting is not supported on PHX and HPT NPUs. Power reporting is only available on STX devices and onwards. Report "Estimated Power" is currently unavailable for Linux users. 
 
 NPU Partitions
 ==============
