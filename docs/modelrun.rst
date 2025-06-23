@@ -132,21 +132,17 @@ Supported values: "vectorized" (default), "unvectorized"
 Compiling INT8 models
 **************************
 
-When compiling INT8 models, the NPU configuration must be specified through the ``xclbin`` provider option. This option is not required for BF16 models.
-
-There are two types of NPU configurations for INT8 models: standard and benchmark. Setting the NPU configuration involves specifying a specific ``.xclbin`` binary file, which is located in the Ryzen AI Software installation tree.
+When compiling INT8 models, the NPU configuration must be specified through the ``xclbin`` provider option. This option is not required for BF16 models. Setting the NPU configuration involves specifying a specific ``.xclbin`` binary file, which is located in the Ryzen AI Software installation tree.
 
 Depending on the target processor and binary type (standard/benchmark), the following ``.xclbin`` files should be used:
 
 **For STX/KRK APUs**:
 
-- Standard binary: ``%RYZEN_AI_INSTALLATION_PATH%\voe-4.0-win_amd64\xclbins\strix\AMD_AIE2P_Nx4_Overlay.xclbin``
-- Benchmark binary: ``%RYZEN_AI_INSTALLATION_PATH%\voe-4.0-win_amd64\xclbins\strix\AMD_AIE2P_4x4_Overlay.xclbin``
+- Binary file: ``%RYZEN_AI_INSTALLATION_PATH%\voe-4.0-win_amd64\xclbins\strix\AMD_AIE2P_4x4_Overlay.xclbin``
 
 **For PHX/HPT APUs**:
 
-- Standard binary: ``%RYZEN_AI_INSTALLATION_PATH%\voe-4.0-win_amd64\xclbins\phoenix\1x4.xclbin``
-- Benchmark binary: ``%RYZEN_AI_INSTALLATION_PATH%\voe-4.0-win_amd64\xclbins\phoenix\4x4.xclbin``
+- Binary file: ``%RYZEN_AI_INSTALLATION_PATH%\voe-4.0-win_amd64\xclbins\phoenix\4x4.xclbin``
 
 Python example selecting the standard NPU configuration for STX/KRK:
 
@@ -155,7 +151,7 @@ Python example selecting the standard NPU configuration for STX/KRK:
     providers = ['VitisAIExecutionProvider']
 
     provider_options = [{
-        'xclbin': '{}\\voe-4.0-win_amd64\\xclbins\\strix\\AMD_AIE2P_Nx4_Overlay.xclbin'.format(os.environ["RYZEN_AI_INSTALLATION_PATH"])
+        'xclbin': '{}\\voe-4.0-win_amd64\\xclbins\\strix\\AMD_AIE2P_4x4_Overlay.xclbin'.format(os.environ["RYZEN_AI_INSTALLATION_PATH"])
     }]
 
     session = ort.InferenceSession(
@@ -165,16 +161,6 @@ Python example selecting the standard NPU configuration for STX/KRK:
     )
 
 |
-
-By default, the Ryzen AI Conda environment automatically sets the standard binary for all inference sessions through the ``XLNX_VART_FIRMWARE`` environment variable. However, explicitly passing the xclbin option in the provider options overrides the environment variable.
-
-.. code-block::
-
-    > echo %XLNX_VART_FIRMWARE%
-      C:\Program Files\RyzenAI\1.4.0\voe-4.0-win_amd64\xclbins\strix\AMD_AIE2P_Nx4_Overlay.xclbin
-
-
-
 |
 
 ************************************
