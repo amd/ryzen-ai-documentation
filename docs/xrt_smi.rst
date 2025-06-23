@@ -21,7 +21,7 @@ Introduction
 
 The ``xrt-smi`` utility is a command-line interface to monitor and manage the NPU integrated AMD CPUs. 
 
-It is installed in ``C:\Windows\System32\AMD`` and it can be directly invoked from within the conda environment created by the Ryzen AI Software installer.
+In Window platform, ``xrt-smi`` is installed in ``C:\Windows\System32\AMD`` and it can be directly invoked from within the conda environment created by the Ryzen AI Software installer.
 
 The ``xrt-smi`` utility currently supports three primary commands:
 
@@ -43,7 +43,7 @@ The utility also support the following options which can be used with any comman
 - ``--batch`` - enable batch mode (disables escape characters)
 - ``--force`` - when possible, force an operation. Eg - overwrite a file in examine or validate
 
-The ``xrt-smi`` utility requires `Microsoft Visual C++ Redistributable <https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170>`_ (version 2015 to 2022) to be installed.
+In Windows, the ``xrt-smi`` utility requires `Microsoft Visual C++ Redistributable <https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170>`_ (version 2015 to 2022) to be installed.
 
 
 *******************************
