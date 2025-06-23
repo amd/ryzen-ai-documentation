@@ -114,7 +114,36 @@ Sample Command Line Output::
     |BDF             |Name       |
     |----------------|-----------|
     |[00c4:00:01.1]  |NPU Strix  |
-    
+
+
+
+Sample Command Line Output in Linux::
+
+   > xrt-smi examine
+     System Configuration
+         OS Name              : Linux
+         Release              : 6.11.0-26-generic
+         Machine              : x86_64
+         CPU Cores            : 24
+         Memory               : 31440 MB
+         Distribution         : Ubuntu 24.04 LTS
+         GLIBC                : 2.39
+         Model                : BIRMANPLUS
+         BIOS Vendor          : AMD
+         BIOS Version         : TXB1001dB
+ 
+     XRT
+         Version              : 2.20.0
+         Branch               : master
+         Hash                 : 7a277facefecab6c87ac835916021c63d2e395dd
+         Hash Date            : 2025-06-16 21:28:35
+         amdxdna              : 2.20.0_20250617, e7233301f8e4d8d1b1678f3dc3492c826290e314
+         NPU Firmware Version : 255.0.1.5
+ 
+     Device(s) Present
+     |BDF             |Name       |
+     |----------------|-----------|
+     |[0000:c5:00.1]  |NPU Strix  |
 
 Sample JSON Output::
 
