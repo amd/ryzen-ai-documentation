@@ -57,10 +57,9 @@ AMD provides a set of pre-optimized LLMs ready to be deployed with Ryzen AI Soft
 - Qwen2.5-7B-Instruct
 
 
-Hugging Face collection of hybrid models: https://huggingface.co/collections/amd/ryzenai-14-llm-hybrid-models-67da31231bba0f733750a99c
+Hugging Face collection of hybrid models: https://huggingface.co/collections/amd/ryzenai-15-llm-hybrid-models-6859a64b421b5c27e1e53899
 
-Hugging Face collection of NPU models: https://huggingface.co/collections/amd/ryzenai-14-llm-npu-models-67da3494ec327bd3aa3c83d7
-
+Hugging Face collection of NPU models: https://huggingface.co/collections/amd/ryzenai-15-llm-npu-models-6859846d7c13f81298990db0
 
 *******************
 Compatible OGA APIs
@@ -113,16 +112,16 @@ Create a folder to run the LLM from, and copy the required files:
      :: Common DLL
      xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime-genai.dll" .
      xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime.dll" .
-     xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\libprotobuf.dll" .
+     xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\ryzen_mm.dll" .
      xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\dyn_dispatch_core.dll" .
      xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\xaiengine.dll" .
 
 
      :: Hybrid DLL
-     :: Copy DLLs required to run Hybrid, you may skip if running NPU-only model
-     xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\ryzen_mm.dll" . 
+     :: Copy DLLs required to run Hybrid, you may skip if running NPU-only model 
      xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnx_custom_ops.dll" .
-     xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\ryzenai_onnx_utils.dll" .
+     xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\libutf8_validity.dll" .
+     xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\abseil_dll.dll" .
      xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\DirectML.dll" .
 
      :: NPU-only DLL
@@ -150,9 +149,9 @@ Create a folder to run the LLM from, and copy the required files:
 
 .. code-block::
 
-     :: Example command
-     :: .\model_benchmark.exe -i $path_to_model_dir  -f $prompt_file -l $list_of_prompt_lengths
+     .\model_benchmark.exe -i $path_to_model_dir  -f $prompt_file -l $list_of_prompt_lengths
 
+     :: Example command
      .\model_benchmark.exe -i Llama-2-7b-chat-hf-awq-g128-int4-asym-fp16-onnx-hybrid -f amd_genai_prompt.txt -l "1024" 
 
 
@@ -164,9 +163,9 @@ Run sample python script
 
 .. code-block:: 
 
-     :: Example command
-     :: python "%RYZEN_AI_INSTALLATION_PATH%\LLM\example\run_model.py" -m <model_folder> -l <max_length>
+     python "%RYZEN_AI_INSTALLATION_PATH%\LLM\example\run_model.py" -m <model_folder> -l <max_length>
 
+     :: Example command
      python "%RYZEN_AI_INSTALLATION_PATH%\LLM\example\run_model.py" -m "Llama-2-7b-chat-hf-awq-g128-int4-asym-fp16-onnx-hybrid" -l 256
 
 
