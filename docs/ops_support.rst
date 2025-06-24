@@ -1,5 +1,3 @@
-.. _supported_operations:
-
 ####################
 Supported Operations
 ####################
