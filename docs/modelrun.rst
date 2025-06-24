@@ -119,7 +119,7 @@ Default: 1
 
 Optional. 256-bit key used for generating an encrypted compiled model in the cache folder. At runtime, you must use the same key to decrypt the model when loading it from the cache.
 
-Type: String of 64 hexadecimal values representing the 256-bit encryption key.
+String of 64 hexadecimal values representing the 256-bit encryption key.
 
 Default: None, the model is not encrypted.
 
@@ -213,17 +213,15 @@ Supported values: "vectorized" (default), "unvectorized", "auto"
 
 
 
-- .. option:: enable_f32_to_bf16_conversion
+- .. option:: force
 
-Instructs the compiler to automatically convert FP32 models to BF16. For better control over accuracy, it is recommended to quantize the model to BF16 using Quark.
+By the default the compiler will skip compilation if the signature of the model matches a precompiled model. When force is set true, the model will always be compiled.
 
-Supported values: True (default), False
+Supported values: True, False (default)
 
 .. code-block:: json
 
-    "vaiml_config": {"enable_f32_to_bf16_conversion": True}
-
-
+    "vaiml_config": {"force": False}
 
 
 
@@ -401,14 +399,14 @@ Python example:
 In the example above, the cache directory is set to the absolute path of the folder containing the script being executed. Once the session is created, the compiled model is saved inside a subdirectory named ``compiled_resnet50_int8`` within the specified cache folder.
 
 
-Disabling the Cache
--------------------
+Ignoring the Cache
+------------------
 
 To ignore cached models and force recompilation:
 
 - For INT8 models, set the :option:`enable_cache_file_io_in_mem` provider option to 1
 
-- For BF16 models, unset the ``XLNX_ENABLE_CACHE`` environment variable before running the application
+- For BF16 models, set the :option:`force` config file option to True
 
 
 
