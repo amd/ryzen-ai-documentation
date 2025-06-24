@@ -40,8 +40,8 @@ Setup
 
 .. code-block::
 
-     cd <extracted amd quark 0.8>
-     pip install amd_quark-0.8+<>.whl
+     cd <extracted amd quark-version>
+     pip install amd_quark-<version>+<>.whl
 
 5. Install other dependencies
 
