@@ -104,13 +104,13 @@ Create a folder to run the LLM from, and copy the required files:
      mkdir llm_run
      cd llm_run
 
-     #Copy sample C++ executable 
+     :: Copy sample C++ executable 
      xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\LLM\example\model_benchmark.exe" .
 
-     #Copy sample prompt file
+     :: Copy sample prompt file
      xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\LLM\example\amd_genai_prompt.txt" .
 
-     #Common DLL
+     :: Common DLL
      xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime-genai.dll" .
      xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime.dll" .
      xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\libprotobuf.dll" .
@@ -118,15 +118,15 @@ Create a folder to run the LLM from, and copy the required files:
      xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\xaiengine.dll" .
 
 
-     ## Hybrid DLL
-     # Copy DLLs required to run Hybrid, you may skip if running NPU-only model
+     :: Hybrid DLL
+     :: Copy DLLs required to run Hybrid, you may skip if running NPU-only model
      xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\ryzen_mm.dll" . 
      xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnx_custom_ops.dll" .
      xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\ryzenai_onnx_utils.dll" .
      xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\DirectML.dll" .
 
-     ## NPU-only DLL
-     # Copy DLLs required to run NPU-only, you may skip if running Hybrid model
+     :: NPU-only DLL
+     :: Copy DLLs required to run NPU-only, you may skip if running Hybrid model
      xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime_providers_shared.dll" .
      xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime_providers_vitisai.dll" .
      xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime_vitis_ai_custom_ops.dll" .
@@ -138,10 +138,10 @@ Create a folder to run the LLM from, and copy the required files:
 
 .. code-block:: 
     
-     # Make sure you have git-lfs installed (https://git-lfs.com) 
+     :: Make sure you have git-lfs installed (https://git-lfs.com) 
      git lfs install  
      
-     #git clone <link to hf model> 
+     :: git clone <link to hf model> 
      git clone https://huggingface.co/amd/Llama-2-7b-chat-hf-awq-g128-int4-asym-fp16-onnx-hybrid
 
 
@@ -150,8 +150,8 @@ Create a folder to run the LLM from, and copy the required files:
 
 .. code-block::
 
-     # Example command
-     #.\model_benchmark.exe -i $path_to_model_dir  -f $prompt_file -l $list_of_prompt_lengths
+     :: Example command
+     :: .\model_benchmark.exe -i $path_to_model_dir  -f $prompt_file -l $list_of_prompt_lengths
 
      .\model_benchmark.exe -i Llama-2-7b-chat-hf-awq-g128-int4-asym-fp16-onnx-hybrid -f amd_genai_prompt.txt -l "1024" 
 
@@ -164,8 +164,8 @@ Run sample python script
 
 .. code-block:: 
 
-     #Example command
-     #python "%RYZEN_AI_INSTALLATION_PATH%\LLM\example\run_model.py" -m <model_folder> -l <max_length>
+     :: Example command
+     :: python "%RYZEN_AI_INSTALLATION_PATH%\LLM\example\run_model.py" -m <model_folder> -l <max_length>
 
      python "%RYZEN_AI_INSTALLATION_PATH%\LLM\example\run_model.py" -m "Llama-2-7b-chat-hf-awq-g128-int4-asym-fp16-onnx-hybrid" -l 256
 
