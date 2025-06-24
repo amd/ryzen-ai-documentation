@@ -10,6 +10,7 @@ The Ryzen AI compiler supports input models quantized to either INT8 or BF16 for
 - Transformer models: BF16
 
 Quantization introduces several challenges, primarily revolving around the potential drop in model accuracy. Choosing the right quantization parameters—such as data type, bit-width, scaling factors, and the decision between per-channel or per-tensor quantization—adds layers of complexity to the design process.
+The list of operations supported for different quantization types can be found in :doc:`supported_operators`.
 
 *********
 AMD Quark
