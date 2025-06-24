@@ -3,7 +3,7 @@ Supported Operations
 ####################
 
 The following table lists the supported operations in the Ryzen AI 1.5.0. The operations are categorized by their support for different quantization types: BF16, A16W8, A8W8, and XINT8.
-The "Y" indicates that the operation is supported for that specific quantization type.
+The "Y" indicates that the operation is supported for that specific quantization type for CNN and NLP models.
 
 +------------------------+-------+-------+-------+-------+
 | Ops                    | BF16  | A16W8 | A8W8  | XINT8 |
@@ -218,3 +218,20 @@ The "Y" indicates that the operation is supported for that specific quantization
 +------------------------+-------+-------+-------+-------+
 | Xor                    | Y     |       |       |       |
 +------------------------+-------+-------+-------+-------+
+
+
+LLM Operator support
+####################
+
+The Ryzen AI LLM execution flow supports ONNX Runtime GenAI-based models with the following operators:
+
+- SimplifiedLayerNormalization
+- SkipSimplifiedLayerNormalization
+- MatMulNBits (W4ABF16/W4ABFP16)
+- Add
+- RotaryEmbedding
+- GroupQueryAttention
+- Sigmoid
+- Mul
+
+These operators are optimized for execution on the Ryzen AI NPU via the ONNX Runtime GenAI framework.
