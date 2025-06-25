@@ -72,6 +72,10 @@ Version 1.5
     - The ``%RYZEN_AI_INSTALLATION_PATH%\\deployment`` folder has been reorganized and flattened. Deployment DLLs are not longer organized in subfolders. Application build scripts pulling DLLs from the ``deployment`` folder will need to be updated based on the new paths. Refer to the :ref:`Application Packaging Requirements <app-packaging>` section for further details.
     - The ``hybrid_llm`` and ``npu_llm`` folders have been consolidated into a new folder named ``LLM``, which contains the ``model_benchmark.exe`` and ``run_model.py`` scripts, along with the necessary C++ headers and .lib files to support both the Hybrid LLM and NPU LLM workflows in C++ and Python.
     - For NPU LLM models, the ``vaip_llm.json`` file is no longer required. As a result, the ``vaip_llm.json`` path has been removed from the ``genai_config.json`` for all NPU models. Please ensure that you re-download the NPU models from `Hugging Face <https://huggingface.co/collections/amd/ryzenai-15-llm-npu-models-6859846d7c13f81298990db0>`_ when using the Ryzen AI 1.5 installer.
+<<<<<<< develop
+=======
+  
+>>>>>>> develop
 
 
 
