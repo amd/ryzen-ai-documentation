@@ -74,7 +74,7 @@ The ``provider_options`` parameter of the ORT ``InferenceSession`` allows passin
 
 - .. option:: config_file 
 
-Required for BF16 models. Configuration file to pass additional compilation options for BF16 models. For more details, refer to the section about :ref:`Config File Options <configuration-file>`.
+Optional. Configuration file to pass additional compilation options for BF16 models. For more details, refer to the section about :ref:`Config File Options <configuration-file>`.
 
 Type: String
 
@@ -167,9 +167,9 @@ Default: False
 Config File Options
 ===================
 
-When compiling BF16 models, a JSON configuration file must be provided to the VitisAI EP using the :option:`config_file` provider option. This configuration file is used to specify additional options to the compiler. 
+When compiling BF16 models, a JSON configuration file can be provided to the VitisAI EP using the :option:`config_file` provider option. This configuration file is used to specify additional options to the compiler. 
 
-The default the configuration file for compiling BF16 models should contain the following:
+The default the configuration file for compiling BF16 models contains the following:
 
 .. code-block:: json
 
@@ -183,36 +183,30 @@ The default the configuration file for compiling BF16 models should contain the 
             "name": "vaiml_partition",
             "plugin": "vaip-pass_vaiml_partition",
             "vaiml_config": {
-                "optimize_level": 2
+                "optimize_level": 1,
+                "preferred_data_storage": "auto"
             }
         }
     ]
    }
 
 
-Additional options can be specified in the ``vaiml_config`` section of the configuration file, as described below.
+The ``vaiml_config`` section of the configuration file contains the user options. The supported user options are described below.
+
 
 - .. option:: optimize_level
 
-Controls the compiler optiomization level.
+Controls the compiler optimization level.
 
-Supported values: 1 (default), 2
-
-.. code-block:: json
-
-    "vaiml_config": {"optimize_level": 1}
+Supported values: 1 (default), 2, 3
 
 
 
 - .. option:: preferred_data_storage
 
-Controls whether intermediate data is stored in vectorized or unvectorized format. Models dominated by convolutions (e.g., CNNs) perform better with vectorized data. Models dominated by GEMMs (e.g., Transformers) perform better with unvectorized data. When the ``auto`` mode is selected, the compiler tries to select the best layout.
+Controls whether intermediate data is stored in vectorized or unvectorized format. Models dominated by convolutions (e.g., CNNs) perform better with vectorized data. Models dominated by GEMMs (e.g., Transformers) perform better with unvectorized data. By default ("auto") the compiler tries to select the best layout.
 
-Supported values: "vectorized" (default), "unvectorized", "auto"
-
-.. code-block:: json
-
-    "vaiml_config": {"preferred_data_storage": "vectorized"}
+Supported values: "auto" (default), "vectorized", "unvectorized"
 
 
 
