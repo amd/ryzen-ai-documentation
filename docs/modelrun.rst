@@ -335,11 +335,16 @@ Python example:
 Operator Assignment Report
 **************************
 
-The XLNX_ONNX_EP_REPORT_FILE environment variable can be set before compilation to generate a report on model operator assignments across CPU and NPU::
+The compiler can optionally generate a report on operator assignments across CPU and NPU. To generate this report:
+
+- The :option:`enable_cache_file_io_in_mem` provider option must be set to 1
+- The XLNX_ONNX_EP_REPORT_FILE environment variable must be used to specify the name of the generated report. For instance:
+
+.. code-block::
 
     set XLNX_ONNX_EP_REPORT_FILE=vitisai_ep_report.json
 
-When the XLNX_ONNX_EP_REPORT_FILE is set, the  ``vitisai_ep_report.json`` file is automatically generated in the cache directory. This report includes information such as the total number of nodes, the list of operator types in the model, and which nodes and operators runs on the NPU or on the CPU. Additionally, the report includes node statistics, such as input to a node, the applied operation, and output from the node.
+When these conditions are satisified, the report file is automatically generated in the cache directory. This report includes information such as the total number of nodes, the list of operator types in the model, and which nodes and operators runs on the NPU or on the CPU. Additionally, the report includes node statistics, such as input to a node, the applied operation, and output from the node.
 
 .. code-block::
 
