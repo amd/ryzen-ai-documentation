@@ -498,7 +498,7 @@ Operator Assignment Report
 
 The compiler can optionally generate a report on operator assignments across CPU and NPU. To generate this report:
 
-- The :option:`enable_cache_file_io_in_mem` provider option must be set to 1
+- The :option:`enable_cache_file_io_in_mem` provider option must be set to 0
 - The XLNX_ONNX_EP_REPORT_FILE environment variable must be used to specify the name of the generated report. For instance:
 
 .. code-block::
