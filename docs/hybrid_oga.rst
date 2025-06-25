@@ -70,15 +70,21 @@ For detailed documentation and examples, refer to the official OGA repository:
 🔗 https://github.com/microsoft/onnxruntime-genai/tree/rel-0.7.0
 
 
-The steps for deploying the pre-optimized models using Python or C++ are described in the following sections.
-
 ***************************
-C++ Execution of OGA Models
+LLMs Test Programs
 ***************************
 
-The Ryzen AI installer provides a test C++ executable ``model_benchmark.exe`` that can be run to understand the C++ DLL dependencies.
+The Ryzen AI installation includes test programs (in C++ and Python) which can be used to run LLMs and understand how to integrate them in your application.
 
-1. Enabling Performance Mode (Optional): To run the LLMs in the best performance mode, follow these steps:
+The steps for deploying the pre-optimized models using the sample programs are described in the following sections.
+
+
+C++ Program
+===========
+
+The ``model_benchmark.exe`` executable that can be used to test LLMs and understand the DLL dependencies for C++ applications.
+
+1. (Optional) Enabling Performance Mode: To run the LLMs in the best performance mode, follow these steps:
 
 - Go to ``Windows`` → ``Settings`` → ``System`` → ``Power`` and set the power mode to Best Performance.
 - Execute the following commands in the terminal:
@@ -94,9 +100,7 @@ The Ryzen AI installer provides a test C++ executable ``model_benchmark.exe`` th
     
     conda activate ryzen-ai-1.5.0
 
-3. Copy necessary DLLs
-
-Create a folder to run the LLM from, and copy the required files:
+3. Create a folder to run the LLM from, and copy the required files:
 
 .. code-block::
   
@@ -134,7 +138,6 @@ Create a folder to run the LLM from, and copy the required files:
 
 4. Download the desired models from the list of pre-optimized models on Hugging Face:
 
-
 .. code-block:: 
     
      :: Make sure you have git-lfs installed (https://git-lfs.com) 
@@ -146,7 +149,6 @@ Create a folder to run the LLM from, and copy the required files:
 
 5. Run test ``model_benchmark.exe``
 
-
 .. code-block::
 
      .\model_benchmark.exe -i $path_to_model_dir  -f $prompt_file -l $list_of_prompt_lengths
@@ -155,9 +157,8 @@ Create a folder to run the LLM from, and copy the required files:
      .\model_benchmark.exe -i Llama-2-7b-chat-hf-awq-g128-int4-asym-fp16-onnx-hybrid -f amd_genai_prompt.txt -l "1024" 
 
 
-******************************
-Python Execution of OGA Models
-******************************
+Python Script
+=============
 
 Run sample python script 
 
@@ -170,10 +171,10 @@ Run sample python script
 
 
 **************************************
-Build C++ application from OGA C++ API
+Building C++ Applications
 **************************************
 
-To see a sample C++ code and build process visit RyzenAI-SW repo: https://github.com/amd/RyzenAI-SW/tree/main/example/llm/oga_api
+A complete example including C++ source and build instructions is available in the RyzenAI-SW repository: https://github.com/amd/RyzenAI-SW/tree/main/example/llm/oga_api
 
 **Testing note:** Currently the script is present in https://gitenterprise.xilinx.com/VitisAI/RyzenAI-SW/tree/dev/example/llm/oga_api . It will be merged with amd/RyzenAI-SW post testing.
 
