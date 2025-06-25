@@ -193,13 +193,13 @@ Additional options can be specified in the ``vaiml_config`` section of the confi
 
 - .. option:: optimize_level
 
-Controls the compiler optiomization level. In Ryzen AI 1.5, the only supported value is 2. Optimization level 1 is no longer supported and should not be used.
+Controls the compiler optiomization level.
 
-Supported values: 2
+Supported values: 1 (default), 2
 
 .. code-block:: json
 
-    "vaiml_config": {"optimize_level": 2}
+    "vaiml_config": {"optimize_level": 1}
 
 
 
@@ -212,18 +212,6 @@ Supported values: "vectorized" (default), "unvectorized", "auto"
 .. code-block:: json
 
     "vaiml_config": {"preferred_data_storage": "vectorized"}
-
-
-
-- .. option:: force
-
-By the default the compiler will skip compilation if the signature of the model matches a precompiled model. When force is set true, the model will always be compiled.
-
-Supported values: True, False (default)
-
-.. code-block:: json
-
-    "vaiml_config": {"force": False}
 
 
 
@@ -399,16 +387,6 @@ Python example:
 
 
 In the example above, the cache directory is set to the absolute path of the folder containing the script being executed. Once the session is created, the compiled model is saved inside a subdirectory named ``compiled_resnet50_int8`` within the specified cache folder.
-
-
-Ignoring the Cache
-------------------
-
-To ignore cached models and force recompilation:
-
-- For INT8 models, set the :option:`enable_cache_file_io_in_mem` provider option to 1
-
-- For BF16 models, set the :option:`force` config file option to True
 
 
 
