@@ -74,7 +74,7 @@ The ``provider_options`` parameter of the ORT ``InferenceSession`` allows passin
 
 - .. option:: config_file 
 
-Required for BF16 models. Configuration file to pass additional compilation options for BF16 models. For more details, refer to the section about :ref:`Config File Options <configuration-file>`.
+Optional. Configuration file to pass additional compilation options for BF16 models. For more details, refer to the section about :ref:`Config File Options <configuration-file>`.
 
 Type: String
 
@@ -88,6 +88,33 @@ Required for INT8 models. NPU binary file to specify NPU configuration to be use
 Type: String
 
 Default: N/A.
+
+
+- .. option:: encryption_key 
+
+Optional. 256-bit key used for encrypting the EP context model. At runtime, you must use the same key to decrypt the model when loading it. For more details, refer to the section about the :ref:`EP Context Cache <ort-ep-context-cache>` feature.
+
+Type: String of 64 hexadecimal values representing the 256-bit encryption key.
+
+Default: None, the model is not encrypted.
+
+
+- .. option:: opt_level 
+
+Optional. Applies to INT8 models only. Controls the compiler optimization effort.
+
+Supported Values: 0, 1, 2, 3, 65536 (maximum effort, experimental)
+
+Default: 0
+
+
+- .. option:: log_level
+
+Optional. Controls what level of messages are reported by the VitisAI EP.
+
+Supported Values: "info", "warning", "warning", "error", "fatal"
+
+Default: "info"
 
 
 - .. option:: cache_dir 
@@ -117,33 +144,6 @@ Supported Values: 0, 1
 Default: 1
 
 
-- .. option:: encryption_key 
-
-Optional. 256-bit key used for generating an encrypted compiled model in the cache folder. At runtime, you must use the same key to decrypt the model when loading it from the cache.
-
-String of 64 hexadecimal values representing the 256-bit encryption key.
-
-Default: None, the model is not encrypted.
-
-
-- .. option:: opt_level 
-
-Optional. Applies to INT8 models only. Controls the compiler optimization effort.
-
-Supported Values: 0, 1, 2, 3, 65536 (maximum effort, experimental)
-
-Default: 0
-
-
-- .. option:: log_level
-
-Optional. Controls what level of messages are reported by the VitisAI EP.
-
-Supported Values: "info", "warning", "warning", "error", "fatal"
-
-Default: "info"
-
-
 - .. option:: ai_analyzer_visualization 
 
 Optional. Enables generation of compile-time analysis data.
@@ -151,6 +151,7 @@ Optional. Enables generation of compile-time analysis data.
 Type: Boolean
 
 Default: False
+
 
 - .. option:: ai_analyzer_profiling 
 
@@ -166,9 +167,9 @@ Default: False
 Config File Options
 ===================
 
-When compiling BF16 models, a JSON configuration file must be provided to the VitisAI EP using the :option:`config_file` provider option. This configuration file is used to specify additional options to the compiler. 
+When compiling BF16 models, a JSON configuration file can be provided to the VitisAI EP using the :option:`config_file` provider option. This configuration file is used to specify additional options to the compiler. 
 
-The default the configuration file for compiling BF16 models should contain the following:
+The default the configuration file for compiling BF16 models contains the following:
 
 .. code-block:: json
 
@@ -182,36 +183,30 @@ The default the configuration file for compiling BF16 models should contain the 
             "name": "vaiml_partition",
             "plugin": "vaip-pass_vaiml_partition",
             "vaiml_config": {
-                "optimize_level": 2
+                "optimize_level": 1,
+                "preferred_data_storage": "auto"
             }
         }
     ]
    }
 
 
-Additional options can be specified in the ``vaiml_config`` section of the configuration file, as described below.
+The ``vaiml_config`` section of the configuration file contains the user options. The supported user options are described below.
+
 
 - .. option:: optimize_level
 
-Controls the compiler optiomization level.
+Controls the compiler optimization level.
 
-Supported values: 1 (default), 2
-
-.. code-block:: json
-
-    "vaiml_config": {"optimize_level": 1}
+Supported values: 1 (default), 2, 3
 
 
 
 - .. option:: preferred_data_storage
 
-Controls whether intermediate data is stored in vectorized or unvectorized format. Models dominated by convolutions (e.g., CNNs) perform better with vectorized data. Models dominated by GEMMs (e.g., Transformers) perform better with unvectorized data. When the ``auto`` mode is selected, the compiler tries to select the best layout.
+Controls whether intermediate data is stored in vectorized or unvectorized format. Models dominated by convolutions (e.g., CNNs) perform better with vectorized data. Models dominated by GEMMs (e.g., Transformers) perform better with unvectorized data. By default ("auto") the compiler tries to select the best layout.
 
-Supported values: "vectorized" (default), "unvectorized", "auto"
-
-.. code-block:: json
-
-    "vaiml_config": {"preferred_data_storage": "vectorized"}
+Supported values: "auto" (default), "vectorized", "unvectorized"
 
 
 
@@ -389,49 +384,6 @@ Python example:
 In the example above, the cache directory is set to the absolute path of the folder containing the script being executed. Once the session is created, the compiled model is saved inside a subdirectory named ``compiled_resnet50_int8`` within the specified cache folder.
 
 
-
-VitisAI EP Cache Encryption
----------------------------
-
-The contents of the VitisAI EP cache folder can be encrypted using AES256. Cache encryption is enabled by passing an encryption key through the :option:`encryption_key` VAI EP provider options. The same key must be used to decrypt the model when loading it from the cache. The key is a 256-bit value represented as a 64-digit string.
-
-As a result of encryption, the model generated in the cache directory cannot be opened with Netron. Additionally, tracing is disabled to prevent the leakage of sensitive information about the model.
-
-Python example:
-
-.. code-block:: python
-
-    import onnxruntime
-
-    vai_ep_options = {
-        "config_file": "vaip_config.json",
-        "encryption_key": "89703f950ed9f738d956f6769d7e45a385d3c988ca753838b5afbc569ebf35b2"
-    }
-
-    session = onnxruntime.InferenceSession(
-        "resnet50_bf16.onnx",
-        providers=["VitisAIExecutionProvider"],
-        provider_options=[vai_ep_options]
-    )
-
-C++ example:
-
-.. code-block:: cpp
-
-    auto onnx_model = "resnet50_bf16.onnx"
-    Ort::Env env(ORT_LOGGING_LEVEL_WARNING, "resnet50_bf16");
-    auto session_options = Ort::SessionOptions();
-    auto vai_ep_options = std::unorderd_map<std::string,std::string>({});
-    vai_ep_options["config_file"] = "vaip_config.json";
-    vai_ep_options["encryption_key"] = "89703f950ed9f738d956f6769d7e45a385d3c988ca753838b5afbc569ebf35b2";
-    session_options.AppendExecutionProvider_VitisAI(vai_ep_options);
-    auto session = Ort::Session(
-        env, 
-        std::basic_string<ORTCHAR_T>(onnx_model.begin(), onnx_model.end()).c_str(), 
-        session_options);
-
-
-
 .. _ort-ep-context-cache:
 
 ONNX Runtime EP Context Cache
@@ -456,15 +408,27 @@ By default, the generated context model is unencrypted and can be used directly 
 
 User-managed encryption
 ~~~~~~~~~~~~~~~~~~~~~~~
-After the context model is generated, the developer can encrypt the generated file using a method of choice. At runtime, the encrypted file can be loaded by the application, decrypted in memory and passed as a serialized string to the inference session. This method gives complete control to the developer over the encryption process.
+After the context model is generated, the developer can encrypt the generated file using a method of choice. At runtime, the encrypted file can be loaded by the application, decrypted in memory and passed as a serialized string to the inference session. 
+
+This method gives complete control to the developer over the encryption process.
 
 EP-managed encryption
 ~~~~~~~~~~~~~~~~~~~~~~~
-The Vitis AI EP encryption mechanism can be used to encrypt the context model. This is enabled by passing an encryption key via the :option:`encryption_key` provider option (discussed in the previous section). The model is encrypted using AES256. At runtime, the same encryption key must be provided to decrypt and load the context model. With this method, encryption and decryption is seamlessly managed by the VitisAI EP.
+The VitisAI EP can optionally encrypt the EP context model using AES256. This is enabled by passing an encryption key using the :option:`encryption_key` VAI EP provider options. The key is a 256-bit value represented as a 64-digit string. At runtime, the same encryption key must be provided to decrypt and load the context model. 
+
+With this method, encryption and decryption is seamlessly managed by the VitisAI EP.
+
 
 Python example:
 
 .. code-block:: python
+
+    import onnxruntime
+
+    vai_ep_options = {
+        'xclbin': r'/path/to/xclbins/strix/AMD_AIE2P_4x4_Overlay.xclbin'),
+        'encryptionKey': '89703f950ed9f738d956f6769d7e45a385d3c988ca753838b5afbc569ebf35b2'
+    }
 
     # Compilation session
     session_options = ort.SessionOptions()
@@ -472,23 +436,46 @@ Python example:
     session_options.add_session_config_entry('ep.context_file_path', 'context_model.onnx')
     session_options.add_session_config_entry('ep.context_embed_mode', '1')
     session = ort.InferenceSession(
-        path_or_bytes='resnet50_int8.onnx',
+        path_or_bytes='resnet50_int8.onnx',  # Load the ONNX model
         sess_options=session_options,
         providers=['VitisAIExecutionProvider'],
-        provider_options=[{'encryptionKey': '89703f950ed9f738d956f6769d7e45a385d3c988ca753838b5afbc569ebf35b2'}]
+        provider_options=[vai_ep_options]
     )
 
     # Inference session
     session_options = ort.SessionOptions()
     session = ort.InferenceSession(
-        path_or_bytes='context_model.onnx',
+        path_or_bytes='context_model.onnx', # Load the EP context model
         sess_options=session_options,
         providers=['VitisAIExecutionProvider'],
-        provider_options=[{'encryptionKey': '89703f950ed9f738d956f6769d7e45a385d3c988ca753838b5afbc569ebf35b2'}]
+        provider_options=[vai_ep_options]
     )
 
 
-**NOTE**: When compiling with :option:`encryption_key`, ensure that any existing cache directory (either the default cache directory or the directory specified by the :option:`cache_dir` provider option) is deleted before compiling.
+C++ example:
+
+.. code-block:: cpp
+
+    Ort::Env env(ORT_LOGGING_LEVEL_WARNING, "ort");
+
+    // VAI EP Provider options
+    auto vai_ep_options = std::unorderd_map<std::string,std::string>({});
+    vai_ep_options["xclbin"] = "/path/to/xclbins/strix/AMD_AIE2P_4x4_Overlay.xclbin";
+    vai_ep_options["encryption_key"] = "89703f950ed9f738d956f6769d7e45a385d3c988ca753838b5afbc569ebf35b2";
+
+    // Session options
+    auto session_options = Ort::SessionOptions();
+    session_options.AppendExecutionProvider_VitisAI(vai_ep_options);
+
+    // Inference session
+    auto onnx_model = "context_model.onnx"; // The EP context model
+    auto session = Ort::Session(
+        env, 
+        std::basic_string<ORTCHAR_T>(onnx_model.begin(), onnx_model.end()).c_str(), 
+        session_options);
+
+
+|memo| **NOTE**: It is possible to precompile the EP context model using Python and to deploy it using a C++ program.
 
 |
 
