@@ -66,9 +66,9 @@ Version 1.5
   - The ``hybrid_llm`` and ``npu_llm`` folders have been consolidated into a new folder named ``LLM``, which contains the ``model_benchmark.exe`` and ``run_model.py`` scripts, along with the necessary C++ headers and .lib files to support both the Hybrid LLM and NPU LLM workflows in C++ and Python.
   - For NPU LLM models, the ``vaip_llm.json`` file is no longer required. As a result, the ``vaip_llm.json`` path has been removed from the ``genai_config.json`` for all NPU models. Please ensure that you re-download the NPU models from `Hugging Face <https://huggingface.co/collections/amd/ryzenai-15-llm-npu-models-6859846d7c13f81298990db0>`_ when using the Ryzen AI 1.5 installer.
   - The ``1x4.xclbin`` (PHX/HPT) and ``AMD_AIE2P_Nx4_Overlay.xclbin`` (STX/KRK) NPU binaries are no longer supported and should not be used. The ``4x4.xclbin`` (PHX/HPT) and ``AMD_AIE2P_4x4_Overlay.xclbin`` (STX/KRK) NPU binaries should be used instead.
-  - For BF16 models, the :option:`optimize_level` option no longer supports level 1. Level 2 must be used instead.
-  - For INT8 models, the VitisAI EP no longer saves the compiled model to disk by default. To save the compiled model, use the ONNX Runtime :ref:`EP Context Cache <ort-ep-context-cache>` feature or set the :option:`enable_cache_file_io_in_mem` provider option to 0.
-  - The ``XLNX_ENABLE_CACHE``, ``XLNX_VART_FIRMWARE`` and ``XLNX_TARGET_NAME`` environment variables are no longer supported and should be relied upon.
+  - The ``XLNX_ENABLE_CACHE``, ``XLNX_VART_FIRMWARE`` and ``XLNX_TARGET_NAME`` environment variables are no longer supported and should not be relied upon.
+  - For INT8 models, the VitisAI EP no longer saves the compiled model to disk by default. To save the compiled model, use the ONNX Runtime :ref:`EP Context Cache <ort-ep-context-cache>` feature or set the :option:`enable_cache_file_io_in_mem` provider option to 0. 
+  - Generation of the ``vitisai_ep_report.json`` file is no longer automatic and must manually enabled. See the :ref:`Operator Assignment Report <op-assignment-report>` section for details.
 
 
 

@@ -492,6 +492,8 @@ Python example:
 
 |
 
+.. _op-assignment-report:
+
 **************************
 Operator Assignment Report
 **************************
@@ -537,6 +539,14 @@ When these conditions are satisified, the report file is automatically generated
      ...
     ]
     ...
+
+
+To disable generation of the report, unset the XLNX_ONNX_EP_REPORT_FILE environment variable:
+
+.. code-block::
+
+    set XLNX_ONNX_EP_REPORT_FILE=
+
 
 ..
   ------------

@@ -39,7 +39,7 @@ On Linux, ::
 
 OpenCV libraries
 ================
-Ryzen AI CVML library samples make use of OpenCV, so set an environment variable to let the build scripts know where to find OpenCV. ::
+Ryzen AI CVML library samples make use of OpenCV, so set an environment variable to let the build scripts know where to find OpenCV.
 
 On Windows, ::
 
