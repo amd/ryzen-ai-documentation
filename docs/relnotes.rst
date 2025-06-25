@@ -68,6 +68,7 @@ Version 1.5
   - The ``1x4.xclbin`` (PHX/HPT) and ``AMD_AIE2P_Nx4_Overlay.xclbin`` (STX/KRK) NPU binaries are no longer supported and should not be used. The ``4x4.xclbin`` (PHX/HPT) and ``AMD_AIE2P_4x4_Overlay.xclbin`` (STX/KRK) NPU binaries should be used instead.
   - The ``XLNX_ENABLE_CACHE``, ``XLNX_VART_FIRMWARE`` and ``XLNX_TARGET_NAME`` environment variables are no longer supported and should not be relied upon.
   - For INT8 models, the VitisAI EP no longer saves the compiled model to disk by default. To save the compiled model, use the ONNX Runtime :ref:`EP Context Cache <ort-ep-context-cache>` feature or set the :option:`enable_cache_file_io_in_mem` provider option to 0. 
+  - Support for VitisAI EP cache encryption is no longer supported. To encrypt compiled models, use the ONNX Runtime :ref:`EP Context Cache <ort-ep-context-cache>` feature instead.
   - Generation of the ``vitisai_ep_report.json`` file is no longer automatic and must manually enabled. See the :ref:`Operator Assignment Report <op-assignment-report>` section for details.
 
 
