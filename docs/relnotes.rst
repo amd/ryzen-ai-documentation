@@ -61,21 +61,17 @@ Version 1.5
 
 - Breaking Changes
 
+  - The ``%RYZEN_AI_INSTALLATION_PATH%\\deployment`` folder has been reorganized and flattened. Deployment DLLs are not longer organized in subfolders. Application build scripts pulling DLLs from the ``deployment`` folder will need to be updated based on the new paths. Refer to the :ref:`Application Packaging Requirements <app-packaging>` section for further details.
   - The ``1x4.xclbin`` (PHX/HPT) and ``AMD_AIE2P_Nx4_Overlay.xclbin`` (STX/KRK) NPU binaries are no longer supported and should not be used. The ``4x4.xclbin`` (PHX/HPT) and ``AMD_AIE2P_4x4_Overlay.xclbin`` (STX/KRK) NPU binaries should be used instead.
   - The ``XLNX_ENABLE_CACHE``, ``XLNX_VART_FIRMWARE`` and ``XLNX_TARGET_NAME`` environment variables are no longer supported and should not be relied upon.
   - Support for VitisAI EP cache encryption is no longer supported. To encrypt compiled models, use the ONNX Runtime :ref:`EP Context Cache <ort-ep-context-cache>` feature instead.  
   - For INT8 models, the VitisAI EP no longer saves the compiled model to disk by default. To save the compiled model, use the ONNX Runtime :ref:`EP Context Cache <ort-ep-context-cache>` feature or set the :option:`enable_cache_file_io_in_mem` provider option to 0. 
   - Generation of the ``vitisai_ep_report.json`` file is no longer automatic and must manually enabled. See the :ref:`Operator Assignment Report <op-assignment-report>` section for details.
-  - LLM Flow specific  
+  - Changes to the OGA flow for LLMs:
 
     - OGA Version updated to **v0.7.0** (Ryzen AI 1.5) from v0.6.0 (Ryzen AI 1.4) 
-    - The ``%RYZEN_AI_INSTALLATION_PATH%\\deployment`` folder has been reorganized and flattened. Deployment DLLs are not longer organized in subfolders. Application build scripts pulling DLLs from the ``deployment`` folder will need to be updated based on the new paths. Refer to the :ref:`Application Packaging Requirements <app-packaging>` section for further details.
     - The ``hybrid_llm`` and ``npu_llm`` folders have been consolidated into a new folder named ``LLM``, which contains the ``model_benchmark.exe`` and ``run_model.py`` scripts, along with the necessary C++ headers and .lib files to support both the Hybrid LLM and NPU LLM workflows in C++ and Python.
     - For NPU LLM models, the ``vaip_llm.json`` file is no longer required. As a result, the ``vaip_llm.json`` path has been removed from the ``genai_config.json`` for all NPU models. Please ensure that you re-download the NPU models from `Hugging Face <https://huggingface.co/collections/amd/ryzenai-15-llm-npu-models-6859846d7c13f81298990db0>`_ when using the Ryzen AI 1.5 installer.
-<<<<<<< develop
-=======
-  
->>>>>>> develop
 
 
 
