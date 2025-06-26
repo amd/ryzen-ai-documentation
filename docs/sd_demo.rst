@@ -2,7 +2,12 @@
 Stable Diffusion Demo
 #######################
 
-**TODO**: Add short introduction
+Ryzen AI 1.5 provides preview demos of Stable Diffusion image-generation pipelines. 
+
+Preview features are features which are still undergoing some optimization and fine-tuning. These features are not in their final form and may change as we continue to work in order to mature them into full-fledged features.
+
+The demos cover Image-to-Image and Text-to-Image using SD 1.5, SD 2.1-base, SD-Turbo and SDXL-Turbo.
+
 
 ******************
 Installation Steps
@@ -10,33 +15,23 @@ Installation Steps
 
 1. Ensure the latest version of Ryzen AI and NPU drivers are installed. See :doc:`inst`.
 
-2. Activate the installed Ryzen AI conda environment:
+2. Copy the GenAI-SD folder from the RyzenAI installation tree to your working area, and then go to the copied folder. For instance:
 
 .. code-block:: 
 
-  conda activate ryzen-ai-1.5.0
-
-3. Copy the GenAI-SD folder from the RyzenAI installation tree to your working area, and then go to the copied folder. For instance:
-
-.. code-block:: 
-
-  xcopy /I /E "%RYZEN_AI_INSTALLATION_PATH%\GenAI-SD" C:\Temp\GenAI-SD
+  xcopy /I /E "C:\Program Files\RyzenAI\1.5.0\GenAI-SD" C:\Temp\GenAI-SD
   cd C:\Temp\GenAI-SD
 
-4. Update the Ryzen AI conda environment:
+3. Create a Conda environment for the Stable Diffusion demo packages:
 
 .. code-block:: 
 
-  conda env update -f rai_env_update.yaml
+  conda update -n base -c defaults conda
+  conda env create --file=env.yaml
 
-5. Install additional dependencies:
+4. Download the Stable Diffusion models, scheduler and tokenizer files from HuffingFace <link>
 
-.. code-block:: 
-
-  pip install "%RYZEN_AI_INSTALLATION_PATH%\atom-1.0-cp310-cp310-win_amd64.whl"
-  pip install opencv-python
-
-6. Download the Stable Diffusion models, scheduler and tokenizer configure files from HuffingFace **TODO**: Add link when ready
+**TODO**: Add link when ready
 
 **NOTE**: For AMD internal testing, use the follwing download links:
 
@@ -44,9 +39,7 @@ Installation Steps
 
 🔗 https://amdcloud-my.sharepoint.com/:u:/r/personal/chuanlia_amd_com/Documents/sd3_release/sd_release_zip_file/RAI1.5-v0613/GenAI-SDXL-turbo-models-v0613.zip?csf=1&web=1&e=hHUgMr
 
-7. Copy the downloaded models in the ``GenAI-SD\models`` folder. 
-
-8. After installing all the models, the ``GenAI-SD\models`` folder should contain the following subfolders:
+5. Copy the downloaded models in the ``GenAI-SD\models`` folder. After installing all the models, the ``GenAI-SD\models`` folder should contain the following subfolders:
 
    - sd15_controlnet
    - sd_15
@@ -59,20 +52,21 @@ Installation Steps
 Running the Demos
 ******************
 
-Optional: to maximize performance, you can set the NPU to high performance mode by running:
+Activate the conda environment::
 
-.. code-block:: 
+  conda activate ryzenai-stable-diffusion
 
-    xrt-smi configure --pmode performance
+Optionally, set the NPU to high performance mode to maximize performance::
+
+  xrt-smi configure --pmode performance
 
 Refer to the documentation on :ref:`xrt-smi configure <xrt-smi-configure>` for additional information.
-
 
 
 Image-to-Image with ControlNet
 ==============================
 
-The image-to-image demo generates images based a prompt and a control image. This demo supports SD 1.5 (512x512).
+The image-to-image demo generates images based on a prompt and a control image for a Canny ControlNet. This demo supports SD 1.5 (512x512).
 
 To run the demo, navigate to the ``GenAI-SD\test`` directory and run the following command:
 
@@ -80,11 +74,11 @@ To run the demo, navigate to the ``GenAI-SD\test`` directory and run the followi
 
     python .\run_sd15_controlnet.py
 
-The demo script uses a predefined prompt and uses ``ref\control.png`` as the control image. The output image is saved in the ``generated_images`` folder. 
+The demo script uses a predefined prompt and ``ref\control.png`` as the control image. The output image and control image are saved in the ``generated_images`` folder.
 
 The control image can be modified and custom prompts can be provided with the ``--prompt`` option. For instance::
 
-  python .\run_sd15_controlnet.py --prompt "A red bird on a grey sky"
+  python run_sd15_controlnet.py --prompt "A red bird on a grey sky"
 
 
 Text-to-Image
@@ -96,16 +90,50 @@ To run the demo, navigate to the ``GenAI-SD\test`` directory and run the followi
 
 .. code-block:: 
 
-  python .\run_sd.py --model_id 'stable-diffusion-v1-5/stable-diffusion-v1-5' --model_path ..\models\sd_15
-  python .\run_sd.py --model_id 'stabilityai/sd-turbo' --model_path ..\models\sd_turbo
-  python .\run_sd.py --model_id 'stabilityai/stable-diffusion-2-1-base' --model_path ..\models\sd_21_base
-  python .\run_sd_xl.py --model_id 'stabilityai/sdxl-turbo' --model_path ..\models\sdxl_turbo
+  python run_sd.py    --model_id 'stable-diffusion-v1-5/stable-diffusion-v1-5' --model_path ..\models\sd_15
+  python run_sd.py    --model_id 'stabilityai/stable-diffusion-2-1-base' --model_path ..\models\sd_21_base
+  python run_sd.py    --model_id 'stabilityai/sd-turbo' --model_path ..\models\sd_turbo
+  python run_sd_xl.py --model_id 'stabilityai/sdxl-turbo' --model_path ..\models\sdxl_turbo
 
 
 The demo script uses a predefined prompt for each of the models. The output images are saved in the ``generated_images`` folder. 
 
 Custom prompts can be provided with the ``--prompt`` option. For instance::
 
-  C:\Temp\GenAI-SD-v0613\test>python .\run_sd.py --model_id 'stabilityai/stable-diffusion-2-1-base' --model_path ..\models\sd_21_base  --prompt "A bouquet of roses, impressionist style"
+  python run_sd.py --model_id 'stabilityai/stable-diffusion-2-1-base' --model_path ..\models\sd_21_base  --prompt "A bouquet of roses, impressionist style"
 
 
+..
+  ------------
+  #####################################
+  License
+  #####################################
+
+  Ryzen AI is licensed under `MIT License <https://github.com/amd/ryzen-ai-documentation/blob/main/License>`_ . Refer to the `LICENSE File <https://github.com/amd/ryzen-ai-documentation/blob/main/License>`_ for the full license text and copyright notice.
+
+
+
+
+.. 1. Ensure the latest version of Ryzen AI and NPU drivers are installed. See :doc:`inst`.
+
+.. 2. Activate the installed Ryzen AI conda environment:
+
+.. .. code-block:: 
+
+..   conda activate ryzen-ai-1.5.0
+
+.. 3. Copy the GenAI-SD folder from the RyzenAI installation tree to your working area, and then go to the copied folder. For instance:
+
+.. .. code-block:: 
+
+..   xcopy /I /E "%RYZEN_AI_INSTALLATION_PATH%\GenAI-SD" C:\Temp\GenAI-SD
+..   cd C:\Temp\GenAI-SD
+
+.. 4. Update the Ryzen AI conda environment and install additional dependencies:
+
+.. .. code-block:: 
+
+..   conda env update -f rai_env_update.yaml
+..   pip install "%RYZEN_AI_INSTALLATION_PATH%\atom-1.0-cp310-cp310-win_amd64.whl"
+..   pip install opencv-python==4.11.0.86
+..   pip install accelerate==0.32.0
