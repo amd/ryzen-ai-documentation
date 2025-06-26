@@ -323,6 +323,9 @@ Sample Command Line Output::
     -------------------------------------------------------------------------------
     Validation completed. Please run the command '--verbose' option for more details
     
+    
+.. _xrt-smi-configure:
+
 *******************************
 xrt-smi configure
 *******************************

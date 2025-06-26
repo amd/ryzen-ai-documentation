@@ -90,6 +90,7 @@ For more details, refer to the :doc:`modelrun` page.
    xrt_smi.rst
    ai_analyzer.rst
    ryzen_ai_libraries.rst
+   sd_demo.rst
 
 
 .. toctree::
