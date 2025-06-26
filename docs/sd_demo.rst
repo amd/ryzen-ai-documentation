@@ -29,7 +29,7 @@ Installation Steps
   conda update -n base -c defaults conda
   conda env create --file=env.yaml
 
-4. Download the Stable Diffusion models, scheduler and tokenizer files from HuffingFace <link>
+4. Download the Stable Diffusion models, scheduler and tokenizer files from Hugging Face <link>
 
 **TODO**: Add link when ready
 
