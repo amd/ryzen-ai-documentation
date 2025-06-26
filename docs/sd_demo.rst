@@ -36,7 +36,6 @@ Installation Steps
   pip install "%RYZEN_AI_INSTALLATION_PATH%\atom-1.0-cp310-cp310-win_amd64.whl"
   pip install opencv-python
 
-
 6. Download the Stable Diffusion models, scheduler and tokenizer configure files from HuffingFace **TODO**: Add link when ready
 
 **NOTE**: For AMD internal testing, use the follwing download links:
@@ -47,7 +46,7 @@ Installation Steps
 
 7. Copy the downloaded models in the ``GenAI-SD\models`` folder. 
 
-8. After installating all the models, the ``GenAI-SD\models`` folder should contain the following subfolders:
+8. After installing all the models, the ``GenAI-SD\models`` folder should contain the following subfolders:
 
    - sd15_controlnet
    - sd_15
@@ -70,34 +69,43 @@ Refer to the documentation on :ref:`xrt-smi configure <xrt-smi-configure>` for a
 
 
 
-Image-to-Image with ControNet
-=============================
+Image-to-Image with ControlNet
+==============================
 
-Supported models: SD15 (512x512)
+The image-to-image demo generates images based a prompt and a control image. This demo supports SD 1.5 (512x512).
 
-Navigate to the ``GenAI-SD\test`` directory and run the following command:
+To run the demo, navigate to the ``GenAI-SD\test`` directory and run the following command:
 
 .. code-block:: 
 
     python .\run_sd15_controlnet.py
 
-Results are saved into the ``generated_images`` folder.  
+The demo script uses a predefined prompt and uses ``ref\control.png`` as the control image. The output image is saved in the ``generated_images`` folder. 
 
+The control image can be modified and custom prompts can be provided with the ``--prompt`` option. For instance::
+
+  python .\run_sd15_controlnet.py --prompt "A red bird on a grey sky"
 
 
 Text-to-Image
 =============
 
-Supported models: SD15 SD-Turbo (512x512), SDXL-Turbo (512x512), SD2.1-base (768x768)
+The text-to-image generates images based on text prompts. This demo supports SD 1.5 (512x512), SD 2.1-base (768x768), SD-Turbo (512x512) and SDXL-Turbo (512x512).
 
-Navigate to the ``GenAI-SD\test`` directory and run the following commands:
+To run the demo, navigate to the ``GenAI-SD\test`` directory and run the following commands to run with each of the supported models:
 
 .. code-block:: 
 
-    python .\run_sd.py --model_id 'stabilityai/sd_15'      --model_path ..\models\sd_15
-    python .\run_sd.py --model_id 'stabilityai/sd_21_base' --model_path ..\models\sd_21_base
-    python .\run_sd.py --model_id 'stabilityai/sd_turbo'   --model_path ..\models\sd_turbo
-    python .\run_sd.py --model_id 'stabilityai/sdxl_turbo' --model_path ..\models\sdxl_turbo
+  python .\run_sd.py --model_id 'stable-diffusion-v1-5/stable-diffusion-v1-5' --model_path ..\models\sd_15
+  python .\run_sd.py --model_id 'stabilityai/sd-turbo' --model_path ..\models\sd_turbo
+  python .\run_sd.py --model_id 'stabilityai/stable-diffusion-2-1-base' --model_path ..\models\sd_21_base
+  python .\run_sd_xl.py --model_id 'stabilityai/sdxl-turbo' --model_path ..\models\sdxl_turbo
 
-Results are saved into the ``generated_images`` folder.  
+
+The demo script uses a predefined prompt for each of the models. The output images are saved in the ``generated_images`` folder. 
+
+Custom prompts can be provided with the ``--prompt`` option. For instance::
+
+  C:\Temp\GenAI-SD-v0613\test>python .\run_sd.py --model_id 'stabilityai/stable-diffusion-2-1-base' --model_path ..\models\sd_21_base  --prompt "A bouquet of roses, impressionist style"
+
 
