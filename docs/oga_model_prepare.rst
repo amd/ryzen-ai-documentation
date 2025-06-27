@@ -106,6 +106,9 @@ Generate the final model for NPU execution mode:
 
    model_generate --npu <output_dir> <quantized_model_path>  
 
+
+Known Issue: In the current version, Mistral-7B-Instruct-v0.1 has a known issue during OGA model conversion in the postprocessing stage.
+
 ..
   ------------
 
