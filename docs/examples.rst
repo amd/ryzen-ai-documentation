@@ -11,16 +11,21 @@ Getting Started Tutorials
 NPU
 ~~~
 
-- The :doc:`Getting Started Tutorial <getstartex>` deploys a custom ResNet model demonstrating: 
+- :doc:`Getting Started Tutorial with INT8 models <getstartex>` - Uses a custom ResNet model to demonstrate: 
 
   - Pretrained model conversion to ONNX 
   - Model Quantization using AMD Quark quantizer 
   - Deployment using ONNX Runtime C++ and Python code
-  - New `ResNet BF16 example <https://github.com/amd/RyzenAI-SW/tree/main/tutorial/getting_started_resnet/bf16>`_ for deployment using Python and C++ code
+
+- `Getting Started Tutorial with BF16 models <https://github.com/amd/RyzenAI-SW/tree/main/tutorial/getting_started_resnet/bf16>`_ - Uses a custom ResNet model to demonstrate:
+
+  - Preparation and compilation of BF16 models
+  - Deployment using Python 
+  - Deployment using C++
 
 - `Hello World Jupyter Notebook Tutorial <https://github.com/amd/RyzenAI-SW/tree/main/tutorial/hello_world>`_
 
-- New BF16 Model examples: 
+- Additional BF16 model examples: 
 
   - `Image Classification <https://github.com/amd/RyzenAI-SW/tree/main/example/image_classification>`_
   - `Finetuned DistilBERT for Text Classification <https://github.com/amd/RyzenAI-SW/tree/main/example/DistilBERT_text_classification_bf16>`_ 
