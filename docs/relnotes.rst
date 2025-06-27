@@ -53,7 +53,7 @@ Version 1.5
 ***********
 
 - Bug fixes
-- New LLM released
+- New LLMs released
 
   - Qwen/Qwen2.5-1.5B-Instruct
   - Qwen/Qwen2.5-3B-Instruct
@@ -61,17 +61,23 @@ Version 1.5
 
 - Breaking Changes
 
-  - The ``%RYZEN_AI_INSTALLATION_PATH%\\deployment`` folder has been reorganized and flattened. Deployment DLLs are not longer organized in subfolders. Application build scripts pulling DLLs from the ``deployment`` folder will need to be updated based on the new paths. Refer to the :ref:`Application Packaging Requirements <app-packaging>` section for further details.
-  - The ``1x4.xclbin`` (PHX/HPT) and ``AMD_AIE2P_Nx4_Overlay.xclbin`` (STX/KRK) NPU binaries are no longer supported and should not be used. The ``4x4.xclbin`` (PHX/HPT) and ``AMD_AIE2P_4x4_Overlay.xclbin`` (STX/KRK) NPU binaries should be used instead.
-  - The ``XLNX_ENABLE_CACHE``, ``XLNX_VART_FIRMWARE`` and ``XLNX_TARGET_NAME`` environment variables are no longer supported and should not be relied upon.
-  - Support for VitisAI EP cache encryption is no longer supported. To encrypt compiled models, use the ONNX Runtime :ref:`EP Context Cache <ort-ep-context-cache>` feature instead.  
-  - For INT8 models, the VitisAI EP no longer saves the compiled model to disk by default. To save the compiled model, use the ONNX Runtime :ref:`EP Context Cache <ort-ep-context-cache>` feature or set the :option:`enable_cache_file_io_in_mem` provider option to 0. 
-  - Generation of the ``vitisai_ep_report.json`` file is no longer automatic and must manually enabled. See the :ref:`Operator Assignment Report <op-assignment-report>` section for details.
+  - The ``%RYZEN_AI_INSTALLATION_PATH%\deployment`` folder has been reorganized and flattened. Deployment DLLs are no longer organized in subfolders. If you use application build scripts that pull DLLs from the ``deployment`` folder, you need to update them based on the new paths. Refer to the :ref:`Application Packaging Requirements <app-packaging>` section for further details.
+
+  - The ``1x4.xclbin`` (PHX/HPT) and ``AMD_AIE2P_Nx4_Overlay.xclbin`` (STX/KRK) NPU binaries are no longer supported and should not be used. You should use the ``4x4.xclbin`` (PHX/HPT) and ``AMD_AIE2P_4x4_Overlay.xclbin`` (STX/KRK) NPU binaries instead.
+
+  - The ``XLNX_ENABLE_CACHE``, ``XLNX_VART_FIRMWARE``, and ``XLNX_TARGET_NAME`` environment variables are no longer supported and should not be relied upon.
+
+  - Support for VitisAI EP cache encryption is no longer available. To encrypt the compiled models, use the ONNX Runtime :ref:`EP Context Cache <ort-ep-context-cache>` feature instead.
+
+  - For INT8 models, the VitisAI EP does not save the compiled model to disk by default. To save the compiled model, use the ONNX Runtime :ref:`EP Context Cache <ort-ep-context-cache>` feature or set the :option:`enable_cache_file_io_in_mem` provider option to 0.
+
+  - Generation of the ``vitisai_ep_report.json`` file is no longer automatic and should be manually enabled. See the :ref:`Operator Assignment Report <op-assignment-report>` section for details.
+
   - Changes to the OGA flow for LLMs:
 
-    - OGA Version updated to **v0.7.0** (Ryzen AI 1.5) from v0.6.0 (Ryzen AI 1.4) 
-    - The ``hybrid_llm`` and ``npu_llm`` folders have been consolidated into a new folder named ``LLM``, which contains the ``model_benchmark.exe`` and ``run_model.py`` scripts, along with the necessary C++ headers and .lib files to support both the Hybrid LLM and NPU LLM workflows in C++ and Python.
-    - For NPU LLM models, the ``vaip_llm.json`` file is no longer required. As a result, the ``vaip_llm.json`` path has been removed from the ``genai_config.json`` for all NPU models. Please ensure that you re-download the NPU models from `Hugging Face <https://huggingface.co/collections/amd/ryzenai-15-llm-npu-models-6859846d7c13f81298990db0>`_ when using the Ryzen AI 1.5 installer.
+    - OGA Version is updated to **v0.7.0** (Ryzen AI 1.5) from v0.6.0 (Ryzen AI 1.4).
+    - The ``hybrid_llm`` and ``npu_llm`` folders are consolidated into a new folder named ``LLM``, which contains the ``model_benchmark.exe`` and ``run_model.py`` scripts, along with the necessary C++ headers and .lib files to support both the Hybrid LLM and NPU LLM workflows in C++ and Python.
+    - For NPU LLM models, the ``vaip_llm.json`` file is no longer required. As a result, the ``vaip_llm.json`` path is removed from the ``genai_config.json`` for all NPU models. Ensure that you re-download the NPU models from `Hugging Face <https://huggingface.co/collections/amd/ryzenai-15-llm-npu-models-6859846d7c13f81298990db0>`_ when using the Ryzen AI 1.5 installer.
 
 
 
@@ -114,14 +120,14 @@ Version 1.4
 
 - New Tools:
 
-  - `Lemonade SDK <https://github.com/onnx/turnkeyml/blob/main/docs/lemonade/README.md>`_ 
+  - `Lemonade SDK <https://github.com/onnx/turnkeyml/blob/main/docs/lemonade/README.md>`_
 
     - `Lemonade Server <https://github.com/onnx/turnkeyml/blob/main/docs/lemonade/README.md#serving>`_: A server interface that uses the standard Open AI API, allowing applications in any language to integrate with Lemonade Server for local LLM deployment and compatibility with existing Open AI apps.
-    - `Lemonade Python API <https://github.com/onnx/turnkeyml/blob/main/docs/lemonade/README.md#api>`_: Offers High-Level API for easy integration of Lemonade LLMs into Python applications and Low-Level API for custom experiments with specific checkpoints, devices, and tools. 
-    - `Lemonade Command Line <https://github.com/onnx/turnkeyml/blob/main/docs/lemonade/getting_started.md#cli-commands>`_ Interface easily benchmark, measure accuracy, prompt or gather memory usage of your LLM. 
-  - `TurnkeyML <https://github.com/onnx/turnkeyml>`_ – Open-source tool that includes low-code APIs for general ONNX workflows. 
-  - `Digest AI <https://github.com/onnx/digestai>`_ – A Model Ingestion and Analysis Tool in collaboration with the Linux Foundation. 
-  - `GAIA <https://github.com/amd/gaia/tree/main>`_ – An open-source application designed for the quick setup and execution of generative AI applications on local PC hardware. 
+    - `Lemonade Python API <https://github.com/onnx/turnkeyml/blob/main/docs/lemonade/README.md#api>`_: Offers High-Level API for easy integration of Lemonade LLMs into Python applications and Low-Level API for custom experiments with specific checkpoints, devices, and tools.
+    - `Lemonade Command Line <https://github.com/onnx/turnkeyml/blob/main/docs/lemonade/getting_started.md#cli-commands>`_ Interface easily benchmark, measure accuracy, prompt or gather memory usage of your LLM.
+  - `TurnkeyML <https://github.com/onnx/turnkeyml>`_ – Open-source tool that includes low-code APIs for general ONNX workflows.
+  - `Digest AI <https://github.com/onnx/digestai>`_ – A Model Ingestion and Analysis Tool in collaboration with the Linux Foundation.
+  - `GAIA <https://github.com/amd/gaia/tree/main>`_ – An open-source application designed for the quick setup and execution of generative AI applications on local PC hardware.
 
 - Quark-torch:
 
@@ -153,8 +159,8 @@ Version 1.4
 
 - Known Issues:
 
-  - Microsoft Windows Insider Program (WIP) users may see warnings or need to restart when running all applications concurrently. 
-  
+  - Microsoft Windows Insider Program (WIP) users may see warnings or need to restart when running all applications concurrently.
+
     - NPU driver and workloads will continue to work.
 
   - Context creation may appear to be limited when some application do not close contexts quickly.

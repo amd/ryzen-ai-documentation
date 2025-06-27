@@ -27,7 +27,7 @@ sys.path.insert(0, os.path.abspath('docs'))
 # -- Project information -----------------------------------------------------
 
 project = 'Ryzen AI Software'
-copyright = '2023-2024, Advanced Micro Devices, Inc'
+copyright = '2023-2025, Advanced Micro Devices, Inc'
 author = 'Advanced Micro Devices, Inc'
 
 # The short X.Y version
