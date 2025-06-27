@@ -11,13 +11,13 @@ Getting Started Tutorials
 NPU
 ~~~
 
-- :doc:`Getting Started Tutorial with INT8 models <getstartex>` - Uses a custom ResNet model to demonstrate: 
+- :doc:`Getting Started Tutorial for INT8 models <getstartex>` - Uses a custom ResNet model to demonstrate: 
 
   - Pretrained model conversion to ONNX 
   - Model Quantization using AMD Quark quantizer 
   - Deployment using ONNX Runtime C++ and Python code
 
-- `Getting Started Tutorial with BF16 models <https://github.com/amd/RyzenAI-SW/tree/main/tutorial/getting_started_resnet/bf16>`_ - Uses a custom ResNet model to demonstrate:
+- `Getting Started Tutorial for BF16 models <https://github.com/amd/RyzenAI-SW/tree/main/tutorial/getting_started_resnet/bf16>`_ - Uses a custom ResNet model to demonstrate:
 
   - Preparation and compilation of BF16 models
   - Deployment using Python 
