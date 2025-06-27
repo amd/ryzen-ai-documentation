@@ -1,11 +1,10 @@
 :orphan:
 
-####################
-Supported Operations
-####################
+###################
+Supported Operators
+###################
 
-The following table lists the supported operations in the Ryzen AI 1.5.0. The operations are categorized by their support for different quantization types: BF16, A16W8, A8W8, and XINT8.
-The "Y" indicates that the operation is supported for that specific quantization type for CNN and NLP models.
+The following table lists the ONNX operators supported in Ryzen AI 1.5.0. The operators are categorized by their support for different quantization types: BF16, A16W8, A8W8, and XINT8. A "Y" indicates that Ryzen AI provides broad coverage for that operator and for that specific quantization type for CNN and NLP models. Some specific configurations of that operator may however not be fully supported.
 
 +------------------------+-------+-------+-------+-------+
 | Ops                    | BF16  | A16W8 | A8W8  | XINT8 |
