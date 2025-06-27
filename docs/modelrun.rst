@@ -13,8 +13,7 @@ The Ryzen AI Software supports models saved in the ONNX format and uses ONNX Run
 
 |memo| **NOTE**: Models with ONNX opset 17 are recommended. If your model uses a different opset version, consider converting it using the `ONNX Version Converter <https://github.com/onnx/onnx/blob/main/docs/VersionConverter.md>`_
 
-
-Supported operator list :doc:`Supported Operations <ops_support>`.
+For a complete list of supported operators, consult this page: :doc:`Supported Operators <ops_support>`.
 
 Loading Models
 ==============
