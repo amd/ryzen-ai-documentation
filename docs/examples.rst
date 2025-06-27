@@ -16,7 +16,7 @@ NPU
   - Pretrained model conversion to ONNX 
   - Model Quantization using AMD Quark quantizer 
   - Deployment using ONNX Runtime C++ and Python code
-  - New ResNet BF16 example for deployment using Python and C++ code
+  - New `ResNet BF16 example <https://github.com/amd/RyzenAI-SW/tree/main/tutorial/getting_started_resnet/bf16>`_ for deployment using Python and C++ code
 
 - `Hello World Jupyter Notebook Tutorial <https://github.com/amd/RyzenAI-SW/tree/main/tutorial/hello_world>`_
 
