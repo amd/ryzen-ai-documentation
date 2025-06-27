@@ -477,6 +477,7 @@ C++ example:
 
 |memo| **NOTE**: It is possible to precompile the EP context model using Python and to deploy it using a C++ program.
 
+
 |
 
 .. _op-assignment-report:
@@ -493,6 +494,8 @@ The compiler can optionally generate a report on operator assignments across CPU
 .. code-block::
 
     set XLNX_ONNX_EP_REPORT_FILE=vitisai_ep_report.json
+
+When these conditions are satisfied, the report file is automatically generated in the cache directory. This report includes information such as the total number of nodes, the list of operator types in the model, and which nodes and operators run on the NPU or on the CPU. Additionally, the report includes node statistics, such as input to a node, the applied operation, and output from the node.
 
 When these conditions are satisified, the report file is automatically generated in the cache directory. This report includes information such as the total number of nodes, the list of operator types in the model, and which nodes and operators runs on the NPU or on the CPU. Additionally, the report includes node statistics, such as input to a node, the applied operation, and output from the node.
 
