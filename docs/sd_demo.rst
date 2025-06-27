@@ -2,11 +2,11 @@
 Stable Diffusion Demo
 #######################
 
-Ryzen AI 1.5 provides preview [1]_ demos of Stable Diffusion image-generation pipelines. The demos cover Image-to-Image and Text-to-Image using SD 1.5, SD 2.1-base, SD-Turbo, SDXL-Turbo and SD 3.0. 
+Ryzen AI 1.5 provides preview demos of Stable Diffusion image-generation pipelines. The demos cover Image-to-Image and Text-to-Image using SD 1.5, SD 2.1-base, SD-Turbo, SDXL-Turbo and SD 3.0. 
 
 The models for SD 1.5, SD 2.1-base, SD-Turbo, SDXL-Turbo are available for public download. The SD 3.0 models are only available to confirmed Stability AI licensees.
 
-.. [1] Preview features are features which are still undergoing some optimization and fine-tuning. These features are not in their final form and may change as we continue to work in order to mature them into full-fledged features.
+NOTE: Preview features are features which are still undergoing some optimization and fine-tuning. These features are not in their final form and may change as we continue to work in order to mature them into full-fledged features.
 
 
 ******************
