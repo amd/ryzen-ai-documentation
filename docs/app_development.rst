@@ -142,7 +142,6 @@ A C++ application built on the Ryzen AI ONNX Runtime must include the following 
   - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\onnxruntime_providers_vitisai.dll
   - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\onnxruntime_vitisai_ep.dll
   - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\dyn_dispatch_core.dll
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\libprotobuf.dll
   - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\xaiengine.dll
 
 - NPU Binary files (.xclbin) from the ``%RYZEN_AI_INSTALLATION_PATH%\voe-4.0-win_amd64\xclbins`` folder
@@ -158,7 +157,6 @@ A C++ application built on the Ryzen AI ONNX Runtime must include the following 
   - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\onnxruntime_providers_vitisai.dll
   - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\onnxruntime_vitisai_ep.dll
   - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\dyn_dispatch_core.dll
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\libprotobuf.dll
   - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\xaiengine.dll
   - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\flexmlrt.dll
 
@@ -173,7 +171,6 @@ A C++ application built on the Ryzen AI ONNX Runtime must include the following 
   - %RYZEN_AI_INSTALLATION_PATH%\deployment\dyn_dispatch_core.dll
   - %RYZEN_AI_INSTALLATION_PATH%\deployment\xaiengine.dll
   - %RYZEN_AI_INSTALLATION_PATH%\deployment\ryzen_mm.dll
-  - %RYZEN_AI_INSTALLATION_PATH%\deployment\libprotobuf.dll
   - %RYZEN_AI_INSTALLATION_PATH%\deployment\onnx_custom_ops.dll
   - %RYZEN_AI_INSTALLATION_PATH%\deployment\DirectML.dll
   - %RYZEN_AI_INSTALLATION_PATH%\deployment\zlib.dll
