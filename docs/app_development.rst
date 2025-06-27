@@ -14,11 +14,11 @@ This page captures requirements and recommendations for developers looking to cr
 VitisAI EP / NPU Driver Compatibility
 *************************************
 
-The VitisAI EP requires a compatible version of the NPU drivers. For each version of the VitisAI EP, compatible drivers are bounded by a minimum version and a maximum release date. NPU drivers are backward compatible with VitisAI EP released up to 3 years before. The maximum driver release date is therefore set to 3 years after the release date of the corresponding VitisAI EP.
+The VitisAI EP requires a compatible version of the NPU drivers. For each version of the VitisAI EP, compatible drivers are bounded by a minimum version and a maximum release date. NPU drivers are backward compatible with VitisAI EP released up to three years. The maximum driver release date is therefore set to three years after the release date of the corresponding VitisAI EP.
 
-The table below summarizes the driver requirements for the different versions of the VitisAI EP.
+The following table summarizes the driver requirements for the different versions of the VitisAI EP.
 
-.. list-table:: 
+.. list-table::
    :header-rows: 1
 
    * - VitisAI EP version
@@ -43,7 +43,7 @@ The table below summarizes the driver requirements for the different versions of
      - 32.0.201.204
      - July 30th, 2027
 
-The application must check that NPU drivers compatible with the version of the Vitis AI EP being used are installed.
+The application must verify that NPU drivers compatible with the version of the Vitis AI EP in use are installed.
 
 .. _apu-types:
 
@@ -51,11 +51,9 @@ The application must check that NPU drivers compatible with the version of the V
 APU Types
 *****************
 
-The Ryzen AI Software supports different types of NPU-enabled APUs. These APU types are referred to as PHX, HPT, STX and KRK. 
+The Ryzen AI Software supports various types of NPU-enabled APUs, referred to as PHX, HPT, STX, and KRK. To programmatically determine the type of the local APU, you can enumerate the PCI devices and look for an instance with a matching Hardware ID.
 
-To programmatically determine the type of the local APU, it is possible to enumerate the PCI devices and check for an instance with a matching Hardware ID.
-
-.. list-table:: 
+.. list-table::
    :header-rows: 1
 
    * - Vendor
@@ -65,25 +63,25 @@ To programmatically determine the type of the local APU, it is possible to enume
    * - 0x1022
      - 0x1502
      - 0x00
-     - PHX or HPT 
+     - PHX or HPT
    * - 0x1022
      - 0x17F0
      - 0x00
-     - STX 
+     - STX
    * - 0x1022
      - 0x17F0
      - 0x10
-     - STX 
+     - STX
    * - 0x1022
      - 0x17F0
      - 0x11
-     - STX 
+     - STX
    * - 0x1022
      - 0x17F0
      - 0x20
      - KRK
 
-The application must check that it is running on an AMD processor with an NPU, and that the NPU type is supported by the version of the Vitis AI EP being used.
+The application must verify that it is running on an AMD processor with an NPU, and that the NPU type is supported by the version of the Vitis AI EP in use.
 
 
 
@@ -96,24 +94,24 @@ ONNX-RT Session
 
 The application should only use the Vitis AI Execution Provider if the following conditions are met:
 
-- The application is running on an AMD processor with an NPU type supported by the version of the Vitis AI EP being used. See :ref:`list <apu-types>` above in this page.
-- NPU drivers compatible with the version of the Vitis AI EP being used are installed. See :ref:`compatibility table <driver-compatibility>` above in this page.
+- The application is running on an AMD processor with an NPU type supported by the version of the Vitis AI EP in use. See :ref:`list <apu-types>`.
+- NPU drivers compatible with the version of the Vitis AI EP being used are installed. See :ref:`compatibility table <driver-compatibility>` .
 
-|memo| **NOTE**: Sample C++ code implementing the compatibility checks to be performed before using the VitisAI EP is provided here: https://github.com/amd/RyzenAI-SW/tree/main/utilities/npu_check
+|memo| **NOTE**: Sample C++ code that implements the compatibility checks to be performed before using the Vitis AI EP is available `here <https://github.com/amd/RyzenAI-SW/tree/main/utilities/npu_check>`_
 
 
 VitisAI EP Provider Options
 ===========================
 
-For INT8 models, the application should detect which type of APU is present (PHX/HPT/STX/KRK) and set the :option:`xclbin` provider option accordingly. Refer to the section about :ref:`using of INT8 models <int8-models>` for details about this.
+For INT8 models, the application should detect the type of APU present (PHX, HPT, STX, or KRK) and set the :option:`xclbin` provider option accordingly. Refer to the section on :ref:`using INT8 models <int8-models>` for more details.
 
-For BF16 models, the application should set the :option:`config_file` provider option to use the same file as the one which was used to precompile the BF16 model. Refer to the section about :ref:`using of BF16 models <bf16-models>` for details about this.
+For BF16 models, the application should set the :option:`config_file` provider option to the same file that was used to precompile the BF16 model. Refer to the section on :ref:`using BF16 models <bf16-models>` for more details.
 
 
 Pre-Compiled Models
 ===================
 
-To avoid the overhead of recompiling models, it is very advantageous to save the compiled models and use these pre-compiled versions in the final application. Pre-compiled models can be loaded instantaneously and immediately executed on the NPU. This greatly improves the session creation time and overall end-user experience.
+To avoid the overhead of recompiling models, it is highly recommended to save the compiled models and use these precompiled versions in the final application. Precompiled models can be loaded instantly and executed immediately on the NPU, significantly improving session creation time and overall end-user experience.
 
 AMD recommends using the ONNXRuntime :ref:`EP Context Cache <ort-ep-context-cache>` feature for saving and reloading compiled models.
 
@@ -123,7 +121,7 @@ The deployment version of the VitisAI Execution Provider (EP) does not support t
 
 .. rubric:: INT8 models
 
-Including pre-compiled versions of INT8 models is recommended but not mandatory. 
+Including pre-compiled versions of INT8 models is recommended but not mandatory.
 
 |
 
@@ -133,7 +131,7 @@ Including pre-compiled versions of INT8 models is recommended but not mandatory.
 Application Packaging Requirements
 **********************************
 
-A C++ application built on the Ryzen AI ONNX Runtime requires the following components to be included in its distribution package.
+A C++ application built on the Ryzen AI ONNX Runtime must include the following components in its distribution package:
 
 .. rubric:: For INT8 models
 
@@ -195,7 +193,7 @@ A C++ application built on the Ryzen AI ONNX Runtime requires the following comp
   - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\onnxruntime_vitisai_ep.dll
 
 - VAIP LLM configuration file: %RYZEN_AI_INSTALLATION_PATH%\\deployment\\vaip_llm.json
- 
+
 
 ..
   ------------
