@@ -101,11 +101,10 @@ The Ryzen AI Software installation folder contains test to verify that the softw
 
 .. code-block::
 
-   [Vitis AI EP] No. of Operators :   CPU     2    NPU   398
-   [Vitis AI EP] No. of Subgraphs :   NPU     1 Actually running on NPU     1
-   ...
-   Test Passed
-   ...
+    [Vitis AI EP] No. of Operators :   NPU   398 VITIS_EP_CPU     2
+    [Vitis AI EP] No. of Subgraphs :   NPU     1 Actually running on NPU     1
+    Test Passed
+
 
 
 .. note::
