@@ -25,7 +25,7 @@ The following dependencies must be installed on the system before installing the
      - 2022
    * - cmake
      - version >= 3.26
-   * - Anaconda or Miniconda
+   * - Python distribution (Miniforge preferred)
      - Latest version
 
 |
@@ -34,7 +34,7 @@ The following dependencies must be installed on the system before installing the
 
 - Visual Studio 2022 Community: ensure that `Desktop Development with C++` is installed
 
-- Anaconda or Miniconda: ensure that the following path is set in the System PATH variable: ``path\to\anaconda3\Scripts`` or ``path\to\miniconda3\Scripts`` (The System PATH variable should be set in the *System Variables* section of the *Environment Variables* window).
+- Miniforge: ensure that the following path is set in the System PATH variable: ``C:\Users\udayd\AppData\Local\miniforge3\condabin`` or ``C:\Users\udayd\AppData\Local\miniforge3\Scripts\`` or ``C:\Users\udayd\AppData\Local\miniforge3\`` (The System PATH variable should be set in the *System Variables* section of the *Environment Variables* window).
 
 |
 
@@ -81,7 +81,7 @@ Test the Installation
 
 The Ryzen AI Software installation folder contains test to verify that the software is correctly installed. This installation test can be found in the ``quicktest`` subfolder.
 
-- Open a Conda command prompt (search for "Anaconda Prompt" in the Windows start menu)
+- Open a Conda command prompt (search for "Miniforge Prompt" in the Windows start menu)
 
 - Activate the Conda environment created by the Ryzen AI installer:
 
