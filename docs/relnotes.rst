@@ -52,6 +52,14 @@ The following table lists which types of models are supported on what hardware p
 Version 1.5
 ***********
 
+- EoU Improvement
+
+  - Application concurrency: improves the resource distribution across applications 
+  - Model Copilation time: 2x – 8x faster
+  - Installation Size: 80% smaller 
+- Stable Diffusion demo pipelines (preview)
+- 4K context length supported (on selected models) 
+- LLM Context cache support (on selected models)
 - Bug fixes
 - New LLMs released
 
