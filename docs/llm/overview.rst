@@ -3,14 +3,17 @@ Overview
 ########
 
 ************************************
-OGA-based Flow with Hybrid Execution
+OGA-based Flow
 ************************************
 
-Ryzen AI Software supports deploying quantized 4-bit LLMs on Ryzen AI 300-series PCs. This solution uses a hybrid execution mode, which leverages both the NPU and integrated GPU (iGPU), and is built on the OnnxRuntime GenAI (OGA) framework. 
+Ryzen AI Software supports deploying quantized 4-bit LLMs on Ryzen AI 300-series PCs using the OnnxRuntime GenAI (OGA) framework. OGA is a multi-vendor generative AI framework from Microsoft that provides a convenient LLM interface for execution backends such as Ryzen AI. 
 
-Hybrid execution mode optimally partitions the model such that different operations are scheduled on NPU vs. iGPU. This minimizes time-to-first-token (TTFT) in the prefill-phase and maximizes token generation (tokens per second, TPS) in the decode phase.
+The flow supports two execution modes: 
 
-OGA is a multi-vendor generative AI framework from Microsoft that provides a convenient LLM interface for execution backends such as Ryzen AI. 
+- **NPU-only execution mode**: the compute-intensive operations are exclusively offloaded to the NPU. The iGPU is not solicited and can be used for other tasks.
+
+- **Hybrid execution mode**: the model is optimally partitioned such that different operations are scheduled on NPU or on the iGPU. This minimizes time-to-first-token (TTFT) in the prefill-phase and maximizes token generation (tokens per second, TPS) in the decode phase.
+
 
 Supported Configurations
 ========================
@@ -186,17 +189,6 @@ Data collection details:
   
 * All speedup numbers are the measured performance of the model with input sequence length (ISL) of ``1024`` and output sequence length (OSL) of ``64``, on the specified backend, divided by the measured performance of the baseline.
 * We assign the 🟢 validation score based on this criteria: all commands in the example guide ran successfully.
-
-
-**************************************
-OGA-based Flow with NPU-only Execution
-**************************************
-
-The primary OGA-based flow for LLMs employs a hybrid execution mode which leverages both the NPU and iGPU. AMD also provides support for an OGA-based flow where the iGPU is not solicited and where the compute-intensive operations are exclusively offloaded to the NPU.
-
-The OGA-based NPU-only execution mode is supported on STX and KRK platforms.
-
-To get started with the OGA-based NPU-only execution mode, follow these instructions :doc:`../npu_oga`.
 
 
 

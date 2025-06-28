@@ -34,14 +34,15 @@ Setup
      pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm6.1
      python -c "import torch; print(torch.cuda.is_available())" # Must return `True`
 
-3. Download :download:`AMD Quark 0.8 <https://www.xilinx.com/bin/public/openDownload?filename=amd_quark-0.8.zip>` and unzip the archive
+3. Download :download:`AMD Quark 0.9 <https://download.amd.com/opendownload/Quark/amd_quark-0.9.zip>` and unzip the archive
+
 
 4. Install Quark: 
 
 .. code-block::
 
-     cd <extracted amd quark 0.8>
-     pip install amd_quark-0.8+<>.whl
+     cd <extracted amd quark-version>
+     pip install amd_quark-<version>+<>.whl
 
 5. Install other dependencies
 
@@ -104,6 +105,9 @@ Generate the final model for NPU execution mode:
    conda activate ryzen-ai-<version>
 
    model_generate --npu <output_dir> <quantized_model_path>  
+
+
+Known Issue: In the current version, Mistral-7B-Instruct-v0.1 has a known issue during OGA model conversion in the postprocessing stage.
 
 ..
   ------------

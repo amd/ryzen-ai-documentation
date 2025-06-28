@@ -21,7 +21,7 @@ Introduction
 
 The ``xrt-smi`` utility is a command-line interface to monitor and manage the NPU integrated AMD CPUs. 
 
-It is installed in ``C:\Windows\System32\AMD`` and it can be directly invoked from within the conda environment created by the Ryzen AI Software installer.
+In Window platform, ``xrt-smi`` is installed in ``C:\Windows\System32\AMD`` and it can be directly invoked from within the conda environment created by the Ryzen AI Software installer.
 
 The ``xrt-smi`` utility currently supports three primary commands:
 
@@ -43,7 +43,7 @@ The utility also support the following options which can be used with any comman
 - ``--batch`` - enable batch mode (disables escape characters)
 - ``--force`` - when possible, force an operation. Eg - overwrite a file in examine or validate
 
-The ``xrt-smi`` utility requires `Microsoft Visual C++ Redistributable <https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170>`_ (version 2015 to 2022) to be installed.
+In Windows, the ``xrt-smi`` utility requires `Microsoft Visual C++ Redistributable <https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170>`_ (version 2015 to 2022) to be installed.
 
 
 *******************************
@@ -114,7 +114,36 @@ Sample Command Line Output::
     |BDF             |Name       |
     |----------------|-----------|
     |[00c4:00:01.1]  |NPU Strix  |
-    
+
+
+
+Sample Command Line Output in Linux::
+
+   > xrt-smi examine
+     System Configuration
+         OS Name              : Linux
+         Release              : 6.11.0-26-generic
+         Machine              : x86_64
+         CPU Cores            : 24
+         Memory               : 31440 MB
+         Distribution         : Ubuntu 24.04 LTS
+         GLIBC                : 2.39
+         Model                : BIRMANPLUS
+         BIOS Vendor          : AMD
+         BIOS Version         : TXB1001dB
+ 
+     XRT
+         Version              : 2.20.0
+         Branch               : master
+         Hash                 : 7a277facefecab6c87ac835916021c63d2e395dd
+         Hash Date            : 2025-06-16 21:28:35
+         amdxdna              : 2.20.0_20250617, e7233301f8e4d8d1b1678f3dc3492c826290e314
+         NPU Firmware Version : 255.0.1.5
+ 
+     Device(s) Present
+     |BDF             |Name       |
+     |----------------|-----------|
+     |[0000:c5:00.1]  |NPU Strix  |
 
 Sample JSON Output::
 
@@ -184,11 +213,11 @@ Sample Command Line Output::
     --------------------------
     Platform
       Name                   : NPU Strix
-      Performance Mode       : Default
+      Power Mode             : Default
      
-    Power                  : 1.277 Watts
+    Estimated Power          : 1.277 Watts
 
-|memo| **NOTE**: Power reporting is not supported on PHX and HPT NPUs. Power reporting is only available on STX devices and onwards.
+|memo| **NOTE**: Power reporting is not supported on PHX and HPT NPUs. Power reporting is only available on STX devices and onwards. Report "Estimated Power" is currently unavailable for Linux users. 
 
 NPU Partitions
 ==============
@@ -208,9 +237,9 @@ Sample Command Line Output::
       Partition Index: 0
         Columns: [0, 1, 2, 3]
         HW Contexts:
-          |PID    |Ctx ID  |Status  |Instr BO  |Sub  |Compl  |Migr  |Err  |Prio    |GOPS  |EGOPS  |FPS  |Latency  |
-          |-------|--------|--------|----------|-----|-------|------|-----|--------|------|-------|-----|---------|
-          |20696  |0       |Active  |64 KB     |57   |56     |0     |0    |Normal  |0     |0      |0    |0        |
+          |PID    |Ctx ID  |Status  |Instr BO  |Sub  |Compl  |Migr  |Err  |Suspensions  |Prio     |GOPS   |EGOPS  |FPS  |Latency  |
+          |-------|--------|--------|----------|-----|-------|------|-----|-------------|---------|-------|-------|-----|---------|
+          |20696  |0       |Active  |64 KB     |57   |56     |0     |0    |0            | Normal  |0      |0      |0    |0        |
 
 
 NPU Context Bindings
@@ -294,6 +323,9 @@ Sample Command Line Output::
     -------------------------------------------------------------------------------
     Validation completed. Please run the command '--verbose' option for more details
     
+    
+.. _xrt-smi-configure:
+
 *******************************
 xrt-smi configure
 *******************************
@@ -319,7 +351,7 @@ Example: Setting the NPU to high-performance mode
 
    xrt-smi configure --pmode performance
 
-To check the current performance level, use the following command:
+To check the current power mode, use the following command:
 
 .. code-block:: shell
 
