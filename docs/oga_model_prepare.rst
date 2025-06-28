@@ -77,9 +77,9 @@ Use following command to run Quantization. In a GPU equipped Linux machine the q
           --exclude_layers
 
 
-- To generate OGA model for NPU only execution mode use ``--datatype float32``
-- To generate OGA model for Hybrid execution mode use ``--datatype float16``
-- For a BF16 pretrained model, you can use ``--data_type bfloat16``.
+- For a full-precision pretrained model, to generate NPU-only LLM use ``--datatype float32``
+- For a full-precision pretrained model, to generate Hybrid LLM use ``--datatype float16``
+- For a BF16 pretrained model, use ``--data_type bfloat16``.
 
 The quantized model is generated in the <quantized safetensor output dir> folder.
 
