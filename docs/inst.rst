@@ -38,14 +38,6 @@ The following dependencies must be installed on the system before installing the
 
 |
 
-********************
-1.4.1 Release Update
-********************
-
-Ryzen AI 1.4.1 patch has been released on the Ryzen AI Software Early Access Secure Site: https://account.amd.com/en/member/ryzenai-sw-ea.html.
-
-If you like to install publicly available Ryzen AI 1.4 please follow documentation here: https://ryzenai.docs.amd.com/en/1.4/index.html
-
 .. _install-driver:
 
 *******************
