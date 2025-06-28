@@ -10,7 +10,7 @@ Release Notes
 Supported Configurations
 ************************
 
-Ryzen AI 1.4 Software supports AMD processors codenamed Phoenix, Hawk Point, Strix, Strix Halo, and Krackan Point. These processors can be found in the following Ryzen series:
+Ryzen AI 1.5 Software supports AMD processors codenamed Phoenix, Hawk Point, Strix, Strix Halo, and Krackan Point. These processors can be found in the following Ryzen series:
 
 - Ryzen 200 Series
 - Ryzen 7000 Series, Ryzen PRO 7000 Series
@@ -55,7 +55,7 @@ Version 1.5
 - EoU Improvement
 
   - Application concurrency: improves the resource distribution across applications 
-  - Model Copilation time: 2x – 8x faster
+  - Model Compilation time: 2x – 8x faster
   - Installation Size: 80% smaller 
 - Stable Diffusion demo pipelines (preview)
 - 4K context length supported (on selected models) 
