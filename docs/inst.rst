@@ -68,13 +68,13 @@ Install NPU Drivers
 Install Ryzen AI Software
 *************************
 
-- Download the RyzenAI Software installer ``ryzen-ai-1.4.1.exe`` from Ryzen AI Software Early Access Secure Site: https://account.amd.com/en/member/ryzenai-sw-ea.html.
+- Download the RyzenAI Software installer :download:`ryzen-ai-1.5.0.msi <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ryzen-ai-1.5.0.msi>`.
 
 - Launch the MSI installer and follow the instructions on the installation wizard:
 
   - Accept the terms of the Licence agreement
-  - Provide the destination folder for Ryzen AI installation (default: ``C:\Program Files\RyzenAI\1.4.1``)
-  - Specify the name for the conda environment (default: ``ryzen-ai-1.4.1``)
+  - Provide the destination folder for Ryzen AI installation (default: ``C:\Program Files\RyzenAI\1.5.0``)
+  - Specify the name for the conda environment (default: ``ryzen-ai-1.5.0``)
 
 
 The Ryzen AI Software packages are now installed in the conda environment created by the installer.
@@ -121,29 +121,6 @@ The Ryzen AI Software installation folder contains test to verify that the softw
     The full path to the Ryzen AI Software installation folder is stored in the ``RYZEN_AI_INSTALLATION_PATH`` environment variable.
 
 
-**************************
-Other Installation Options
-**************************
-
-Linux Installer
-~~~~~~~~~~~~~~~
-
-Compiling BF16 models requires more processing power than compiling INT8 models. If a larger BF16 model cannot be compiled on a Windows machine due to hardware limitations (e.g., insufficient RAM), an alternative Linux-based compilation flow is supported. More details can be found here: :doc:`rai_linux`
-
-
-
-Lightweight Installer
-~~~~~~~~~~~~~~~~~~~~~
-
-A lightweight installer is available with reduced features. It cannot be used for compiling BF16 models but fully supports compiling and running INT8 models and running LLM models.
-
-- Download the RyzenAI Software Runtime MSI installer ``ryzen-ai-rt-1.4.1.msi`` from Ryzen AI Software Early Access Secure Site: https://account.amd.com/en/member/ryzenai-sw-ea.html.
-
-- Launch the MSI installer and follow the instructions on the installation wizard:
-
-  - Accept the terms of the Licence agreement
-  - Provide the destination folder for Ryzen AI installation
-  - Specify the name for the conda environment
 
 
 
