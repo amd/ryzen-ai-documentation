@@ -44,14 +44,14 @@ The following dependencies must be installed on the system before installing the
 Install NPU Drivers
 *******************
 
-- Download the NPU driver installation package NPU_RAI1.4.1_259_WHQL.zip from Ryzen AI Software Early Access Secure Site: https://account.amd.com/en/member/ryzenai-sw-ea.html
+- Download the NPU driver installation package :download:`NPU Driver <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=NPU_RAI1.5_280_WHQL.zip>`
 
 - Install the NPU drivers by following these steps:
 
   - Extract the downloaded ZIP file.
   - Open a terminal in administrator mode and execute the ``.\npu_sw_installer.exe`` file.
 
-- Ensure that NPU MCDM driver (Version:32.0.203.259, Date:4/9/2025) is correctly installed by opening ``Device Manager`` -> ``Neural processors`` -> ``NPU Compute Accelerator Device``.
+- Ensure that NPU MCDM driver (Version:32.0.203.259, Date:4/9/2025) is correctly installed by opening Task Manager -> Performance -> NPU0.
 
 
 .. _install-bundled:
