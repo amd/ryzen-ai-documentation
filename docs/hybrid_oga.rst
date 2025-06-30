@@ -212,3 +212,45 @@ It is also possible to run fine-tuned versions of the pre-optimized OGA models.
 To do this, the fine-tuned models must first be prepared for execution with the OGA Hybrid flow. For instructions on how to do this, refer to the page about :doc:`oga_model_prepare`.
 
 After a fine-tuned model has been prepared for Hybrid execution, it can be deployed by following the steps described previously in this page.
+
+*****************************
+Running LLM via pip install
+*****************************
+
+In addition to the full RyzenAI software stack, we also provide standalone wheel files for the users who prefer using their own environment. To prepare an environment for running the Hybrid and NPU-only LLM independently, perform the following steps:
+
+1. Create a new python environment and activate it.
+
+.. code-block:: bash
+
+   conda create -n <env_name> python=3.10 -y
+   conda activate <env_name>
+
+2. Install onnxruntime-genai wheel file.
+
+.. code-block:: bash
+
+   pip install onnxruntime-genai-directml-ryzenai==0.7.0.2 --extra-index-url=https://pypi.amd.com/simple
+
+3. Navigate to your working directory and download the desired Hybrid/NPU model
+
+.. code-block:: bash
+
+   cd working_directory
+   git clone <link_to_model>
+
+4. Copy the required DLLs from the current environment folder.
+
+.. code-block:: bat
+
+   :: Copy DLLs for Hybrid models (skip if using an NPU-only model)
+   xcopy "%CONDA_PREFIX%\Lib\site-packages\onnxruntime_genai\onnx_custom_ops.dll" .
+   xcopy "%CONDA_PREFIX%\Lib\site-packages\onnxruntime_genai\libutf8_validity.dll" .
+   xcopy "%CONDA_PREFIX%\Lib\site-packages\onnxruntime_genai\abseil_dll.dll" .
+  
+   :: Copy DLLs for NPU-only models (skip if using a Hybrid model)
+   xcopy "%CONDA_PREFIX%\Lib\site-packages\onnxruntime\capi\onnxruntime_vitis_ai_custom_ops.dll" .
+   xcopy "%CONDA_PREFIX%\Lib\site-packages\onnxruntime\capi\dyn_dispatch_core.dll" .
+   xcopy "%CONDA_PREFIX%\Lib\site-packages\onnxruntime\capi\xaiengine.dll" .
+
+5. Run the Hybrid or NPU model.
