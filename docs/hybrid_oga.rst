@@ -180,15 +180,11 @@ Building C++ Applications
 
 A complete example including C++ source and build instructions is available in the RyzenAI-SW repository: https://github.com/amd/RyzenAI-SW/tree/main/example/llm/oga_api
 
-**Testing note:** Currently the script is located in https://gitenterprise.xilinx.com/VitisAI/RyzenAI-SW/tree/dev/example/llm/oga_api . It merges with amd/RyzenAI-SW after testing.
-
-
-
 ****************
 LLM Config Files
 ****************
 
-Each OGA model folder contains a ``genai_config.json`` file. This file contains various configuration settings for the model. The ``session_option`` section is where information about specific runtime dependencies is specified. Within this section, the ``custom_ops_library`` option sets the path to the ``onnxruntime_custom_ops.dll`` file.
+Each OGA model folder contains a ``genai_config.json`` file. This file contains various configuration settings for the model. The ``session_option`` section is where information about specific runtime dependencies is specified. Within this section, the ``custom_ops_library`` option sets the path to the ``onnx_custom_ops.dll`` file for Hybrid models and ``onnxruntime_vitis_ai_custom_ops.dll`` file for NPU models.
 
 The following sample shows the defaults for the AMD pre-optimized Hybrid OGA LLMs:
 
@@ -200,7 +196,7 @@ The following sample shows the defaults for the AMD pre-optimized Hybrid OGA LLM
            ...
 
 
-The paths is relative to the folder where the program is run from. The model throws an error if the ``onnxruntime_custom_ops.dll`` file cannot be found at the specified location. Replacing the relative path with an absolute path to this file allows running the program from any location.
+The paths is relative to the folder where the program is run from. The model throws an error if the ``onnx_custom_ops.dll`` file cannot be found at the specified location. Replacing the relative path with an absolute path to this file allows running the program from any location.
 
 
 ***********************
