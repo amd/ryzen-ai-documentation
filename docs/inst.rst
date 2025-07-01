@@ -5,17 +5,16 @@ Installation Instructions
 #########################
 
 
-
 *************
 Prerequisites
 *************
 
-The Ryzen AI Software supports AMD processors with a Neural Processing Unit (NPU). Consult the release notes for the full list of :ref:`supported configurations <supported-configurations>`. 
+The Ryzen AI Software supports AMD processors with a Neural Processing Unit (NPU). Refer to the release notes for the full list of :ref:`supported configurations <supported-configurations>`.
 
-The following dependencies must be present on the system before installing the Ryzen AI Software:
+The following dependencies must be installed on the system before installing the Ryzen AI Software:
 
-.. list-table:: 
-   :widths: 25 25 
+.. list-table::
+   :widths: 25 25
    :header-rows: 1
 
    * - Dependencies
@@ -26,16 +25,16 @@ The following dependencies must be present on the system before installing the R
      - 2022
    * - cmake
      - version >= 3.26
-   * - Anaconda or Miniconda
+   * - Python distribution (Miniforge preferred)
      - Latest version
 
 |
 
-|warning| **IMPORTANT**: 
+|warning| **IMPORTANT**:
 
-- Visual Studio 2022 Community: ensure that "Desktop Development with C++" is installed
+- Visual Studio 2022 Community: ensure that `Desktop Development with C++` is installed
 
-- Anaconda or Miniconda: ensure that the following path is set in the System PATH variable: ``path\to\anaconda3\Scripts`` or ``path\to\miniconda3\Scripts`` (The System PATH variable should be set in the *System Variables* section of the *Environment Variables* window). 
+- Miniforge: ensure that the following path is set in the System PATH variable: ``path\to\miniforge3\condabin`` or ``path\to\miniforge3\Scripts\`` or ``path\to\miniforge3\`` (The System PATH variable should be set in the *System Variables* section of the *Environment Variables* window).
 
 |
 
@@ -45,14 +44,14 @@ The following dependencies must be present on the system before installing the R
 Install NPU Drivers
 *******************
 
-- Download the NPU driver installation package :download:`NPU Driver <https://account.amd.com/en/forms/downloads/amd-end-user-license-xef.html?filename=NPU_RAI1.4_GA_257_WHQL.zip>`
+- Download the NPU driver installation package :download:`NPU Driver <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=NPU_RAI1.5_280_WHQL.zip>`
 
 - Install the NPU drivers by following these steps:
 
-  - Extract the downloaded ``NPU_RAI1.4_GA_257_WHQL.zip`` zip file.
-  - Open a terminal in administrator mode and execute the ``.\npu_sw_installer.exe`` exe file.
+  - Extract the downloaded ZIP file.
+  - Open a terminal in administrator mode and execute the ``.\npu_sw_installer.exe`` file.
 
-- Ensure that NPU MCDM driver (Version:32.0.203.257, Date:3/12/2025) is correctly installed by opening ``Device Manager`` -> ``Neural processors`` -> ``NPU Compute Accelerator Device``.
+- Ensure that NPU MCDM driver (Version:32.0.203.280, Date:5/16/2025) is correctly installed by opening Task Manager -> Performance -> NPU0.
 
 
 .. _install-bundled:
@@ -61,16 +60,16 @@ Install NPU Drivers
 Install Ryzen AI Software
 *************************
 
-- Download the RyzenAI Software installer :download:`ryzen-ai-1.4.0.exe <https://account.amd.com/en/forms/downloads/amd-end-user-license-xef.html?filename=ryzen-ai-1.4.0.exe>`.
+- Download the RyzenAI Software installer :download:`ryzen-ai-1.5.0.msi <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ryzen-ai-1.5.0.msi>`.
 
 - Launch the MSI installer and follow the instructions on the installation wizard:
 
   - Accept the terms of the Licence agreement
-  - Provide the destination folder for Ryzen AI installation (default: ``C:\Program Files\RyzenAI\1.4.0``)
-  - Specify the name for the conda environment (default: ``ryzen-ai-1.4.0``)
+  - Provide the destination folder for Ryzen AI installation (default: ``C:\Program Files\RyzenAI\1.5.0``)
+  - Specify the name for the conda environment (default: ``ryzen-ai-1.5.0``)
 
 
-The Ryzen AI Software packages are now installed in the conda environment created by the installer. 
+The Ryzen AI Software packages are now installed in the conda environment created by the installer.
 
 
 .. _quicktest:
@@ -82,7 +81,7 @@ Test the Installation
 
 The Ryzen AI Software installation folder contains test to verify that the software is correctly installed. This installation test can be found in the ``quicktest`` subfolder.
 
-- Open a Conda command prompt (search for "Anaconda Prompt" in the Windows start menu)
+- Open a Conda command prompt (search for "Miniforge Prompt" in the Windows start menu)
 
 - Activate the Conda environment created by the Ryzen AI installer:
 
@@ -102,11 +101,10 @@ The Ryzen AI Software installation folder contains test to verify that the softw
 
 .. code-block::
 
-   [Vitis AI EP] No. of Operators :   CPU     2    NPU   398
-   [Vitis AI EP] No. of Subgraphs :   NPU     1 Actually running on NPU     1
-   ...
-   Test Passed
-   ...
+    [Vitis AI EP] No. of Operators :   NPU   398 VITIS_EP_CPU     2
+    [Vitis AI EP] No. of Subgraphs :   NPU     1 Actually running on NPU     1
+    Test Passed
+
 
 
 .. note::
@@ -114,29 +112,6 @@ The Ryzen AI Software installation folder contains test to verify that the softw
     The full path to the Ryzen AI Software installation folder is stored in the ``RYZEN_AI_INSTALLATION_PATH`` environment variable.
 
 
-**************************
-Other Installation Options
-**************************
-
-Linux Installer
-~~~~~~~~~~~~~~~
-
-Compiling BF16 models requires more processing power than compiling INT8 models. If a larger BF16 model cannot be compiled on a Windows machine due to hardware limitations (e.g., insufficient RAM), an alternative Linux-based compilation flow is supported. More details can be found here: :doc:`rai_linux`
-
-
-
-Lightweight Installer
-~~~~~~~~~~~~~~~~~~~~~
-
-A lightweight installer is available with reduced features. It cannot be used for compiling BF16 models but fully supports compiling and running INT8 models and running LLM models.
-
-- Download the RyzenAI Software Runtime MSI installer :download:`ryzen-ai-rt-1.4.0.msi <https://account.amd.com/en/forms/downloads/amd-end-user-license-xef.html?filename=ryzen-ai-rt-1.4.0.msi>`.
-
-- Launch the MSI installer and follow the instructions on the installation wizard:
-
-  - Accept the terms of the Licence agreement
-  - Provide the destination folder for Ryzen AI installation
-  - Specify the name for the conda environment
 
 
 

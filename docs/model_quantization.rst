@@ -10,6 +10,7 @@ The Ryzen AI compiler supports input models quantized to either INT8 or BF16 for
 - Transformer models: BF16
 
 Quantization introduces several challenges, primarily revolving around the potential drop in model accuracy. Choosing the right quantization parameters—such as data type, bit-width, scaling factors, and the decision between per-channel or per-tensor quantization—adds layers of complexity to the design process.
+The list of operations supported for different quantization types can be found in :doc:`Supported Operations <ops_support>`.
 
 *********
 AMD Quark
@@ -64,7 +65,7 @@ For more details
 ~~~~~~~~~~~~~~~~
 - `Image Classification <https://github.com/amd/RyzenAI-SW/tree/main/example/image_classification>`_ using ResNet50 to run BF16 model on NPU
 - `Finetuned DistilBERT for Text Classification <https://github.com/amd/RyzenAI-SW/tree/main/example/DistilBERT_text_classification_bf16>`_ 
-- `Text Embedding Model Alibaba-NLP/gte-large-en-v1.5  <https://github.com/amd/RyzenAI-SW/tree/main/example/GTE>`_ 
+- `Text Embedding Model Alibaba-NLP/gte-large-en-v1.5  <https://github.com/amd/RyzenAI-SW/tree/main/example/gte-large-en-v1.5-bf16>`_ 
 - Advanced quantization techniques `Fast Finetuning <https://quark.docs.amd.com/latest/supported_accelerators/ryzenai/tutorial_convert_fp32_or_fp16_to_bf16.html>`_ for BF16 models.
 
 

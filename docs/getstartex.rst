@@ -4,13 +4,13 @@
 Getting Started Tutorial
 ########################
 
-This tutorial uses a fine-tuned version of the ResNet model (using the CIFAR-10 dataset) to demonstrate the process of preparing, quantizing, and deploying a model using Ryzen AI Software. The tutorial features deployment using both Python and C++ ONNX runtime code. 
+This tutorial uses a fine-tuned version of the ResNet model (using the CIFAR-10 dataset) to demonstrate the process of preparing, quantizing, and deploying a model using Ryzen AI Software. The tutorial features deployment using both Python and C++ ONNX runtime code.
 
 .. note::
-   In this documentation, "NPU" is used in descriptions, while "IPU" is retained in some of the tool's language, code, screenshots, and commands. This intentional 
+   In this documentation, "NPU" is used in descriptions, while "IPU" is retained in some of the tool's language, code, screenshots, and commands. This intentional
    distinction aligns with existing tool references and does not affect functionality. Avoid making replacements in the code.
 
-- The source code files can be downloaded from `this link <https://github.com/amd/RyzenAI-SW/tree/main/tutorial/getting_started_resnet>`_. Alternatively, you can clone the RyzenAI-SW repo and change the directory into "tutorial". 
+- The source code files can be downloaded from `this link <https://github.com/amd/RyzenAI-SW/tree/main/tutorial/getting_started_resnet>`_. Alternatively, you can clone the RyzenAI-SW repo and change the directory into "tutorial".
 
 .. code-block::
 
@@ -19,13 +19,13 @@ This tutorial uses a fine-tuned version of the ResNet model (using the CIFAR-10 
 
 |
 
-The following are the steps and the required files to run the example: 
+The following are the steps and the required files to run the example:
 
-.. list-table:: 
+.. list-table::
    :widths: 20 25 25
    :header-rows: 1
 
-   * - Steps 
+   * - Steps
      - Files Used
      - Description
    * - Installation
@@ -37,20 +37,20 @@ The following are the steps and the required files to run the example:
      - The script ``prepare_model_data.py`` prepares the model and the data for the rest of the tutorial.
 
        1. To prepare the model the script converts pre-trained PyTorch model to ONNX format.
-       2. To prepare the necessary data the script downloads and extracts CIFAR-10 dataset. 
+       2. To prepare the necessary data the script downloads and extracts CIFAR-10 dataset.
 
    * - Pretrained model
      - ``models/resnet_trained_for_cifar10.pt``
      - The ResNet model trained using CIFAR-10 is provided in .pt format.
-   * - Quantization 
+   * - Quantization
      - ``resnet_quantize.py``
      - Convert the model to the NPU-deployable model by performing Post-Training Quantization flow using AMD Quark Quantization.
    * - Deployment - Python
      - ``predict.py``
-     -  Run the Quantized model using the ONNX Runtime code. We demonstrate running the model on both CPU and NPU. 
+     -  Run the Quantized model using the ONNX Runtime code. It demonstrates running the model on both CPU and NPU.
    * - Deployment - C++
      - ``cpp/resnet_cifar/.``
-     -  This folder contains the source code ``resnet_cifar.cpp`` that demonstrates running inference using C++ APIs. We additionally provide the infrastructure (required libraries, CMake files and header files) required by the example. 
+     -  This folder contains the source code ``resnet_cifar.cpp`` that demonstrates running inference using C++ APIs. Additionally, the infrastructure (required libraries, CMake files and header files) required by the example are provided.
 
 
 |
@@ -65,7 +65,7 @@ Step 1: Install Packages
 * Use the conda environment created during the installation for the rest of the steps. This example requires a couple of additional packages. Run the following command to install them:
 
 
-.. code-block:: 
+.. code-block::
 
    python -m pip install -r requirements.txt
 
@@ -77,11 +77,11 @@ Step 1: Install Packages
 Step 2: Prepare dataset and ONNX model
 **************************************
 
-In this example, we utilize a custom ResNet model finetuned using the CIFAR-10 dataset
+This example utilizes a custom ResNet model finetuned using the CIFAR-10 dataset
 
-The ``prepare_model_data.py`` script downloads the CIFAR-10 dataset in pickle format (for python) and binary format (for C++). This dataset will be used in the subsequent steps for quantization and inference. The script also exports the provided PyTorch model into ONNX format. The following snippet from the script shows how the ONNX model is exported:
+The ``prepare_model_data.py`` script downloads the CIFAR-10 dataset in pickle format (for python) and binary format (for C++). This dataset is used in the subsequent steps for quantization and inference. The script also exports the provided PyTorch model into ONNX format. The following snippet from the script shows how the ONNX model is exported:
 
-.. code-block:: 
+.. code-block::
 
     dummy_inputs = torch.randn(1, 3, 32, 32)
     input_names = ['input']
@@ -102,13 +102,13 @@ The ``prepare_model_data.py`` script downloads the CIFAR-10 dataset in pickle fo
 Note the following settings for the onnx conversion:
 
 - Ryzen AI supports a batch size=1, so dummy input is fixed to a batch_size =1 during model conversion
-- Recommended ``opset_version`` setting 13 is used. 
+- Recommended ``opset_version`` setting 13 is used.
 
 Run the following command to prepare the dataset and export the ONNX model:
 
-.. code-block:: 
+.. code-block::
 
-   python prepare_model_data.py 
+   python prepare_model_data.py
 
 * The downloaded CIFAR-10 dataset is saved in the current directory at the following location: ``data/*``.
 * The ONNX model is generated at models/resnet_trained_for_cifar10.onnx
@@ -126,9 +126,9 @@ Quantizing AI models from floating-point to 8-bit integers reduces computational
 
    python resnet_quantize.py
 
-This generates a quantized model using QDQ quant format and generate Quantized model with default configuration. After the completion of the run, the quantized ONNX model ``resnet_quantized.onnx`` is saved to models/resnet_quantized.onnx 
+This generates a quantized model using QDQ quant format and generate Quantized model with default configuration. After the completion of the run, the quantized ONNX model ``resnet_quantized.onnx`` is saved to models/resnet_quantized.onnx
 
-The :file:`resnet_quantize.py` file has ``ModelQuantizer::quantize_model`` function that applies quantization to the model. 
+The :file:`resnet_quantize.py` file has ``ModelQuantizer::quantize_model`` function that applies quantization to the model.
 
 .. code-block::
 
@@ -138,7 +138,7 @@ The :file:`resnet_quantize.py` file has ``ModelQuantizer::quantize_model`` funct
    # Get quantization configuration
    quant_config = get_default_config("XINT8")
    config = Config(global_quant_config=quant_config)
-   
+
    # Create an ONNX quantizer
    quantizer = ModelQuantizer(config)
 
@@ -156,16 +156,16 @@ The parameters of this function are:
 |
 
 ************************
-Step 4: Deploy the Model  
+Step 4: Deploy the Model
 ************************
 
-We demonstrate deploying the quantized model using both Python and C++ APIs. 
+It demonstrates deploying the quantized model using both Python and C++ APIs.
 
 * :ref:`Deployment - Python <dep-python>`
 * :ref:`Deployment - C++ <dep-cpp>`
 
 .. note::
-   During the Python and C++ deployment, the compiled model artifacts are saved in the cache folder named ``<run directory>/modelcachekey``. Ryzen-AI does not support the complied model artifacts across the versions, so if the model artifacts exist from the previous software version, ensure to delete the folder ``modelcachekey`` before the deployment steps. 
+   During the Python and C++ deployment, the compiled model artifacts are saved in the cache folder named ``<run directory>/modelcachekey``. Ryzen AI does not support the complied model artifacts across the versions, so if the model artifacts exist from the previous software version, ensure to delete the ``modelcachekey`` folder before executing the deployment steps.
 
 
 .. _dep-python:
@@ -173,20 +173,20 @@ We demonstrate deploying the quantized model using both Python and C++ APIs.
 Deployment - Python
 ===========================
 
-The ``predict.py`` script is used to deploy the model. It extracts the first ten images from the CIFAR-10 test dataset and converts them to the .png format. The script then reads all those ten images and classifies them by running the quantized custom ResNet model on CPU or NPU. 
+The ``predict.py`` script is used to deploy the model. It extracts the first ten images from the CIFAR-10 test dataset and converts them to the .png format. The script then reads all those ten images and classifies them by running the quantized custom ResNet model on CPU or NPU.
 
 Deploy the Model on the CPU
 ----------------------------
 
-By default, ``predict.py`` runs the model on CPU. 
+By default, ``predict.py`` runs the model on CPU.
 
 .. code-block::
-  
+
         python predict.py
 
 Typical output
 
-.. code-block:: 
+.. code-block::
 
         Image 0: Actual Label cat, Predicted Label cat
         Image 1: Actual Label ship, Predicted Label ship
@@ -198,23 +198,23 @@ Typical output
         Image 7: Actual Label frog, Predicted Label frog
         Image 8: Actual Label cat, Predicted Label cat
         Image 9: Actual Label automobile, Predicted Label automobile
-        
-                
+
+
 Deploy the Model on the Ryzen AI NPU
 ------------------------------------
 
-To successfully run the model on the NPU, run the following setup steps:
+To successfully run the model on the NPU, follow these setup steps:
 
-- Ensure ``RYZEN_AI_INSTALLATION_PATH`` points to ``path\to\ryzen-ai-sw-<version>\``. If you installed Ryzen-AI software using the MSI installer, this variable should already be set. Ensure that the Ryzen-AI software package has not been moved post installation, in which case ``RYZEN_AI_INSTALLATION_PATH`` will have to be set again. 
+- Ensure ``RYZEN_AI_INSTALLATION_PATH`` points to ``path\to\ryzen-ai-sw-<version>\``. If you installed Ryzen AI software using the MSI installer, this variable should already be set. Ensure that the Ryzen AI software package has not been moved post installation, in which case ``RYZEN_AI_INSTALLATION_PATH`` has to be set again.
 
-- By default, the Ryzen AI Conda environment automatically sets the standard binary for all inference sessions through the ``XLNX_VART_FIRMWARE`` environment variable. However, explicitly passing the xclbin option in provider_options overrides the default setting.
+- The binary for inference session need to be explicitly passed through the `xclbin` option in provider_options
 
 .. code-block::
 
   parser = argparse.ArgumentParser()
   parser.add_argument('--ep', type=str, default ='cpu',choices = ['cpu','npu'], help='EP backend selection')
   opt = parser.parse_args()
-  
+
   providers = ['CPUExecutionProvider']
   provider_options = [{}]
 
@@ -242,20 +242,20 @@ Typical output
 
 .. code-block::
 
-    [Vitis AI EP] No. of Operators :   CPU     2    IPU   398  99.50% 
-    [Vitis AI EP] No. of Subgraphs :   CPU     1    IPU     1 Actually running on IPU     1  
+    [Vitis AI EP] No. of Operators :   CPU     2    IPU   398  99.50%
+    [Vitis AI EP] No. of Subgraphs :   CPU     1    IPU     1 Actually running on IPU     1
     ...
     Image 0: Actual Label cat, Predicted Label cat
     Image 1: Actual Label ship, Predicted Label ship
     Image 2: Actual Label ship, Predicted Label ship
     Image 3: Actual Label airplane, Predicted Label airplane
-    Image 4: Actual Label frog, Predicted Label frog 
-    Image 5: Actual Label frog, Predicted Label frog 
+    Image 4: Actual Label frog, Predicted Label frog
+    Image 5: Actual Label frog, Predicted Label frog
     Image 6: Actual Label automobile, Predicted Label truck
     Image 7: Actual Label frog, Predicted Label frog
     Image 8: Actual Label cat, Predicted Label cat
-    Image 9: Actual Label automobile, Predicted Label automobile 
-   
+    Image 9: Actual Label automobile, Predicted Label automobile
+
 
 .. _dep-cpp:
 
@@ -265,11 +265,11 @@ Deployment - C++
 Prerequisites
 -------------
 
-1. Visual Studio 2022 Community edition, ensure "Desktop Development with C++" is installed
+1. Visual Studio 2022 Community edition, ensure **Desktop Development with C++** is installed
 2. cmake (version >= 3.26)
 3. opencv (version=4.6.0) required for the custom resnet example
 
-Install OpenCV 
+Install OpenCV
 --------------
 
 It is recommended to build OpenCV from the source code and use static build. The default installation location is "\install" , the following instruction installs OpenCV in the location "C:\\opencv" as an example. You may first change the directory to where you want to clone the OpenCV repository.
@@ -282,12 +282,12 @@ It is recommended to build OpenCV from the source code and use static build. The
    cmake --build build --config Release
    cmake --install build --config Release
 
-The build files will be written to ``build\``.
+The build files are written to ``build\``.
 
 Build and Run Custom Resnet C++ sample
 --------------------------------------
 
-The C++ source files, CMake list files and related artifacts are provided in the ``cpp/resnet_cifar/*`` folder. The source file ``cpp/resnet_cifar/resnet_cifar.cpp`` takes 10 images from the CIFAR-10 test set, converts them to .png format, preprocesses them, and performs model inference. The example has onnxruntime dependencies, that are provided in ``%RYZEN_AI_INSTALLATION_PATH%/onnxruntime/*``.
+The C++ source files, CMake list files, and related artifacts are provided in the ``cpp/resnet_cifar/*`` folder. The source file ``cpp/resnet_cifar/resnet_cifar.cpp`` takes 10 images from the CIFAR-10 test set, converts them to .png format, preprocesses them, and performs model inference. The example has onnxruntime dependencies that are provided in ``%RYZEN_AI_INSTALLATION_PATH%/onnxruntime/*``.
 
 Run the following command to build the resnet example. Assign ``-DOpenCV_DIR`` to the OpenCV build directory.
 
@@ -298,43 +298,43 @@ Run the following command to build the resnet example. Assign ``-DOpenCV_DIR`` t
 
 This should generate the build directory with the ``resnet_cifar.sln`` solution file along with other project files. Open the solution file using Visual Studio 2022 and build to compile. You can also use "Developer Command Prompt for VS 2022" to open the solution file in Visual Studio.
 
-.. code-block:: bash 
+.. code-block:: bash
 
    devenv build/resnet_cifar.sln
 
-Now to deploy our model, we will go back to the parent directory (getting_started_resnet) of this example. After compilation, the executable should be generated in ``cpp/build/Release/resnet_cifar.exe``. We will copy this application over to the parent directory:
+Now to deploy the model, go back to the parent directory (getting_started_resnet) of this example. After compilation, the executable should be generated in ``cpp/build/Release/resnet_cifar.exe``. Copy this application over to the parent directory:
 
-.. code-block:: bash 
+.. code-block:: bash
 
    cd ..
    xcopy cpp\build\Release\resnet_cifar.exe .
 
-Additionally, we will also need to copy the onnxruntime DLLs from the Vitis AI Execution Provider package to the current directory. The following commands copy the required files in the current directory: 
+Additionally, copy the onnxruntime DLLs from the Vitis AI Execution Provider package to the current directory. The following commands copy the required files in the current directory:
 
-.. code-block:: bash 
+.. code-block:: bash
 
    xcopy %RYZEN_AI_INSTALLATION_PATH%\onnxruntime\bin\* /E /I
 
 
-The C++ application that was generated takes 3 arguments: 
+The C++ application that was generated takes three arguments:
 
-#. Path to the quantized ONNX model generated in Step 3 
-#. The execution provider of choice (cpu or NPU) 
-#. vaip_config.json (pass None if running on CPU) 
+#. Path to the quantized ONNX model generated in Step three
+#. The execution provider of choice (cpu or NPU)
+#. vaip_config.json (pass None if running on CPU)
 
 
 Deploy the Model on the CPU
 ****************************
 
-To run the model on the CPU, use the following command: 
+To run the model on the CPU, use the following command:
 
-.. code-block:: bash 
+.. code-block:: bash
 
    resnet_cifar.exe models\resnet_quantized.onnx cpu
 
-Typical output: 
+Typical output:
 
-.. code-block:: bash 
+.. code-block:: bash
 
    model name:models\resnet_quantized.onnx
    ep:cpu
@@ -359,17 +359,17 @@ Deploy the Model on the NPU
 
 To successfully run the model on the NPU:
 
-- Ensure ``RYZEN_AI_INSTALLATION_PATH`` points to ``path\to\ryzen-ai-sw-<version>\``. If you installed Ryzen-AI software using the MSI installer, this variable should already be set. Ensure that the Ryzen-AI software package has not been moved post installation, in which case ``RYZEN_AI_INSTALLATION_PATH`` will have to be set again. 
+- Ensure ``RYZEN_AI_INSTALLATION_PATH`` points to ``path\to\ryzen-ai-sw-<version>\``. If you installed Ryzen AI software using the MSI installer, this variable should already be set. Ensure that the Ryzen AI software package has not been moved post installation, in which case ``RYZEN_AI_INSTALLATION_PATH`` has to be set again.
 
-- By default, the Ryzen AI Conda environment automatically sets the standard binary for all inference sessions through the ``XLNX_VART_FIRMWARE`` environment variable. However, explicitly passing the xclbin option in provider_options overrides the default setting.
+- The binary for inference session need to be explicitly passed through the `xclbin` option in provider_options
 
 The following code block from ``reset_cifar.cpp`` shows how ONNX Runtime is configured to deploy the model on the Ryzen AI NPU:
 
-.. code-block:: bash 
+.. code-block:: bash
 
     auto session_options = Ort::SessionOptions();
 
-    auto cache_dir = std::filesystem::current_path().string(); 
+    auto cache_dir = std::filesystem::current_path().string();
 
     if(ep=="npu")
     {
@@ -380,20 +380,20 @@ The following code block from ``reset_cifar.cpp`` shows how ONNX Runtime is conf
 
     auto session = Ort::Session(env, model_name.data(), session_options);
 
-To run the model on the NPU, we will pass the npu flag and the vaip_config.json file as arguments to the C++ application. Use the following command to run the model on the NPU: 
+To run the model on the NPU, pass the npu flag and the vaip_config.json file as arguments to the C++ application. Use the following command to run the model on the NPU:
 
-.. code-block:: bash 
+.. code-block:: bash
 
    resnet_cifar.exe models\resnet_quantized.onnx npu
 
-Typical output: 
+Typical output:
 
 .. code-block::
 
    [Vitis AI EP] No. of Operators :   CPU     2    IPU   398  99.50%
    [Vitis AI EP] No. of Subgraphs :   CPU     1    IPU     1 Actually running on IPU     1
    ...
-   Final results:   
+   Final results:
    Predicted label is cat and actual label is cat
    Predicted label is ship and actual label is ship
    Predicted label is ship and actual label is ship
@@ -403,7 +403,7 @@ Typical output:
    Predicted label is truck and actual label is automobile
    Predicted label is frog and actual label is frog
    Predicted label is cat and actual label is cat
-   Predicted label is automobile and actual label is automobile                                                                                                                                                                
+   Predicted label is automobile and actual label is automobile
 ..
   ------------
 

@@ -47,6 +47,7 @@ deprecated==1.2.18
     # via pygithub
 docutils==0.21.2
     # via
+    #   linuxdoc
     #   myst-parser
     #   pydata-sphinx-theme
     #   sphinx
@@ -58,6 +59,8 @@ fastjsonschema==2.21.1
     # via
     #   nbformat
     #   rocm-docs-core
+fspath==20230629
+    # via linuxdoc
 gitdb==4.0.12
     # via gitpython
 gitpython==3.1.44
@@ -100,6 +103,8 @@ jupyter-core==5.8.1
     #   jupyter-client
     #   nbclient
     #   nbformat
+linuxdoc==20240924
+    # via -r requirements.in
 markdown-it-py==3.0.0
     # via
     #   mdit-py-plugins
@@ -193,7 +198,9 @@ rpds-py==0.25.1
     #   jsonschema
     #   referencing
 six==1.17.0
-    # via python-dateutil
+    # via
+    #   fspath
+    #   python-dateutil
 smmap==5.0.2
     # via gitdb
 snowballstemmer==3.0.1
@@ -203,6 +210,7 @@ soupsieve==2.7
 sphinx==8.1.3
     # via
     #   breathe
+    #   linuxdoc
     #   myst-nb
     #   myst-parser
     #   pydata-sphinx-theme
@@ -276,3 +284,6 @@ wrapt==1.17.2
     # via deprecated
 zipp==3.23.0
     # via importlib-metadata
+
+# The following packages are considered to be unsafe in a requirements file:
+# setuptools

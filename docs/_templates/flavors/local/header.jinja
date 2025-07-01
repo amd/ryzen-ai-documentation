@@ -2,6 +2,12 @@
     <a class="klavika-font hover-opacity" href="/">Ryzen AI</a>
 {%- endmacro -%}
 
+{% macro version_list() -%}
+    {% if theme_version_list_link %}
+        <a class="header-all-versions" href="{{ theme_version_list_link }}">Version List</a>
+    {% endif %}
+{%- endmacro -%}
+
 {%
 set nav_secondary_items = {
     "GitHub": theme_repository_url|replace("-docs", ""),
