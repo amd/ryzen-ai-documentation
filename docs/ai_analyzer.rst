@@ -42,7 +42,7 @@ AI Analyzer also supports native ONNX Runtime profiling, which you can use to an
 .. code-block::
 
    # Configure session options for profiling
-   sess_options = rt.SessionOptions()
+   sess_options = ort.SessionOptions()
    sess_options.enable_profiling = True
 
    provider_options = [{
