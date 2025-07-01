@@ -29,15 +29,7 @@ Installation Steps
   conda update -n base -c defaults conda
   conda env create --file=env.yaml
 
-4. Download the Stable Diffusion models, scheduler and tokenizer files from Hugging Face <link>
-
-**TODO**: Add link when ready
-
-**NOTE**: For AMD internal testing, use the follwing download links:
-
-🔗 https://amdcloud-my.sharepoint.com/:u:/r/personal/chuanlia_amd_com/Documents/sd3_release/sd_release_zip_file/RAI1.5-v0613/GenAI-SD-models-v0613.zip?csf=1&web=1&e=DFaL6j
-
-🔗 https://amdcloud-my.sharepoint.com/:u:/r/personal/chuanlia_amd_com/Documents/sd3_release/sd_release_zip_file/RAI1.5-v0613/GenAI-SDXL-turbo-models-v0613.zip?csf=1&web=1&e=hHUgMr
+4. Download the Stable Diffusion models: **LINK COMING SOON**
 
 5. Copy the downloaded models in the ``GenAI-SD\models`` folder. After installing all the models, the ``GenAI-SD\models`` folder should contain the following subfolders:
 
