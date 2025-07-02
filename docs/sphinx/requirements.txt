@@ -80,7 +80,7 @@ importlib-metadata==8.7.0
     #   myst-nb
 ipykernel==6.29.5
     # via myst-nb
-ipython==8.18.1
+ipython==9.4.0
     # via
     #   ipykernel
     #   myst-nb
