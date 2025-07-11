@@ -21,17 +21,20 @@ Prerequisites
 
 Once you have correct Ubuntu distribution and Python installed locally, you can download and extract below packages
 
-*********************
-NPU drivers for Linux
-*********************
+.. _install-driver:
+
+*******************
+Install NPU Drivers
+*******************
 - Download the NPU driver package from this link :download:`NPU Driver <https://amdcloud.sharepoint.com/sites/EdgeML/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FEdgeML%2FShared%20Documents%2FIPU%2FStrix%2Flinux&viewid=64125ca9%2D13b9%2D4d73%2Dbe5a%2D08008740e650&p=true&ga=1>`
 
 - RyzenAI linux driver package contains 
-   - XRT Package:
+   - XRT Package
       - xrt_202520.2.20.41_24.04-amd64-base.deb
       - xrt_202520.2.20.41_24.04-amd64-base-dev.deb
       - xrt_202520.2.20.41_24.04-amd64-npu.deb
-   - NPU driver package:
+
+   - NPU driver package
       - xrt_plugin.2.20.250102.3.rel_24.04-amd64-amdxdna.deb
 
 - Follow the instructions below to install NPU driver package
@@ -44,12 +47,12 @@ NPU drivers for Linux
    $ sudo apt reinstall --fix-broken -y ./xrt_plugin.2.20.1773d9b_ubuntu24.04-x86_64-amdxdna.deb
 
 
+.. _install-bundled:
 
-
-*****************
-RyzenAI for Linux
-*****************
-- Download the RyzenAI for Linux package :download:`ryzen-ai-1.5.0.tgz <https://xcoartifactory/artifactory/vaiml-installers-prod-local/installers/rai-1.5.0/ryzenai_1.5.0_2025_07_09_7550/lnx64/ryzen_ai-1.5.0.tgz>`
+*************************
+Install Ryzen AI Software
+*************************
+- Download the RyzenAI for Linux package :download:`ryzen-ai-1.5.0.tgz <https://xcoartifactory/ui/native/vaiml-installers-prod-local/installers/rai-1.5.0/latest/lnx64/ryzen_ai-1.5.0.tgz>`
 - Navigate to the downloaded path and follow the below steps
 
 .. code-block::
