@@ -26,7 +26,7 @@ Once you have correct Ubuntu distribution and Python installed locally, you can 
 *******************
 Install NPU Drivers
 *******************
-- Download the NPU driver package from this link :download:`NPU Driver <https://amdcloud.sharepoint.com/sites/EdgeML/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FEdgeML%2FShared%20Documents%2FIPU%2FStrix%2Flinux&viewid=64125ca9%2D13b9%2D4d73%2Dbe5a%2D08008740e650&p=true&ga=1>`
+- Download the NPU driver package from this link :download:`NPU Driver <https://mkmartifactory.amd.com:8443/artifactory/atg-cvml-generic-local/builds/Linux-ipu/Release/IPU_RC3_25.06.24/jenkins-CVML-Release-linux-ipu-sw-release-40/build/>`
 
 - RyzenAI linux driver package contains 
    - XRT Package
