@@ -29,9 +29,12 @@ Installation Steps
   conda update -n base -c defaults conda
   conda env create --file=env.yaml
 
-4. Download the Stable Diffusion models: **LINK COMING SOON**
+4. Download the Stable Diffusion models: 
 
-5. Copy the downloaded models in the ``GenAI-SD\models`` folder. After installing all the models, the ``GenAI-SD\models`` folder should contain the following subfolders:
+   - :download:`GenAI-SD-models-v0613-v0711.zip <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=GenAI-SD-models-v0613-v0711.zip>`
+   - :download:`GenAI-SDXL-turbo-models-v0613-v0711.zip <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=GenAI-SDXL-turbo-models-v0613-v0711.zip>`
+
+5. Extract the downloaded zip files and copy the models in the ``GenAI-SD\models`` folder. After installing all the models, the ``GenAI-SD\models`` folder should contain the following subfolders:
 
    - sd15_controlnet
    - sd_15
