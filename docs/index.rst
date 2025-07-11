@@ -85,18 +85,12 @@ For more details, refer to the :doc:`modelrun` page.
 .. toctree::
    :maxdepth: 1
    :hidden:
-   :caption: Additional Features
+   :caption: Additional Topics
 
    xrt_smi.rst
    ai_analyzer.rst
+   sd_demo.rst
    ryzen_ai_libraries.rst
-
-
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-   :caption: Additional Topics
-
    Model Zoo <https://huggingface.co/models?other=RyzenAI>
    Licensing Information <licenses.rst>
 

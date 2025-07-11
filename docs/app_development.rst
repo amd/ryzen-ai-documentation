@@ -26,7 +26,7 @@ The following table summarizes the driver requirements for the different version
      - Maximum NPU Driver release date
    * - 1.5
      - 32.0.203.280
-     - June 29th, 2028
+     - July 1st, 2028
    * - 1.4.1
      - 32.0.203.259
      - May 13th, 2028
