@@ -19,7 +19,14 @@ Prerequisites
    * - Python
      - 3.10.x
 
-Once you have correct Ubuntu distribution and Python installed locally, you can download and extract below packages
+Use the commands below to install Python 3.10.x along with certain dependecies
+
+.. code-block::
+
+  sudo apt-get install python3.10
+  sudo apt-get install python3.10-venv
+
+Once you have correct Ubuntu distribution and Python installed locally, you can proceed with NPU drivers installation
 
 .. _install-driver:
 
