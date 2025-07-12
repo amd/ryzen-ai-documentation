@@ -71,7 +71,7 @@ Install Ryzen AI Software
 
 .. code-block::
 
-   ./install_ryzen_ai_1_4.sh -a yes -p <TARGET-PATH/venv> -l
+   ./install_ryzen_ai_1_5.sh -a yes -p <TARGET-PATH/venv>
    source <TARGET-PATH/venv>/bin/activate
 
 - This will successfully install RyzenAI and activate the Virtual environment at your targeted location. You can verify by running the command "pip list"
