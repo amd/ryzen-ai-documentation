@@ -51,7 +51,7 @@ Install NPU Drivers
    $ sudo apt reinstall --fix-broken -y ./xrt_202520.2.20.41_24.04-amd64-base.deb
    $ sudo apt reinstall --fix-broken -y ./xrt_202520.2.20.41_24.04-amd64-base-dev.deb
    $ sudo apt reinstall --fix-broken -y ./xrt_202520.2.20.41_24.04-amd64-npu.deb 
-   $ sudo apt reinstall --fix-broken -y ./xrt_plugin.2.20.1773d9b_ubuntu24.04-x86_64-amdxdna.deb
+   $ sudo apt reinstall --fix-broken -y ./xrt_plugin.2.20.250102.3.rel_24.04-amd64-amdxdna.deb
 
 
 .. _install-bundled:
