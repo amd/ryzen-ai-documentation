@@ -16,6 +16,8 @@ Prerequisites
      - Version Requirement
    * - Ubuntu Distribution
      - Ubuntu 24.04 LTS
+   * - Kernel Version
+     - >= 6.10
    * - Python
      - 3.10.x
 
@@ -48,13 +50,28 @@ Install NPU Drivers
 
 .. code-block::
 
-   $ sudo apt reinstall --fix-broken -y ./xrt_202520.2.20.41_24.04-amd64-base.deb
-   $ sudo apt reinstall --fix-broken -y ./xrt_202520.2.20.41_24.04-amd64-base-dev.deb
-   $ sudo apt reinstall --fix-broken -y ./xrt_202520.2.20.41_24.04-amd64-npu.deb 
-   $ sudo apt reinstall --fix-broken -y ./xrt_plugin.2.20.250102.3.rel_24.04-amd64-amdxdna.deb
-   $ source /opt/xilinx/xrt/setup.sh
+   sudo apt reinstall --fix-broken -y ./xrt_202520.2.20.41_24.04-amd64-base.deb
+   sudo apt reinstall --fix-broken -y ./xrt_202520.2.20.41_24.04-amd64-base-dev.deb
+   sudo apt reinstall --fix-broken -y ./xrt_202520.2.20.41_24.04-amd64-npu.deb 
+   sudo apt reinstall --fix-broken -y ./xrt_plugin.2.20.250102.3.rel_24.04-amd64-amdxdna.deb
+   export LD_LIBRARY_PATH=/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH
+   source /opt/xilinx/xrt/setup.sh
+
+- To verify your Driver installation, you can run the command:
+
+.. code-block::
+
+   /opt/xilinx/xrt/bin/xrt-smi examine
+
+   Device(s) Present
+   |BDF             |Name       |
+   |----------------|-----------|
+   |[0000:c5:00.1]  |NPU Strix  |
 
 
+.. note:
+
+   Whenever you restart your linux  
 
 
 .. _install-bundled:
