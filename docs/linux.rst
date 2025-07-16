@@ -16,6 +16,8 @@ Prerequisites
      - Version Requirement
    * - Ubuntu Distribution
      - Ubuntu 24.04 LTS
+   * - Kernel Version
+     - >= 6.10
    * - Python
      - 3.10.x
 
