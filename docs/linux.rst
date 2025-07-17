@@ -167,15 +167,25 @@ Additional Examples
 .. note::
 
    Before running the above examples - 
-      - Please skip any instructions related to conda enviornment. (That is windows specific only)
-      - Please make sure you provide correct XCLBIN path before running any XINT8 model on NPU. (Refer to quicktest snippet below for a reference)
+      - RyzenAI creates its own Python Virtual Environment to run the examples. You can skip conda enviornment instruction as they are Windows specific only
+      - Make sure you provide correct XCLBIN path before running any XINT8 model on NPU. (Refer to quicktest snippet below for a reference)
 
 .. code-block::
 
 
-    print("Setting environment for STX")
     install_dir = <RyzenAI installation directory>
     xclbin_file = os.path.join(install_dir, 'voe-4.0-linux_x86_64', 'xclbins', 'strix', 'AMD_AIE2P_4x4_Overlay.xclbin')
+   
+    provider_options = [{
+            'cache_dir': cache_dir,
+            'cache_key': cache_key,
+            'xclbin': xclbin_file
+        }]
+
+    # creating a session
+    session = ort.InferenceSession(model, providers=providers,
+                               provider_options=provider_options)
+
 
 
 
