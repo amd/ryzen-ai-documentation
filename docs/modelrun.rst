@@ -388,7 +388,7 @@ In the example above, the cache directory is set to the absolute path of the fol
 ONNX Runtime EP Context Cache
 =============================
 
-The Vitis AI EP supports the ONNX Runtime EP context cache feature. This features allows dumping and reloading a snapshot of the EP context before deployment. Currently, this feature is only available for INT8 models.
+The Vitis AI EP supports the ONNX Runtime EP context cache feature. This features allows dumping and reloading a snapshot of the EP context before deployment. 
 
 The user can enable dumping of the EP context by setting the ``ep.context_enable`` session option to 1.
 
