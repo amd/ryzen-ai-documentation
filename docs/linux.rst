@@ -17,7 +17,7 @@ Prerequisites
    * - Ubuntu Distribution
      - Ubuntu 24.04 LTS
    * - Kernel Version
-     - >= 6.11
+     - >= 6.10
    * - Python
      - 3.10.x
 
@@ -59,7 +59,7 @@ Install NPU Drivers
 
 - To verify your Driver installation, you can run the command:
 
-.. code-block::
+.. code-block:: bash
 
    /opt/xilinx/xrt/bin/xrt-smi examine
 
@@ -150,7 +150,7 @@ Examples, Demos, Tutorials
 
 - RyzenAI-SW demonstrates various demos and examples for Model compilation and deployment on NPUs
 
-- We recommend our Getting started Resnet tutorial as an entry to our Linux Environment - `Getting started Resnet with BF16 Model <https://github.com/amd/RyzenAI-SW/tree/main/tutorial/getting_started_resnet_linux>`_
+- We recommend our Getting started Resnet tutorial as an entry to our Linux Environment - `Getting started Resnet with BF16 Model <https://github.com/amd/RyzenAI-SW/tree/main/tutorial/linux>`_
 
 *******************
 Additional Examples
@@ -184,9 +184,9 @@ Additional Examples
 
 
 
-*******************
-C++ Implementation
-*******************
+***************************
+C++ Application Development
+***************************
 
 - Follow the instructions below to install prerequisites before building Models in C++
 
