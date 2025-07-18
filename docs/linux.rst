@@ -84,7 +84,7 @@ Install Ryzen AI Software
 
 - Install RyzenAI package at your desired target path
 
-.. code-block:: python
+.. code-block:: bash
 
    ./install_ryzen_ai_1_5.sh -a yes -p <TARGET-PATH>/venv
    source <TARGET-PATH>/venv/bin/activate
@@ -192,7 +192,7 @@ C++ Implementation
 
 - Install GCC 12 and set it as the default compiler
 
-.. code-block:: python
+.. code-block:: bash
 
    sudo apt update
    sudo apt install gcc-12 g++-12
