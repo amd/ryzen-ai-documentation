@@ -157,9 +157,9 @@ Examples, Demos, Tutorials
 
 - We recommend our Getting started Resnet tutorial as an entry to our Linux Environment - `Getting started Resnet with BF16 Model <https://github.com/amd/RyzenAI-SW/tree/main/tutorial/getting_started_resnet_linux>`_
 
-**************
+*******************
 Additional Examples
-**************
+*******************
 - Here are a few more examples from our `RyzenAI Software Repository <https://github.com/amd/RyzenAI-SW/tree/main>`_
    - `Getting started Resnet with INT8 Model <https://github.com/amd/RyzenAI-SW/tree/main/tutorial/getting_started_resnet/int8>`_
    - `Yolov8m Model for Object Detection <https://github.com/amd/RyzenAI-SW/tree/main/tutorial/object_detection>`_
@@ -167,7 +167,7 @@ Additional Examples
 .. note::
 
    Before running the above examples - 
-      - RyzenAI creates its own Python Virtual Environment to run the examples. You can skip conda enviornment instruction as they are Windows specific only
+      - RyzenAI creates its own Python Virtual Environment to run the examples. You can skip conda environment instruction as they are Windows specific only
       - Make sure you provide correct XCLBIN path before running any XINT8 model on NPU. (Refer to quicktest snippet below for a reference)
 
 .. code-block::
@@ -187,6 +187,29 @@ Additional Examples
                                provider_options=provider_options)
 
 
+
+
+*******************
+C++ Implementation
+*******************
+
+- Follow the instructions below to install prerequisites before building Models in C++
+
+- Install GCC 12 and set it as the default compiler
+
+   .. code-block::
+
+      sudo apt update
+      sudo apt install gcc-12 g++-12
+      sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-12 100 --slave /usr/bin/g++ g++ /usr/bin/g++-12
+      sudo update-alternatives --config gcc
+
+
+- Install RyzenAI and Source activate the Environment
+- Install cmake with GLIBCXX_3.4.30
+   .. code-block::
+
+      pip install cmake==3.31.6
 
 
 
