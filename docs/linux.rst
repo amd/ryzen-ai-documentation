@@ -148,3 +148,47 @@ The RyzenAI software package contains a test script that verifies your correct i
    Test Passed
 
 
+
+************************
+Examples, Demos, Tutorials
+************************
+
+- RyzenAI-SW demonstrates various demos and examples for Model compilation and deployment on NPUs
+
+- We recommend our Getting started Resnet tutorial as an entry to our Linux Environment - `Getting started Resnet with BF16 Model <https://gitenterprise.xilinx.com/lasharma/RyzenAI-SW/tree/update_gsr_linux/tutorial/getting_started_resnet_linux>`
+
+**************
+Additional Examples
+**************
+- Here are a few more examples from our `RyzenAI Software Repository <https://github.com/amd/RyzenAI-SW/tree/main>`
+   - `Getting started Resnet with INT8 Model <https://github.com/amd/RyzenAI-SW/tree/main/tutorial/getting_started_resnet/int8>`
+   - `Yolov8m Model for Object Detection <https://github.com/amd/RyzenAI-SW/tree/main/tutorial/object_detection>`
+
+.. note::
+
+   Before running the above examples - 
+      - RyzenAI creates its own Python Virtual Environment to run the examples. You can skip conda enviornment instruction as they are Windows specific only
+      - Make sure you provide correct XCLBIN path before running any XINT8 model on NPU. (Refer to quicktest snippet below for a reference)
+
+.. code-block::
+
+
+    install_dir = <RyzenAI installation directory>
+    xclbin_file = os.path.join(install_dir, 'voe-4.0-linux_x86_64', 'xclbins', 'strix', 'AMD_AIE2P_4x4_Overlay.xclbin')
+   
+    provider_options = [{
+            'cache_dir': cache_dir,
+            'cache_key': cache_key,
+            'xclbin': xclbin_file
+        }]
+
+    # creating a session
+    session = ort.InferenceSession(model, providers=providers,
+                               provider_options=provider_options)
+
+
+
+
+
+
+
