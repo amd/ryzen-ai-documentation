@@ -23,7 +23,7 @@ Prerequisites
 
 Use the commands below to install Python 3.10.x along with certain dependecies
 
-.. code-block::
+.. code-block:: python
 
   sudo apt-get install python3.10
   sudo apt-get install python3.10-venv
@@ -48,7 +48,7 @@ Install NPU Drivers
 
 - Follow the instructions below to install NPU driver package
 
-.. code-block::
+.. code-block:: python
 
    sudo apt reinstall --fix-broken -y ./xrt_202520.2.20.41_24.04-amd64-base.deb
    sudo apt reinstall --fix-broken -y ./xrt_202520.2.20.41_24.04-amd64-base-dev.deb
@@ -69,11 +69,6 @@ Install NPU Drivers
    |[0000:c5:00.1]  |NPU Strix  |
 
 
-.. note:
-
-   Whenever you restart your linux  
-
-
 .. _install-bundled:
 
 *************************
@@ -82,17 +77,17 @@ Install Ryzen AI Software
 - Download the RyzenAI for Linux package :download:`ryzen-ai-1.5.0.tgz <https://xcoartifactory/ui/native/vaiml-installers-prod-local/installers/rai-1.5.0/latest/lnx64/ryzen_ai-1.5.0.tgz>`
 - Navigate to the downloaded path and follow the below steps
 
-.. code-block::
+.. code-block:: python
 
    tar -xvzf ryzen_ai-1.5.0.tgz 
    cd ryzen-ai-1.5.0
 
 - Install RyzenAI package at your desired target path
 
-.. code-block::
+.. code-block:: python
 
-   ./install_ryzen_ai_1_5.sh -a yes -p <TARGET-PATH/venv>
-   source <TARGET-PATH/venv>/bin/activate
+   ./install_ryzen_ai_1_5.sh -a yes -p <TARGET-PATH>/venv
+   source <TARGET-PATH>/venv/bin/activate
 
 - This will successfully install RyzenAI and activate the Virtual environment at your targeted location.
 
@@ -106,15 +101,15 @@ The RyzenAI software package contains a test script that verifies your correct i
 - Navigate to your targeted Virtual Environment created in the previous step
 - You will observe a subfolder named "quicktest"
 
-.. code-block::
+.. code-block:: python
 
-   cd <TARGET-PATH/venv/quicktest>
+   cd <TARGET-PATH>/venv/quicktest
    python quicktest.py
 
 - The quicktest.py script picks up a simple CNN model, compiles it and runs on AMD's Neural Processing Unit (NPU). 
 - On successful run, you can observe output as shown below.
 
-.. code-block::
+.. code-block:: python
 
    Setting environment for STX
    WARNING: Logging before InitGoogleLogging() is written to STDERR
@@ -170,7 +165,7 @@ Additional Examples
       - RyzenAI creates its own Python Virtual Environment to run the examples. You can skip conda environment instruction as they are Windows specific only
       - Make sure you provide correct XCLBIN path before running any XINT8 model on NPU. (Refer to quicktest snippet below for a reference)
 
-.. code-block::
+.. code-block:: python
 
 
     install_dir = <RyzenAI installation directory>
@@ -197,19 +192,19 @@ C++ Implementation
 
 - Install GCC 12 and set it as the default compiler
 
-   .. code-block::
+.. code-block:: python
 
-      sudo apt update
-      sudo apt install gcc-12 g++-12
-      sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-12 100 --slave /usr/bin/g++ g++ /usr/bin/g++-12
-      sudo update-alternatives --config gcc
+   sudo apt update
+   sudo apt install gcc-12 g++-12
+   sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-12 100 --slave /usr/bin/g++ g++ /usr/bin/g++-12
+   sudo update-alternatives --config gcc
 
 
 - Install RyzenAI and Source activate the Environment
 - Install cmake with GLIBCXX_3.4.30
-   .. code-block::
+.. code-block:: python
 
-      pip install cmake==3.31.6
+   pip install cmake==3.31.6
 
 
 
