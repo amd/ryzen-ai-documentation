@@ -56,7 +56,7 @@ Version 1.5: Linux Release
   - Strix Point and Strix Halo
   - Kraken 
 
-- Supported Linux distribution
+- Supported Linux distributions
 
   - Ubuntu 24.04 with 6.11 HWE Linux Kernel
 
