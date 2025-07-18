@@ -109,7 +109,7 @@ The RyzenAI software package contains a test script that verifies your correct i
 - The quicktest.py script picks up a simple CNN model, compiles it and runs on AMD's Neural Processing Unit (NPU). 
 - On successful run, you can observe output as shown below.
 
-.. code-block:: python
+.. code-block:: bash
 
    Setting environment for STX
    WARNING: Logging before InitGoogleLogging() is written to STDERR
