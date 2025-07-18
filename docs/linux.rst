@@ -184,9 +184,9 @@ Additional Examples
 
 
 
-*******************
-C++ Implementation
-*******************
+***************************
+C++ Application Development
+***************************
 
 - Follow the instructions below to install prerequisites before building Models in C++
 
