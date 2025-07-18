@@ -23,7 +23,7 @@ Prerequisites
 
 Use the commands below to install Python 3.10.x along with certain dependecies
 
-.. code-block:: python
+.. code-block:: bash
 
   sudo apt-get install python3.10
   sudo apt-get install python3.10-venv
