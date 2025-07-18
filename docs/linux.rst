@@ -17,7 +17,7 @@ Prerequisites
    * - Ubuntu Distribution
      - Ubuntu 24.04 LTS
    * - Kernel Version
-     - >= 6.10
+     - >= 6.11
    * - Python
      - 3.10.x
 
@@ -155,7 +155,7 @@ Examples, Demos, Tutorials
 
 - RyzenAI-SW demonstrates various demos and examples for Model compilation and deployment on NPUs
 
-- We recommend our Getting started Resnet tutorial as an entry to our Linux Environment - `Getting started Resnet with BF16 Model <https://gitenterprise.xilinx.com/lasharma/RyzenAI-SW/tree/update_gsr_linux/tutorial/getting_started_resnet_linux>`
+- We recommend our Getting started Resnet tutorial as an entry to our Linux Environment - `Getting started Resnet with BF16 Model <https://gitenterprise.xilinx.com/lasharma/RyzenAI-SW/tree/update_gsr_linux/tutorial/getting_started_resnet_linux>`_
 
 **************
 Additional Examples
