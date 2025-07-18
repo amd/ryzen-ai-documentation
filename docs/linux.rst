@@ -150,7 +150,7 @@ Examples, Demos, Tutorials
 
 - RyzenAI-SW demonstrates various demos and examples for Model compilation and deployment on NPUs
 
-- We recommend our Getting started Resnet tutorial as an entry to our Linux Environment - `Getting started Resnet with BF16 Model <https://github.com/amd/RyzenAI-SW/tree/main/tutorial/getting_started_resnet_linux>`_
+- We recommend our Getting started Resnet tutorial as an entry to our Linux Environment - `Getting started Resnet with BF16 Model <https://github.com/amd/RyzenAI-SW/tree/main/tutorial/linux>`_
 
 *******************
 Additional Examples
