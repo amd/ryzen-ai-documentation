@@ -47,6 +47,32 @@ The following table lists which types of models are supported on what hardware p
      -
      - |checkmark|
 
+**************************
+Version 1.5: Linux Release
+**************************
+- Linux release supports the following NPU devices
+
+  - Phoenix and Hawk Point
+  - Strix Point and Strix Halo
+  - Kraken 
+
+- Supported Linux distributions
+
+  - Ubuntu 24.04 with 6.11 HWE Linux Kernel
+
+- New Features:
+
+  - New Linux driver release allows concurrent ML applications running on NPU device
+  - Temporal scheduling based on priority with support for preemption
+  - Maximum 32 hardware contexts
+  - Adjust DPM levels when hardware contexts are created and destroyed
+
+- Limitations:
+
+  - Supported model compilation can be limited by the memory on the Linux host. We recommend to have 32GB memory installed and an equivalent amount of swap space setup to enable model compilation
+  - Linux driver release supports NPU-only Large Language Models (LLMs) and does not support hybrid LLM flows
+  - NPU will power off after 5 seconds of inactivity; users should collect preemption reports before the board powers off, as values will reset to zero
+
 
 ***********
 Version 1.5
