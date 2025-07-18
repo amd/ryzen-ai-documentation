@@ -48,7 +48,7 @@ Install NPU Drivers
 
 - Follow the instructions below to install NPU driver package
 
-.. code-block:: python
+.. code-block:: bash
 
    sudo apt reinstall --fix-broken -y ./xrt_202520.2.20.41_24.04-amd64-base.deb
    sudo apt reinstall --fix-broken -y ./xrt_202520.2.20.41_24.04-amd64-base-dev.deb
