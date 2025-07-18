@@ -59,7 +59,7 @@ Install NPU Drivers
 
 - To verify your Driver installation, you can run the command:
 
-.. code-block::
+.. code-block:: bash
 
    /opt/xilinx/xrt/bin/xrt-smi examine
 
@@ -101,7 +101,7 @@ The RyzenAI software package contains a test script that verifies your correct i
 - Navigate to your targeted Virtual Environment created in the previous step
 - You will observe a subfolder named "quicktest"
 
-.. code-block:: bash
+.. code-block:: python
 
    cd <TARGET-PATH>/venv/quicktest
    python quicktest.py
@@ -109,7 +109,7 @@ The RyzenAI software package contains a test script that verifies your correct i
 - The quicktest.py script picks up a simple CNN model, compiles it and runs on AMD's Neural Processing Unit (NPU). 
 - On successful run, you can observe output as shown below.
 
-.. code-block:: bash
+.. code-block:: python
 
    Setting environment for STX
    WARNING: Logging before InitGoogleLogging() is written to STDERR
