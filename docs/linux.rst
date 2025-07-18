@@ -77,7 +77,7 @@ Install Ryzen AI Software
 - Download the RyzenAI for Linux package :download:`ryzen-ai-1.5.0.tgz <https://xcoartifactory/ui/native/vaiml-installers-prod-local/installers/rai-1.5.0/latest/lnx64/ryzen_ai-1.5.0.tgz>`
 - Navigate to the downloaded path and follow the below steps
 
-.. code-block:: python
+.. code-block:: bash
 
    tar -xvzf ryzen_ai-1.5.0.tgz 
    cd ryzen-ai-1.5.0
@@ -109,7 +109,7 @@ The RyzenAI software package contains a test script that verifies your correct i
 - The quicktest.py script picks up a simple CNN model, compiles it and runs on AMD's Neural Processing Unit (NPU). 
 - On successful run, you can observe output as shown below.
 
-.. code-block:: python
+.. code-block:: bash
 
    Setting environment for STX
    WARNING: Logging before InitGoogleLogging() is written to STDERR
