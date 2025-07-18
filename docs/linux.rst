@@ -101,7 +101,7 @@ The RyzenAI software package contains a test script that verifies your correct i
 - Navigate to your targeted Virtual Environment created in the previous step
 - You will observe a subfolder named "quicktest"
 
-.. code-block:: python
+.. code-block:: bash
 
    cd <TARGET-PATH>/venv/quicktest
    python quicktest.py
