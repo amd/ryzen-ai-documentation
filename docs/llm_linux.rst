@@ -2,7 +2,7 @@
 Running LLM on Linux
 ####################
 
-This page showcase an example of running LLM on RyzenAI NPU
+This page showcases an example of running LLM on RyzenAI NPU
 
 - Open a Linux terminal and create a new folder
 
