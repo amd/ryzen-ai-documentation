@@ -40,7 +40,7 @@ This page showcase an example of running LLM on RyzenAI NPU
 
 .. code-block:: bash
 
-  cp <USER-PATH>/ryzen_ai-1.5.0/venv/deployment .
+  cp -r <USER-PATH>/ryzen_ai-1.5.0/venv/deployment .
 
 - Your current working directory should have below files
 
