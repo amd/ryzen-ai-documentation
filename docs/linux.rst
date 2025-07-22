@@ -215,9 +215,10 @@ Running LLM
 - Copy `deployment` folder in the run directory
 - Open `genai_config.json` file and change `custom_ops_library` as below 
 
-```
-     "custom_ops_library": "deployment/libonnxruntime_vitis_ai_custom_ops.so"`
-```
+.. code-block:: 
+
+       "custom_ops_library": "deployment/libonnxruntime_vitis_ai_custom_ops.so"`
+
 - Run LLM
 
 
