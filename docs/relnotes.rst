@@ -52,7 +52,6 @@ Version 1.5: Linux Release
 **************************
 - Linux release supports the following NPU devices
 
-  - Phoenix and Hawk Point
   - Strix Point and Strix Halo
   - Kraken 
 
