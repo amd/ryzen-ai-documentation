@@ -212,7 +212,7 @@ C++ Application Development
 Running LLM
 ***********
 
-Please follow this page for Running LLM on Linux :doc:`llm_linux`
+Please follow this page for :doc:`llm_linux`
 
 
 
