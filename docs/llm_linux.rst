@@ -63,7 +63,7 @@ This page showcase an example of running LLM on RyzenAI NPU
 .. code-block::
 
   export LD_LIBRARY_PATH=deployment:$LD_LIBRARY_PATH
-  export LD_LIBRARY_PATH=npu_llm/lib:$LD_LIBRARY_PATH
+  export LD_LIBRARY_PATH=npu-llm/lib:$LD_LIBRARY_PATH
 
 - We can now run our Model with command below:
 
