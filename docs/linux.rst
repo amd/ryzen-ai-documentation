@@ -212,25 +212,7 @@ C++ Application Development
 Running LLM
 ***********
 
-- Please refer to Running LLM on Linux
-- create a new folder - run_llm (mkdir run_llm, cd run_llm)
-- git clone to . (link)
-- copy deployment folder from <TARGET-PATH>/venv
-- Open `genai_config.json` file and change `custom_ops_library` as below 
-
-.. code-block:: 
-
-       "custom_ops_library": "deployment/libonnxruntime_vitis_ai_custom_ops.so"`
-
-copy cp /scratch/lasharma/ryzen_ai-1.5.0/npu-llm.tar.gz
-unzip the file 
-export LD_LIBRARY_PATH=deployment:$LD_LIBRARY_PATH
-export LD_LIBRARY_PATH=npu_llm/lib:$LD_LIBRARY_PATH
-./npu-llm/model_benchmark -i Phi-3.5-mini-instruct-awq-g128-int4-asym-bf16-onnx-ryzen-strix/ -l 128 -p Phi-3.5-mini-instruct-awq-g128-int4-asym-bf16-onnx-ryzen-strix/prompts.txt 
-
-segmentation fault - ask vikram
-check multiple copies too 
-- Run LLM
+Please follow this page for Running LLM on Linux :doc:`llm_linux`
 
 
 
