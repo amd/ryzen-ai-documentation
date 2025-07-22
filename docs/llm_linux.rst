@@ -23,7 +23,7 @@ This page showcase an example of running LLM on RyzenAI NPU
 
 .. code-block::
 
-  echo $RYZEN_AI_INSTALLATION_PATH$
+  echo $RYZEN_AI_INSTALLATION_PATH
   <USER-PATH>/ryzen_ai-1.5.0/venv
 
 - Navigate to Ryzen_ai-1.5.0 installation path and you will find a tar file "npu-llm.tar.gz" in the subdirectory
