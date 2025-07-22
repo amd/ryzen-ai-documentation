@@ -74,7 +74,7 @@ Install NPU Drivers
 *************************
 Install Ryzen AI Software
 *************************
-- Download the RyzenAI for Linux package :download:`ryzen-ai-1.5.0.tgz <https://xcoartifactory/ui/native/vaiml-installers-prod-local/installers/rai-1.5.0/latest/lnx64/ryzen_ai-1.5.0.tgz>`
+- Download the RyzenAI for Linux package :download:`ryzen-ai-1.5.0.tgz <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ryzen_ai-1.5.0.tgz>`
 - Navigate to the downloaded path and follow the below steps
 
 .. code-block:: bash
