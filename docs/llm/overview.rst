@@ -18,8 +18,8 @@ The flow supports two execution modes:
 Supported Configurations
 ========================
 
-- Only Ryzen AI 300-series Strix Point (STX) and Krackan Point (KRK) processors support OGA-based hybrid execution.
-- Developers with Ryzen AI 7000- and 8000-series processors can get started using the CPU-based examples linked in the :ref:`featured-llms` table.
+- Only Ryzen AI 300-series Strix (STX) and Krackan Point (KRK) processors support OGA-based hybrid and NPU-only execution.
+- Developers with Ryzen AI 7000- and 8000-series processors can run LLMs using CPU execution (see :ref:`featured-llms` table) or GPU execution via llama.cpp for improved performance, which is supported by Lemonade SDK.
 - Windows 11 is the required operating system.
 
 
@@ -27,11 +27,11 @@ Supported Configurations
 Development Interfaces
 *******************************
 
-The Ryzen AI LLM software stack is available through three development interfaces, each suited for specific use cases as outlined in the sections below. All three interfaces are built on top of native OnnxRuntime GenAI (OGA) libraries, as shown in the :ref:`software-stack-table` diagram below. 
+The Ryzen AI LLM software stack is available through three development interfaces, each suited for specific use cases as outlined in the sections below. All three interfaces are built on top of native OnnxRuntime GenAI (OGA) libraries or llama.cpp libraries, as shown in the :ref:`software-stack-table` diagram below.
 
-The high-level Python APIs, as well as the Server Interface, also leverage the Lemonade SDK, which is multi-vendor open-source software that provides everything necessary for quickly getting started with LLMs on OGA.
+The high-level Python APIs, as well as the Server Interface, also leverage the Lemonade SDK, which is multi-vendor open-source software that provides everything necessary for quickly getting started with LLMs on OGA or llama.cpp.
 
-A key benefit of both OGA and Lemonade is that software developed against their interfaces is portable to many other execution backends.
+A key benefit of Lemonade is that software developed against their interfaces is portable to many other execution backends.
 
 .. _software-stack-table:
 
@@ -44,26 +44,11 @@ A key benefit of both OGA and Lemonade is that software developed against their 
      - Your Native Application
    * - `Lemonade Python API* <#high-level-python-sdk>`_
      - `Lemonade Server Interface* <#server-interface-rest-api>`_
-     - :rspan:`1` `OGA C++ Headers <../hybrid_oga.html>`_
-   * - :cspan:`1` `OGA Python API* <https://onnxruntime.ai/docs/genai/api/python.html>`_
-   * - :cspan:`2` `Custom AMD OnnxRuntime GenAI (OGA) <https://github.com/microsoft/onnxruntime-genai>`_
+     - `OGA C++ Headers <../hybrid_oga.html>`_ **OR** `llama.cpp C++ Headers <https://github.com/ggml-org/llama.cpp>`_
+   * - :cspan:`2` `Custom AMD OnnxRuntime GenAI (OGA) <https://github.com/microsoft/onnxruntime-genai>`_ **OR** `llama.cpp* <https://github.com/ggml-org/llama.cpp>`_
    * - :cspan:`2` `AMD Ryzen AI Driver and Hardware <https://www.amd.com/en/products/processors/consumer/ryzen-ai.html>`_
 
 \* indicates open-source software (OSS).
-
-High-Level Python SDK
-=====================
-
-The high-level Python SDK, Lemonade, allows you to get started using PyPI installation in approximately 5 minutes.
-
-This SDK allows you to:
-
-- Experiment with models in hybrid execution mode on Ryzen AI hardware.
-- Validate inference speed and task performance.
-- Integrate with Python apps using a high-level API.
-
-To get started in Python, follow these instructions: :doc:`high_level_python`.
-
 
 Server Interface (REST API)
 ===========================
@@ -74,10 +59,27 @@ The Server Interface provides a convenient means to integrate with applications 
 - Are written in any language (C++, C#, Javascript, etc.) that supports REST APIs.
 - Benefits from process isolation for the LLM backend.
 
+Lemonade Server is available in two ways:
+
+- **Standalone Windows GUI installer**: Quick setup with a desktop shortcut for immediate use. (Recommended for end users)
+- **Full Lemonade SDK**: Complete development toolkit with server interface included. (Recommended for developers)
+
 To get started with the server interface, follow these instructions: :doc:`server_interface`.
 
 For example applications that have been tested with Lemonade Server, see the `Lemonade Server Examples <https://github.com/lemonade-sdk/lemonade/tree/main/docs/server/apps>`_.
 
+High-Level Python SDK
+=====================
+
+The high-level Python SDK, Lemonade, allows you to get started using PyPI installation in approximately 5 minutes.
+
+This SDK allows you to:
+
+- Experiment with models in hybrid or NPU-only execution mode on Ryzen AI hardware.
+- Validate inference speed and task performance.
+- Integrate with Python apps using a high-level API.
+
+To get started in Python, follow these instructions: :doc:`high_level_python`.
 
 OGA APIs for C++ Libraries and Python
 =====================================
@@ -97,7 +99,7 @@ Featured LLMs
 
 The following tables contain a curated list of LLMs that have been validated on Ryzen AI hybrid execution mode. The hybrid examples are built on top of OnnxRuntime GenAI (OGA).
 
-The comprehensive set of pre-optimized models for hybrid execution used in these examples are available in the `AMD hybrid collection on Hugging Face <https://huggingface.co/collections/amd/ryzenai-14-llm-hybrid-models-67da31231bba0f733750a99c>`_. It is also possible to run fine-tuned versions of the models listed (for example, fine-tuned versions of Llama2 or Llama3). For instructions on how to prepare a fine-tuned OGA model for hybrid execution, refer to :doc:`../oga_model_prepare`.
+The comprehensive set of pre-optimized models for hybrid execution used in these examples are available in the `AMD hybrid collection on Hugging Face <https://huggingface.co/collections/amd/ryzenai-15-llm-hybrid-models-6859a64b421b5c27e1e53899>`_ and the NPU-only examples are available in the `AMD NPU collection on Hugging Face <https://huggingface.co/collections/amd/ryzenai-15-llm-npu-models-6859846d7c13f81298990db0>`_. It is also possible to run fine-tuned versions of the models listed (for example, fine-tuned versions of Llama2 or Llama3). For instructions on how to prepare a fine-tuned OGA model for hybrid execution, refer to :doc:`../oga_model_prepare`.
 
 .. _ryzen-ai-oga-featured-llms:
 
@@ -173,9 +175,9 @@ The comprehensive set of pre-optimized models for hybrid execution used in these
      - 8.9x
      - 🟢
 
-The :ref:`ryzen-ai-oga-featured-llms` table was compiled using validation, benchmarking, and accuracy metrics as measured by the `ONNX TurnkeyML v6.1.0 <https://pypi.org/project/turnkeyml/6.1.0/>`_ ``lemonade`` commands in each example link. After this table was created, the Lemonade SDK moved to the new location found `here <https://github.com/lemonade-sdk/lemonade>`_.
+The :ref:`ryzen-ai-oga-featured-llms` table was compiled using validation, benchmarking, and accuracy metrics as measured by the `Lemonade vTODO <PYPY PACKAGE TODO>`_ ``lemonade`` commands in each example link.
 
-Data collection details:
+Data collection details: #TODO
 
 * All validation, performance, and accuracy metrics are collected on the same system configuration:
   
