@@ -78,19 +78,41 @@ Expected output
 
 .. code-block::
 
-  I20250722 16:02:36.183243 23966 vitisai_compile_model.cpp:1157] Vitis AI EP Load ONNX Model Success
-  I20250722 16:02:36.183279 23966 vitisai_compile_model.cpp:1158] Graph Input Node Name/Shape (66)
-  I20250722 16:02:36.183287 23966 vitisai_compile_model.cpp:1162] 	 input_ids : [-1x-1]
-  I20250722 16:02:36.183293 23966 vitisai_compile_model.cpp:1162] 	 attention_mask : [-1x-1]
-  I20250722 16:02:36.183297 23966 vitisai_compile_model.cpp:1162] 	 past_key_values.0.key : [-1x32x-1x96]
-  I20250722 16:02:36.183305 23966 vitisai_compile_model.cpp:1162] 	 past_key_values.0.value : [-1x32x-1x96]
-  I20250722 16:02:36.183308 23966 vitisai_compile_model.cpp:1162] 	 past_key_values.1.key : [-1x32x-1x96]
-  I20250722 16:02:36.183315 23966 vitisai_compile_model.cpp:1162] 	 past_key_values.1.value : [-1x32x-1x96]
-  I20250722 16:02:36.183318 23966 vitisai_compile_model.cpp:1162] 	 past_key_values.2.key : [-1x32x-1x96]
-  I20250722 16:02:36.183322 23966 vitisai_compile_model.cpp:1162] 	 past_key_values.2.value : [-1x32x-1x96]
-  I20250722 16:02:36.183327 23966 vitisai_compile_model.cpp:1162] 	 past_key_values.3.key : [-1x32x-1x96]
-  I20250722 16:02:36.183332 23966 vitisai_compile_model.cpp:1162] 	 past_key_values.3.value : [-1x32x-1x96]
-  I20250722 16:02:36.183336 23966 vitisai_compile_model.cpp:1162] 	 past_key_values.4.key : [-1x32x-1x96]
+  -----------------------------
+  Prompt Number of Tokens: 128
+  
+  Batch size: 1, prompt tokens: 128, tokens to generate: 128
+  Prompt processing (time to first token):
+  	avg (us):       256407
+  	avg (tokens/s): 499.207
+  	p50 (us):       255675
+  	stddev (us):    2978.1
+  	n:              5 * 128 token(s)
+  Token generation:
+  	avg (us):       81849.6
+  	avg (tokens/s): 12.2175
+  	p50 (us):       81782.7
+  	stddev (us):    3138.29
+  	n:              635 * 1 token(s)
+  Token sampling:
+  	avg (us):       27.1502
+  	avg (tokens/s): 36832.1
+  	p50 (us):       27.25
+  	stddev (us):    0.812347
+  	n:              5 * 1 token(s)
+  E2E generation (entire generation loop):
+  	avg (ms):       10651.6
+  	p50 (ms):       10665.2
+  	stddev (ms):    28.0445
+  	n:              5
+  Peak CPU utilization (%): inf
+  Avg CPU utilization (%): inf
+  ----------------------------
+  Model create time (ms): 3634
+  Peak working set size (megabytes) after initialization: 4039
+  Peak working set size (megabytes): 4172
+  
+  Total runtime (ms): 68011  
 
 
 
