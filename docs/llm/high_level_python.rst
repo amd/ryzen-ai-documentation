@@ -69,22 +69,12 @@ You can also run this code to try out the high-level Lemonade API in a Python sc
 
   print(tokenizer.decode(response[0]))
 
-Each example linked in the :ref:`featured-llms` table also has an `example script <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/lemonade/hybrid/Llama_3_2_1B_Instruct.md#streaming>`_ for streaming the text output of the LLM.
 
 **********
 Next Steps
 **********
 
-From here, you can check out `an example <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/lemonade/hybrid/Llama_3_2_1B_Instruct.md>`_ or any of the other :ref:`featured-llms`. 
-
-The examples pages also provide code for: 
-
-#. Additional validation tools for measuring speed and accuracy.
-#. Streaming responses with the API.
-#. Integrating the API into applications.
-#. Launching the server interface from the Python environment.
-
-
+From here, you can check out the Jupyter Notebook that provides an end-to-end validation of OGA hybrid and NPU-only execution. To run the notebook, visit the `Lemonade Tools Tutorial <https://github.com/lemonade-sdk/lemonade/blob/main/examples/notebooks/lemonade_model_validation.ipynb>`_.
 
 
 ..
