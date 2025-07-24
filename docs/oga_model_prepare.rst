@@ -100,13 +100,15 @@ Generate the final model for Hybrid execution mode:
 
 New in 1.5.1: 
 
-In Release 1.5.1, a new option has been added to generate a more performance-optimized Hybrid Model. It is currently supported for Phi-3.5-mini-instruct, Llama-2-7b-chat-hf, and Llama-3.1-8B-Instruct.
+In Release 1.5.1 there is a new option added to generate prefill fused version of Hybrid Model. Currently it is tested for `Phi-3.5-mini-instruct`, `Llama-2-7b-chat-hf` and `Llama-3.1-8B-Instruct`. 
 
 .. code-block::
 
     conda activate ryzen-ai-<version>
+
     #For Phi-3.5-mini-instruct/Llama-2-7b-chat-hf
     model_generate --hybrid <output_dir> <quantized_model_path> --optimize prefill --mode bfp16
+
     #For Llama-3.1-8B-Instruct
     model_generate --hybrid <output_dir> <input_quantized_model_path> --optimize prefill_llama3 --mode bfp16
    
