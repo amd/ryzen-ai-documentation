@@ -100,7 +100,7 @@ Generate the final model for Hybrid execution mode:
 
 New in 1.5.1: 
 
-In Release 1.5.1 there is a new option added to generate more performance optimized Hybrid Model. Currently it is supported for `Phi-3.5-mini-instruct`, `Llama-2-7b-chat-hf` and `Llama-3.1-8B-Instruct`
+In Release 1.5.1, a new option has been added to generate a more performance-optimized Hybrid Model. It is currently supported for Phi-3.5-mini-instruct, Llama-2-7b-chat-hf, and Llama-3.1-8B-Instruct.
 
 .. code-block::
 
