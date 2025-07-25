@@ -87,7 +87,15 @@ The quantized model is generated in the <quantized safetensor output dir> folder
 Postprocessing
 **************
 
-Copy the quantized model to the Windows PC with Ryzen AI installed, activate the Ryzen AI Conda environment, and execute ``model_generate`` command to generate the final model.
+Copy the quantized model to the Windows PC with Ryzen AI installed, activate the Ryzen AI Conda environment, install `torch`.
+
+.. code-block::
+
+    conda activate ryzen-ai-<version>
+    pip install torch
+    pip uninstall onnx -y
+    conda clean --all
+    pip install onnx==1.17.0
 
 Generate the final model for Hybrid execution mode:
 
@@ -97,7 +105,6 @@ Generate the final model for Hybrid execution mode:
 
    model_generate --hybrid <output_dir> <quantized_model_path>  
 
- 
 Generate the final model for NPU execution mode:
 
 .. code-block::
@@ -109,7 +116,10 @@ Generate the final model for NPU execution mode:
 
 Known Issue: In the current version, Mistral-7B-Instruct-v0.1 has a known issue during OGA model conversion in the postprocessing stage.
 
+
 New in 1.5.1:
+============
+
 
 In Release 1.5.1 there is a new option added to generate prefill fused version of Hybrid Model. Currently it is tested for `Phi-3.5-mini-instruct`, `Llama-2-7b-chat-hf` and `Llama-3.1-8B-Instruct`. 
 
@@ -125,13 +135,18 @@ In Release 1.5.1 there is a new option added to generate prefill fused version o
 
 After the model is generated, locate the ``genai_config.json`` file inside the model folder. Edit it as follows:
 
-1. Set ``"custom_ops_library"`` to ``"C:/Program Files/RyzenAI/<release version>/deployment/onnx_custom_ops.dll"``
-2. Delete these two entries from ``"amd_options"``: ``"dd_cache"`` and ``"compile_fusion_rt"``.
-3. For ``Phi-3.5-mini-instruct``, ``Llama-2-7b-chat-hf model``
+1. Set ``"custom_ops_library"`` to ``"C:\\Program Files\\RyzenAI\\<release version>\\deployment\\onnx_custom_ops.dll"``
+2. Delete ``"compile_fusion_rt"`` entry from ``"amd_options"``
+3. Set ``dd_cache`` to ``<output_dir>\\.cache``, for example ``"dd_cache": "C:\\Users\\user\\<generated model folder>\\.cache"``
+4. For ``Phi-3.5-mini-instruct``, ``Llama-2-7b-chat-hf model``
+
 
    - Set ``"hybrid_opt_disable_npu_ops": "1"`` inside ``"amd_options"``.
    - Set ``"fusion_opt_io_bind_kv_cache": "1"`` inside ``"amd_options"``.
    - Set ``"flattened_kv": true`` inside ``"search"``.
+
+=======
+
 
 ..
   ------------
