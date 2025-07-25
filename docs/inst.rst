@@ -71,6 +71,10 @@ Install Ryzen AI Software
 
 The Ryzen AI Software packages are now installed in the conda environment created by the installer.
 
+.. note::
+
+     The latest updates with LLM performance improvements are avaiable in the RAI 1.5.1 release. Download it from the link :download:`ryzen-ai-1.5.1.msi <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ryzen-ai-1.5.1.msi>`.
+
 
 .. _quicktest:
 
