@@ -93,6 +93,9 @@ Copy the quantized model to the Windows PC with Ryzen AI installed, activate the
 
     conda activate ryzen-ai-<version>
     pip install torch
+    pip uninstall onnx -y
+    conda clean --all
+    pip install onnx==1.17.0
 
 Generate the final model for Hybrid execution mode:
 
@@ -129,8 +132,9 @@ In Release 1.5.1 there is a new option added to generate prefill fused version o
 
 After the model is generated, locate the ``genai_config.json`` file inside the model folder. Edit it as follows:
 
-1. Set ``"custom_ops_library"`` to ``"C:/Program Files/RyzenAI/<release version>/deployment/onnx_custom_ops.dll"``
-2. Delete these two entries from ``"amd_options"``: ``"dd_cache"`` and ``"compile_fusion_rt"``.
+1. Set ``"custom_ops_library"`` to ``"C:\\Program Files\\RyzenAI\\<release version>\\deployment\\onnx_custom_ops.dll"``
+2. Delete ``"compile_fusion_rt"`` entry from ``"amd_options"``
+3. Set ``dd_cache`` to ``.cache`` folder path inside the generated model folder, for example ``"dd_cache": "C:\\Users\\user\\<model folder>\\.cache"
 3. For ``Phi-3.5-mini-instruct``, ``Llama-2-7b-chat-hf model``
 
    - Set ``"hybrid_opt_disable_npu_ops": "1"`` inside ``"amd_options"``.
