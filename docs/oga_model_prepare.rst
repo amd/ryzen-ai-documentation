@@ -127,15 +127,15 @@ In Release 1.5.1 there is a new option added to generate prefill fused version o
     #For Llama-3.1-8B-Instruct
     model_generate --hybrid <output_dir> <input_quantized_model_path> --optimize prefill_llama3 --mode bfp16
 
-After the model is generated, locate the genai_config.json file inside the model folder. Edit it as follows:
+After the model is generated, locate the ``genai_config.json`` file inside the model folder. Edit it as follows:
 
-1. Set "custom_ops_library" to "C:/Program Files/RyzenAI/<release version>/deployment/onnx_custom_ops.dll".
-2. Delete these entries from `amd_options`: `"dd_cache"`, `"compile_fusion_rt"`.
-3. For Phi-3.5-mini-instruct, Llama-2-7b-chat-hf model
+1. Set ``"custom_ops_library"`` to ``"C:/Program Files/RyzenAI/<release version>/deployment/onnx_custom_ops.dll"``
+2. Delete these entries from ``"amd_options"``: ``"dd_cache"``, ``"compile_fusion_rt"``.
+3. For ``Phi-3.5-mini-instruct``, ``Llama-2-7b-chat-hf model``
 
-   - Set "hybrid_opt_disable_npu_ops": "1" inside "amd_options".
-   - Set "fusion_opt_io_bind_kv_cache": "1" inside "amd_options".
-   - Set "flattened_kv": true inside "search".
+   - Set ``"hybrid_opt_disable_npu_ops": "1"`` inside ``"amd_options"``.
+   - Set ``"fusion_opt_io_bind_kv_cache": "1"`` inside ``"amd_options"``.
+   - Set ``"flattened_kv": true`` inside ``"search"``.
 
 
 ..
