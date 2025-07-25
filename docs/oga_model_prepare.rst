@@ -134,7 +134,7 @@ After the model is generated, locate the ``genai_config.json`` file inside the m
 
 1. Set ``"custom_ops_library"`` to ``"C:\\Program Files\\RyzenAI\\<release version>\\deployment\\onnx_custom_ops.dll"``
 2. Delete ``"compile_fusion_rt"`` entry from ``"amd_options"``
-3. Set ``dd_cache`` to ``.cache`` folder path inside the generated model folder, for example ``"dd_cache": "C:\\Users\\user\\<model folder>\\.cache"
+3. Set ``dd_cache`` to ``<output_dir>\\.cache``, for example ``"dd_cache": "C:\\Users\\user\\<generated model folder>\\.cache"``
 4. For ``Phi-3.5-mini-instruct``, ``Llama-2-7b-chat-hf model``
 
    - Set ``"hybrid_opt_disable_npu_ops": "1"`` inside ``"amd_options"``.
