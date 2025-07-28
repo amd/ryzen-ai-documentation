@@ -48,7 +48,7 @@ Install NPU Drivers
    - NPU driver package
       - xrt_plugin.2.20.250102.3.rel_24.04-amd64-amdxdna.deb
 
-- Follow the instructions below to install NPU driver package
+- Install NPU driver package on your machine
 
 .. code-block:: bash
 
@@ -57,15 +57,11 @@ Install NPU Drivers
    sudo apt reinstall --fix-broken -y ./xrt_202520.2.20.41_24.04-amd64-npu.deb 
    sudo apt reinstall --fix-broken -y ./xrt_plugin.2.20.250102.3.rel_24.04-amd64-amdxdna.deb
 
-- Set essential Environment variables 
+- Everytime you login to machine, set essential Environment variables 
 .. code-block:: bash
 
    export LD_LIBRARY_PATH=/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH
    source /opt/xilinx/xrt/setup.sh
-
-.. note::
-
-   NPU drivers timeout after certain period of inactivity. Do reset your environment variables
 
 - To verify your Driver installation, you can run the command:
 
