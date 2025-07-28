@@ -18,6 +18,8 @@ Prerequisites
      - Ubuntu 24.04 LTS
    * - Kernel Version
      - >= 6.10
+   * - RAM
+     - 32GB or Higher
    * - Python
      - 3.10.x
 
@@ -68,6 +70,13 @@ Install NPU Drivers
    |----------------|-----------|
    |[0000:c5:00.1]  |NPU Strix  |
 
+.. note::
+
+   NPU drivers timeout after certain period of inactivity. Wake them up by rerunning the commands below-
+
+   - export LD_LIBRARY_PATH=/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH
+   - source /opt/xilinx/xrt/setup.sh
+   - /opt/xilinx/xrt/bin/xrt-smi examine
 
 .. _install-bundled:
 
@@ -89,8 +98,12 @@ Install Ryzen AI Software
    ./install_ryzen_ai_1_5.sh -a yes -p <TARGET-PATH>/venv
    source <TARGET-PATH>/venv/bin/activate
 
-- This will successfully install RyzenAI and activate the Virtual environment at your targeted location.
+- This will successfully install RyzenAI and activate the Virtual environment at your target location
 
+.. code-block:: bash
+   
+   # Validate your installation path
+   echo $RYZEN_AI_INSTALLATION_PATH
 
 
 **********************
