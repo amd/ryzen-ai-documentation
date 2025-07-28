@@ -68,11 +68,11 @@ Running NPU Drivers
    export LD_LIBRARY_PATH=/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH
    source /opt/xilinx/xrt/setup.sh
 
-- To verify your Driver installation, you can run the command:
+- Verify your Driver installation
 
 .. code-block:: bash
 
-   /opt/xilinx/xrt/bin/xrt-smi examine
+   xrt-smi examine
 
    Device(s) Present
    |BDF             |Name       |
