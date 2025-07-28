@@ -35,18 +35,11 @@ This page showcases an example of running LLM on RyzenAI NPU
   # unzip your file
   tar -xvzf npu-llm.tar.gz
 
-
-- Navigate to Ryzen_ai-1.5.0 virtual environment installation path and you will find a folder named "deployment" in the subdirectory
-
-.. code-block:: bash
-
-  cp -r <USER-PATH>/ryzen_ai-1.5.0/venv/deployment .
-
 - Your current working directory should have below files
 
 .. code-block::
 
-  deployment  npu-llm  npu-llm.tar.gz  Phi-3.5-mini-instruct-awq-g128-int4-asym-bf16-onnx-ryzen-strix
+  npu-llm  npu-llm.tar.gz  Phi-3.5-mini-instruct-awq-g128-int4-asym-bf16-onnx-ryzen-strix
 
 - We have to update a file under Phi-3.5 Model 
 
@@ -55,14 +48,13 @@ This page showcases an example of running LLM on RyzenAI NPU
   vim Phi-3.5-mini-instruct-awq-g128-int4-asym-bf16-onnx-ryzen-strix/genai_config.json
 
   # update line 8 to search for correct filename:
-  "custom_ops_library": "deployment/libonnxruntime_vitis_ai_custom_ops.so"
+  "custom_ops_library": "npu-llm/lib/libonnxruntime_vitis_ai_custom_ops.so"
 
   
 - Lastly, we need to add our directories for LD_LIBRARY_PATH
 
 .. code-block::
 
-  export LD_LIBRARY_PATH=deployment:$LD_LIBRARY_PATH
   export LD_LIBRARY_PATH=npu-llm/lib:$LD_LIBRARY_PATH
 
 - We can now run our Model with command below:
@@ -78,6 +70,8 @@ Expected output
 
 .. code-block::
 
+  [Vitis AI EP] No. of Operators :   CPU    41 MATMULNBITS   195  SSMLP    32 
+  [Vitis AI EP] No. of Subgraphs :MATMULNBITS    65  SSMLP    32 
   -----------------------------
   Prompt Number of Tokens: 128
   
@@ -115,7 +109,11 @@ Expected output
   Total runtime (ms): 68011  
 
 
+- Cache Directory:
 
+  - By default cache is stored under /tmp/<User-name>/vaip/.cache
+
+  
 
 
 
