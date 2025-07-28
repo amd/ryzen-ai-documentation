@@ -57,6 +57,11 @@ Install NPU Drivers
    sudo apt reinstall --fix-broken -y ./xrt_202520.2.20.41_24.04-amd64-npu.deb 
    sudo apt reinstall --fix-broken -y ./xrt_plugin.2.20.250102.3.rel_24.04-amd64-amdxdna.deb
 
+
+*******************
+Running NPU Drivers
+*******************
+
 - Everytime you login to machine, set essential Environment variables 
 .. code-block:: bash
 
