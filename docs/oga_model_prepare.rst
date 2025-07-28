@@ -114,7 +114,7 @@ New in 1.5.1:
 ============
 
 
-In Release 1.5.1 there is a new option added to generate prefill fused version of Hybrid Model. Currently it is tested for `Phi-3.5-mini-instruct`, `Llama-2-7b-chat-hf` and `Llama-3.1-8B-Instruct`. 
+In Release 1.5.1, a new option has been added to generate a prefill fused version of the Hybrid Model. Currently, it is tested for `Phi-3.5-mini-instruct`, `Llama-2-7b-chat-hf`, and `Llama-3.1-8B-Instruct`. 
 
 .. code-block::
 
