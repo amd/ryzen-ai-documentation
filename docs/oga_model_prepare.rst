@@ -109,6 +109,36 @@ Generate the final model for NPU execution mode:
 
 Known Issue: In the current version, Mistral-7B-Instruct-v0.1 has a known issue during OGA model conversion in the postprocessing stage.
 
+
+New in 1.5.1:
+============
+
+
+In Release 1.5.1 there is a new option added to generate prefill fused version of Hybrid Model. Currently it is tested for `Phi-3.5-mini-instruct`, `Llama-2-7b-chat-hf` and `Llama-3.1-8B-Instruct`. 
+
+.. code-block::
+
+    conda activate ryzen-ai-<version>
+
+    #For Phi-3.5-mini-instruct/Llama-2-7b-chat-hf
+    model_generate --hybrid <output_dir> <quantized_model_path> --optimize prefill --mode bfp16
+
+    #For Llama-3.1-8B-Instruct
+    model_generate --hybrid <output_dir> <input_quantized_model_path> --optimize prefill_llama3 --mode bfp16
+
+After the model is generated, locate the ``genai_config.json`` file inside the model folder. Edit it as follows:
+
+1. Set ``"custom_ops_library"`` to ``"C:\\Program Files\\RyzenAI\\<release version>\\deployment\\onnx_custom_ops.dll"``
+2. Delete ``"compile_fusion_rt"`` entry from ``"amd_options"``
+3. Set ``dd_cache`` to ``<output_dir>\\.cache``, for example ``"dd_cache": "C:\\Users\\user\\<generated model folder>\\.cache"``
+4. For ``Phi-3.5-mini-instruct``, ``Llama-2-7b-chat-hf model``
+
+
+   - Set ``"hybrid_opt_disable_npu_ops": "1"`` inside ``"amd_options"``.
+   - Set ``"fusion_opt_io_bind_kv_cache": "1"`` inside ``"amd_options"``.
+   - Set ``"flattened_kv": true`` inside ``"search"``.
+
+
 ..
   ------------
 
