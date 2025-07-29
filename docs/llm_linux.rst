@@ -109,9 +109,10 @@ Expected output
   Total runtime (ms): 68011  
 
 
-- Cache Directory:
-
-  - By default cache is stored under /tmp/<User-name>/vaip/.cache
+************
+Model Cache
+************
+By default cache is stored under /tmp/<User-name>/vaip/.cache
 
   
 
@@ -119,22 +120,40 @@ Expected output
 Preparing OGA Model
 *******************
 
-Preparing OGA Model requires 2 steps:
+Preparing OGA Model is a Two step Process
 
-- Model Quantization: Please follow Qualtization steps described here :doc:`oga_model_prepare`
+==================
+Model Quantization
+==================
 
-- Postprocessing: 
+- Follow Model Quantization steps described here :doc:`oga_model_prepare`
 
-  - Download and install the Wheel in ryzen-ai Virtual Environment
+===============
+Postprocessing
+===============
+
+- Download and install the Python wheel in Ryzen-AI Virtual Environment
 
   .. code-block:: bash
 
+    # Activate your Virtual Environment
+    source <TARGET-PATH>/venv/bin/activate
     pip install model-generate==1.5.0 --extra-index-url=https://xcoartifactory.xilinx.com/artifactory/api/pypi/ryzen-ai-llm-pip-dev-local/simple
 
 
-  - Model Generate
+- Model Generate
+
+  - Generate the final model for NPU execution mode 
 
   .. code-block:: bash
 
     model_generate --npu <output_dir> <quantized_model_path>
+
+
+  - Expected Output
+
+  .. code-block:: bash
+
+    Generate completed successfully!
+    NPU model generation completed successfully.
 
