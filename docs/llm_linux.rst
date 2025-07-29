@@ -11,7 +11,7 @@ This page showcases an example of running LLM on RyzenAI NPU
   mkdir run_llm
   cd run_llm
 
-- You can choose any Model from `Hugging Face collection of NPU models <https://huggingface.co/collections/amd/ryzenai-15-llm-npu-models-6859846d7c13f81298990db0>`_
+- You can choose any prequantized and postprocessed ready-to-run Model from `Hugging Face collection of NPU models <https://huggingface.co/collections/amd/ryzenai-15-llm-npu-models-6859846d7c13f81298990db0>`_
 - We are using "Phi-3.5-mini-instruct-awq-g128-int4-asym-bf16-onnx-ryzen-strix" for reference
 .. code-block::
 
@@ -115,8 +115,26 @@ Expected output
 
   
 
+*******************
+Preparing OGA Model
+*******************
+
+Preparing OGA Model requires 2 steps:
+
+- Model Quantization: Please follow Qualtization steps described here :doc:`oga_model_prepare`
+
+- Postprocessing: 
+
+  - Download and install the Wheel in ryzen-ai Virtual Environment
+
+  .. code-block:: bash
+
+    pip install model-generate==1.5.0 --extra-index-url=https://xcoartifactory.xilinx.com/artifactory/api/pypi/ryzen-ai-llm-pip-dev-local/simple
 
 
+  - Model Generate
 
+  .. code-block:: bash
 
+    model_generate --npu <output_dir> <quantized_model_path>
 
