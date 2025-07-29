@@ -138,3 +138,11 @@ Preparing OGA Model requires 2 steps:
 
     model_generate --npu <output_dir> <quantized_model_path>
 
+**Known Issues**:
+
+1. The following models are not supported in this release due to known issues:
+
+   - DeepSeek-R1-Distill-Qwen-7B, Qwen2.5-7B-Instruct, Qwen2-7B-Instruct
+
+2. Some models in the `Hugging Face collection of NPU models <https://huggingface.co/collections/amd/ryzenai-15-llm-npu-models-6859846d7c13f81298990db0>`_ require regeneration (quantization and postprocessing) to run on Linux.
+
