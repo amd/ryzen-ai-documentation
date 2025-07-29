@@ -18,6 +18,8 @@ Prerequisites
      - Ubuntu 24.04 LTS
    * - Kernel Version
      - >= 6.10
+   * - RAM
+     - 32GB or Higher
    * - Python
      - 3.10.x
 
@@ -46,7 +48,7 @@ Install NPU Drivers
    - NPU driver package
       - xrt_plugin.2.20.250102.3.rel_24.04-amd64-amdxdna.deb
 
-- Follow the instructions below to install NPU driver package
+- Install NPU driver package on your machine
 
 .. code-block:: bash
 
@@ -54,14 +56,23 @@ Install NPU Drivers
    sudo apt reinstall --fix-broken -y ./xrt_202520.2.20.41_24.04-amd64-base-dev.deb
    sudo apt reinstall --fix-broken -y ./xrt_202520.2.20.41_24.04-amd64-npu.deb 
    sudo apt reinstall --fix-broken -y ./xrt_plugin.2.20.250102.3.rel_24.04-amd64-amdxdna.deb
+
+
+*******************
+Running NPU Drivers
+*******************
+
+- Everytime you login to machine, set essential Environment variables 
+.. code-block:: bash
+
    export LD_LIBRARY_PATH=/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH
    source /opt/xilinx/xrt/setup.sh
 
-- To verify your Driver installation, you can run the command:
+- Verify your Driver installation
 
 .. code-block:: bash
 
-   /opt/xilinx/xrt/bin/xrt-smi examine
+   xrt-smi examine
 
    Device(s) Present
    |BDF             |Name       |
@@ -74,7 +85,7 @@ Install NPU Drivers
 *************************
 Install Ryzen AI Software
 *************************
-- Download the RyzenAI for Linux package :download:`ryzen-ai-1.5.0.tgz <https://xcoartifactory/ui/native/vaiml-installers-prod-local/installers/rai-1.5.0/latest/lnx64/ryzen_ai-1.5.0.tgz>`
+- Download the RyzenAI for Linux package :download:`ryzen-ai-1.5.0.tgz <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ryzen_ai-1.5.0.tgz>`
 - Navigate to the downloaded path and follow the below steps
 
 .. code-block:: bash
@@ -89,8 +100,12 @@ Install Ryzen AI Software
    ./install_ryzen_ai_1_5.sh -a yes -p <TARGET-PATH>/venv
    source <TARGET-PATH>/venv/bin/activate
 
-- This will successfully install RyzenAI and activate the Virtual environment at your targeted location.
+- This will successfully install RyzenAI and activate the Virtual environment at your target location
 
+.. code-block:: bash
+   
+   # Validate your installation path
+   echo $RYZEN_AI_INSTALLATION_PATH
 
 
 **********************
@@ -212,7 +227,7 @@ C++ Application Development
 Running LLM
 ***********
 
-Please follow this page for Running LLM on Linux :doc:`llm_linux`
+Please follow this page for :doc:`llm_linux`
 
 
 

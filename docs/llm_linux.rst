@@ -11,7 +11,7 @@ This page showcases an example of running LLM on RyzenAI NPU
   mkdir run_llm
   cd run_llm
 
-- You can choose any Model from `Hugging Face collection of NPU models <https://huggingface.co/collections/amd/ryzenai-15-llm-npu-models-6859846d7c13f81298990db0>`_
+- You can choose any prequantized and postprocessed ready-to-run Model from `Hugging Face collection of NPU models <https://huggingface.co/collections/amd/ryzenai-15-llm-npu-models-6859846d7c13f81298990db0>`_
 - We are using "Phi-3.5-mini-instruct-awq-g128-int4-asym-bf16-onnx-ryzen-strix" for reference
 .. code-block::
 
@@ -35,18 +35,11 @@ This page showcases an example of running LLM on RyzenAI NPU
   # unzip your file
   tar -xvzf npu-llm.tar.gz
 
-
-- Navigate to Ryzen_ai-1.5.0 virtual environment installation path and you will find a folder named "deployment" in the subdirectory
-
-.. code-block:: bash
-
-  cp -r <USER-PATH>/ryzen_ai-1.5.0/venv/deployment .
-
 - Your current working directory should have below files
 
 .. code-block::
 
-  deployment  npu-llm  npu-llm.tar.gz  Phi-3.5-mini-instruct-awq-g128-int4-asym-bf16-onnx-ryzen-strix
+  npu-llm  npu-llm.tar.gz  Phi-3.5-mini-instruct-awq-g128-int4-asym-bf16-onnx-ryzen-strix
 
 - We have to update a file under Phi-3.5 Model 
 
@@ -55,14 +48,13 @@ This page showcases an example of running LLM on RyzenAI NPU
   vim Phi-3.5-mini-instruct-awq-g128-int4-asym-bf16-onnx-ryzen-strix/genai_config.json
 
   # update line 8 to search for correct filename:
-  "custom_ops_library": "deployment/libonnxruntime_vitis_ai_custom_ops.so"
+  "custom_ops_library": "npu-llm/lib/libonnxruntime_vitis_ai_custom_ops.so"
 
   
 - Lastly, we need to add our directories for LD_LIBRARY_PATH
 
 .. code-block::
 
-  export LD_LIBRARY_PATH=deployment:$LD_LIBRARY_PATH
   export LD_LIBRARY_PATH=npu-llm/lib:$LD_LIBRARY_PATH
 
 - We can now run our Model with command below:
@@ -78,25 +70,71 @@ Expected output
 
 .. code-block::
 
-  I20250722 16:02:36.183243 23966 vitisai_compile_model.cpp:1157] Vitis AI EP Load ONNX Model Success
-  I20250722 16:02:36.183279 23966 vitisai_compile_model.cpp:1158] Graph Input Node Name/Shape (66)
-  I20250722 16:02:36.183287 23966 vitisai_compile_model.cpp:1162] 	 input_ids : [-1x-1]
-  I20250722 16:02:36.183293 23966 vitisai_compile_model.cpp:1162] 	 attention_mask : [-1x-1]
-  I20250722 16:02:36.183297 23966 vitisai_compile_model.cpp:1162] 	 past_key_values.0.key : [-1x32x-1x96]
-  I20250722 16:02:36.183305 23966 vitisai_compile_model.cpp:1162] 	 past_key_values.0.value : [-1x32x-1x96]
-  I20250722 16:02:36.183308 23966 vitisai_compile_model.cpp:1162] 	 past_key_values.1.key : [-1x32x-1x96]
-  I20250722 16:02:36.183315 23966 vitisai_compile_model.cpp:1162] 	 past_key_values.1.value : [-1x32x-1x96]
-  I20250722 16:02:36.183318 23966 vitisai_compile_model.cpp:1162] 	 past_key_values.2.key : [-1x32x-1x96]
-  I20250722 16:02:36.183322 23966 vitisai_compile_model.cpp:1162] 	 past_key_values.2.value : [-1x32x-1x96]
-  I20250722 16:02:36.183327 23966 vitisai_compile_model.cpp:1162] 	 past_key_values.3.key : [-1x32x-1x96]
-  I20250722 16:02:36.183332 23966 vitisai_compile_model.cpp:1162] 	 past_key_values.3.value : [-1x32x-1x96]
-  I20250722 16:02:36.183336 23966 vitisai_compile_model.cpp:1162] 	 past_key_values.4.key : [-1x32x-1x96]
+  [Vitis AI EP] No. of Operators :   CPU    41 MATMULNBITS   195  SSMLP    32 
+  [Vitis AI EP] No. of Subgraphs :MATMULNBITS    65  SSMLP    32 
+  -----------------------------
+  Prompt Number of Tokens: 128
+  
+  Batch size: 1, prompt tokens: 128, tokens to generate: 128
+  Prompt processing (time to first token):
+  	avg (us):       256407
+  	avg (tokens/s): 499.207
+  	p50 (us):       255675
+  	stddev (us):    2978.1
+  	n:              5 * 128 token(s)
+  Token generation:
+  	avg (us):       81849.6
+  	avg (tokens/s): 12.2175
+  	p50 (us):       81782.7
+  	stddev (us):    3138.29
+  	n:              635 * 1 token(s)
+  Token sampling:
+  	avg (us):       27.1502
+  	avg (tokens/s): 36832.1
+  	p50 (us):       27.25
+  	stddev (us):    0.812347
+  	n:              5 * 1 token(s)
+  E2E generation (entire generation loop):
+  	avg (ms):       10651.6
+  	p50 (ms):       10665.2
+  	stddev (ms):    28.0445
+  	n:              5
+  Peak CPU utilization (%): inf
+  Avg CPU utilization (%): inf
+  ----------------------------
+  Model create time (ms): 3634
+  Peak working set size (megabytes) after initialization: 4039
+  Peak working set size (megabytes): 4172
+  
+  Total runtime (ms): 68011  
 
 
+- Cache Directory:
+
+  - By default cache is stored under /tmp/<User-name>/vaip/.cache
+
+  
+
+*******************
+Preparing OGA Model
+*******************
+
+Preparing OGA Model requires 2 steps:
+
+- Model Quantization: Please follow Qualtization steps described here :doc:`oga_model_prepare`
+
+- Postprocessing: 
+
+  - Download and install the Wheel in ryzen-ai Virtual Environment
+
+  .. code-block:: bash
+
+    pip install model-generate==1.5.0 --extra-index-url=https://xcoartifactory.xilinx.com/artifactory/api/pypi/ryzen-ai-llm-pip-dev-local/simple
 
 
+  - Model Generate
 
+  .. code-block:: bash
 
-
-
+    model_generate --npu <output_dir> <quantized_model_path>
 
