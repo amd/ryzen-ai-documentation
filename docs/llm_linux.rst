@@ -109,9 +109,10 @@ Expected output
   Total runtime (ms): 68011  
 
 
-- Cache Directory:
-
-  - By default cache is stored under /tmp/<User-name>/vaip/.cache
+************
+Model Cache
+************
+By default cache is stored under /tmp/<User-name>/vaip/.cache
 
   
 
@@ -119,30 +120,51 @@ Expected output
 Preparing OGA Model
 *******************
 
-Preparing OGA Model requires 2 steps:
+Preparing OGA Model is a two-step process
 
-- Model Quantization: Please follow Qualtization steps described here :doc:`oga_model_prepare`
+==================
+Model Quantization
+==================
 
-- Postprocessing: 
+- Follow Model Quantization steps described here :doc:`oga_model_prepare`
 
-  - Download and install the Wheel in ryzen-ai Virtual Environment
+===============
+Postprocessing
+===============
+
+- Download and install the Python wheel in Ryzen-AI Virtual Environment
 
   .. code-block:: bash
 
+    # Activate your Virtual Environment
+    source <TARGET-PATH>/venv/bin/activate
     pip install model-generate==1.5.0 --extra-index-url=https://xcoartifactory.xilinx.com/artifactory/api/pypi/ryzen-ai-llm-pip-dev-local/simple
 
 
-  - Model Generate
+- Model Generate
+
+  - Generate the final model for NPU execution mode 
 
   .. code-block:: bash
 
     model_generate --npu <output_dir> <quantized_model_path>
 
+- Expected Output
+
+.. code-block:: bash
+
+    Generate completed successfully!
+    NPU model generation completed successfully.
+    
+
+===============
 **Known Issues**:
+===============
 
 1. The following models are not supported in this release due to known issues:
 
    - DeepSeek-R1-Distill-Qwen-7B, Qwen2.5-7B-Instruct, Qwen2-7B-Instruct
 
 2. Some models in the `Hugging Face collection of NPU models <https://huggingface.co/collections/amd/ryzenai-15-llm-npu-models-6859846d7c13f81298990db0>`_ require regeneration (quantization and postprocessing) to run on Linux.
+
 
