@@ -120,7 +120,7 @@ By default cache is stored under /tmp/<User-name>/vaip/.cache
 Preparing OGA Model
 *******************
 
-Preparing OGA Model is a Two step Process
+Preparing OGA Model is a two-step process
 
 ==================
 Model Quantization
