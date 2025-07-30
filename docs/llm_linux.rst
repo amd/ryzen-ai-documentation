@@ -21,14 +21,14 @@ This page showcases an example of running LLM on RyzenAI NPU
 
 - You can search for RYZEN_AI_INSTALLATION_PATH
 
-.. code-block::
+.. code-block:: bash
 
   echo $RYZEN_AI_INSTALLATION_PATH
   <USER-PATH>/ryzen_ai-1.5.0/venv
 
 - Navigate to Ryzen_ai-1.5.0 installation path and you will find a tar file "npu-llm.tar.gz" in the subdirectory
 
-.. code-block::
+.. code-block:: bash
 
   cp <USER-PATH>/ryzen_ai-1.5.0/npu-llm.tar.gz .
 
@@ -43,7 +43,7 @@ This page showcases an example of running LLM on RyzenAI NPU
 
 - We have to update a file under Phi-3.5 Model 
 
-.. code-block::
+.. code-block:: bash
 
   vim Phi-3.5-mini-instruct-awq-g128-int4-asym-bf16-onnx-ryzen-strix/genai_config.json
 
@@ -53,13 +53,13 @@ This page showcases an example of running LLM on RyzenAI NPU
   
 - Lastly, we need to add our directories for LD_LIBRARY_PATH
 
-.. code-block::
+.. code-block:: bash
 
   export LD_LIBRARY_PATH=npu-llm/lib:$LD_LIBRARY_PATH
 
 - We can now run our Model with command below:
 
-.. code-block::
+.. code-block:: bash
 
   ./npu-llm/model_benchmark -i Phi-3.5-mini-instruct-awq-g128-int4-asym-bf16-onnx-ryzen-strix/ -l 128 -p Phi-3.5-mini-instruct-awq-g128-int4-asym-bf16-onnx-ryzen-strix/prompts.txt 
 
@@ -68,7 +68,7 @@ This page showcases an example of running LLM on RyzenAI NPU
 Expected output
 ***************
 
-.. code-block::
+.. code-block:: bash
 
   [Vitis AI EP] No. of Operators :   CPU    41 MATMULNBITS   195  SSMLP    32 
   [Vitis AI EP] No. of Subgraphs :MATMULNBITS    65  SSMLP    32 
@@ -151,7 +151,7 @@ Postprocessing
 
 - Expected Output
 
-.. code-block:: bash
+  .. code-block:: bash
 
     Generate completed successfully!
     NPU model generation completed successfully.
