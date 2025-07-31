@@ -138,7 +138,7 @@ Postprocessing
 
     # Activate your Virtual Environment
     source <TARGET-PATH>/venv/bin/activate
-    pip install model-generate==1.5.0 --extra-index-url=https://xcoartifactory.xilinx.com/artifactory/api/pypi/ryzen-ai-llm-pip-dev-local/simple
+    pip install model-generate==1.5.0 --extra-index-url=https://pypi.amd.com/simple
 
 
 - Model Generate
