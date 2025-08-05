@@ -12,9 +12,10 @@ Server Interface (REST API)
 
 The Lemonade SDK offers a server interface that allows your application to load an LLM on Ryzen AI hardware in a process, and then communicate with this process using standard ``REST`` APIs. This allows applications written in any language (C#, JavaScript, Python, C++, etc.) to easily integrate with Ryzen AI LLMs.
 
-Server interfaces are used across the LLM ecosystem because they allow for no-code plug-and-play between the higher level of the application stack (GUIs, agents, RAG, etc.) with the LLM and hardware that have been abstracted by the server. 
+Server interfaces are used across the LLM ecosystem because they allow for no-code plug-and-play between the higher level of the application stack (GUIs, agents, RAG, etc.) with the LLM and hardware that have been abstracted by the server. For more information, see the `Understanding local LLM Servers Guide <https://lemonade-server.ai/docs/server/concepts/>`_.
 
 For example, open source projects such as `Open WebUI <#open-webui-demo>`_ have out-of-box support for connecting to a variety of server interfaces, which in turn allows users to quickly start working with LLMs in a GUI.
+
 
 ************
 Server Setup
@@ -26,7 +27,21 @@ Lemonade Server can be installed via the Lemonade Server Installer executable by
 2. Download and install ``Lemonade_Server_Installer.exe`` from the `latest Lemonade release <https://github.com/lemonade-sdk/lemonade/releases>`_.
 3. Launch the server by double-clicking the ``lemonade_server`` shortcut added to your desktop.
 
-See the `Lemonade Server README <https://github.com/lemonade-sdk/lemonade/blob/main/docs/server/README.md>`_ for more details.
+For a visual walkthrough of this process, watch our Lemonade Introductory Video:
+
+.. raw:: html
+
+   <div style="text-align: center; margin: 20px 0;">
+       <iframe width="560" height="315" 
+               src="https://www.youtube.com/embed/mcf7dDybUco?si=J9ocgcRF_LNY0s8E" 
+               title="Lemonade Introductory Video" 
+               frameborder="0" 
+               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+               allowfullscreen>
+       </iframe>
+   </div>
+
+See the `Lemonade Server Documentation <https://lemonade-server.ai/docs/>`_ for more details.
 
 ************
 Server Usage
@@ -34,51 +49,72 @@ Server Usage
 
 The Lemonade Server provides the following OpenAI-compatible endpoints:
 
-- POST ``/api/v0/chat/completions`` - Chat Completions (messages to completions)
-- POST ``/api/v0/completions`` - Text Completions (prompt to completion)
-- GET ``/api/v0/models`` - List available models
+- POST ``/api/v1/chat/completions`` - Chat Completions (messages to completions)
+- POST ``/api/v1/completions`` - Text Completions (prompt to completion)
+- POST ``/api/v1/responses`` - Chat Completions (prompt|messages -> event)
+- GET ``/api/v1/models`` - List available models
 
-Please refer to the `server specification <https://github.com/lemonade-sdk/lemonade/blob/main/docs/server/server_spec.md>`_ document in the Lemonade repository for details about the request and response formats for each endpoint. 
+Please refer to the `server specification <https://lemonade-server.ai/docs/server/server_spec/>`_ document for details about the request and response formats for each endpoint. 
 
 The `OpenAI API documentation <https://platform.openai.com/docs/guides/streaming-responses?api-mode=chat>`_ also has code examples for integrating streaming completions into an application. 
 
-Open WebUI Demo
-===============
+Supported Applications
+======================
 
-To experience the Lemonade Server, try using it with an OpenAI-compatible application, such as Open WebUI.
+The Lemonade Server supports a variety of applications that can connect to it using the OpenAI API. Some of the applications that have been tested with Lemonade Server can be found at `Lemonade Server Apps <https://lemonade-server.ai/docs/server/apps/>`_.
 
-Instructions:
--------------
+A short list of applications that have been tested with Lemonade Server includes:
 
-1. **Launch Lemonade Server:** Double-click the lemon icon on your desktop. See `server setup <#server-setup>`_ for installation instructions.
+.. |open-webui| image:: https://raw.githubusercontent.com/lemonade-sdk/assets/refs/heads/main/partner_logos/openwebui.jpg
+   :width: 60px
+   :target: https://lemonade-server.ai/docs/server/apps/open-webui/
+   :alt: Open WebUI
 
-2. **Install and Run Open WebUI:** In a terminal, install Open WebUI using the following commands:
+.. |continue| image:: https://raw.githubusercontent.com/lemonade-sdk/assets/refs/heads/main/partner_logos/continue_dev.png
+   :width: 60px
+   :target: https://lemonade-server.ai/docs/server/apps/continue/
+   :alt: Continue
 
-.. code-block:: bash
+.. |gaia| image:: https://raw.githubusercontent.com/lemonade-sdk/assets/refs/heads/main/partner_logos/gaia.ico
+   :width: 60px
+   :target: https://github.com/amd/gaia
+   :alt: Gaia
 
-    conda create -n webui python=3.11
-    conda activate webui
-    pip install open-webui
-    open-webui serve
+.. |anythingllm| image:: https://raw.githubusercontent.com/lemonade-sdk/assets/refs/heads/main/partner_logos/anything_llm.png
+   :width: 60px
+   :target: https://lemonade-server.ai/docs/server/apps/anythingLLM/
+   :alt: AnythingLLM
 
-3. **Launch Open WebUI**: In a browser, navigate to `<http://localhost:8080/>`_.
+.. |ai-dev-gallery| image:: https://raw.githubusercontent.com/lemonade-sdk/assets/refs/heads/main/partner_logos/ai_dev_gallery.webp
+   :width: 60px
+   :target: https://lemonade-server.ai/docs/server/apps/ai-dev-gallery/
+   :alt: AI Dev Gallery
 
-4. **Connect Open WebUI to Lemonade Server:** In the top-right corner of the UI, click the profile icon and then:
+.. |lm-eval| image:: https://raw.githubusercontent.com/lemonade-sdk/assets/refs/heads/main/partner_logos/lm_eval.png
+   :width: 60px
+   :target: https://lemonade-server.ai/docs/server/apps/lm-eval/
+   :alt: LM-Eval
 
-   - Go to ``Settings`` → ``Connections``.
-   - Click the ``+`` button to add our OpenAI-compatible connection.
-   - In the URL field, enter ``http://localhost:8000/api/v0``, and in the key field put ``-``, then press save.
+.. |codegpt| image:: https://raw.githubusercontent.com/lemonade-sdk/assets/refs/heads/main/partner_logos/codegpt.jpg
+   :width: 60px
+   :target: https://lemonade-server.ai/docs/server/apps/codeGPT/
+   :alt: CodeGPT
 
-**Done!** You are now able to run Open WebUI with Hybrid models. Feel free to choose any of the available “-Hybrid” models in the model selection menu.
+.. |ai-toolkit| image:: https://raw.githubusercontent.com/lemonade-sdk/assets/refs/heads/main/partner_logos/ai_toolkit.png
+   :width: 60px
+   :target: https://github.com/lemonade-sdk/lemonade/blob/main/docs/server/apps/ai-toolkit.md
+   :alt: AI Toolkit
+
+|open-webui| |continue| |gaia| |anythingllm| |ai-dev-gallery| |lm-eval| |codegpt| |ai-toolkit|
+
 
 **********
 Next Steps
 **********
 
-- See `Lemonade Server Examples <https://github.com/lemonade-sdk/lemonade/tree/main/docs/server/apps>`_ to find applications that have been tested with Lemonade Server.
-- Check out the `Lemonade Server specification <https://github.com/lemonade-sdk/lemonade/blob/main/docs/server/server_spec.md>`_ to learn more about supported features.
+- See `Lemonade Server Examples <https://lemonade-server.ai/docs/server/apps/>`_ to find applications that have been tested with Lemonade Server.
+- Check out the `Lemonade Server specification <https://lemonade-server.ai/docs/server/server_spec/>`_ to learn more about supported features.
 - Try out your Lemonade Server install with any application that uses the OpenAI chat completions API.
-
 
 ..
   ------------

@@ -7,6 +7,24 @@ Ryzen AI Software supports deploying LLMs on Ryzen AI PCs using the native ONNX 
 - Hybrid execution mode: This mode uses both the NPU and iGPU to achieve the best TTFT and TPS during the prefill and decode phases.
 - NPU-only execution mode: This mode uses the NPU exclusively for both the prefill and decode phases.
 
+.. _software-stack-table:
+
+.. flat-table:: Ryzen AI Software Stack
+   :header-rows: 1
+   :class: center-table
+
+   * - Your Python Application
+     - Your LLM Stack
+     - Your Native Application
+   * - `Lemonade Python API* <#high-level-python-sdk>`_
+     - `Lemonade Server Interface* <#server-interface-rest-api>`_
+     - :rspan:`1` `OGA C++ Headers <../hybrid_oga.html>`_
+   * - :cspan:`1` `OGA Python API* <https://onnxruntime.ai/docs/genai/api/python.html>`_
+   * - :cspan:`2` `Custom AMD OnnxRuntime GenAI (OGA) <https://github.com/microsoft/onnxruntime-genai>`_
+   * - :cspan:`2` `AMD Ryzen AI Driver and Hardware <https://www.amd.com/en/products/processors/consumer/ryzen-ai.html>`_
+
+\* indicates open-source software (OSS).
+
 
 ************************
 Supported Configurations
