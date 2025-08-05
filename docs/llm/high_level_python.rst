@@ -21,7 +21,7 @@ System-level pre-requisites
 You only need to do this once per computer:
 
 1. Make sure your system has the recommended Ryzen AI driver installed as described in :ref:`install-driver`.
-2. Download and install `Miniconda for Windows <https://repo.anaconda.com/miniconda/Miniconda3-latest-Windows-x86_64.exe>`_ or `Miniforge for Windows <https://github.com/conda-forge/miniforge/releases/download/25.3.0-1/Miniforge3-25.3.0-1-Windows-x86_64.exe>`.
+2. Download and install `Miniconda for Windows <https://repo.anaconda.com/miniconda/Miniconda3-latest-Windows-x86_64.exe>`_ or `Miniforge for Windows <https://github.com/conda-forge/miniforge/releases/download/25.3.0-1/Miniforge3-25.3.0-1-Windows-x86_64.exe>`_.
 3. Launch a terminal and call ``conda init``.
 
 
@@ -49,7 +49,7 @@ Run this command in a terminal that has your environment activated:
 
     lemonade -i amd/Llama-3.2-1B-Instruct-awq-g128-int4-asym-fp16-onnx-hybrid oga-load --device hybrid --dtype int4 llm-prompt --max-new-tokens 64 -p PROMPT
 
-Each example linked in the :ref:`featured-llms` table also has `example commands <https://github.com/amd/RyzenAI-SW/blob/main/example/llm/lemonade/hybrid/Llama_3_2_1B_Instruct.md#validation>`_ for validating the speed and accuracy of each model.
+For an end-to-end example demonstrating the Validation Tools, visit the `Lemonade Tools Tutorial <https://github.com/lemonade-sdk/lemonade/blob/main/examples/notebooks/lemonade_model_validation.ipynb>`_.
 
 **********
 Python API
