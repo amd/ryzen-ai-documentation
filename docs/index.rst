@@ -70,8 +70,8 @@ For more details, refer to the :doc:`modelrun` page.
    :caption: Running LLMs on the NPU
 
    llm/overview.rst
-   llm/high_level_python.rst
    llm/server_interface.rst
+   llm/high_level_python.rst
    hybrid_oga.rst
    oga_model_prepare.rst
 

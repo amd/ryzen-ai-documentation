@@ -7,7 +7,6 @@ Ryzen AI Software supports deploying LLMs on Ryzen AI PCs using the native ONNX 
 - Hybrid execution mode: This mode uses both the NPU and iGPU to achieve the best TTFT and TPS during the prefill and decode phases.
 - NPU-only execution mode: This mode uses the NPU exclusively for both the prefill and decode phases.
 
-
 ************************
 Supported Configurations
 ************************
