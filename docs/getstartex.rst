@@ -93,7 +93,7 @@ The ``prepare_model_data.py`` script downloads the CIFAR-10 dataset in pickle fo
             dummy_inputs,
             tmp_model_path,
             export_params=True,
-            opset_version=13,
+            opset_version=17,
             input_names=input_names,
             output_names=output_names,
             dynamic_axes=dynamic_axes,
@@ -102,7 +102,7 @@ The ``prepare_model_data.py`` script downloads the CIFAR-10 dataset in pickle fo
 Note the following settings for the onnx conversion:
 
 - Ryzen AI supports a batch size=1, so dummy input is fixed to a batch_size =1 during model conversion
-- Recommended ``opset_version`` setting 13 is used.
+- Recommended ``opset_version`` setting 17 is used.
 
 Run the following command to prepare the dataset and export the ONNX model:
 
