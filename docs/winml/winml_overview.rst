@@ -1,10 +1,14 @@
-########
+==============================
 Overview
-########
+==============================
 
-Windows Machine Learning (WinML) enables developers to run ONNX AI models on PC via ONNX runtime, with automatic execution provider management for different hardwares i.e. CPUs, GPUs and NPUs.
+************************************
+Model Deployment using Windows ML
+************************************
 
-For more details, refer to the `Windows ML official documentation <https://learn.microsoft.com/en-us/windows/ai/new-windows-ml/overview>`
+Windows Machine Learning (WinML) enables developers to run ONNX AI models on PC via ONNX Runtime, with automatic execution provider management for different hardware (CPUs, GPUs, NPUs).
+
+For more details, see the `Windows ML official documentation <https://learn.microsoft.com/en-us/windows/ai/new-windows-ml/overview>`_.
 
 *************
 Prerequisites
@@ -14,10 +18,10 @@ Prerequisites
    :widths: 25 25
    :header-rows: 1
 
-   * - Dependencies
+   * - Dependency
      - Version Requirement
    * - Windows 11
-     - version 24H2 (build 26100) or greater
+     - 24H2 (build 26100) or greater
    * - C++
      - C++20 or later
    * - Python
@@ -26,28 +30,25 @@ Prerequisites
 Installation
 ~~~~~~~~~~~~
 
-Install the `Windows App SDK <https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/downloads>`
-TODO: Provide link to the download and install the SDK
-
-Make sure you install the `1.8.0-Experimental4 version <>`, because the release versions don't contain Windows ML yet.
+- Install the `Windows App SDK <https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/downloads>`_
+- Make sure you install the `1.8.0-Experimental4 version <https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/experimental-channel>`_, because the release versions don't contain Windows ML yet.
 
 Features
 ~~~~~~~~
 
 Windows ML handles the complexity of package management and hardware selection, automatically downloading the latest execution providers compatible with your device's hardware.
 
-1. Dynamically get latest EPs for different hardware
-2. Shared ONNX runtime, which reduces the application size
-3. Broad Hardware Support across different vendors through ONNX runtime
+- Dynamically gets latest EPs for different hardware
+- Shared ONNX Runtime, which reduces application size
+- Broad hardware support across different vendors through ONNX Runtime
 
+Download and Register the Execution Providers (EPs)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Download and register the Execution Providers (EPs)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Windows ML will automatically discover, download, and register the latest version of all compatible execution providers.
 
-Windows ML will automatically discover, download, and register the latest version of all compatible execution providers
-
-C++
-~~~
+C++ Example
+~~~~~~~~~~~
 
 .. code-block:: cpp
 
@@ -64,9 +65,8 @@ C++
     // Ensure and register all compatible execution providers with ONNX Runtime
     catalog.EnsureAndRegisterAllAsync().get();
 
-
-Python
-~~~~~~
+Python Example
+~~~~~~~~~~~~~~
 
 .. code-block:: python
 
@@ -115,26 +115,22 @@ Python
     register_execution_providers()
 
 
-The ``register_execution_providers`` function is used to download and register the latest version of all compatible execution providers
+The ``register_execution_providers`` function is used to download and register the latest version of all compatible execution providers.
 
-
-*************************
+******************************
 Getting Started Tutorials
-*************************
+******************************
 
-- :doc:`Getting Started Tutorial for Windows ML <model_deployment>` - Uses a custom ResNet model to demonstrate:
+- :doc:`Getting Started Tutorial for Windows ML <model_deployment>`_ - Uses a custom ResNet model to demonstrate:
 
-  - Model Conversion to QDQ quantized ONNX model using `AI Toolkit <https://code.visualstudio.com/docs/intelligentapps/modelconversion>`
-  - `Deployment using Windows ML APIs and ONNX Runtime in C++ <model_deployment>`
-  - `Deployment using Windows ML APIs and ONNX Runtime in Python <model_deployment>`
+  - Model conversion to QDQ quantized ONNX model using `AI Toolkit <https://code.visualstudio.com/docs/intelligentapps/modelconversion>`_
+  - `Deployment using Windows ML APIs and ONNX Runtime in C++ <model_deployment>`_
+  - `Deployment using Windows ML APIs and ONNX Runtime in Python <model_deployment>`_
 
+------------------------------
+License
+------------------------------
 
-..
-  ------------
-
-  #####################################
-  License
-  #####################################
-
- Ryzen AI is licensed under `MIT License <https://github.com/amd/ryzen-ai-documentation/blob/main/License>`_ . Refer to the `LICENSE File <https://github.com/amd/ryzen-ai-documentation/blob/main/License>`_ for the full license text and copyright notice.
+Ryzen AI is licensed under the `MIT License <https://github.com/amd/ryzen-ai-documentation/blob/main/License>`_.
+Refer to the `LICENSE file <https://github.com/amd/ryzen-ai-documentation/blob/main/License>`_ for the full license text and copyright notice.
 
