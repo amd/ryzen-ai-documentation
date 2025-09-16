@@ -1,18 +1,23 @@
-################
+==================
 Model Deployment
-################
+==================
 
-In this tutorial we will use ResNet50 as an example to show different steps in Windows ML
+This tutorial demonstrates the steps for deploying a ResNet50 model using Windows ML.
+How to convert, compile, and deploy models in both Python and C++ environments.
 
 ****************
 Model Conversion
 ****************
 
-- Refer to :doc:`model_conversion` page for details on model conversion using AI Toolkit
+Model conversion is the first step in preparing your model for deployment with Windows ML.
+You can use the AI Toolkit to convert models to the ONNX format and apply quantization.
+- See the :doc:`model_conversion` page for details on model conversion using AI Toolkit.
 
 *****************
 Python Deployment
 *****************
+
+This section covers how to compile and deploy your ONNX model using Python.
 
 Model Compilation
 ~~~~~~~~~~~~~~~~~
@@ -30,23 +35,26 @@ Model Compilation
     )
     model_compiler.compile_to_file(output_model_path)
     if not os.path.exists(output_model_path):
-        # For some EP, there might not be a compilation output.
+        # For some EPs, there might not be a compilation output.
         # In that case, use the original model directly.
         output_model_path = input_model_path
-
 
 Model Deployment
 ~~~~~~~~~~~~~~~~
 
-- Run the compiled model using ORT session
+Once the model is compiled, you can run inference using ONNX Runtime in Python.
+This allows you to quickly validate model performance on your target hardware.
+- Run the compiled model using an ORT session:
 
-.. code-block:: python
+.. code-block:: bash
 
     python run_inference.py
 
-
 Sample Output
 ~~~~~~~~~~~~~
+
+The following is a sample output showing the top-5 predictions from the model.
+You should see class indices and their associated confidence scores.
 
 .. code-block:: bash
 
@@ -59,6 +67,9 @@ Sample Output
 **************
 C++ Deployment
 **************
+
+C++ deployment is recommended for production scenarios where performance and integration with native Windows applications are critical.
+This section shows how to compile and deploy your model using C++ APIs
 
 Model Compilation
 ~~~~~~~~~~~~~~~~~
@@ -79,25 +90,27 @@ Model Compilation
     // Clean up
     compileApi->ReleaseModelCompilationOptions(compileOptions);
 
-
 Model Deployment
 ~~~~~~~~~~~~~~~~
 
-- Build the example application and run using VS studio command prompt
+After compiling the model, you can build and run your C++ application to perform inference.
+- Build the example application and run using the Visual Studio Developer Command Prompt:
 
 .. code-block:: bash
 
     msbuild RunInference.sln -p:Configuration=Release -p:Platform=x64
 
-- Run the compiled model using ORT session
+- Run the compiled model using an ORT session:
 
 .. code-block:: bash
 
     .\RunInference.exe
 
-
 Sample Output
 ~~~~~~~~~~~~~
+
+The output below shows the top-5 predictions from the C++ inference application.
+You should see similar results as in the Python deployment section.
 
 .. code-block:: bash
 
