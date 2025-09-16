@@ -1,21 +1,24 @@
-#################################
-Model Deployment using Windows ML
-#################################
+################
+Model Deployment
+################
 
 In this tutorial we will use ResNet50 as an example to show different steps in Windows ML
 
+****************
 Model Conversion
-~~~~~~~~~~~~~~~~
+****************
+
 - Refer to :doc:`model_conversion` page for details on model conversion using AI Toolkit
 
-#################
+*****************
 Python Deployment
-#################
+*****************
 
 Model Compilation
 ~~~~~~~~~~~~~~~~~
 
 .. code-block:: python
+
     input_model_path = "path_to_your_model.onnx"
     output_model_path = "path_to_your_compiled_model.onnx"
 
@@ -34,9 +37,10 @@ Model Compilation
 
 Model Deployment
 ~~~~~~~~~~~~~~~~
+
 - Run the compiled model using ORT session
 
-.. code::python
+.. code-block:: python
 
     python run_inference.py
 
@@ -44,7 +48,7 @@ Model Deployment
 Sample Output
 ~~~~~~~~~~~~~
 
-.. code::bash
+.. code-block:: bash
 
     285, Egyptian cat with confidence of 0.904274
     281, tabby with confidence of 0.0620204
@@ -52,14 +56,14 @@ Sample Output
     287, lynx with confidence of 0.00119624
     761, remote control with confidence of 0.000487919
 
-##############
+**************
 C++ Deployment
-##############
+**************
 
 Model Compilation
 ~~~~~~~~~~~~~~~~~
 
-.. code-block::c++
+.. code-block:: c++
 
     const OrtCompileApi* compileApi = ortApi.GetCompileApi();
 
@@ -78,22 +82,24 @@ Model Compilation
 
 Model Deployment
 ~~~~~~~~~~~~~~~~
+
 - Build the example application and run using VS studio command prompt
 
-.. code::bash
+.. code-block:: bash
 
     msbuild RunInference.sln -p:Configuration=Release -p:Platform=x64
 
 - Run the compiled model using ORT session
 
-.. code::bash
+.. code-block:: bash
 
     .\RunInference.exe
+
 
 Sample Output
 ~~~~~~~~~~~~~
 
-.. code::bash
+.. code-block:: bash
 
     285, Egyptian cat with confidence of 0.904274
     281, tabby with confidence of 0.0620204
