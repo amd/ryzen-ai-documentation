@@ -15,7 +15,7 @@ Python Deployment
 Model Compilation
 ~~~~~~~~~~~~~~~~~
 
-.. code-block::
+.. code-block:: python
     input_model_path = "path_to_your_model.onnx"
     output_model_path = "path_to_your_compiled_model.onnx"
 
