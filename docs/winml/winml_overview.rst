@@ -49,7 +49,7 @@ Windows ML will automatically discover, download, and register the latest versio
 C++
 ~~~
 
-.. code-block::
+.. code-block:: cpp
 
     #include <winrt/Microsoft.Windows.AI.MachineLearning.h>
     #include <win_onnxruntime_cxx_api.h>
@@ -68,7 +68,7 @@ C++
 Python
 ~~~~~~
 
-.. code-block::
+.. code-block:: python
 
     # Known issue: import winrt.runtime will cause the TensorRTRTX execution provider to fail registration.
     # As a workaround, please run pywinrt related code in a separate thread.

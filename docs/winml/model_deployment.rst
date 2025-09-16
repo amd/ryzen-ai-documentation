@@ -42,7 +42,7 @@ Model Deployment
 
 .. code-block:: python
 
-    python run_inferenc.py
+    python run_inference.py
 
 
 Sample Output
