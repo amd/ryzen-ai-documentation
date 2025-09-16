@@ -68,7 +68,7 @@ C++
 Python
 ~~~~~~
 
-.. code-block::
+.. code-block:: python
 
     # Known issue: import winrt.runtime will cause the TensorRTRTX execution provider to fail registration.
     # As a workaround, please run pywinrt related code in a separate thread.
