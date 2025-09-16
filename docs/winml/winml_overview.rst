@@ -49,7 +49,7 @@ Windows ML will automatically discover, download, and register the latest versio
 C++
 ~~~
 
-.. code-block::
+.. code-block:: cpp
 
     #include <winrt/Microsoft.Windows.AI.MachineLearning.h>
     #include <win_onnxruntime_cxx_api.h>
