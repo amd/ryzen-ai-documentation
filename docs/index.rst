@@ -87,6 +87,7 @@ For more details, refer to the :doc:`modelrun` page.
    :hidden:
    :caption: Running Models using  WindowsML
 
+   winml/winml_overview.rst
    winml/model_conversion.rst
    winml/model_deployment.rst
 
