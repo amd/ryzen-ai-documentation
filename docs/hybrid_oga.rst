@@ -7,7 +7,6 @@ Ryzen AI Software supports deploying LLMs on Ryzen AI PCs using the native ONNX 
 - Hybrid execution mode: This mode uses both the NPU and iGPU to achieve the best TTFT and TPS during the prefill and decode phases.
 - NPU-only execution mode: This mode uses the NPU exclusively for both the prefill and decode phases.
 
-
 ************************
 Supported Configurations
 ************************
@@ -226,7 +225,7 @@ In addition to the full RyzenAI software stack, we also provide standalone wheel
 
 .. code-block:: bash
 
-   pip install onnxruntime-genai-directml-ryzenai==0.7.0.2 --extra-index-url=https://pypi.amd.com/simple
+   pip install onnxruntime-genai-directml-ryzenai==0.7.0.2.1 --extra-index-url=https://pypi.amd.com/simple
 
 3. Navigate to your working directory and download the desired Hybrid/NPU model
 
