@@ -85,6 +85,15 @@ For more details, refer to the :doc:`modelrun` page.
 .. toctree::
    :maxdepth: 1
    :hidden:
+   :caption: Running Models using  WindowsML
+
+   winml/winml_overview.rst
+   winml/model_conversion.rst
+   winml/model_deployment.rst
+
+.. toctree::
+   :maxdepth: 1
+   :hidden:
    :caption: Additional Topics
 
    xrt_smi.rst

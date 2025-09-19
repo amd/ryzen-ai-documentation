@@ -87,7 +87,15 @@ The quantized model is generated in the <quantized safetensor output dir> folder
 Postprocessing
 **************
 
-Copy the quantized model to the Windows PC with Ryzen AI installed, activate the Ryzen AI Conda environment, and execute ``model_generate`` command to generate the final model.
+Copy the quantized model to the Windows PC with Ryzen AI installed, activate the Ryzen AI Conda environment, install `torch`.
+
+.. code-block::
+
+    conda activate ryzen-ai-<version>
+    pip install torch
+    pip uninstall onnx -y
+    conda clean --all
+    pip install onnx==1.17.0
 
 Generate the final model for Hybrid execution mode:
 
@@ -97,7 +105,6 @@ Generate the final model for Hybrid execution mode:
 
    model_generate --hybrid <output_dir> <quantized_model_path>  
 
- 
 Generate the final model for NPU execution mode:
 
 .. code-block::
