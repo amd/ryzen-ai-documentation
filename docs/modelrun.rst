@@ -70,66 +70,94 @@ VitisAI EP Provider Options
 
 The ``provider_options`` parameter of the ORT ``InferenceSession`` allows passing options to configure the Vitis AI EP. The following options are supported:
 
-.. list-table:: Vitis AI EP Provider Options
-     :header-rows: 1
-     :widths: 15 15 20 20 20
+- .. option:: config_file 
 
-     * - Option
-         - Required/Optional
-         - Description
-         - Type / Supported Values
-         - Default
-     * - ``config_file``
-         - Optional
-         - Configuration file for additional compilation options for BF16 models. See :ref:`Config File Options <configuration-file>`.
-         - String
-         - N/A
-     * - ``xclbin``
-         - Required ONLY for INT8 models running on PHX
-         - NPU binary file for INT8 models. See :ref:`Using INT8 Models <int8-models>`.
-         - String
-         - N/A
-     * - ``opt_level``
-         - Optional (INT8)
-         - Compiler optimization effort.
-         - 0, 1, 2, 3, 65536 (experimental)
-         - 0
-     * - ``log_level``
-         - Optional
-         - Controls message level reported by VitisAI EP.
-         - "info", "warning", "error", "fatal"
-         - "info"
-     * - ``enable_cache_file_io_in_mem``
-         - Optional (INT8)
-         - Keep compiled model in memory (1) or save to disk (0).
-         - 0, 1
-         - 1
-     * - ``cache_dir``
-         - Optional
-         - Path/name of VitisAI cache directory. For INT8, :option:`enable_cache_file_io_in_mem` must be 0. See :ref:`VitisAI cache <vitisai-ep-cache>`.
-         - String
-         - ``C:\\temp\\%USERNAME%\\vaip\\.cache``
-     * - ``cache_key``
-         - Optional
-         - Subfolder in cache directory for compiled model. For INT8, :option:`enable_cache_file_io_in_mem` must be 0. See :ref:`VitisAI cache <vitisai-ep-cache>`.
-         - String
-         - MD5 hash of input model
-     * - ``encryption_key``
-         - Optional
-         - 256-bit key for encrypting the EP context model. See :ref:`EP Context Cache <ort-ep-context-cache>`.
-         - String (64 hex digits)
-         - None (not encrypted)
-     * - ``ai_analyzer_visualization``
-         - Optional
-         - Enables compile-time analysis data generation.
-         - Boolean
-         - False
-     * - ``ai_analyzer_profiling``
-         - Optional
-         - Enables inference-time analysis data generation.
-         - Boolean
-         - False
+Optional. Configuration file to pass additional compilation options for BF16 models. For more details, refer to the section about :ref:`Config File Options <configuration-file>`.
 
+Type: String
+
+Default: N/A
+
+
+- .. option:: xclbin
+
+Required ONLY for INT8 models runnong on PHX devices. NPU binary file to specify NPU configuration to be used for INT8 models. For more details, refer to the section about :ref:`Using INT8 Models <int8-models>`.
+
+Type: String
+
+Default: N/A.
+
+
+- .. option:: encryption_key 
+
+Optional. 256-bit key used for encrypting the EP context model. At runtime, you must use the same key to decrypt the model when loading it. For more details, refer to the section about the :ref:`EP Context Cache <ort-ep-context-cache>` feature.
+
+Type: String of 64 hexadecimal values representing the 256-bit encryption key.
+
+Default: None, the model is not encrypted.
+
+
+- .. option:: opt_level 
+
+Optional. Applies to INT8 models only. Controls the compiler optimization effort.
+
+Supported Values: 0, 1, 2, 3, 65536 (maximum effort, experimental)
+
+Default: 0
+
+
+- .. option:: log_level
+
+Optional. Controls what level of messages are reported by the VitisAI EP.
+
+Supported Values: "info", "warning", "warning", "error", "fatal"
+
+Default: "info"
+
+
+- .. option:: cache_dir 
+
+Optional. The path and name of the VitisAI cache directory. For INT8 models, for this option to take affect, the :option:`enable_cache_file_io_in_mem` must be set to 0. For more details, refer to the section about :ref:`VitisAI cache <vitisai-ep-cache>`.
+
+Type: String
+
+Default: C:\\temp\\%USERNAME%\\vaip\\.cache
+
+
+- .. option:: cache_key 
+
+Optional. The subfolder in the VitisAI cache directory where the compiled model is stored. For INT8 models, for this option to take affect, the :option:`enable_cache_file_io_in_mem` must be set to 0. For more details, refer to the section about :ref:`VitisAI cache <vitisai-ep-cache>`.
+
+Type: String
+
+Default: MD5 hash of the input model.
+
+
+- .. option:: enable_cache_file_io_in_mem
+
+Optional. Applies to INT8 models only. By default, the VitisAI EP keeps the compiled model in memory. To enable saving the compiled model to disk in the :option:`cache_dir` folder, :option:`enable_cache_file_io_in_mem` must be set to 0.
+
+Supported Values: 0, 1
+
+Default: 1
+
+
+- .. option:: ai_analyzer_visualization 
+
+Optional. Enables generation of compile-time analysis data.
+
+Type: Boolean
+
+Default: False
+
+
+- .. option:: ai_analyzer_profiling 
+
+Optional. Enables generation of inference-time analysis data.
+
+Type: Boolean
+
+Default: False
 
 .. _configuration-file:
 
