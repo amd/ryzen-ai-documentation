@@ -72,7 +72,7 @@ The ``provider_options`` parameter of the ORT ``InferenceSession`` allows passin
 
 .. list-table:: Vitis AI EP Provider Options
          :header-rows: 1
-         :widths: 15 35 20 10
+         :widths: 10 35 20 10
 
          * - Option
            - Description
@@ -82,17 +82,17 @@ The ``provider_options`` parameter of the ORT ``InferenceSession`` allows passin
            - Config file for BF16 compilation options. See :ref:`Config File Options <configuration-file>`.
            - String
            - N/A
-         * - ``xclbin``
-           - NPU binary for INT8 models (PHX). See :ref:`Using INT8 Models <int8-models>`.
-           - String
-           - N/A
+         * - ``target``
+           - Set which VAIEP backend to use for compiling/running a model. This bypasses auto discovery function in VAIEP.
+           - ``VAIML``, ``VAIML-X1``, ``VAIML-X2``
+           - None
          * - ``encryption_key``
            - 256-bit key for encrypting EP context model. See :ref:`EP Context Cache <ort-ep-context-cache>`.
            - String (64 hex)
            - None
          * - ``opt_level``
            - Compiler optimization (INT8 only).
-           - 0, 1, 2, 3, 65536
+           - 0, 1, 2, 3, 65536 (maximum effort, experimental)
            - 0
          * - ``log_level``
            - Message level reported by VitisAI EP.
@@ -101,7 +101,7 @@ The ``provider_options`` parameter of the ORT ``InferenceSession`` allows passin
          * - ``cache_dir``
            - VitisAI cache directory. For INT8, ``enable_cache_file_io_in_mem`` must be 0.
            - String
-           - C:\temp\%USERNAME%\vaip\.cache
+           - ``C:\temp\%USERNAME%\vaip\.cache``
          * - ``cache_key``
            - Subfolder in cache for compiled model. For INT8, ``enable_cache_file_io_in_mem`` must be 0.
            - String
@@ -151,7 +151,6 @@ The default the configuration file for compiling BF16 models contains the follow
 
 The ``vaiml_config`` section of the configuration file contains the user options. The supported user options are described below.
 
-
 .. list-table:: Config File Options (vaiml_config)
          :header-rows: 1
          :widths: 15 35 20 10
@@ -168,37 +167,6 @@ The ``vaiml_config`` section of the configuration file contains the user options
            - Data layout: "auto" (let compiler choose), "vectorized" (for CNNs), "unvectorized" (for Transformers).
            - auto, vectorized, unvectorized
            - auto
-
-
-
-
-.. _vaiml-x2-flow:
-
-*********************
-VAIML-X2 Compiler
-*********************
-
-New ``VAIML-X2`` flow can be triggered using the ``provider_options`` with the ORT ``InferenceSession``. This new compiler flow allows automatic generation of xclbins and is currently limited to supporting STX devices.
-Here is a sample python code that triggers ``VAIML-X2`` compiler flow.
-
-.. code-block:: python
-
-    import onnxruntime
-
-    session_options = onnxruntime.SessionOptions()
-    vai_ep_options  = {                           # Vitis AI EP options go here
-        'cache_dir': str(cache_dir),
-        'cache_key': 'modelcachekey',
-        'target': 'VAIML-X2',
-        'enable_cache_file_io_in_mem':'0'
-    }
-
-    session = onnxruntime.InferenceSession(
-        path_or_bytes = model,                    # Path to the ONNX model
-        sess_options = session_options,           # Standard ORT options
-        providers = ['VitisAIExecutionProvider'], # Use the Vitis AI Execution Provider
-        provider_options = [vai_ep_options]       # Pass options to the Vitis AI Execution Provider
-    )
 
 
 .. _bf16-models:
@@ -221,7 +189,6 @@ Python example loading a configuration file called vai_ep_config.json:
     vai_ep_options = {
         'cache_dir': str(cache_dir),
         'cache_key': 'modelcachekey',
-        'target': 'VAIML-X2',
         'enable_cache_file_io_in_mem':'0'
     }
 
@@ -259,18 +226,35 @@ C++ example loading a configuration file called vai_ep_config.json:
 Using INT8 models
 **************************
 
-When compiling INT8 models on PHX devices, the NPU configuration must be specified through the :option:`xclbin` provider option. 
-This option is not required for INT8/BF16 models running on STX/KRK devices.
+When compiling INT8 models, the user can choose the VAIEP backend to use for compiling/running a model using ``target`` option in ``provider_options`` with the ORT ``InferenceSession``.
 
-Setting the NPU configuration involves specifying one of ``.xclbin`` binary files located in the Ryzen AI Software installation tree.
+.. _vaiml-x2-flow:
 
-It is recommended to copy the required xclbin files from the Ryzen AI installation tree into the project folder as the xclbin files used to compile the model must be included in the final version of the application. 
+New INT8 compiler
+=================
 
-Depending on the target processor type, the following ``.xclbin`` files should be used:
+New INT8 compiler flow can be triggered by setting ``target`` to ``VAIML-X2``. The new INT8 compiler flow allows automatic generation of xclbins and is currently limited to supporting STX devices.
 
-**For PHX/HPT APUs**:
+Here is a sample python code that triggers new INT8 compiler using ``target`` using ``VAIML-X2`` as shown below:
 
-- ``%RYZEN_AI_INSTALLATION_PATH%\voe-4.0-win_amd64\xclbins\phoenix\4x4.xclbin``
+.. code-block:: python
+
+    import onnxruntime
+
+    session_options = onnxruntime.SessionOptions()
+    vai_ep_options  = {                           # Vitis AI EP options go here
+        'cache_dir': str(cache_dir),
+        'cache_key': 'modelcachekey',
+        'target': 'VAIML-X2',
+        'enable_cache_file_io_in_mem':'0'
+    }
+
+    session = onnxruntime.InferenceSession(
+        path_or_bytes = model,                    # Path to the ONNX model
+        sess_options = session_options,           # Standard ORT options
+        providers = ['VitisAIExecutionProvider'], # Use the Vitis AI Execution Provider
+        provider_options = [vai_ep_options]       # Pass options to the Vitis AI Execution Provider
+    )
 
 
 |memo| **NOTE**:
@@ -281,7 +265,7 @@ Depending on the target processor type, the following ``.xclbin`` files should b
 Sample Python Code
 ==================
 
-Python example selecting the ``4x4.xclbin`` NPU configuration for PHX/HPT located in the Ryzen AI installation folder:
+Python example selecting the new INT8 compiler using ``target`` option in ``provider_options`` as shown below:
 
 .. code-block:: python
 
@@ -289,7 +273,7 @@ Python example selecting the ``4x4.xclbin`` NPU configuration for PHX/HPT locate
     import onnxruntime
 
     vai_ep_options = {
-        'xclbin': os.path.join(os.environ['RYZEN_AI_INSTALLATION_PATH'], 'voe-4.0-win_amd64', 'xclbins', 'phoenix', '4x4.xclbin')
+        'target': 'VAIML-X1'
     }
 
     session = onnxruntime.InferenceSession(
@@ -312,7 +296,7 @@ C++ example selecting the ``4x4.xclbin`` NPU configuration for PHX/HPT located i
     Ort::Env env(ORT_LOGGING_LEVEL_WARNING, "resnet50_int8");
     auto session_options = Ort::SessionOptions();
     auto vai_ep_options = std::unorderd_map<std::string,std::string>({});
-    vai_ep_options["xclbin"] = "/path/to/xclbins/phoenix/4x4.xclbin";
+    vai_ep_options["target"] = "VAIML-X1"; 
     session_options.AppendExecutionProvider_VitisAI(vai_ep_options);
     auto session = Ort::Session(
         env,
@@ -321,6 +305,9 @@ C++ example selecting the ``4x4.xclbin`` NPU configuration for PHX/HPT located i
 
 |
 
+|memo| **NOTE**:
+
+    - For PHX/HPT APUs the following ``.xclbin`` fiels should be used: ``%RYZEN_AI_INSTALLATION_PATH%\voe-4.0-win_amd64\xclbins\phoenix\4x4.xclbin``
 
 .. _precompiled-models:
 
