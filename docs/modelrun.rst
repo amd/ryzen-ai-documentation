@@ -218,7 +218,7 @@ VAIML-X2 Compiler
 *********************
 
 New ``VAIML-X2`` flow can be triggered using the ``provider_options`` with the ORT ``InferenceSession``. This new compiler flow allows automatic generation of xclbins and is currently limited to supporting STX devices.
-Here is a sample python code the triggers ``VAIML-X2`` compiler flow.
+Here is a sample python code that triggers ``VAIML-X2`` compiler flow.
 
 .. code-block:: python
 
