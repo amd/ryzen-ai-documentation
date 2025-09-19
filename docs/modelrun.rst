@@ -81,7 +81,7 @@ Default: N/A
 
 - .. option:: xclbin
 
-Required ONLY for INT8 models runnong on PHX devices. NPU binary file to specify NPU configuration to be used for INT8 models. For more details, refer to the section about :ref:`Using INT8 Models <int8-models>`.
+Required ONLY for INT8 models running on PHX devices. NPU binary file to specify NPU configuration to be used for INT8 models. For more details, refer to the section about :ref:`Using INT8 Models <int8-models>`.
 
 Type: String
 
