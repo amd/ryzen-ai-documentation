@@ -145,7 +145,6 @@ After the model is generated, locate the ``genai_config.json`` file inside the m
    - Set ``"fusion_opt_io_bind_kv_cache": "1"`` inside ``"amd_options"``.
    - Set ``"flattened_kv": true`` inside ``"search"``.
 
-
 ..
   ------------
 
