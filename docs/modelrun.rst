@@ -72,7 +72,7 @@ The ``provider_options`` parameter of the ORT ``InferenceSession`` allows passin
 
 .. list-table:: Vitis AI EP Provider Options
          :header-rows: 1
-         :widths: 15 35 20 10
+         :widths: 10 35 20 10
 
          * - Option
            - Description
@@ -92,7 +92,7 @@ The ``provider_options`` parameter of the ORT ``InferenceSession`` allows passin
            - None
          * - ``opt_level``
            - Compiler optimization (INT8 only).
-           - 0, 1, 2, 3, 65536
+           - 0, 1, 2, 3, 65536 (maximum effort, experimental)
            - 0
          * - ``log_level``
            - Message level reported by VitisAI EP.
@@ -101,7 +101,7 @@ The ``provider_options`` parameter of the ORT ``InferenceSession`` allows passin
          * - ``cache_dir``
            - VitisAI cache directory. For INT8, ``enable_cache_file_io_in_mem`` must be 0.
            - String
-           - C:\temp\%USERNAME%\vaip\.cache
+           - ``C:\temp\%USERNAME%\vaip\.cache``
          * - ``cache_key``
            - Subfolder in cache for compiled model. For INT8, ``enable_cache_file_io_in_mem`` must be 0.
            - String
@@ -151,7 +151,6 @@ The default the configuration file for compiling BF16 models contains the follow
 
 The ``vaiml_config`` section of the configuration file contains the user options. The supported user options are described below.
 
-
 .. list-table:: Config File Options (vaiml_config)
          :header-rows: 1
          :widths: 15 35 20 10
@@ -168,8 +167,6 @@ The ``vaiml_config`` section of the configuration file contains the user options
            - Data layout: "auto" (let compiler choose), "vectorized" (for CNNs), "unvectorized" (for Transformers).
            - auto, vectorized, unvectorized
            - auto
-
-
 
 
 .. _vaiml-x2-flow:
@@ -204,7 +201,7 @@ Here is a sample python code that triggers ``VAIML-X2`` compiler flow.
 .. _bf16-models:
 
 **************************
-Using BF16 models
+BF16 models
 **************************
 
 When compiling BF16 models, a configuration file must be provided to the VitisAI EP. This file is specified using the :option:`config_file` provider option. For more details, refer to :ref:`Config File Options <configuration-file>` section.
@@ -256,7 +253,7 @@ C++ example loading a configuration file called vai_ep_config.json:
 .. _int8-models:
 
 **************************
-Using INT8 models
+INT8 models
 **************************
 
 When compiling INT8 models on PHX devices, the NPU configuration must be specified through the :option:`xclbin` provider option. 
