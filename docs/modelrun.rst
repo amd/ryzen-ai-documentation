@@ -99,11 +99,11 @@ The ``provider_options`` parameter of the ORT ``InferenceSession`` allows passin
            - info, warning, error, fatal
            - info
          * - ``cache_dir``
-           - VitisAI cache directory. For INT8, :option:`enable_cache_file_io_in_mem` must be 0.
+           - VitisAI cache directory. For INT8, ``enable_cache_file_io_in_mem`` must be 0.
            - String
            - C:\temp\%USERNAME%\vaip\.cache
          * - ``cache_key``
-           - Subfolder in cache for compiled model. For INT8, :option:`enable_cache_file_io_in_mem` must be 0.
+           - Subfolder in cache for compiled model. For INT8, ``enable_cache_file_io_in_mem`` must be 0.
            - String
            - MD5 hash of model
          * - ``enable_cache_file_io_in_mem``
