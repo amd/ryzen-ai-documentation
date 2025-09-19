@@ -172,7 +172,7 @@ The ``vaiml_config`` section of the configuration file contains the user options
 .. _bf16-models:
 
 **************************
-BF16 models
+Using BF16 models
 **************************
 
 When compiling BF16 models, a configuration file must be provided to the VitisAI EP. This file is specified using the :option:`config_file` provider option. For more details, refer to :ref:`Config File Options <configuration-file>` section.
@@ -223,7 +223,7 @@ C++ example loading a configuration file called vai_ep_config.json:
 .. _int8-models:
 
 **************************
-INT8 models
+Using INT8 models
 **************************
 
 When compiling INT8 models, the user can choose the VAIEP backend to use for compiling/running a model using ``target`` option in ``provider_options`` with the ORT ``InferenceSession``.
