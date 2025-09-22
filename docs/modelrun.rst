@@ -266,7 +266,7 @@ Here is a sample python code that triggers new INT8 compiler using ``target`` us
 Sample Python Code
 ==================
 
-Python example selecting the default INT8 compiler using ``target`` option in ``provider_options`` as shown below:
+Python example selecting the legacy INT8 compiler using ``target`` option in ``provider_options`` as shown below:
 
 .. code-block:: python
 
