@@ -11,7 +11,10 @@ Introduction
 
 The Ryzen AI Software supports models saved in the ONNX format and uses ONNX Runtime as the primary mechanism to load, compile and run models. 
 
-|memo| **NOTE**: Models with ONNX opset 17 are recommended. If your model uses a different opset version, consider converting it using the `ONNX Version Converter <https://github.com/onnx/onnx/blob/main/docs/VersionConverter.md>`_
+|memo| **NOTE**: 
+
+- All the instructions assume STX/KRK devices. For specific details related to PHX/HPT refer to :ref:`Running on PHX/HPT devices <phx-device>`.
+- Models with ONNX opset 17 are recommended. If your model uses a different opset version, consider converting it using the `ONNX Version Converter <https://github.com/onnx/onnx/blob/main/docs/VersionConverter.md>`_
 
 For a complete list of supported operators, consult this page: :doc:`Supported Operators <ops_support>`.
 
@@ -91,7 +94,7 @@ The ``provider_options`` parameter of the ORT ``InferenceSession`` allows passin
            - String (64 hex)
            - None
          * - ``opt_level``
-           - Compiler optimization (INT8 only).
+           - Compiler optimization level for INT8 only.
            - 0, 1, 2, 3, 65536 (maximum effort, experimental)
            - 0
          * - ``log_level``
@@ -175,7 +178,7 @@ The ``vaiml_config`` section of the configuration file contains the user options
 Using BF16 models
 **************************
 
-When compiling BF16 models, a configuration file must be provided to the VitisAI EP. This file is specified using the :option:`config_file` provider option. For more details, refer to :ref:`Config File Options <configuration-file>` section.
+When compiling BF16 models, an optional configuration file can be provided to the VitisAI EP. This file is specified using the :option:`config_file` provider option. For more details, refer to :ref:`Config File Options <configuration-file>` section.
 
 Sample Python Code
 ==================
@@ -187,9 +190,7 @@ Python example loading a configuration file called vai_ep_config.json:
     import onnxruntime
 
     vai_ep_options = {
-        'cache_dir': str(cache_dir),
-        'cache_key': 'modelcachekey',
-        'enable_cache_file_io_in_mem':'0'
+        'config_file': 'vai_ep_config.json',
     }
 
     session = onnxruntime.InferenceSession(
@@ -233,7 +234,7 @@ When compiling INT8 models, the user can choose the VAIEP backend to use for com
 New INT8 compiler
 =================
 
-New INT8 compiler flow can be triggered by setting ``target`` to ``VAIML-X2``. The new INT8 compiler flow allows automatic generation of xclbins and is currently limited to supporting STX devices.
+New INT8 compiler flow can be triggered by setting ``target`` to ``VAIML-X2``. The new INT8 compiler flow allows automatic generation of xclbins and is currently limited to supporting STX/KRK devices.
 
 Here is a sample python code that triggers new INT8 compiler using ``target`` using ``VAIML-X2`` as shown below:
 
@@ -259,13 +260,13 @@ Here is a sample python code that triggers new INT8 compiler using ``target`` us
 
 |memo| **NOTE**:
 
-    - Ryzen AI 1.6.0, the legacy "1x4" and "Nx4" xclbin files are no longer supported and should not be used.
-    - Ryzen AI 1.6.0, ``xclbin`` option in ``provider_options`` is not required for STX/KRK devices.
+    - From Ryzen AI 1.5.0, the legacy "1x4" and "Nx4" xclbin files are no longer supported and should not be used.
+    - In Ryzen AI 1.6.0, ``xclbin`` option in ``provider_options`` is not required for STX/KRK devices.
 
 Sample Python Code
 ==================
 
-Python example selecting the new INT8 compiler using ``target`` option in ``provider_options`` as shown below:
+Python example selecting the legacy INT8 compiler using ``target`` option in ``provider_options`` as shown below:
 
 .. code-block:: python
 
@@ -305,9 +306,11 @@ C++ example selecting the ``4x4.xclbin`` NPU configuration for PHX/HPT located i
 
 |
 
+.. _phx-device:
+
 |memo| **NOTE**:
 
-    - For PHX/HPT APUs the following ``.xclbin`` fiels should be used: ``%RYZEN_AI_INSTALLATION_PATH%\voe-4.0-win_amd64\xclbins\phoenix\4x4.xclbin``
+    - For PHX/HPT APUs they must use the legacy option ``xclbin`` within ``provider_options``, which should be set to ``%RYZEN_AI_INSTALLATION_PATH%\voe-4.0-win_amd64\xclbins\phoenix\4x4.xclbin``
 
 .. _precompiled-models:
 
