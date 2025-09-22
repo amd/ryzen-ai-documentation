@@ -111,7 +111,7 @@ Generate the final model for NPU execution mode:
 
    conda activate ryzen-ai-<version>
 
-   model_generate --npu <output_dir> <quantized_model_path>  
+   model_generate --npu <output_dir> <quantized_model_path>  --optimize decode
 
 
 **Note**: During the model_generate step, the quantized model is first converted to an OGA model using ONNX Runtime GenAI Model Builder (version 0.9.0). Some models, such as Qwen-7B, require large system memory (up to 64 GB) during this conversion. For such models, you can either use a machine with sufficient memory or export the OGA model separately using an older version of the Model Builder. To use a standalone environment for exporting an OGA model, refer to the official ONNX Runtime GenAI Model Builder documentation 🔗 https://github.com/microsoft/onnxruntime-genai/tree/main/src/python/py/models  . Once you have an exported OGA model, you can pass it directly to the model_generate command, which will skip the export step and perform only the post-processing.
