@@ -64,9 +64,9 @@ Hugging Face collection of NPU models: https://huggingface.co/collections/amd/ry
 Compatible OGA APIs
 *******************
 
-Pre-optimized hybrid or NPU LLMs can be executed using the official OGA C++ and Python APIs. The current release is compatible with OGA version 0.7.0.
+Pre-optimized hybrid or NPU LLMs can be executed using the official OGA C++ and Python APIs. The current release is compatible with OGA version 0.9.0.
 For detailed documentation and examples, refer to the official OGA repository:
-🔗 https://github.com/microsoft/onnxruntime-genai/tree/rel-0.7.0
+🔗 https://github.com/microsoft/onnxruntime-genai/tree/rel-0.9.0
 
 
 ***************************
@@ -100,7 +100,7 @@ Run the following command:
 
 .. code-block:: bash
 
-   conda activate ryzen-ai-1.5.0
+   conda activate ryzen-ai-1.6.0
 
 3. Set Up a Working Directory and Copy Required Files
 
@@ -117,24 +117,13 @@ Create a folder and copy the required files into it:
    :: Copy the sample prompt file
    xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\LLM\example\amd_genai_prompt.txt" .
 
-   :: Copy common DLLs
+   :: Copy required DLLs
    xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime-genai.dll" .
    xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime.dll" .
    xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\ryzen_mm.dll" .
-
-   :: Copy DLLs for Hybrid models (skip if using an NPU-only model)
    xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnx_custom_ops.dll" .
    xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\libutf8_validity.dll" .
    xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\abseil_dll.dll" .
-   xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\DirectML.dll" .
-
-   :: Copy DLLs for NPU-only models (skip if using a Hybrid model)
-   xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime_providers_shared.dll" .
-   xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime_providers_vitisai.dll" .
-   xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime_vitis_ai_custom_ops.dll" .
-   xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\dyn_dispatch_core.dll" .
-   xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\xaiengine.dll" .
-   xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime_vitisai_ep.dll" .
 
 4. Download a Pre-Optimized Model from Hugging Face
 
@@ -183,9 +172,9 @@ A complete example including C++ source and build instructions is available in t
 LLM Config Files
 ****************
 
-Each OGA model folder contains a ``genai_config.json`` file. This file contains various configuration settings for the model. The ``session_option`` section is where information about specific runtime dependencies is specified. Within this section, the ``custom_ops_library`` option sets the path to the ``onnx_custom_ops.dll`` file for Hybrid models and ``onnxruntime_vitis_ai_custom_ops.dll`` file for NPU models.
+Each OGA model folder contains a ``genai_config.json`` file. This file contains various configuration settings for the model. The ``session_option`` section is where information about specific runtime dependencies is specified. Within this section, the ``custom_ops_library`` option sets the path to the ``onnx_custom_ops.dll`` file for Hybrid and NPU models.
 
-The following sample shows the defaults for the AMD pre-optimized Hybrid OGA LLMs:
+The following sample shows the defaults for the AMD pre-optimized OGA LLMs:
 
 .. code-block:: json
 
