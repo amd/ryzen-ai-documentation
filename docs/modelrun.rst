@@ -310,7 +310,7 @@ C++ example selecting the ``4x4.xclbin`` NPU configuration for PHX/HPT located i
 
 |memo| **NOTE**:
 
-    - For PHX/HPT APUs the must use the legacy option ``xclbin`` within ``provider_options``, which should be set to ``%RYZEN_AI_INSTALLATION_PATH%\voe-4.0-win_amd64\xclbins\phoenix\4x4.xclbin``
+    - For PHX/HPT APUs they must use the legacy option ``xclbin`` within ``provider_options``, which should be set to ``%RYZEN_AI_INSTALLATION_PATH%\voe-4.0-win_amd64\xclbins\phoenix\4x4.xclbin``
 
 .. _precompiled-models:
 
