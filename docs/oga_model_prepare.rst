@@ -124,7 +124,12 @@ Here are simple commands to export OGA model from quantized model
     conda activate oga_buider_env
 
     pip install onnxruntime-genai==0.7.0
-    
+    pip install onnx==1.18.0
+    pip install onnxruntime==1.21.1
+    pip install torch
+    pip install transformers
+    pip install numpy==1.26.4
+
     python3 -m onnxruntime_genai.models.builder -m <input quantized model> -o <output OGA model> -p int4 -e dml 
 
 
