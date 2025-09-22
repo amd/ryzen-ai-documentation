@@ -13,7 +13,7 @@ The Ryzen AI Software supports models saved in the ONNX format and uses ONNX Run
 
 |memo| **NOTE**: 
 
-- All the instructions assume STX/KRK devices. For specific details related to PHX/HPT refer to `Running on PHX/HPT devices <phx-device>`.
+- All the instructions assume STX/KRK devices. For specific details related to PHX/HPT refer to :ref:`Running on PHX/HPT devices <phx-device>`.
 - Models with ONNX opset 17 are recommended. If your model uses a different opset version, consider converting it using the `ONNX Version Converter <https://github.com/onnx/onnx/blob/main/docs/VersionConverter.md>`_
 
 For a complete list of supported operators, consult this page: :doc:`Supported Operators <ops_support>`.
