@@ -87,7 +87,7 @@ The ``provider_options`` parameter of the ORT ``InferenceSession`` allows passin
            - N/A
          * - ``target``
            - Set which VAIEP backend to use for compiling/running a model. This bypasses auto discovery function in VAIEP.
-           - ``VAIML``, ``VAIML-X1``, ``VAIML-X2``
+           - ``VAIML-X2``
            - None
          * - ``encryption_key``
            - 256-bit key for encrypting EP context model. See :ref:`EP Context Cache <ort-ep-context-cache>`.
@@ -274,7 +274,9 @@ Python example selecting the legacy INT8 compiler using ``target`` option in ``p
     import onnxruntime
 
     vai_ep_options = {
-        'target': 'VAIML-X1'
+        'cache_dir': str(cache_dir),
+        'cache_key': 'resnet_trained_for_cifar10',
+        'enable_cache_file_io_in_mem':'0'
     }
 
     session = onnxruntime.InferenceSession(
@@ -297,7 +299,8 @@ C++ example selecting the ``4x4.xclbin`` NPU configuration for PHX/HPT located i
     Ort::Env env(ORT_LOGGING_LEVEL_WARNING, "resnet50_int8");
     auto session_options = Ort::SessionOptions();
     auto vai_ep_options = std::unorderd_map<std::string,std::string>({});
-    vai_ep_options["target"] = "VAIML-X1"; 
+    vai_ep_options["cache_dir"]   = exe_dir + "\\my_cache_dir"; 
+    vai_ep_options["cache_key"]   = "resnet_trained_for_cifar10"; 
     session_options.AppendExecutionProvider_VitisAI(vai_ep_options);
     auto session = Ort::Session(
         env,
