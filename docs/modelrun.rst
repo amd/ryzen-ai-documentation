@@ -134,22 +134,32 @@ The default the configuration file for compiling BF16 models contains the follow
 
 .. code-block:: json
 
-   {
-    "passes": [
-        {
-            "name": "init",
-            "plugin": "vaip-pass_init"
-        },
-        {
-            "name": "vaiml_partition",
-            "plugin": "vaip-pass_vaiml_partition",
-            "vaiml_config": {
-                "optimize_level": 1,
-                "preferred_data_storage": "auto"
+    {
+     "passes": [
+         {
+             "name": "init",
+             "plugin": "vaip-pass_init"
+         },
+         {
+             "name": "vaiml_partition",
+             "plugin": "vaip-pass_vaiml_partition",
+             "vaiml_config": {
+                 "optimize_level": 1,
+                 "preferred_data_storage": "auto"
+             }
+         }
+     ],
+     "target": "VAIML",
+        "targets": [
+            {
+                "name": "VAIML",
+                "pass": [
+                    "init",
+                    "vaiml_partition"
+                ]
             }
-        }
-    ]
-   }
+        ]
+    }
 
 
 The ``vaiml_config`` section of the configuration file contains the user options. The supported user options are described below.
