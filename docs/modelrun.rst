@@ -317,7 +317,7 @@ C++ example code for running CNN model on NPU:
 When compiling CNN INT8 models on PHX/HPT devices, needs to use the legacy integer compile. The user can set this through :option:`target` as 'X1` in provider options. 
 The NPU configuration for PHX/HPT devices, must be specified through the :option:`xclbin` provider option. Setting the NPU configuration involves specifying one of ``.xclbin`` binary files located in the Ryzen AI Software installation path. For example, when using PHX/HPT devices the ``xclbin`` option within ``provider_options``, should be set to ``%RYZEN_AI_INSTALLATION_PATH%\voe-4.0-win_amd64\xclbins\phoenix\4x4.xclbin``.
 
-For more details on how to detect the specific NPU type refer to :ref:`NPU Utilities <npu-utilities>`.
+For more details on how to detect the specific NPU type refer to :ref:`NPU Utilities<npu-utils>`.
 
 Here is a sample python code that triggers legacy compiler for CNN models on PHX/HPT devices:
 
@@ -372,7 +372,7 @@ For Python, the user can get the specfic NPU type using the following example `g
         return apu_type
 
 
-For C++, a set of APIs are provided to extract information about the NPU and check compatibility of the VitisAI EP with the rest of the environment. For details refer to `C++ NPU Utilties <https://gitenterprise.xilinx.com/VitisAI/RyzenAI-SW/tree/main/utilities/npu_check>`_
+For C++, a set of APIs are provided to extract information about the NPU and check compatibility of the VitisAI EP with the rest of the environment. For details refer to `C++ NPU Utilties <https://github.com/amd/RyzenAI-SW/tree/main/utilities/npu_check>`_
 
 
 .. _precompiled-models:
