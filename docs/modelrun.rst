@@ -319,7 +319,7 @@ C++ example code for running CNN model on NPU:
 When compiling CNN INT8 models on PHX/HPT devices, the NPU configuration must be specified through the :option:`xclbin` provider option. 
 Setting the NPU configuration involves specifying one of ``.xclbin`` binary files located in the Ryzen AI Software installation tree.
 
-    - For PHX/HPT APUs they must use the legacy option ``xclbin`` within ``provider_options``, which should be set to ``%RYZEN_AI_INSTALLATION_PATH%\voe-4.0-win_amd64\xclbins\phoenix\4x4.xclbin``
+For PHX/HPT devices, the legacy option ``xclbin`` within ``provider_options``, which should be set to ``%RYZEN_AI_INSTALLATION_PATH%\voe-4.0-win_amd64\xclbins\phoenix\4x4.xclbin``
 
 Here is a sample python code that triggers legacy compiler using ``target`` using ``X1`` as shown below:
 
@@ -331,8 +331,9 @@ Here is a sample python code that triggers legacy compiler using ``target`` usin
     vai_ep_options  = {                           # Vitis AI EP options go here
         'cache_dir': str(cache_dir),
         'cache_key': 'modelcachekey',
+        'enable_cache_file_io_in_mem':'0',
         'target': 'X1',
-        'enable_cache_file_io_in_mem':'0'
+        'xclbin': `%RYZEN_AI_INSTALLATION_PATH%\voe-4.0-win_amd64\xclbins\phoenix\4x4.xclbin`
     }
 
     session = onnxruntime.InferenceSession(
