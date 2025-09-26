@@ -111,39 +111,29 @@ Generate the final model for NPU execution mode:
 
    conda activate ryzen-ai-<version>
 
-   model_generate --npu <output_dir> <quantized_model_path>  
+   model_generate --npu <output_dir> <quantized_model_path>  --optimize decode
 
 
-Known Issue: In the current version, Mistral-7B-Instruct-v0.1 has a known issue during OGA model conversion in the postprocessing stage.
+**Note**: During the model_generate step, the quantized model is first converted to an OGA model using ONNX Runtime GenAI Model Builder (version 0.9.0). Some models, such as Qwen-7B, require large system memory (up to 64 GB) during this conversion. For such models, you can either use a machine with sufficient memory or export the OGA model separately using an older version of the Model Builder. To use a standalone environment for exporting an OGA model, refer to the official ONNX Runtime GenAI Model Builder documentation 🔗 https://github.com/microsoft/onnxruntime-genai/tree/main/src/python/py/models  . Once you have an exported OGA model, you can pass it directly to the model_generate command, which will skip the export step and perform only the post-processing.
 
-
-New in 1.5.1:
-============
-
-
-In Release 1.5.1 there is a new option added to generate prefill fused version of Hybrid Model. Currently it is tested for `Phi-3.5-mini-instruct`, `Llama-2-7b-chat-hf` and `Llama-3.1-8B-Instruct`. 
+Here are simple commands to export OGA model from quantized model
 
 .. code-block::
 
-    conda activate ryzen-ai-<version>
+    conda create --name oga_builder_env python=3.10
+    conda activate oga_buider_env
 
-    #For Phi-3.5-mini-instruct/Llama-2-7b-chat-hf
-    model_generate --hybrid <output_dir> <quantized_model_path> --optimize prefill --mode bfp16
+    pip install onnxruntime-genai==0.7.0
+    pip install onnx==1.18.0
+    pip install onnxruntime==1.21.1
+    pip install torch
+    pip install transformers
+    pip install numpy==1.26.4
 
-    #For Llama-3.1-8B-Instruct
-    model_generate --hybrid <output_dir> <input_quantized_model_path> --optimize prefill_llama3 --mode bfp16
-
-After the model is generated, locate the ``genai_config.json`` file inside the model folder. Edit it as follows:
-
-1. Set ``"custom_ops_library"`` to ``"C:\\Program Files\\RyzenAI\\<release version>\\deployment\\onnx_custom_ops.dll"``
-2. Delete ``"compile_fusion_rt"`` entry from ``"amd_options"``
-3. Set ``dd_cache`` to ``<output_dir>\\.cache``, for example ``"dd_cache": "C:\\Users\\user\\<generated model folder>\\.cache"``
-4. For ``Phi-3.5-mini-instruct``, ``Llama-2-7b-chat-hf model``
+    python3 -m onnxruntime_genai.models.builder -m <input quantized model> -o <output OGA model> -p int4 -e dml 
 
 
-   - Set ``"hybrid_opt_disable_npu_ops": "1"`` inside ``"amd_options"``.
-   - Set ``"fusion_opt_io_bind_kv_cache": "1"`` inside ``"amd_options"``.
-   - Set ``"flattened_kv": true`` inside ``"search"``.
+
 
 ..
   ------------
