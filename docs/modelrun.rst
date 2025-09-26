@@ -258,7 +258,7 @@ When compiling INT8 models, the user can choose the VAIEP backend to use for com
 New Integer compiler
 ====================
 
-New Integer compiler flow improves ease of use and better performance on models supported on STX/KRK and later devices. The main features include:
+New default integer compiler flow improves ease of use and better performance on models supported on STX/KRK and later devices. The main features include:
 
 - Support for General Asymmetric Quantization enabling third party quantized models to run on NPU
 - Support for A8W8, A16W8 quantization schemes
@@ -314,12 +314,12 @@ C++ example code for running CNN model on NPU:
 
 |memo| **NOTE**:
 
-When compiling CNN INT8 models on PHX/HPT devices, the NPU configuration must be specified through the :option:`xclbin` provider option. 
-Setting the NPU configuration involves specifying one of ``.xclbin`` binary files located in the Ryzen AI Software installation tree.
+When compiling CNN INT8 models on PHX/HPT devices, needs to use the legacy integer compile. The user can set this through :option:`target` as 'X1` in provider options. 
+The NPU configuration for PHX/HPT devices, must be specified through the :option:`xclbin` provider option. Setting the NPU configuration involves specifying one of ``.xclbin`` binary files located in the Ryzen AI Software installation path.
 
-For PHX/HPT devices, the legacy option ``xclbin`` within ``provider_options``, which should be set to ``%RYZEN_AI_INSTALLATION_PATH%\voe-4.0-win_amd64\xclbins\phoenix\4x4.xclbin``
+For example, when using PHX/HPT devices the ``xclbin`` option within ``provider_options``, should be set to ``%RYZEN_AI_INSTALLATION_PATH%\voe-4.0-win_amd64\xclbins\phoenix\4x4.xclbin``
 
-Here is a sample python code that triggers legacy compiler using ``target`` using ``X1`` as shown below:
+Here is a sample python code that triggers legacy compiler for CNN models on PHX/HPT devices:
 
 .. code-block:: python
 
