@@ -86,11 +86,8 @@ The ``provider_options`` parameter of the ORT ``InferenceSession`` allows passin
            - String
            - N/A
          * - ``target``
-           - Set which Vitis AI EP backend to use for compiling/running a model.
-           - Different options for model compilation
-                         - ``VAIML`` — Default compiler for BF16 models
-                         - ``X2`` — Default compiler for integer models
-                         - ``X1`` — Legacy compiler for integer models
+           - Set which Vitis AI EP backend to use for compiling/running a model. For details see :ref:`Compiler Options <compiler-options>`.
+           - ``VAIML``, ``X2``, ``X1``. 
            - None
          * - ``xclbin``
            - Required for CNN INT8 models using legacy integer compiler on PHX/HPT devices. See :ref:`Running on PHX/HPT devices <phx-device>`
@@ -188,6 +185,18 @@ The ``vaiml_config`` section of the configuration file contains the user options
            - auto, vectorized, unvectorized
            - auto
 
+.. _compiler-options:
+
+Compiler Options
+================
+The :option:`target` in ``provider_options`` can be used to select which Vitis AI EP backend to use for compiling/running a model. This bypasses auto discovery function in VAIEP.
+Different options for model compilation:
+
+ - ``VAIML`` — Default compiler for BF16 models
+ - ``X2`` — Default compiler for integer models
+ - ``X1`` — Legacy compiler for integer models
+
+
 
 .. _bf16-models:
 
@@ -251,37 +260,10 @@ When compiling INT8 models, the user can choose the VAIEP backend to use for com
 New Integer compiler
 ====================
 
-New Integer compiler flow improves ease of use and better performance on CNN models supported on STX/KRK and later devices. The main features include:
+New Integer compiler flow improves ease of use and better performance on models supported on STX/KRK and later devices. The main features include:
 
 - Support for General Asymmetric Quantization enabling third party quantized models to run on NPU
 - Support for A8W8, A16W8 quantization schemes
-
-Here is a sample python code that triggers legacy compiler using ``target`` using ``X1`` as shown below:
-
-.. code-block:: python
-
-    import onnxruntime
-
-    session_options = onnxruntime.SessionOptions()
-    vai_ep_options  = {                           # Vitis AI EP options go here
-        'cache_dir': str(cache_dir),
-        'cache_key': 'modelcachekey',
-        'target': 'X1',
-        'enable_cache_file_io_in_mem':'0'
-    }
-
-    session = onnxruntime.InferenceSession(
-        path_or_bytes = model,                    # Path to the ONNX model
-        sess_options = session_options,           # Standard ORT options
-        providers = ['VitisAIExecutionProvider'], # Use the Vitis AI Execution Provider
-        provider_options = [vai_ep_options]       # Pass options to the Vitis AI Execution Provider
-    )
-
-
-|memo| **NOTE**:
-
-    - From Ryzen AI 1.5.0, the legacy "1x4" and "Nx4" xclbin files are no longer supported and should not be used.
-    - In Ryzen AI 1.6.0, ``xclbin`` option in ``provider_options`` is not required for STX/KRK devices.
 
 Sample Python Code
 ==================
@@ -334,11 +316,36 @@ C++ example code for running CNN model on NPU:
 
 |memo| **NOTE**:
 
-When compiling CNN INT8 models on PHX/HPT devices, the NPU configuration must be specified through the :option:`xclbin` provider option.
-
+When compiling CNN INT8 models on PHX/HPT devices, the NPU configuration must be specified through the :option:`xclbin` provider option. 
 Setting the NPU configuration involves specifying one of ``.xclbin`` binary files located in the Ryzen AI Software installation tree.
 
     - For PHX/HPT APUs they must use the legacy option ``xclbin`` within ``provider_options``, which should be set to ``%RYZEN_AI_INSTALLATION_PATH%\voe-4.0-win_amd64\xclbins\phoenix\4x4.xclbin``
+
+Here is a sample python code that triggers legacy compiler using ``target`` using ``X1`` as shown below:
+
+.. code-block:: python
+
+    import onnxruntime
+
+    session_options = onnxruntime.SessionOptions()
+    vai_ep_options  = {                           # Vitis AI EP options go here
+        'cache_dir': str(cache_dir),
+        'cache_key': 'modelcachekey',
+        'target': 'X1',
+        'enable_cache_file_io_in_mem':'0'
+    }
+
+    session = onnxruntime.InferenceSession(
+        path_or_bytes = model,                    # Path to the ONNX model
+        sess_options = session_options,           # Standard ORT options
+        providers = ['VitisAIExecutionProvider'], # Use the Vitis AI Execution Provider
+        provider_options = [vai_ep_options]       # Pass options to the Vitis AI Execution Provider
+    )
+
+
+|memo| **NOTE**:
+
+    - From Ryzen AI 1.5.0, the legacy "1x4" and "Nx4" xclbin files are no longer supported and should not be used.
 
 .. _precompiled-models:
 
