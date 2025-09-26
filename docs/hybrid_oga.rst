@@ -154,6 +154,10 @@ Run the benchmark using the following command:
    .\model_benchmark.exe -i Llama-2-7b-chat-hf-awq-g128-int4-asym-fp16-onnx-hybrid -f amd_genai_prompt.txt -l "1024"
 
 
+.. note:: 
+
+   The sample test application model_benchmark.exe accepts -l for input token length and -g for output token length. In Ryzen AI 1.6, models support up to 4096 tokens in total (input + output). By default, -g is set to 128. If the input length is close to 4096, you must adjust -g so the sum of input and output tokens does not exceed 4096. For example, -l 4000 -g 96 is valid (4000 + 96 ≤ 4096), while -l 4000 -g 128 will exceed the limit and result in an error.
+
 Python Script
 =============
 
