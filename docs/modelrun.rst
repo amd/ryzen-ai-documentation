@@ -318,7 +318,7 @@ C++ example code for running CNN model on NPU:
     auto onnx_model = "resnet50_int8.onnx"
     Ort::Env env(ORT_LOGGING_LEVEL_WARNING, "resnet50_int8");
     auto session_options = Ort::SessionOptions();
-    auto vai_ep_options = std::unorderd_map<std::string,std::string>({});
+    auto vai_ep_options = std::unordered_map<std::string,std::string>({});
     vai_ep_options["cache_dir"]   = exe_dir + "\\my_cache_dir";
     vai_ep_options["cache_key"]   = "resnet_trained_for_cifar10";
     vai_ep_options["enable_cache_file_io_in_mem"]   = "0";
