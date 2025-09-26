@@ -107,6 +107,15 @@ Run the following command:
 
    conda activate ryzen-ai-1.6.0
 
+This sets up the environment variable RYZEN_AI_INSTALLATION_PATH used in the next step.
+
+.. note::
+
+   If you choose not to activate the Conda environment, open a Windows Command Prompt and manually set the environment variable before continuing to Step 3:
+
+   set RYZEN_AI_INSTALLATION_PATH=C:\Program Files\RyzenAI\1.6.0
+
+
 3. Set Up a Working Directory and Copy Required Files
 
 Create a folder and copy the required files into it:
