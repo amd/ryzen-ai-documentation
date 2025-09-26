@@ -9,9 +9,9 @@ Model Compilation and Deployment
 Introduction
 *****************
 
-The Ryzen AI Software supports models saved in the ONNX format and uses ONNX Runtime as the primary mechanism to load, compile and run models. 
+The Ryzen AI Software supports models saved in the ONNX format and uses ONNX Runtime as the primary mechanism to load, compile and run models.
 
-|memo| **NOTE**: 
+|memo| **NOTE**:
 
 - All the instructions assume STX/KRK devices. For specific details related to PHX/HPT refer to :ref:`Running on PHX/HPT devices <phx-device>`.
 - Models with ONNX opset 17 are recommended. If your model uses a different opset version, consider converting it using the `ONNX Version Converter <https://github.com/onnx/onnx/blob/main/docs/VersionConverter.md>`_
@@ -86,8 +86,15 @@ The ``provider_options`` parameter of the ORT ``InferenceSession`` allows passin
            - String
            - N/A
          * - ``target``
-           - Set which Vitis AI EP backend to use for compiling/running a model. 
-           - ``VAIML`` (Default compiler for BF16 models), ``X2`` (Default compiler for integer models), ``X1`` (Legacy compiler for integer models)
+           - Set which Vitis AI EP backend to use for compiling/running a model.
+                     -
+                         - ``VAIML`` — Default compiler for BF16 models
+                         - ``X2`` — Default compiler for integer models
+                         - ``X1`` — Legacy compiler for integer models
+           - None
+         * - ``xclbin``
+           - Required for CNN INT8 models using legacy integer compiler on PHX/HPT devices. See :ref:`Running on PHX/HPT devices <phx-device>`
+           - String
            - None
          * - ``encryption_key``
            - 256-bit key for encrypting EP context model. See :ref:`EP Context Cache <ort-ep-context-cache>`.
@@ -241,12 +248,15 @@ When compiling INT8 models, the user can choose the VAIEP backend to use for com
 
 .. _vaiml-x2-flow:
 
-New INT8 compiler
-=================
+New Integer compiler
+====================
 
-New INT8 compiler flow can be triggered by setting ``target`` to ``VAIML-X2``. The new INT8 compiler flow allows automatic generation of xclbins and is currently limited to supporting STX/KRK devices.
+New Integer compiler flow improves ease of use and better performance on CNN models supported on STX/KRK and later devices. The main features include:
 
-Here is a sample python code that triggers new INT8 compiler using ``target`` using ``VAIML-X2`` as shown below:
+- Support for General Asymmetric Quantization enabling third party quantized models to run on NPU
+- Support for A8W8, A16W8 quantization schemes
+
+Here is a sample python code that triggers legacy compiler using ``target`` using ``X1`` as shown below:
 
 .. code-block:: python
 
@@ -256,7 +266,7 @@ Here is a sample python code that triggers new INT8 compiler using ``target`` us
     vai_ep_options  = {                           # Vitis AI EP options go here
         'cache_dir': str(cache_dir),
         'cache_key': 'modelcachekey',
-        'target': 'VAIML-X2',
+        'target': 'X1',
         'enable_cache_file_io_in_mem':'0'
     }
 
@@ -276,7 +286,7 @@ Here is a sample python code that triggers new INT8 compiler using ``target`` us
 Sample Python Code
 ==================
 
-Python example selecting the legacy INT8 compiler using ``target`` option in ``provider_options`` as shown below:
+Python example for running improved integer compiler using the sample python code as shown below:
 
 .. code-block:: python
 
@@ -299,7 +309,7 @@ Python example selecting the legacy INT8 compiler using ``target`` option in ``p
 Sample C++ Code
 ===============
 
-C++ example selecting the ``4x4.xclbin`` NPU configuration for PHX/HPT located in a custom folder:
+C++ example code for running CNN model on NPU:
 
 .. code-block:: cpp
 
@@ -309,8 +319,9 @@ C++ example selecting the ``4x4.xclbin`` NPU configuration for PHX/HPT located i
     Ort::Env env(ORT_LOGGING_LEVEL_WARNING, "resnet50_int8");
     auto session_options = Ort::SessionOptions();
     auto vai_ep_options = std::unorderd_map<std::string,std::string>({});
-    vai_ep_options["cache_dir"]   = exe_dir + "\\my_cache_dir"; 
-    vai_ep_options["cache_key"]   = "resnet_trained_for_cifar10"; 
+    vai_ep_options["cache_dir"]   = exe_dir + "\\my_cache_dir";
+    vai_ep_options["cache_key"]   = "resnet_trained_for_cifar10";
+    vai_ep_options["enable_cache_file_io_in_mem"]   = "0";
     session_options.AppendExecutionProvider_VitisAI(vai_ep_options);
     auto session = Ort::Session(
         env,
@@ -322,6 +333,10 @@ C++ example selecting the ``4x4.xclbin`` NPU configuration for PHX/HPT located i
 .. _phx-device:
 
 |memo| **NOTE**:
+
+When compiling CNN INT8 models on PHX/HPT devices, the NPU configuration must be specified through the :option:`xclbin` provider option.
+
+Setting the NPU configuration involves specifying one of ``.xclbin`` binary files located in the Ryzen AI Software installation tree.
 
     - For PHX/HPT APUs they must use the legacy option ``xclbin`` within ``provider_options``, which should be set to ``%RYZEN_AI_INSTALLATION_PATH%\voe-4.0-win_amd64\xclbins\phoenix\4x4.xclbin``
 
