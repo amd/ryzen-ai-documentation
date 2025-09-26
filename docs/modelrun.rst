@@ -315,9 +315,9 @@ C++ example code for running CNN model on NPU:
 |memo| **NOTE**:
 
 When compiling CNN INT8 models on PHX/HPT devices, needs to use the legacy integer compile. The user can set this through :option:`target` as 'X1` in provider options. 
-The NPU configuration for PHX/HPT devices, must be specified through the :option:`xclbin` provider option. Setting the NPU configuration involves specifying one of ``.xclbin`` binary files located in the Ryzen AI Software installation path.
+The NPU configuration for PHX/HPT devices, must be specified through the :option:`xclbin` provider option. Setting the NPU configuration involves specifying one of ``.xclbin`` binary files located in the Ryzen AI Software installation path. For example, when using PHX/HPT devices the ``xclbin`` option within ``provider_options``, should be set to ``%RYZEN_AI_INSTALLATION_PATH%\voe-4.0-win_amd64\xclbins\phoenix\4x4.xclbin``.
 
-For example, when using PHX/HPT devices the ``xclbin`` option within ``provider_options``, should be set to ``%RYZEN_AI_INSTALLATION_PATH%\voe-4.0-win_amd64\xclbins\phoenix\4x4.xclbin``
+For more details on how to detect the specific NPU type refer to :ref:`NPU Utilities <npu-utilities>`.
 
 Here is a sample python code that triggers legacy compiler for CNN models on PHX/HPT devices:
 
@@ -345,6 +345,35 @@ Here is a sample python code that triggers legacy compiler for CNN models on PHX
 |memo| **NOTE**:
 
     - From Ryzen AI 1.5.0, the legacy "1x4" and "Nx4" xclbin files are no longer supported and should not be used.
+
+.. _npu-utils:
+
+NPU Utitilies
+=============
+
+When deploying applications across various NPU devices, users can utilize the provided sample code to determine the specific type of NPU device in use. Based on the detected device—such as PHX, STX, KRK, or other device—users should configure the appropriate provider options as outlined in this documentation. 
+
+For Python, the user can get the specfic NPU type using the following example `get_npu_info` function:
+
+.. code-block:: python
+
+    def get_npu_info():
+        # Run pnputil as a subprocess to enumerate PCI devices
+        command = r'pnputil /enum-devices /bus PCI /deviceids '
+        process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        stdout, stderr = process.communicate()
+        # Check for supported Hardware IDs
+        apu_type = ''
+        if 'PCI\\VEN_1022&DEV_1502&REV_00' in stdout.decode(): apu_type = 'PHX/HPT'
+        if 'PCI\\VEN_1022&DEV_17F0&REV_00' in stdout.decode(): apu_type = 'STX'
+        if 'PCI\\VEN_1022&DEV_17F0&REV_10' in stdout.decode(): apu_type = 'STX'
+        if 'PCI\\VEN_1022&DEV_17F0&REV_11' in stdout.decode(): apu_type = 'STX'
+        if 'PCI\\VEN_1022&DEV_17F0&REV_20' in stdout.decode(): apu_type = 'KRK'
+        return apu_type
+
+
+For C++, a set of APIs are provided to extract information about the NPU and check compatibility of the VitisAI EP with the rest of the environment. For details refer to `C++ NPU Utilties <https://gitenterprise.xilinx.com/VitisAI/RyzenAI-SW/tree/main/utilities/npu_check>`_
+
 
 .. _precompiled-models:
 
