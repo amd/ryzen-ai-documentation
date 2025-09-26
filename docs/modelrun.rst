@@ -87,7 +87,7 @@ The ``provider_options`` parameter of the ORT ``InferenceSession`` allows passin
            - N/A
          * - ``target``
            - Set which Vitis AI EP backend to use for compiling/running a model.
-                     -
+           - Different options for model compilation
                          - ``VAIML`` — Default compiler for BF16 models
                          - ``X2`` — Default compiler for integer models
                          - ``X1`` — Legacy compiler for integer models
