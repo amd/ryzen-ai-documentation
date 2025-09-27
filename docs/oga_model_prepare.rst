@@ -125,7 +125,7 @@ Generate the final model for NPU execution mode:
    model_generate --npu <output_dir> <quantized_model_path>  --optimize decode
 
 
-**Note**: During the model_generate step, the quantized model is first converted to an OGA model using ONNX Runtime GenAI Model Builder (version 0.9.2). It is possible to use a standalone environment for exporting an OGA model, refer to the official `ONNX Runtime GenAI Model Builder documentation < https://github.com/microsoft/onnxruntime-genai/tree/main/src/python/py/models. Once you have an exported OGA model>`_, you can pass it directly to the ``model_generate`` command, which will skip the export step and perform only the post-processing.
+**Note**: During the model_generate step, the quantized model is first converted to an OGA model using ONNX Runtime GenAI Model Builder (version 0.9.2). It is possible to use a standalone environment for exporting an OGA model, refer to the official `ONNX Runtime GenAI Model Builder documentation <https://github.com/microsoft/onnxruntime-genai/tree/main/src/python/py/models>`_. Once you have an exported OGA model, you can pass it directly to the ``model_generate`` command, which will skip the export step and perform only the post-processing.
 
 Here are simple commands to export OGA model from quantized model using a standalone environment
 
