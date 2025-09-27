@@ -15,14 +15,9 @@ Operator Compilation Flow (Hybrid Execution)
 
 Currently this flow is primarily supported for hybrid execution.
 
-1. Quantize the model
+1. Ensure the model is quantized following the quantization recipe: https://ryzenai.docs.amd.com/en/latest/oga_model_prepare.html#quantization
 
-Ensure the model is quantized following the quantization recipe
-
-
-2. Build the OGA DML model
-
-Use the ONNX Runtime GenAI Model Builder included in the Ryzen AI software environment:
+2. Build the OGA DML model using the ONNX Runtime GenAI Model Builder included in the Ryzen AI software environment:
 
 .. code-block:: 
 
@@ -31,9 +26,7 @@ Use the ONNX Runtime GenAI Model Builder included in the Ryzen AI software envir
         -i <quantized model folder> -o <dml model folder> \
         -p int4 -e dml
 
-3. Compile the operators
-
-Compile the operators extracted from the OGA DML model:
+3. Compile the operators extracted from the OGA DML model:
 
 .. code-block::
 
@@ -42,7 +35,7 @@ Compile the operators extracted from the OGA DML model:
 
 This generates a compiled operator package at: ``transaction-plugin\<plugin name>.zip``. 
 
-4. Generate the hybrid model
+4. Generate the hybrid model:
 
 Create a folder named ``dd_plugins`` in the current working directory and place ``<plugin name>.zip`` inside it. By default, the flow looks for the operator zip in ``dd_plugins``. To use a different location, see "Additional Details" below. 
 
@@ -54,7 +47,7 @@ Generate the hybrid model:
 
 5. Run the hybrid model
 
-Follow this guide to copy ``model_benchmark.exe`` and required DLL dependencies to the current working directory. Then run:
+Follow `official guide <https://ryzenai.docs.amd.com/en/develop/hybrid_oga.html#c-program>`_ to copy ``model_benchmark.exe`` and required DLL dependencies to the current working directory. Then run:
 
 .. code-block::
 
