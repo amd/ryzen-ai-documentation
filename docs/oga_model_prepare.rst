@@ -34,7 +34,7 @@ Setup
      pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm6.1
      python -c "import torch; print(torch.cuda.is_available())" # Must return `True`
 
-3. Download :download:`AMD Quark 0.9 <https://download.amd.com/opendownload/Quark/amd_quark-0.9.zip>` and unzip the archive
+3. Download :download:`AMD Quark 0.10 <https://download.amd.com/opendownload/Quark/amd_quark-0.10.zip>` and unzip the archive
 
 
 4. Install Quark: 
@@ -66,22 +66,29 @@ Use following command to run Quantization. In a GPU equipped Linux machine the q
      cd examples/torch/language_modeling/llm_ptq/
      
      python quantize_quark.py \
+          --no_trust_remote_code \
           --model_dir "meta-llama/Llama-2-7b-chat-hf"  \
           --output_dir <quantized safetensor output dir>  \
           --quant_scheme w_uint4_per_group_asym \
+          --group_size 128 \
           --num_calib_data 128 \
+          --seq_len 512 \
           --quant_algo awq \
           --dataset pileval_for_awq_benchmark \
           --model_export hf_format \
           --data_type <datatype> \
-          --exclude_layers
+          --exclude_layers []
 
-
-- For a full-precision pretrained model, to generate NPU-only LLM use ``--datatype float32``
-- For a full-precision pretrained model, to generate Hybrid LLM use ``--datatype float16``
-- For a BF16 pretrained model, use ``--data_type bfloat16``.
+    
+- Use ``--data_type bfloat16`` for bf16 pretrained model. For fp32/fp16 pretrained model use ``--datatype float16``
 
 The quantized model is generated in the <quantized safetensor output dir> folder.
+
+**Note:** For Phi-4 model following quantization receipe is recommended for better accuracy
+
+- Use ``--quant_algo gptq``
+- Add ``--group_size_per_layer lm_head 32`` 
+
 
 **************
 Postprocessing
