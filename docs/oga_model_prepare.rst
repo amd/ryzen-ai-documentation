@@ -98,7 +98,7 @@ The quantized model is generated in the <quantized safetensor output dir> folder
 Postprocessing
 **************
 
-Copy the quantized model to the Windows PC with Ryzen AI installed, activate the Ryzen AI Conda environment, install `torch`.
+Copy the quantized model to the Windows PC with Ryzen AI installed, activate the Ryzen AI Conda environment. 
 
 .. code-block::
 
