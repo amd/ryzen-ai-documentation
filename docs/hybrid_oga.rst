@@ -60,10 +60,15 @@ Hugging Face collection of hybrid models: https://huggingface.co/collections/amd
 
 Hugging Face collection of NPU models: https://huggingface.co/collections/amd/ryzenai-15-llm-npu-models-6859846d7c13f81298990db0
 
+************************************
+Changes Compared to Previous Release
+************************************
 
-.. note:: 
+- OGA version is updated to v0.9.2 (Ryzen AI 1.6) from v0.7.0 (Ryzen AI 1.5).
+- Starting with the 1.6 release, a new set of hybrid models is published. Hybrid models from earlier releases are not compatible with this version. If you are using Ryzen AI 1.6, please download the updated models.
+- Previously published NPU-only models continue to run, but for higher performance download the new NPU-only models published with 1.6.
+- All models now support a 4K context length, i.e., the total number of input and output tokens.
 
-   Starting with the 1.6 release, a new set of models is published. Models from earlier releases are not compatible with this version. If you are using Ryzen-AI-1.6, please download the updated models.
 
 *******************
 Compatible OGA APIs
