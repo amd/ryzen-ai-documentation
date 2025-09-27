@@ -4,6 +4,8 @@ Preparing OGA Models
 
 This section describes the process for preparing LLMs for deployment on a Ryzen AI PC using the hybrid or NPU-only execution mode. Currently, the flow supports only fine-tuned versions of the models already supported (as listed in :doc:`hybrid_oga` page). For example, fine-tuned versions of Llama2 or Llama3 can be used. However, different model families with architectures not supported by the hybrid flow cannot be used.
 
+For fine-tuned models that introduce architectural changes requiring new operator shapes not available in the Ryzen AI runtime, refer to the :doc:`oga_op_prepare`
+
 Preparing a LLM for deployment on a Ryzen AI PC involves 2 steps:
 
 1. **Quantization**: The pretrained model is quantized to reduce memory footprint and better map to compute resources in the hardware accelerators
@@ -123,7 +125,7 @@ Generate the final model for NPU execution mode:
    model_generate --npu <output_dir> <quantized_model_path>  --optimize decode
 
 
-**Note**: During the model_generate step, the quantized model is first converted to an OGA model using ONNX Runtime GenAI Model Builder (version 0.9.2). It is possible to use a standalone environment for exporting an OGA model, refer to the official ONNX Runtime GenAI Model Builder documentation 🔗 https://github.com/microsoft/onnxruntime-genai/tree/main/src/python/py/models. Once you have an exported OGA model, you can pass it directly to the ``model_generate`` command, which will skip the export step and perform only the post-processing.
+**Note**: During the model_generate step, the quantized model is first converted to an OGA model using ONNX Runtime GenAI Model Builder (version 0.9.2). It is possible to use a standalone environment for exporting an OGA model, refer to the official `ONNX Runtime GenAI Model Builder documentation < https://github.com/microsoft/onnxruntime-genai/tree/main/src/python/py/models. Once you have an exported OGA model>`_, you can pass it directly to the ``model_generate`` command, which will skip the export step and perform only the post-processing.
 
 Here are simple commands to export OGA model from quantized model using a standalone environment
 
