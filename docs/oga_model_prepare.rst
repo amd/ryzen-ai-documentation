@@ -103,10 +103,8 @@ Copy the quantized model to the Windows PC with Ryzen AI installed, activate the
 .. code-block::
 
     conda activate ryzen-ai-<version>
-    pip install torch
-    pip uninstall onnx -y
-    conda clean --all
-    pip install onnx==1.17.0
+    pip install onnx_ir
+    pip install torch==2.7.1
 
 Generate the final model for Hybrid execution mode:
 
@@ -125,9 +123,9 @@ Generate the final model for NPU execution mode:
    model_generate --npu <output_dir> <quantized_model_path>  --optimize decode
 
 
-**Note**: During the model_generate step, the quantized model is first converted to an OGA model using ONNX Runtime GenAI Model Builder (version 0.9.0). Some models, such as Qwen-7B, require large system memory (up to 64 GB) during this conversion. For such models, you can either use a machine with sufficient memory or export the OGA model separately using an older version of the Model Builder. To use a standalone environment for exporting an OGA model, refer to the official ONNX Runtime GenAI Model Builder documentation 🔗 https://github.com/microsoft/onnxruntime-genai/tree/main/src/python/py/models  . Once you have an exported OGA model, you can pass it directly to the model_generate command, which will skip the export step and perform only the post-processing.
+**Note**: During the model_generate step, the quantized model is first converted to an OGA model using ONNX Runtime GenAI Model Builder (version 0.9.2). It is possible to use a standalone environment for exporting an OGA model, refer to the official ONNX Runtime GenAI Model Builder documentation 🔗 https://github.com/microsoft/onnxruntime-genai/tree/main/src/python/py/models. Once you have an exported OGA model, you can pass it directly to the ``model_generate`` command, which will skip the export step and perform only the post-processing.
 
-Here are simple commands to export OGA model from quantized model
+Here are simple commands to export OGA model from quantized model using a standalone environment
 
 .. code-block::
 
