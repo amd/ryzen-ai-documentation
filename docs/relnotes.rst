@@ -47,30 +47,40 @@ The following table lists which types of models are supported on what hardware p
      -
      - |checkmark|
 
-**************************
-Version 1.5: Linux Release
-**************************
-- Linux release supports the following NPU devices
+***********
+Version 1.6
+***********
 
-  - Strix Point and Strix Halo
-  - Kraken 
+- BF16 Compiler (CNN, Transformer, ASR)
 
-- Supported Linux distributions
+  - BF16 CNN perf improvements average 80% across release
+  - BF16 perf improvements - 1.3X faster on CNN than iGPU and 2.6X faster for transformers than iGPU
+  - Improved coverage and improved performance for ASR models
+  - Average 3x compile time improvement
+  - Smaller install, and no VC dependency
+  - Reduction in CPU overhead by pushing data layout transformation to NPU
+  - Dynamic batch size support for compilation 
 
-  - Ubuntu 24.04 with 6.11 HWE Linux Kernel
+- New Integer Compiler (CNN) 
 
-- New Features:
+  - Support for General Asymmetric Quantization enabling third party quantized models to run on NPU
+  - Support for A8W8, A16W8 
 
-  - New Linux driver release allows concurrent ML applications running on NPU device
-  - Temporal scheduling based on priority with support for preemption
-  - Maximum 32 hardware contexts
-  - Adjust DPM levels when hardware contexts are created and destroyed
+- LLM 
 
-- Limitations:
+  - Broad Set of NPU only models optimized performance 
+  - New set of hybrid models with bfp16 activation 
+  - New architecture support in hybrid flow (Phi-4, Qwen-3)
+  - Context length improvement from 2K to 4K for all models. 
 
-  - Supported model compilation can be limited by the memory on the Linux host. We recommend to have 32GB memory installed and an equivalent amount of swap space setup to enable model compilation
-  - Linux driver release supports NPU-only Large Language Models (LLMs) and does not support hybrid LLM flows
-  - NPU will power off after 5 seconds of inactivity; users should collect preemption reports before the board powers off, as values will reset to zero
+
+- Stable Diffusion
+
+  - Dynamic Resolution for SD3.0/3.5
+  - Performance boost for SD 1.5/2.1-base/turbo/XL-turbo
+  - Support Batch Size 1 for SD-turbo/SDXL-turbo
+  - New model support (SD2.1-v 768x768 text2image, SDXL-base 1024x1024 text2image)
+
 
 
 ***********
