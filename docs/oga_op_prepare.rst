@@ -15,7 +15,7 @@ Operator Compilation Flow (Hybrid Execution)
 
 Currently this flow is primarily supported for hybrid execution.
 
-1. Ensure the model is quantized following the quantization recipe: https://ryzenai.docs.amd.com/en/latest/oga_model_prepare.html#quantization
+1. Ensure the model is quantized following the `quantization recipe <https://ryzenai.docs.amd.com/en/latest/oga_model_prepare.html#quantization>`_
 
 2. Build the OGA DML model using the ONNX Runtime GenAI Model Builder included in the Ryzen AI software environment:
 
