@@ -91,8 +91,8 @@ The quantized model is generated in the <quantized safetensor output dir> folder
 
 **Note:**: Currently the following files are not copied into the quantized model folder and must be copied manually:
 
-- For Phi-4 models: configuration_phi3.py
-- For ChatGLM-6b models: tokenizer.json
+- For Phi-4 models: ``configuration_phi3.py``
+- For ChatGLM-6b models: ``tokenizer.json``
 
 **************
 Postprocessing
