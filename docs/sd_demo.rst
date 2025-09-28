@@ -4,7 +4,7 @@ Stable Diffusion Demo
 
 Ryzen AI 1.6 provides preview demos of Stable Diffusion image-generation pipelines. The demos cover Image-to-Image and Text-to-Image using SD 1.5, SD 2.1-base, SD 2.1, SDXL-base-1.0, SD-Turbo, SDXL-Turbo, SD 3.0 and SD3.5. 
 
-The models for SD 1.5, SD 2.1-base, SD2.1, SDXL-base-1.0, SD-Turbo, SDXL-Turbo are available for public download. The SD3.0 / SD3.5 models are only available to confirmed Stability AI licensees.
+The models for SD 1.5, SD 2.1-base, SD 2.1, SDXL-base-1.0, SD-Turbo, SDXL-Turbo are available for public download. The SD3.0 / SD3.5 models are only available to confirmed Stability AI licensees.
 
 NOTE: Preview features are features which are still undergoing some optimization and fine-tuning. These features are not in their final form and may change as we continue to work in order to mature them into full-fledged features.
 
@@ -22,7 +22,7 @@ Installation Steps
   xcopy /I /E "C:\Program Files\RyzenAI\1.6.0\GenAI-SD" C:\Temp\GenAI-SD
   cd C:\Temp\GenAI-SD
 
-3. Create a Conda environment for the Stable Diffusion demo packages:
+3. Activate the Conda environment for the Stable Diffusion demo packages:
 
 .. code-block:: 
   conda activate ryzen-ai-1.6.0
@@ -30,8 +30,8 @@ Installation Steps
 
 4. Download the Stable Diffusion models: 
 
-   - :download:`GenAI-SD-models-v0613-v0711.zip <https://amdcloud-my.sharepoint.com/:u:/r/personal/chuanlia_amd_com/Documents/sd3_release/sd_release_zip_file/RAI1.6-py312-v0927/GenAI-SD-models-v0927.zip?csf=1&web=1&e=cyFeEg>`
-   - :download:`GenAI-SDXL-turbo-models-v0613-v0711.zip <https://amdcloud-my.sharepoint.com/:u:/r/personal/chuanlia_amd_com/Documents/sd3_release/sd_release_zip_file/RAI1.6-py312-v0927/GenAI-SDXL-models-v0927.zip?csf=1&web=1&e=9bPRpz>`
+   - :download:`GenAI-SD-models-v0927.zip <https://amdcloud-my.sharepoint.com/:u:/r/personal/chuanlia_amd_com/Documents/sd3_release/sd_release_zip_file/RAI1.6-py312-v0927/GenAI-SD-models-v0927.zip?csf=1&web=1&e=cyFeEg>`
+   - :download:`GenAI-SDXL-models-v0927.zip <https://amdcloud-my.sharepoint.com/:u:/r/personal/chuanlia_amd_com/Documents/sd3_release/sd_release_zip_file/RAI1.6-py312-v0927/GenAI-SDXL-models-v0927.zip?csf=1&web=1&e=9bPRpz>`
 
 5. Extract the downloaded zip files and copy the models in the ``GenAI-SD\models`` folder. After installing all the models, the ``GenAI-SD\models`` folder should contain the following subfolders:
 
