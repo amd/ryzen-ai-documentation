@@ -25,6 +25,7 @@ Installation Steps
 3. Activate the Conda environment for the Stable Diffusion demo packages:
 
 .. code-block:: 
+
   conda activate ryzen-ai-1.6.0
   conda env update -f rai_env_update.yaml
 
