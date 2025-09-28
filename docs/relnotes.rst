@@ -76,7 +76,7 @@ Version 1.6
 
 - Stable Diffusion
 
-  - Dynamic Resolution for SD3.0/3.5
+  - 8x Dynamic Resolution for SD3.0/3.5 (text2image and image2imageControlNet)
   - Performance boost for SD 1.5/2.1-base/turbo/XL-turbo
   - Support Batch Size 1 for SD-turbo/SDXL-turbo
   - New model support (SD2.1-v 768x768 text2image, SDXL-base 1024x1024 text2image)
