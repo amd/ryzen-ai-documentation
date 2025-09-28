@@ -87,7 +87,7 @@ To run the demo, navigate to the ``GenAI-SD\test`` directory and run the followi
 
 .. code-block:: 
 
-  python run_sd.py    --model_id 'stable-diffusion-v1-5' --model_path ..\models\sd15\
+  python run_sd.py    --model_id 'stable-diffusion-v1-5/stable-diffusion-v1-5' --model_path ..\models\sd15\
   python run_sd.py    --model_id 'stabilityai/stable-diffusion-2-1-base' --model_path ..\models\sd_21_base
   python run_sd.py    --model_id 'stabilityai/stable-diffusion-2-1' --model_path ..\models\sd-2.1-v\
   python run_sd.py    --model_id 'stabilityai/sd-turbo' --model_path ..\models\sd_turbo
