@@ -2,7 +2,6 @@
 Model Table
 ***********
 
-Model Table
 
 +----+----------------------------------+--------+----------+ 
 | No | Model Name                       | Hybrid | NPU-only |
@@ -31,7 +30,7 @@ Model Table
 +----+----------------------------------+--------+----------+
 | 12 | DeepSeek-R1-Distill-Qwen-1.5B    | ✓      | ✓        |
 +----+----------------------------------+--------+----------+
-| 13 | Qwen-2.5\_1.5B\_Instruct         | ✓      | ✓        |
+| 13 | Qwen-2.5-1.5B-Instruct         | ✓      | ✓        |
 +----+----------------------------------+--------+----------+
 | 14 | DeepSeek-R1-Distill-Qwen-7B      | ✓      | ✓        |
 +----+----------------------------------+--------+----------+
@@ -75,28 +74,30 @@ Model Table
 +----+----------------------------------+--------+----------+
 | 34 | Qwen2.5-Coder-7B-Instruct        | ✓      | ✓        |
 +----+----------------------------------+--------+----------+
-| 35 | Qwen2.5\_3B\_Instruct            | ✓      | ✓        |
+| 35 | Qwen2.5-3B-Instruct              | ✓      | ✓        |
 +----+----------------------------------+--------+----------+
-| 36 | Qwen3-1.7B-awq-quant-onnx-hybrid | ✓      |          |
+| 36 | Qwen3-1.7B                       | ✓      |          |
 +----+----------------------------------+--------+----------+
-| 37 | Qwen3-4B-awq-quant-onnx-hybrid   | ✓      |          |
+| 37 | Qwen3-4B                         | ✓      |          |
 +----+----------------------------------+--------+----------+
-| 38 | Qwen3-8B-awq-quant-onnx-hybrid   | ✓      |          |
+| 38 | Qwen3-8B                         | ✓      |          |
 +----+----------------------------------+--------+----------+
 
+#####
+Notes
+#####
 
+1. All Models are supported upto 4K Context length with following exception
 
-Table 2
+   - AMD-OLMo-1B-SFT-DPO : Model inherently supports 2K context length
+   - gemma-2-2b : Supports upto 3K context length 
 
-+------------+------------+-----------+
-| Header 1   | Header 2   | Header 3  |
-+------------+------------+-----------+
+2. Few NPU only models are not supported 
 
-
-IISSS
-
-| body row 1 | column 2   | column 3  |
-+------------+------------+-----------+
+   - Qwen3-1.7B, Qwen3-4B and Qwen3-8B : New architecture only targeted for Hybrid
+   - Phi-4-mini-instruct, Phi-4-mini-reasoning : New archietcture only targeted for Hybrid
+   - Qwen2.5-0.5B-Instruct/Qwen2.5-Coder-0.5B-Instruct : 
+   - Llama-3.2-3B, Llama-3.2-3B-Instruct 
 
 
 
