@@ -97,7 +97,7 @@ Notes
    - Qwen3-1.7B, Qwen3-4B and Qwen3-8B : New architecture only targeted for Hybrid
    - Phi-4-mini-instruct, Phi-4-mini-reasoning : New archietcture only targeted for Hybrid
    - Qwen2.5-0.5B-Instruct/Qwen2.5-Coder-0.5B-Instruct : 
-   - Llama-3.2-3B, Llama-3.2-3B-Instruct 
+   - Llama-3.2-3B, Llama-3.2-3B-Instruct: Known issue in runtime
 
 
 
