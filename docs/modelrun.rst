@@ -87,7 +87,7 @@ The ``provider_options`` parameter of the ORT ``InferenceSession`` allows passin
            - N/A
          * - ``target``
            - Set which Vitis AI EP backend to use for compiling/running a integer model. For details see :ref:`Compiler Options <compiler-options>`.
-           - ``X2``, ``X1``. 
+           - ``X2``, ``X1`` 
            - None
          * - ``xclbin``
            - Required for CNN INT8 models using legacy integer compiler on PHX/HPT devices. See :ref:`Running on PHX/HPT devices <phx-device>`
@@ -250,7 +250,7 @@ C++ example loading a configuration file called vai_ep_config.json:
 Using INT8 models
 **************************
 
-The new default integer compiler flow streamlines the deployment of INT8 models, offering both improved usability and enhanced performance for models running on STX, KRK, and later devices. Key features include, general Asymmetric quantization support to enable third-party quantized models and expanding quantization support for A8W8, A16W8 quantization configuration providing greater flexibility for model optimization.
+The new default integer compiler flow streamlines the deployment of INT8 models, offering both improved usability and enhanced performance for models running on STX, KRK, and later devices. Key features include, general asymmetric quantization support to enable third-party quantized models and expanding quantization support for A8W8, A16W8 quantization configuration providing greater flexibility for model optimization.
 
 When compiling INT8 models, the user can choose the VAIEP backend to use for compiling/running a model using ``target`` option in ``provider_options`` with the ORT ``InferenceSession``.
 
@@ -306,10 +306,10 @@ C++ example code for running CNN model on NPU:
 PHX/HPT Support
 ===============
 
-When compiling CNN INT8 models on PHX/HPT devices, needs to use the legacy integer compile. The user can set this through :option:`target` as 'X1` in provider options. 
+When compiling CNN INT8 models on PHX/HPT devices, needs to use the legacy integer compiler. The user can set this through :option:`target` as `X1` in provider options. 
 The NPU configuration for PHX/HPT devices, must be specified through the :option:`xclbin` provider option. Setting the NPU configuration involves specifying one of ``.xclbin`` binary files located in the Ryzen AI Software installation path. For example, when using PHX/HPT devices the ``xclbin`` option within ``provider_options``, should be set to ``%RYZEN_AI_INSTALLATION_PATH%\voe-4.0-win_amd64\xclbins\phoenix\4x4.xclbin``.
 
-For more details on how to detect the specific NPU type refer to :ref:`NPU Utilities<npu-utils>`.
+When deploying applications across various NPU devices, you can determine the appropriate options based on utilities designed to detect the specific NPU present in your system. For more details on how to detect the specific NPU type refer to :ref:`NPU Utilities<npu-utils>`.
 
 Here is a sample python code that triggers legacy compiler for CNN models on PHX/HPT devices:
 
