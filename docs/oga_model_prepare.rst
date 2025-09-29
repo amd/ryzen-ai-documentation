@@ -129,17 +129,17 @@ Generate the final model for NPU execution mode:
 
 Here are simple commands to export OGA model from quantized model using a standalone environment
 
+
 .. code-block::
 
     conda create --name oga_builder_env python=3.10
     conda activate oga_buider_env
 
-    pip install onnxruntime-genai==0.7.0
-    pip install onnx==1.18.0
-    pip install onnxruntime==1.21.1
-    pip install torch
-    pip install transformers
-    pip install numpy==1.26.4
+    
+    pip install onnxruntime-genai==0.9.2
+    # pip install other necessary packages
+    pip install ....
+    
 
     python3 -m onnxruntime_genai.models.builder -m <input quantized model> -o <output OGA model> -p int4 -e dml 
 
