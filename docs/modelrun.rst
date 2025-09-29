@@ -86,7 +86,7 @@ The ``provider_options`` parameter of the ORT ``InferenceSession`` allows passin
            - String
            - N/A
          * - ``target``
-           - Set which Vitis AI EP backend to use for compiling/running a integer model. For details see :ref:`Compiler Options <compiler-options>`.
+           - Set which Vitis AI EP backend to use for compiling/running integer model. For details see :ref:`Compiler Options <compiler-options>`.
            - ``X2``, ``X1`` 
            - None
          * - ``xclbin``
