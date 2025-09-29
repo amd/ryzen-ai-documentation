@@ -116,6 +116,7 @@ Create a folder and copy the required files into it:
    xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnx_custom_ops.dll" .
    xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\libutf8_validity.dll" .
    xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\abseil_dll.dll" .
+   xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\DirectML.dll" .
 
 4. Download a Pre-Optimized Model from Hugging Face
 
@@ -189,9 +190,9 @@ Using Fine-Tuned Models
 
 It is also possible to run fine-tuned versions of the pre-optimized OGA models.
 
-To do this, the fine-tuned models must first be prepared for execution with the OGA Hybrid flow. For instructions on how to do this, refer to the page about :doc:`oga_model_prepare`.
+To do this, the fine-tuned models must first be prepared for execution with the OGA flow. For instructions on how to do this, refer to the page about :doc:`oga_model_prepare`.
 
-After a fine-tuned model has been prepared for Hybrid execution, it can be deployed by following the steps described previously in this page.
+After a fine-tuned model has been prepared for execution, it can be deployed by following the steps described previously in this page.
 
 *****************************
 Running LLM via pip install
