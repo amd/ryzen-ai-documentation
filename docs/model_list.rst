@@ -87,19 +87,22 @@ Model Table
 Notes
 #####
 
-1. All Models are supported upto 4K Context length with following exception
+1. All models are supported up to 4K context length, with the following exceptions:
 
-   - ``AMD-OLMo-1B-SFT-DPO`` : Model inherently supports 2K context length
-   - ``gemma-2-2b`` : Supports upto 3K context length 
+- AMD-OLMo-1B-SFT-DPO: inherently supports only 2K context length
+- gemma-2-2b: supports up to 3K context length
 
-2. Few NPU only models are not supported 
 
-   - ``Qwen3-1.7B``, ``Qwen3-4B`` and ``Qwen3-8B`` : New architecture only targeted for Hybrid
-   - ``Phi-4-mini-instruct``, ``Phi-4-mini-reasoning`` : New archietcture only targeted for Hybrid
-   - ``gemma-2-2b``
-   - ``Qwen2.5-0.5B-Instruct``, ``Qwen2.5-Coder-0.5B-Instruct`` : Model Generation issue (https://jira.xilinx.com/browse/AIESW-13326) 
-   - ``Llama-3.2-3B``, ``Llama-3.2-3B-Instruct``: Known runtime issue (https://jira.xilinx.com/browse/AIESW-12999) 
-   - ``AMD-OLMo-1B-SFT-DPO`` : Known Runtime issue (https://jira.xilinx.com/browse/AIESW-12998)
+2. The following models are not supported in NPU-only mode:
+
+- Qwen3-1.7B, Qwen3-4B, Qwen3-8B – new architecture, Hybrid-only
+- Phi-4-mini-instruct, Phi-4-mini-reasoning – new architecture, Hybrid-only
+- gemma-2-2b
+- Qwen2.5-0.5B-Instruct, Qwen2.5-Coder-0.5B-Instruct – model generation issue (https://jira.xilinx.com/browse/AIESW-13326)
+- Llama-3.2-3B, Llama-3.2-3B-Instruct – known runtime issue (https://jira.xilinx.com/browse/AIESW-12999)
+- AMD-OLMo-1B-SFT-DPO – known runtime issue (https://jira.xilinx.com/browse/AIESW-12998)
+
+
 
 
 
