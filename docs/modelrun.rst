@@ -86,8 +86,8 @@ The ``provider_options`` parameter of the ORT ``InferenceSession`` allows passin
            - String
            - N/A
          * - ``target``
-           - Set which Vitis AI EP backend to use for compiling/running a model. For details see :ref:`Compiler Options <compiler-options>`.
-           - ``VAIML``, ``X2``, ``X1``. 
+           - Set which Vitis AI EP backend to use for compiling/running a integer model. For details see :ref:`Compiler Options <compiler-options>`.
+           - ``X2``, ``X1``. 
            - None
          * - ``xclbin``
            - Required for CNN INT8 models using legacy integer compiler on PHX/HPT devices. See :ref:`Running on PHX/HPT devices <phx-device>`
@@ -192,7 +192,6 @@ Compiler Options
 The :option:`target` in ``provider_options`` can be used to select which Vitis AI EP backend to use for compiling/running a model. This bypasses auto discovery function in VAIEP.
 Different options for model compilation:
 
- - ``VAIML`` — Default compiler for BF16 models
  - ``X2`` — Default compiler for integer models
  - ``X1`` — Legacy compiler for integer models
 
@@ -251,17 +250,9 @@ C++ example loading a configuration file called vai_ep_config.json:
 Using INT8 models
 **************************
 
+The new default integer compiler flow streamlines the deployment of INT8 models, offering both improved usability and enhanced performance for models running on STX, KRK, and later devices. Key features include, general Asymmetric quantization support to enable third-party quantized models and expanding quantization support for A8W8, A16W8 quantization configuration providing greater flexibility for model optimization.
+
 When compiling INT8 models, the user can choose the VAIEP backend to use for compiling/running a model using ``target`` option in ``provider_options`` with the ORT ``InferenceSession``.
-
-.. _vaiml-x2-flow:
-
-New Integer compiler
-====================
-
-New default integer compiler flow improves ease of use and better performance on models supported on STX/KRK and later devices. The main features include:
-
-- Support for General Asymmetric Quantization enabling third party quantized models to run on NPU
-- Support for A8W8, A16W8 quantization schemes
 
 Sample Python Code
 ==================
@@ -312,7 +303,8 @@ C++ example code for running CNN model on NPU:
 
 .. _phx-device:
 
-|memo| **NOTE**:
+PHX/HPT Support
+===============
 
 When compiling CNN INT8 models on PHX/HPT devices, needs to use the legacy integer compile. The user can set this through :option:`target` as 'X1` in provider options. 
 The NPU configuration for PHX/HPT devices, must be specified through the :option:`xclbin` provider option. Setting the NPU configuration involves specifying one of ``.xclbin`` binary files located in the Ryzen AI Software installation path. For example, when using PHX/HPT devices the ``xclbin`` option within ``provider_options``, should be set to ``%RYZEN_AI_INSTALLATION_PATH%\voe-4.0-win_amd64\xclbins\phoenix\4x4.xclbin``.
@@ -363,13 +355,13 @@ For Python, the user can get the specfic NPU type using the following example `g
         process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         stdout, stderr = process.communicate()
         # Check for supported Hardware IDs
-        apu_type = ''
-        if 'PCI\\VEN_1022&DEV_1502&REV_00' in stdout.decode(): apu_type = 'PHX/HPT'
-        if 'PCI\\VEN_1022&DEV_17F0&REV_00' in stdout.decode(): apu_type = 'STX'
-        if 'PCI\\VEN_1022&DEV_17F0&REV_10' in stdout.decode(): apu_type = 'STX'
-        if 'PCI\\VEN_1022&DEV_17F0&REV_11' in stdout.decode(): apu_type = 'STX'
-        if 'PCI\\VEN_1022&DEV_17F0&REV_20' in stdout.decode(): apu_type = 'KRK'
-        return apu_type
+        npu_type = ''
+        if 'PCI\\VEN_1022&DEV_1502&REV_00' in stdout.decode(): npu_type = 'PHX/HPT'
+        if 'PCI\\VEN_1022&DEV_17F0&REV_00' in stdout.decode(): npu_type = 'STX'
+        if 'PCI\\VEN_1022&DEV_17F0&REV_10' in stdout.decode(): npu_type = 'STX'
+        if 'PCI\\VEN_1022&DEV_17F0&REV_11' in stdout.decode(): npu_type = 'STX'
+        if 'PCI\\VEN_1022&DEV_17F0&REV_20' in stdout.decode(): npu_type = 'KRK'
+        return npu_type
 
 
 For C++, a set of APIs are provided to extract information about the NPU and check compatibility of the VitisAI EP with the rest of the environment. For details refer to `C++ NPU Utilties <https://github.com/amd/RyzenAI-SW/tree/main/utilities/npu_check>`_
