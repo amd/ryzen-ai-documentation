@@ -26,39 +26,12 @@ Requirements
 Pre-optimized Models
 ********************
 
-AMD provides a set of pre-optimized LLMs ready to be deployed with Ryzen AI Software and the supporting runtime for hybrid and/or NPU only execution.
 
-- Phi-3-mini-4k-instruct
-- Phi-3.5-mini-instruct
-- Mistral-7B-Instruct-v0.3
-- Qwen1.5-7B-Chat
-- chatglm3-6b
-- Llama-2-7b-hf
-- Llama-2-7b-chat-hf
-- Llama-3-8B
-- Llama-3.1-8B
-- Llama-3.2-1B-Instruct
-- Llama-3.2-3B-Instruct
-- Mistral-7B-Instruct-v0.1
-- Mistral-7B-Instruct-v0.2
-- Mistral-7B-v0.3
-- Llama-3.1-8B-Instruct
-- CodeLlama-7b-instruct-g128
-- DeepSeek-R1-Distill-Llama-8B
-- DeepSeek-R1-Distill-Qwen-1.5B
-- DeepSeek-R1-Distill-Qwen-7B
-- AMD-OLMo-1B-SFT-DPO
-- Qwen2-7B
-- Qwen2-1.5B
-- gemma-2-2b
-- Qwen2.5-1.5B-Instruct
-- Qwen2.5-3B-Instruct
-- Qwen2.5-7B-Instruct
+AMD provides a set of pre-optimized LLMs ready to be deployed with Ryzen AI Software and the supporting runtime for hybrid and/or NPU-only execution. These include popular architectures such as Llama-2, Llama-3, Mistral, DeepSeek Distill models, Qwen-2, Qwen-2.5, Qwen-3, Gemma-2, Phi-3, Phi-3.5, and Phi-4. For the detailed list of supported models, visit :doc:model_table
 
+Hugging Face collection of hybrid models: https://huggingface.co/collections/amd/ryzenai-16-llm-hybrid-models-68d58142a91369608859145f
 
-Hugging Face collection of hybrid models: https://huggingface.co/collections/amd/ryzenai-15-llm-hybrid-models-6859a64b421b5c27e1e53899
-
-Hugging Face collection of NPU models: https://huggingface.co/collections/amd/ryzenai-15-llm-npu-models-6859846d7c13f81298990db0
+Hugging Face collection of NPU models: https://huggingface.co/collections/amd/ryzen-ai-16-npu-llm-68d9c927223939cb596c592b
 
 ************************************
 Changes Compared to Previous Release
