@@ -77,7 +77,7 @@ To run LLMs in best performance mode, follow these steps:
      cd C:\Windows\System32\AMD
      xrt-smi configure --pmode performance
 
-2. Activate the Ryzen AI 1.5.0 Conda Environment
+2. Activate the Ryzen AI 1.6.0 Conda Environment
 
 Run the following command:
 
