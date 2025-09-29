@@ -232,7 +232,8 @@ To successfully run the model on the NPU, follow these setup steps:
 
 .. note::
 
-   - For PHX/HPT, the binary for inference session need to be explicitly passed through the `xclbin` option in provider_options
+   - For PHX/HPT, the legacy integer compiler must be used by setting 'target' option to 'X1' within provider optiosn. 
+   - NPU binary for PHX/HPT devices need to be set in inference session explicitly by passing the `xclbin` option in provider_options
 
 
 Run the ``predict.py`` with the ``--ep npu`` switch to run the custom ResNet model on the Ryzen AI NPU:
@@ -365,8 +366,6 @@ To successfully run the model on the NPU:
 
 - Ensure ``RYZEN_AI_INSTALLATION_PATH`` points to ``path\to\ryzen-ai-sw-<version>\``. If you installed Ryzen AI software using the MSI installer, this variable should already be set. Ensure that the Ryzen AI software package has not been moved post installation, in which case ``RYZEN_AI_INSTALLATION_PATH`` has to be set again.
 
-- The binary for inference session need to be explicitly passed through the `xclbin` option in provider_options
-
 The following code block from ``reset_cifar.cpp`` shows how ONNX Runtime is configured to deploy the model on the Ryzen AI NPU:
 
 .. code-block:: bash
@@ -386,7 +385,8 @@ The following code block from ``reset_cifar.cpp`` shows how ONNX Runtime is conf
 
 .. note::
 
-   - For PHX/HPT, the binary for inference session need to be explicitly passed through the `xclbin` option in provider_options
+   - For PHX/HPT, the legacy integer compiler must be used by setting 'target' option to 'X1' within provider optiosn. 
+   - NPU binary for PHX/HPT devices need to be set in inference session explicitly by passing the `xclbin` option in provider_options
 
 To run the model on the NPU, pass the npu flag and the vaip_config.json file as arguments to the C++ application. Use the following command to run the model on the NPU:
 
