@@ -40,7 +40,7 @@ Changes Compared to Previous Release
 - OGA version is updated to v0.9.2 (Ryzen AI 1.6) from v0.7.0 (Ryzen AI 1.5).
 - Starting with the 1.6 release, a new set of hybrid models is published. Hybrid models from earlier releases are not compatible with this version. If you are using Ryzen AI 1.6, please download the updated models.
 - Previously published NPU-only models continue to run, but for higher performance download the new NPU-only models published with 1.6.
-- All models now support a 4K context length, i.e., the total number of input and output tokens.
+- Context length support is improved from 2K to 4K tokens (combined input and output).
 
 
 *******************
