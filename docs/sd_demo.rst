@@ -32,7 +32,7 @@ Installation Steps
 4. Download the Stable Diffusion models: 
 
    - :download:`GenAI-SD-models-v0927.zip <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=GenAI-SD-models-v0927.zip>`
-   - :download:`GenAI-SDXL-models-v0927.zip <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=GenAI-SDXL-models-v0927.zip>`
+   - :download:`GenAI-SDXL-models-v0927.zip <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=GenAI-SDXL-models-v0927_1.zip>`
 
 5. Extract the downloaded zip files and copy the models in the ``GenAI-SD\models`` folder. After installing all the models, the ``GenAI-SD\models`` folder should contain the following subfolders:
 
