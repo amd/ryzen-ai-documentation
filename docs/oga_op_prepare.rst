@@ -1,6 +1,6 @@
-#######################################
-Compiling Operators for OGA/ONNX Models
-#######################################
+##################################
+Compiling Operators for OGA Models
+##################################
 
 Ryzen AI currently supports many popular LLMs in both hybrid and NPU-only flows. For these models, the required operators are already compiled and included in the Ryzen AI runtime. Such models can be run directly on Ryzen AI without any additional preparation.
 
