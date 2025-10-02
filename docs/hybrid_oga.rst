@@ -60,10 +60,8 @@ The Ryzen AI installation includes test programs (in C++ and Python) that can be
 
 The steps for deploying the pre-optimized models using the sample programs are described in the following sections.
 
-
-C++ Program
-===========
-Use the ``model_benchmark.exe`` executable to test LLMs and identify DLL dependencies for C++ applications.
+Steps to run C++ program and sample python script.
+==================================================
 
 1. (Optional) Enable Performance Mode
 
@@ -79,23 +77,27 @@ To run LLMs in best performance mode, follow these steps:
 
 2. Activate the Ryzen AI 1.6.0 Conda Environment and install ``torch`` library.
 
-Run the following command:
+Run the following commands:
 
 .. code-block:: bash
 
    conda activate ryzen-ai-1.6.0
    pip install torch==2.7.1
 
-This sets up the environment variable RYZEN_AI_INSTALLATION_PATH used in the next step.
+This step is required for running the python script.
 
 .. note::
 
-   If you choose not to activate the Conda environment, open a Windows Command Prompt and manually set the environment variable before continuing to Step 3:
+   For the C++ program, if you choose not to activate the Conda environment, open a Windows Command Prompt and manually set the environment variable before continuing:
 
-   set RYZEN_AI_INSTALLATION_PATH=C:\\Program Files\\RyzenAI\\1.6.0
+   ``set RYZEN_AI_INSTALLATION_PATH=C:\\Program Files\\RyzenAI\\1.6.0``
 
 
-3. Set Up a Working Directory and Copy Required Files
+C++ Program
+===========
+Use the ``model_benchmark.exe`` executable to test LLMs and identify DLL dependencies for C++ applications.
+
+1. Set Up a Working Directory and Copy Required Files
 
 Create a folder and copy the required files into it:
 
@@ -119,7 +121,7 @@ Create a folder and copy the required files into it:
    xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\abseil_dll.dll" .
    xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\DirectML.dll" .
 
-4. Download a Pre-Optimized Model from Hugging Face
+2. Download a Pre-Optimized Model from Hugging Face
 
 Use Git LFS to download the model:
 
@@ -129,9 +131,9 @@ Use Git LFS to download the model:
    git lfs install
 
    :: Clone the model repository
-   git clone https://huggingface.co/amd/Llama-2-7b-chat-hf-awq-g128-int4-asym-fp16-onnx-hybrid
+   git clone https://huggingface.co/amd/Llama-2-7b-chat-hf-onnx-ryzenai-hybrid
 
-5. Run ``model_benchmark.exe``
+3. Run ``model_benchmark.exe``
 
 Run the benchmark using the following command:
 
@@ -140,7 +142,7 @@ Run the benchmark using the following command:
    .\model_benchmark.exe -i <path_to_model_dir> -f <prompt_file> -l <list_of_prompt_lengths>
 
    :: Example:
-   .\model_benchmark.exe -i Llama-2-7b-chat-hf-awq-g128-int4-asym-fp16-onnx-hybrid -f amd_genai_prompt.txt -l "1024"
+   .\model_benchmark.exe -i Llama-2-7b-chat-hf-onnx-ryzenai-hybrid -f amd_genai_prompt.txt -l "1024"
 
 
 .. note:: 
@@ -150,14 +152,26 @@ Run the benchmark using the following command:
 Python Script
 =============
 
-Run sample python script
+1. Navigate to your working directory and download the desired Hybrid/NPU model.
+
+Use Git LFS to download the model:
+
+.. code-block:: bash
+
+   :: Install Git LFS if you haven't already: https://git-lfs.com
+   git lfs install
+
+   :: Clone the model repository
+   git clone https://huggingface.co/amd/Llama-2-7b-chat-hf-onnx-ryzenai-hybrid
+
+2. Run sample python script
 
 .. code-block::
 
      python "%RYZEN_AI_INSTALLATION_PATH%\LLM\example\run_model.py" -m <model_folder> -l <max_length>
 
      :: Example command
-     python "%RYZEN_AI_INSTALLATION_PATH%\LLM\example\run_model.py" -m "Llama-2-7b-chat-hf-awq-g128-int4-asym-fp16-onnx-hybrid" -l 256
+     python "%RYZEN_AI_INSTALLATION_PATH%\LLM\example\run_model.py" -m "Llama-2-7b-chat-hf-onnx-ryzenai-hybrid" -l 256
 
 
 **************************************
