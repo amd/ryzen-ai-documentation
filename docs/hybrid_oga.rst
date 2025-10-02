@@ -77,13 +77,14 @@ To run LLMs in best performance mode, follow these steps:
      cd C:\Windows\System32\AMD
      xrt-smi configure --pmode performance
 
-2. Activate the Ryzen AI 1.6.0 Conda Environment
+2. Activate the Ryzen AI 1.6.0 Conda Environment and install ``torch`` library.
 
 Run the following command:
 
 .. code-block:: bash
 
    conda activate ryzen-ai-1.6.0
+   pip install torch==2.7.1
 
 This sets up the environment variable RYZEN_AI_INSTALLATION_PATH used in the next step.
 
@@ -204,14 +205,14 @@ In addition to the full RyzenAI software stack, we also provide standalone wheel
 
 .. code-block:: bash
 
-   conda create -n <env_name> python=3.10 -y
+   conda create -n <env_name> python=3.12 -y
    conda activate <env_name>
 
 2. Install onnxruntime-genai wheel file.
 
 .. code-block:: bash
 
-   pip install onnxruntime-genai-directml-ryzenai==0.7.0.2.1 --extra-index-url=https://pypi.amd.com/simple
+   pip install onnxruntime-genai-directml-ryzenai==0.9.2 --extra-index-url=https://pypi.amd.com/simple
 
 3. Navigate to your working directory and download the desired Hybrid/NPU model
 
@@ -220,18 +221,4 @@ In addition to the full RyzenAI software stack, we also provide standalone wheel
    cd working_directory
    git clone <link_to_model>
 
-4. Copy the required DLLs from the current environment folder.
-
-.. code-block:: bat
-
-   :: Copy DLLs for Hybrid models (skip if using an NPU-only model)
-   xcopy "%CONDA_PREFIX%\Lib\site-packages\onnxruntime_genai\onnx_custom_ops.dll" .
-   xcopy "%CONDA_PREFIX%\Lib\site-packages\onnxruntime_genai\libutf8_validity.dll" .
-   xcopy "%CONDA_PREFIX%\Lib\site-packages\onnxruntime_genai\abseil_dll.dll" .
-  
-   :: Copy DLLs for NPU-only models (skip if using a Hybrid model)
-   xcopy "%CONDA_PREFIX%\Lib\site-packages\onnxruntime\capi\onnxruntime_vitis_ai_custom_ops.dll" .
-   xcopy "%CONDA_PREFIX%\Lib\site-packages\onnxruntime\capi\dyn_dispatch_core.dll" .
-   xcopy "%CONDA_PREFIX%\Lib\site-packages\onnxruntime\capi\xaiengine.dll" .
-
-5. Run the Hybrid or NPU model.
+4. Run the Hybrid or NPU model.
