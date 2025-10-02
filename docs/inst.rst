@@ -61,20 +61,15 @@ Install NPU Drivers
 Install Ryzen AI Software
 *************************
 
-- Download the RyzenAI Software installer :download:`ryzen-ai-1.5.0.msi <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ryzen-ai-1.5.0.msi>`.
+- Download the RyzenAI Software installer :download:`ryzen-ai-1.6.0.msi <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ryzen-ai-1.6.0.msi>`.
 
 - Launch the MSI installer and follow the instructions on the installation wizard:
 
   - Accept the terms of the Licence agreement
-  - Provide the destination folder for Ryzen AI installation (default: ``C:\Program Files\RyzenAI\1.5.0``)
-  - Specify the name for the conda environment (default: ``ryzen-ai-1.5.0``)
-
+  - Provide the destination folder for Ryzen AI installation (default: ``C:\Program Files\RyzenAI\1.6.0``)
+  - Specify the name for the conda environment (default: ``ryzen-ai-1.6.0``)
 
 The Ryzen AI Software packages are now installed in the conda environment created by the installer.
-
-.. note::
-
-     The latest updates with LLM performance improvements are available in the RAI 1.5.1 release. Download it from the link :download:`ryzen-ai-1.5.1.msi <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ryzen-ai-1.5.1.msi>`.
 
 
 .. _quicktest:
