@@ -81,6 +81,11 @@ Version 1.6
   - Support Batch Size 1 for SD-turbo/SDXL-turbo
   - New model support (SD2.1-v 768x768 text2image, SDXL-base 1024x1024 text2image)
 
+- Breaking Changes
+
+  - For INT8 models, ``xclbin`` option within ``provider_options`` is no longer and should not be used for STX/KRT or newer devices.
+  - For running INT8 models on PHX/HPT devices, we need to use the legacy integer compiler by providing ``target`` as ``X1``, and provide NPU binaries through ``xclbin`` option within ``provider_options``. 
+  - For BF16 models, the default configurations files has been updated to include section on with ``target``, to use the new BF16 configuration file see :ref:`Model Compilation and Deployment <modelrun>`.
 
 
 ***********
