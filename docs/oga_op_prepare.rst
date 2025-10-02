@@ -8,7 +8,9 @@ When users fine-tune these models, only the weights change and no new operator s
 
 However, in cases where architectural changes introduce new operator shapes not available in the Ryzen AI runtime, additional operator compilation is required. This page provides a recipe to compile operators that are not already present in the runtime. **This flow is experimental, and results may vary depending on the extent of the architectural changes**.
 
-All OGA models are currently based on the `ONNX Runtime GenAI Model Builder <https://github.com/microsoft/onnxruntime-genai/tree/main/src/python/py/models#current-support>`_ architecture. Therefore, this operator compilation flow assumes the models are supported by ONNX Runtime GenAI (or a close variant).
+.. note:: 
+
+   All OGA models are currently based on the `ONNX Runtime GenAI Model Builder <https://github.com/microsoft/onnxruntime-genai/tree/main/src/python/py/models#current-support>`_ architecture. Therefore, this operator compilation flow requires the models are supported by ONNX Runtime GenAI.
 
 Operator Compilation Flow (Hybrid Execution)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
