@@ -92,7 +92,6 @@ For more details, refer to the :doc:`modelrun` page.
    ai_analyzer.rst
    sd_demo.rst
    ryzen_ai_libraries.rst
-   Model Zoo <https://huggingface.co/models?other=RyzenAI>
    Licensing Information <licenses.rst>
 
 
