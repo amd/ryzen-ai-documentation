@@ -83,7 +83,7 @@ Version 1.6
 
 - Breaking Changes
 
-  - For INT8 models, ``xclbin`` option within ``provider_options`` is no longer and should not be used for STX/KRT or newer devices.
+  - For INT8 models, ``xclbin`` option within ``provider_options`` is no longer and should not be used for STX/KRK or newer devices.
   - For running INT8 models on PHX/HPT devices, we need to use the legacy integer compiler by providing ``target`` as ``X1``, and provide NPU binaries through ``xclbin`` option within ``provider_options``. 
   - For BF16 models, the default configurations files has been updated to include section on with ``target``, to use the new BF16 configuration file see :ref:`Model Compilation and Deployment <modelrun>`.
   - LLM:
