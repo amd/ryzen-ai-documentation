@@ -195,7 +195,7 @@ When compiling BF16 models, an optional configuration file can be provided to th
 
 |memo| **NOTE**:
 
-- Running BF16 Models is only supported for STX/KRK or newer devices. For the model compatability table see :ref: `Release Notes <relnotes>`.
+- Running BF16 Models is only supported for STX/KRK or newer devices. For the model compatibility table see :ref: `Release Notes <relnotes>`.
 
 
 Sample Python Code
