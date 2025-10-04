@@ -13,7 +13,6 @@ The Ryzen AI Software supports models saved in the ONNX format and uses ONNX Run
 
 |memo| **NOTE**:
 
-- All the instructions assume STX/KRK or newer devices.
 - Models with ONNX opset 17 are recommended. If your model uses a different opset version, consider converting it using the `ONNX Version Converter <https://github.com/onnx/onnx/blob/main/docs/VersionConverter.md>`_
 
 For a complete list of supported operators, consult this page: :doc:`Supported Operators <ops_support>`.
@@ -90,7 +89,7 @@ The ``provider_options`` parameter of the ORT ``InferenceSession`` allows passin
            - ``X2``, ``X1`` 
            - ``X2``
          * - ``xclbin``
-           - Only needed for PHX/HPT devices running INT8 CNN models using legacy integer compiler. See :ref:`Using INT8 Models <int8-models>`
+           - To be used only when running INT8 CNN models on PHX/HPT devices. See :ref:`Using INT8 Models <int8-models>`
            - String
            - None
          * - ``encryption_key``
@@ -245,23 +244,20 @@ C++ example loading a configuration file called vai_ep_config.json:
 Using INT8 Models
 **************************
 
-The new default integer compiler flow streamlines the deployment of INT8 models: 
+Ryzen AI 1.6 features a new compiler for INT8 models. This compiler is enabled by default and provides the following improvements:
 
-- Improving the ease of use and enhanced performance for models running on STX, KRK, and later devices. 
+- Improved ease of use and enhanced performance for models running on STX, KRK, and later devices.
 - General asymmetric quantization support to enable third-party quantized models
-- Expanding quantization support for A8W8, A16W8 quantization configuration providing greater flexibility for model optimization.
+- Expanded quantization support for A8W8, A16W8 quantization configuration providing greater flexibility for model optimization.
 
 .. _target-options:
 
-The integer compiler support different Vitis AI EP backend to use for INT8 models depending on the NPU type. When deploying applications across various NPU devices, you can determine the appropriate options based on utilities designed to detect the specific NPU type present in your system. For more details on how to detect the specific NPU type refer to :ref:`Application Development <app_development>`.
+The :option:target in provider_options can be used to select which backend to use when compiling the INT8 model. The option accepts the following values:
 
-The :option:`target` in ``provider_options`` can be used to select which Vitis AI EP backend to use for compiling/running a model. This bypasses auto discovery function in VAIEP.
-Different options for model compilation:
+- `X2` — Default backend for integer models. Supports STX, KRK and newer devices.
+- `X1` — Legacy backend for integer models. Supports PHX, HPT, STX and KRK devices. This setting should be used when running on PHX and HPT devices. It can also be used on STX and KRK devices in the cases where better results are achieved than with the default X2 setting.
 
- - ``X2`` — Default compiler for integer models on STX/KRK and newer devices. 
- - ``X1`` — Legacy compiler for integer models that support different NPU types i.e. PHX, HPT, STX, and KRK.
-
-For STX/KRK, we support both ``X1`` and ``X2`` compiler to offer flexibility and improved performance optimization depending on the model. 
+Since setting a suitable :option:target option is dependent on the type of device, the application must perform a device detection check before configuring the Vitis AI EP. For more details on how to do this, refer to :ref:Application Development <app_development>.
 
 Sample Python Code
 ==================
@@ -277,7 +273,7 @@ When compiling INT8 models, the user can choose the VAIEP backend to use through
         'cache_dir': str(cache_dir),
         'cache_key': 'resnet_trained_for_cifar10',
         'enable_cache_file_io_in_mem':'0',
-        'target': 'X1' # Default option 'X2'
+        'target': 'X2' # Default option 'X2'
     }
 
     session = onnxruntime.InferenceSession(
@@ -303,6 +299,7 @@ C++ example code for running CNN model on NPU:
     vai_ep_options["cache_dir"]   = exe_dir + "\\my_cache_dir";
     vai_ep_options["cache_key"]   = "resnet_trained_for_cifar10";
     vai_ep_options["enable_cache_file_io_in_mem"]   = "0";
+    vai_ep_options["target"]   = "X2";
     session_options.AppendExecutionProvider_VitisAI(vai_ep_options);
     auto session = Ort::Session(
         env,
@@ -311,11 +308,19 @@ C++ example code for running CNN model on NPU:
 
 |
 
-|memo| **NOTE**:
+Summary of Device-Specific Options
+==================================
 
-- When compiling CNN INT8 models on PHX/HPT devices, needs to use the legacy integer compiler. The user can set this through :option:`target` as `X1` in provider options. 
-- NPU configuration for PHX/HPT devices, must be specified through the :option:`xclbin` in provider option should be set to ``%RYZEN_AI_INSTALLATION_PATH%\voe-4.0-win_amd64\xclbins\phoenix\4x4.xclbin``.
-- From Ryzen AI 1.5.0, the legacy "1x4" and "Nx4" xclbin files are no longer supported and should not be used.
+When compiling INT8 models on STX/KRK devices:
+
+- The :option:`target` provider option can be set to `X2` (default) or `X1`. 
+- The :option:`xclbin` provider option must not be set.
+
+When compiling INT8 models on PHX/HPT devices:
+
+- The :option:`target` provider option must be set to `X1`. 
+- The :option:`xclbin` provider option must be set to ``%RYZEN_AI_INSTALLATION_PATH%\voe-4.0-win_amd64\xclbins\phoenix\4x4.xclbin`` or to a copy of this file included in the final version of the application.
+- The legacy "1x4" and "Nx4" xclbin files are no longer supported and should not be used.
 
 
 .. _precompiled-models:
