@@ -24,6 +24,9 @@ The following table summarizes the driver requirements for the different version
    * - VitisAI EP version
      - Minimum NPU Driver version
      - Maximum NPU Driver release date
+   * - 1.6
+     - 32.0.203.280
+     - Oct 7th, 2028
    * - 1.5
      - 32.0.203.280
      - July 1st, 2028
@@ -103,7 +106,7 @@ The application should only use the Vitis AI Execution Provider if the following
 VitisAI EP Provider Options
 ===========================
 
-For INT8 models, the application should detect the type of APU present (PHX, HPT, STX, or KRK) and set the :option:`xclbin` provider option accordingly. Refer to the section on :ref:`using INT8 models <int8-models>` for more details.
+For INT8 models, the application should detect the type of APU present (PHX, HPT, STX, or KRK) and set the provider option accordingly. Refer to the section on :ref:`using INT8 models <int8-models>` for more details.
 
 For BF16 models, the application should set the :option:`config_file` provider option to the same file that was used to precompile the BF16 model. Refer to the section on :ref:`using BF16 models <bf16-models>` for more details.
 
