@@ -88,9 +88,9 @@ The ``provider_options`` parameter of the ORT ``InferenceSession`` allows passin
          * - ``target``
            - Set which Vitis AI EP backend to use for compiling/running integer model. For details see :ref:`Target Options <target-options>`.
            - ``X2``, ``X1`` 
-           - None
+           - ``X2``
          * - ``xclbin``
-           - Only needed for PHX/HPT devices running INT8 CNN models using legacy integer compiler. See :ref:`Running on PHX/HPT devices <phx-device>`
+           - Only needed for PHX/HPT devices running INT8 CNN models using legacy integer compiler. See :ref:`Using INT8 Models <int8-models>`
            - String
            - None
          * - ``encryption_key``
@@ -188,7 +188,7 @@ The ``vaiml_config`` section of the configuration file contains the user options
 .. _bf16-models:
 
 **************************
-Using BF16 models
+Using BF16 Models
 **************************
 
 When compiling BF16 models, an optional configuration file can be provided to the VitisAI EP. This file is specified using the :option:`config_file` provider option. For more details, refer to :ref:`Config File Options <configuration-file>` section.
@@ -242,7 +242,7 @@ C++ example loading a configuration file called vai_ep_config.json:
 .. _int8-models:
 
 **************************
-Using INT8 models
+Using INT8 Models
 **************************
 
 The new default integer compiler flow streamlines the deployment of INT8 models: 
@@ -260,6 +260,8 @@ Different options for model compilation:
 
  - ``X2`` — Default compiler for integer models on STX/KRK and newer devices. 
  - ``X1`` — Legacy compiler for integer models that support different NPU types i.e. PHX, HPT, STX, and KRK.
+
+For STX/KRK, we support both ``X1`` and ``X2`` compiler to offer flexibility and improved performance optimization depending on the model. 
 
 Sample Python Code
 ==================
