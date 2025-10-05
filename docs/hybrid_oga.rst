@@ -180,8 +180,10 @@ Use Git LFS to download the model:
 
    Add sanitize_string function:
 
-   def sanitize_string(input_string):
-    return input_string.encode("charmap", "ignore").decode("charmap")
+   .. code-block:: 
+      
+      def sanitize_string(input_string):
+         return input_string.encode("charmap", "ignore").decode("charmap")
 
 
    Update line 80 to print sanitized output:
