@@ -188,7 +188,9 @@ Use Git LFS to download the model:
 
    Update line 80 to print sanitized output:
 
-   print("Output:", sanitize_string(output_text))
+   .. code-block:: 
+
+      print("Output:", sanitize_string(output_text))
 
 
    This sanitization fix will be included in the run_model.py script in the next release.
