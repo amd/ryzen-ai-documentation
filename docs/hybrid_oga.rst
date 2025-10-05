@@ -178,18 +178,18 @@ Use Git LFS to download the model:
 
    Some models may return non-printable characters in their output (for example, Qwen models), which can cause a crash while printing the output text. To avoid this, modify the provided script %RYZEN_AI_INSTALLATION_PATH%\LLM\example\run_model.py by adding a text sanitization function and updating the print statement as shown below.
 
-  Add sanitize_string function:
+   Add sanitize_string function:
 
-  def sanitize_string(input_string):
+   def sanitize_string(input_string):
     return input_string.encode("charmap", "ignore").decode("charmap")
 
 
-  Update line 80 to print sanitized output:
+   Update line 80 to print sanitized output:
 
-  print("Output:", sanitize_string(output_text))
+   print("Output:", sanitize_string(output_text))
 
 
-  This sanitization fix will be included in the run_model.py script in the next release.
+   This sanitization fix will be included in the run_model.py script in the next release.
 
 
 **************************************
