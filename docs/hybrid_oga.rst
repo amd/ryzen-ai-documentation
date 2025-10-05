@@ -176,7 +176,7 @@ Use Git LFS to download the model:
 
 .. note:: 
 
-   Some models may return non-printable characters in their output (for example, Qwen models), which can cause a crash while printing the output text. To avoid this, modify the provided script %RYZEN_AI_INSTALLATION_PATH%\LLM\example\run_model.py by adding a text sanitization function and updating the print statement as shown below.
+   Some models may return non-printable characters in their output (for example, Qwen models), which can cause a crash while printing the output text. To avoid this, modify the provided script %RYZEN_AI_INSTALLATION_PATH%\\LLM\\example\\run_model.py by adding a text sanitization function and updating the print statement as shown below.
 
    Add sanitize_string function:
 
