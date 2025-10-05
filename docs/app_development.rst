@@ -88,30 +88,15 @@ The application must verify that it is running on an AMD processor with an NPU, 
 
 .. _npu-utils:
 
+*****************
 NPU Utilities
-=============
+*****************
 
-When deploying applications across various NPU devices, users can utilize the provided sample code to determine the specific type of NPU device in use. Based on the detected device—such as PHX, STX, KRK, or other device—users should configure the appropriate provider options as outlined in this documentation. 
+When deploying applications across various NPU devices, users can determine the specific type of NPU device using Python/C++ code. Based on the detected device—such as PHX, STX, KRK, or other device—users should configure the appropriate provider options as outlined in :ref:`Model Compilation and Deployment <modelrun>`.  
 
-For Python, the user can get the specfic NPU type using the following example `get_npu_info` function:
+For Python, the user can get the specfic NPU type using the following example `get_npu_info` function in the ``%RYZEN_AI_INSTALLATION_PATH%\quicktest\quicktest.py``
 
-.. code-block:: python
-
-    def get_npu_info():
-        # Run pnputil as a subprocess to enumerate PCI devices
-        command = r'pnputil /enum-devices /bus PCI /deviceids '
-        process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        stdout, stderr = process.communicate()
-        # Check for supported Hardware IDs
-        npu_type = ''
-        if 'PCI\\VEN_1022&DEV_1502&REV_00' in stdout.decode(): npu_type = 'PHX/HPT'
-        if 'PCI\\VEN_1022&DEV_17F0&REV_00' in stdout.decode(): npu_type = 'STX'
-        if 'PCI\\VEN_1022&DEV_17F0&REV_10' in stdout.decode(): npu_type = 'STX'
-        if 'PCI\\VEN_1022&DEV_17F0&REV_11' in stdout.decode(): npu_type = 'STX'
-        if 'PCI\\VEN_1022&DEV_17F0&REV_20' in stdout.decode(): npu_type = 'KRK'
-        return npu_type
-
-For C++, a set of APIs are provided to extract information about the NPU and check compatibility of the VitisAI EP with the rest of the environment. For details refer to `C++ NPU Utilties <https://github.com/amd/RyzenAI-SW/tree/main/utilities/npu_check>`_
+For C++, a set of APIs are provided to extract information about the NPU and check driver compatibility of the VitisAI EP with the rest of the environment. For details refer to `C++ NPU Utilties <https://github.com/amd/RyzenAI-SW/tree/main/utilities/npu_check>`_
 
 
 ************************************
