@@ -151,12 +151,16 @@ A C++ application built on the Ryzen AI ONNX Runtime must include the following 
 
 - DLLs:
 
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\onnxruntime.dll
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\onnxruntime_providers_shared.dll
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\onnxruntime_providers_vitisai.dll
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\onnxruntime_vitisai_ep.dll
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\dyn_dispatch_core.dll
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\xaiengine.dll
+  - %RYZEN_AI_INSTALLATION_PATH%\deployment\aiecompiler_client.dll
+  - %RYZEN_AI_INSTALLATION_PATH%\deployment\DirectML.dll
+  - %RYZEN_AI_INSTALLATION_PATH%\deployment\dyn_dispatch_core.dll  
+  - %RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime_providers_shared.dll  
+  - %RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime_providers_vitisai.dll 
+  - %RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime_vitis_ai_custom_ops.dll
+  - %RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime_vitisai_ep.dll
+  - %RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime.dll
+  - %RYZEN_AI_INSTALLATION_PATH%\deployment\zlib.dll  
+  - %RYZEN_AI_INSTALLATION_PATH%\deployment\zstd.dll
 
 - NPU Binary files (.xclbin) from the ``%RYZEN_AI_INSTALLATION_PATH%\voe-4.0-win_amd64\xclbins`` folder
 
@@ -166,13 +170,17 @@ A C++ application built on the Ryzen AI ONNX Runtime must include the following 
 
 - DLLs:
 
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\onnxruntime.dll
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\onnxruntime_providers_shared.dll
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\onnxruntime_providers_vitisai.dll
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\onnxruntime_vitisai_ep.dll
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\dyn_dispatch_core.dll
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\xaiengine.dll
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\flexmlrt.dll
+  - %RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime.dll  
+  - %RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime_providers_shared.dll  
+  - %RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime_providers_vitisai.dll  
+  - %RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime_vitisai_ep.dll  
+  - %RYZEN_AI_INSTALLATION_PATH%\deployment\dyn_dispatch_core.dll  
+  - %RYZEN_AI_INSTALLATION_PATH%\deployment\libutf8_validity.dll  
+  - %RYZEN_AI_INSTALLATION_PATH%\deployment\ryzenai_onnx_utils.dll  
+  - %RYZEN_AI_INSTALLATION_PATH%\deployment\zlib.dll  
+  - %RYZEN_AI_INSTALLATION_PATH%\deployment\zstd.dll  
+  - %RYZEN_AI_INSTALLATION_PATH%\deployment\abseil_dll.dll  
+  - %RYZEN_AI_INSTALLATION_PATH%\deployment\aiecompiler_client.dll
 
 - Pre-compiled models in the form of :ref:`Vitis AI EP cache folders <vitisai-ep-cache>`
 
