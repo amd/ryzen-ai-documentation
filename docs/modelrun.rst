@@ -11,9 +11,7 @@ Introduction
 
 The Ryzen AI Software supports models saved in the ONNX format and uses ONNX Runtime as the primary mechanism to load, compile and run models.
 
-|memo| **NOTE**:
-
-- Models with ONNX opset 17 are recommended. If your model uses a different opset version, consider converting it using the `ONNX Version Converter <https://github.com/onnx/onnx/blob/main/docs/VersionConverter.md>`_
+|memo| **NOTE**: Models with ONNX opset 17 are recommended. If your model uses a different opset version, consider converting it using the `ONNX Version Converter <https://github.com/onnx/onnx/blob/main/docs/VersionConverter.md>`_
 
 For a complete list of supported operators, consult this page: :doc:`Supported Operators <ops_support>`.
 
@@ -192,9 +190,7 @@ Using BF16 Models
 
 When compiling BF16 models, an optional configuration file can be provided to the VitisAI EP. This file is specified using the :option:`config_file` provider option. For more details, refer to :ref:`Config File Options <configuration-file>` section.
 
-|memo| **NOTE**:
-
-- Running BF16 Models is only supported for STX/KRK or newer devices. For the model compatibility table see :ref:`Release Notes <relnotes>`.
+|memo| **NOTE**: Running BF16 Models is only supported for STX/KRK or newer devices. For the model compatibility table see :ref:`Release Notes <relnotes>`.
 
 
 Sample Python Code
@@ -257,12 +253,12 @@ The :option:`target` in provider_options can be used to select which backend to 
 - `X2` — Default backend for integer models. Supports STX, KRK and newer devices.
 - `X1` — Legacy backend for integer models. Supports PHX, HPT, STX and KRK devices. This setting should be used when running on PHX and HPT devices. It can also be used on STX and KRK devices in the cases where better results are achieved than with the default X2 setting.
 
-Since setting a suitable :option:target option is dependent on the type of device, the application must perform a device detection check before configuring the Vitis AI EP. For more details on how to do this, refer to :ref:Application Development <app_development>.
+Since setting a suitable :option:`target` option is dependent on the type of device, the application must perform a device detection check before configuring the Vitis AI EP. For more details on how to do this, refer to :ref:Application Development <app_development>.
 
 Sample Python Code
 ==================
 
-When compiling INT8 models, the user can choose the VAIEP backend to use through ``target`` option in ``provider_options`` as shown below:
+When compiling INT8 models, the user can choose the VAIEP backend to use through :option:`target` option in ``provider_options`` as shown below:
 
 .. code-block:: python
 
