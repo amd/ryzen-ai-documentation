@@ -19,7 +19,7 @@ If you manually installed the software, you need to install the AI Analyzer whee
 
 .. note::
 
-    AIAnalyzer is currently not supporting INT8 Models in RyzenAI 1.6.0
+    AIAnalyzer is currently supporting BF16 Models only. The tool has limitations for INT8 Models but with possible support in upcoming release.
 
 Enabling Profiling and Visualization
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
