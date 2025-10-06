@@ -252,7 +252,7 @@ Ryzen AI 1.6 features a new compiler for INT8 models. This compiler is enabled b
 
 .. _target-options:
 
-The :option:target in provider_options can be used to select which backend to use when compiling the INT8 model. The option accepts the following values:
+The :option:`target` in provider_options can be used to select which backend to use when compiling the INT8 model. The option accepts the following values:
 
 - `X2` — Default backend for integer models. Supports STX, KRK and newer devices.
 - `X1` — Legacy backend for integer models. Supports PHX, HPT, STX and KRK devices. This setting should be used when running on PHX and HPT devices. It can also be used on STX and KRK devices in the cases where better results are achieved than with the default X2 setting.
