@@ -83,9 +83,9 @@ Version 1.6
 
 - Breaking Changes
 
-  - For INT8 models, ``xclbin`` option within ``provider_options`` is no longer and should not be used for STX/KRK or newer devices.
-  - For running INT8 models on PHX/HPT devices, we need to use the legacy integer compiler by providing ``target`` as ``X1``, and provide NPU binaries through ``xclbin`` option within ``provider_options``. 
-  - For BF16 models, the default configurations files has been updated to include section on with ``target``, to use the new BF16 configuration file see :ref:`Model Compilation and Deployment <modelrun>`.
+  - For running INT8 models on STX/KRK or newer devices, the ``xclbin`` provider option is no longer supported and should no longer be used. See :ref:`Using INT8 Models <int8-models>` for full details.
+  - For running INT8 models on PHX/HPT devices, the ``target`` option should be set to ``X1``. The NPU binary should still be specified using the ``xclbin`` provider option. See :ref:`Using INT8 Models <int8-models>` for full details.
+  - For BF16 models, the default configurations file requires a new ``target`` section. See :ref:`Config File Options <configuration-file>` for full details.
   - LLM:
 
     - OGA version has been updated to v0.9.2 (Ryzen AI 1.6) from v0.7.0 (Ryzen AI 1.5). Any APIs that are obsolete must be updated to the supported equivalents as described in the `Microsoft ONNX Runtime GenAI v0.9.2 documentation <https://github.com/microsoft/onnxruntime-genai/tree/rel-0.9.2>`_
