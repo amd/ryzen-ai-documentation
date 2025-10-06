@@ -83,11 +83,11 @@ The ``provider_options`` parameter of the ORT ``InferenceSession`` allows passin
            - String
            - N/A
          * - ``target``
-           - Set which Vitis AI EP backend to use for compiling/running integer model. For details see :ref:`Target Options <target-options>`.
+           - Set which Vitis AI EP backend to use for compiling/running integer model. For details see :ref:`Using INT8 Models <int8-models>`.
            - ``X2``, ``X1`` 
            - ``X2``
          * - ``xclbin``
-           - To be used only when running INT8 CNN models on PHX/HPT devices. See :ref:`Using INT8 Models <int8-models>`
+           - To be used only when running INT8 CNN models on PHX/HPT devices. For details see :ref:`Using INT8 Models <int8-models>`
            - String
            - None
          * - ``encryption_key``
@@ -248,17 +248,31 @@ Ryzen AI 1.6 features a new compiler for INT8 models. This compiler is enabled b
 
 .. _target-options:
 
-The :option:`target` in provider_options can be used to select which backend to use when compiling the INT8 model. The option accepts the following values:
+The :option:`target` provider options can be used to select which backend to use when compiling the INT8 model. The option accepts the following values:
 
-- `X2` — Default backend for integer models. Supports STX, KRK and newer devices.
-- `X1` — Legacy backend for integer models. Supports PHX, HPT, STX and KRK devices. This setting should be used when running on PHX and HPT devices. It can also be used on STX and KRK devices in the cases where better results are achieved than with the default X2 setting.
+- ``X2`` — Default backend for integer models. Supports STX, KRK and newer devices.
+- ``X1`` — Legacy backend for integer models. Supports PHX, HPT, STX and KRK devices. This setting should be used when running on PHX and HPT devices. It can also be used on STX and KRK devices in the cases where better results are achieved than with the default X2 setting.
 
-Since setting a suitable :option:`target` option is dependent on the type of device, the application must perform a device detection check before configuring the Vitis AI EP. For more details on how to do this, refer to :ref:Application Development <app_development>.
+Device-Specific Settings
+========================
+
+Suitable settings for the :option:`target` and :option:`xclbin` provider options are dependent on the type of device. The application must perform a device detection check before configuring the Vitis AI EP. For more details on how to do this, refer to :ref:Application Development <app_development>.
+
+When compiling INT8 models on STX/KRK devices:
+
+- The :option:`target` provider option can be set to ``X2`` (default) or ``X1`` (legacy backend, may provide better results for some models).
+- The :option:`xclbin` provider option must not be set.
+
+When compiling INT8 models on PHX/HPT devices:
+
+- The :option:`target` provider option must be set to ``X1``. 
+- The :option:`xclbin` provider option must be set to ``%RYZEN_AI_INSTALLATION_PATH%\voe-4.0-win_amd64\xclbins\phoenix\4x4.xclbin`` or to a copy of this file included in the final version of the application. The legacy "1x4" and "Nx4" xclbin files are no longer supported and should not be used.
+
 
 Sample Python Code
 ==================
 
-When compiling INT8 models, the user can choose the VAIEP backend to use through :option:`target` option in ``provider_options`` as shown below:
+Python example code for running an INT8 model on STX/KRK NPU (target=X2, no xclbin):
 
 .. code-block:: python
 
@@ -282,7 +296,7 @@ When compiling INT8 models, the user can choose the VAIEP backend to use through
 Sample C++ Code
 ===============
 
-C++ example code for running CNN model on NPU:
+C++ example code for running an INT8 model on STX/KRK NPU (target=X2, no xclbin):
 
 .. code-block:: cpp
 
@@ -301,22 +315,6 @@ C++ example code for running CNN model on NPU:
         env,
         std::basic_string<ORTCHAR_T>(onnx_model.begin(), onnx_model.end()).c_str(),
         session_options);
-
-|
-
-Summary of Device-Specific Options
-==================================
-
-When compiling INT8 models on STX/KRK devices:
-
-- The :option:`target` provider option can be set to `X2` (default) or `X1`. 
-- The :option:`xclbin` provider option must not be set.
-
-When compiling INT8 models on PHX/HPT devices:
-
-- The :option:`target` provider option must be set to `X1`. 
-- The :option:`xclbin` provider option must be set to ``%RYZEN_AI_INSTALLATION_PATH%\voe-4.0-win_amd64\xclbins\phoenix\4x4.xclbin`` or to a copy of this file included in the final version of the application.
-- The legacy "1x4" and "Nx4" xclbin files are no longer supported and should not be used.
 
 
 .. _precompiled-models:
