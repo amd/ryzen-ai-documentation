@@ -57,7 +57,7 @@ Version 1.6
   - BF16 perf improvements - 1.3X faster on CNN than iGPU and 2.6X faster for transformers than iGPU
   - Improved coverage and improved performance for ASR models
   - Average 3x compile time improvement
-  - Smaller install, and no VC dependency
+  - Smaller installation size
   - Reduction in CPU overhead by pushing data layout transformation to NPU
   - Dynamic batch size support for compilation 
 
@@ -74,7 +74,7 @@ Version 1.6
   - Context length improvement from 2K to 4K for all models. 
 
 
-- Stable Diffusion
+- Stable Diffusion Demo
 
   - 8x Dynamic Resolution for SD3.0/3.5 (text2image and image2imageControlNet)
   - Performance boost for SD 1.5/2.1-base/turbo/XL-turbo
