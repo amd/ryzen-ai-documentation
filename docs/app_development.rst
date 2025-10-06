@@ -96,7 +96,7 @@ When deploying applications across various NPU devices, users can determine the 
 
 For Python, the user can get the specfic NPU type using the following example `get_npu_info` function in the ``%RYZEN_AI_INSTALLATION_PATH%\quicktest\quicktest.py``
 
-For C++, a set of APIs are provided to extract information about the NPU and check driver compatibility of the VitisAI EP with the rest of the environment. For details refer to `C++ NPU Utilties <https://github.com/amd/RyzenAI-SW/tree/main/utilities/npu_check>`_
+For C++, a set of APIs are provided to extract information about the NPU and check driver compatibility of the VitisAI EP with the rest of the environment. For details refer to `C++ NPU Utilities <https://github.com/amd/RyzenAI-SW/tree/main/utilities/npu_check>`_
 
 
 ************************************
