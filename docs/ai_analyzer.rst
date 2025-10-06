@@ -17,9 +17,9 @@ If you manually installed the software, you need to install the AI Analyzer whee
    python -m pip install path\to\RyzenAI\installation\files\aianalyzer-<version>.whl
 
 
-|memo| **NOTE**:
+.. note::
 
-AIAnalyzer is currently not supporting INT8 Models in RyzenAI 1.6.0
+    AIAnalyzer is currently not supporting INT8 Models in RyzenAI 1.6.0
 
 Enabling Profiling and Visualization
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
