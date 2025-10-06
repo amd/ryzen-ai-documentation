@@ -144,7 +144,7 @@ The application should only use the Vitis AI Execution Provider if the following
 VitisAI EP Provider Options
 ===========================
 
-For INT8 models, the application should detect the type of APU present (PHX, HPT, STX, or KRK) and set the provider option accordingly. Refer to the section on :ref:`using INT8 models <int8-models>` for more details.
+For INT8 models, the application should detect the type of APU present (PHX, HPT, STX, or KRK) and set the :option:`target` and :option:`xclbin` provider options accordingly. Refer to the section on :ref:`using INT8 models <int8-models>` for more details.
 
 For BF16 models, the application should set the :option:`config_file` provider option to the same file that was used to precompile the BF16 model. Refer to the section on :ref:`using BF16 models <bf16-models>` for more details.
 
