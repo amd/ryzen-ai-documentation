@@ -13,7 +13,6 @@ The Ryzen AI Software supports models saved in the ONNX format and uses ONNX Run
 
 |memo| **NOTE**:
 
-- All the instructions assume STX/KRK or newer devices.
 - Models with ONNX opset 17 are recommended. If your model uses a different opset version, consider converting it using the `ONNX Version Converter <https://github.com/onnx/onnx/blob/main/docs/VersionConverter.md>`_
 
 For a complete list of supported operators, consult this page: :doc:`Supported Operators <ops_support>`.
@@ -86,11 +85,11 @@ The ``provider_options`` parameter of the ORT ``InferenceSession`` allows passin
            - String
            - N/A
          * - ``target``
-           - Set which Vitis AI EP backend to use for compiling/running integer model. For details see :ref:`Compiler Options <compiler-options>`.
+           - Set which Vitis AI EP backend to use for compiling/running integer model. For details see :ref:`Target Options <target-options>`.
            - ``X2``, ``X1`` 
-           - None
+           - ``X2``
          * - ``xclbin``
-           - Required for CNN INT8 models using legacy integer compiler on PHX/HPT devices. See :ref:`Running on PHX/HPT devices <phx-device>`
+           - To be used only when running INT8 CNN models on PHX/HPT devices. See :ref:`Using INT8 Models <int8-models>`
            - String
            - None
          * - ``encryption_key``
@@ -185,23 +184,18 @@ The ``vaiml_config`` section of the configuration file contains the user options
            - auto, vectorized, unvectorized
            - auto
 
-.. _compiler-options:
-
-Compiler Options
-================
-The :option:`target` in ``provider_options`` can be used to select which Vitis AI EP backend to use for compiling/running a model. This bypasses auto discovery function in VAIEP.
-Different options for model compilation:
-
- - ``X2`` — Default compiler for integer models
- - ``X1`` — Legacy compiler for integer models
-
 .. _bf16-models:
 
 **************************
-Using BF16 models
+Using BF16 Models
 **************************
 
 When compiling BF16 models, an optional configuration file can be provided to the VitisAI EP. This file is specified using the :option:`config_file` provider option. For more details, refer to :ref:`Config File Options <configuration-file>` section.
+
+|memo| **NOTE**:
+
+- Running BF16 Models is only supported for STX/KRK or newer devices. For the model compatibility table see :ref:`Release Notes <relnotes>`.
+
 
 Sample Python Code
 ==================
@@ -247,17 +241,28 @@ C++ example loading a configuration file called vai_ep_config.json:
 .. _int8-models:
 
 **************************
-Using INT8 models
+Using INT8 Models
 **************************
 
-The new default integer compiler flow streamlines the deployment of INT8 models, offering both improved usability and enhanced performance for models running on STX, KRK, and later devices. Key features include, general asymmetric quantization support to enable third-party quantized models and expanding quantization support for A8W8, A16W8 quantization configuration providing greater flexibility for model optimization.
+Ryzen AI 1.6 features a new compiler for INT8 models. This compiler is enabled by default and provides the following improvements:
 
-When compiling INT8 models, the user can choose the VAIEP backend to use for compiling/running a model using ``target`` option in ``provider_options`` with the ORT ``InferenceSession``.
+- Improved ease of use and enhanced performance for models running on STX, KRK, and later devices.
+- General asymmetric quantization support to enable third-party quantized models
+- Expanded quantization support for A8W8, A16W8 quantization configuration providing greater flexibility for model optimization.
+
+.. _target-options:
+
+The :option:`target` in provider_options can be used to select which backend to use when compiling the INT8 model. The option accepts the following values:
+
+- `X2` — Default backend for integer models. Supports STX, KRK and newer devices.
+- `X1` — Legacy backend for integer models. Supports PHX, HPT, STX and KRK devices. This setting should be used when running on PHX and HPT devices. It can also be used on STX and KRK devices in the cases where better results are achieved than with the default X2 setting.
+
+Since setting a suitable :option:target option is dependent on the type of device, the application must perform a device detection check before configuring the Vitis AI EP. For more details on how to do this, refer to :ref:Application Development <app_development>.
 
 Sample Python Code
 ==================
 
-Python example for running improved integer compiler using the sample python code as shown below:
+When compiling INT8 models, the user can choose the VAIEP backend to use through ``target`` option in ``provider_options`` as shown below:
 
 .. code-block:: python
 
@@ -267,7 +272,8 @@ Python example for running improved integer compiler using the sample python cod
     vai_ep_options = {
         'cache_dir': str(cache_dir),
         'cache_key': 'resnet_trained_for_cifar10',
-        'enable_cache_file_io_in_mem':'0'
+        'enable_cache_file_io_in_mem':'0',
+        'target': 'X2' # Default option 'X2'
     }
 
     session = onnxruntime.InferenceSession(
@@ -293,6 +299,7 @@ C++ example code for running CNN model on NPU:
     vai_ep_options["cache_dir"]   = exe_dir + "\\my_cache_dir";
     vai_ep_options["cache_key"]   = "resnet_trained_for_cifar10";
     vai_ep_options["enable_cache_file_io_in_mem"]   = "0";
+    vai_ep_options["target"]   = "X2";
     session_options.AppendExecutionProvider_VitisAI(vai_ep_options);
     auto session = Ort::Session(
         env,
@@ -301,70 +308,19 @@ C++ example code for running CNN model on NPU:
 
 |
 
-.. _phx-device:
+Summary of Device-Specific Options
+==================================
 
-PHX/HPT Support
-===============
+When compiling INT8 models on STX/KRK devices:
 
-When compiling CNN INT8 models on PHX/HPT devices, needs to use the legacy integer compiler. The user can set this through :option:`target` as `X1` in provider options. 
-The NPU configuration for PHX/HPT devices, must be specified through the :option:`xclbin` provider option. Setting the NPU configuration involves specifying one of ``.xclbin`` binary files located in the Ryzen AI Software installation path. For example, when using PHX/HPT devices the ``xclbin`` option within ``provider_options``, should be set to ``%RYZEN_AI_INSTALLATION_PATH%\voe-4.0-win_amd64\xclbins\phoenix\4x4.xclbin``.
+- The :option:`target` provider option can be set to `X2` (default) or `X1`. 
+- The :option:`xclbin` provider option must not be set.
 
-When deploying applications across various NPU devices, you can determine the appropriate options based on utilities designed to detect the specific NPU present in your system. For more details on how to detect the specific NPU type refer to :ref:`NPU Utilities<npu-utils>`.
+When compiling INT8 models on PHX/HPT devices:
 
-Here is a sample python code that triggers legacy compiler for CNN models on PHX/HPT devices:
-
-.. code-block:: python
-
-    import onnxruntime
-
-    session_options = onnxruntime.SessionOptions()
-    vai_ep_options  = {                           # Vitis AI EP options go here
-        'cache_dir': str(cache_dir),
-        'cache_key': 'modelcachekey',
-        'enable_cache_file_io_in_mem':'0',
-        'target': 'X1',
-        'xclbin': `%RYZEN_AI_INSTALLATION_PATH%\voe-4.0-win_amd64\xclbins\phoenix\4x4.xclbin`
-    }
-
-    session = onnxruntime.InferenceSession(
-        path_or_bytes = model,                    # Path to the ONNX model
-        sess_options = session_options,           # Standard ORT options
-        providers = ['VitisAIExecutionProvider'], # Use the Vitis AI Execution Provider
-        provider_options = [vai_ep_options]       # Pass options to the Vitis AI Execution Provider
-    )
-
-
-|memo| **NOTE**:
-
-    - From Ryzen AI 1.5.0, the legacy "1x4" and "Nx4" xclbin files are no longer supported and should not be used.
-
-.. _npu-utils:
-
-NPU Utitilies
-=============
-
-When deploying applications across various NPU devices, users can utilize the provided sample code to determine the specific type of NPU device in use. Based on the detected device—such as PHX, STX, KRK, or other device—users should configure the appropriate provider options as outlined in this documentation. 
-
-For Python, the user can get the specfic NPU type using the following example `get_npu_info` function:
-
-.. code-block:: python
-
-    def get_npu_info():
-        # Run pnputil as a subprocess to enumerate PCI devices
-        command = r'pnputil /enum-devices /bus PCI /deviceids '
-        process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        stdout, stderr = process.communicate()
-        # Check for supported Hardware IDs
-        npu_type = ''
-        if 'PCI\\VEN_1022&DEV_1502&REV_00' in stdout.decode(): npu_type = 'PHX/HPT'
-        if 'PCI\\VEN_1022&DEV_17F0&REV_00' in stdout.decode(): npu_type = 'STX'
-        if 'PCI\\VEN_1022&DEV_17F0&REV_10' in stdout.decode(): npu_type = 'STX'
-        if 'PCI\\VEN_1022&DEV_17F0&REV_11' in stdout.decode(): npu_type = 'STX'
-        if 'PCI\\VEN_1022&DEV_17F0&REV_20' in stdout.decode(): npu_type = 'KRK'
-        return npu_type
-
-
-For C++, a set of APIs are provided to extract information about the NPU and check compatibility of the VitisAI EP with the rest of the environment. For details refer to `C++ NPU Utilties <https://github.com/amd/RyzenAI-SW/tree/main/utilities/npu_check>`_
+- The :option:`target` provider option must be set to `X1`. 
+- The :option:`xclbin` provider option must be set to ``%RYZEN_AI_INSTALLATION_PATH%\voe-4.0-win_amd64\xclbins\phoenix\4x4.xclbin`` or to a copy of this file included in the final version of the application.
+- The legacy "1x4" and "Nx4" xclbin files are no longer supported and should not be used.
 
 
 .. _precompiled-models:
