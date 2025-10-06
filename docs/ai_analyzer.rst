@@ -17,6 +17,10 @@ If you manually installed the software, you need to install the AI Analyzer whee
    python -m pip install path\to\RyzenAI\installation\files\aianalyzer-<version>.whl
 
 
+.. note::
+
+    AIAnalyzer is currently supporting BF16 Models only. The tool has limitations for INT8 Models but with possible support in upcoming release.
+
 Enabling Profiling and Visualization
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
