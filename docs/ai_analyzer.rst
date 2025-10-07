@@ -19,7 +19,7 @@ If you manually installed the software, you need to install the AI Analyzer whee
 
 .. note::
 
-    AIAnalyzer is currently supporting BF16 Models only. The tool has limitations for INT8 Models but with possible support in upcoming release.
+    AI Analyzer is currently supports BF16 Models only. INT8 model analysis is not supported in this version, but expanded support is planned for a future release.
 
 Enabling Profiling and Visualization
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
