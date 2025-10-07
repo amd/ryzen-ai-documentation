@@ -94,11 +94,11 @@ This step is required for running the python script.
 
 3. Apply RyzenAI 1.6.0 Patch (Windows Only)
 
-This patch safely replaces `onnx_custom_ops.dll` in the RyzenAI installation.
+This patch safely replaces ``onnx_custom_ops.dll`` in the RyzenAI installation.
 
 **Steps**:
 
-- Download and extract `ryzenai-1.6.0-patch.zip` from the below link:  
+- Download and extract ``ryzenai-1.6.0-patch.zip`` from the below link:  
   `https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ryzenai-1.6.0-patch.zip`
 - Open an **Administrator** Command Prompt or PowerShell in the extracted folder.
 - Run:
