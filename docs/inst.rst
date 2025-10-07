@@ -52,7 +52,7 @@ Install NPU Drivers
   - Extract the downloaded ZIP file.
   - Open a terminal in administrator mode and execute the ``.\npu_sw_installer.exe`` file.
 
-- Ensure that NPU MCDM driver (Version:32.0.203.280, Date:5/16/2025) is correctly installed by opening Task Manager -> Performance -> NPU0.
+- Ensure that NPU MCDM driver (Version:32.0.203.304, Date:10/07/2025) is correctly installed by opening Task Manager -> Performance -> NPU0.
 
 
 .. _install-bundled:
