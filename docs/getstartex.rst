@@ -15,7 +15,7 @@ This tutorial uses a fine-tuned version of the ResNet model (using the CIFAR-10 
 .. code-block::
 
     git clone https://github.com/amd/RyzenAI-SW.git
-    cd tutorial/getting_started_resnet
+    cd RyzenAI-SW/tutorial/getting_started_resnet/int8
 
 |
 
