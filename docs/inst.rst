@@ -71,6 +71,30 @@ Install Ryzen AI Software
 
 The Ryzen AI Software packages are now installed in the conda environment created by the installer.
 
+.. note::
+   **The LLM flow requires an additional patch installation.** See the next section (:ref:`apply-patch`) for instructions.
+
+.. _apply-patch:
+
+*************************
+Apply RyzenAI 1.6.0 Patch
+*************************
+
+This mandatory patch updates ``onnx_custom_ops.dll`` in the Ryzen AI installation.
+
+**Steps:**
+
+- Download and extract the patch :download:`ryzenai-1.6.0-patch.zip <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ryzenai-1.6.0-patch.zip>`
+- Open an **Administrator** Command Prompt or PowerShell in the extracted folder.
+- Run:
+
+  .. code-block:: bash
+
+     python ryzenai-1.6.0-patch.py --install-path "C:\Program Files\RyzenAI\1.6.0"
+
+.. note::
+   The script creates a timestamped backup before replacing the DLL.
+
 
 .. _quicktest:
 
