@@ -97,9 +97,7 @@ C++ Program
 ===========
 Use the ``model_benchmark.exe`` executable to test LLMs and identify DLL dependencies for C++ applications.
 
-1. Set Up a Working Directory and Copy Required Files
-
-Create a folder and copy the required files into it:
+1. Set Up a working directory and copy required Files
 
 .. code-block:: bat
 
@@ -121,9 +119,7 @@ Create a folder and copy the required files into it:
    xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\abseil_dll.dll" .
    xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\DirectML.dll" .
 
-2. Download a Pre-Optimized Model from Hugging Face
-
-Use Git LFS to download the model:
+2. Download model from Hugging Face
 
 .. code-block:: bash
 
@@ -134,8 +130,6 @@ Use Git LFS to download the model:
    git clone https://huggingface.co/amd/Llama-2-7b-chat-hf-onnx-ryzenai-hybrid
 
 3. Run ``model_benchmark.exe``
-
-Run the benchmark using the following command:
 
 .. code-block:: bash
 
@@ -152,9 +146,7 @@ Run the benchmark using the following command:
 Python Script
 =============
 
-1. Navigate to your working directory and download the desired Hybrid/NPU model.
-
-Use Git LFS to download the model:
+1. Navigate to your working directory and download model.
 
 .. code-block:: bash
 
