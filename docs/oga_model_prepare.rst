@@ -134,6 +134,25 @@ Generate model for hybrid execution mode (prefill fused version)
    model_generate --hybrid <output_dir> <quantized_model_path>  --optimize prefill
 
 - Prefill fused hybrid models are only supported for Phi-3.5-mini-instruct and Mistral-7B-Instruct-v0.2
+- Edit `genai_config.json` with the following entries
+
+  .. code-block::
+
+     "decoder": {
+            "session_options": {
+                "log_id": "onnxruntime-genai",
+                "custom_ops_library": "onnx_custom_ops.dll",
+                "external_data_file": "token.pb.bin",
+                "custom_allocator": "ryzen_mm",
+                "config_entries": {
+                    "dd_cache": "",
+                    "hybrid_opt_token_backend": "gpu",
+                    "hybrid_opt_max_seq_length": "4096",
+                    "max_length_for_kv_cache": "4096"
+                },
+                "provider_options": []
+            },
+            "filename": "fusion.onnx",
 
 **Note**: During the ``model_generate`` step, the quantized model is first converted to an OGA model using ONNX Runtime GenAI Model Builder (version 0.9.2). It is possible to use a standalone environment for exporting an OGA model, refer to the official `ONNX Runtime GenAI Model Builder documentation <https://github.com/microsoft/onnxruntime-genai/tree/main/src/python/py/models>`_. Once you have an exported OGA model, you can pass it directly to the ``model_generate`` command, which will skip the export step and perform only the post-processing.
 
