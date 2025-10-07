@@ -92,7 +92,7 @@ The application must verify that it is running on an AMD processor with an NPU, 
 NPU Utilities
 *****************
 
-When deploying applications across various NPU devices, users can determine the specific type of NPU device using Python/C++ code. Based on the detected device—such as PHX, STX, KRK, or other device—users should configure the appropriate provider options as outlined in :ref:`Model Compilation and Deployment <modelrun>`.  
+When deploying applications across various NPU devices, users can determine the specific type of NPU device using Python/C++ code. Based on the detected device—such as PHX, STX, KRK, or other device—users should configure the appropriate provider options as outlined in :doc:`Model Compilation and Deployment <modelrun>`.  
 
 For Python, the user can get the specific NPU type using the following example `get_npu_info` function in the ``%RYZEN_AI_INSTALLATION_PATH%\quicktest\quicktest.py``
 
