@@ -256,7 +256,7 @@ The :option:`target` provider options can be used to select which backend to use
 Device-Specific Settings
 ========================
 
-Suitable settings for the :option:`target` and :option:`xclbin` provider options are dependent on the type of device. The application must perform a device detection check before configuring the Vitis AI EP. For more details on how to do this, refer to :ref:Application Development <app_development>.
+Suitable settings for the :option:`target` and :option:`xclbin` provider options are dependent on the type of device. The application must perform a device detection check before configuring the Vitis AI EP. For more details on how to do this, refer to the :doc:`Application Development <app_development>` page.
 
 When compiling INT8 models on STX/KRK devices:
 
