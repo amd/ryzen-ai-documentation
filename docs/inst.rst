@@ -61,7 +61,7 @@ Install NPU Drivers
 Install Ryzen AI Software
 *************************
 
-- Download the RyzenAI Software installer :download:`ryzen-ai-lt-1.6.0-GA.exe <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ryzen-ai-lt-1.6.0-GA.exe>`.
+- Download the Ryzen AI Software installer :download:`ryzen-ai-lt-1.6.0-GA.exe <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ryzen-ai-lt-1.6.0-GA.exe>`.
 
 - Launch the EXE installer and follow the instructions on the installation wizard:
 
