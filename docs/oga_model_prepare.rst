@@ -54,6 +54,7 @@ Setup
    pip install transformers
    pip install accelerate
    pip install evaluate
+   pip install nltk
 
 
 Some models may require a specific version of ``transformers``. For example, ChatGLM3 requires version 4.44.0.   
