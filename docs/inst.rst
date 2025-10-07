@@ -72,7 +72,7 @@ Install Ryzen AI Software
 The Ryzen AI Software packages are now installed in the conda environment created by the installer.
 
 .. note::
-   The LLM flow requires an additional patch installation. See the next section (:ref:`apply-patch`) for instructions.
+   **The LLM flow requires an additional patch installation.** See the next section (:ref:`apply-patch`) for instructions.
 
 .. _apply-patch:
 

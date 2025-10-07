@@ -94,8 +94,8 @@ This step is required for running the python script.
 
 3. Apply RyzenAI 1.6.0 Patch
 
-   - Before running LLMs, ensure the RyzenAI 1.6.0 patch has been applied.  
-   - See :ref:`apply-patch` in the :doc:`inst` page for patch details.
+- Before running LLMs, ensure the RyzenAI 1.6.0 patch has been applied.  
+- See :ref:`apply-patch` in the :doc:`inst` page for patch details.
 
 
 C++ Program
