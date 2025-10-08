@@ -23,7 +23,8 @@ The Ryzen AI development flow does not require any modifications to the existing
 
 Quantization
 ============
-Quantization involves converting the AI model's parameters from floating-point to lower-precision representations, such as bfloat16 floating-point or 8-bit integer. Quantized models are more power-efficient, utilize less memory, and offer better performance.
+Quantization involves converting the AI model’s parameters from floating-point to lower-precision representations, such as 8-bit integer. Quantized models are more power-efficient, utilize less memory, and offer better performance. Ryzen AI Software also supports CNN and Transformer models in floating-point 32 format as input models without quantization. These models are internally converted to bfloat16 and compiled using the bfloat16 compilation flow.
+
 
 **AMD Quark** is a comprehensive cross-platform deep learning toolkit designed to simplify and enhance the quantization of deep learning models. Supporting both PyTorch and ONNX models, Quark empowers developers to optimize their models for deployment on a wide range of hardware backends, achieving significant performance gains without compromising accuracy.
 
