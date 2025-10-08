@@ -15,7 +15,7 @@ This tutorial uses a fine-tuned version of the ResNet model (using the CIFAR-10 
 .. code-block::
 
     git clone https://github.com/amd/RyzenAI-SW.git
-    cd tutorial/getting_started_resnet
+    cd RyzenAI-SW/tutorial/getting_started_resnet/int8
 
 |
 
@@ -93,7 +93,7 @@ The ``prepare_model_data.py`` script downloads the CIFAR-10 dataset in pickle fo
             dummy_inputs,
             tmp_model_path,
             export_params=True,
-            opset_version=13,
+            opset_version=17,
             input_names=input_names,
             output_names=output_names,
             dynamic_axes=dynamic_axes,
@@ -102,7 +102,7 @@ The ``prepare_model_data.py`` script downloads the CIFAR-10 dataset in pickle fo
 Note the following settings for the onnx conversion:
 
 - Ryzen AI supports a batch size=1, so dummy input is fixed to a batch_size =1 during model conversion
-- Recommended ``opset_version`` setting 13 is used.
+- Recommended ``opset_version`` setting 17 is used.
 
 Run the following command to prepare the dataset and export the ONNX model:
 
@@ -165,7 +165,9 @@ It demonstrates deploying the quantized model using both Python and C++ APIs.
 * :ref:`Deployment - C++ <dep-cpp>`
 
 .. note::
-   During the Python and C++ deployment, the compiled model artifacts are saved in the cache folder named ``<run directory>/modelcachekey``. Ryzen AI does not support the complied model artifacts across the versions, so if the model artifacts exist from the previous software version, ensure to delete the ``modelcachekey`` folder before executing the deployment steps.
+   During the Python and C++ deployment, the compiled model artifacts can be saved in the cache folder named ``<run directory>/modelcachekey`` using provider option ``enable_cache_file_io_in_mem``. For more details refer to the :doc:`Model Compilation and Deployment <modelrun>`. 
+
+   Ryzen AI does not support the complied model artifacts across the versions, so if the model artifacts exist from the previous software version, ensure to delete the ``modelcachekey`` folder before executing the deployment steps.
 
 
 .. _dep-python:
@@ -207,8 +209,6 @@ To successfully run the model on the NPU, follow these setup steps:
 
 - Ensure ``RYZEN_AI_INSTALLATION_PATH`` points to ``path\to\ryzen-ai-sw-<version>\``. If you installed Ryzen AI software using the MSI installer, this variable should already be set. Ensure that the Ryzen AI software package has not been moved post installation, in which case ``RYZEN_AI_INSTALLATION_PATH`` has to be set again.
 
-- The binary for inference session need to be explicitly passed through the `xclbin` option in provider_options
-
 .. code-block::
 
   parser = argparse.ArgumentParser()
@@ -224,11 +224,16 @@ To successfully run the model on the NPU, follow these setup steps:
      provider_options = [{
                 'cacheDir': str(cache_dir),
                 'cacheKey': 'modelcachekey',
-                'xclbin': 'path/to/xclbin'
                 }]
 
   session = ort.InferenceSession(model.SerializeToString(), providers=providers,
                                  provider_options=provider_options)
+
+
+.. note::
+
+   - For PHX/HPT, the legacy integer compiler must be used by setting 'target' option to 'X1' within provider optiosn. 
+   - NPU binary for PHX/HPT devices need to be set in inference session explicitly by passing the `xclbin` option in provider_options
 
 
 Run the ``predict.py`` with the ``--ep npu`` switch to run the custom ResNet model on the Ryzen AI NPU:
@@ -361,8 +366,6 @@ To successfully run the model on the NPU:
 
 - Ensure ``RYZEN_AI_INSTALLATION_PATH`` points to ``path\to\ryzen-ai-sw-<version>\``. If you installed Ryzen AI software using the MSI installer, this variable should already be set. Ensure that the Ryzen AI software package has not been moved post installation, in which case ``RYZEN_AI_INSTALLATION_PATH`` has to be set again.
 
-- The binary for inference session need to be explicitly passed through the `xclbin` option in provider_options
-
 The following code block from ``reset_cifar.cpp`` shows how ONNX Runtime is configured to deploy the model on the Ryzen AI NPU:
 
 .. code-block:: bash
@@ -374,11 +377,16 @@ The following code block from ``reset_cifar.cpp`` shows how ONNX Runtime is conf
     if(ep=="npu")
     {
     auto options =
-        std::unordered_map<std::string, std::string>{ {"cacheDir", cache_dir}, {"cacheKey", "modelcachekey"}, {"xclbin", "path/to/xclbin"}};
+        std::unordered_map<std::string, std::string>{ {"cacheDir", cache_dir}, {"cacheKey", "modelcachekey"}};
     session_options.AppendExecutionProvider_VitisAI(options)
     }
 
     auto session = Ort::Session(env, model_name.data(), session_options);
+
+.. note::
+
+   - For PHX/HPT, the legacy integer compiler must be used by setting 'target' option to 'X1' within provider optiosn. 
+   - NPU binary for PHX/HPT devices need to be set in inference session explicitly by passing the `xclbin` option in provider_options
 
 To run the model on the NPU, pass the npu flag and the vaip_config.json file as arguments to the C++ application. Use the following command to run the model on the NPU:
 

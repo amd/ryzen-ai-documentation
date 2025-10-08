@@ -9,7 +9,7 @@ Model Compilation and Deployment
 Introduction
 *****************
 
-The Ryzen AI Software supports models saved in the ONNX format and uses ONNX Runtime as the primary mechanism to load, compile and run models. 
+The Ryzen AI Software supports models saved in the ONNX format and uses ONNX Runtime as the primary mechanism to load, compile and run models.
 
 |memo| **NOTE**: Models with ONNX opset 17 are recommended. If your model uses a different opset version, consider converting it using the `ONNX Version Converter <https://github.com/onnx/onnx/blob/main/docs/VersionConverter.md>`_
 
@@ -68,97 +68,60 @@ Vitis AI EP Options Reference Guide
 VitisAI EP Provider Options
 ===========================
 
-The ``provider_options`` parameter of the ORT ``InferenceSession`` allows passing options to configure the Vitis AI EP. The following options are supported.
+The ``provider_options`` parameter of the ORT ``InferenceSession`` allows passing options to configure the Vitis AI EP. The following options are supported:
 
+.. list-table:: Vitis AI EP Provider Options
+         :header-rows: 1
+         :widths: 10 35 20 10
 
-- .. option:: config_file 
-
-Optional. Configuration file to pass additional compilation options for BF16 models. For more details, refer to the section about :ref:`Config File Options <configuration-file>`.
-
-Type: String
-
-Default: N/A
-
-
-- .. option:: xclbin
-
-Required for INT8 models. NPU binary file to specify NPU configuration to be used for INT8 models. For more details, refer to the section about :ref:`Using INT8 Models <int8-models>`.
-
-Type: String
-
-Default: N/A.
-
-
-- .. option:: encryption_key 
-
-Optional. 256-bit key used for encrypting the EP context model. At runtime, you must use the same key to decrypt the model when loading it. For more details, refer to the section about the :ref:`EP Context Cache <ort-ep-context-cache>` feature.
-
-Type: String of 64 hexadecimal values representing the 256-bit encryption key.
-
-Default: None, the model is not encrypted.
-
-
-- .. option:: opt_level 
-
-Optional. Applies to INT8 models only. Controls the compiler optimization effort.
-
-Supported Values: 0, 1, 2, 3, 65536 (maximum effort, experimental)
-
-Default: 0
-
-
-- .. option:: log_level
-
-Optional. Controls what level of messages are reported by the VitisAI EP.
-
-Supported Values: "info", "warning", "warning", "error", "fatal"
-
-Default: "info"
-
-
-- .. option:: cache_dir 
-
-Optional. The path and name of the VitisAI cache directory. For INT8 models, for this option to take affect, the :option:`enable_cache_file_io_in_mem` must be set to 0. For more details, refer to the section about :ref:`VitisAI cache <vitisai-ep-cache>`.
-
-Type: String
-
-Default: C:\\temp\\%USERNAME%\\vaip\\.cache
-
-
-- .. option:: cache_key 
-
-Optional. The subfolder in the VitisAI cache directory where the compiled model is stored. For INT8 models, for this option to take affect, the :option:`enable_cache_file_io_in_mem` must be set to 0. For more details, refer to the section about :ref:`VitisAI cache <vitisai-ep-cache>`.
-
-Type: String
-
-Default: MD5 hash of the input model.
-
-
-- .. option:: enable_cache_file_io_in_mem
-
-Optional. Applies to INT8 models only. By default, the VitisAI EP keeps the compiled model in memory. To enable saving the compiled model to disk in the :option:`cache_dir` folder, :option:`enable_cache_file_io_in_mem` must be set to 0.
-
-Supported Values: 0, 1
-
-Default: 1
-
-
-- .. option:: ai_analyzer_visualization 
-
-Optional. Enables generation of compile-time analysis data.
-
-Type: Boolean
-
-Default: False
-
-
-- .. option:: ai_analyzer_profiling 
-
-Optional. Enables generation of inference-time analysis data.
-
-Type: Boolean
-
-Default: False
+         * - Option
+           - Description
+           - Values / Type
+           - Default
+         * - ``config_file``
+           - Config file for BF16 compilation options. See :ref:`Config File Options <configuration-file>`.
+           - String
+           - N/A
+         * - ``target``
+           - Set which Vitis AI EP backend to use for compiling/running integer model. For details see :ref:`Using INT8 Models <int8-models>`.
+           - ``X2``, ``X1`` 
+           - ``X2``
+         * - ``xclbin``
+           - To be used only when running INT8 CNN models on PHX/HPT devices. For details see :ref:`Using INT8 Models <int8-models>`
+           - String
+           - None
+         * - ``encryption_key``
+           - 256-bit key for encrypting EP context model. See :ref:`EP Context Cache <ort-ep-context-cache>`.
+           - String (64 hex)
+           - None
+         * - ``opt_level``
+           - Compiler optimization level for INT8 only.
+           - 0, 1, 2, 3, 65536 (maximum effort, experimental)
+           - 0
+         * - ``log_level``
+           - Message level reported by VitisAI EP.
+           - info, warning, error, fatal
+           - info
+         * - ``cache_dir``
+           - VitisAI cache directory. For INT8, ``enable_cache_file_io_in_mem`` must be 0.
+           - String
+           - ``C:\temp\%USERNAME%\vaip\.cache``
+         * - ``cache_key``
+           - Subfolder in cache for compiled model. For INT8, ``enable_cache_file_io_in_mem`` must be 0.
+           - String
+           - MD5 hash of model
+         * - ``enable_cache_file_io_in_mem``
+           - Keep compiled model in memory (1) or save to disk (0). INT8 only.
+           - 0, 1
+           - 1
+         * - ``ai_analyzer_visualization``
+           - Enable compile-time analysis data.
+           - Boolean
+           - False
+         * - ``ai_analyzer_profiling``
+           - Enable inference-time analysis data.
+           - Boolean
+           - False
 
 
 .. _configuration-file:
@@ -172,50 +135,63 @@ The default the configuration file for compiling BF16 models contains the follow
 
 .. code-block:: json
 
-   {
-    "passes": [
-        {
-            "name": "init",
-            "plugin": "vaip-pass_init"
-        },
-        {
-            "name": "vaiml_partition",
-            "plugin": "vaip-pass_vaiml_partition",
-            "vaiml_config": {
-                "optimize_level": 1,
-                "preferred_data_storage": "auto"
+    {
+     "passes": [
+         {
+             "name": "init",
+             "plugin": "vaip-pass_init"
+         },
+         {
+             "name": "vaiml_partition",
+             "plugin": "vaip-pass_vaiml_partition",
+             "vaiml_config": {
+                 "optimize_level": 1,
+                 "preferred_data_storage": "auto"
+             }
+         }
+     ],
+     "target": "VAIML",
+        "targets": [
+            {
+                "name": "VAIML",
+                "pass": [
+                    "init",
+                    "vaiml_partition"
+                ]
             }
-        }
-    ]
-   }
+        ]
+    }
 
 
 The ``vaiml_config`` section of the configuration file contains the user options. The supported user options are described below.
 
+.. list-table:: Config File Options (vaiml_config)
+         :header-rows: 1
+         :widths: 15 35 20 10
 
-- .. option:: optimize_level
-
-Controls the compiler optimization level.
-
-Supported values: 1 (default), 2, 3
-
-
-
-- .. option:: preferred_data_storage
-
-Controls whether intermediate data is stored in vectorized or unvectorized format. Models dominated by convolutions (e.g., CNNs) perform better with vectorized data. Models dominated by GEMMs (e.g., Transformers) perform better with unvectorized data. By default ("auto") the compiler tries to select the best layout.
-
-Supported values: "auto" (default), "vectorized", "unvectorized"
-
-
+         * - Option
+           - Description
+           - Values
+           - Default
+         * - ``optimize_level``
+           - Compiler optimization level.
+           - 1, 2, 3
+           - 1
+         * - ``preferred_data_storage``
+           - Data layout: "auto" (let compiler choose), "vectorized" (for CNNs), "unvectorized" (for Transformers).
+           - auto, vectorized, unvectorized
+           - auto
 
 .. _bf16-models:
 
 **************************
-Using BF16 models
+Using BF16 Models
 **************************
 
-When compiling BF16 models, a configuration file must be provided to the VitisAI EP. This file is specified using the :option:`config_file` provider option. For more details, refer to :ref:`Config File Options <configuration-file>` section.
+When compiling BF16 models, an optional configuration file can be provided to the VitisAI EP. This file is specified using the :option:`config_file` provider option. For more details, refer to :ref:`Config File Options <configuration-file>` section.
+
+|memo| **NOTE**: Running BF16 Models is only supported for STX/KRK or newer devices. For the model compatibility table see :doc:`Release Notes <relnotes>`.
+
 
 Sample Python Code
 ==================
@@ -227,7 +203,7 @@ Python example loading a configuration file called vai_ep_config.json:
     import onnxruntime
 
     vai_ep_options = {
-        'config_file': 'vai_ep_config.json'
+        'config_file': 'vai_ep_config.json',
     }
 
     session = onnxruntime.InferenceSession(
@@ -261,33 +237,42 @@ C++ example loading a configuration file called vai_ep_config.json:
 .. _int8-models:
 
 **************************
-Using INT8 models
+Using INT8 Models
 **************************
 
-When compiling INT8 models, the NPU configuration must be specified through the :option:`xclbin` provider option. This option is not required for BF16 models. 
+Ryzen AI 1.6 features a new compiler for INT8 models. This compiler is enabled by default and provides the following improvements:
 
-Setting the NPU configuration involves specifying one of ``.xclbin`` binary files located in the Ryzen AI Software installation tree.
+- Improved ease of use and enhanced performance for models running on STX, KRK, and later devices.
+- General asymmetric quantization support to enable third-party quantized models
+- Support for XINT8, A8W8, and A16W8 quantization configuration providing greater flexibility for model optimization.
 
-It is recommended to copy the required xclbin files from the Ryzen AI installation tree into the project folder as the xclbin files used to compile the model must be included in the final version of the application. 
+.. _target-options:
 
-Depending on the target processor type, the following ``.xclbin`` files should be used:
+The :option:`target` provider options can be used to select which backend to use when compiling the INT8 model. The option accepts the following values:
 
-**For STX/KRK APUs**:
+- ``X2`` — Default backend for integer models. Supports STX, KRK and newer devices.
+- ``X1`` — Legacy backend for integer models. Supports PHX, HPT, STX and KRK devices. This setting should be used when running on PHX and HPT devices. It can also be used on STX and KRK devices in the cases where better results are achieved than with the default X2 setting.
 
-- ``%RYZEN_AI_INSTALLATION_PATH%\voe-4.0-win_amd64\xclbins\strix\AMD_AIE2P_4x4_Overlay.xclbin``
+Device-Specific Settings
+========================
 
-**For PHX/HPT APUs**:
+Suitable settings for the :option:`target` and :option:`xclbin` provider options are dependent on the type of device. The application must perform a device detection check before configuring the Vitis AI EP. For more details on how to do this, refer to the :doc:`Application Development <app_development>` page.
 
-- ``%RYZEN_AI_INSTALLATION_PATH%\voe-4.0-win_amd64\xclbins\phoenix\4x4.xclbin``
+When compiling INT8 models on STX/KRK devices:
 
+- The :option:`target` provider option can be set to ``X2`` (default) or ``X1`` (legacy backend, may provide better results for some models).
+- The :option:`xclbin` provider option must not be set.
 
-|memo| **NOTE**: Starting in Ryzen AI 1.5, the legacy "1x4" and "Nx4" xclbin files are no longer supported and should not be used.
+When compiling INT8 models on PHX/HPT devices:
+
+- The :option:`target` provider option must be set to ``X1``. 
+- The :option:`xclbin` provider option must be set to ``%RYZEN_AI_INSTALLATION_PATH%\voe-4.0-win_amd64\xclbins\phoenix\4x4.xclbin`` or to a copy of this file included in the final version of the application. The legacy "1x4" and "Nx4" xclbin files are no longer supported and should not be used.
 
 
 Sample Python Code
 ==================
 
-Python example selecting the ``AMD_AIE2P_4x4_Overlay.xclbin`` NPU configuration for STX/KRK located in the Ryzen AI installation folder:
+Python example code for running an INT8 model on STX/KRK NPU (target=X2, no xclbin):
 
 .. code-block:: python
 
@@ -295,7 +280,10 @@ Python example selecting the ``AMD_AIE2P_4x4_Overlay.xclbin`` NPU configuration 
     import onnxruntime
 
     vai_ep_options = {
-        'xclbin': os.path.join(os.environ['RYZEN_AI_INSTALLATION_PATH'], 'voe-4.0-win_amd64', 'xclbins', 'strix', 'AMD_AIE2P_4x4_Overlay.xclbin')
+        'cache_dir': str(cache_dir),
+        'cache_key': 'resnet_trained_for_cifar10',
+        'enable_cache_file_io_in_mem':'0',
+        'target': 'X2' # Default option 'X2'
     }
 
     session = onnxruntime.InferenceSession(
@@ -308,7 +296,7 @@ Python example selecting the ``AMD_AIE2P_4x4_Overlay.xclbin`` NPU configuration 
 Sample C++ Code
 ===============
 
-C++ example selecting the ``AMD_AIE2P_4x4_Overlay.xclbin`` NPU configuration for STX/KRK located in a custom folder:
+C++ example code for running an INT8 model on STX/KRK NPU (target=X2, no xclbin):
 
 .. code-block:: cpp
 
@@ -317,15 +305,16 @@ C++ example selecting the ``AMD_AIE2P_4x4_Overlay.xclbin`` NPU configuration for
     auto onnx_model = "resnet50_int8.onnx"
     Ort::Env env(ORT_LOGGING_LEVEL_WARNING, "resnet50_int8");
     auto session_options = Ort::SessionOptions();
-    auto vai_ep_options = std::unorderd_map<std::string,std::string>({});
-    vai_ep_options["xclbin"] = "/path/to/xclbins/strix/AMD_AIE2P_4x4_Overlay.xclbin";
+    auto vai_ep_options = std::unordered_map<std::string,std::string>({});
+    vai_ep_options["cache_dir"]   = exe_dir + "\\my_cache_dir";
+    vai_ep_options["cache_key"]   = "resnet_trained_for_cifar10";
+    vai_ep_options["enable_cache_file_io_in_mem"]   = "0";
+    vai_ep_options["target"]   = "X2";
     session_options.AppendExecutionProvider_VitisAI(vai_ep_options);
     auto session = Ort::Session(
-        env, 
-        std::basic_string<ORTCHAR_T>(onnx_model.begin(), onnx_model.end()).c_str(), 
+        env,
+        std::basic_string<ORTCHAR_T>(onnx_model.begin(), onnx_model.end()).c_str(),
         session_options);
-
-|
 
 
 .. _precompiled-models:
@@ -425,7 +414,6 @@ Python example:
     import onnxruntime
 
     vai_ep_options = {
-        'xclbin': r'/path/to/xclbins/strix/AMD_AIE2P_4x4_Overlay.xclbin'),
         'encryptionKey': '89703f950ed9f738d956f6769d7e45a385d3c988ca753838b5afbc569ebf35b2'
     }
 
@@ -459,7 +447,6 @@ C++ example:
 
     // VAI EP Provider options
     auto vai_ep_options = std::unorderd_map<std::string,std::string>({});
-    vai_ep_options["xclbin"] = "/path/to/xclbins/strix/AMD_AIE2P_4x4_Overlay.xclbin";
     vai_ep_options["encryption_key"] = "89703f950ed9f738d956f6769d7e45a385d3c988ca753838b5afbc569ebf35b2";
 
     // Session options
