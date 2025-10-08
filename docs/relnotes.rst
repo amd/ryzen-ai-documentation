@@ -64,7 +64,7 @@ Version 1.6
 - New Integer Compiler (CNN) 
 
   - Support for General Asymmetric Quantization enabling third party quantized models to run on NPU
-  - Support for A8W8, A16W8 
+  - Support for XINT8, A8W8, A16W8 
 
 - LLM 
 
