@@ -33,7 +33,7 @@ AMD Quark
 
 **AMD Quark** is a comprehensive cross-platform deep learning toolkit designed to simplify and enhance the quantization of deep learning models. Supporting both PyTorch and ONNX models, Quark empowers developers to optimize their models for deployment on a wide range of hardware backends, achieving significant performance gains without compromising accuracy.
 
-**AMD Quark** provides default configurations that support INT8 quantization configuration. For example, `XINT8` uses symmetric INT8 activation and weights quantization with power-of-two scales using the MinMSE calibration method. 
+**AMD Quark** provides default configurations that support INT8 quantization. For example, `XINT8` uses symmetric INT8 activation and weights quantization with power-of-two scales using the MinMSE calibration method. 
 
 For more challenging model quantization needs, **AMD Quark** supports different quantization configurations such as `A8W8`, `A16W8`, and advanced quantization techniques. For more details, refer to `AMD Quark for Ryzen AI <https://quark.docs.amd.com/latest/supported_accelerators/ryzenai/index.html>`_
 
