@@ -12,7 +12,7 @@ The Ryzen AI compiler supports input models in original float-point precision (F
 
 FP32 to BF16 Examples
 =====================
-Ryzen AI provides default configrations that support original float (FP32) conversion to BFLOAT16 (BF16) model to deploy on NPU. BF16 is a 16-bit floating-point format designed to have same exponent size as FP32, allowing a wide dynamic range, but with reduced precision to save memory and speed up computations. This feature enables developers to deploy models in their native format while leveraging the Ryzen AI automatic conversion for efficient execution on NPU.
+Ryzen AI provides default configurations that support original float (FP32) conversion to BFLOAT16 (BF16) model to deploy on NPU. BF16 is a 16-bit floating-point format designed to have same exponent size as FP32, allowing a wide dynamic range, but with reduced precision to save memory and speed up computations. This feature enables developers to deploy models in their native format while leveraging the Ryzen AI automatic conversion for efficient execution on NPU.
 
 For more details
 ~~~~~~~~~~~~~~~~
@@ -33,7 +33,7 @@ AMD Quark
 
 **AMD Quark** is a comprehensive cross-platform deep learning toolkit designed to simplify and enhance the quantization of deep learning models. Supporting both PyTorch and ONNX models, Quark empowers developers to optimize their models for deployment on a wide range of hardware backends, achieving significant performance gains without compromising accuracy.
 
-**AMD Quark** provides default configrations that support INT8 quantization configuration. For example, `XINT8` uses symmetric INT8 activation and weights quantization with power-of-two scales using the MinMSE calibration method. 
+**AMD Quark** provides default configurations that support INT8 quantization configuration. For example, `XINT8` uses symmetric INT8 activation and weights quantization with power-of-two scales using the MinMSE calibration method. 
 
 For more challenging model quantization needs, **AMD Quark** supports different quantization configurations such as `A8W8`, `A16W8`, and advanced quantization techniques. For more details, refer to `AMD Quark for Ryzen AI <https://quark.docs.amd.com/latest/supported_accelerators/ryzenai/index.html>`_
 
