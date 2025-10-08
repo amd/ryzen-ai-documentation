@@ -244,7 +244,7 @@ Ryzen AI 1.6 features a new compiler for INT8 models. This compiler is enabled b
 
 - Improved ease of use and enhanced performance for models running on STX, KRK, and later devices.
 - General asymmetric quantization support to enable third-party quantized models
-- Expanded quantization support for A8W8, A16W8 quantization configuration providing greater flexibility for model optimization.
+- Support for XINT8, A8W8, and A16W8 quantization configuration providing greater flexibility for model optimization.
 
 .. _target-options:
 
