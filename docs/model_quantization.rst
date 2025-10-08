@@ -4,7 +4,7 @@ Model Quantization
 
 **Model quantization** is the process of mapping high-precision weights/activations to a lower precision format, such as BF16/INT8, while maintaining model accuracy. This technique enhances the computational and memory efficiency of the model for deployment on NPU devices. It can be applied post-training, allowing existing models to be optimized without the need for retraining.
 
-The Ryzen AI compiler supports input models in original float-point precision (FP32) or quantized to INT8 format:
+The Ryzen AI compiler supports input models in original floating-point precision (FP32) or quantized to INT8 format:
 
 - CNN models: INT8, FP32 (with automatic conversion to BF16)
 - Transformer models: FP32 (with automatic conversion to BF16)
