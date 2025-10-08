@@ -207,7 +207,7 @@ Python example loading a configuration file called vai_ep_config.json:
     }
 
     session = onnxruntime.InferenceSession(
-        "resnet50_bf16.onnx",
+        "resnet50.onnx",
         providers=['VitisAIExecutionProvider'],
         provider_options=[vai_ep_options]
     )
@@ -222,7 +222,7 @@ C++ example loading a configuration file called vai_ep_config.json:
 
     #include <onnxruntime_cxx_api.h>
 
-    auto onnx_model = "resnet50_bf16.onnx"
+    auto onnx_model = "resnet50.onnx"
     Ort::Env env(ORT_LOGGING_LEVEL_WARNING, "resnet50_bf16");
     auto session_options = Ort::SessionOptions();
     auto vai_ep_options = std::unorderd_map<std::string,std::string>({});
