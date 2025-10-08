@@ -12,7 +12,7 @@ The Ryzen AI compiler supports input models in original floating-point precision
 
 FP32 to BF16 Examples
 =====================
-Ryzen AI provides default configurations that support original float (FP32) conversion to BFLOAT16 (BF16) model to deploy on NPU. BF16 is a 16-bit floating-point format designed to have same exponent size as FP32, allowing a wide dynamic range, but with reduced precision to save memory and speed up computations. This feature enables developers to deploy models in their native format while leveraging the Ryzen AI automatic conversion for efficient execution on NPU.
+Ryzen AI provides default configurations that support original floating-point (FP32) models for conversion to BFLOAT16 (BF16) to deploy on NPU. BF16 is a 16-bit floating-point format designed to have same exponent size as FP32, allowing a wide dynamic range, but with reduced precision to save memory and speed up computations. This feature enables developers to deploy models in their native format while leveraging the Ryzen AI automatic conversion for efficient execution on NPU.
 
 For more details
 ~~~~~~~~~~~~~~~~
