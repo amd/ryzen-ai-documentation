@@ -6,7 +6,7 @@ Model Quantization
 
 The Ryzen AI compiler supports input models in original float-point precision (FP32) or quantized to INT8 format:
 
-- CNN models: INT8 or FP32 (with automatic conversion to BF16)
+- CNN models: INT8, FP32 (with automatic conversion to BF16)
 - Transformer models: FP32 (with automatic conversion to BF16)
 
 
