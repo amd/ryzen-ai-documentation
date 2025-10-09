@@ -10,7 +10,7 @@ Installation Instructions
 Prerequisites
 *************
 
-The Ryzen AI Software supports AMD processors with a Neural Processing Unit (NPU). Refer to the release notes for the full list of :ref:`supported configurations <supported-configurations>`.
+The Ryzen AI Software supports AMD processors with a Neural Processing Unit (NPU). For a list of supported hardware configurations, refer to :ref:`hardware-support`.
 
 The following dependencies must be installed on the system before installing the Ryzen AI Software:
 
@@ -21,19 +21,19 @@ The following dependencies must be installed on the system before installing the
    * - Dependencies
      - Version Requirement
    * - Windows 11
-     - build >= 22621.3527
-   * - Visual Studio
-     - 2022
+     - >= 22621.3527
+   * - `Visual Studio Community <https://visualstudio.microsoft.com/vs/community/>`_
+     - 2022 with `Desktop Development with C++` checked
    * - cmake
-     - version >= 3.26
-   * - Python distribution (Miniforge preferred)
-     - Latest version
+     - >= 3.26
+   * - Python (Miniforge preferred)
+     - >= 3.10
+   * - NPU Driver
+     - >= `32.0.203.280 <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=NPU_RAI1.5_280_WHQL.zip>`_
 
 |
 
 |warning| **IMPORTANT**:
-
-- Visual Studio 2022 Community: ensure that `Desktop Development with C++` is installed
 
 - Miniforge: ensure that the following path is set in the System PATH variable: ``path\to\miniforge3\condabin`` or ``path\to\miniforge3\Scripts\`` or ``path\to\miniforge3\`` (The System PATH variable should be set in the *System Variables* section of the *Environment Variables* window).
 
@@ -45,17 +45,13 @@ The following dependencies must be installed on the system before installing the
 Install NPU Drivers
 *******************
 
-- Download and Install the NPU driver version: 32.0.203.280 or newer using the following links: 
-
+- Under "Task Manager" in Windows, go to Performance -> NPU0 to check the driver version. 
+- If needed, download the NPU driver version: 32.0.203.280 or the latest 32.0.203.304 here:
   - :download:`NPU Driver (Version 32.0.203.280) <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=NPU_RAI1.5_280_WHQL.zip>`
   - :download:`NPU Driver (Version 32.0.203.304) <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=NPU_RAI1.6_304_WHQL.zip>`
-
-- Install the NPU drivers by following these steps:
-
-  - Extract the downloaded ZIP file.
-  - Open a terminal in administrator mode and execute the ``.\npu_sw_installer.exe`` file.
-
-- Ensure that NPU MCDM driver (Version:32.0.203.280, Date:5/16/2025) or (Version:32.0.203.304, Date:10/07/2025) is correctly installed by opening Task Manager -> Performance -> NPU0.
+- Extract the downloaded ZIP file.
+- Right click and "Run as administrator" ``npu_sw_installer.exe``.
+- Check that the NPU MCDM driver (Version:32.0.203.280, Date:5/16/2025) or (Version:32.0.203.304, Date:10/07/2025) was correctly installed by re-opening Task Manager -> Performance -> NPU0.
 
 
 .. _install-bundled:
@@ -72,7 +68,7 @@ Install Ryzen AI Software
   - Provide the destination folder for Ryzen AI installation (default: ``C:\Program Files\RyzenAI\1.6.0``)
   - Specify the name for the conda environment (default: ``ryzen-ai-1.6.0``)
 
-The Ryzen AI Software packages are now installed in the conda environment created by the installer.
+The Ryzen AI Software packages should now installed in the conda environment created by the installer.
 
 .. note::
    **The LLM flow requires an additional patch installation.** See the next section (:ref:`apply-patch`) for instructions.

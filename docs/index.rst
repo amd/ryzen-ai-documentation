@@ -7,10 +7,11 @@ AMD Ryzen™ AI Software includes the tools and runtime libraries for optimizing
 .. image:: images/rai-sw.png
    :align: center
 
+.. _hardware-support:
 ****************
 Hardware Support
 ****************
-Ryzen AI 1.6 Software supports AMD processors as outlined below. For a more detailed list of supported devices, refer to the `processor specifications <https://www.amd.com/en/products/specifications/processors.html>`_ page (scroll to the "AMD Ryzen™ AI" column toward the right side of the table, and select "Available" from the pull-down menu). You can also download the table as a CSV file for easier filtering.
+Ryzen AI 1.6 Software runs on AMD processors outlined below. For a more detailed list of supported devices, refer to the `processor specifications <https://www.amd.com/en/products/specifications/processors.html>`_ page (scroll to the "AMD Ryzen™ AI" column toward the right side of the table, and select "Available" from the pull-down menu). You can also download the table as a CSV file for easier filtering.
 
 .. list-table:: Supported Ryzen AI Processor Configurations
    :header-rows: 1
@@ -116,9 +117,9 @@ Ryzen AI 1.6 Software supports AMD processors as outlined below. For a more deta
 ************
 LLMs Support
 ************
-Ryzen AI 1.6 supports running LLMs on the configurations in the table below. For more details on running LLMs, refer to the :doc:`llm/overview` page.
+Ryzen AI 1.6 supports running LLMs on the hardware configurations in the table below. 
 
-.. list-table:: LLM Support on Hardware
+.. list-table:: LLM Support on Ryzen AI Processors
    :header-rows: 1
    :widths: 25 25 25 25 25 25
 
@@ -141,10 +142,34 @@ Ryzen AI 1.6 supports running LLMs on the configurations in the table below. For
      - ✗
      - ✗
 
+For more details on running LLMs, refer to the :doc:`llm/overview` page.
+
+*******************
+Other Model Support
+*******************
+
+The following table lists which types of models are supported on the different hardware platforms.
+
+.. list-table::
+   :header-rows: 1
+
+   * - Model Type
+     - STX/KRK
+     - PHX/HPT
+   * - CNN INT8
+     - ✓
+     - ✓
+   * - CNN BF16
+     - ✓
+     - 
+   * - NLP BF16
+     - ✓
+     - 
+
 ***********************
 Installation & Examples
 ***********************
-To get started with Ryzen AI Software, visit the following pages:
+To get started with installing and using Ryzen AI Software, visit the following:
 
 - :doc:`inst`
 - :doc:`examples`
@@ -153,7 +178,16 @@ To get started with Ryzen AI Software, visit the following pages:
 Development Flow Overview
 *************************
 
-The Ryzen AI development flow does not require any modifications to the existing model training processes and methods. The pre-trained model can be used as the starting point of the Ryzen AI flow.
+A typical Ryzen AI flow might look like the following:
+
+1. Begin with a pretrained PyTorch (*.pt) model.
+2. Convert the model to ONNX (*.onnx) format. You can follow the PyTorch documentation here: `Export a PyTorch model to ONNX <https://docs.pytorch.org/tutorials/beginner/onnx/export_simple_model_to_onnx_tutorial.html>`_.
+3. Optionally, quantize the model with `AMD Quark <https://quark.docs.amd.com/latest/>`_ for a reduced model size.
+4. Deploy the model for inference in your application. 
+5. Run the :doc:`ai_analyzer` to assess model performance.
+
+.. note::
+   You may find that you can skip steps 1-3 and deploy a model right away if you already have an ONNX model that fits on your device.
 
 Quantization
 ============
