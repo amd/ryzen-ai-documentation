@@ -7,11 +7,145 @@ AMD Ryzen™ AI Software includes the tools and runtime libraries for optimizing
 .. image:: images/rai-sw.png
    :align: center
 
-***********
-Quick Start
-***********
+****************
+Hardware Support
+****************
+Ryzen AI 1.6 Software supports AMD processors as outlined below. For a more detailed list of supported devices, refer to the `processor specifications <https://www.amd.com/en/products/specifications/processors.html>`_ page (scroll to the "AMD Ryzen™ AI" column toward the right side of the table, and select "Available" from the pull-down menu). You can also download the table as a CSV file for easier filtering.
 
-- :ref:`Supported Configurations <supported-configurations>`
+.. list-table:: Supported Ryzen AI Processor Configurations
+   :header-rows: 1
+   :widths: 25 25 12 22 12 10 10 10
+
+   * - Series
+     - Codename
+     - Abbreviation
+     - Graphics Model
+     - Ryzen™ AI Support
+     - Launch Year
+     - Windows
+     - Linux
+   * - Ryzen AI Max PRO 300 Series
+     - Strix Halo
+     - STX
+     - Radeon 8000S Series
+     - ✅
+     - 2025
+     - ☑️
+     - ☑️
+   * - Ryzen AI PRO 300 Series
+     - Strix Point / Krackan Point
+     - STX/KRK
+     - Radeon 800M Series
+     - ✅
+     - 2025
+     - ☑️
+     - ☑️
+   * - Ryzen AI Max 300 Series
+     - Strix Halo
+     - STX
+     - Radeon 8000S Series
+     - ✅
+     - 2025
+     - ☑️
+     - ☑️
+   * - Ryzen Z2
+     - Z2
+     - Z2
+     - Radeon
+     - ✅
+     - 2025
+     - 
+     - 
+   * - Ryzen AI 300 Series
+     - Strix Point
+     - STX
+     - Radeon 800M Series
+     - ✅
+     - 2025
+     - ☑️
+     - ☑️
+   * - Ryzen Pro 200 Series
+     - Hawk Point
+     - HPT
+     - Radeon 700M Series
+     - ✅
+     - 2025
+     - ☑️
+     - ☑️
+   * - Ryzen 200 Series
+     - Hawk Point
+     - HPT
+     - Radeon 700M Series
+     - ✅
+     - 2025
+     - ☑️
+     - ☑️
+   * - Ryzen PRO 8000 Series
+     - Hawk Point
+     - HPT
+     - Radeon 700M Series
+     - ✅
+     - 2024
+     - ☑️
+     - ☑️
+   * - Ryzen 8000 Series
+     - Hawk Point
+     - HPT
+     - Radeon 700M Series
+     - ✅
+     - 2024
+     - ☑️
+     - ☑️
+   * - Ryzen Pro 7000 Series
+     - Phoenix
+     - PHX
+     - Radeon 700M Series
+     - ✅
+     - 2023
+     - ☑️
+     - ☑️
+   * - Ryzen 7000 Series
+     - Phoenix
+     - PHX
+     - Radeon 700M Series
+     - ✅
+     - 2023
+     - ☑️
+     - ☑️
+
+************
+LLMs Support
+************
+Ryzen AI 1.6 supports running LLMs on the configurations in the table below. For more details on running LLMs, refer to the :doc:`llm/overview` page.
+
+.. list-table:: LLM Support on Hardware
+   :header-rows: 1
+   :widths: 25 25 25 25 25 25
+
+   * - Processor Series
+     - Codename
+     - CPU
+     - GPU
+     - NPU
+     - Hybrid (NPU + iGPU)
+   * - Ryzen AI 300
+     - STX/KRK
+     - ✓
+     - ✓
+     - ✓
+     - ✓
+   * - Ryzen AI 7000/8000/200
+     - PHX/HPT
+     - ✓
+     - ✓
+     - ✗
+     - ✗
+
+***********************
+Installation & Examples
+***********************
+To get started with Ryzen AI Software, visit the following pages:
+
 - :doc:`inst`
 - :doc:`examples`
 
