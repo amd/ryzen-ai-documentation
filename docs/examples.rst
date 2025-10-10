@@ -1,17 +1,13 @@
 ##########################
-Examples, Demos, Tutorials 
+Examples
 ##########################
 
-This page introduces various demos, examples, and tutorials currently available with the Ryzen™ AI Software. 
-
-*************************
-Getting Started Tutorials
-*************************
+This page introduces examples currently available with the Ryzen™ AI Software. 
 
 NPU
 ~~~
 
-- :doc:`Getting Started Tutorial for INT8 models <getstartex>` - Uses a custom ResNet model to demonstrate: 
+- :doc:`ResNet50 INT8 example <getstartex>` - Uses a custom ResNet model to demonstrate: 
 
   - Pretrained model conversion to ONNX 
   - Model Quantization using AMD Quark quantizer 

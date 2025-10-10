@@ -4,6 +4,49 @@
 Release Notes
 #############
 
+.. _supported-configurations:
+
+************************
+Supported Configurations
+************************
+
+Ryzen AI 1.6 Software supports AMD processors codenamed Phoenix, Hawk Point, Strix, Strix Halo, and Krackan Point. These processors can be found in the following Ryzen series:
+
+- Ryzen 200 Series
+- Ryzen 7000 Series, Ryzen PRO 7000 Series
+- Ryzen 8000 Series, Ryzen PRO 8000 Series
+- Ryzen AI 300 Series, Ryzen AI PRO Series, Ryzen AI Max 300 Series
+
+For a complete list of supported devices, refer to the `processor specifications <https://www.amd.com/en/products/specifications/processors.html>`_ page (look for the "AMD Ryzen AI" column towards the right side of the table, and select "Available" from the pull-down menu).
+
+The rest of this document will refer to Phoenix as PHX, Hawk Point as HPT, Strix and Strix Halo as STX, and Krackan Point as KRK.
+
+
+*************************
+Model Compatibility Table
+*************************
+
+The following table lists which types of models are supported on what hardware platforms.
+
+.. list-table::
+   :header-rows: 1
+
+   * - Model Type
+     - PHX/HPT
+     - STX/KRK
+   * - CNN INT8
+     - |checkmark|
+     - |checkmark|
+   * - CNN BF16
+     -
+     - |checkmark|
+   * - NLP BF16
+     -
+     - |checkmark|
+   * - LLM (OGA)
+     -
+     - |checkmark|
+
 ***********
 Version 1.6
 ***********
