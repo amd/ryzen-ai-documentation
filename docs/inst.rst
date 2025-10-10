@@ -22,20 +22,29 @@ The following dependencies must be installed on the system before installing the
      - Version Requirement
    * - Windows 11
      - >= 22621.3527
-   * - `Visual Studio Community <https://visualstudio.microsoft.com/vs/community/>`_
-     - 2022 with `Desktop Development with C++` checked
-   * - cmake
-     - >= 3.26
-   * - Python (Miniforge preferred)
+   * - `Visual Studio Community <https://apps.microsoft.com/detail/xpdcfjdklzjlp8?hl=en-US&gl=US>`_
+     - 2022 with `Desktop Development with C++` checked (includes cmake)
+   * - `Python (Miniforge preferred) <https://conda-forge.org/download/>`_
      - >= 3.10
-   * - NPU Driver
-     - >= `32.0.203.280 <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=NPU_RAI1.5_280_WHQL.zip>`_
+   * - `NPU Driver <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=NPU_RAI1.5_280_WHQL.zip>`_ 
+     - >= 32.0.203.280
 
 |
 
 |warning| **IMPORTANT**:
 
-- Miniforge: ensure that the following path is set in the System PATH variable: ``path\to\miniforge3\condabin`` or ``path\to\miniforge3\Scripts\`` or ``path\to\miniforge3\`` (The System PATH variable should be set in the *System Variables* section of the *Environment Variables* window).
+- Miniforge: Ensure that the proper miniforge paths are set in the System PATH variable. Open Windows PowerShell by right clicking and "Run as administrator" to set system path environment varibles. After opening a command prompt, you can use the following code to add the appropriate environment variables, substituting your actual paths:
+.. code-block:: powershell
+
+  $existingPath = [System.Environment]::GetEnvironmentVariable('Path', 'Machine')
+
+.. code-block:: powershell
+
+  $newPaths = "C:\Users\<user>\miniforge3\Scripts;C:\Users\<user>\miniforge3\condabin"
+
+.. code-block:: powershell
+
+  [System.Environment]::SetEnvironmentVariable('Path', "$existingPath;$newPaths", 'Machine')
 
 |
 

@@ -11,7 +11,7 @@ AMD Ryzen™ AI Software includes the tools and runtime libraries for optimizing
 ****************
 Hardware Support
 ****************
-Ryzen AI 1.6 Software runs on AMD processors outlined below. For a more detailed list of supported devices, refer to the `processor specifications <https://www.amd.com/en/products/specifications/processors.html>`_ page (scroll to the "AMD Ryzen™ AI" column toward the right side of the table, and select "Available" from the pull-down menu). You can also download the table as a CSV file for easier filtering.
+Ryzen AI 1.6 Software runs on AMD processors outlined below. For a more detailed list of supported devices, refer to the `processor specifications <https://www.amd.com/en/products/specifications/processors.html>`_ page (scroll to the "AMD Ryzen™ AI" column toward the right side of the table, and select "Available" from the pull-down menu). Support for Linux is coming soon in Ryzen AI 1.6.1.
 
 .. list-table:: Supported Ryzen AI Processor Configurations
    :header-rows: 1
@@ -32,7 +32,7 @@ Ryzen AI 1.6 Software runs on AMD processors outlined below. For a more detailed
      - ✅
      - 2025
      - ☑️
-     - ☑️
+     - 
    * - Ryzen AI PRO 300 Series
      - Strix Point / Krackan Point
      - STX/KRK
@@ -40,7 +40,7 @@ Ryzen AI 1.6 Software runs on AMD processors outlined below. For a more detailed
      - ✅
      - 2025
      - ☑️
-     - ☑️
+     - 
    * - Ryzen AI Max 300 Series
      - Strix Halo
      - STX
@@ -48,7 +48,7 @@ Ryzen AI 1.6 Software runs on AMD processors outlined below. For a more detailed
      - ✅
      - 2025
      - ☑️
-     - ☑️
+     - 
    * - Ryzen Z2
      - Z2
      - Z2
@@ -64,7 +64,7 @@ Ryzen AI 1.6 Software runs on AMD processors outlined below. For a more detailed
      - ✅
      - 2025
      - ☑️
-     - ☑️
+     - 
    * - Ryzen Pro 200 Series
      - Hawk Point
      - HPT
@@ -72,7 +72,7 @@ Ryzen AI 1.6 Software runs on AMD processors outlined below. For a more detailed
      - ✅
      - 2025
      - ☑️
-     - ☑️
+     - 
    * - Ryzen 200 Series
      - Hawk Point
      - HPT
@@ -80,7 +80,7 @@ Ryzen AI 1.6 Software runs on AMD processors outlined below. For a more detailed
      - ✅
      - 2025
      - ☑️
-     - ☑️
+     - 
    * - Ryzen PRO 8000 Series
      - Hawk Point
      - HPT
@@ -88,7 +88,7 @@ Ryzen AI 1.6 Software runs on AMD processors outlined below. For a more detailed
      - ✅
      - 2024
      - ☑️
-     - ☑️
+     - 
    * - Ryzen 8000 Series
      - Hawk Point
      - HPT
@@ -96,7 +96,7 @@ Ryzen AI 1.6 Software runs on AMD processors outlined below. For a more detailed
      - ✅
      - 2024
      - ☑️
-     - ☑️
+     - 
    * - Ryzen Pro 7000 Series
      - Phoenix
      - PHX
@@ -104,7 +104,7 @@ Ryzen AI 1.6 Software runs on AMD processors outlined below. For a more detailed
      - ✅
      - 2023
      - ☑️
-     - ☑️
+     - 
    * - Ryzen 7000 Series
      - Phoenix
      - PHX
@@ -112,7 +112,7 @@ Ryzen AI 1.6 Software runs on AMD processors outlined below. For a more detailed
      - ✅
      - 2023
      - ☑️
-     - ☑️
+     - 
 
 ************
 LLMs Support
