@@ -1,7 +1,7 @@
 .. include:: /icons.txt
 
 #########################
-Installation Instructions
+Windows Installation Instructions
 #########################
 
 
