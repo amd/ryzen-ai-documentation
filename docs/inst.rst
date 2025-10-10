@@ -26,7 +26,7 @@ The following dependencies must be installed on the system before installing the
      - 2022 with `Desktop Development with C++` checked (includes cmake)
    * - `Python (Miniforge preferred) <https://conda-forge.org/download/>`_
      - >= 3.10
-   * - `NPU Driver <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=NPU_RAI1.5_280_WHQL.zip>`_ 
+   * - :ref:`install-driver` 
      - >= 32.0.203.280
 
 |
@@ -56,11 +56,12 @@ Install NPU Drivers
 
 - Under "Task Manager" in Windows, go to Performance -> NPU0 to check the driver version. 
 - If needed, download the NPU driver version: 32.0.203.280 or the latest 32.0.203.304 here:
+
   - :download:`NPU Driver (Version 32.0.203.280) <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=NPU_RAI1.5_280_WHQL.zip>`
   - :download:`NPU Driver (Version 32.0.203.304) <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=NPU_RAI1.6_304_WHQL.zip>`
 - Extract the downloaded ZIP file.
-- Right click and "Run as administrator" ``npu_sw_installer.exe``.
-- Check that the NPU MCDM driver (Version:32.0.203.280, Date:5/16/2025) or (Version:32.0.203.304, Date:10/07/2025) was correctly installed by re-opening Task Manager -> Performance -> NPU0.
+- Right click and "Run as administrator" on ``npu_sw_installer.exe``.
+- Check that the NPU driver (Version:32.0.203.280, Date:5/16/2025) or (Version:32.0.203.304, Date:10/07/2025) was correctly installed by opening Task Manager -> Performance -> NPU0.
 
 
 .. _install-bundled:
