@@ -23,7 +23,9 @@ The following dependencies must be installed on the system before installing the
    * - Windows 11
      - >= 22621.3527
    * - `Visual Studio Community <https://apps.microsoft.com/detail/xpdcfjdklzjlp8?hl=en-US&gl=US>`_
-     - 2022 with `Desktop Development with C++` checked (includes cmake)
+     - 2022 with `Desktop Development with C++` checked
+   * - `cmake <https://cmake.org/download/>`_
+     - >= 3.26
    * - `Python (Miniforge preferred) <https://conda-forge.org/download/>`_
      - >= 3.10
    * - :ref:`install-driver` 

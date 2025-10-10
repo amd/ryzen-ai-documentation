@@ -1,7 +1,7 @@
 :orphan:
 
 ########################
-Getting Started Tutorial
+ResNet50 Tutorial
 ########################
 
 This tutorial uses a fine-tuned version of the ResNet model (using the CIFAR-10 dataset) to demonstrate the process of preparing, quantizing, and deploying a model using Ryzen AI Software. The tutorial features deployment using both Python and C++ ONNX runtime code.
@@ -79,9 +79,10 @@ Step 2: Prepare dataset and ONNX model
 
 This example utilizes a custom ResNet model finetuned using the CIFAR-10 dataset
 
-The ``prepare_model_data.py`` script downloads the CIFAR-10 dataset in pickle format (for python) and binary format (for C++). This dataset is used in the subsequent steps for quantization and inference. The script also exports the provided PyTorch model into ONNX format. The following snippet from the script shows how the ONNX model is exported:
+The ``prepare_model_data.py`` script downloads the CIFAR-10 dataset in pickle format (for python) and binary format (for C++). 
+*The CIFAR-10 dataset consists of 60,000 32x32 colour images in 10 classes, with 6,000 images per class. There are 50,000 training images and 10,000 test images.* You can learn more about the CIFAR-10 dataset here: https://www.cs.toronto.edu/~kriz/cifar.html. This dataset is used in the subsequent steps for quantization and inference. The script also exports the provided PyTorch model into ONNX format. The following snippet from the script shows how the ONNX model is exported:
 
-.. code-block::
+.. code-block:: python
 
     dummy_inputs = torch.randn(1, 3, 32, 32)
     input_names = ['input']
@@ -277,12 +278,16 @@ Prerequisites
 Install OpenCV
 --------------
 
-It is recommended to build OpenCV from the source code and use static build. The default installation location is "\install" , the following instruction installs OpenCV in the location "C:\\opencv" as an example. You may first change the directory to where you want to clone the OpenCV repository.
+If using C++, build OpenCV from source code and use static build. The following instructions install OpenCV in the location "C:\\opencv" as an example, but you can change the location as needed.
 
+First navigate to a suitable directory where you add GitHub repositories. First, clone the OpenCV repository:
 .. code-block:: bash
 
    git clone https://github.com/opencv/opencv.git -b 4.6.0
    cd opencv
+
+Then, you can build OpenCV with the following:
+.. code-block:: bash
    cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DBUILD_SHARED_LIBS=OFF -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DCMAKE_CONFIGURATION_TYPES=Release -A x64 -T host=x64 -G "Visual Studio 17 2022" "-DCMAKE_INSTALL_PREFIX=C:\opencv" "-DCMAKE_PREFIX_PATH=C:\opencv" -DCMAKE_BUILD_TYPE=Release -DBUILD_opencv_python2=OFF -DBUILD_opencv_python3=OFF -DBUILD_WITH_STATIC_CRT=OFF -B build
    cmake --build build --config Release
    cmake --install build --config Release
@@ -298,7 +303,10 @@ Run the following command to build the resnet example. Assign ``-DOpenCV_DIR`` t
 
 .. code-block:: bash
 
-   cd getting_started_resnet/cpp
+   cd RyzenAI-SW\tutorial\getting_started_resnet\int8\cpp
+
+.. code-block:: bash
+
    cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DBUILD_SHARED_LIBS=OFF -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DCMAKE_CONFIGURATION_TYPES=Release -A x64 -T host=x64 -DCMAKE_INSTALL_PREFIX=. -DCMAKE_PREFIX_PATH=. -B build -S resnet_cifar -DOpenCV_DIR="C:/opencv/build" -G "Visual Studio 17 2022"
 
 This should generate the build directory with the ``resnet_cifar.sln`` solution file along with other project files. Open the solution file using Visual Studio 2022 and build to compile. You can also use "Developer Command Prompt for VS 2022" to open the solution file in Visual Studio.
