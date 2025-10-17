@@ -24,6 +24,9 @@ The following table summarizes the driver requirements for the different version
    * - VitisAI EP version
      - Minimum NPU Driver version
      - Maximum NPU Driver release date
+   * - 1.6
+     - 32.0.203.280
+     - Oct 7th, 2028
    * - 1.5
      - 32.0.203.280
      - July 1st, 2028
@@ -83,6 +86,17 @@ The Ryzen AI Software supports various types of NPU-enabled APUs, referred to as
 
 The application must verify that it is running on an AMD processor with an NPU, and that the NPU type is supported by the version of the Vitis AI EP in use.
 
+.. _npu-utils:
+
+*****************
+NPU Utilities
+*****************
+
+When deploying applications across various NPU devices, users can determine the specific type of NPU device using Python/C++ code. Based on the detected device—such as PHX, STX, KRK, or other device—users should configure the appropriate provider options as outlined in :doc:`Model Compilation and Deployment <modelrun>`.  
+
+For Python, the user can get the specific NPU type using the following example `get_npu_info` function in the ``%RYZEN_AI_INSTALLATION_PATH%\quicktest\quicktest.py``
+
+For C++, a set of APIs are provided to extract information about the NPU and check driver compatibility of the VitisAI EP with the rest of the environment. For details refer to `C++ NPU Utilities <https://github.com/amd/RyzenAI-SW/tree/main/utilities/npu_check>`_
 
 
 ************************************
@@ -103,7 +117,7 @@ The application should only use the Vitis AI Execution Provider if the following
 VitisAI EP Provider Options
 ===========================
 
-For INT8 models, the application should detect the type of APU present (PHX, HPT, STX, or KRK) and set the :option:`xclbin` provider option accordingly. Refer to the section on :ref:`using INT8 models <int8-models>` for more details.
+For INT8 models, the application should detect the type of APU present (PHX, HPT, STX, or KRK) and set the :option:`target` and :option:`xclbin` provider options accordingly. Refer to the section on :ref:`using INT8 models <int8-models>` for more details.
 
 For BF16 models, the application should set the :option:`config_file` provider option to the same file that was used to precompile the BF16 model. Refer to the section on :ref:`using BF16 models <bf16-models>` for more details.
 
@@ -137,12 +151,16 @@ A C++ application built on the Ryzen AI ONNX Runtime must include the following 
 
 - DLLs:
 
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\onnxruntime.dll
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\onnxruntime_providers_shared.dll
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\onnxruntime_providers_vitisai.dll
+  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\aiecompiler_client.dll
+  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\DirectML.dll
+  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\dyn_dispatch_core.dll  
+  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\onnxruntime_providers_shared.dll  
+  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\onnxruntime_providers_vitisai.dll 
+  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\onnxruntime_vitis_ai_custom_ops.dll
   - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\onnxruntime_vitisai_ep.dll
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\dyn_dispatch_core.dll
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\xaiengine.dll
+  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\onnxruntime.dll
+  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\zlib.dll  
+  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\zstd.dll
 
 - NPU Binary files (.xclbin) from the ``%RYZEN_AI_INSTALLATION_PATH%\voe-4.0-win_amd64\xclbins`` folder
 
@@ -152,45 +170,34 @@ A C++ application built on the Ryzen AI ONNX Runtime must include the following 
 
 - DLLs:
 
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\onnxruntime.dll
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\onnxruntime_providers_shared.dll
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\onnxruntime_providers_vitisai.dll
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\onnxruntime_vitisai_ep.dll
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\dyn_dispatch_core.dll
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\xaiengine.dll
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\flexmlrt.dll
+  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\onnxruntime.dll  
+  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\onnxruntime_providers_shared.dll  
+  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\onnxruntime_providers_vitisai.dll  
+  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\onnxruntime_vitisai_ep.dll  
+  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\dyn_dispatch_core.dll  
+  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\libutf8_validity.dll  
+  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\ryzenai_onnx_utils.dll  
+  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\zlib.dll  
+  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\zstd.dll  
+  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\abseil_dll.dll  
+  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\aiecompiler_client.dll
 
 - Pre-compiled models in the form of :ref:`Vitis AI EP cache folders <vitisai-ep-cache>`
 
-.. rubric:: For Hybrid LLMs
+.. rubric:: For LLMs
 
 - DLLs:
 
   - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\onnxruntime-genai.dll
   - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\onnxruntime.dll
   - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\ryzen_mm.dll
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\dyn_dispatch_core.dll
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\xaiengine.dll
   - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\onnx_custom_ops.dll
   - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\libutf8_validity.dll
   - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\abseil_dll.dll
   - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\DirectML.dll
 
-.. rubric:: For NPU-only LLMs
 
-- DLLs:
 
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\onnxruntime-genai.dll
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\onnxruntime.dll
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\ryzen_mm.dll
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\dyn_dispatch_core.dll
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\xaiengine.dll
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\onnxruntime_providers_shared.dll
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\onnxruntime_providers_vitisai.dll
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\onnxruntime_vitis_ai_custom_ops.dll
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\onnxruntime_vitisai_ep.dll
-
-- VAIP LLM configuration file: %RYZEN_AI_INSTALLATION_PATH%\\deployment\\vaip_llm.json
 
 
 ..

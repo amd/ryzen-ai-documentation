@@ -26,44 +26,22 @@ Requirements
 Pre-optimized Models
 ********************
 
-AMD provides a set of pre-optimized LLMs ready to be deployed with Ryzen AI Software and the supporting runtime for hybrid and/or NPU only execution.
 
-- Phi-3-mini-4k-instruct
-- Phi-3.5-mini-instruct
-- Mistral-7B-Instruct-v0.3
-- Qwen1.5-7B-Chat
-- chatglm3-6b
-- Llama-2-7b-hf
-- Llama-2-7b-chat-hf
-- Llama-3-8B
-- Llama-3.1-8B
-- Llama-3.2-1B-Instruct
-- Llama-3.2-3B-Instruct
-- Mistral-7B-Instruct-v0.1
-- Mistral-7B-Instruct-v0.2
-- Mistral-7B-v0.3
-- Llama-3.1-8B-Instruct
-- CodeLlama-7b-instruct-g128
-- DeepSeek-R1-Distill-Llama-8B
-- DeepSeek-R1-Distill-Qwen-1.5B
-- DeepSeek-R1-Distill-Qwen-7B
-- AMD-OLMo-1B-SFT-DPO
-- Qwen2-7B
-- Qwen2-1.5B
-- gemma-2-2b
-- Qwen2.5-1.5B-Instruct
-- Qwen2.5-3B-Instruct
-- Qwen2.5-7B-Instruct
+AMD provides a set of pre-optimized LLMs ready to be deployed with Ryzen AI Software and the supporting runtime for hybrid and/or NPU-only execution. These include popular architectures such as Llama-2, Llama-3, Mistral, DeepSeek Distill models, Qwen-2, Qwen-2.5, Qwen-3, Gemma-2, Phi-3, Phi-3.5, and Phi-4. For the detailed list of supported models, visit :doc:`model_list`
 
+Hugging Face collection of hybrid models: https://huggingface.co/collections/amd/ryzen-ai-16-hybrid-llm-68d9c3ed502f871223bfa882
 
-Hugging Face collection of hybrid models: https://huggingface.co/collections/amd/ryzenai-15-llm-hybrid-models-6859a64b421b5c27e1e53899
+Hugging Face collection of NPU models: https://huggingface.co/collections/amd/ryzen-ai-16-npu-llm-68d9c927223939cb596c592b
 
-Hugging Face collection of NPU models: https://huggingface.co/collections/amd/ryzenai-15-llm-npu-models-6859846d7c13f81298990db0
+************************************
+Changes Compared to Previous Release
+************************************
 
+- OGA version is updated to v0.9.2 (Ryzen AI 1.6) from v0.7.0 (Ryzen AI 1.5).
+- Starting with the 1.6 release, a new set of hybrid models is published. Hybrid models from earlier releases are not compatible with this version. If you are using Ryzen AI 1.6, please download the updated models.
+- Previously published NPU-only models continue to run, but for higher performance download the new NPU-only models published with 1.6.
+- Context length support is improved from 2K to 4K tokens (combined input and output).
 
-.. note:: 
-
-   Starting with the 1.6 release, a new set of models is published. Models from earlier releases are not compatible with this version. If you are using Ryzen-AI-1.6, please download the updated models.
 
 *******************
 Compatible OGA APIs
@@ -82,10 +60,8 @@ The Ryzen AI installation includes test programs (in C++ and Python) that can be
 
 The steps for deploying the pre-optimized models using the sample programs are described in the following sections.
 
-
-C++ Program
-===========
-Use the ``model_benchmark.exe`` executable to test LLMs and identify DLL dependencies for C++ applications.
+Steps to run C++ program and sample python script.
+==================================================
 
 1. (Optional) Enable Performance Mode
 
@@ -99,26 +75,34 @@ To run LLMs in best performance mode, follow these steps:
      cd C:\Windows\System32\AMD
      xrt-smi configure --pmode performance
 
-2. Activate the Ryzen AI 1.5.0 Conda Environment
+2. Activate the Ryzen AI 1.6.0 Conda Environment and install ``torch`` library.
 
-Run the following command:
+Run the following commands:
 
 .. code-block:: bash
 
    conda activate ryzen-ai-1.6.0
+   pip install torch==2.7.1
 
-This sets up the environment variable RYZEN_AI_INSTALLATION_PATH used in the next step.
+This step is required for running the python script.
 
 .. note::
 
-   If you choose not to activate the Conda environment, open a Windows Command Prompt and manually set the environment variable before continuing to Step 3:
+   For the C++ program, if you choose not to activate the Conda environment, open a Windows Command Prompt and manually set the environment variable before continuing:
 
-   set RYZEN_AI_INSTALLATION_PATH=C:\\Program Files\\RyzenAI\\1.6.0
+   ``set RYZEN_AI_INSTALLATION_PATH=C:\\Program Files\\RyzenAI\\1.6.0``
+
+3. Apply RyzenAI 1.6.0 Patch
+
+- Before running LLMs, ensure the RyzenAI 1.6.0 patch has been applied.  
+- See :ref:`apply-patch` in the :doc:`inst` page for patch details.
 
 
-3. Set Up a Working Directory and Copy Required Files
+C++ Program
+===========
+Use the ``model_benchmark.exe`` executable to test LLMs and identify DLL dependencies for C++ applications.
 
-Create a folder and copy the required files into it:
+1. Set Up a working directory and copy required Files
 
 .. code-block:: bat
 
@@ -138,10 +122,9 @@ Create a folder and copy the required files into it:
    xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnx_custom_ops.dll" .
    xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\libutf8_validity.dll" .
    xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\abseil_dll.dll" .
+   xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\DirectML.dll" .
 
-4. Download a Pre-Optimized Model from Hugging Face
-
-Use Git LFS to download the model:
+2. Download model from Hugging Face
 
 .. code-block:: bash
 
@@ -149,18 +132,16 @@ Use Git LFS to download the model:
    git lfs install
 
    :: Clone the model repository
-   git clone https://huggingface.co/amd/Llama-2-7b-chat-hf-awq-g128-int4-asym-fp16-onnx-hybrid
+   git clone https://huggingface.co/amd/Llama-2-7b-chat-hf-onnx-ryzenai-hybrid
 
-5. Run ``model_benchmark.exe``
-
-Run the benchmark using the following command:
+3. Run ``model_benchmark.exe``
 
 .. code-block:: bash
 
    .\model_benchmark.exe -i <path_to_model_dir> -f <prompt_file> -l <list_of_prompt_lengths>
 
    :: Example:
-   .\model_benchmark.exe -i Llama-2-7b-chat-hf-awq-g128-int4-asym-fp16-onnx-hybrid -f amd_genai_prompt.txt -l "1024"
+   .\model_benchmark.exe -i Llama-2-7b-chat-hf-onnx-ryzenai-hybrid -f amd_genai_prompt.txt -l "1024"
 
 
 .. note:: 
@@ -170,14 +151,46 @@ Run the benchmark using the following command:
 Python Script
 =============
 
-Run sample python script
+1. Navigate to your working directory and download model.
+
+.. code-block:: bash
+
+   :: Install Git LFS if you haven't already: https://git-lfs.com
+   git lfs install
+
+   :: Clone the model repository
+   git clone https://huggingface.co/amd/Llama-2-7b-chat-hf-onnx-ryzenai-hybrid
+
+2. Run sample python script
 
 .. code-block::
 
      python "%RYZEN_AI_INSTALLATION_PATH%\LLM\example\run_model.py" -m <model_folder> -l <max_length>
 
      :: Example command
-     python "%RYZEN_AI_INSTALLATION_PATH%\LLM\example\run_model.py" -m "Llama-2-7b-chat-hf-awq-g128-int4-asym-fp16-onnx-hybrid" -l 256
+     python "%RYZEN_AI_INSTALLATION_PATH%\LLM\example\run_model.py" -m "Llama-2-7b-chat-hf-onnx-ryzenai-hybrid" -l 256
+
+
+.. note:: 
+
+   Some models may return non-printable characters in their output (for example, Qwen models), which can cause a crash while printing the output text. To avoid this, modify the provided script %RYZEN_AI_INSTALLATION_PATH%\\LLM\\example\\run_model.py by adding a text sanitization function and updating the print statement as shown below.
+
+   Add sanitize_string function:
+
+   .. code-block:: 
+      
+      def sanitize_string(input_string):
+         return input_string.encode("charmap", "ignore").decode("charmap")
+
+
+   Update line 80 to print sanitized output:
+
+   .. code-block:: 
+
+      print("Output:", sanitize_string(output_text))
+
+
+   This sanitization fix will be included in the run_model.py script in the next release.
 
 
 **************************************
@@ -211,9 +224,9 @@ Using Fine-Tuned Models
 
 It is also possible to run fine-tuned versions of the pre-optimized OGA models.
 
-To do this, the fine-tuned models must first be prepared for execution with the OGA Hybrid flow. For instructions on how to do this, refer to the page about :doc:`oga_model_prepare`.
+To do this, the fine-tuned models must first be prepared for execution with the OGA flow. For instructions on how to do this, refer to the page about :doc:`oga_model_prepare`.
 
-After a fine-tuned model has been prepared for Hybrid execution, it can be deployed by following the steps described previously in this page.
+After a fine-tuned model has been prepared for execution, it can be deployed by following the steps described previously in this page.
 
 *****************************
 Running LLM via pip install
@@ -225,14 +238,14 @@ In addition to the full RyzenAI software stack, we also provide standalone wheel
 
 .. code-block:: bash
 
-   conda create -n <env_name> python=3.10 -y
+   conda create -n <env_name> python=3.12 -y
    conda activate <env_name>
 
 2. Install onnxruntime-genai wheel file.
 
 .. code-block:: bash
 
-   pip install onnxruntime-genai-directml-ryzenai==0.7.0.2.1 --extra-index-url=https://pypi.amd.com/simple
+   pip install onnxruntime-genai-directml-ryzenai==0.9.2 --extra-index-url=https://pypi.amd.com/simple
 
 3. Navigate to your working directory and download the desired Hybrid/NPU model
 
@@ -241,18 +254,4 @@ In addition to the full RyzenAI software stack, we also provide standalone wheel
    cd working_directory
    git clone <link_to_model>
 
-4. Copy the required DLLs from the current environment folder.
-
-.. code-block:: bat
-
-   :: Copy DLLs for Hybrid models (skip if using an NPU-only model)
-   xcopy "%CONDA_PREFIX%\Lib\site-packages\onnxruntime_genai\onnx_custom_ops.dll" .
-   xcopy "%CONDA_PREFIX%\Lib\site-packages\onnxruntime_genai\libutf8_validity.dll" .
-   xcopy "%CONDA_PREFIX%\Lib\site-packages\onnxruntime_genai\abseil_dll.dll" .
-  
-   :: Copy DLLs for NPU-only models (skip if using a Hybrid model)
-   xcopy "%CONDA_PREFIX%\Lib\site-packages\onnxruntime\capi\onnxruntime_vitis_ai_custom_ops.dll" .
-   xcopy "%CONDA_PREFIX%\Lib\site-packages\onnxruntime\capi\dyn_dispatch_core.dll" .
-   xcopy "%CONDA_PREFIX%\Lib\site-packages\onnxruntime\capi\xaiengine.dll" .
-
-5. Run the Hybrid or NPU model.
+4. Run the Hybrid or NPU model.

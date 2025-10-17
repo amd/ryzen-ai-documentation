@@ -4,6 +4,8 @@ Preparing OGA Models
 
 This section describes the process for preparing LLMs for deployment on a Ryzen AI PC using the hybrid or NPU-only execution mode. Currently, the flow supports only fine-tuned versions of the models already supported (as listed in :doc:`hybrid_oga` page). For example, fine-tuned versions of Llama2 or Llama3 can be used. However, different model families with architectures not supported by the hybrid flow cannot be used.
 
+For fine-tuned models that introduce architectural changes requiring new operator shapes not available in the Ryzen AI runtime, refer to the :doc:`oga_op_prepare`
+
 Preparing a LLM for deployment on a Ryzen AI PC involves 2 steps:
 
 1. **Quantization**: The pretrained model is quantized to reduce memory footprint and better map to compute resources in the hardware accelerators
@@ -34,7 +36,7 @@ Setup
      pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm6.1
      python -c "import torch; print(torch.cuda.is_available())" # Must return `True`
 
-3. Download :download:`AMD Quark 0.9 <https://download.amd.com/opendownload/Quark/amd_quark-0.9.zip>` and unzip the archive
+3. Download :download:`AMD Quark 0.10 <https://download.amd.com/opendownload/Quark/amd_quark-0.10.zip>` and unzip the archive
 
 
 4. Install Quark: 
@@ -52,6 +54,7 @@ Setup
    pip install transformers
    pip install accelerate
    pip install evaluate
+   pip install nltk
 
 
 Some models may require a specific version of ``transformers``. For example, ChatGLM3 requires version 4.44.0.   
@@ -66,36 +69,45 @@ Use following command to run Quantization. In a GPU equipped Linux machine the q
      cd examples/torch/language_modeling/llm_ptq/
      
      python quantize_quark.py \
+          --no_trust_remote_code \
           --model_dir "meta-llama/Llama-2-7b-chat-hf"  \
           --output_dir <quantized safetensor output dir>  \
           --quant_scheme w_uint4_per_group_asym \
+          --group_size 128 \
           --num_calib_data 128 \
+          --seq_len 512 \
           --quant_algo awq \
           --dataset pileval_for_awq_benchmark \
           --model_export hf_format \
           --data_type <datatype> \
-          --exclude_layers
+          --exclude_layers []
 
-
-- For a full-precision pretrained model, to generate NPU-only LLM use ``--datatype float32``
-- For a full-precision pretrained model, to generate Hybrid LLM use ``--datatype float16``
-- For a BF16 pretrained model, use ``--data_type bfloat16``.
+    
+- Use ``--data_type bfloat16`` for bf16 pretrained model. For fp32/fp16 pretrained model use ``--datatype float16``
 
 The quantized model is generated in the <quantized safetensor output dir> folder.
+
+**Note:** For the Phi-4 model, the following quantization recipe is recommended for better accuracy:
+
+- Use ``--quant_algo gptq``
+- Add ``--group_size_per_layer lm_head 32`` 
+
+**Note:**: Currently the following files are not copied into the quantized model folder and must be copied manually:
+
+- For Phi-4 models: ``configuration_phi3.py``
+- For ChatGLM-6b models: ``tokenizer.json``
 
 **************
 Postprocessing
 **************
 
-Copy the quantized model to the Windows PC with Ryzen AI installed, activate the Ryzen AI Conda environment, install `torch`.
+Copy the quantized model to the Windows PC with Ryzen AI installed, activate the Ryzen AI Conda environment. 
 
 .. code-block::
 
     conda activate ryzen-ai-<version>
-    pip install torch
-    pip uninstall onnx -y
-    conda clean --all
-    pip install onnx==1.17.0
+    pip install onnx_ir
+    pip install torch==2.7.1
 
 Generate the final model for Hybrid execution mode:
 
@@ -114,21 +126,50 @@ Generate the final model for NPU execution mode:
    model_generate --npu <output_dir> <quantized_model_path>  --optimize decode
 
 
-**Note**: During the model_generate step, the quantized model is first converted to an OGA model using ONNX Runtime GenAI Model Builder (version 0.9.0). Some models, such as Qwen-7B, require large system memory (up to 64 GB) during this conversion. For such models, you can either use a machine with sufficient memory or export the OGA model separately using an older version of the Model Builder. To use a standalone environment for exporting an OGA model, refer to the official ONNX Runtime GenAI Model Builder documentation 🔗 https://github.com/microsoft/onnxruntime-genai/tree/main/src/python/py/models  . Once you have an exported OGA model, you can pass it directly to the model_generate command, which will skip the export step and perform only the post-processing.
+Generate model for hybrid execution mode (prefill fused version)
 
-Here are simple commands to export OGA model from quantized model
+.. code-block::
+
+   conda activate ryzen-ai-<version>
+
+   model_generate --hybrid <output_dir> <quantized_model_path>  --optimize prefill
+
+- Prefill fused hybrid models are only supported for Phi-3.5-mini-instruct and Mistral-7B-Instruct-v0.2
+- Edit `genai_config.json` with the following entries
+
+  .. code-block::
+
+     "decoder": {
+            "session_options": {
+                "log_id": "onnxruntime-genai",
+                "custom_ops_library": "onnx_custom_ops.dll",
+                "external_data_file": "token.pb.bin",
+                "custom_allocator": "ryzen_mm",
+                "config_entries": {
+                    "dd_cache": "",
+                    "hybrid_opt_token_backend": "gpu",
+                    "hybrid_opt_max_seq_length": "4096",
+                    "max_length_for_kv_cache": "4096"
+                },
+                "provider_options": []
+            },
+            "filename": "fusion.onnx",
+
+**Note**: During the ``model_generate`` step, the quantized model is first converted to an OGA model using ONNX Runtime GenAI Model Builder (version 0.9.2). It is possible to use a standalone environment for exporting an OGA model, refer to the official `ONNX Runtime GenAI Model Builder documentation <https://github.com/microsoft/onnxruntime-genai/tree/main/src/python/py/models>`_. Once you have an exported OGA model, you can pass it directly to the ``model_generate`` command, which will skip the export step and perform only the post-processing.
+
+Here are simple commands to export OGA model from quantized model using a standalone environment
+
 
 .. code-block::
 
     conda create --name oga_builder_env python=3.10
     conda activate oga_buider_env
 
-    pip install onnxruntime-genai==0.7.0
-    pip install onnx==1.18.0
-    pip install onnxruntime==1.21.1
-    pip install torch
-    pip install transformers
-    pip install numpy==1.26.4
+    
+    pip install onnxruntime-genai==0.9.2
+    # pip install other necessary packages
+    pip install ....
+    
 
     python3 -m onnxruntime_genai.models.builder -m <input quantized model> -o <output OGA model> -p int4 -e dml 
 
