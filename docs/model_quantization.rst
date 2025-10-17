@@ -4,34 +4,54 @@ Model Quantization
 
 **Model quantization** is the process of mapping high-precision weights/activations to a lower precision format, such as BF16/INT8, while maintaining model accuracy. This technique enhances the computational and memory efficiency of the model for deployment on NPU devices. It can be applied post-training, allowing existing models to be optimized without the need for retraining.
 
-The Ryzen AI compiler supports input models in original floating-point precision (FP32) or quantized to INT8 format:
+The Ryzen AI compiler supports input models in the following formats: 
 
-- CNN models: INT8, FP32 (with automatic conversion to BF16)
-- Transformer models: FP32 (with automatic conversion to BF16)
+- CNN Models
 
+  - INT8 (quantized)
+  - FP32 (automatically converted to BF16 during compilation)
+
+- Transformer Models: 
+
+  - FP32 (automatically converted to BF16 during compilation)
+
+Ryzen AI Software natively supports both CNN and Transformer models in floating-point (FP32) format. When FP32 models are provided as input, the VitisAI EP automatically converts them to bfloat16 (BF16) precision and processes them through the optimized BF16 compilation pipeline. 
+
+For CNN models, AMD Quark quantization enables conversion to INT8 format, delivering improved inference performance compared to higher precision alternatives. This quantization pathway provides an additional optimization option for CNN workloads requiring maximum efficiency.
+
+The complete list of operations supported for different quantization types can be found in :doc:`Supported Operations <ops_support>`.
+
+FP32 to BF16 Conversion
+=======================
+Ryzen AI provides seamless support for deploying original floating-point (FP32) models on NPU hardware through automatic conversion to BFLOAT16 (BF16) format. The conversion from FP32 to BF16 is performed when the model is compiled by the VitisAI EP. BF16 is a 16-bit floating-point format designed to have the same exponent size as FP32, allowing a wide dynamic range, but with reduced precision to save memory and speed up computations. This feature enables developers to deploy models in their native format while leveraging the Ryzen AI automatic conversion for efficient execution on NPU.
 
 FP32 to BF16 Examples
-=====================
-Ryzen AI provides default configurations that support original floating-point (FP32) models for conversion to BFLOAT16 (BF16) to deploy on NPU. BF16 is a 16-bit floating-point format designed to have same exponent size as FP32, allowing a wide dynamic range, but with reduced precision to save memory and speed up computations. This feature enables developers to deploy models in their native format while leveraging the Ryzen AI automatic conversion for efficient execution on NPU.
+~~~~~~~~~~~~~~~~~~~~~
+Explore these practical examples demonstrating FP32 to BF16 conversion across different CNN, NLP model types:
 
-For more details
-~~~~~~~~~~~~~~~~
 - `Image Classification <https://github.com/amd/RyzenAI-SW/tree/main/example/image_classification>`_ using ResNet50 model on NPU
-- `Finetuned DistilBERT for Text Classification <https://github.com/amd/RyzenAI-SW/tree/main/example/DistilBERT_text_classification_bf16>`_ 
 - `Text Embedding Model Alibaba-NLP/gte-large-en-v1.5  <https://github.com/amd/RyzenAI-SW/tree/main/example/gte-large-en-v1.5-bf16>`_ 
+- `Finetuned DistilBERT for Text Classification <https://github.com/amd/RyzenAI-SW/tree/main/example/DistilBERT_text_classification_bf16>`_ 
 - Advanced quantization techniques `Fast Finetuning <https://quark.docs.amd.com/latest/supported_accelerators/ryzenai/tutorial_convert_fp32_or_fp16_to_bf16.html>`_ for BF16 models.
 
 
-INT8 Examples
-=============
+FP32 to INT8 Conversion 
+=======================
 
-Quantization introduces several challenges, primarily revolving around the potential drop in model accuracy. Choosing the right quantization parameters—such as data type, bit-width, scaling factors, and the decision between per-channel or per-tensor quantization—adds layers of complexity to the design process.
-The list of operations supported for different quantization types can be found in :doc:`Supported Operations <ops_support>`.
+Quantization to INT8 format introduces several challenges, primarily revolving around the potential drop in model accuracy. Choosing the right quantization parameters—such as data type, bit-width, scaling factors, and the decision between per-channel or per-tensor quantization—adds layers of complexity to the design process. These decisions significantly impact both model accuracy and performance. While **AMD Quark** is the recommended quantization tool, third-party tools that support QDQ (Quantize-Dequantize) operations can also be used for model quantization.
+
+RyzenAI supports the following INT8 datatypes:
+
+- XINT8: uses symmetric INT8 activation and weights quantization with power-of-two scales
+- A8W8: uses symmetric INT8 activation and weights quantization with float scales
+- A16W8: uses symmetric INT16 activation and symmetric INT8 weights quantization with float scales
+
+`AMD Quark <https://quark.docs.amd.com/latest/supported_accelerators/ryzenai/index.html>`_ is the recommended quantization tool to convert FP32 models to INT8. But third-party tools that support QDQ (Quantize-Dequantize) operations can also be used for model quantization to A8W8 and A16W8.
 
 AMD Quark
 ~~~~~~~~~
 
-**AMD Quark** is a comprehensive cross-platform deep learning toolkit designed to simplify and enhance the quantization of deep learning models. Supporting both PyTorch and ONNX models, Quark empowers developers to optimize their models for deployment on a wide range of hardware backends, achieving significant performance gains without compromising accuracy.
+`AMD Quark <https://quark.docs.amd.com/latest/supported_accelerators/ryzenai/index.html>`_ is a comprehensive cross-platform deep learning toolkit designed to simplify and enhance the quantization of deep learning models. Supporting both PyTorch and ONNX models, Quark empowers developers to optimize their models for deployment on a wide range of hardware backends, achieving significant performance gains without compromising accuracy.
 
 **AMD Quark** provides default configurations that support INT8 quantization. For example, `XINT8` uses symmetric INT8 activation and weights quantization with power-of-two scales using the MinMSE calibration method. 
 
@@ -51,12 +71,13 @@ The quantization configuration can be customized using the `QuantizationConfig` 
 
 The user can use the `get_default_config('XINT8')` function to get the default configuration for INT8 quantization.
 
-For more details
-~~~~~~~~~~~~~~~~
-- `AMD Quark Tutorial <https://github.com/amd/RyzenAI-SW/tree/main/tutorial/quark_quantization>`_ for Ryzen AI Deployment
-- Running INT8 model on NPU using :doc:`Getting Started Tutorial <getstartex>`
-- Advanced quantization techniques `Fast Finetuning and Cross Layer Equalization <https://gitenterprise.xilinx.com/VitisAI/RyzenAI-SW/blob/dev/tutorial/quark_quantization/docs/advanced_quant_readme.md>`_ for INT8 model
+FP32 to INT8 Examples
+~~~~~~~~~~~~~~~~~~~~~
+Explore practical INT8 quantization examples:
 
+- Running INT8 model on NPU using :doc:`Getting Started Tutorial <getstartex>`
+- `AMD Quark Tutorial <https://github.com/amd/RyzenAI-SW/tree/main/tutorial/quark_quantization>`_ for Ryzen AI Deployment
+- Advanced quantization techniques `Fast Finetuning and Cross Layer Equalization <https://gitenterprise.xilinx.com/VitisAI/RyzenAI-SW/blob/dev/tutorial/quark_quantization/docs/advanced_quant_readme.md>`_ for INT8 model
 
 ..
   ------------
