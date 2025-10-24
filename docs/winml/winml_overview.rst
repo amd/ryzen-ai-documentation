@@ -22,6 +22,10 @@ Prerequisites
      - Version Requirement
    * - Windows 11
      - 24H2 (build 26100) or greater
+   * - Visual Studio 2022 (for building the C++ application)
+     - Latest version
+   * - Visual Studio Code with AI Toolkit extension (for AI model conversion)
+     - Latest version
    * - C++
      - C++20 or later
    * - Python
@@ -123,9 +127,13 @@ Getting Started Tutorials
 
 - :doc:`Getting Started Tutorial for Windows ML <model_deployment>`_ - Uses a custom ResNet model to demonstrate:
 
-  - Model conversion to QDQ quantized ONNX model using `AI Toolkit <https://code.visualstudio.com/docs/intelligentapps/modelconversion>`_
-  - `Deployment using Windows ML APIs and ONNX Runtime in C++ <model_deployment>`_
-  - `Deployment using Windows ML APIs and ONNX Runtime in Python <model_deployment>`_
+  - Optional Model conversion to QDQ quantized ONNX model using `AI Toolkit <https://code.visualstudio.com/docs/intelligentapps/modelconversion>`_
+  - `Deployment using Windows ML APIs and ONNX Runtime using C++ and Python <model_deployment>`_
+
+- Additional examples:
+
+  - `Transformer based GoogleBERT <https://github.com/amd/RyzenAI-SW/tree/main/tutorial/WinML/Transformers/GoogleBERT>`_
+  - `LLM based Example <https://github.com/amd/RyzenAI-SW/tree/main/tutorial/LLM>`_
 
 ------------------------------
 License
