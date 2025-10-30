@@ -30,17 +30,16 @@ This page showcases an example of running LLM on RyzenAI NPU
 
 .. code-block:: bash
 
-  - npu-llm tar file - This file has Model Benchmark scripts
-    # Navigate to <USER-PATH>/ryzen_ai-1.6.0 and you will find a tar file "npu-llm.tar.gz" in the subdirectory
-    cp <USER-PATH>/ryzen_ai-1.6.0/npu-llm.tar.gz .
-    tar -xvzf npu-llm.tar.gz
-
   - Deployment folder - This has necessary libraries to run LLM Model
     # Navigate to <USER-PATH>/ryzen_ai-1.6.0/venv path and you will find a "deployment" folder
     cp -r <USER-PATH>/ryzen_ai-1.6.0/venv/deployment .
 
+  - Model Benchmark Script 
+    # Navigate to <USER-PATH>/ryzen_ai-1.6.0/venv/LLM/examples/ and you will find "model_benchmark" file.
+    cp <USER-PATH>/ryzen_ai-1.6.0/venv/LLM/examples/model_benchmark .
+
   - Prompt file - Input to your LLM Model
-    # Navigate to <USER-PATH>/ryzen_ai-1.6.0/venv/LLM/examples/ and you will find amd_genai_prompt.txt file.
+    # Navigate to <USER-PATH>/ryzen_ai-1.6.0/venv/LLM/examples/ and you will find "amd_genai_prompt.txt" file.
     cp <USER-PATH>/ryzen_ai-1.6.0/venv/LLM/examples/amd_genai_prompt.txt .
 
                                     
@@ -48,7 +47,7 @@ This page showcases an example of running LLM on RyzenAI NPU
 
 .. code-block::
 
-  deployment   npu-llm   npu-llm.tar.gz   amd_genai_prompt.txt   Phi-3.5-mini-instruct-onnx-ryzenai-npu
+  deployment   model_benchmark   amd_genai_prompt.txt   Phi-3.5-mini-instruct-onnx-ryzenai-npu
 
 - We have to update few files under Phi-3.5 Model to make it work for Linux environment 
 
@@ -93,7 +92,7 @@ This page showcases an example of running LLM on RyzenAI NPU
 
 .. code-block:: bash
 
-  ./npu-llm/model_benchmark -i Phi-3.5-mini-instruct-onnx-ryzenai-npu/ -l 128 -p amd_genai_prompt.txt
+  ./model_benchmark -i Phi-3.5-mini-instruct-onnx-ryzenai-npu/ -l 128 -f amd_genai_prompt.txt
 
   # You can enable "-v" flag if you want verbose output
 
@@ -104,41 +103,35 @@ Expected output
 
 .. code-block:: bash
 
-  -----------------------------
-  Prompt Number of Tokens: 128
+ -----------------------------
+ Prompt Number of Tokens: 128
   
-  Batch size: 1, prompt tokens: 128, tokens to generate: 128
-  Prompt processing (time to first token):
-    	avg (us):       454882
-    	avg (tokens/s): 281.392
-    	p50 (us):       451257
-    	stddev (us):    9252.73
-    	n:              5 * 128 token(s)
-  Token generation:
-    	avg (us):       85176.2
-    	avg (tokens/s): 11.7404
-    	p50 (us):       84551.5
-    	stddev (us):    7214.58
-    	n:              635 * 1 token(s)
-  Token sampling:
-    	avg (us):       29.5788
-    	avg (tokens/s): 33808
-    	p50 (us):       28.052
-    	stddev (us):    7.20914
-    	n:              5 * 1 token(s)
+ Batch size: 1, prompt tokens: 128, tokens to generate: 128
+ Prompt processing (time to first token):
+    avg (us):       442251
+    avg (tokens/s): 289.428
+    p50 (us):       442583
+    stddev (us):    4901.59
+    n:              5 * 128 token(s)
+ Token generation:
+    avg (us):       85353.7
+    avg (tokens/s): 11.716
+    p50 (us):       84689.3
+    stddev (us):    7012.99
+    n:              635 * 1 token(s)
+ Token sampling:
+    avg (us):       27.4852
+    avg (tokens/s): 36383.2
+    p50 (us):       27.652
+    stddev (us):    0.928063
+    n:              5 * 1 token(s)
   E2E generation (entire generation loop):
-    	avg (ms):       11272.6
-    	p50 (ms):       11284.3
-    	stddev (ms):    42.6588
-    	n:              5
-  Peak CPU utilization (%): 19.5
-  Avg CPU utilization (%): 1.7782
-  ------------------
-  Model create time (ms): 1549
-  Peak working set size (megabytes) after initialization: 3051
-  Peak working set size (megabytes): 6413
+    avg (ms):       11282.4
+    p50 (ms):       11275.4
+    stddev (ms):    14.2974
+    n:              5
+ Peak working set size (bytes): 6736375808
 
-  Total runtime (ms): 70283
  
 
 
