@@ -154,29 +154,19 @@ Model Quantization
 Postprocessing
 ===============
 
-- Download and install the Python wheel in Ryzen-AI Virtual Environment
-
-  .. code-block:: bash
-
-    # Activate your Virtual Environment
-    source <TARGET-PATH>/venv/bin/activate
-    pip install model-generate==1.6.0 --extra-index-url=https://xcoartifactory.xilinx.com/artifactory/api/pypi/ryzen-ai-llm-pip-dev-local/simple
-
-
 - Model Generate
 
-  - Generate the final model for NPU execution mode 
+  Generate the final model for NPU execution mode. Recommended to create a new output_dir folder 
 
   .. code-block:: bash
 
-    model_generate --npu <output_dir> <quantized_model_path>
+    model_generate --npu <output_dir> <quantized_model_path> --optimize decode
 
 - Expected Output
 
   .. code-block:: bash
 
-    Generate completed successfully!
-    NPU model generation completed successfully.
+    NPU optimize decode model generated successfully.
     
 
 ===============
