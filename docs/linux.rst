@@ -30,7 +30,7 @@ Prerequisites
      - 3.10.x
 
 
-Use the commands below to install Python 3.10.x along with certain dependecies
+Use the commands below to install Python 3.10.x along with certain dependencies
 
 .. code-block:: bash
 
