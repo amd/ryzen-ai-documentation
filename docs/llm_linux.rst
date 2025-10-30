@@ -30,21 +30,25 @@ This page showcases an example of running LLM on RyzenAI NPU
 
 .. code-block:: bash
 
-  # Navigate to <USER-PATH>/ryzen_ai-1.6.0 and you will find a tar file "npu-llm.tar.gz" in the subdirectory
-  cp <USER-PATH>/ryzen_ai-1.6.0/npu-llm.tar.gz .
+  - npu-llm tar file - This file has Model Benchmark scripts
+    # Navigate to <USER-PATH>/ryzen_ai-1.6.0 and you will find a tar file "npu-llm.tar.gz" in the subdirectory
+    cp <USER-PATH>/ryzen_ai-1.6.0/npu-llm.tar.gz .
+    tar -xvzf npu-llm.tar.gz
 
-  # unzip your file
-  tar -xvzf npu-llm.tar.gz
+  - Deployment folder - This has necessary libraries to run LLM Model
+    # Navigate to <USER-PATH>/ryzen_ai-1.6.0/venv path and you will find a "deployment" folder
+    cp -r <USER-PATH>/ryzen_ai-1.6.0/venv/deployment .
 
-  # Navigate to <USER-PATH>/ryzen_ai-1.6.0/venv path and you will find a "deployment" folder
-  cp -r <USER-PATH>/ryzen_ai-1.6.0/venv/deployment .
+  - Prompt file - Input to your LLM Model
+    # Navigate to <USER-PATH>/ryzen_ai-1.6.0/venv/LLM/examples/ and you will find amd_genai_prompt.txt file.
+    cp <USER-PATH>/ryzen_ai-1.6.0/venv/LLM/examples/amd_genai_prompt.txt .
 
                                     
 - Your current working directory should have below files
 
 .. code-block::
 
-  deployment   npu-llm   npu-llm.tar.gz   Phi-3.5-mini-instruct-onnx-ryzenai-npu
+  deployment   npu-llm   npu-llm.tar.gz   amd_genai_prompt.txt   Phi-3.5-mini-instruct-onnx-ryzenai-npu
 
 - We have to update few files under Phi-3.5 Model to make it work for Linux environment 
 
@@ -89,7 +93,7 @@ This page showcases an example of running LLM on RyzenAI NPU
 
 .. code-block:: bash
 
-  ./npu-llm/model_benchmark -i Phi-3.5-mini-instruct-onnx-ryzenai-npu/ -l 128 -p Phi-3.5-mini-instruct-onnx-ryzenai-npu/prompts.txt 
+  ./npu-llm/model_benchmark -i Phi-3.5-mini-instruct-onnx-ryzenai-npu/ -l 128 -p amd_genai_prompt.txt
 
   # You can enable "-v" flag if you want verbose output
 
