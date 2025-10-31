@@ -5,6 +5,8 @@ Installation Instructions
 #########################
 
 
+This page covers Ryzen AI installation on Windows. For Linux installation, please refer to :doc:`linux`.
+
 
 *************
 Prerequisites
