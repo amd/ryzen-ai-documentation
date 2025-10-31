@@ -84,6 +84,7 @@ Use following command to run Quantization. In a GPU equipped Linux machine the q
 
     
 - Use ``--data_type bfloat16`` for bf16 pretrained model. For fp32/fp16 pretrained model use ``--datatype float16``
+- Not using ``--exclude_layers``  parameter may result in model-specific defaults which may exclude certain layers like output layers.
 
 The quantized model is generated in the <quantized safetensor output dir> folder.
 
