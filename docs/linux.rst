@@ -185,7 +185,7 @@ Additional Examples
 Running LLM
 ***********
 
-Please follow this page to run LLM Model on Linux :doc:`llm_linux`
+Please follow this page to run LLM models on Linux: :doc:`llm_linux`
 
 
 ************
