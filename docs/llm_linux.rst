@@ -11,15 +11,15 @@ This page showcases an example of running LLM on RyzenAI NPU
   mkdir run_llm
   cd run_llm
 
-- You can choose any prequantized and postprocessed ready-to-run Model from `Hugging Face collection of NPU models <https://huggingface.co/collections/amd/ryzen-ai-16-npu-llm>`_
-- We are using "Phi-3.5-mini-instruct-onnx-ryzenai-npu" for reference
+- Choose any prequantized and postprocessed ready-to-run Model from `Hugging Face collection of NPU models <https://huggingface.co/collections/amd/ryzen-ai-16-npu-llm>`_
+- For this flow, "Phi-3.5-mini-instruct-onnx-ryzenai-npu" is chosen for reference
 .. code-block::
 
   # Make sure git-lfs is installed (https://git-lfs.com)
   git lfs install
   git clone https://huggingface.co/amd/Phi-3.5-mini-instruct-onnx-ryzenai-npu
 
-- You can search for RYZEN_AI_INSTALLATION_PATH
+- Search for RYZEN_AI_INSTALLATION_PATH
 
 .. code-block:: bash
 
@@ -43,13 +43,13 @@ This page showcases an example of running LLM on RyzenAI NPU
     cp <USER-PATH>/ryzen_ai-1.6.0/venv/LLM/examples/amd_genai_prompt.txt .
 
                                     
-- Your current working directory should have below files
+- Current working directory should have below files
 
 .. code-block::
 
   deployment   model_benchmark   amd_genai_prompt.txt   Phi-3.5-mini-instruct-onnx-ryzenai-npu
 
-- We have to update few files under Phi-3.5 Model to make it work for Linux environment 
+- Few files under Phi-3.5 Model have to be updated to make it work for Linux environment 
 
 .. code-block:: bash
 
@@ -82,7 +82,7 @@ This page showcases an example of running LLM on RyzenAI NPU
 
   
   
-- Lastly, we need to add our directories for LD_LIBRARY_PATH
+- Lastly, add directories for LD_LIBRARY_PATH
 
 .. code-block:: bash
 
@@ -94,7 +94,7 @@ This page showcases an example of running LLM on RyzenAI NPU
 
   ./model_benchmark -i Phi-3.5-mini-instruct-onnx-ryzenai-npu/ -l 128 -f amd_genai_prompt.txt
 
-  # You can enable "-v" flag if you want verbose output
+  # Enable "-v" flag for verbose output
 
 
 ***************
