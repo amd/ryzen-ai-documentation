@@ -152,11 +152,10 @@ Postprocessing
 ===============
 
 -  Model Quantization step produces Pytorch quantized model. 
--  Model_generate script converts Pytorch quantized model to Onnx format for NPU Execution mode. 
+-  Model_generate script initially converts Pytorch quantized model to Onnx format and subsequently postprocesses to run for NPU Execution mode. 
 
 .. code-block:: bash
 
-  # Required while converting from Pytorch Quantization to Onnx format
   pip install onnx-ir 
 
   model_generate --npu <output_dir> <quantized_model_path> --optimize decode

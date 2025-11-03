@@ -181,36 +181,22 @@ Additional Examples
 
 
 
-
-***************************
-C++ Application Development
-***************************
-
-- Follow the instructions below to install prerequisites before building Models in C++
-
-- Install GCC 12 and set it as the default compiler
-
-.. code-block:: bash
-
-   sudo apt update
-   sudo apt install gcc-12 g++-12
-   sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-12 100 --slave /usr/bin/g++ g++ /usr/bin/g++-12
-   sudo update-alternatives --config gcc
-
-
-- Install RyzenAI and Source activate the Environment
-- Install cmake with GLIBCXX_3.4.30
-.. code-block:: python
-
-   pip install cmake==3.31.6
-
-
-
 ***********
 Running LLM
 ***********
 
-Please follow this page for :doc:`llm_linux`
+Please follow this page to run LLM models on Linux: :doc:`llm_linux`
+
+
+************
+Limitations
+************
+
+Linux release supports Legacy X1 flow for compiling all XINT8 Models.
+
+
+
+
 
 
 
