@@ -37,7 +37,7 @@ Use the commands below to install Python 3.10.x along with certain dependencies
   sudo apt-get install python3.10
   sudo apt-get install python3.10-venv
 
-Once you have correct Ubuntu distribution and Python installed locally, you can proceed with NPU drivers installation
+After setting correct Ubuntu distribution and Python installation, proceed with NPU drivers installation
 
 .. _install-driver:
 
@@ -69,7 +69,7 @@ Install NPU Drivers
 Running NPU Drivers
 *******************
 
-- Everytime you login to machine, set essential Environment variables 
+- With every new login to machine, set essential Environment variables 
 .. code-block:: bash
 
    export LD_LIBRARY_PATH=/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH
@@ -185,7 +185,7 @@ Additional Examples
 Running LLM
 ***********
 
-Please follow this page to run LLM models on Linux: :doc:`llm_linux`
+Follow this page to run LLM models on Linux: :doc:`llm_linux`
 
 
 ************
