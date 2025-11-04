@@ -7,7 +7,7 @@ Ryzen AI for Linux supports compiling and running AI models on the AMD Neural Pr
 - CNN models in INT8 format
 - CNN models in BF16 format
 - NLP models (e.g., BERT, encoder-based) in BF16 format
-- A subset of LLMs (NPU-only flow)
+- LLMs (NPU-only flow)
 
 
 *************
@@ -25,7 +25,7 @@ Prerequisites
    * - Kernel Version
      - >= 6.10
    * - RAM
-     - 32GB or Higher
+     - 32GB or Higher, 64GB (Recommended)
    * - Python
      - 3.10.x
 
@@ -64,10 +64,6 @@ Install NPU Drivers
    sudo apt reinstall --fix-broken -y ./xrt_202520.2.20.122_24.04-amd64-npu.deb
    sudo apt reinstall --fix-broken -y ./xrt_plugin.2.20.250102.48.release_24.04-amd64-amdxdna.deb
 
-
-*******************
-Running NPU Drivers
-*******************
 
 - Set essential Environment variables 
 .. code-block:: bash
@@ -192,8 +188,8 @@ Follow this page to run LLM models on Linux: :doc:`llm_linux`
 Limitations
 ************
 
-Linux release supports Legacy X1 flow for compiling all XINT8 Models.
-
+- Integer CNN Model is only supported through Legacy backend compiler (X1)
+- Of all supported LLM models, several require a 64GB machine for running.
 
 
 
