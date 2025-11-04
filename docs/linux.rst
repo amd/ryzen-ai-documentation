@@ -189,7 +189,7 @@ Limitations
 ************
 
 - Integer CNN Model is only supported through Legacy backend compiler (X1)
-- Out of all supported LLM models, several require 64GB machine for running. 
+- From all supported LLM models, several require 64GB machine for running. 
 
 
 
