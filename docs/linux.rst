@@ -192,8 +192,8 @@ Follow this page to run LLM models on Linux: :doc:`llm_linux`
 Limitations
 ************
 
-Linux release supports Legacy X1 flow for compiling all XINT8 Models.
-
+- Integer CNN Model is only supported through Legacy backend compiler (X1)
+- Out of all supported LLM models, several require 64GB machine for running. 
 
 
 
