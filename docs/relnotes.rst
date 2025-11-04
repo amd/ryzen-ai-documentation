@@ -47,6 +47,13 @@ The following table lists which types of models are supported on what hardware p
      -
      - |checkmark|
 
+
+*************
+Version 1.6.1
+*************
+
+- Ryzen AI Linux release available for CNN, Transformer, and LLM flows.
+
 ***********
 Version 1.6
 ***********
