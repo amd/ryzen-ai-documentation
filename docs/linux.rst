@@ -149,32 +149,21 @@ Examples, Demos, Tutorials
 
 - RyzenAI-SW demonstrates various demos and examples for Model compilation and deployment on NPUs
 
-- We recommend our Getting started Resnet tutorial as an entry to our Linux Environment - `Getting started Resnet with BF16 Model <https://github.com/amd/RyzenAI-SW/tree/main/linux>`_
-
-*******************
-Additional Examples
-*******************
-- Here are a few more examples from our `RyzenAI Software Repository <https://github.com/amd/RyzenAI-SW/tree/main>`_
+- Here are a few examples from our `RyzenAI Software Repository <https://github.com/amd/RyzenAI-SW/tree/main>`_
+   - `Getting started Resnet with BF16 Model <https://github.com/amd/RyzenAI-SW/tree/main/tutorial/getting_started_resnet/bf16>`_
    - `Getting started Resnet with INT8 Model <https://github.com/amd/RyzenAI-SW/tree/main/tutorial/getting_started_resnet/int8>`_
    - `Yolov8m Model for Object Detection <https://github.com/amd/RyzenAI-SW/tree/main/tutorial/object_detection>`_
+
 
 .. note::
 
    Before running the above examples - 
       - RyzenAI creates its own Python Virtual Environment to run the examples. You can skip conda environment instruction as they are Windows specific only
-      - You don't have to provide any target or xclbin flag in provider_options as it automatically picks the required settings for Strix machine
+      - Ensure to activate Linux based Python Virtual Environment 
 
 .. code-block:: python
-   
-    provider_options = [{
-            'cache_dir': cache_dir,
-            'cache_key': cache_key,
-        }]
 
-    # creating a session
-    session = ort.InferenceSession(model, providers=providers,
-                               provider_options=provider_options)
-
+  source <TARGET-PATH>/venv/bin/activate
 
 
 ***********
