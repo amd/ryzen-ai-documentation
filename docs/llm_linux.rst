@@ -34,16 +34,16 @@ This page showcases an example of running LLM on RyzenAI NPU
 .. code-block:: bash
 
   - Deployment folder - This has necessary libraries to run LLM Model
-      # Navigate to <USER-PATH>/ryzen_ai-1.6.0/venv path and you will find a "deployment" folder
-      cp -r <USER-PATH>/ryzen_ai-1.6.0/venv/deployment .
+      # Navigate to <TARGET-PATH>/ryzen_ai-1.6.0/venv and copy the "deployment" folder
+      cp -r <TARGET-PATH>/ryzen_ai-1.6.0/venv/deployment .
 
   - Model Benchmark Script 
-      # Navigate to <USER-PATH>/ryzen_ai-1.6.0/venv/LLM/examples/ and you will find "model_benchmark" file.
-      cp <USER-PATH>/ryzen_ai-1.6.0/venv/LLM/examples/model_benchmark .
+      # Navigate to <TARGET-PATH>/ryzen_ai-1.6.0/venv/LLM/examples/ and copy "model_benchmark" file.
+      cp <TARGET-PATH>/ryzen_ai-1.6.0/venv/LLM/examples/model_benchmark .
 
   - Prompt file - Input to your LLM Model
-      # Navigate to <USER-PATH>/ryzen_ai-1.6.0/venv/LLM/examples/ and you will find "amd_genai_prompt.txt" file.
-      cp <USER-PATH>/ryzen_ai-1.6.0/venv/LLM/examples/amd_genai_prompt.txt .
+      # Navigate to <TARGET-PATH>/ryzen_ai-1.6.0/venv/LLM/examples/ and copy "amd_genai_prompt.txt" file.
+      cp <TARGET-PATH>/ryzen_ai-1.6.0/venv/LLM/examples/amd_genai_prompt.txt .
 
                                     
 - Current working directory should have below files
