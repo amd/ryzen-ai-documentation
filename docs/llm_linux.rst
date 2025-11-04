@@ -167,16 +167,4 @@ Postprocessing
   NPU optimize decode model generated successfully.
   
 
-===============
-**Known Issues**
-===============
-
-1. Current release does not support these models
-
-   - AMD-OLMo-1B-SFT-DPO, Llama-3.2-3B, Llama-3.2-3B-Instruct, Phi-4-mini-instruct, Phi-4-mini-reasoning
-
-2. Here are list of models with known accuracy issue
-
-   - chatglm3-6b, Meta-Llama-3.1-8B-Instruct, Mistral-7B-Instruct-v0.2, Mistral-7B-Instruct-v0.3
-   - Qwen-2.5_1.5B_Instruct, Qwen2.5_3B_Instruct, Qwen2.5-7B-Instruct, Qwen2.5-Coder-1.5B-Instruct, Qwen2.5-Coder-7B-Instruct
 
