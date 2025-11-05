@@ -52,26 +52,23 @@ This page showcases an example of running LLM on RyzenAI NPU
 
   deployment   model_benchmark   amd_genai_prompt.txt   Phi-3.5-mini-instruct-onnx-ryzenai-npu
 
-- Few files under Phi-3.5 Model have to be updated to make it work for Linux environment 
+- Two files under Phi-3.5 Model have to be updated to make it work for Linux environment 
 
 .. code-block:: bash
 
-  1) vim Phi-3.5-mini-instruct-onnx-ryzenai-npu/genai_config.json
+  1) Edit genai_config.json file under Model folder: 
 
-      # Update line 8 to search for correct filename:
-      "custom_ops_library": "deployment/lib/libonnx_custom_ops.so"
+      - "custom_ops_library": "deployment/lib/libonnx_custom_ops.so"    (line 8)  
     
-      # Add a flag under line 11 as shown below:
-      "config_entries": {
-          "hybrid_dbg_use_aie_rope": "0",
+      - "config_entries": {
+          "hybrid_dbg_use_aie_rope": "0",                               (line 11 - Add flag under config_entries)
 
-  2) vim Phi-3.5-mini-instruct-onnx-ryzenai-npu/.cache/MatMulNBits_2_0_meta.json 
 
-      # We have to update Model Json file to port originally in Windows("\\") to now Linux("/") environment.
-      - Windows flow - "file_name": ".cache\\MatMulNBits_2_0_0.const"
-      - Linux flow   - "file_name": ".cache//MatMulNBits_2_0_0.const"
-    
-      # Helper script
+  2) Edit .cache/MatMulNBits_2_0_meta.json file under Model folder:
+
+      # Python utility script helps convert Windows-style paths in "MatMulNBits_2_0_meta.json" to Linux-style paths
+
+      # Python utility script
        import json
     
        with open('Phi-3.5-mini-instruct-onnx-ryzenai-npu/.cache/MatMulNBits_2_0_meta.json','r') as f:
@@ -83,7 +80,6 @@ This page showcases an example of running LLM on RyzenAI NPU
        with open('Phi-3.5-mini-instruct-onnx-ryzenai-npu/.cache/MatMulNBits_2_0_meta.json','w') as f:
          f.writelines(lines)
 
-  
   
 - Lastly, add directories for LD_LIBRARY_PATH
 
