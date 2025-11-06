@@ -77,25 +77,7 @@ Install Ryzen AI Software
 The Ryzen AI Software packages are now installed in the conda environment created by the installer.
 
 .. note::
-   **The LLM flow requires an additional patch installation.** See the next section (:ref:`apply-patch`) for instructions.
-
-.. _apply-patch:
-
-*************************
-Apply RyzenAI 1.6.1 Patch
-*************************
-
-This patch is required for users who need to rebuild the ONNX Runtime Vitis AI EP from source instead of using the prebuilt EP included with the installer, as it includes modifications not yet merged into the public ONNX Runtime repository.
-
-**Steps:**
-
-- Download and extract the patch :download:`ort_patches_rai_1.6.1.zip <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ort_patches_rai_1.6.1.zipp>`
-- Open an **Administrator** Command Prompt or PowerShell in the extracted folder.
-- Run:
-
-  .. code-block:: bash
-
-     # TODO: Update with instructions for applying the patch
+   **Nuget package is available to download at :download:`ryzen-ai-1.6.1-nuget.zip <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ryzen-ai-1.6.1-nuget.zip>`.
 
 
 .. _quicktest:
