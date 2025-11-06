@@ -49,8 +49,8 @@ Install NPU Drivers
 
 - Download and Install the NPU driver version: 32.0.203.280 or newer using the following links: 
 
-  - :download:`NPU Driver (Version 32.0.203.280) <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=NPU_RAI1.5_280_WHQL.zip>`
-  - :download:`NPU Driver (Version 32.0.203.304) <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=NPU_RAI1.6_304_WHQL.zip>`
+  - :download:`NPU Driver (Version 32.0.203.280) <https://download.amd.com/opendownload/RyzenAI/Driver/NPU_RAI1.5_280_WHQL.zip>`
+  - :download:`NPU Driver (Version 32.0.203.304) <https://download.amd.com/opendownload/RyzenAI/Driver/NPU_RAI1.6_304_WHQL.zip>`
 
 - Install the NPU drivers by following these steps:
 
@@ -66,13 +66,13 @@ Install NPU Drivers
 Install Ryzen AI Software
 *************************
 
-- Download the Ryzen AI Software installer :download:`ryzen-ai-lt-1.6.0-GA.exe <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ryzen-ai-lt-1.6.0-GA.exe>`.
+- Download the Ryzen AI Software installer :download:`ryzen-ai-lt-1.6.1.exe <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ryzen-ai-lt-1.6.1.exe>`.
 
 - Launch the EXE installer and follow the instructions on the installation wizard:
 
   - Accept the terms of the Licence agreement
-  - Provide the destination folder for Ryzen AI installation (default: ``C:\Program Files\RyzenAI\1.6.0``)
-  - Specify the name for the conda environment (default: ``ryzen-ai-1.6.0``)
+  - Provide the destination folder for Ryzen AI installation (default: ``C:\Program Files\RyzenAI\1.6.1``)
+  - Specify the name for the conda environment (default: ``ryzen-ai-1.6.1``)
 
 The Ryzen AI Software packages are now installed in the conda environment created by the installer.
 
@@ -82,23 +82,20 @@ The Ryzen AI Software packages are now installed in the conda environment create
 .. _apply-patch:
 
 *************************
-Apply RyzenAI 1.6.0 Patch
+Apply RyzenAI 1.6.1 Patch
 *************************
 
-This mandatory patch updates ``onnx_custom_ops.dll`` in the Ryzen AI installation.
+This patch is required for users who need to rebuild the ONNX Runtime Vitis AI EP from source instead of using the prebuilt EP included with the installer, as it includes modifications not yet merged into the public ONNX Runtime repository.
 
 **Steps:**
 
-- Download and extract the patch :download:`ryzenai-1.6.0-patch.zip <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ryzenai-1.6.0-patch.zip>`
+- Download and extract the patch :download:`ort_patches_rai_1.6.1.zip <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ort_patches_rai_1.6.1.zipp>`
 - Open an **Administrator** Command Prompt or PowerShell in the extracted folder.
 - Run:
 
   .. code-block:: bash
 
-     python ryzenai-1.6.0-patch.py --install-path "C:\Program Files\RyzenAI\1.6.0"
-
-.. note::
-   The script creates a timestamped backup before replacing the DLL.
+     # TODO: Update with instructions for applying the patch
 
 
 .. _quicktest:
