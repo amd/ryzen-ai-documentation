@@ -93,8 +93,12 @@ Install Ryzen AI Software
 
 .. code-block:: bash
 
-   tar -xvzf ryzen_ai-1.6.1.tgz 
+   mkdir ryzen_ai-1.6.1
+   cp ryzen_ai-1.6.1.tgz ryzen_ai-1.6.1
+
    cd ryzen_ai-1.6.1
+   tar -xvzf ryzen_ai-1.6.1.tgz 
+   
 
 - Install RyzenAI package at your desired target path
 
