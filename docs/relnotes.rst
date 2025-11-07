@@ -51,8 +51,10 @@ The following table lists which types of models are supported on what hardware p
 *************
 Version 1.6.1
 *************
+- Ryzen AI :doc:`Linux release <linux>` available through the `Ryzen AI Software Early Access Lounge <https://account.amd.com/en/member/ryzenai-sw-ea.html#tabs-a5e122f973-item-4757898120-tab>`_.
 
-- Ryzen AI :doc:`Linux release <linux>` available for CNN, Transformer, and LLM flows. 
+  - Support for CNN, Transformer, and LLM flows
+
 
 ***********
 Version 1.6
