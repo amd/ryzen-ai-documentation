@@ -77,7 +77,7 @@ Install Ryzen AI Software
 The Ryzen AI Software packages are now installed in the conda environment created by the installer.
 
 .. note::
-   NuGet package is available to download at :download:`ryzen-ai-1.6.1-nuget.zip <:https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=ryzen-ai-1.6.1-nuget.zip>`.
+   NuGet package is available to download at :download:`ryzen-ai-1.6.1-nuget.zip <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=ryzen-ai-1.6.1-nuget.zip>`.
 
 
 .. _quicktest:
