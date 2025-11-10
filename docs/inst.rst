@@ -49,8 +49,8 @@ Install NPU Drivers
 
 - Download and Install the NPU driver version: 32.0.203.280 or newer using the following links: 
 
-  - :download:`NPU Driver (Version 32.0.203.280) <https://download.amd.com/opendownload/RyzenAI/Driver/NPU_RAI1.5_280_WHQL.zip>`
-  - :download:`NPU Driver (Version 32.0.203.304) <https://download.amd.com/opendownload/RyzenAI/Driver/NPU_RAI1.6_304_WHQL.zip>`
+  - :download:`NPU Driver (Version 32.0.203.280) <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=NPU_RAI1.5_280_WHQL.zip>`
+  - :download:`NPU Driver (Version 32.0.203.304) <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=NPU_RAI1.6_304_WHQL.zip>`
 
 - Install the NPU drivers by following these steps:
 
