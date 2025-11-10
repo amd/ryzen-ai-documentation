@@ -75,13 +75,13 @@ To run LLMs in best performance mode, follow these steps:
      cd C:\Windows\System32\AMD
      xrt-smi configure --pmode performance
 
-2. Activate the Ryzen AI 1.6.1 Conda Environment and install ``torch`` library.
+2. Activate the Ryzen AI Conda Environment and install ``torch`` library.
 
 Run the following commands:
 
 .. code-block:: bash
 
-   conda activate ryzen-ai-1.6.1
+   conda activate ryzen-ai-<version>
    pip install torch==2.7.1
 
 This step is required for running the python script.
@@ -90,7 +90,7 @@ This step is required for running the python script.
 
    For the C++ program, if you choose not to activate the Conda environment, open a Windows Command Prompt and manually set the environment variable before continuing:
 
-   ``set RYZEN_AI_INSTALLATION_PATH=C:\\Program Files\\RyzenAI\\1.6.1``
+   ``set RYZEN_AI_INSTALLATION_PATH=C:\\Program Files\\RyzenAI\\<version>``
 
 
 C++ Program
