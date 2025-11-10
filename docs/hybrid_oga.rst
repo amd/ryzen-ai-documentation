@@ -37,7 +37,7 @@ Hugging Face collection of NPU models: https://huggingface.co/collections/amd/ry
 Changes Compared to Previous Release
 ************************************
 
-- OGA version is updated to v0.9.2 (Ryzen AI 1.6) from v0.7.0 (Ryzen AI 1.5).
+- OGA version is updated to v0.9.2.2 (Ryzen AI 1.6.1) from v0.7.0 (Ryzen AI 1.5).
 - Starting with the 1.6 release, a new set of hybrid models is published. Hybrid models from earlier releases are not compatible with this version. If you are using Ryzen AI 1.6, please download the updated models.
 - Previously published NPU-only models continue to run, but for higher performance download the new NPU-only models published with 1.6.
 - Context length support is improved from 2K to 4K tokens (combined input and output).
@@ -75,13 +75,13 @@ To run LLMs in best performance mode, follow these steps:
      cd C:\Windows\System32\AMD
      xrt-smi configure --pmode performance
 
-2. Activate the Ryzen AI 1.6.0 Conda Environment and install ``torch`` library.
+2. Activate the Ryzen AI 1.6.1 Conda Environment and install ``torch`` library.
 
 Run the following commands:
 
 .. code-block:: bash
 
-   conda activate ryzen-ai-1.6.0
+   conda activate ryzen-ai-1.6.1
    pip install torch==2.7.1
 
 This step is required for running the python script.
@@ -90,12 +90,7 @@ This step is required for running the python script.
 
    For the C++ program, if you choose not to activate the Conda environment, open a Windows Command Prompt and manually set the environment variable before continuing:
 
-   ``set RYZEN_AI_INSTALLATION_PATH=C:\\Program Files\\RyzenAI\\1.6.0``
-
-3. Apply RyzenAI 1.6.0 Patch
-
-- Before running LLMs, ensure the RyzenAI 1.6.0 patch has been applied.  
-- See :ref:`apply-patch` in the :doc:`inst` page for patch details.
+   ``set RYZEN_AI_INSTALLATION_PATH=C:\\Program Files\\RyzenAI\\1.6.1``
 
 
 C++ Program
@@ -245,7 +240,8 @@ In addition to the full RyzenAI software stack, we also provide standalone wheel
 
 .. code-block:: bash
 
-   pip install onnxruntime-genai-directml-ryzenai==0.9.2 --extra-index-url=https://pypi.amd.com/simple
+   pip install onnxruntime-genai-directml-ryzenai==0.9.2.2 --extra-index-url=https://pypi.amd.com/simple
+   pip install model-generate==1.6.1 --extra-index-url=https://pypi.amd.com/simple
 
 3. Navigate to your working directory and download the desired Hybrid/NPU model
 
