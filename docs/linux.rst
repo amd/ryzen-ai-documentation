@@ -2,12 +2,13 @@
 Linux Installation Instructions
 #########################
 
-Ryzen AI for Linux supports compiling and running AI models on the AMD Neural Processing Unit (NPU). The current release supports the following model types:
+Ryzen AI for Linux supports compiling and running AI models on the AMD Neural Processing Unit (NPU). The current release supports:
 
 - CNN models in INT8 format
 - CNN models in BF16 format
 - NLP models (e.g., BERT, encoder-based) in BF16 format
 - LLMs (NPU-only flow)
+- Platforms - STX, KRK
 
 
 *************
