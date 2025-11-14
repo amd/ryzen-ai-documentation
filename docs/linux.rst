@@ -40,8 +40,10 @@ Use the commands below to install Python 3.10.x along with certain dependencies
 
 .. code-block:: bash
 
-  sudo apt-get install python3.10
-  sudo apt-get install python3.10-venv
+  sudo apt update
+  sudo apt install python3.10
+  sudo apt install python3.10-venv
+  sudo apt install libboost-filesystem1.74.0
 
 After installing required Ubuntu distribution and Python version, proceed with NPU drivers installation
 
