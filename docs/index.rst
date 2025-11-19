@@ -19,21 +19,22 @@ Quick Start
 Development Flow Overview
 *************************
 
-The Ryzen AI development flow does not require any modifications to the existing model training processes and methods. The pre-trained model can be used as the starting point of the Ryzen AI flow.
+The Ryzen AI development flow does not require any modifications to the existing model training processes and methods. You can use the pre-trained model as the starting point for the Ryzen AI flow.
 
 Quantization
 ============
 
-Quantization involves converting the AI model’s parameters from floating-point to lower-precision representations, such as 8-bit integer. Quantized models are more power-efficient, utilize less memory, and offer better performance. Ryzen AI Software also supports CNN and Transformer models in floating-point 32 format as input models without quantization. These models are internally converted to bfloat16 and compiled using the bfloat16 compilation flow.
+Quantization involves converting the AI model’s parameters from floating-point to lower-precision representations, such as 8-bit integer. Quantized models are more power-efficient, use less memory, and offer better performance. Ryzen AI Software also supports CNN and Transformer models in floating-point 32 format as input models without quantization. These models are internally converted to bfloat16 and compiled using the bfloat16 compilation flow.
 
 
-**AMD Quark** is a comprehensive cross-platform deep learning toolkit designed to simplify and enhance the quantization of deep learning models. Supporting both PyTorch and ONNX models, Quark empowers developers to optimize their models for deployment on a wide range of hardware backends, achieving significant performance gains without compromising accuracy.
+**AMD Quark** is a comprehensive cross-platform deep learning toolkit designed to simplify and enhance the quantization of deep learning models. Quark supports both PyTorch and ONNX models. It empowers developers to optimize models for deployment across diverse hardware backends, achieving significant performance gains without compromising accuracy.
+
 
 For more details, refer to the :doc:`model_quantization` page.
 
 Compilation and Deployment
 ==========================
-The AI model is deployed using the ONNX Runtime with either C++ or Python APIs. The Vitis AI Execution Provider included in the ONNX Runtime intelligently determines what portions of the AI model should run on the NPU, optimizing workloads to ensure optimal performance with lower power consumption.
+You can deply the AI model using the ONNX Runtime with either C++ or Python APIs. The Vitis AI Execution Provider included in the ONNX Runtime intelligently determines what portions of the AI model to run on the NPU. It optimizes the workloads to ensure optimal performance with lower power consumption.
 
 For more details, refer to the :doc:`modelrun` page.
 

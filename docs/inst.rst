@@ -35,9 +35,9 @@ The following dependencies must be installed on the system before installing the
 
 |warning| **IMPORTANT**:
 
-- Visual Studio 2022 Community: ensure that `Desktop Development with C++` is installed
+- Visual Studio 2022 Community: Install `Desktop Development with C++`
 
-- Miniforge: ensure that the following path is set in the System PATH variable: ``path\to\miniforge3\condabin`` or ``path\to\miniforge3\Scripts\`` or ``path\to\miniforge3\`` (The System PATH variable should be set in the *System Variables* section of the *Environment Variables* window).
+- Miniforge: ensure to set the System PATH variable to ``path\to\miniforge3\condabin`` or ``path\to\miniforge3\Scripts\`` or ``path\to\miniforge3\``. To configure the System PATH variable, go to *System Variables* section in the *Environment Variables* window.
 
 |
 
@@ -47,7 +47,7 @@ The following dependencies must be installed on the system before installing the
 Install NPU Drivers
 *******************
 
-- Download and Install the NPU driver version: 32.0.203.280 or newer using the following links: 
+- Download and Install the NPU driver version: 32.0.203.280 or newer using the following links:
 
   - :download:`NPU Driver (Version 32.0.203.280) <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=NPU_RAI1.5_280_WHQL.zip>`
   - :download:`NPU Driver (Version 32.0.203.304) <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=NPU_RAI1.6_304_WHQL.zip>`
@@ -74,7 +74,7 @@ Install Ryzen AI Software
   - Provide the destination folder for Ryzen AI installation (default: ``C:\Program Files\RyzenAI\1.6.1``)
   - Specify the name for the conda environment (default: ``ryzen-ai-1.6.1``)
 
-The Ryzen AI Software packages are now installed in the conda environment created by the installer.
+The installer creates a conda environment and installs the Ryzen AI Software packages in it.
 
 .. note::
    NuGet package is available to download at :download:`ryzen-ai-1.6.1-nuget.zip <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=ryzen-ai-1.6.1-nuget.zip>`.
@@ -87,7 +87,7 @@ The Ryzen AI Software packages are now installed in the conda environment create
 Test the Installation
 *********************
 
-The Ryzen AI Software installation folder contains test to verify that the software is correctly installed. This installation test can be found in the ``quicktest`` subfolder.
+The Ryzen AI Software installation folder contains a test to verify that the software is correctly installed. The ``quicktest`` subfolder contains the test.
 
 - Open a Conda command prompt (search for "Miniforge Prompt" in the Windows start menu)
 
@@ -117,7 +117,7 @@ The Ryzen AI Software installation folder contains test to verify that the softw
 
 .. note::
 
-    The full path to the Ryzen AI Software installation folder is stored in the ``RYZEN_AI_INSTALLATION_PATH`` environment variable.
+The ``RYZEN_AI_INSTALLATION_PATH`` environment variable stores the full path to the Ryzen AI Software installation folder.
 
 
 

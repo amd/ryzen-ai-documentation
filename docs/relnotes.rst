@@ -10,7 +10,7 @@ Release Notes
 Supported Configurations
 ************************
 
-Ryzen AI 1.6 Software supports AMD processors codenamed Phoenix, Hawk Point, Strix, Strix Halo, and Krackan Point. These processors can be found in the following Ryzen series:
+Ryzen AI 1.6 Software supports AMD processors codenamed Phoenix, Hawk Point, Strix, Strix Halo, and Krackan Point. The following Ryzen series contain these processors:
 
 - Ryzen 200 Series
 - Ryzen 7000 Series, Ryzen PRO 7000 Series
@@ -19,14 +19,18 @@ Ryzen AI 1.6 Software supports AMD processors codenamed Phoenix, Hawk Point, Str
 
 For a complete list of supported devices, refer to the `processor specifications <https://www.amd.com/en/products/specifications/processors.html>`_ page (look for the "AMD Ryzen AI" column towards the right side of the table, and select "Available" from the pull-down menu).
 
-The rest of this document will refer to Phoenix as PHX, Hawk Point as HPT, Strix and Strix Halo as STX, and Krackan Point as KRK.
+The rest of this document uses the following abbreviations:
+- PHX for Phoenix
+- HPT for Hawk Point
+- STX for Strix and Strix Halo
+- KRK for Krackan Point
 
 
 *************************
 Model Compatibility Table
 *************************
 
-The following table lists which types of models are supported on what hardware platforms.
+The following table shows which types of models each hardware platform supports:
 
 .. list-table::
    :header-rows: 1
@@ -69,19 +73,19 @@ Version 1.6
   - Average 3x compile time improvement
   - Smaller installation size
   - Reduction in CPU overhead by pushing data layout transformation to NPU
-  - Dynamic batch size support for compilation 
+  - Dynamic batch size support for compilation
 
-- New Integer Compiler (CNN) 
+- New Integer Compiler (CNN)
 
   - Support for General Asymmetric Quantization enabling third party quantized models to run on NPU
-  - Support for XINT8, A8W8, A16W8 
+  - Support for XINT8, A8W8, A16W8
 
-- LLM 
+- LLM
 
-  - Broad Set of NPU only models optimized performance 
-  - New set of hybrid models with bfp16 activation 
+  - Broad Set of NPU only models optimized performance
+  - New set of hybrid models with bfp16 activation
   - New architecture support in hybrid flow (Phi-4, Qwen-3)
-  - Context length improvement from 2K to 4K for all models. 
+  - Context length improvement from 2K to 4K for all models.
 
 
 - Stable Diffusion Demo
@@ -93,8 +97,8 @@ Version 1.6
 
 - Breaking Changes
 
-  - For running INT8 models on STX/KRK or newer devices, the ``xclbin`` provider option is no longer supported and should no longer be used. See :ref:`Using INT8 Models <int8-models>` for full details.
-  - For running INT8 models on PHX/HPT devices, the ``target`` option should be set to ``X1``. The NPU binary should still be specified using the ``xclbin`` provider option. See :ref:`Using INT8 Models <int8-models>` for full details.
+  - For running INT8 models on STX/KRK or newer devices, the ``xclbin`` provider option is no longer supported and can no longer be used. See :ref:`Using INT8 Models <int8-models>` for full details.
+  - For running INT8 models on PHX/HPT devices, set the ``target`` option to ``X1``. Specify The NPU binary still using the ``xclbin`` provider option. See :ref:`Using INT8 Models <int8-models>` for full details.
   - For BF16 models, the default configurations file requires a new ``target`` section. See :ref:`Config File Options <configuration-file>` for full details.
   - LLM:
 
@@ -108,11 +112,11 @@ Version 1.5
 
 - EoU Improvement
 
-  - Application concurrency: improves the resource distribution across applications 
+  - Application concurrency: improves the resource distribution across applications
   - Model Compilation time: 2x – 8x faster
-  - Installation Size: 80% smaller 
+  - Installation Size: 80% smaller
 - Stable Diffusion demo pipelines (preview)
-- 4K context length supported (on selected models) 
+- 4K context length supported (on selected models)
 - LLM Context cache support (on selected models)
 - Bug fixes
 - New LLMs released
@@ -184,8 +188,12 @@ Version 1.4
 
   - `Lemonade SDK <https://github.com/onnx/turnkeyml/blob/main/docs/lemonade/README.md>`_
 
-    - `Lemonade Server <https://github.com/onnx/turnkeyml/blob/main/docs/lemonade/README.md#serving>`_: A server interface that uses the standard Open AI API, allowing applications in any language to integrate with Lemonade Server for local LLM deployment and compatibility with existing Open AI apps.
-    - `Lemonade Python API <https://github.com/onnx/turnkeyml/blob/main/docs/lemonade/README.md#api>`_: Offers High-Level API for easy integration of Lemonade LLMs into Python applications and Low-Level API for custom experiments with specific checkpoints, devices, and tools.
+    - `Lemonade Server <https://github.com/onnx/turnkeyml/blob/main/docs/lemonade/README.md#serving>`_: Uses the standard Open AI API. It allows applications in any programming language to integrate with Lemonade Server to deploy LLMs locally, while remaining compatible with existing OpenAI-based apps
+    - `Lemonade Python API <https://github.com/onnx/turnkeyml/blob/main/docs/lemonade/README.md#api>`_: Offers the following two API options:
+
+      - High-level API for easy integration of Lemonade LLMs into Python applications
+      - Low-level API for custom experiments with specific checkpoints, devices, and tools
+
     - `Lemonade Command Line <https://github.com/onnx/turnkeyml/blob/main/docs/lemonade/getting_started.md#cli-commands>`_ Interface easily benchmark, measure accuracy, prompt or gather memory usage of your LLM.
   - `TurnkeyML <https://github.com/onnx/turnkeyml>`_ – Open-source tool that includes low-code APIs for general ONNX workflows.
   - `Digest AI <https://github.com/onnx/digestai>`_ – A Model Ingestion and Analysis Tool in collaboration with the Linux Foundation.
@@ -221,11 +229,11 @@ Version 1.4
 
 - Known Issues:
 
-  - Microsoft Windows Insider Program (WIP) users may see warnings or need to restart when running all applications concurrently.
+  - Microsoft Windows Insider Program (WIP) users might see warnings or need to restart when running all applications concurrently.
 
-    - NPU driver and workloads will continue to work.
+    - NPU driver and workloads continue to work.
 
-  - Context creation may appear to be limited when some application do not close contexts quickly.
+  - Context creation might appear to be limited when some application do not close contexts quickly.
 
 
 ***********
@@ -319,7 +327,7 @@ Version 1.3
 - Known Issues:
 
   - Extended compile time for some models with BF16/BFP16 data types
-  - LLM models with 4K sequence length may revert to CPU execution
+  - LLM models with 4K sequence length might revert to CPU execution
   - Accuracy drop in some Transformer models using BF16/BFP16 data types, requiring Quark intervention
 
 ***********
@@ -335,7 +343,7 @@ Version 1.2
 
 - New model support:
 
-  - `LLM flow support <https://ryzenai.docs.amd.com/en/latest/llm_flow.html>`_ for multiple models in both PyTorch and ONNX flow (optimized model support will be released asynchronously)
+  - `LLM flow support <https://ryzenai.docs.amd.com/en/latest/llm_flow.html>`_ for multiple models in both PyTorch and ONNX flow (optimized model support releases asynchronously)
   - SDXL-T with limited performance optimization
 
 - New EoU tools:
@@ -386,7 +394,7 @@ Version 1.2
   - Support of mean operation with keepdim=True.
 - Resolved issues:
 
-  - NPU SW stack will fail to initialize when the system is out of memory. This could impact camera functionality when Microsoft Effect Pack is enabled.
+  - NPU SW stack fails to initialize when the system is out of memory. This could impact camera functionality when Microsoft Effect Pack is enabled.
   - If Microsoft Effects Pack is overloaded with other 4+ applications that use NPU to do inference, then camera functionality can be impacted. Can be fixed with a reboot. This will be fixed in the next release.
 
 ***********
@@ -678,12 +686,12 @@ Known issues
 ============
 
 - Flow control OPs including "Loop", "If", "Reduce" not supported by VOE
-- Resizing OP in ONNX opset 10 or lower is not supported by VOE
+- VOE does not support the Resizing OP in ONNX opset 10 or lower.
 - Tensorflow 2.x quantizer supports models within tf.keras.model only
-- Running quantizer docker in WSL on Ryzen AI laptops may encounter OOM (Out-of-memory) issue
+- Running quantizer docker in WSL on Ryzen AI laptops might encounter OOM (Out-of-memory) issue
 - Running multiple concurrent models using temporal sharing on the 5x4 binary is not supported
-- Only batch sizes of 1 are supported
-- Only models with the pretrained weights setting = TRUE should be imported
+- Supports only batch sizes of 1
+- Import only models with the pretrained weights setting = TRUE
 - Launching multiple processes on 4 1x4 binaries can cause hangs, especially when models have many sub-graphs
 
 |
@@ -700,10 +708,10 @@ Quantizer
 
   - Pytorch 1.13 and 2.0 support
   - Mixed precision quantization support, supporting float32/float16/bfloat16/intx mixed quantization
-  - Support of bit-wise accuracy cross check between quantizer and ONNX-runtime
-  - Split and chunk operators were automatically converted to slicing
-  - Add support for BFP data type quantization
-  - Support of some operations in quantizer: where, less, less_equal, greater, greater_equal, not, and, or, eq, maximum, minimum, sqrt, Elu, Reduction_min, argmin
+  - Supports bit-wise accuracy cross check between quantizer and ONNX-runtime
+  - Converts split and chunk operators automatically to slicing
+  - Added support for BFP data type quantization
+  - Supports some operations in quantizer: where, less, less_equal, greater, greater_equal, not, and, or, eq, maximum, minimum, sqrt, Elu, Reduction_min, argmin
   - QAT supports training on multiple GPUs
   - QAT supports operations with multiple inputs or outputs
 
@@ -765,7 +773,7 @@ Known issues
 - Flow control OPs including "Loop", "If", "Reduce" not supported by VOE
 - Resize OP in ONNX opset 10 or lower not supported by VOE
 - Tensorflow 2.x quantizer supports models within tf.keras.model only
-- Running quantizer docker in WSL on Ryzen AI laptops may encounter OOM (Out-of-memory) issue
+- Running quantizer docker in WSL on Ryzen AI laptops might encounter OOM (Out-of-memory) issue
 - Run multiple concurrent models by temporal sharing on the Performance optimized overlay (5x4.xclbin) is not supported
 - Support batch size 1 only for NPU
 
@@ -861,7 +869,7 @@ Known issues
 - Flow control OPs including "Loop", "If", "Reduce" are not supported by VOE
 - Resize OP in ONNX opset 10 or lower not supported by VOE
 - Tensorflow 2.x quantizer supports models within tf.keras.model only
-- Running quantizer docker in WSL on Ryzen AI laptops may encounter OOM (Out-of-memory) issue
+- Running quantizer docker in WSL on Ryzen AI laptops might encounter OOM (Out-of-memory) issue
 - Run multiple concurrent models by temporal sharing on the Performance optimized overlay (5x4.xclbin) is not supported
 
 
