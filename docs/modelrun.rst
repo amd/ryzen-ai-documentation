@@ -11,7 +11,7 @@ Introduction
 
 The Ryzen AI Software supports models saved in the ONNX format and uses ONNX Runtime as the primary mechanism to load, compile and run models.
 
-|memo| **NOTE**: Models with ONNX opset 17 are recommended. If your model uses a different opset version, consider converting it using the `ONNX Version Converter <https://github.com/onnx/onnx/blob/main/docs/VersionConverter.md>`_
+|memo| **NOTE**: We recommend models with ONNX opset 17. If your model uses a different opset version, consider converting it using the `ONNX Version Converter <https://github.com/onnx/onnx/blob/main/docs/VersionConverter.md>`_
 
 For a complete list of supported operators, consult this page: :doc:`Supported Operators <ops_support>`.
 
@@ -37,7 +37,7 @@ Models are loaded by creating an ONNX Runtime ``InferenceSession`` using the Vit
 
 The ``provider_options`` parameter enables the configuration of the Vitis AI Execution Provider (EP). For a comprehensive list of supported provider options, refer to the :ref:`Vitis AI EP Options Reference Guide <ep-options-ref-guide>` below.
 
-When a model is first loaded into an ONNX Runtime (ORT) inference session, it is compiled into the format required by the NPU. The resulting compiled output can be saved as an ORT EP context file or stored in the Vitis AI EP cache directory.
+When you first load a model into an ONNX Runtime (ORT) inference session, ORT compiles it into the format required by the NPU. You can save the resulting compiled output as an ORT EP context file or store it in the Vitis AI EP cache directory.
 
 If a compiled version of the ONNX model is already available — either as an EP context file or within the Vitis AI EP cache — the model will not be recompiled. Instead, the precompiled version will be loaded automatically. This greatly reduces session creation time and improves overall efficiency. For more details, refer to the section on :ref:`Managing Compiled Models <precompiled-models>`.
 
@@ -45,7 +45,7 @@ If a compiled version of the ONNX model is already available — either as an EP
 Deploying Models
 ================
 
-Once the ONNX Runtime inference session is initialized and the model is compiled, the model is deployed using the ONNX Runtime ``run()`` API:
+After the initialization and compilation of the ONNX Runtime inference session, the ONNX Runtime ``run()`` API deploys the model:
 
 .. code-block:: python
 
@@ -56,7 +56,7 @@ Once the ONNX Runtime inference session is initialized and the model is compiled
     outputs = session.run(None, input_data) # Run the model
 
 
-The ONNX graph is automatically partitioned into multiple subgraphs by the Vitis AI Execution Provider (EP). During deployment, the subgraph(s) containing operators supported by the NPU are executed on the NPU. The remaining subgraph(s) are executed on the CPU. This graph partitioning and deployment technique across CPU and NPU is fully automated by the VAI EP and is totally transparent to the end-user.
+The Vitis AI Execution Provider (EP) automatically partitions the ONNX graph into multiple subgraphs. During deployment, the NPU executes the subgraph(s) that contain operators it supports. The CPU executes the remaining subgraph(s). The VAI EP fully automates this graph partitioning and deployment technique across CPU and NPU, and it remains totally transparent to the end-user.
 
 
 .. _ep-options-ref-guide:
@@ -68,7 +68,7 @@ Vitis AI EP Options Reference Guide
 VitisAI EP Provider Options
 ===========================
 
-The ``provider_options`` parameter of the ORT ``InferenceSession`` allows passing options to configure the Vitis AI EP. The following options are supported:
+The ``provider_options`` parameter of the ORT ``InferenceSession`` allows passing options to configure the Vitis AI EP. It supports the following options:
 
 .. list-table:: Vitis AI EP Provider Options
          :header-rows: 1
@@ -129,7 +129,7 @@ The ``provider_options`` parameter of the ORT ``InferenceSession`` allows passin
 Config File Options
 ===================
 
-When compiling BF16 models, a JSON configuration file can be provided to the VitisAI EP using the :option:`config_file` provider option. This configuration file is used to specify additional options to the compiler. 
+You can provide a JSON configuration file to the VitisAI EP using the :option:`config_file` provider option when compiling BF16 models. You can use this configuration file to specify additional options to the compiler.
 
 The default the configuration file for compiling BF16 models contains the following:
 
@@ -163,7 +163,7 @@ The default the configuration file for compiling BF16 models contains the follow
     }
 
 
-The ``vaiml_config`` section of the configuration file contains the user options. The supported user options are described below.
+The ``vaiml_config`` section of the configuration file contains the user options. The following table describes the supported user options:
 
 .. list-table:: Config File Options (vaiml_config)
          :header-rows: 1
@@ -188,9 +188,9 @@ The ``vaiml_config`` section of the configuration file contains the user options
 Using BF16 Models
 **************************
 
-When compiling BF16 models, an optional configuration file can be provided to the VitisAI EP. This file is specified using the :option:`config_file` provider option. For more details, refer to :ref:`Config File Options <configuration-file>` section.
+When compiling BF16 models, you can provide an optional configuration file to the VitisAI EP. Use the :option:`config_file` provider option to specify the file. For more details, refer to the :ref:`Config File Options <configuration-file>` section.
 
-|memo| **NOTE**: Running BF16 Models is only supported for STX/KRK or newer devices. For the model compatibility table see :doc:`Release Notes <relnotes>`.
+|memo| **NOTE**: STX/KRK or newer devices only support running BF16 models. For the model compatibility table, see :doc:`Release Notes <relnotes>`.
 
 
 Sample Python Code
@@ -248,25 +248,25 @@ Ryzen AI 1.6 features a new compiler for INT8 models. This compiler is enabled b
 
 .. _target-options:
 
-The :option:`target` provider options can be used to select which backend to use when compiling the INT8 model. The option accepts the following values:
+Use the :option:`target` provider options to select which backend to use when compiling the INT8 model. The option accepts the following values:
 
 - ``X2`` — Default backend for integer models. Supports STX, KRK and newer devices.
-- ``X1`` — Legacy backend for integer models. Supports PHX, HPT, STX and KRK devices. This setting should be used when running on PHX and HPT devices. It can also be used on STX and KRK devices in the cases where better results are achieved than with the default X2 setting.
+- ``X1`` — Legacy backend for integer models. Supports PHX, HPT, STX and KRK devices. Use this setting when running on PHX and HPT devices. You can also use it on STX and KRK devices when it achieves better results than with the default X2 setting.
 
 Device-Specific Settings
 ========================
 
 Suitable settings for the :option:`target` and :option:`xclbin` provider options are dependent on the type of device. The application must perform a device detection check before configuring the Vitis AI EP. For more details on how to do this, refer to the :doc:`Application Development <app_development>` page.
 
-When compiling INT8 models on STX/KRK devices:
+Consider the following points when you compile INT8 models on STX/KRK devices:
 
-- The :option:`target` provider option can be set to ``X2`` (default) or ``X1`` (legacy backend, may provide better results for some models).
-- The :option:`xclbin` provider option must not be set.
+- Set the :option:`target` provider option to ``X2`` (default) or ``X1`` (legacy backend; might provide better results for some models).
+- Do not set the :option:`xclbin` provider option.
 
-When compiling INT8 models on PHX/HPT devices:
+Consider the following points when you compile INT8 models on PHX/HPT devices:
 
-- The :option:`target` provider option must be set to ``X1``. 
-- The :option:`xclbin` provider option must be set to ``%RYZEN_AI_INSTALLATION_PATH%\voe-4.0-win_amd64\xclbins\phoenix\4x4.xclbin`` or to a copy of this file included in the final version of the application. The legacy "1x4" and "Nx4" xclbin files are no longer supported and should not be used.
+- Set the :option:`target` provider option to ``X1``.
+- Set the :option:`xclbin` provider option to ``%RYZEN_AI_INSTALLATION_PATH%\voe-4.0-win_amd64\xclbins\phoenix\4x4.xclbin`` or to a copy of this file included in the final version of the application. The system no longer supports the "1x4" and "Nx4" xclbin files.
 
 
 Sample Python Code
