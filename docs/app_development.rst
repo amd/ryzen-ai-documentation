@@ -14,7 +14,7 @@ This page captures requirements and recommendations for developers looking to cr
 VitisAI EP / NPU Driver Compatibility
 *************************************
 
-The VitisAI EP requires a compatible version of the NPU drivers. For each version of the VitisAI EP, compatible drivers are bounded by a minimum version and a maximum release date. NPU drivers are backward compatible with VitisAI EP released up to three years. The maximum driver release date is therefore set to three years after the release date of the corresponding VitisAI EP.
+The VitisAI EP requires a compatible version of the NPU drivers. For each version of the VitisAI EP, compatible drivers are bounded by a minimum version and a maximum release date. NPU drivers are backward compatible with VitisAI EP released up to three years. We therefore set the maximum driver release date to three years after the release date of the corresponding VitisAI EP.
 
 The following table summarizes the driver requirements for the different versions of the VitisAI EP.
 
@@ -46,7 +46,7 @@ The following table summarizes the driver requirements for the different version
      - 32.0.201.204
      - July 30th, 2027
 
-The application must verify that NPU drivers compatible with the version of the Vitis AI EP in use are installed.
+The application must verify that the system has NPU drivers compatible with the Vitis AI EP version in use.
 
 .. _apu-types:
 
@@ -84,7 +84,7 @@ The Ryzen AI Software supports various types of NPU-enabled APUs, referred to as
      - 0x20
      - KRK
 
-The application must verify that it is running on an AMD processor with an NPU, and that the NPU type is supported by the version of the Vitis AI EP in use.
+The application must verify that it is running on an AMD processor with an NPU compatible with the Vitis AI EP version in use.
 
 .. _npu-utils:
 
@@ -92,7 +92,7 @@ The application must verify that it is running on an AMD processor with an NPU, 
 NPU Utilities
 *****************
 
-When deploying applications across various NPU devices, users can determine the specific type of NPU device using Python/C++ code. Based on the detected device—such as PHX, STX, KRK, or other device—users should configure the appropriate provider options as outlined in :doc:`Model Compilation and Deployment <modelrun>`.  
+When deploying applications across various NPU devices, users can determine the specific type of NPU device using Python/C++ code. Based on the detected device—such as PHX, STX, KRK, or other device—users should configure the appropriate provider options as outlined in :doc:`Model Compilation and Deployment <modelrun>`.
 
 For Python, the user can get the specific NPU type using the following example `get_npu_info` function in the ``%RYZEN_AI_INSTALLATION_PATH%\quicktest\quicktest.py``
 
@@ -106,10 +106,10 @@ Application Development Requirements
 ONNX-RT Session
 ===============
 
-The application should only use the Vitis AI Execution Provider if the following conditions are met:
+For the application to use the Vitis AI Execution Provide, the following conditions must be met:
 
-- The application is running on an AMD processor with an NPU type supported by the version of the Vitis AI EP in use. See :ref:`list <apu-types>`.
-- NPU drivers compatible with the version of the Vitis AI EP being used are installed. See :ref:`compatibility table <driver-compatibility>` .
+- The application is running on an AMD processor with an NPU supported by the version of the Vitis AI EP in use. See :ref:`list <apu-types>`.
+- You have installed the NPU drivers compatible with the Vitis AI EP version. See :ref:`compatibility table <driver-compatibility>` .
 
 |memo| **NOTE**: Sample C++ code that implements the compatibility checks to be performed before using the Vitis AI EP is available `here <https://github.com/amd/RyzenAI-SW/tree/main/utilities/npu_check>`_
 
@@ -117,15 +117,15 @@ The application should only use the Vitis AI Execution Provider if the following
 VitisAI EP Provider Options
 ===========================
 
-For INT8 models, the application should detect the type of APU present (PHX, HPT, STX, or KRK) and set the :option:`target` and :option:`xclbin` provider options accordingly. Refer to the section on :ref:`using INT8 models <int8-models>` for more details.
+For INT8 models, the application should detect the APU type (PHX, HPT, STX, or KRK) and set the corresponding :option:`target` and :option:`xclbin` provider options. Refer to the section on :ref:`using INT8 models <int8-models>` for more details.
 
-For BF16 models, the application should set the :option:`config_file` provider option to the same file that was used to precompile the BF16 model. Refer to the section on :ref:`using BF16 models <bf16-models>` for more details.
+For BF16 models, the application should set the :option:`config_file` provider option to the same file that it used to precompile the BF16 model. Refer to the section on :ref:`using BF16 models <bf16-models>` for more details.
 
 
 Pre-Compiled Models
 ===================
 
-To avoid the overhead of recompiling models, it is highly recommended to save the compiled models and use these precompiled versions in the final application. Precompiled models can be loaded instantly and executed immediately on the NPU, significantly improving session creation time and overall end-user experience.
+To avoid the overhead of recompiling models, we recommended you to save the compiled models and use them in the final application. You can load and execute the precompiled models on the NPU immediately. It significantly improves the session creation time and the overall end-user experience.
 
 AMD recommends using the ONNXRuntime :ref:`EP Context Cache <ort-ep-context-cache>` feature for saving and reloading compiled models.
 
@@ -153,13 +153,13 @@ A C++ application built on the Ryzen AI ONNX Runtime must include the following 
 
   - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\aiecompiler_client.dll
   - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\DirectML.dll
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\dyn_dispatch_core.dll  
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\onnxruntime_providers_shared.dll  
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\onnxruntime_providers_vitisai.dll 
+  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\dyn_dispatch_core.dll
+  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\onnxruntime_providers_shared.dll
+  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\onnxruntime_providers_vitisai.dll
   - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\onnxruntime_vitis_ai_custom_ops.dll
   - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\onnxruntime_vitisai_ep.dll
   - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\onnxruntime.dll
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\zlib.dll  
+  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\zlib.dll
   - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\zstd.dll
 
 - NPU Binary files (.xclbin) from the ``%RYZEN_AI_INSTALLATION_PATH%\voe-4.0-win_amd64\xclbins`` folder
@@ -170,16 +170,16 @@ A C++ application built on the Ryzen AI ONNX Runtime must include the following 
 
 - DLLs:
 
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\onnxruntime.dll  
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\onnxruntime_providers_shared.dll  
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\onnxruntime_providers_vitisai.dll  
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\onnxruntime_vitisai_ep.dll  
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\dyn_dispatch_core.dll  
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\libutf8_validity.dll  
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\ryzenai_onnx_utils.dll  
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\zlib.dll  
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\zstd.dll  
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\abseil_dll.dll  
+  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\onnxruntime.dll
+  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\onnxruntime_providers_shared.dll
+  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\onnxruntime_providers_vitisai.dll
+  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\onnxruntime_vitisai_ep.dll
+  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\dyn_dispatch_core.dll
+  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\libutf8_validity.dll
+  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\ryzenai_onnx_utils.dll
+  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\zlib.dll
+  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\zstd.dll
+  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\abseil_dll.dll
   - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\aiecompiler_client.dll
 
 - Pre-compiled models in the form of :ref:`Vitis AI EP cache folders <vitisai-ep-cache>`

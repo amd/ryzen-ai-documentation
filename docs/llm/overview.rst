@@ -6,7 +6,7 @@ Overview
 LLM Deployment on Ryzen AI
 ************************************
 
-Large Language Models (LLMs) can be deployed on Ryzen AI PCs with NPU and GPU acceleration. NPU-only and Hybrid execution modes, which utilize both the NPU and integrated GPU (iGPU), are supported via ONNXRuntime GenAI (OGA). GPU-only acceleration is enabled through llama.cpp. See the :ref:`execution-modes-table` below for detailed information.
+You can deploy Large Language Models (LLMs) on Ryzen AI PCs with NPU and GPU acceleration. They support NPU-only and Hybrid execution modes, which utilize both the NPU and integrated GPU (iGPU), through ONNXRuntime GenAI (OGA). They enable GPU-only acceleleration through llama.cpp. See :ref:`execution-modes-table` for detailed information.
 
 
 Execution Modes
