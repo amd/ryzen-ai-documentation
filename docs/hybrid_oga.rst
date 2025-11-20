@@ -11,7 +11,7 @@ Ryzen AI Software supports deploying LLMs on Ryzen AI PCs using the native ONNX 
 Supported Configurations
 ************************
 
-The Ryzen AI OGA flow supports Strix and Krackan Point processors. Phoenix (PHX) and Hawk (HPT) processors are not supported.
+The Ryzen AI OGA flow supports Strix and Krackan Point processors. It does not support Phoenix (PHX) and Hawk (HPT) processors.
 
 
 ************
@@ -19,15 +19,15 @@ Requirements
 ************
 
 - Install NPU Drivers and Ryzen AI MSI installer. See :doc:`inst` for more details.
-- Install GPU device driver: Ensure GPU device driver https://www.amd.com/en/support is installed
-- Install Git for Windows (needed to download models from HF): https://git-scm.com/downloads
+- Install GPU device driver from https://www.amd.com/en/support.
+- Install Git for Windows (required to download models from HF): https://git-scm.com/downloads.
 
 ********************
 Pre-optimized Models
 ********************
 
 
-AMD provides a set of pre-optimized LLMs ready to be deployed with Ryzen AI Software and the supporting runtime for hybrid and/or NPU-only execution. These include popular architectures such as Llama-2, Llama-3, Mistral, DeepSeek Distill models, Qwen-2, Qwen-2.5, Qwen-3, Gemma-2, Phi-3, Phi-3.5, and Phi-4. For the detailed list of supported models, visit :doc:`model_list`
+AMD provides a set of pre-optimized LLMs you can readily deploy with Ryzen AI and the supporting runtime for hybrid or NPU-only execution. These include popular architectures such as Llama-2, Llama-3, Mistral, DeepSeek Distill models, Qwen-2, Qwen-2.5, Qwen-3, Gemma-2, Phi-3, Phi-3.5, and Phi-4. For the detailed list of supported models, visit :doc:`model_list`
 
 Hugging Face collection of hybrid models: https://huggingface.co/collections/amd/ryzen-ai-16-hybrid-llm-68d9c3ed502f871223bfa882
 
@@ -37,17 +37,17 @@ Hugging Face collection of NPU models: https://huggingface.co/collections/amd/ry
 Changes Compared to Previous Release
 ************************************
 
-- OGA version is updated to v0.9.2.2 (Ryzen AI 1.6.1) from v0.7.0 (Ryzen AI 1.5).
-- Starting with the 1.6 release, a new set of hybrid models is published. Hybrid models from earlier releases are not compatible with this version. If you are using Ryzen AI 1.6, please download the updated models.
+- Updated OGA version to v0.9.2.2 (Ryzen AI 1.6.1) from v0.7.0 (Ryzen AI 1.5).
+- Starting with the 1.6 release, we publish a new set of hybrid models. Hybrid models from earlier releases are not compatible with this version. If you are using Ryzen AI 1.6, please download the updated models.
 - Previously published NPU-only models continue to run, but for higher performance download the new NPU-only models published with 1.6.
-- Context length support is improved from 2K to 4K tokens (combined input and output).
+- Improved Context length support from 2K to 4K tokens (combined input and output).
 
 
 *******************
 Compatible OGA APIs
 *******************
 
-Pre-optimized hybrid or NPU LLMs can be executed using the official OGA C++ and Python APIs. The current release is compatible with OGA version 0.9.2.
+Use the official OGA C++ and Python APIs to execute Pre-optimized hybrid or NPU LLMs. The current release is compatible with OGA version 0.9.2.
 For detailed documentation and examples, refer to the official OGA repository:
 🔗 https://github.com/microsoft/onnxruntime-genai/tree/rel-0.9.2
 
@@ -56,9 +56,9 @@ For detailed documentation and examples, refer to the official OGA repository:
 LLMs Test Programs
 ***************************
 
-The Ryzen AI installation includes test programs (in C++ and Python) that can be used to run LLMs and understand how to integrate them in your application.
+The Ryzen AI installation includes test programs (in C++ and Python) that you can use to run and integrate LLMs in your applications.
 
-The steps for deploying the pre-optimized models using the sample programs are described in the following sections.
+The following sections describe the steps for deploying the pre-optimized models using the sample programs.
 
 Steps to run C++ program and sample python script.
 ==================================================
@@ -84,11 +84,11 @@ Run the following commands:
    conda activate ryzen-ai-<version>
    pip install torch==2.7.1
 
-This step is required for running the python script.
+It is a required step to run the python script.
 
 .. note::
 
-   For the C++ program, if you choose not to activate the Conda environment, open a Windows Command Prompt and manually set the environment variable before continuing:
+   If you choose not to activate the Conda environment for the C++ program, open a Windows Command Prompt and manually set the environment variable:
 
    ``set RYZEN_AI_INSTALLATION_PATH=C:\\Program Files\\RyzenAI\\<version>``
 
@@ -139,9 +139,9 @@ Use the ``model_benchmark.exe`` executable to test LLMs and identify DLL depende
    .\model_benchmark.exe -i Llama-2-7b-chat-hf-onnx-ryzenai-hybrid -f amd_genai_prompt.txt -l "1024"
 
 
-.. note:: 
+.. note::
 
-   The sample test application model_benchmark.exe accepts -l for input token length and -g for output token length. In Ryzen AI 1.6, models support up to 4096 tokens in total (input + output). By default, -g is set to 128. If the input length is close to 4096, you must adjust -g so the sum of input and output tokens does not exceed 4096. For example, -l 4000 -g 96 is valid (4000 + 96 ≤ 4096), while -l 4000 -g 128 will exceed the limit and result in an error.
+   The sample test application model_benchmark.exe accepts -l for input token length and -g for output token length. Ryzen AI 1.6 models support up to 4096 tokens in total (input + output). By default, -g is set to 128. If the input length is close to 4096, adjust -g so the sum of input and output tokens does not exceed 4096. For example, -l 4000 -g 96 is valid (4000 + 96 ≤ 4096). -l 4000 -g 128 exceeds the limit and results in an error.
 
 Python Script
 =============
@@ -166,21 +166,21 @@ Python Script
      python "%RYZEN_AI_INSTALLATION_PATH%\LLM\example\run_model.py" -m "Llama-2-7b-chat-hf-onnx-ryzenai-hybrid" -l 256
 
 
-.. note:: 
+.. note::
 
-   Some models may return non-printable characters in their output (for example, Qwen models), which can cause a crash while printing the output text. To avoid this, modify the provided script %RYZEN_AI_INSTALLATION_PATH%\\LLM\\example\\run_model.py by adding a text sanitization function and updating the print statement as shown below.
+   Some models might return non-printable characters in their output (for example, Qwen models), which can cause a crash while printing the output text. To avoid this, modify the provided script %RYZEN_AI_INSTALLATION_PATH%\\LLM\\example\\run_model.py by adding a text sanitization function and updating the print statement as shown below.
 
    Add sanitize_string function:
 
-   .. code-block:: 
-      
+   .. code-block::
+
       def sanitize_string(input_string):
          return input_string.encode("charmap", "ignore").decode("charmap")
 
 
    Update line 80 to print sanitized output:
 
-   .. code-block:: 
+   .. code-block::
 
       print("Output:", sanitize_string(output_text))
 
@@ -198,7 +198,7 @@ A complete example including C++ source and build instructions is available in t
 LLM Config Files
 ****************
 
-Each OGA model folder contains a ``genai_config.json`` file. This file contains various configuration settings for the model. The ``session_option`` section is where information about specific runtime dependencies is specified. Within this section, the ``custom_ops_library`` option sets the path to the ``onnx_custom_ops.dll`` file for Hybrid and NPU models.
+Each OGA model folder contains a ``genai_config.json`` file. This file contains various configuration settings for the model. The ``session_option`` section provides information about specific runtime dependencies. Within this section, the ``custom_ops_library`` option sets the path to the ``onnx_custom_ops.dll`` file for Hybrid and NPU models.
 
 The following sample shows the defaults for the AMD pre-optimized OGA LLMs:
 
@@ -210,7 +210,7 @@ The following sample shows the defaults for the AMD pre-optimized OGA LLMs:
            ...
 
 
-The paths is relative to the folder where the program is run from. The model throws an error if the ``onnx_custom_ops.dll`` file cannot be found at the specified location. Replacing the relative path with an absolute path to this file allows running the program from any location.
+The paths are relative to the folder where you run the program. The model throws an error if it cannot find the ``onnx_custom_ops.dll`` file at the specified location. Replacing the relative path with an absolute path to this file allows running the program from any location.
 
 
 ***********************
@@ -219,9 +219,9 @@ Using Fine-Tuned Models
 
 It is also possible to run fine-tuned versions of the pre-optimized OGA models.
 
-To do this, the fine-tuned models must first be prepared for execution with the OGA flow. For instructions on how to do this, refer to the page about :doc:`oga_model_prepare`.
+To do this, first prepare the fine-tuned models for execution with the OGA flow. For instructions on how to do this, refer to the page about :doc:`oga_model_prepare`.
 
-After a fine-tuned model has been prepared for execution, it can be deployed by following the steps described previously in this page.
+After preparing a fine-tuned model for execution, you can deploy it by following the steps described previously in this page.
 
 *****************************
 Running LLM via pip install

@@ -4,15 +4,15 @@
 Ryzen AI CVML library
 #####################
 
-The Ryzen AI CVML libraries build on top of the Ryzen AI drivers and execution infrastructure to provide powerful AI capabilities to C++ applications without having to worry about training specific AI models and integrating them to the Ryzen AI framework.
+The Ryzen AI CVML libraries work on top of the Ryzen AI drivers and execution system. They let C++ applications use strong AI features without the developer having to train AI models or integrate them into the Ryzen AI framework.
 
-Each Ryzen AI CVML library feature offers a simple C++ application programming interface (API) that can be easily incorporated into existing applications. The following AI features are currently available,
+Each Ryzen AI CVML library feature offers a simple C++ application programming interface (API) that you can easily incorporate into existing applications. The following AI features are currently available,
 
 - **Depth Estimation**: Generates a depth map to assess relative distances within a two-dimensional image.
 - **Face Detection**: Identifies and locates faces within an image.
 - **Face Mesh**: Constructs a mesh overlay of landmarks for a specified facial image.
 
-The Ryzen AI CVML library is distributed through the RyzenAI-SW Github repository: https://github.com/amd/RyzenAI-SW/tree/main/Ryzen-AI-CVML-Library
+You can download the Ryzen AI CVML library from the RyzenAI-SW Github repository: https://github.com/amd/RyzenAI-SW/tree/main/Ryzen-AI-CVML-Library
 
 **************************************************
 Building sample applications
@@ -20,7 +20,7 @@ Building sample applications
 This section describes the steps to build Ryzen AI CVML library sample applications. Before starting, ensure that the following prerequisites are available in the build environment,
 
 - CMake, version 3.18 or newer
-- C++ compilation toolchain. On Windows, this may be Visual Studio's "Desktop development with C++" build tools, or a comparable C++ toolchain
+- C++ compilation toolchain. On Windows, this might be Visual Studio's "Desktop development with C++" build tools, or a comparable C++ toolchain
 - OpenCV, version 4.11 or newer
 
 Navigate to the folder containing Ryzen AI samples
@@ -65,7 +65,7 @@ On Linux, ::
   cmake -S $PWD -B $PWD/build -DOPENCV_INSTALL_ROOT=$OPENCV_INSTALL_ROOT
   cmake --build $PWD/build --config Release
 
-The compiled sample application(s) will be placed in the various build\<application>\Release folder(s) under the 'samples' folder (or build/<application>/Release for Linux).
+The compiled sample application(s) is placed in the various build\<application>\Release folder(s) under the 'samples' folder (or build/<application>/Release for Linux).
 
 *************************************************
 Running sample applications

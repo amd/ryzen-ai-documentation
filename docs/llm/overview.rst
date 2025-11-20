@@ -6,7 +6,7 @@ Overview
 LLM Deployment on Ryzen AI
 ************************************
 
-You can deploy Large Language Models (LLMs) on Ryzen AI PCs with NPU and GPU acceleration. They support NPU-only and Hybrid execution modes, which utilize both the NPU and integrated GPU (iGPU), through ONNXRuntime GenAI (OGA). They enable GPU-only acceleleration through llama.cpp. See :ref:`execution-modes-table` for detailed information.
+You can deploy Large Language Models (LLMs) on Ryzen AI PCs with NPU and GPU acceleration. Ryzen AI supports NPU-only and Hybrid execution modes, which utilize both the NPU and integrated GPU (iGPU), through ONNXRuntime GenAI (OGA). It enables GPU-only acceleleration through llama.cpp. See :ref:`execution-modes-table` for detailed information.
 
 
 Execution Modes
@@ -63,11 +63,11 @@ Hardware Requirements
 Development Interfaces
 *******************************
 
-The Ryzen AI LLM software stack is available through three development interfaces, each suited for specific use cases as outlined in the sections below. All three interfaces are built on top of native OnnxRuntime GenAI (OGA) libraries or llama.cpp libraries, as shown in the :ref:`llm-software-stack-table` diagram below.
+The Ryzen AI LLM software stack is available through three development interfaces, each suited for specific use cases as outlined in the sections below. These interfaces build on top of native OnnxRuntime GenAI (OGA) libraries or llama.cpp libraries. The following :ref:`llm-software-stack-table` diagram displays the strack.
 
-The high-level Python APIs, as well as the Server Interface, also leverage the Lemonade SDK, which is multi-vendor open-source software that provides everything necessary for quickly getting started with LLMs on OGA or llama.cpp.
+The high-level Python APIs and the Server Interface also leverage the Lemonade SDK. It is a multi-vendor open-source software that provides everything necessary for quickly getting started with LLMs on OGA or llama.cpp.
 
-A key benefit of Lemonade is that software developed against their interfaces is portable to many other execution backends.
+Lemonade’s advantage is portability—software built on its interfaces runs on many execution backends.
 
 .. _llm-software-stack-table:
 
@@ -100,7 +100,7 @@ Lemonade Server is available in two ways:
 - **Standalone Windows GUI installer**: Quick setup with a desktop shortcut for immediate use. (Recommended for end users, see :doc:`server_interface`)
 - **Full Lemonade SDK**: Complete development toolkit with server interface included. (Recommended for developers, see :doc:`high_level_python` for Python SDK)
 
-For example applications that have been tested with Lemonade Server, see the `Lemonade Server Examples <https://github.com/lemonade-sdk/lemonade/tree/main/docs/server/apps>`_.
+To view examples applications tested with Lemonade Server, see the `Lemonade Server Examples <https://github.com/lemonade-sdk/lemonade/tree/main/docs/server/apps>`_.
 
 High-Level Python SDK
 =====================
@@ -129,7 +129,7 @@ To get started with the OGA APIs, follow these instructions: :doc:`../hybrid_oga
 Supported LLMs
 *******************************
 
-AMD provides a set of pre-optimized LLMs ready to be deployed with Ryzen AI Software and the supporting runtime for hybrid and/or NPU-only execution. These include popular architectures such as Llama-2, Llama-3, Mistral, DeepSeek Distill models, Qwen-2, Qwen-2.5, Qwen-3, Gemma-2, Phi-3, Phi-3.5, and Phi-4. For the detailed list of supported models, visit :doc:`../model_list`
+AMD provides a set of pre-optimized LLMs that you can readily deploy with Ryzen AI and the supporting runtime for hybrid or NPU-only execution. These include popular architectures such as Llama-2, Llama-3, Mistral, DeepSeek Distill models, Qwen-2, Qwen-2.5, Qwen-3, Gemma-2, Phi-3, Phi-3.5, and Phi-4. For the detailed list of supported models, see :doc:`../model_list`.
 
 Hugging Face collection of hybrid models: https://huggingface.co/collections/amd/ryzen-ai-16-hybrid-llm-68d9c3ed502f871223bfa882
 
@@ -142,7 +142,7 @@ It is also possible to run fine-tuned versions of the models listed (for example
 End to End OGA Validation
 ********************************
 
-A Jupyter Notebook example is provided to demonstrate end-to-end validation of OGA hybrid and NPU-only execution. This notebook includes:
+The Jupyter Notebook example provided here demonstrates end-to-end validation of OGA hybrid and NPU-only execution. This notebook includes:
 
 - Installation
 - Command Syntax

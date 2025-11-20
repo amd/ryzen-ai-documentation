@@ -19,9 +19,9 @@ NPU Management Interface
 Introduction
 *******************************
 
-The ``xrt-smi`` utility is a command-line interface to monitor and manage the NPU integrated AMD CPUs. 
+The ``xrt-smi`` utility is a command-line interface to monitor and manage the NPU integrated AMD CPUs.
 
-In Window platform, ``xrt-smi`` is installed in ``C:\Windows\System32\AMD`` and it can be directly invoked from within the conda environment created by the Ryzen AI Software installer.
+In Window platform, you can find the ``xrt-smi`` in ``C:\Windows\System32\AMD``. You can directly invoke it from the conda environment created by the Ryzen AI Software installer.
 
 The ``xrt-smi`` utility currently supports three primary commands:
 
@@ -29,13 +29,13 @@ The ``xrt-smi`` utility currently supports three primary commands:
 - ``validate`` - executes sanity tests on the NPU.
 - ``configure`` - manages the performance level of the NPU.
 
-By default, the output of the ``xrt-smi examine`` and ``xrt-smi validate`` commands goes to the terminal. It can also be written to file in JSON format as shown below:  
+By default, the output of the ``xrt-smi examine`` and ``xrt-smi validate`` commands goes to the terminal. You can also write it to a file in JSON format, as follows:
 
 .. code-block:: shell
 
     xrt-smi examine -f JSON -o <path/to/output.json>
 
-The utility also support the following options which can be used with any command:
+The utility also supports the following options, which you can use with any command:
 
 - ``--help`` - help to use xrt-smi or one of its sub commands
 - ``--version`` - report the version of XRT, driver and firmware
@@ -50,29 +50,29 @@ In Windows, the ``xrt-smi`` utility requires `Microsoft Visual C++ Redistributab
 Overview of Key Commands
 *******************************
 
-.. list-table:: 
-   :widths: 35 65 
+.. list-table::
+   :widths: 35 65
    :header-rows: 1
 
    * - Command
-     - Description    
-   * - examine 
+     - Description
+   * - examine
      - system config, device name
-   * - examine --report platform   
+   * - examine --report platform
      - performance mode, power
-   * - examine --report aie-partitions 
+   * - examine --report aie-partitions
      - hw contexts
-   * - validate --run latency  
+   * - validate --run latency
      - latency test
-   * - validate --run throughput   
+   * - validate --run throughput
      - throughput test
    * - validate --run gemm
-     - INT8 GEMM test TOPS. This is a full array test and it should not be run while another workload is running. **NOTE**: This command is not supported on PHX and HPT NPUs.
-   * - configure --pmode <mode>    
+     - INT8 GEMM test TOPS. This is a full array. Do not run this while another workload is running. **NOTE**: PHX and HPT NPUs do not support this command.
+   * - configure --pmode <mode>
      - set performance mode
 
 
-|memo| **NOTE**: The ``examine --report aie-partition`` report runtime information. These commands should be used when a model is running on the NPU. You can run these commands in a loop to see live updates of the reported data.
+|memo| **NOTE**: The ``examine --report aie-partition`` report runtime information. Use these commands when a model is running on the NPU. You can run these commands in a loop to see live updates of the reported data.
 
 
 *******************************
@@ -131,7 +131,7 @@ Sample Command Line Output in Linux::
          Model                : BIRMANPLUS
          BIOS Vendor          : AMD
          BIOS Version         : TXB1001dB
- 
+
      XRT
          Version              : 2.20.0
          Branch               : master
@@ -139,7 +139,7 @@ Sample Command Line Output in Linux::
          Hash Date            : 2025-06-16 21:28:35
          amdxdna              : 2.20.0_20250617, e7233301f8e4d8d1b1678f3dc3492c826290e314
          NPU Firmware Version : 255.0.1.5
- 
+
      Device(s) Present
      |BDF             |Name       |
      |----------------|-----------|
@@ -195,7 +195,7 @@ Sample JSON Output::
     }
 
 
-    
+
 
 Platform Information
 ====================
@@ -214,10 +214,10 @@ Sample Command Line Output::
     Platform
       Name                   : NPU Strix
       Power Mode             : Default
-     
+
     Estimated Power          : 1.277 Watts
 
-|memo| **NOTE**: Power reporting is not supported on PHX and HPT NPUs. Power reporting is only available on STX devices and onwards. Report "Estimated Power" is currently unavailable for Linux users. 
+|memo| **NOTE**: PHX and HPT NPUs do not support power reporting. Power reporting is only available on STX devices and onwards. Report "Estimated Power" is currently unavailable for Linux users.
 
 NPU Partitions
 ==============
@@ -255,7 +255,7 @@ Sample Command Line Output::
 
     Verbose: Enabling Verbosity
     Verbose: SubCommand: examine
-     
+
     --------------------------
     [00c5:00:01.1] : NPU Strix
     --------------------------
@@ -266,7 +266,7 @@ Sample Command Line Output::
           |PID    |Ctx ID  |Status  |Instr BO  |Sub  |Compl  |Migr  |Err  |Prio    |GOPS  |EGOPS  |FPS  |Latency  |
           |-------|--------|--------|----------|-----|-------|------|-----|--------|------|-------|-----|---------|
           |20696  |0       |Active  |64 KB     |57   |56     |0     |0    |Normal  |0     |0      |0    |0        |
-     
+
     AIE Columns
       |Column  ||HW Context Slot  |
       |--------||-----------------|
@@ -288,19 +288,20 @@ Executing a Sanity Check on the NPU
 
 Runs a set of built-in NPU sanity tests which includes latency, throughput, and gemm.
 
-Note: All tests are run in performance mode.
+Note: Runs all the tests in performance mode.
 
 - ``latency`` - this test executes a no-op control code and measures the end-to-end latency on all columns
-- ``throughput`` - this test loops back the input data from DDR through a MM2S Shim DMA channel back to DDR through a S2MM Shim DMA channel. The data movement within the AIE array follows the lowest latency path i.e. movement is restricted to just the Shim tile.
-- ``gemm`` - An INT8 GeMM kernel is deployed on all 32 cores by the application. Each core is storing cycle count in the core data memory. The cycle count is read by the firmware. The TOPS application uses the "XBUTIL" tool to capture the IPUHCLK while the workload runs. Once all cores are executed, the cycle count from all cores will be synced back to the host. Finally, the application uses IPUHCLK, core cycle count, and GeMM kernel size to calculate the TOPS. This is a full array test and it should not be run while another workload is running. **NOTE**: This command is not supported on PHX and HPT NPUs.
-- ``all`` - All applicable validate tests will be executed (default)
+- ``throughput`` - this test loops back the input data from DDR through a MM2S Shim DMA channel back to DDR through a S2MM Shim DMA channel. The AIE array routes data along the lowest latency path; it restricts movement to just the Shim tile.
+- ``gemm`` - The application deploys an INT8 GeMM kernel on all 32 cores. Each core is storing cycle count in the core data memory. The firmware reads the cycle count.The TOPS application uses the "XBUTIL" tool to capture the IPUHCLK while the workload runs. After the system executes all cores, it syncs the cycle count from all cores back to the host.
+ Finally, the application uses IPUHCLK, core cycle count, and GeMM kernel size to calculate the TOPS. This test fully exercises the array. Do not run it while another workload is running. **NOTE**: PHX and HPT NPUs do not support this command.
+- ``all`` -  The system executes all applicable validate tests (default).
 
 
 .. code-block:: shell
 
     xrt-smi validate --run all
 
-|memo| **NOTE**: Some sanity checks may fail if other applications (for example MEP, Microsoft Experience Package) are also using the NPU. 
+|memo| **NOTE**: Some sanity checks might fail if other applications (for example MEP, Microsoft Experience Package) are also using the NPU.
 
 Sample Command Line Output::
 
@@ -322,8 +323,8 @@ Sample Command Line Output::
        Test Status           : [PASSED]
     -------------------------------------------------------------------------------
     Validation completed. Please run the command '--verbose' option for more details
-    
-    
+
+
 .. _xrt-smi-configure:
 
 *******************************
@@ -339,7 +340,7 @@ To set the performance level of the NPU, you can choose from the following modes
 
    xrt-smi configure --pmode <default | powersaver | balanced | performance | turbo>
 
-- ``default`` - adapts to the Windows Power Mode setting, which can be adjusted under System -> Power & battery -> Power mode. For finer control of the NPU settings, it is recommended to use the xrt-smi mode setting, which overrides the Windows Power mode and ensures optimal results.
+- ``default`` - adapts to the Windows Power Mode setting, which can be adjusted under System -> Power & battery -> Power mode. For finer control of the NPU settings, we recommend you to use the xrt-smi mode setting. It overrides the Windows Power mode and ensures optimal results.
 - ``powersaver`` - configures the NPU to prioritize power saving, preserving laptop battery life.
 - ``balanced`` - configures the NPU to provide a compromise between power saving and performance.
 - ``performance`` - configures the NPU to prioritize performance, consuming more power.

@@ -2,12 +2,12 @@
 AI Analyzer
 ###########
 
-AMD AI Analyzer is a tool that supports analysis and visualization of model compilation and inference on Ryzen AI. The primary goal of the tool is to help you better understand how the models are processed by the hardware, and to identify performance bottlenecks that may be present during model inference. Using AI Analyzer, you can visualize graph and operator partitions between the NPU and CPU.
+AMD AI Analyzer is a tool that supports analysis and visualization of model compilation and inference on Ryzen AI. The tool's main goal is to help you understand hardware processing of models. It also helps identify performance bottlenecks during model inference. Using AI Analyzer, you can visualize graph and operator partitions between the NPU and CPU.
 
 Installation
 ~~~~~~~~~~~~
 
-If you installed the Ryzen AI software using automatic installer, AI Analyzer is already installed in the conda environment.
+If you used the automatic installer to install Ryzen AI, the conda environment already includes AI Analyzer.
 
 If you manually installed the software, you need to install the AI Analyzer wheel file in your environment.
 
@@ -19,7 +19,7 @@ If you manually installed the software, you need to install the AI Analyzer whee
 
 .. note::
 
-    AI Analyzer is currently supports BF16 Models only. INT8 model analysis is not supported in this version, but expanded support is planned for a future release.
+    AI Analyzer is currently supports BF16 Models only. This version does not support INT8 model analysis, but future releases expand support.
 
 Enabling Profiling and Visualization
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -39,7 +39,7 @@ Profiling and Visualization can be enabled by passing additional provider option
                                provider_options=provider_options)
 
 
-The ``ai_analyzer_profiling`` flag enables generation of artifacts related to the inference profile. The ``ai_analyzer_visualization`` flag enables generation of artifacts related to graph partitions and operator fusion. These artifacts are generated as JSON files in the current run directory.
+The ``ai_analyzer_profiling`` flag enables generation of artifacts related to the inference profile. The ``ai_analyzer_visualization`` flag enables generation of artifacts related to graph partitions and operator fusion. The current run generates these artifacts as JSON files in its directory.
 
 AI Analyzer also supports native ONNX Runtime profiling, which you can use to analyze the parts of the session that run on the CPU. You can enable ONNX Runtime profiling through session options and pass it along with the provider options, as shown here:
 
@@ -64,7 +64,7 @@ AI Analyzer also supports native ONNX Runtime profiling, which you can use to an
 Launching AI Analyzer
 ~~~~~~~~~~~~~~~~~~~~~
 
-After the artifacts are generated, `aianalyzer` can be invoked through the command line as follows:
+After generating the artifacts, you can invoke ``aianalyzer`` from the command line. Use the following command:
 
 
 .. code-block::
@@ -86,20 +86,21 @@ Additional Options
 
 ``-n``, ``--no-browser``: Prevents the opening of the default url in the browser.
 
-``-t TOKEN``, ``--token TOKEN``: Token used for authenticating first-time connections to the server. The default is to generate a new, random token. Setting to an empty string disables authentication altogether, which is not recommended.
-
+``-t TOKEN``, ``--token TOKEN``: Token used for authenticating first-time connections to the server. The default is to generate a new, random token.Setting it to an empty string disables authentication altogether. We do not recommend it.
 
 Features
 ~~~~~~~~
 
-AI Analyzer provides visibility into how your AI model is compiled and executed on Ryzen AI hardware. Its two main use cases are:
+AI Analyzer shows how your AI model is compiled and executed on Ryzen AI hardware. The following are its two main use cases:
 
 1. Analyzing how the model was partitioned and mapped onto Ryzen AI's CPU and NPU accelerator
 2. Profiling model performance as it executes inferencing workloads
 
-When launched, the AI Analyzer server scans the folder specified with the logdir argument and detect and load all files relevant to compilation and/or inferencing  per the `ai_analyzer_visualization` and `ai_anlayzer_profiling` flags.
+When launched, the AI Analyzer server scans the folder specified with the logdir argument. It detects and loads all files relevant to compilation and/or inferencing  per the `ai_analyzer_visualization` and `ai_anlayzer_profiling` flags.
 
-You can instruct the AI Analyzer server to either start a browser on the same host or return an URL that you can then load into a browser on any host.
+You can instruct the AI Analyzer server to do one of the following:
+- Start a browser on the same host
+- Return an URL that you can then load into a browser on any host
 
 
 User Interface
@@ -107,29 +108,28 @@ User Interface
 
 AI Analyzer has the following three sections as seen in the left-panel navigator:
 
-1. PARTITIONING - A breakdown of your model was assigned to execute inference across CPU and NPU
+1. PARTITIONING - A breakdown of your model to execute inference across CPU and NPU
 2. NPU INSIGHTS - A detailed look at the how your model was optimized for inference execution on NPU
 3. PERFORMANCE - A breakdown of inference execution through the model
 
 
-These sections are described in more detail in the following sections:
-
+The following sections describe these sections in more detail:
 
 
 PARTITIONING
 @@@@@@@@@@@@
 
-This section is comprised of two pages: Summary and Graph
+This section comprises two pages: Summary and Graph.
 
 **Summary**
 
-The Summary page gives an overview of how the models operators have been assigned to Ryzen's CPU and NPU along with charts capturing GigaOp (GOP) offloading by operator type .
+The Summary page gives you an overview of how the models operators have been assigned to Ryzen's CPU and NPU along with charts capturing GigaOp (GOP) offloading by operator type .
 
 There is also table titled "CPU Because" that shows the reasons why certain operators were not offloaded to the NPU.
 
 **Graph**
 
-The graph page shows an interactive diagram of the partitioned ONNX model, showing graphically how the layers are assigned to the Ryzen hardware.
+The graph page shows you an interactive diagram of the partitioned ONNX model. It graphically displays how the layers are assigned to the Ryzen hardware.
 
 
 
@@ -144,8 +144,7 @@ Toolbar
   - Show Partition separates operators running on the NPU by their respective NPU partition, if any
   - Show Instance Name displays the full hierarchical name for the operators in the ONNX model
 
-All objects in the graph have properties that can be viewed to the right of the graph.
-
+You can view each object's properties to the right of the graph.
 
 
 *Model Table*
@@ -162,13 +161,12 @@ This table following the graph lists all objects in the partitioned ONNX model:
 NPU INSIGHTS
 @@@@@@@@@@@@
 
-This section is comprised of three pages: Summary, Original Graph, and Optimized Graph.
-
+This section comprises three pages: Summary, Original Graph, and Optimized Graph.
 
 
 **Summary**
 
-The Summary page gives an overview of how your model was mapped to the AMD Ryzen NPU. Charts are displayed showing statistics on the number of operators and total GMACs that have been mapped to the NPU (and if necessary, back to CPU via the `Failsafe CPU` mechanism). The statistics are shown per operator type and NPU partition.
+The Summary page gives an overview of how your model was maps to the AMD Ryzen NPU. It displays Charts showing statistics on the number of operators and total GMACs that have been mapped to the NPU (and if necessary, back to CPU via the `Failsafe CPU` mechanism). The system shows statistics by operator type and NPU partition.
 
 
 
@@ -181,8 +179,7 @@ Toolbar
 You can choose to show/hide individual NPU partitions, if any, with the **Filter by Partition** button
 A panel that displays properties for selected objects can be shown or hidden using the **Show Properties** toggle button
 A code viewer showing the MLIR source code with cross-probing can be shown/hidden through the **Show Code View** button
-The following table can be shown and hidden using the **Show Table** toggle button.
-Display options for the graph can be accessed with the **Settings** button
+You can show and hide the following table using the **Show Table** toggle button. Use the **Settings** button to access the graph’s display options.
 
 
 
@@ -194,14 +191,13 @@ Toolbar
 
 You can choose to show/hide individual NPU partitions, if any, with the **Filter by Partition** button
 A panel that displays properties for selected objects can be shown or hidden using the **Show Properties** toggle button
-The following table can be shown and hidden using the **Show Table** toggle button.
-Display options for the graph can be accessed with the **Settings** button
+You can show and hide the following table using the **Show Table** toggle button. Use the **Settings** button to access the graph’s display options.
 
 
 PERFORMANCE
 @@@@@@@@@@@
 
-Use this section to view the performance of your model on RyzenAI when running one or more inferences. It is comprised of two pages: Summary and Timeline.
+Use this section to view the performance of your model on RyzenAI when running one or more inferences. It comprises two pages: Summary and Timeline.
 
 
 
@@ -209,7 +205,7 @@ Use this section to view the performance of your model on RyzenAI when running o
 
 The performance summary page displays several overall statistics for the inference(s), along with charts that break down operator runtime by operator.
 When the ONNX Runtime profiler is enabled, the total inference time, including layers executed on the CPU, is shown.
-When NPU profiling is enabled using the `ai_analyzer_profiling` flag, additional NPU-specific statistics are displayed, including GOP and MAC efficiency, as well as a chart showing runtime per NPU operator type.
+When you enable NPU profiling using the `ai_analyzer_profiling` flag, it displays additional NPU-specific statistics. They include GOP and MAC efficiency, as well as a chart showing runtime per NPU operator type.
 
 The clock frequency field shows the assumed NPU clock frequency, but it is editable. When the frequency is changed, all timestamp data—collected as clock cycles but displayed in time units—is adjusted accordingly.
 
@@ -225,8 +221,8 @@ Within each inference, you can examine the overall model execution or the detail
 Toolbar
 
 A panel that displays properties for selected objects can be shown or hidden using the **Show Properties** toggle button
-The following table can be shown and hidden using the **Show Table** toggle button.
-The graphical timeline can be downloaded to SVG using the **Export to SVG** button
+ou can show and hide the following table using the **Show Table** toggle button.
+Use the **Export to SVG** button to download the graphical timeline to SVG.
 
 
 ..

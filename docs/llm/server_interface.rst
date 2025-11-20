@@ -10,18 +10,18 @@
 Server Interface (REST API)
 ###########################
 
-The Lemonade SDK offers a server interface that allows your application to load an LLM on Ryzen AI hardware in a process, and then communicate with this process using standard ``REST`` APIs. This allows applications written in any language (C#, JavaScript, Python, C++, etc.) to easily integrate with Ryzen AI LLMs.
+The Lemonade SDK offers a server interface that allows your application to load an LLM on Ryzen AI hardware in a process. Using standard ``REST`` APIs, the application can communicate with this process. This allows applications written in any language (C#, JavaScript, Python, C++, etc.) to easily integrate with Ryzen AI LLMs.
 
 Server interfaces are used across the LLM ecosystem because they allow for no-code plug-and-play between the higher level of the application stack (GUIs, agents, RAG, etc.) with the LLM and hardware that have been abstracted by the server. For more information, see the `Understanding local LLM Servers Guide <https://lemonade-server.ai/docs/server/concepts/>`_.
 
-For example, open source projects such as `Open WebUI <#open-webui-demo>`_ have out-of-box support for connecting to a variety of server interfaces, which in turn allows users to quickly start working with LLMs in a GUI.
+For example, open source projects such as `Open WebUI <#open-webui-demo>`_ have out-of-box support for connecting to a variety of server interfaces. It allows you to quickly start working with LLMs in a GUI.
 
 
 ************
 Server Setup
 ************
 
-Lemonade Server can be installed via the Lemonade Server Installer executable by following these steps:
+Follow these steps to install the Lemonade Server using the Lemonade Server Installer executable:
 
 1. Make sure your system has the recommended Ryzen AI driver installed as described in :ref:`install-driver`.
 2. Download and install ``Lemonade_Server_Installer.exe`` from the `latest Lemonade release <https://github.com/lemonade-sdk/lemonade/releases>`_.
@@ -32,11 +32,11 @@ For a visual walkthrough of this process, watch our Lemonade Introductory Video:
 .. raw:: html
 
    <div style="text-align: center; margin: 20px 0;">
-       <iframe width="560" height="315" 
-               src="https://www.youtube.com/embed/mcf7dDybUco?si=J9ocgcRF_LNY0s8E" 
-               title="Lemonade Introductory Video" 
-               frameborder="0" 
-               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+       <iframe width="560" height="315"
+               src="https://www.youtube.com/embed/mcf7dDybUco?si=J9ocgcRF_LNY0s8E"
+               title="Lemonade Introductory Video"
+               frameborder="0"
+               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                allowfullscreen>
        </iframe>
    </div>
@@ -54,16 +54,16 @@ The Lemonade Server provides the following OpenAI-compatible endpoints:
 - POST ``/api/v1/responses`` - Chat Completions (prompt|messages -> event)
 - GET ``/api/v1/models`` - List available models
 
-Please refer to the `server specification <https://lemonade-server.ai/docs/server/server_spec/>`_ document for details about the request and response formats for each endpoint. 
+Refer to the `server specification <https://lemonade-server.ai/docs/server/server_spec/>`_ document for details about the request and response formats for each endpoint.
 
-The `OpenAI API documentation <https://platform.openai.com/docs/guides/streaming-responses?api-mode=chat>`_ also has code examples for integrating streaming completions into an application. 
+The `OpenAI API documentation <https://platform.openai.com/docs/guides/streaming-responses?api-mode=chat>`_ also has code examples for integrating streaming completions into an application.
 
 Supported Applications
 ======================
 
-The Lemonade Server supports a variety of applications that can connect to it using the OpenAI API. Some of the applications that have been tested with Lemonade Server can be found at `Lemonade Server Apps <https://lemonade-server.ai/docs/server/apps/>`_.
+The Lemonade Server supports a variety of applications that can connect to it using the OpenAI API. To view some example applications tested with Lemonade Server, refer to `Lemonade Server Apps <https://lemonade-server.ai/docs/server/apps/>`_.
 
-A short list of applications that have been tested with Lemonade Server includes:
+The following include a short list of applications tested with Lemonade Server:
 
 .. |open-webui| image:: https://raw.githubusercontent.com/lemonade-sdk/assets/refs/heads/main/partner_logos/openwebui.jpg
    :width: 60px
@@ -112,7 +112,7 @@ A short list of applications that have been tested with Lemonade Server includes
 Next Steps
 **********
 
-- See `Lemonade Server Examples <https://lemonade-server.ai/docs/server/apps/>`_ to find applications that have been tested with Lemonade Server.
+- To view applications tested with Lemonade Server, click `Lemonade Server Examples <https://lemonade-server.ai/docs/server/apps/>`_.
 - Check out the `Lemonade Server specification <https://lemonade-server.ai/docs/server/server_spec/>`_ to learn more about supported features.
 - Try out your Lemonade Server install with any application that uses the OpenAI chat completions API.
 
@@ -121,5 +121,5 @@ Next Steps
   #####################################
   License
   #####################################
-  
+
   Ryzen AI is licensed under `MIT License <https://github.com/amd/ryzen-ai-documentation/blob/main/License>`_ . Refer to the `LICENSE File <https://github.com/amd/ryzen-ai-documentation/blob/main/License>`_ for the full license text and copyright notice.
