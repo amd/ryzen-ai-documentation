@@ -11,6 +11,8 @@ if [ "$current_branch" != "main" ]; then
     exit 1
 fi
 
+# merge the remote changes first
+git pull https://github.com/amd/ryzen-ai-documentation.git main
 # Push to public repo
 git push https://github.com/amd/ryzen-ai-documentation.git main:main
 
