@@ -43,14 +43,14 @@ Additional Resources
 
 - Article on how AMD and Black Magic Design worked together to accelerate `Davinci Resolve Studio <https://www.blackmagicdesign.com/products/davinciresolve/studio>`_ workload on AMD hardware:   
 
-  - `AI Accelerated Video Editing with DaVinci Resolve 18.6 & AMD Radeon Graphics <https://community.amd.com/t5/ai/ai-accelerated-video-editing-with-davinci-resolve-18-6-amp-amd/ba-p/638252>`_
+  - `AI Accelerated Video Editing with DaVinci Resolve 18.6 & AMD Radeon Graphics <https://www.amd.com/en/blogs/2023/ai-accelerated-video-editing-with-davinci-resolve-.html>`_
 
 |
 
 - Blog posts on using the Ryzen AI Software for various generative AI workloads on GPU:
 
-  - `Automatic1111 Stable Diffusion WebUI with DirectML Extension on AMD GPUs <https://community.amd.com/t5/ai/how-to-automatic1111-stable-diffusion-webui-with-directml/ba-p/649027>`_
+  - `Automatic1111 Stable Diffusion WebUI with DirectML Extension on AMD GPUs <https://www.amd.com/en/blogs/2023/-how-to-automatic1111-stable-diffusion-webui-with.html>`_
 
-  - `Running Optimized Llama2 with Microsoft DirectML on AMD Radeon Graphics <https://community.amd.com/t5/ai/how-to-running-optimized-llama2-with-microsoft-directml-on-amd/ba-p/645190>`_
+  - `Running Optimized Llama2 with Microsoft DirectML on AMD Radeon Graphics <https://www.amd.com/en/blogs/2023/-how-to-running-optimized-llama2-with-microsoft-d.html>`_
 
-  - `AI-Assisted Mobile Workstation Workflows Powered by AMD Ryzen™ AI <https://community.amd.com/t5/business/ai-assisted-mobile-workstation-workflows-powered-by-amd-ryzen-ai/ba-p/667234>`_ 
+  - `AI-Assisted Mobile Workstation Workflows Powered by AMD Ryzen™ AI <https://www.amd.com/en/blogs/2024/ai-assisted-mobile-workstation-workflows-powered-b.html>`_ 
