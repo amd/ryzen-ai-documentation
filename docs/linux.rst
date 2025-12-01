@@ -2,12 +2,18 @@
 Linux Installation Instructions
 #########################
 
-Ryzen AI for Linux supports compiling and running AI models on the AMD Neural Processing Unit (NPU). The current release supports the following model types:
 
-- CNN models in INT8 format
-- CNN models in BF16 format
-- NLP models (e.g., BERT, encoder-based) in BF16 format
+Ryzen AI for Linux supports running AI models on the AMD Neural Processing Unit (NPU).
+The current release supports STX and KRK platforms.
+
+With this release, users can now compile and run AI models using the following formats:
+
+- CNN models in INT8
+- CNN models in BF16
+- NLP models (e.g., BERT, encoder-based) in BF16
 - LLMs (NPU-only flow)
+
+
 
 
 *************
@@ -34,8 +40,10 @@ Use the commands below to install Python 3.10.x along with certain dependencies
 
 .. code-block:: bash
 
-  sudo apt-get install python3.10
-  sudo apt-get install python3.10-venv
+  sudo apt update
+  sudo apt install python3.10
+  sudo apt install python3.10-venv
+  sudo apt install libboost-filesystem1.74.0
 
 After installing required Ubuntu distribution and Python version, proceed with NPU drivers installation
 
