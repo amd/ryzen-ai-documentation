@@ -304,6 +304,8 @@ The C++ source files, CMake list files, and related artifacts are provided in th
 
 Run the following command to build the resnet example. Assign ``-DOpenCV_DIR`` to the OpenCV build directory.
 
+.. note::
+   The following command uses Windows-style backslashes and is intended for use in a Windows environment.
 .. code-block:: bash
 
    cd RyzenAI-SW\tutorial\getting_started_resnet\int8\cpp
