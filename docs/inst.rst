@@ -80,7 +80,7 @@ Install Ryzen AI Software
   - Provide the destination folder for Ryzen AI installation (default: ``C:\Program Files\RyzenAI\1.6.0``)
   - Specify the name for the conda environment (default: ``ryzen-ai-1.6.0``)
 
-The Ryzen AI Software packages should now installed in the conda environment created by the installer.
+The Ryzen AI Software packages should now be installed in the conda environment created by the installer.
 
 .. note::
    **The LLM flow requires an additional patch installation.** See the next section (:ref:`apply-patch`) for instructions.
