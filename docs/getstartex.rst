@@ -80,8 +80,11 @@ Step 2: Prepare dataset and ONNX model
 This example utilizes a custom ResNet model finetuned using the CIFAR-10 dataset
 
 The ``prepare_model_data.py`` script downloads the CIFAR-10 dataset in pickle format (for python) and binary format (for C++). 
-*The CIFAR-10 dataset consists of 60,000 32x32 colour images in 10 classes, with 6,000 images per class. There are 50,000 training images and 10,000 test images.* You can learn more about the CIFAR-10 dataset here: https://www.cs.toronto.edu/~kriz/cifar.html. This dataset is used in the subsequent steps for quantization and inference. The script also exports the provided PyTorch model into ONNX format. The following snippet from the script shows how the ONNX model is exported:
+.. note::
+   The CIFAR-10 dataset consists of 60,000 32x32 colour images in 10 classes, with 6,000 images per class. There are 50,000 training images and 10,000 test images.
+   You can learn more about the CIFAR-10 dataset here: https://www.cs.toronto.edu/~kriz/cifar.html.
 
+This dataset is used in the subsequent steps for quantization and inference. The script also exports the provided PyTorch model into ONNX format. The following snippet from the script shows how the ONNX model is exported:
 .. code-block:: python
 
     dummy_inputs = torch.randn(1, 3, 32, 32)
