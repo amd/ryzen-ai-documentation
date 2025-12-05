@@ -57,7 +57,7 @@ Install NPU Drivers
 *******************
 
 - Under "Task Manager" in Windows, go to Performance -> NPU0 to check the driver version. 
-- If needed, download the NPU driver version: 32.0.203.280 or the latest 32.0.203.304 here:
+- If needed, download the NPU driver version: 32.0.203.280 or the latest 32.0.203.304 from one of the following links:
 
   - :download:`NPU Driver (Version 32.0.203.280) <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=NPU_RAI1.5_280_WHQL.zip>`
   - :download:`NPU Driver (Version 32.0.203.304) <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=NPU_RAI1.6_304_WHQL.zip>`
