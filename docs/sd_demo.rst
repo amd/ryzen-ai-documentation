@@ -56,7 +56,7 @@ Activate the conda environment::
 
 Optionally, set the NPU to high performance mode to maximize performance::
 
-  xrt-smi configure --pmode performance
+  C:\Windows\System32\AMD\xrt-smi.exe configure --pmode performance
 
 Refer to the documentation on :ref:`xrt-smi configure <xrt-smi-configure>` for additional information.
 
