@@ -29,7 +29,7 @@ NPU
 
   - `Image Classification <https://github.com/amd/RyzenAI-SW/tree/main/CNN-examples/image_classification>`_
   - `Finetuned DistilBERT for Text Classification <https://github.com/amd/RyzenAI-SW/tree/main/Transformer-examples/DistilBERT_text_classification_bf16>`_
-  - `Text Embedding Model Alibaba-NLP/gte-large-en-v1.5  <https://github.com/amd/RyzenAI-SW/tree/main/LLM-examples/gte-large-en-v1.5-bf16>`_
+  - `Text Embedding Model Alibaba-NLP/gte-large-en-v1.5  <https://github.com/amd/RyzenAI-SW/tree/main/Transformer-examples/gte-large-en-v1.5-bf16>`_
 
 iGPU
 ~~~~
