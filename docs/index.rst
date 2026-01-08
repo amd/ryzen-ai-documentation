@@ -91,7 +91,7 @@ For more details, refer to the :doc:`modelrun` page.
    :caption: Additional Topics
 
    Linux Installation <linux.rst>
-   xrt_smi.rst
+   NPU Management <xrt_smi.rst>
    ai_analyzer.rst
    sd_demo.rst
    ryzen_ai_libraries.rst
