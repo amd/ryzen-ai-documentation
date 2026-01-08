@@ -1,6 +1,6 @@
-#########################
+###############################
 Linux Installation Instructions
-#########################
+###############################
 
 
 Ryzen AI for Linux supports running AI models on the AMD Neural Processing Unit (NPU).

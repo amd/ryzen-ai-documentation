@@ -90,10 +90,12 @@ For more details, refer to the :doc:`modelrun` page.
    :hidden:
    :caption: Additional Topics
 
+   Linux Installation <linux.rst>
    xrt_smi.rst
    ai_analyzer.rst
    sd_demo.rst
    ryzen_ai_libraries.rst
+   Supported Operators <ops_support.rst>
    Licensing Information <licenses.rst>
 
 
