@@ -124,6 +124,38 @@ Install Ryzen AI Software
 
 
 **********************
+Getting License key
+**********************
+- Go to `AMD Product Licensing page <https://account.amd.com/en/forms/license/license-form.html>`_
+
+- Select **"2025 AI Engine Tools License"** and follow the on-screen instructions.
+
+
+- You will receive an email with the attached license file.
+
+- Export it as a system environment variable before starting the model compilation:
+
+.. code-block:: bash
+
+   export XILINXD_LICENSE_FILE=<ABSOLUTE PATH>/Xilinx.lic
+
+- In case you need to edit the licesne, go to `Manage Licenses page <https://amd.entitlenow.com/AcrossUser/main.gsp>`_
+
+.. note::
+
+      - License is locked to Host ID (MAC, etc).
+      - If you need running RyzenAI on separate host, then you must add its Host ID to the **"2025 AI Engine Tools License"**.
+      - **Troubleshooting**:
+
+.. code-block:: bash
+
+   In case of any issue please check log file in cache dir: aiecompiler-flexml.log
+
+   Check for message:
+   AIEMLbuild feature license not found !
+
+
+**********************
 Test the Installation
 **********************
 The RyzenAI software package contains a test script that verifies your correct installation of NPU Drivers.
