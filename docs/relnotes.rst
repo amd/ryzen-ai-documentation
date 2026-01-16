@@ -10,7 +10,7 @@ Release Notes
 Supported Configurations
 ************************
 
-Ryzen AI 1.6 Software supports AMD processors codenamed Phoenix, Hawk Point, Strix, Strix Halo, and Krackan Point. These processors can be found in the following Ryzen series:
+Ryzen AI 1.7 Software supports AMD processors codenamed Phoenix, Hawk Point, Strix, Strix Halo, and Krackan Point. These processors can be found in the following Ryzen series:
 
 - Ryzen 200 Series
 - Ryzen 7000 Series, Ryzen PRO 7000 Series
@@ -46,6 +46,12 @@ The following table lists which types of models are supported on what hardware p
    * - LLM (OGA)
      -
      - |checkmark|
+
+***********
+Version 1.7
+***********
+
+- TBD
 
 
 *************

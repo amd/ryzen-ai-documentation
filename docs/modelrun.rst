@@ -240,7 +240,7 @@ C++ example loading a configuration file called vai_ep_config.json:
 Using INT8 Models
 **************************
 
-Ryzen AI 1.6 features a new compiler for INT8 models. This compiler is enabled by default and provides the following improvements:
+Ryzen AI features a new compiler for INT8 models. This compiler is enabled by default and provides the following improvements:
 
 - Improved ease of use and enhanced performance for models running on STX, KRK, and later devices.
 - General asymmetric quantization support to enable third-party quantized models
