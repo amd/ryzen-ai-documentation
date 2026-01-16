@@ -45,7 +45,7 @@ The Ryzen AI LLM software stack is available through three development interface
 
 The high-level Python APIs, as well as the Server Interface, also leverage the Lemonade SDK, which is multi-vendor open-source software that provides everything necessary for quickly getting started with LLMs on OGA or llama.cpp.
 
-A key benefit of Lemonade is that software developed against their interfaces is portable to many other execution backends.
+At the bottom, the OGA API is the lowest-level API available for building LLM applications on a Ryzen AI PC. 
 
 .. _llm-software-stack-table:
 
