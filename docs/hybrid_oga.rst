@@ -111,13 +111,7 @@ Use the ``model_benchmark.exe`` executable to test LLMs and identify DLL depende
    xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\LLM\example\amd_genai_prompt.txt" .
 
    :: Copy required DLLs
-   xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime-genai.dll" .
-   xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnxruntime.dll" .
-   xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\ryzen_mm.dll" .
-   xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\onnx_custom_ops.dll" .
-   xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\libutf8_validity.dll" .
-   xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\abseil_dll.dll" .
-   xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\DirectML.dll" .
+   xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\deployment\." .
 
 2. Download model from Hugging Face
 
