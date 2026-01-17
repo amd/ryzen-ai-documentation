@@ -24,6 +24,9 @@ The following table summarizes the driver requirements for the different version
    * - VitisAI EP version
      - Minimum NPU Driver version
      - Maximum NPU Driver release date
+   * - 1.7
+     - 32.0.203.280
+     - Jan 22nd, 2029
    * - 1.6
      - 32.0.203.280
      - Oct 7th, 2028

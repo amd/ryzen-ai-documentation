@@ -162,9 +162,9 @@ Examples, Demos, Tutorials
 - RyzenAI-SW demonstrates various demos and examples for Model compilation and deployment on NPUs
 
 - Here are a few examples from our `RyzenAI Software Repository <https://github.com/amd/RyzenAI-SW/tree/main>`_
-   - `Getting started Resnet with BF16 Model <https://github.com/amd/RyzenAI-SW/tree/main/tutorial/getting_started_resnet/bf16>`_
-   - `Getting started Resnet with INT8 Model <https://github.com/amd/RyzenAI-SW/tree/main/tutorial/getting_started_resnet/int8>`_
-   - `Yolov8m Model for Object Detection <https://github.com/amd/RyzenAI-SW/tree/main/tutorial/object_detection>`_
+   - `Getting started Resnet with BF16 Model <https://github.com/amd/RyzenAI-SW/tree/main/CNN-examples/getting_started_resnet/bf16>`_
+   - `Getting started Resnet with INT8 Model <https://github.com/amd/RyzenAI-SW/tree/main/CNN-examples/getting_started_resnet/int8>`_
+   - `Yolov8m Model for Object Detection <https://github.com/amd/RyzenAI-SW/tree/main/CNN-examples/object_detection>`_
 
 
 .. note::

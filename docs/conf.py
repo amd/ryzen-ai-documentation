@@ -33,7 +33,7 @@ author = 'Advanced Micro Devices, Inc'
 # The short X.Y version
 version = '1.7'
 # The full version, including alpha/beta/rc tags
-release = '1.7'
+release = '1.7.0'
 html_last_updated_fmt = 'Jan 22, 2026'
 
 

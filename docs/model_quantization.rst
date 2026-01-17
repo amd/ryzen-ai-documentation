@@ -30,9 +30,9 @@ FP32 to BF16 Examples
 ~~~~~~~~~~~~~~~~~~~~~
 Explore these practical examples demonstrating FP32 to BF16 conversion across different CNN, NLP model types:
 
-- `Image Classification <https://github.com/amd/RyzenAI-SW/tree/main/example/image_classification>`_ using ResNet50 model on NPU
-- `Text Embedding Model Alibaba-NLP/gte-large-en-v1.5  <https://github.com/amd/RyzenAI-SW/tree/main/example/gte-large-en-v1.5-bf16>`_ 
-- `Finetuned DistilBERT for Text Classification <https://github.com/amd/RyzenAI-SW/tree/main/example/DistilBERT_text_classification_bf16>`_ 
+- `Image Classification <https://github.com/amd/RyzenAI-SW/tree/main/CNN-examples/image_classification>`_ using ResNet50 model on NPU
+- `Text Embedding Model Alibaba-NLP/gte-large-en-v1.5  <https://github.com/amd/RyzenAI-SW/tree/main/Transformer-examples/gte-large-en-v1.5-bf16>`_ 
+- `Finetuned DistilBERT for Text Classification <https://github.com/amd/RyzenAI-SW/tree/main/Transformer-examples/DistilBERT_text_classification_bf16>`_ 
 - Advanced quantization techniques `Fast Finetuning <https://quark.docs.amd.com/latest/supported_accelerators/ryzenai/tutorial_convert_fp32_or_fp16_to_bf16.html>`_ for BF16 models.
 
 ***********************
@@ -77,8 +77,8 @@ FP32 to INT8 Examples
 Explore practical INT8 quantization examples:
 
 - Running INT8 model on NPU using :doc:`Getting Started Tutorial <getstartex>`
-- `AMD Quark Tutorial <https://github.com/amd/RyzenAI-SW/tree/main/tutorial/quark_quantization>`_ for Ryzen AI Deployment
-- Advanced quantization techniques `Fast Finetuning and Cross Layer Equalization <https://gitenterprise.xilinx.com/VitisAI/RyzenAI-SW/blob/dev/tutorial/quark_quantization/docs/advanced_quant_readme.md>`_ for INT8 model
+- `AMD Quark Tutorial <https://github.com/amd/RyzenAI-SW/tree/main/CNN-examples/quark_quantization>`_ for Ryzen AI Deployment
+- Advanced quantization techniques `Fast Finetuning and Cross Layer Equalization <https://github.com/amd/RyzenAI-SW/blob/main/CNN-examples/quark_quantization/docs/advanced_quant_readme.md>`_ for INT8 model
 
 ..
   ------------
