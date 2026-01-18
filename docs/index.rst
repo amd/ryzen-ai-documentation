@@ -62,7 +62,7 @@ At the bottom, **OnnxRuntime GenAI (OGA)** or llama.cpp (only supported for iGPU
    * - :cspan:`2` `Custom AMD OnnxRuntime GenAI (OGA) <https://github.com/microsoft/onnxruntime-genai>`_ **OR** `llama.cpp* <https://github.com/ggml-org/llama.cpp>`_
    * - :cspan:`2` `AMD Ryzen AI Driver and Hardware <https://www.amd.com/en/products/processors/consumer/ryzen-ai.html>`_
 
-For more details, refer to the :doc:`llm\overview` page.
+For more details, refer to the :doc:`llm/overview` page.
 
 
 |
