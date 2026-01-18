@@ -58,8 +58,8 @@ Version 1.7
 - LLM
 
   - New LLM Support: Qwen-2.5-14b-Instruct, Qwen-3-14b-Instruct, Phi-4-mini-instruct
-  - First preview release of Sparse-LLM: GPT-OSS-20b
-  - First preview release of VLM: Gemma-3-4b-it 
+  - First preview release of Sparse-LLM: GPT-OSS-20b NPU model
+  - First preview release of VLM: Gemma-3-4b-it NPU model (functional) 
   - Long context support for hybrid execution models 
 
 
