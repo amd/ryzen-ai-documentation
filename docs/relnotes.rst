@@ -51,7 +51,16 @@ The following table lists which types of models are supported on what hardware p
 Version 1.7
 ***********
 
-- TBD
+- CNN/Transformer compiler
+
+  - General Performance improvements (Avg 15-20% improvements expected)
+  - ~40% Compile time improvement for transformer models
+- LLM
+
+  - New LLM Support: Qwen-2.5-14b-Instruct, Qwen-3-14b-Instruct, Phi-4-mini-instruct
+  - First preview release of Sparse-LLM: GPT-OSS-20b
+  - First preview release of VLM: Gemma-3-4b-it 
+  - Long context support for hybrid execution models 
 
 
 *************
