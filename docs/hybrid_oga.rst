@@ -132,10 +132,62 @@ Use the ``model_benchmark.exe`` executable to test LLMs and identify DLL depende
    :: Example:
    .\model_benchmark.exe -i Llama-2-7b-chat-hf-onnx-ryzenai-hybrid -f amd_genai_prompt.txt -l "1024"
 
+Long Context Support
+====================
+Ryzen AI now supports context length of 16,000 tokens for **Hybrid models**. If the total number of tokens exceed 4096, follow the below steps.
+
+**Steps to run long context:**  
+
+1. Make the following changes in ``genai_config.json`` file.
+
+- Add ``"hybrid_opt_chunk_context": "1"`` under ``model.decoder.session_options.config_entries``.  
+
+.. code-block:: bash
+   
+    {
+    "model": {
+        "bos_token_id": 1,
+        "context_length": 16384,
+        "decoder": {
+            "session_options": {
+                "log_id": "onnxruntime-genai",
+                "custom_ops_library": "onnx_custom_ops.dll",
+                "custom_allocator": "shared_d3d_xrt",
+                "external_data_file": "model_jit.pb.bin",
+                "config_entries": {
+                    "hybrid_opt_max_seq_length": "4096",
+                    "hybrid_opt_chunk_context": "1"
+                },
+                "provider_options": []
+            }
+
+    
+- Add ``"chunk_size":2048`` under ``search``.
+
+.. code-block:: bash
+
+  "search": {
+        "diversity_penalty": 0.0,
+        "do_sample": false,
+        "chunk_size": 2048,
+        ...
+2. Copy the ``amd_genai_prompt_long.txt`` into your working directory.
+
+.. code-block:: bash
+    
+    xcopy /Y "%RYZEN_AI_INSTALLATION_PATH%\LLM\example\amd_genai_prompt_long.txt" .
+
+3. Run the model using ``model_benchmark.exe`` using the ``amd_genai_prompt_long.txt`` prompt file.
+
+.. code-block:: bash
+
+    .\model_benchmark.exe -i <path_to_model_dir> -f amd_genai_prompt_long.txt -l "16000"
 
 .. note:: 
+   
+   The sample test application model_benchmark.exe accepts -l for input token length and -g for output token length. In Ryzen AI 1.7, **NPU models** support up to 4096 tokens in total (input + output). By default, -g is set to 128. If the input length is close to 4096, you must adjust -g so the sum of input and output tokens does not exceed 4096. For example, -l 4000 -g 96 is valid (4000 + 96 ≤ 4096), while -l 4000 -g 128 will exceed the limit and result in an error.  
+For **Hybrid models**, the combined number of input and output tokens must not exceed the model’s ``context_length``. You can verify the ``context_length`` in the ``genai_config.json`` file. If the model’s ``context_length`` is less than 16,000, long-context support is limited to that ``context length``. For example, if a model’s ``context_length`` is 8,000, the total token count (input + output) must not exceed 8,000.
 
-   The sample test application model_benchmark.exe accepts -l for input token length and -g for output token length. In Ryzen AI 1.6, models support up to 4096 tokens in total (input + output). By default, -g is set to 128. If the input length is close to 4096, you must adjust -g so the sum of input and output tokens does not exceed 4096. For example, -l 4000 -g 96 is valid (4000 + 96 ≤ 4096), while -l 4000 -g 128 will exceed the limit and result in an error.
 
 Python Script
 =============
