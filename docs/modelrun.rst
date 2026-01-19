@@ -139,7 +139,7 @@ To enable detailed logging for debugging purposes, set the ONNX Runtime session 
     )
 
 .. list-table:: ORT Log Severity Levels
-   :widths: 15 15 50
+   :widths: 15 35 15
    :header-rows: 1
 
    * - Level
