@@ -34,7 +34,6 @@ Models are loaded by creating an ONNX Runtime ``InferenceSession`` using the Vit
         provider_options = [vai_ep_options]       # Pass options to the Vitis AI Execution Provider
     )
 
-
 The ``provider_options`` parameter enables the configuration of the Vitis AI Execution Provider (EP). For a comprehensive list of supported provider options, refer to the :ref:`Vitis AI EP Options Reference Guide <ep-options-ref-guide>` below.
 
 When a model is first loaded into an ONNX Runtime (ORT) inference session, it is compiled into the format required by the NPU. The resulting compiled output can be saved as an ORT EP context file or stored in the Vitis AI EP cache directory.
@@ -57,7 +56,6 @@ Once the ONNX Runtime inference session is initialized and the model is compiled
 
 
 The ONNX graph is automatically partitioned into multiple subgraphs by the Vitis AI Execution Provider (EP). During deployment, the subgraph(s) containing operators supported by the NPU are executed on the NPU. The remaining subgraph(s) are executed on the CPU. This graph partitioning and deployment technique across CPU and NPU is fully automated by the VAI EP and is totally transparent to the end-user.
-
 
 .. _ep-options-ref-guide:
 
@@ -98,10 +96,6 @@ The ``provider_options`` parameter of the ORT ``InferenceSession`` allows passin
            - Compiler optimization level for INT8 only.
            - 0, 1, 2, 3, 65536 (maximum effort, experimental)
            - 0
-         * - ``log_level``
-           - Message level reported by VitisAI EP.
-           - info, warning, error, fatal
-           - info
          * - ``cache_dir``
            - VitisAI cache directory. For INT8, ``enable_cache_file_io_in_mem`` must be 0.
            - String
@@ -123,6 +117,51 @@ The ``provider_options`` parameter of the ORT ``InferenceSession`` allows passin
            - Boolean
            - False
 
+Enabling ONNX Runtime Logs
+==========================
+
+To enable detailed logging for debugging purposes, set the ONNX Runtime session log severity level using ``SessionOptions.log_severity_level``:
+
+.. code-block:: python
+
+    import onnxruntime
+
+    session_options = onnxruntime.SessionOptions()
+    session_options.log_severity_level = 1  # Set log level (see table below)
+
+    vai_ep_options = {}
+
+    session = onnxruntime.InferenceSession(
+        path_or_bytes = model,
+        sess_options = session_options,
+        providers = ['VitisAIExecutionProvider'],
+        provider_options = [vai_ep_options]
+    )
+
+.. list-table:: Log Severity Levels
+   :widths: 15 15 50
+   :header-rows: 1
+
+   * - Level
+     - Value
+     - Description
+   * - Verbose
+     - 0
+     - All messages (most detailed)
+   * - Info
+     - 1
+     - Informational messages and above
+   * - Warning
+     - 2
+     - Warnings and above
+   * - Error
+     - 3
+     - Errors and above
+   * - Fatal
+     - 4
+     - Fatal errors only
+
+|warning| **DEPRECATION NOTICE**: The ``log_level`` parameter in provider options has been deprecated. To enable logging, use ``SessionOptions.log_severity_level`` as shown in the example above.
 
 .. _configuration-file:
 

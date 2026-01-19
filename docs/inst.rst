@@ -101,16 +101,19 @@ The Ryzen AI Software installation folder contains test to verify that the softw
 .. code-block::
 
    cd %RYZEN_AI_INSTALLATION_PATH%/quicktest
-   python quicktest.py
+   python quicktest.py 2>&1 | findstr /i "Operators Subgraphs VITIS_EP_CPU NPU Test"
 
 
 - The quicktest.py script sets up the environment and runs a simple CNN model. On a successful run, you will see an output similar to the one shown below. This indicates that the model is running on the NPU and that the installation of the Ryzen AI Software was successful:
 
 .. code-block::
 
-    [Vitis AI EP] No. of Operators :   NPU   398 VITIS_EP_CPU     2
-    [Vitis AI EP] No. of Subgraphs :   NPU     1 Actually running on NPU     1
-    Test Passed
+  [Vitis AI EP] No. of Operators :
+      NPU   398
+      VITIS_EP_CPU     2
+  [Vitis AI EP] No. of Subgraphs :
+    NPU     1
+  Test Passed
 
 
 
