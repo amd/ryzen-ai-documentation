@@ -138,30 +138,31 @@ To enable detailed logging for debugging purposes, set the ONNX Runtime session 
         provider_options = [vai_ep_options]
     )
 
-.. list-table:: Log Severity Levels
+.. list-table:: ORT Log Severity Levels
    :widths: 15 15 50
    :header-rows: 1
 
    * - Level
-     - Value
      - Description
+     - Value
    * - Verbose
-     - 0
      - All messages (most detailed)
+     - 0
    * - Info
-     - 1
      - Informational messages and above
-   * - Warning
-     - 2
+     - 1
+   * - Warning (Default)
      - Warnings and above
+     - 2
    * - Error
-     - 3
      - Errors and above
+     - 3
    * - Fatal
-     - 4
      - Fatal errors only
+     - 4
 
-|warning| **DEPRECATION NOTICE**: The ``log_level`` parameter in provider options has been deprecated. To enable logging, use ``SessionOptions.log_severity_level`` as shown in the example above.
+
+|warning| **NOTE**: The ``log_level`` parameter in provider options has been deprecated. To enable logging, use ``SessionOptions.log_severity_level`` as shown in the example above.
 
 .. _configuration-file:
 
