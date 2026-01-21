@@ -43,9 +43,9 @@ LLM Flow Overview
 
 The Ryzen AI LLM software stack is available through three development interfaces, each suited for specific use cases as outlined in the sections below. All three interfaces are built on top of native OnnxRuntime GenAI (OGA) libraries or llama.cpp libraries, as shown in the :ref:`llm-software-stack-table` diagram below.
 
-The high-level Python APIs, as well as the Server Interface, also leverage the Lemonade SDK, which is multi-vendor open-source software that provides everything necessary for quickly getting started with LLMs on OGA or llama.cpp.
+The **high-level Python APIs**, as well as the **Server Interface**, also leverage the **Lemonade SDK**, which is multi-vendor open-source software that provides everything necessary for quickly getting started with LLMs on OGA or llama.cpp.
 
-At the bottom, the OGA API is the lowest-level API available for building LLM applications on a Ryzen AI PC. 
+At the bottom, **OnnxRuntime GenAI (OGA)** or llama.cpp (only supported for iGPU)  API is the lowest-level API available for building LLM applications on a Ryzen AI PC. 
 
 .. _llm-software-stack-table:
 
@@ -62,7 +62,7 @@ At the bottom, the OGA API is the lowest-level API available for building LLM ap
    * - :cspan:`2` `Custom AMD OnnxRuntime GenAI (OGA) <https://github.com/microsoft/onnxruntime-genai>`_ **OR** `llama.cpp* <https://github.com/ggml-org/llama.cpp>`_
    * - :cspan:`2` `AMD Ryzen AI Driver and Hardware <https://www.amd.com/en/products/processors/consumer/ryzen-ai.html>`_
 
-\* indicates open-source software (OSS).
+For more details, refer to the :doc:`llm/overview` page.
 
 
 |
