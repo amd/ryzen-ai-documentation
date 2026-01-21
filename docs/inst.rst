@@ -101,10 +101,49 @@ The Ryzen AI Software installation folder contains test to verify that the softw
 .. code-block::
 
    cd %RYZEN_AI_INSTALLATION_PATH%/quicktest
+   python quicktest.py
+
+.. code-block::
+
+  INFO: [aiecompiler 77-749] Reading logical device aie2p_8x4_device
+  Using TXN FORMAT 0.1
+  Test Passed
+
+- Verify NPU activity by opening **Task Manager → Performance → NPU** while the test is running. You should see NPU utilization increase during model inference.
+
+
+NPU Offloading with Session Options
+===================================
+
+This section demonstrates how to enable NPU offloading logs using ONNX Runtime session options. To view detailed logging information, update the session options in ``quicktest.py`` as shown below:
+
+.. code-block:: python
+
+   import onnxruntime as ort
+
+  # Create session options
+  session_options = ort.SessionOptions()
+  session_options.log_severity_level = 1  # 0=Verbose, 1=Info, 2=Warning, 3=Error, 4=Fatal
+
+  try:
+      session = ort.InferenceSession(model,
+                                sess_options=session_options,
+                                providers=providers,
+                                provider_options=provider_options)
+  except Exception as e:
+      print(f"Failed to create an InferenceSession: {e}")
+      sys.exit(1)  # Exit the program with a non-zero status to indicate an error
+
+
+- Run the test:
+
+.. code-block::
+
+   cd %RYZEN_AI_INSTALLATION_PATH%/quicktest
    python quicktest.py 2>&1 | findstr /i "Operators Subgraphs VITIS_EP_CPU NPU Test"
 
 
-- The quicktest.py script sets up the environment and runs a simple CNN model. On a successful run, you will see an output similar to the one shown below. This indicates that the model is running on the NPU and that the installation of the Ryzen AI Software was successful:
+- On a successful run, you will see an output similar to the one shown below. This indicates that the model is running on the NPU and that the installation of the Ryzen AI Software was successful:
 
 .. code-block::
 
@@ -116,12 +155,10 @@ The Ryzen AI Software installation folder contains test to verify that the softw
   Test Passed
 
 
-
 .. note::
 
-    The full path to the Ryzen AI Software installation folder is stored in the ``RYZEN_AI_INSTALLATION_PATH`` environment variable.
-
-
+    - The full path to the Ryzen AI Software installation folder is stored in the ``RYZEN_AI_INSTALLATION_PATH`` environment variable.
+    - For Phoenix/Hawk Point hardware, set the ``target`` to ``X1`` in the provider options.
 
 
 

@@ -55,13 +55,23 @@ Version 1.7
 
   - General Performance improvements (Avg 15-20% improvements expected)
   - ~40% Compile time improvement for transformer models
+
 - LLM
 
   - New LLM Support: Qwen-2.5-14b-Instruct, Qwen-3-14b-Instruct, Phi-4-mini-instruct
   - First preview release of Sparse-LLM: GPT-OSS-20b NPU model
-  - First preview release of VLM: Gemma-3-4b-it NPU model (functional) 
-  - Long context support for hybrid execution models 
+  - First preview release of VLM: Gemma-3-4b-it NPU model (functional)
+  - Long context support for hybrid execution models
 
+- Stable Diffusion
+
+  - New model support: SD3.5-Turbo with 8x dynamic resolutions and 2x dynamic batches (Text2Image and Image2ImageControlNet)
+  - New model support: Segmind-Vega 1024x1024 (Text2Image)
+  - Up to 40% performance improvement for all supported models (Native-BFP16 format)
+
+- Breaking Changes
+
+  - The ``log_level`` provider option is deprecated. Use the ONNX Runtime session option ``log_severity_level`` instead to control Vitis AI execution logs.
 
 *************
 Version 1.6.1
