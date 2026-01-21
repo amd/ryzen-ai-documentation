@@ -121,17 +121,19 @@ This section demonstrates how to enable NPU offloading logs using ONNX Runtime s
 
    import onnxruntime as ort
 
-   # Create session options
-   session_options = ort.SessionOptions()
-   session_options.log_severity_level = 1  # 0=Verbose, 1=Info, 2=Warning, 3=Error, 4=Fatal
+  # Create session options
+  session_options = ort.SessionOptions()
+  session_options.log_severity_level = 1  # 0=Verbose, 1=Info, 2=Warning, 3=Error, 4=Fatal
 
-   # Create inference session with VitisAI EP
-   session = ort.InferenceSession(
-       "model.onnx",
-       sess_options=session_options,
-       providers=["VitisAIExecutionProvider"],
-       provider_options=[provider_options]
-   )
+  try:
+      session = ort.InferenceSession(model,
+                                sess_options=session_options,
+                                providers=providers,
+                                provider_options=provider_options)
+  except Exception as e:
+      print(f"Failed to create an InferenceSession: {e}")
+      sys.exit(1)  # Exit the program with a non-zero status to indicate an error
+
 
 - Run the test:
 
