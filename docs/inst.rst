@@ -35,7 +35,7 @@ The following dependencies must be installed on the system before installing the
 
 |warning| **IMPORTANT**:
 
-- Visual Studio 2022 Community: ensure that `Desktop Development with C++` is installed
+- Visual Studio 2022 Community (Optional for AMD Quark, to support custom op flow): ensure that `Desktop Development with C++` is installed
 
 - Miniforge: ensure that the following path is set in the System PATH variable: ``path\to\miniforge3\condabin`` or ``path\to\miniforge3\Scripts\`` or ``path\to\miniforge3\`` (The System PATH variable should be set in the *System Variables* section of the *Environment Variables* window).
 
