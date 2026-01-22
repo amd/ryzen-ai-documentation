@@ -27,29 +27,28 @@ Pre-optimized Models
 ********************
 
 
-AMD provides a set of pre-optimized LLMs ready to be deployed with Ryzen AI Software and the supporting runtime for hybrid and/or NPU-only execution. These include popular architectures such as Llama-2, Llama-3, Mistral, DeepSeek Distill models, Qwen-2, Qwen-2.5, Qwen-3, Gemma-2, Phi-3, Phi-3.5, and Phi-4. For the detailed list of supported models, visit :doc:`model_list`
+AMD provides a set of pre-optimized LLMs ready to be deployed with Ryzen AI Software and the supporting runtime for hybrid and/or NPU-only execution. These include popular architectures such as Llama-2, Llama-3, Mistral, DeepSeek Distill models, Qwen-2, Qwen-2.5, Qwen-3, Gemma-2, Gemma-3, GPT-OSS, Phi-3, Phi-3.5, and Phi-4. For the detailed list of supported models, visit :doc:`model_list`
 
-Hugging Face collection of hybrid models: https://huggingface.co/collections/amd/ryzen-ai-16-hybrid-llm-68d9c3ed502f871223bfa882
+Hugging Face collection of hybrid models: https://huggingface.co/collections/amd/ryzen-ai-17-hybrid-llm
 
-Hugging Face collection of NPU models: https://huggingface.co/collections/amd/ryzen-ai-16-npu-llm-68d9c927223939cb596c592b
+Hugging Face collection of NPU models: https://huggingface.co/collections/amd/ryzen-ai-17-npu-llm
 
 ************************************
 Changes Compared to Previous Release
 ************************************
 
-- OGA version is updated to v0.9.2.2 (Ryzen AI 1.6.1) from v0.7.0 (Ryzen AI 1.5).
-- Starting with the 1.6 release, a new set of hybrid models is published. Hybrid models from earlier releases are not compatible with this version. If you are using Ryzen AI 1.6, please download the updated models.
-- Previously published NPU-only models continue to run, but for higher performance download the new NPU-only models published with 1.6.
-- Context length support is improved from 2K to 4K tokens (combined input and output).
+- OGA version is updated to v0.11.2 (Ryzen AI 1.7) from v0.9.2.2 (Ryzen AI 1.6.1).
+- For 1.7 release, a new set of hybrid and NPU models is published. Models from earlier releases are not compatible with this version. If you are using Ryzen AI 1.7, please download the updated models.
+- Context length upto 4K tokens (combined input and output) is supported for NPU Models. Extended context length more than 4K tokens is supported for Hybrid models.
 
 
 *******************
 Compatible OGA APIs
 *******************
 
-Pre-optimized hybrid or NPU LLMs can be executed using the official OGA C++ and Python APIs. The current release is compatible with OGA version 0.9.2.
+Pre-optimized hybrid or NPU LLMs can be executed using the official OGA C++ and Python APIs. The current release is compatible with OGA version 0.11.2.
 For detailed documentation and examples, refer to the official OGA repository:
-🔗 https://github.com/microsoft/onnxruntime-genai/tree/rel-0.9.2
+🔗 https://github.com/microsoft/onnxruntime-genai/tree/rel-0.11.2
 
 
 ***************************
@@ -286,8 +285,8 @@ In addition to the full RyzenAI software stack, we also provide standalone wheel
 
 .. code-block:: bash
 
-   pip install onnxruntime-genai-directml-ryzenai==0.9.2.2 --extra-index-url=https://pypi.amd.com/simple
-   pip install model-generate==1.6.1 --extra-index-url=https://pypi.amd.com/simple
+   pip install onnxruntime-genai-directml-ryzenai==0.11.2 --extra-index-url=https://pypi.amd.com/simple
+   pip install model-generate==1.7.0 --extra-index-url=https://pypi.amd.com/simple
 
 3. Navigate to your working directory and download the desired Hybrid/NPU model
 
