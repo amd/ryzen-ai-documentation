@@ -246,7 +246,7 @@ For models that use chat templates, the sample `model_chat.py <https://github.co
 
 This script automatically loads and applies the chat template from the model folder during inference, which can improve output quality for models that use a chat template.
 
-It is highly recommended to use ``model_chat.py`` for the `GPT-OSS-20B NPU model <https://huggingface.co/amd/gpt-oss-20b-onnx-ryzenai-npu>`_.
+It is highly recommended to use `model_chat.py <https://github.com/amd/RyzenAI-SW/tree/main/LLM-examples/oga_inference>`_ for the `GPT-OSS-20B NPU model <https://huggingface.co/amd/gpt-oss-20b-onnx-ryzenai-npu>`_.
 
 **********************************
 Vision Language Model (VLM) 
