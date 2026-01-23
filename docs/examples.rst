@@ -29,7 +29,13 @@ NPU
 
   - `Image Classification <https://github.com/amd/RyzenAI-SW/tree/main/CNN-examples/image_classification>`_
   - `Finetuned DistilBERT for Text Classification <https://github.com/amd/RyzenAI-SW/tree/main/Transformer-examples/DistilBERT_text_classification_bf16>`_
-  - `Text Embedding Model Alibaba-NLP/gte-large-en-v1.5  <https://github.com/amd/RyzenAI-SW/tree/main/Transformer-examples/gte-large-en-v1.5-bf16>`_
+
+- LLM examples
+  - `LLMs on RyzenAI with ONNX Runtime GenAI API <https://github.com/amd/RyzenAI-SW/tree/main/LLM-examples/oga_api>`_
+  - `ONNX Runtime GenAI(OGA)‑based RAG LLM <https://github.com/amd/RyzenAI-SW/tree/main/LLM-examples/RAG-OGA>`_ 
+  - `Running Vision Language Model (VLM) on RyzenAI NPU <https://github.com/amd/RyzenAI-SW/tree/main/LLM-examples/VLM>`_
+  - `Running GPT-OSS-20B with chat template <https://github.com/amd/RyzenAI-SW/tree/main/LLM-examples/oga_inference>`_
+
 
 iGPU
 ~~~~
