@@ -253,7 +253,7 @@ It is highly recommended to use ``model_chat.py`` for the GPT-OSS-20B NPU model:
 Vision Language Model (VLM) 
 **********************************
 
-AMD provides a pre-optimized Gemma-3-4b-it multimodal model ready to be deployed with Ryzen AI Software. Support for this model is available starting with Ryzen AI 1.7. 
+AMD provides a pre-optimized Gemma-3-4b-it multimodal model ready to be deployed with Ryzen AI Software. Support for this model is available starting with the current Ryzen AI 1.7 release. 
 
 Model: https://huggingface.co/amd/Gemma-3-4b-it-mm-onnx-ryzenai-npu
 
