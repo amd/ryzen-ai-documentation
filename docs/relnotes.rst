@@ -51,10 +51,11 @@ The following table lists which types of models are supported on what hardware p
 Version 1.7
 ***********
 
-- CNN/Transformer compiler
+- CNN/Transformer 
 
   - General Performance improvements (Avg 15-20% improvements expected)
   - ~40% Compile time improvement for transformer models
+  - Whisper.cpp integration enabling scalable ASR support 
 
 - LLM
 
