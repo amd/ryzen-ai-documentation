@@ -242,12 +242,11 @@ Python Script
 Python Script (with Chat Template)
 ==================================
 
-For models that use chat templates, the ``model_chat.py`` script may provide better output quality. The script and usage instructions are available in the RyzenAI-SW repository: https://github.com/amd/RyzenAI-SW/tree/main/LLM-examples/oga_inference. 
+For models that use chat templates, the sample `model_chat.py <https://github.com/amd/RyzenAI-SW/tree/main/LLM-examples/oga_inference>`_ script may provide better output quality. The script and usage instructions are available in the `RyzenAI-SW repository <https://github.com/amd/RyzenAI-SW/tree/main/LLM-examples/oga_inference>`_.
 
 This script automatically loads and applies the chat template from the model folder during inference, which can improve output quality for models that use a chat template.
 
-It is highly recommended to use ``model_chat.py`` for the GPT-OSS-20B NPU model: https://huggingface.co/amd/gpt-oss-20b-onnx-ryzenai-npu
-
+It is highly recommended to use ``model_chat.py`` for the `GPT-OSS-20B NPU model <https://huggingface.co/amd/gpt-oss-20b-onnx-ryzenai-npu>`_.
 
 **********************************
 Vision Language Model (VLM) 
@@ -255,9 +254,9 @@ Vision Language Model (VLM)
 
 AMD provides a pre-optimized Gemma-3-4b-it multimodal model ready to be deployed with Ryzen AI Software. Support for this model is available starting with the current Ryzen AI 1.7 release. 
 
-Model: https://huggingface.co/amd/Gemma-3-4b-it-mm-onnx-ryzenai-npu
+Model: `Gemma-3-4b-it-mm-onnx-ryzenai-npu <https://huggingface.co/amd/Gemma-3-4b-it-mm-onnx-ryzenai-npu>`_
 
-The python script and usage instructions are available in the RyzenAI-SW repository: https://github.com/amd/RyzenAI-SW/tree/main/LLM-examples/VLM
+The python script and usage instructions are available in the RyzenAI-SW repository: `VLM <https://github.com/amd/RyzenAI-SW/tree/main/LLM-examples/VLM>`_
 
 
 **************************************
