@@ -256,7 +256,7 @@ AMD provides a pre-optimized Gemma-3-4b-it multimodal model ready to be deployed
 
 Model: `Gemma-3-4b-it-mm-onnx-ryzenai-npu <https://huggingface.co/amd/Gemma-3-4b-it-mm-onnx-ryzenai-npu>`_
 
-The python script and usage instructions are available in the RyzenAI-SW repository: `VLM <https://github.com/amd/RyzenAI-SW/tree/main/LLM-examples/VLM>`_
+VLM inference requires a dedicated Python script. The python script and usage instructions are available in the RyzenAI-SW repository: `VLM <https://github.com/amd/RyzenAI-SW/tree/main/LLM-examples/VLM>`_
 
 
 **************************************
