@@ -14,7 +14,7 @@ If you manually installed the software, you need to install the AI Analyzer whee
 
 .. code-block::
 
-   python -m pip install path\to\RyzenAI\installation\files\aianalyzer-<version>.whl
+   python -m pip install %RYZEN_AI_INSTALLATION_PATH%\aianalyzer-<version>.whl
 
 
 .. note::
