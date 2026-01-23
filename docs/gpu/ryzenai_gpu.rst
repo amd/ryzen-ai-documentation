@@ -33,7 +33,7 @@ For additional information, refer to the `ONNX Runtime documentation for the Dir
 Examples
 ********
 
-- Optimizing and running `ResNet on Ryzen AI GPU <https://github.com/amd/RyzenAI-SW/tree/main/example/iGPU/getting_started>`_
+- Optimizing and running `ResNet on Ryzen AI GPU <https://github.com/amd/RyzenAI-SW/tree/main/CNN-examples/iGPU/getting_started>`_
 
 
 ********************

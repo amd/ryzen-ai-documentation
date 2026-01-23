@@ -36,7 +36,7 @@ Setup
      pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm6.1
      python -c "import torch; print(torch.cuda.is_available())" # Must return `True`
 
-3. Download :download:`AMD Quark 0.10 <https://download.amd.com/opendownload/Quark/amd_quark-0.10.zip>` and unzip the archive
+3. Download :download:`AMD Quark 0.11 <https://download.amd.com/opendownload/Quark/amd_quark-0.11.zip>` and unzip the archive
 
 
 4. Install Quark: 
@@ -57,17 +57,17 @@ Setup
    pip install nltk
 
 
-Some models may require a specific version of ``transformers``. For example, ChatGLM3 requires version 4.44.0.   
+Some models may require a specific version of ``transformers``. For example, ChatGLM3 requires version 4.44.0.
 
 Generate Quantized Model
 ========================
 
-Use following command to run Quantization. In a GPU equipped Linux machine the quantization can take about 30-60 minutes. 
+Use following command to run Quantization. In a GPU equipped Linux machine the quantization can take about 30-60 minutes.
 
 .. code-block::
 
      cd examples/torch/language_modeling/llm_ptq/
-     
+
      python quantize_quark.py \
           --no_trust_remote_code \
           --model_dir "meta-llama/Llama-2-7b-chat-hf"  \
@@ -82,7 +82,7 @@ Use following command to run Quantization. In a GPU equipped Linux machine the q
           --data_type <datatype> \
           --exclude_layers []
 
-    
+
 - Use ``--data_type bfloat16`` for bf16 pretrained model. For fp32/fp16 pretrained model use ``--datatype float16``
 - Not using ``--exclude_layers``  parameter may result in model-specific defaults which may exclude certain layers like output layers.
 
@@ -91,7 +91,7 @@ The quantized model is generated in the <quantized safetensor output dir> folder
 **Note:** For the Phi-4 model, the following quantization recipe is recommended for better accuracy:
 
 - Use ``--quant_algo gptq``
-- Add ``--group_size_per_layer lm_head 32`` 
+- Add ``--group_size_per_layer lm_head 32``
 
 **Note:**: Currently the following files are not copied into the quantized model folder and must be copied manually:
 
@@ -102,7 +102,7 @@ The quantized model is generated in the <quantized safetensor output dir> folder
 Postprocessing
 **************
 
-Copy the quantized model to the Windows PC with Ryzen AI installed, activate the Ryzen AI Conda environment. 
+Copy the quantized model to the Windows PC with Ryzen AI installed, activate the Ryzen AI Conda environment.
 
 .. code-block::
 
@@ -116,7 +116,7 @@ Generate the final model for Hybrid execution mode:
 
    conda activate ryzen-ai-<version>
 
-   model_generate --hybrid <output_dir> <quantized_model_path>  
+   model_generate --hybrid <output_dir> <quantized_model_path>
 
 Generate the final model for NPU execution mode:
 
@@ -166,11 +166,11 @@ Here are simple commands to export OGA model from quantized model using a standa
     conda create --name oga_builder_env python=3.10
     conda activate oga_buider_env
 
-    
+
     pip install onnxruntime-genai==0.9.2
     # pip install other necessary packages
     pip install ....
-    
+
 
     python3 -m onnxruntime_genai.models.builder -m <input quantized model> -o <output OGA model> -p int4 -e dml 
 
