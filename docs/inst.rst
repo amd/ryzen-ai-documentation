@@ -114,7 +114,7 @@ The Ryzen AI Software installation folder contains test to verify that the softw
 NPU Offloading with Session Options
 ===================================
 
-This section demonstrates how to enable NPU offloading logs using ONNX Runtime session options. IT also include changes needed in ``quicktest.py`` to run on Phoenix/Hawk Point devices.  
+This section demonstrates how to enable NPU offloading logs using ONNX Runtime session options. The code also includes changes needed in ``quicktest.py`` to run on Phoenix/Hawk Point devices.  
 To view detailed logging information, update the session options in ``quicktest.py`` as shown below:
 
 .. code-block:: python
