@@ -149,6 +149,7 @@ To view detailed logging information, update the session options in ``quicktest.
    model       = os.path.join(install_dir, 'quicktest', 'test_model.onnx')
    config_file = os.path.join(install_dir, 'voe-4.0-win_amd64', 'vaip_config.json')
    providers   = ['VitisAIExecutionProvider']
+   provider_options = [{}]  # Default provider options for STX/KRK and newer devices
 
    if npu_type == 'PHX/HPT':
        print("Setting environment for PHX/HPT")
@@ -184,7 +185,7 @@ To view detailed logging information, update the session options in ``quicktest.
        print(f"Failed to run the InferenceSession: {e}")
        sys.exit(1)  # Exit the program with a non-zero status to indicate an error
    else:
-      print("Test Passed")
+      print("Test finished")
 
 
 - Run the test:

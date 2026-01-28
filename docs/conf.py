@@ -65,6 +65,7 @@ extensions = [
     'sphinx.ext.githubpages',
     'linuxdoc.rstFlatTable',
     "notfound.extension",
+    "sphinx_copybutton",
 	#'recommonmark',
 	#'sphinx_markdown_tables',
 	#'edit_on_github',
