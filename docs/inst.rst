@@ -88,7 +88,7 @@ The Ryzen AI Software packages are now installed in the conda environment create
 Test the Installation
 *********************
 
-The Ryzen AI Software installation folder contains test to verify that the software is correctly installed. This installation test can be found in the ``quicktest`` subfolder.
+The Ryzen AI Software installation folder contains test to verify that the software is correctly installed. This installation test can be found in the ``quicktest`` subfolder which is expected to work for STX Strix (STX) or newer devices.
 
 - Open a Conda command prompt (search for "Miniforge Prompt" in the Windows start menu)
 
