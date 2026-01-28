@@ -50,13 +50,19 @@ Install NPU Drivers
 - Download and Install the NPU driver version: 32.0.203.280 or newer using the following links:
 
   - :download:`NPU Driver (Version 32.0.203.280) <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=NPU_RAI1.5_280_WHQL.zip>`
+<<<<<<< HEAD
+=======
+
+    - NPU driver 32.0.203.280 is production driver for Phoenix, Hawk Point, Strix, Strix Halo, and Krackan Point.
+  - :download:`NPU Driver (Version 32.0.203.314) <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=NPU_RAI1.6.1_314_WHQL.zip>`
+>>>>>>> eb9618e81052a3eec29b5abd02110967ae2b2e4f
 
 - Install the NPU drivers by following these steps:
 
   - Extract the downloaded ZIP file.
   - Open a terminal in administrator mode and execute the ``.\npu_sw_installer.exe`` file.
 
-- Ensure that NPU MCDM driver (Version:32.0.203.280, Date:5/16/2025) is correctly installed by opening Task Manager -> Performance -> NPU0.
+- Ensure that NPU driver (Version:32.0.203.280, Date:5/16/2025) is correctly installed by opening Task Manager -> Performance -> NPU0. 
 
 
 .. _install-bundled:
@@ -114,6 +120,7 @@ The Ryzen AI Software installation folder contains test to verify that the softw
 NPU Offloading with Session Options
 ===================================
 
+<<<<<<< HEAD
 This section demonstrates how to enable NPU offloading logs using ONNX Runtime session options. The code also includes changes needed in ``quicktest.py`` to run on Phoenix/Hawk Point devices.  
 To view detailed logging information, update the session options in ``quicktest.py`` as shown below:
 
@@ -182,6 +189,26 @@ To view detailed logging information, update the session options in ``quicktest.
        sys.exit(1)  # Exit the program with a non-zero status to indicate an error
    else:
       print("Test Passed")
+=======
+This section demonstrates how to enable NPU offloading logs using ONNX Runtime session options. To view detailed logging information, update the session options in ``quicktest.py`` as shown below:
+
+.. code-block:: python
+
+   import onnxruntime as ort
+
+  # Create session options
+  session_options = ort.SessionOptions()
+  session_options.log_severity_level = 1  # 0=Verbose, 1=Info, 2=Warning, 3=Error, 4=Fatal
+
+  try:
+      session = ort.InferenceSession(model,
+                                sess_options=session_options,
+                                providers=providers,
+                                provider_options=provider_options)
+  except Exception as e:
+      print(f"Failed to create an InferenceSession: {e}")
+      sys.exit(1)  # Exit the program with a non-zero status to indicate an error
+>>>>>>> eb9618e81052a3eec29b5abd02110967ae2b2e4f
 
 
 - Run the test:

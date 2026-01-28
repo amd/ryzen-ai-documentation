@@ -92,6 +92,7 @@ For more details, refer to the :doc:`llm/overview` page.
    model_quantization.rst
    modelrun.rst
    app_development.rst
+   whisper_cpp.rst
 
 .. toctree::
    :maxdepth: 1
