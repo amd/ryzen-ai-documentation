@@ -74,7 +74,7 @@ The demo script uses a predefined prompt and ``ref\control.png`` as the control 
 
 The control image can be modified and custom prompts can be provided with the ``--prompt`` option. For instance::
 
-  python run_sd15_controlnet.py --model_id 'stable-diffusion-v1-5/stable-diffusion-v1-5' --model_path ..\models\sd15_controlnet\ --prompt "A red bird on a grey sky" --custom_op_path "C:\Program Files\RyzenAI\1.7.0\deployment\onnx_custom_ops.dll"
+  python run_sd15_controlnet.py --model_id 'stable-diffusion-v1-5/stable-diffusion-v1-5' --model_path ..\models\sd15_controlnet_bfp\ --prompt "A red bird on a grey sky" --custom_op_path "C:\Program Files\RyzenAI\1.7.0\deployment\onnx_custom_ops.dll"
 
 
 Text-to-Image
@@ -86,15 +86,15 @@ To run the demo, navigate to the ``GenAI-SD\test`` directory and run the followi
 
 .. code-block:: 
 
-  python run_sd.py    --model_id 'stable-diffusion-v1-5/stable-diffusion-v1-5' --model_path ..\models\sd15\ --custom_op_path "C:\Program Files\RyzenAI\1.7.0\deployment\onnx_custom_ops.dll"
-  python run_sd.py    --model_id 'stabilityai/stable-diffusion-2-1-base' --model_path ..\models\sd21_base --custom_op_path "C:\Program Files\RyzenAI\1.7.0\deployment\onnx_custom_ops.dll"
+  python run_sd.py    --model_id 'stable-diffusion-v1-5/stable-diffusion-v1-5' --model_path ..\models\sd15_bfp\ --custom_op_path "C:\Program Files\RyzenAI\1.7.0\deployment\onnx_custom_ops.dll"
+  python run_sd.py    --model_id 'stabilityai/stable-diffusion-2-1-base' --model_path ..\models\sd21_base_bfp --custom_op_path "C:\Program Files\RyzenAI\1.7.0\deployment\onnx_custom_ops.dll"
   python run_sd.py    --model_id 'stabilityai/stable-diffusion-2-1' --model_path ..\models\sd-2.1-v\ --custom_op_path "C:\Program Files\RyzenAI\1.7.0\deployment\onnx_custom_ops.dll"
-  python run_sd.py    --model_id 'stabilityai/sd-turbo' --model_path ..\models\sd_turbo --custom_op_path "C:\Program Files\RyzenAI\1.7.0\deployment\onnx_custom_ops.dll"
-  python run_sd.py    --model_id 'stabilityai/sd-turbo' --model_path ..\models\sd_turbo_bs1 --num_images_per_prompt 1 --custom_op_path "C:\Program Files\RyzenAI\1.7.0\deployment\onnx_custom_ops.dll"
-  python run_sd_xl.py --model_id 'stabilityai/sdxl-turbo' --model_path ..\models\sdxl_turbo --custom_op_path "C:\Program Files\RyzenAI\1.7.0\deployment\onnx_custom_ops.dll"
-  python run_sd_xl.py --model_id 'stabilityai/sdxl-turbo' --model_path ..\models\sdxl_turbo_bs1 --num_images_per_prompt 1 --custom_op_path "C:\Program Files\RyzenAI\1.7.0\deployment\onnx_custom_ops.dll"
-  python run_sd_xl.py --model_id 'stabilityai/stable-diffusion-xl-base-1.0'  --model_path ..\models\sdxl-base-1.0\ --custom_op_path "C:\Program Files\RyzenAI\1.7.0\deployment\onnx_custom_ops.dll"
-  python run_sd_xl.py --model_id 'segmind/Segmind-Vega' --model_path ..\models\segmind-vega\ --custom_op_path "C:\Program Files\RyzenAI\1.7.0\deployment\onnx_custom_ops.dll"
+  python run_sd.py    --model_id 'stabilityai/sd-turbo' --model_path ..\models\sd_turbo_bfp --custom_op_path "C:\Program Files\RyzenAI\1.7.0\deployment\onnx_custom_ops.dll"
+  python run_sd.py    --model_id 'stabilityai/sd-turbo' --model_path ..\models\sd_turbo_bs1_bfp --num_images_per_prompt 1 --custom_op_path "C:\Program Files\RyzenAI\1.7.0\deployment\onnx_custom_ops.dll"
+  python run_sd_xl.py --model_id 'stabilityai/sdxl-turbo' --model_path ..\models\sdxl_turbo_bfp --custom_op_path "C:\Program Files\RyzenAI\1.7.0\deployment\onnx_custom_ops.dll"
+  python run_sd_xl.py --model_id 'stabilityai/sdxl-turbo' --model_path ..\models\sdxl_turbo_bs1_bfp --num_images_per_prompt 1 --custom_op_path "C:\Program Files\RyzenAI\1.7.0\deployment\onnx_custom_ops.dll"
+  python run_sd_xl.py --model_id 'stabilityai/stable-diffusion-xl-base-1.0'  --model_path ..\models\sdxl-base-1.0_bfp\ --custom_op_path "C:\Program Files\RyzenAI\1.7.0\deployment\onnx_custom_ops.dll"
+  python run_sd_xl.py --model_id 'segmind/Segmind-Vega' --model_path ..\models\segmind-vega_bfp\ --custom_op_path "C:\Program Files\RyzenAI\1.7.0\deployment\onnx_custom_ops.dll"
 
 To run the sd3/sd3.5/sd3.5-Turbo models, you need to set env:DD_PLUGINS_ROOT before running the demo. For instance:
 .. code-block:: 
@@ -105,7 +105,7 @@ The demo script uses a predefined prompt for each of the models. The output imag
 
 Custom prompts can be provided with the ``--prompt`` option. For instance::
 
-  python run_sd.py --model_id 'stabilityai/stable-diffusion-2-1-base' --model_path ..\models\sd21_base  --prompt "A bouquet of roses, impressionist style" --custom_op_path "C:\Program Files\RyzenAI\1.7.0\deployment\onnx_custom_ops.dll"
+  python run_sd.py --model_id 'stabilityai/stable-diffusion-2-1-base' --model_path ..\models\sd21_base_bfp  --prompt "A bouquet of roses, impressionist style" --custom_op_path "C:\Program Files\RyzenAI\1.7.0\deployment\onnx_custom_ops.dll"
 
 
 ..
