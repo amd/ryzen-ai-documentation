@@ -127,7 +127,6 @@ To view detailed logging information, update the session options in ``quicktest.
    import subprocess
    import numpy as np
    import onnxruntime as ort
-   from pathlib import Path
 
    def get_npu_info():
        # Run pnputil as a subprocess to enumerate PCI devices
@@ -147,7 +146,6 @@ To view detailed logging information, update the session options in ``quicktest.
    npu_type = get_npu_info()
    install_dir = os.environ['RYZEN_AI_INSTALLATION_PATH']
    model       = os.path.join(install_dir, 'quicktest', 'test_model.onnx')
-   config_file = os.path.join(install_dir, 'voe-4.0-win_amd64', 'vaip_config.json')
    providers   = ['VitisAIExecutionProvider']
    provider_options = [{}]  # Default provider options for STX/KRK and newer devices
 
@@ -205,7 +203,7 @@ To view detailed logging information, update the session options in ``quicktest.
       VITIS_EP_CPU     2
   [Vitis AI EP] No. of Subgraphs :
     NPU     1
-  Test Passed
+  Test finished
 
 
 .. note::
