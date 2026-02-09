@@ -230,8 +230,10 @@ Using BF16 Models
 
 When compiling BF16 models, an optional configuration file can be provided to the VitisAI EP. This file is specified using the :option:`config_file` provider option. For more details, refer to :ref:`Config File Options <configuration-file>` section.
 
-|memo| **NOTE**: Running BF16 Models is only supported for STX/KRK or newer devices. For the model compatibility table see :doc:`Release Notes <relnotes>`.
+|memo| **NOTE**:
 
+- Running BF16 Models is only supported for STX/KRK or newer devices. For the model compatibility table see :doc:`Release Notes <relnotes>`.
+- For C++ applications that need to compile BF16 models at runtime, include `${CONDA_PREFIX}/Lib/site-packages/flexml/flexml_extras/lib/vaiml.dll` along with the DLLs specified in :ref:`Application Development <app-development>`. However, using pre-compiled BF16 models is recommended for C++ deployment.
 
 Sample Python Code
 ==================

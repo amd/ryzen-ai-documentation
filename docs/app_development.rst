@@ -186,6 +186,7 @@ A C++ application built on the Ryzen AI ONNX Runtime must include the following 
   - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\aiecompiler_client.dll
 
 - Pre-compiled models in the form of :ref:`Vitis AI EP cache folders <vitisai-ep-cache>`
+- To compile BF16 models from C++ code, applications should include `${CONDA_PREFIX}/Lib/site-packages/flexml/flexml_extras/lib/vaiml.dll` in addition to the DLLs listed above.
 
 .. rubric:: For LLMs
 
