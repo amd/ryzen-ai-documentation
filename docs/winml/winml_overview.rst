@@ -1,5 +1,5 @@
 ==============================
-Overview
+Windows ML
 ==============================
 
 ****************************************************
@@ -10,18 +10,16 @@ Microsoft provides a comprehensive AI platform for Windows that enables develope
 
 For the full developer hub, see: `Windows AI Developer Portal <https://developer.microsoft.com/en-us/windows/ai/>`_
 
-.. image:: images/winml-sw.png
-   :align: center
 
+.. image:: ../images/winml-sw.png
+   :align: center
 
 Windows AI APIs
 ~~~~~~~~~~~~~~~
 
-Windows AI APIs are a set of built-in system APIs that provide access to pre-trained AI models shipped with Windows. These APIs allow developers to add AI capabilities to their applications without bundling any models themselves.
+Windows AI APIs are a set of built-in system APIs that provide access to pre-trained AI models shipped with Windows. These APIs allow developers to add AI capabilities to their applications without bundling any models themselves. These APIs run entirely on-device, ensuring user privacy and low-latency inference. 
 
-These APIs run entirely on-device, ensuring user privacy and low-latency inference.
-
-Key capabilities include `Text Recognition (OCR) <https://learn.microsoft.com/en-us/windows/ai/apis/text-recognition>`_, `Object Detection <https://learn.microsoft.com/en-us/windows/ai/apis/object-detection>`_, `Image Segmentation <https://learn.microsoft.com/en-us/windows/ai/apis/image-segmentation>`_ and `Description <https://learn.microsoft.com/en-us/windows/ai/apis/image-description>`_, `Language Detection <https://learn.microsoft.com/en-us/windows/ai/apis/language-detection>`_, and many more.
+Key capabilities include `Text Recognition (OCR) <https://learn.microsoft.com/en-us/windows/ai/apis/text-recognition>`_ , `Object Detection <https://learn.microsoft.com/en-us/windows/ai/apis/object-detection>`_ , `Image Segmentation <https://learn.microsoft.com/en-us/windows/ai/apis/image-segmentation>`_ and `Description <https://learn.microsoft.com/en-us/windows/ai/apis/image-description>`_ , `Language Detection <https://learn.microsoft.com/en-us/windows/ai/apis/language-detection>`_ , and many more.
 
 For more details, see: `Windows AI APIs documentation <https://learn.microsoft.com/en-us/windows/ai/apis/>`_
 
@@ -36,7 +34,6 @@ Windows ML
 ~~~~~~~~~~
 
 Windows Machine Learning (WinML) is the runtime layer that manages ONNX Runtime execution providers and hardware acceleration. It works alongside Foundry Local to provide a unified deployment path for ONNX AI models across CPUs, GPUs, and NPUs.
-
 
 
 ************************************
@@ -67,6 +64,7 @@ Prerequisites
      - C++20 or later
    * - Python
      - 3.10 to 3.12
+
 
 Installation
 ~~~~~~~~~~~~
@@ -162,9 +160,9 @@ The ``register_execution_providers`` function is used to download and register t
 Getting Started Tutorials
 ******************************
 
-- :doc:`Getting Started Tutorial for Windows ML <model_deployment>` - Uses a custom ResNet model to demonstrate:
+- `Getting Started Tutorial for Windows ML <model_deployment.rst>`_ - Uses a custom ResNet model to demonstrate:
 
-  - Optional Model conversion to QDQ quantized ONNX model using `AI Toolkit <https://code.visualstudio.com/docs/intelligentapps/modelconversion>`_
+  -  Optional Model conversion to QDQ quantized ONNX model using `AI Toolkit <https://code.visualstudio.com/docs/intelligentapps/modelconversion>`_
   - `Deployment using Windows ML APIs and ONNX Runtime using C++ and Python <model_deployment>`_
 
 - Additional examples:
@@ -172,10 +170,11 @@ Getting Started Tutorials
   - `Transformer based GoogleBERT <https://github.com/amd/RyzenAI-SW/tree/main/tutorial/WinML/Transformers/GoogleBERT>`_
   - `LLM based Example <https://github.com/amd/RyzenAI-SW/tree/main/tutorial/LLM>`_
 
-------------------------------
-License
-------------------------------
+..
+  ------------
 
-Ryzen AI is licensed under the `MIT License <https://github.com/amd/ryzen-ai-documentation/blob/main/License>`_.
-Refer to the `LICENSE file <https://github.com/amd/ryzen-ai-documentation/blob/main/License>`_ for the full license text and copyright notice.
+  #####################################
+  License
+  #####################################
 
+ Ryzen AI is licensed under `MIT License <https://github.com/amd/ryzen-ai-documentation/blob/main/License>`_ . Refer to the `LICENSE File <https://github.com/amd/ryzen-ai-documentation/blob/main/License>`_ for the full license text and copyright notice.
