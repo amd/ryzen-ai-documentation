@@ -20,7 +20,7 @@ Windows AI APIs
 Windows AI APIs are a set of built-in system APIs that provide access to pre-trained AI models shipped with Windows. These APIs allow developers to add AI capabilities to their applications without bundling any models themselves.
 These APIs run entirely on-device, ensuring user privacy and low-latency inference.
 
-Key capabilities include `Text Recognition (OCR) <https://learn.microsoft.com/en-us/windows/ai/apis/text-recognition>`_, `Object Detection <https://learn.microsoft.com/en-us/windows/ai/apis/object-detection>`_, `Image Segmentation <https://learn.microsoft.com/en-us/windows/ai/apis/image-segmentation>`_ and `Description <https://learn.microsoft.com/en-us/windows/ai/apis/image-description>`_ , 'Language Detection <https://learn.microsoft.com/en-us/windows/ai/apis/language-detection>`_, and many more. 
+Key capabilities include `Text Recognition (OCR) <https://learn.microsoft.com/en-us/windows/ai/apis/text-recognition>`_, `Object Detection <https://learn.microsoft.com/en-us/windows/ai/apis/object-detection>`_, `Image Segmentation <https://learn.microsoft.com/en-us/windows/ai/apis/image-segmentation>`_ and `Description <https://learn.microsoft.com/en-us/windows/ai/apis/image-description>`_, `Language Detection <https://learn.microsoft.com/en-us/windows/ai/apis/language-detection>`_, and many more.
 
 For more details, see: `Windows AI APIs documentation <https://learn.microsoft.com/en-us/windows/ai/apis/>`_
 
