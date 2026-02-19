@@ -2,13 +2,49 @@
 Overview
 ==============================
 
+****************************************************
+Microsoft Foundry on Windows
+****************************************************
+
+Microsoft provides a comprehensive AI platform for Windows that enables developers to build intelligent applications running locally on the device. The platform spans three key pillars: **Windows AI APIs**, **Foundry Local**, and **Windows ML**.
+
+For the full developer hub, see: `Windows AI Developer Portal <https://developer.microsoft.com/en-us/windows/ai/>`_
+
+.. image:: images/winml-sw.png
+   :align: center
+
+
+Windows AI APIs
+~~~~~~~~~~~~~~~
+
+Windows AI APIs are a set of built-in system APIs that provide access to pre-trained AI models shipped with Windows. These APIs allow developers to add AI capabilities to their applications without bundling any models themselves.
+These APIs run entirely on-device, ensuring user privacy and low-latency inference.
+
+Key capabilities include `Text Recognition (OCR) <https://learn.microsoft.com/en-us/windows/ai/apis/text-recognition>`_, `Object Detection <https://learn.microsoft.com/en-us/windows/ai/apis/object-detection>`_, `Image Segmentation <https://learn.microsoft.com/en-us/windows/ai/apis/image-segmentation>`_ and `Description <https://learn.microsoft.com/en-us/windows/ai/apis/image-description>`_ , 'Language Detection <https://learn.microsoft.com/en-us/windows/ai/apis/language-detection>`_, and many more. 
+
+For more details, see: `Windows AI APIs documentation <https://learn.microsoft.com/en-us/windows/ai/apis/>`_
+
+Foundry Local
+~~~~~~~~~~~~~
+
+Foundry Local is Microsoft's on-device AI inference runtime for running large language models (LLMs) and other generative AI models locally on Windows PCs. It automatically detects available hardware accelerators (CPU, GPU, NPU) and downloads the most compatible model variant.
+
+For more details, see: `Foundry Local documentation <https://learn.microsoft.com/en-us/azure/ai-foundry/foundry-local/get-started>`_
+
+Windows ML
+~~~~~~~~~~
+
+Windows Machine Learning (WinML) is the runtime layer that manages ONNX Runtime execution providers and hardware acceleration. It works alongside Foundry Local to provide a unified deployment path for ONNX AI models across CPUs, GPUs, and NPUs.
+
+
+
 ************************************
 Model Deployment using Windows ML
 ************************************
 
 Windows Machine Learning (WinML) enables developers to run ONNX AI models on PC via ONNX Runtime, with automatic execution provider management for different hardware (CPUs, GPUs, NPUs).
 
-For more details, see the `Windows ML official documentation <https://learn.microsoft.com/en-us/windows/ai/new-windows-ml/overview>`_.
+For more details, see the `Windows ML official documentation <https://learn.microsoft.com/en-us/windows/ai/new-windows-ml/overview>`_.\
 
 *************
 Prerequisites
@@ -35,7 +71,7 @@ Installation
 ~~~~~~~~~~~~
 
 - Install the `Windows App SDK <https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/downloads>`_
-- Make sure you install the `1.8.0-Experimental4 version <https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/experimental-channel>`_, because the release versions don't contain Windows ML yet.
+- Make sure you install the `Windows App SDK 1.8.5 (1.8.260209005) <https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/experimental-channel>`_, because the release versions don't contain Windows ML yet.
 
 Features
 ~~~~~~~~

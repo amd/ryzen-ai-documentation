@@ -84,6 +84,14 @@ For more details, refer to the :doc:`modelrun` page.
 
    gpu/ryzenai_gpu.rst
 
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+   :caption: Getting Started with Windows ML
+
+   winml/winml_overview.rst
+   winml/model_conversion.rst
+   winml/model_deployment.rst
 
 .. toctree::
    :maxdepth: 1
