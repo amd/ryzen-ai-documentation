@@ -18,9 +18,10 @@ Windows AI APIs
 ~~~~~~~~~~~~~~~
 
 Windows AI APIs are a set of built-in system APIs that provide access to pre-trained AI models shipped with Windows. These APIs allow developers to add AI capabilities to their applications without bundling any models themselves.
+
 These APIs run entirely on-device, ensuring user privacy and low-latency inference.
 
-Key capabilities include `Text Recognition (OCR) <https://learn.microsoft.com/en-us/windows/ai/apis/text-recognition>`_, `Object Detection <https://learn.microsoft.com/en-us/windows/ai/apis/object-detection>`_, `Image Segmentation <https://learn.microsoft.com/en-us/windows/ai/apis/image-segmentation>`_ and `Description <https://learn.microsoft.com/en-us/windows/ai/apis/image-description>`_ , 'Language Detection <https://learn.microsoft.com/en-us/windows/ai/apis/language-detection>`_, and many more. 
+Key capabilities include `Text Recognition (OCR) <https://learn.microsoft.com/en-us/windows/ai/apis/text-recognition>`_, `Object Detection <https://learn.microsoft.com/en-us/windows/ai/apis/object-detection>`_, `Image Segmentation <https://learn.microsoft.com/en-us/windows/ai/apis/image-segmentation>`_ and `Description <https://learn.microsoft.com/en-us/windows/ai/apis/image-description>`_, `Language Detection <https://learn.microsoft.com/en-us/windows/ai/apis/language-detection>`_, and many more.
 
 For more details, see: `Windows AI APIs documentation <https://learn.microsoft.com/en-us/windows/ai/apis/>`_
 
@@ -44,7 +45,7 @@ Model Deployment using Windows ML
 
 Windows Machine Learning (WinML) enables developers to run ONNX AI models on PC via ONNX Runtime, with automatic execution provider management for different hardware (CPUs, GPUs, NPUs).
 
-For more details, see the `Windows ML official documentation <https://learn.microsoft.com/en-us/windows/ai/new-windows-ml/overview>`_.\
+For more details, see the `Windows ML official documentation <https://learn.microsoft.com/en-us/windows/ai/new-windows-ml/overview>`_.
 
 *************
 Prerequisites
@@ -83,7 +84,7 @@ Windows ML handles the complexity of package management and hardware selection, 
 - Broad hardware support across different vendors through ONNX Runtime
 
 Download and Register the Execution Providers (EPs)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Windows ML will automatically discover, download, and register the latest version of all compatible execution providers.
 
@@ -161,7 +162,7 @@ The ``register_execution_providers`` function is used to download and register t
 Getting Started Tutorials
 ******************************
 
-- :doc:`Getting Started Tutorial for Windows ML <model_deployment>`_ - Uses a custom ResNet model to demonstrate:
+- :doc:`Getting Started Tutorial for Windows ML <model_deployment>` - Uses a custom ResNet model to demonstrate:
 
   - Optional Model conversion to QDQ quantized ONNX model using `AI Toolkit <https://code.visualstudio.com/docs/intelligentapps/modelconversion>`_
   - `Deployment using Windows ML APIs and ONNX Runtime using C++ and Python <model_deployment>`_
