@@ -2,45 +2,39 @@
 Windows ML
 ==============================
 
-****************************************************
-Microsoft Foundry on Windows
-****************************************************
-
-Microsoft provides a comprehensive AI platform for Windows that enables developers to build intelligent applications running locally on the device. The platform spans three key pillars: **Windows AI APIs**, **Foundry Local**, and **Windows ML**.
-
-For the full developer hub, see: `Windows AI Developer Portal <https://developer.microsoft.com/en-us/windows/ai/>`_
-
+Microsoft provides a comprehensive AI platform for Windows that enables developers to build intelligent applications running locally on the device. The platform spans three key pillars: **Windows AI APIs**, **Foundry Local**, and **Windows ML**. For more details refer the official documentation, see: `Windows AI Developer Portal <https://developer.microsoft.com/en-us/windows/ai/>`_
 
 .. image:: ../images/winml-sw.png
    :align: center
 
-Windows AI APIs
-~~~~~~~~~~~~~~~
+Windows Foundry Components
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Windows AI APIs are a set of built-in system APIs that provide access to pre-trained AI models shipped with Windows. These APIs allow developers to add AI capabilities to their applications without bundling any models themselves. These APIs run entirely on-device, ensuring user privacy and low-latency inference. 
+.. list-table::
+   :widths: 20 55 25
+   :header-rows: 1
 
-Key capabilities include `Text Recognition (OCR) <https://learn.microsoft.com/en-us/windows/ai/apis/text-recognition>`_ , `Object Detection <https://learn.microsoft.com/en-us/windows/ai/apis/object-detection>`_ , `Image Segmentation <https://learn.microsoft.com/en-us/windows/ai/apis/image-segmentation>`_ and `Description <https://learn.microsoft.com/en-us/windows/ai/apis/image-description>`_ , `Language Detection <https://learn.microsoft.com/en-us/windows/ai/apis/language-detection>`_ , and many more.
-
-For more details, see: `Windows AI APIs documentation <https://learn.microsoft.com/en-us/windows/ai/apis/>`_
-
-Foundry Local
-~~~~~~~~~~~~~
-
-Foundry Local is Microsoft's on-device AI inference runtime for running large language models (LLMs) and other generative AI models locally on Windows PCs. It automatically detects available hardware accelerators (CPU, GPU, NPU) and downloads the most compatible model variant.
-
-For more details, see: `Foundry Local documentation <https://learn.microsoft.com/en-us/azure/ai-foundry/foundry-local/get-started>`_
-
-Windows ML
-~~~~~~~~~~
-
-Windows Machine Learning (WinML) is the runtime layer that manages ONNX Runtime execution providers and hardware acceleration. It works alongside Foundry Local to provide a unified deployment path for ONNX AI models across CPUs, GPUs, and NPUs.
+   * - Component
+     - Description
+     - Documentation
+   * - Windows AI APIs
+     - Built-in system APIs that provide access to pre-trained AI models shipped with Windows. These APIs enable AI capabilities without bundling models, and run entirely on-device for privacy and low-latency inference. Key capabilities include `Text Recognition (OCR) <https://learn.microsoft.com/en-us/windows/ai/apis/text-recognition>`_, `Object Detection <https://learn.microsoft.com/en-us/windows/ai/apis/object-detection>`_, `Image Segmentation <https://learn.microsoft.com/en-us/windows/ai/apis/image-segmentation>`_, `Description <https://learn.microsoft.com/en-us/windows/ai/apis/image-description>`_, and `Language Detection <https://learn.microsoft.com/en-us/windows/ai/apis/language-detection>`_.
+     - `Windows AI APIs documentation <https://learn.microsoft.com/en-us/windows/ai/apis/>`_
+   * - Foundry Local
+     - Microsoft's on-device AI inference runtime for running large language models (LLMs) and other generative AI models locally on Windows PCs. It automatically detects available hardware accelerators (CPU, GPU, NPU) and downloads the most compatible model variant.
+     - `Foundry Local documentation <https://learn.microsoft.com/en-us/azure/ai-foundry/foundry-local/get-started>`_
+   * - Windows ML
+     - Runtime layer that manages ONNX Runtime execution providers and hardware acceleration. It works alongside Windows AI APIs and Foundry Local to provide a unified deployment path for ONNX AI models across CPUs, GPUs, and NPUs.
+     - `Windows ML official documentation <https://learn.microsoft.com/en-us/windows/ai/new-windows-ml/overview>`_
 
 
 ************************************
 Model Deployment using Windows ML
 ************************************
 
-Windows Machine Learning (WinML) enables developers to run ONNX AI models on PC via ONNX Runtime, with automatic execution provider management for different hardware (CPUs, GPUs, NPUs).
+Windows Machine Learning (WinML) enables C#, C++, and Python developers to run ONNX AI models locally on Windows PCs through ONNX Runtime, with automatic execution provider management across hardware targets including CPUs, GPUs, and NPUs. You can use models from PyTorch, TensorFlow/Keras, TensorFlow Lite (TFLite), scikit-learn, and other frameworks by converting them to ONNX for ONNX Runtime.
+
+In short, Windows ML provides a shared, Windows-wide ONNX Runtime along with support for dynamically downloading execution providers (EPs).
 
 For more details, see the `Windows ML official documentation <https://learn.microsoft.com/en-us/windows/ai/new-windows-ml/overview>`_.
 
@@ -65,110 +59,38 @@ Prerequisites
    * - Python
      - 3.10 to 3.12
 
+For the complete list of Windows OS that are supported refer to `Windows App SDK support <https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/support>`_
 
+*************
 Installation
+*************
+
+- Install the latest NPU drivers following `RAI installation instructions <inst.rst>`_
+- Windows ML is included as part of the Windows App SDK, so installing it will also install Windows ML and its dependencies. Download and Install compatabile the `Windows App SDK 1.8.5 <https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/downloads>`_ or later version.
+
+Key Features
 ~~~~~~~~~~~~
-
-- Install the `Windows App SDK <https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/downloads>`_
-- Make sure you install the `Windows App SDK 1.8.5 (1.8.260209005) <https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/experimental-channel>`_, because the release versions don't contain Windows ML yet.
-
-Features
-~~~~~~~~
 
 Windows ML handles the complexity of package management and hardware selection, automatically downloading the latest execution providers compatible with your device's hardware.
 
 - Dynamically gets latest EPs for different hardware
-- Shared ONNX Runtime, which reduces application size
+- Shared Windows-wide ONNX Runtime, which reduces application size
 - Broad hardware support across different vendors through ONNX Runtime
 
-Download and Register the Execution Providers (EPs)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Windows ML will automatically discover, download, and register the latest version of all compatible execution providers.
-
-C++ Example
-~~~~~~~~~~~
-
-.. code-block:: cpp
-
-    #include <winrt/Microsoft.Windows.AI.MachineLearning.h>
-    #include <win_onnxruntime_cxx_api.h>
-
-    // First we need to create an ORT environment
-    Ort::Env env(ORT_LOGGING_LEVEL_ERROR, "WinMLDemo"); // Use an ID of your own choice
-
-    // Get the default ExecutionProviderCatalog
-    winrt::Microsoft::Windows::AI::MachineLearning::ExecutionProviderCatalog catalog =
-    winrt::Microsoft::Windows::AI::MachineLearning::ExecutionProviderCatalog::GetDefault();
-
-    // Ensure and register all compatible execution providers with ONNX Runtime
-    catalog.EnsureAndRegisterAllAsync().get();
-
-Python Example
-~~~~~~~~~~~~~~
-
-.. code-block:: python
-
-    # Known issue: import winrt.runtime will cause the TensorRTRTX execution provider to fail registration.
-    # As a workaround, please run pywinrt related code in a separate thread.
-
-    # winml.py
-    import json
-
-    def _get_ep_paths() -> dict[str, str]:
-        from winui3.microsoft.windows.applicationmodel.dynamicdependency.bootstrap import (
-            InitializeOptions,
-            initialize
-        )
-
-        import winui3.microsoft.windows.ai.machinelearning as winml
-        eps     = {}
-        with initialize(options = InitializeOptions.ON_NO_MATCH_SHOW_UI):
-            catalog = winml.ExecutionProviderCatalog.get_default()
-            providers = catalog.find_all_providers()
-            for provider in providers:
-                provider.ensure_ready_async().get()
-                eps[provider.name] = provider.library_path
-                # DO NOT call provider.try_register in python. That will register to the native env.
-        return eps
-
-    if __name__ == "__main__":
-        eps = _get_ep_paths()
-        print(json.dumps(eps))
-
-    # In your application code
-    import subprocess
-    import json
-    import sys
-    from pathlib import Path
-    import onnxruntime as ort
-
-    def register_execution_providers():
-        worker_script = str(Path(__file__).parent / 'winml.py')
-        result = subprocess.check_output([sys.executable, worker_script], text=True)
-        paths = json.loads(result)
-        for item in paths.items():
-            ort.register_execution_provider_library(item[0], item[1])
-        _ep_registered = True
-
-    register_execution_providers()
-
-
-The ``register_execution_providers`` function is used to download and register the latest version of all compatible execution providers.
 
 ******************************
 Getting Started Tutorials
 ******************************
 
-- `Getting Started Tutorial for Windows ML <model_deployment.rst>`_ - Uses a custom ResNet model to demonstrate:
+- `Getting Started Tutorial for Windows ML <winml_example.rst>`_ - Using ResNet model:
 
   -  Optional Model conversion to QDQ quantized ONNX model using `AI Toolkit <https://code.visualstudio.com/docs/intelligentapps/modelconversion>`_
   - `Deployment using Windows ML APIs and ONNX Runtime using C++ and Python <model_deployment>`_
 
 - Additional examples:
 
-  - `Transformer based GoogleBERT <https://github.com/amd/RyzenAI-SW/tree/main/tutorial/WinML/Transformers/GoogleBERT>`_
-  - `LLM based Example <https://github.com/amd/RyzenAI-SW/tree/main/tutorial/LLM>`_
+  - `Transformer based GoogleBERT example <https://github.com/amd/RyzenAI-SW/tree/main/WinML/Transformers/GoogleBERT>`_
+  - `LLM example using Foundry Local <https://github.com/amd/RyzenAI-SW/tree/main/WinML/LLM>`_
 
 ..
   ------------

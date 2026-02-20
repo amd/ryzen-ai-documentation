@@ -1,26 +1,211 @@
-==================
-Model Deployment
-==================
+################################
+Model Deployment with Windows ML
+################################
 
-This tutorial demonstrates the steps for deploying a ResNet50 model using Windows ML.
-How to convert, compile, and deploy models in both Python and C++ environments.
+Windows Machine Learning (WinML) enables C#, C++, and Python developers to run ONNX AI models locally on Windows PCs through ONNX Runtime, with automatic execution provider management across hardware targets including CPUs, GPUs, and NPUs. You can use models from PyTorch, TensorFlow/Keras, TensorFlow Lite (TFLite), scikit-learn, and other frameworks by converting them to ONNX for ONNX Runtime.
+
+In short, Windows ML provides a shared, Windows-wide ONNX Runtime along with support for dynamically downloading execution providers (EPs).
+
+For more details, see the `Windows ML official documentation <https://learn.microsoft.com/en-us/windows/ai/new-windows-ml/overview>`_.
+
+************************************************
+Automatic Execution Providers (EPs) Registration
+************************************************
+
+Windows ML will automatically discover, download, and register the latest version of all compatible execution providers.
+
+C++ Example
+~~~~~~~~~~~
+
+.. code-block:: cpp
+
+    #include <winrt/Microsoft.Windows.AI.MachineLearning.h>
+    #include <win_onnxruntime_cxx_api.h>
+
+    // First we need to create an ORT environment
+    Ort::Env env(ORT_LOGGING_LEVEL_ERROR, "WinMLDemo"); // Use an ID of your own choice
+
+    // Get the default ExecutionProviderCatalog
+    winrt::Microsoft::Windows::AI::MachineLearning::ExecutionProviderCatalog catalog =
+    winrt::Microsoft::Windows::AI::MachineLearning::ExecutionProviderCatalog::GetDefault();
+
+    // Ensure and register all compatible execution providers with ONNX Runtime
+    catalog.EnsureAndRegisterAllAsync().get();
+
+Python Example
+~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+    # Known issue: import winrt.runtime will cause the TensorRTRTX execution provider to fail registration.
+    # As a workaround, please run pywinrt related code in a separate thread.
+
+    # winml.py
+    import json
+
+    def _get_ep_paths() -> dict[str, str]:
+        from winui3.microsoft.windows.applicationmodel.dynamicdependency.bootstrap import (
+            InitializeOptions,
+            initialize
+        )
+
+        import winui3.microsoft.windows.ai.machinelearning as winml
+        eps     = {}
+        with initialize(options = InitializeOptions.ON_NO_MATCH_SHOW_UI):
+            catalog = winml.ExecutionProviderCatalog.get_default()
+            providers = catalog.find_all_providers()
+            for provider in providers:
+                provider.ensure_ready_async().get()
+                eps[provider.name] = provider.library_path
+                # DO NOT call provider.try_register in python. That will register to the native env.
+        return eps
+
+    if __name__ == "__main__":
+        eps = _get_ep_paths()
+        print(json.dumps(eps))
+
+    # In your application code
+    import subprocess
+    import json
+    import sys
+    from pathlib import Path
+    import onnxruntime as ort
+
+    def register_execution_providers():
+        worker_script = str(Path(__file__).parent / 'winml.py')
+        result = subprocess.check_output([sys.executable, worker_script], text=True)
+        paths = json.loads(result)
+        for item in paths.items():
+            ort.register_execution_provider_library(item[0], item[1])
+        _ep_registered = True
+
+    register_execution_providers()
+
+
+The ``register_execution_providers`` function is used to download and register the latest version of all compatible execution providers.
 
 ****************
-Model Conversion
+Execution Policy
 ****************
 
-Model conversion is the first step in preparing your model for deployment with Windows ML.
-You can use the AI Toolkit to convert models to the ONNX format and apply quantization.
-- See the :doc:`model_conversion` page for details on model conversion using AI Toolkit.
+The EP selection policy can be configured to use specific execution provider or through general execution policy. For more details, refer to the Windowns ML documentation on `Execution Providers <https://learn.microsoft.com/en-us/windows/ai/new-windows-ml/execution-providers>`_.
+
+For example, setting the execution policy to `PREFER_NPU` will prioritize the NPU execution provider if available, with a fallback to CPU execution if an NPU is not present. 
+
+C++ Example
+~~~~~~~~~~~
+
+.. code-block:: cpp
+
+    // Configure the session to select an EP and device for MAX_EFFICIENCY which typically
+    // will choose an NPU if available with a CPU fallback.
+    Ort::SessionOptions sessionOptions;
+    sessionOptions.SetEpSelectionPolicy(OrtExecutionProviderDevicePolicy_PREFER_NPU);
+
+Python Example
+~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+    # Configure the session to select an EP and device for PREFER_NPU which typically
+    # will choose an NPU if available with a CPU fallback.
+    options = ort.SessionOptions()
+    options.set_provider_selection_policy(ort.OrtExecutionProviderDevicePolicy.PREFER_NPU)
+    assert options.has_providers()
+
+
+Specifying the specific VitisAI EP can be done through the `set_providers` API. For example, setting the execution provider to `VitisAIExecutionProvider` will only use the VitisAI EP for model execution.
+
+C++ Example
+~~~~~~~~~~~
+
+.. code-block:: cpp
+
+    #include <iostream>
+    #include <iomanip>
+    #include <vector>
+    #include <stdexcept>
+    #include <winml/onnxruntime_cxx_api.h>
+
+    // Assuming you have an Ort::Env named 'env'
+    // 1. Enumerate EP devices
+    std::vector<Ort::ConstEpDevice> ep_devices = env.GetEpDevices();
+
+    // 2. Collect only ReplaceWithExecutionProvider NPU devices
+    std::vector<Ort::ConstEpDevice> selected_ep_devices;
+    for (const auto& d : ep_devices) {
+        if (std::string(d.EpName()) == "VitisAIExecutionProvider"
+            && d.HardwareDevice().Type() == OrtHardwareDeviceType_NPU) {
+            selected_ep_devices.push_back(d);
+        }
+    }
+    if (selected_ep_devices.empty()) {
+        throw std::runtime_error("VitisAIExecutionProvider is not available on this system.");
+    }
+
+    // 3. Configure provider-specific options (varies based on EP)
+    // and append the EP with the correct devices (varies based on EP)
+    Ort::SessionOptions session_options;
+    Ort::KeyValuePairs ep_options;
+    ep_options.Add("provider_specific_option", "4");
+    session_options.AppendExecutionProvider_V2(env, { selected_ep_devices.front() }, ep_options);
+
+
+Python Example
+~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+    # 1. Enumerate and filter EP devices
+    ep_devices = ort.get_ep_devices()
+    selected_ep_devices = [
+        d for d in ep_devices
+        if d.ep_name == "VitisAIExecutionProvider"
+        and d.device.type == ort.OrtHardwareDeviceType.NPU
+    ]
+    if not selected_ep_devices:
+        raise RuntimeError("VitisAIExecutionProvider is not available on this system.")
+
+    # 2. Configure provider-specific options (varies based on EP)
+    # and append the EP with the correct devices (varies based on EP)
+    options = ort.SessionOptions()
+    provider_options = {"provider_specific_option": "4"}
+    options.add_provider_for_devices([selected_ep_devices[0]], provider_options)
+
+
+
 
 *****************
-Python Deployment
-*****************
-
-This section covers how to compile and deploy your ONNX model using Python.
-
 Model Compilation
-~~~~~~~~~~~~~~~~~
+*****************
+
+Models may need to be compiled for specific EPs. This is a one-time process that stores the compiled model for subsequent runs:
+
+C++ Example
+~~~~~~~~~~~
+
+.. code-block:: cpp
+
+    bool isCompiledModelAvailable = std::filesystem::exists(compiledModelPath);
+
+    if (!isCompiledModelAvailable)
+    {
+        Ort::ModelCompilationOptions compile_options(env, sessionOptions);
+        compile_options.SetInputModelPath(modelPath.c_str());
+        compile_options.SetOutputModelPath(compiledModelPath.c_str());
+
+        std::cout << "Starting compile, this may take a few moments..." << std::endl;
+        Ort::Status compileStatus = Ort::CompileModel(env, compile_options);
+        if (compileStatus.IsOK())
+        {
+            std::cout << "Model compiled successfully!" << std::endl;
+            isCompiledModelAvailable = true;
+        }
+    }
+
+
+Python Example
+~~~~~~~~~~~~~~
 
 .. code-block:: python
 
@@ -39,83 +224,16 @@ Model Compilation
         # In that case, use the original model directly.
         output_model_path = input_model_path
 
-Model Deployment
-~~~~~~~~~~~~~~~~
 
-Once the model is compiled, you can run inference using ONNX Runtime in Python.
-This allows you to quickly validate model performance on your target hardware.
-- Run the compiled model using an ORT session:
 
-.. code-block:: bash
+For more details on VitisiAIExecution Provider specific `provider_options` as shown in the reference documentation :doc:`Model compilation and deployment <../modelrun>`
 
-    python run_inference.py
 
-Sample Output
-~~~~~~~~~~~~~
+..
+  ------------
 
-The following is a sample output showing the top-5 predictions from the model.
-You should see class indices and their associated confidence scores.
+  #####################################
+  License
+  #####################################
 
-.. code-block:: bash
-
-    285, Egyptian cat with confidence of 0.904274
-    281, tabby with confidence of 0.0620204
-    282, tiger cat with confidence of 0.0223081
-    287, lynx with confidence of 0.00119624
-    761, remote control with confidence of 0.000487919
-
-**************
-C++ Deployment
-**************
-
-C++ deployment is recommended for production scenarios where performance and integration with native Windows applications are critical.
-This section shows how to compile and deploy your model using C++ APIs
-
-Model Compilation
-~~~~~~~~~~~~~~~~~
-
-.. code-block:: c++
-
-    const OrtCompileApi* compileApi = ortApi.GetCompileApi();
-
-    // Prepare compilation options
-    OrtModelCompilationOptions* compileOptions = nullptr;
-    OrtStatus* status = compileApi->CreateModelCompilationOptionsFromSessionOptions(env, sessionOptions, &compileOptions);
-    status = compileApi->ModelCompilationOptions_SetInputModelPath(compileOptions, modelPath.c_str());
-    status = compileApi->ModelCompilationOptions_SetOutputModelPath(compileOptions, compiledModelPath.c_str());
-
-    // Compile the model
-    status = compileApi->CompileModel(env, compileOptions);
-
-    // Clean up
-    compileApi->ReleaseModelCompilationOptions(compileOptions);
-
-Model Deployment
-~~~~~~~~~~~~~~~~
-
-After compiling the model, you can build and run your C++ application to perform inference.
-- Build the example application and run using the Visual Studio Developer Command Prompt:
-
-.. code-block:: bash
-
-    msbuild RunInference.sln -p:Configuration=Release -p:Platform=x64
-
-- Run the compiled model using an ORT session:
-
-.. code-block:: bash
-
-    .\RunInference.exe
-
-Sample Output
-~~~~~~~~~~~~~
-
-The output below shows the top-5 predictions from the C++ inference application.
-You should see similar results as in the Python deployment section.
-
-.. code-block:: bash
-
-    285, Egyptian cat with confidence of 0.904274
-    281, tabby with confidence of 0.0620204
-    282, tiger cat with confidence of 0.0223081
-    287, lynx with confidence of 0.00119624
-    761, remote control with confidence of 0.000487919
+ Ryzen AI is licensed under `MIT License <https://github.com/amd/ryzen-ai-documentation/blob/main/License>`_ . Refer to the `LICENSE File <https://github.com/amd/ryzen-ai-documentation/blob/main/License>`_ for the full license text and copyright notice.
