@@ -65,8 +65,9 @@ For the complete list of Windows OS that are supported refer to `Windows App SDK
 Installation
 *************
 
-- Install the latest NPU drivers following `RAI installation instructions <inst.rst>`_
+- Install the latest NPU drivers following `RAI installation instructions <../inst.rst>`_
 - Windows ML is included as part of the Windows App SDK, so installing it will also install Windows ML and its dependencies. Download and Install compatabile the `Windows App SDK 1.8.5 <https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/downloads>`_ or later version.
+
 
 Key Features
 ~~~~~~~~~~~~
@@ -85,7 +86,7 @@ Getting Started Tutorials
 - `Getting Started Tutorial for Windows ML <winml_example.rst>`_ - Using ResNet model:
 
   -  Optional Model conversion to QDQ quantized ONNX model using `AI Toolkit <https://code.visualstudio.com/docs/intelligentapps/modelconversion>`_
-  - `Deployment using Windows ML APIs and ONNX Runtime using C++ and Python <model_deployment>`_
+  - `Deployment using Windows ML APIs and ONNX Runtime using C++ and Python <winml_example>`_
 
 - Additional examples:
 

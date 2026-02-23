@@ -2,21 +2,20 @@
 Windows ML ResNet Example
 =========================
 
-This tutorial demonstrates the steps for deploying a ResNet model using Windows ML.
-How to convert, quantize, compile, and deploy models in both Python and C++ environments.
+This tutorial demonstrates how to deploy a ResNet model using Windows ML, covering the complete workflow for converting, quantizing, compiling, and deploying models in both Python and C++ environments.
 
-This Tutorial will help with the steps to deploy ResNet model demonstrating:
+This tutorial provides step-by-step instructions for deploying a ResNet model, demonstrating:
 
-- Setup instructions to create the python environment and install dependencies
+- Setup instructions to create the Python environment and install dependencies
 - Download the ResNet ONNX model
-- (Optional) Quantize the model using AI tool kit to QDQ ONNX format for low precision inference
-- Compile and run the model on NPU using ONNX runtime with Vitis AI Execution provider using Python/C++ code.
+- (Optional) Quantize the model using AI Toolkit to QDQ ONNX format for low precision inference
+- Compile and run the model on NPU using ONNX Runtime with Vitis AI Execution Provider using Python/C++ code
 
 ******************
 Setup Instructions
 ******************
 
-The source code files can be downloaded from `this link <https://github.com/amd/RyzenAI-SW/tree/main/WinML/CNN>`_. Alternatively, you can clone the RyzenAI-SW repo and change the directory into "tutorial".
+The source code files can be downloaded from `this link <https://github.com/amd/RyzenAI-SW/tree/main/WinML/CNN>`_. Alternatively, you can clone the RyzenAI-SW repo and change the directory into "WinML".
 
 .. code-block::
 
@@ -25,7 +24,7 @@ The source code files can be downloaded from `this link <https://github.com/amd/
 
 |
 
-Ensure that the NPU driver and Windows App SDK are correctly installed. For more details, see the :doc:`Windows ML Installation <winml_overview>`.
+The NPU driver and Windows App SDK should be correctly installed, as described in :doc:`Windows ML Installation <winml_overview>`.
 
 .. code-block:: shell
 
@@ -41,14 +40,14 @@ Check the installed `Windows Apps SDK` python package using the command below.
     conda list | findstr wasdk
 
 
-This should print the install version of the Windows App SDK python package. Ensure that the version is 1.8.5 or later.
+This should print the install version of the `Windows App SDK` python package. Ensure that the version is 1.8.5 or later.
 
 .. code-block:: shell
 
     wasdk-microsoft-windows-ai-machinelearning 1.8.260209005            pypi_0    pypi
     wasdk-microsoft-windows-applicationmodel-dynamicdependency-bootstrap 1.8.260209005            pypi_0    pypi
 
-Ensure that your python package matches the Windows App SDK version installed or download the version from `Windows App SDK 1.8.5 <https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/downloads>`_.
+Ensure that the `Windows App SDK` version matches the python package or download the specific version from `Windows App SDK 1.8.5 <https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/downloads>`_.
 
 ****************
 Model Conversion
@@ -58,7 +57,7 @@ Model conversion is the first step in preparing your model for deployment with W
 You can use the AI Toolkit to convert models to the ONNX format and apply quantization.
 
 - Model quantization is optional step that can help reduce model size and improve inference performance.
-- Orignal float model can be passed through automatic BF16 conversion. For more details refer to `Model conversion <model_quantization.rst>`_
+- Orignal float model can be passed through automatic BF16 conversion. For more details refer to `Model conversion <../model_quantization.rst>`_
 - See the `VS Code AI Toolkit model conversion <https://code.visualstudio.com/docs/intelligentapps/modelconversion>`_ page for details on model conversion using AI Toolkit.
 
 If skipping the model quantization, you can directly download the ResNet ONNX model using the script:
@@ -79,7 +78,7 @@ Model Inference
 ~~~~~~~~~~~~~~~
 
 Use the python script to run inference which compiles and runs the model on NPU using ONNX runtime with Vitis AI Execution provider.
-If you are using quantized model specify the quantized model path e.g. `models\model_a8w8.onnx` and if you are using original FP32 model specify the original model path e.g. `models\resnet50.onnx`.
+If you are using quantized model specify the quantized model path e.g. `models\\model_a8w8.onnx` and if you are using original FP32 model specify the original model path e.g. `models\\resnet50.onnx`.
 
 .. code-block:: bash
 
@@ -109,8 +108,7 @@ This section shows how to compile and deploy your model using C++ APIs
 Model Inference
 ~~~~~~~~~~~~~~~
 
-After compiling the model, you can build and run your C++ application to perform inference.
-- Build the example application and run using the Visual Studio Developer Command Prompt:
+Instructions to build the example application and run using the Visual Studio Developer Command Prompt:
 
 .. code-block:: bash
 
@@ -118,7 +116,7 @@ After compiling the model, you can build and run your C++ application to perform
     nuget.exe restore .\CppResnetBuildDemo.sln
     msbuild .\CppResnetBuildDemo.sln /p:Configuration=Release /m
 
-- Run the compiled model using an ORT session:
+After compiling the model, you can build and run your C++ application to perform inference.
 
 .. code-block:: bash
 
@@ -147,7 +145,7 @@ You should see similar results as in the Python deployment section.
     Avg time per iteration : 19 milliseconds
 
 
-For more examples running Transformer and LLM models using Windows ML, refer to `Windows ML examples in RyzenAI-SW <https://github.com/amd/RyzenAI-SW/tree/main/WinML>`_.
+For more examples using Transformer and LLM models with Windows ML, refer to `Windows ML examples in RyzenAI-SW <https://github.com/amd/RyzenAI-SW/tree/main/WinML>`_.
 
 ..
   ------------

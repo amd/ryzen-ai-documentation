@@ -88,7 +88,7 @@ The ``register_execution_providers`` function is used to download and register t
 Execution Policy
 ****************
 
-The EP selection policy can be configured to use specific execution provider or through general execution policy. For more details, refer to the Windowns ML documentation on `Execution Providers <https://learn.microsoft.com/en-us/windows/ai/new-windows-ml/execution-providers>`_.
+The EP selection policy can be configured to use specific execution provider or through general execution policy. For more details, refer to the Windows ML documentation on `Execution Providers <https://learn.microsoft.com/en-us/windows/ai/new-windows-ml/execution-providers>`_.
 
 For example, setting the execution policy to `PREFER_NPU` will prioritize the NPU execution provider if available, with a fallback to CPU execution if an NPU is not present. 
 
@@ -226,7 +226,7 @@ Python Example
 
 
 
-For more details on VitisiAIExecution Provider specific `provider_options` as shown in the reference documentation :doc:`Model compilation and deployment <../modelrun>`
+For more details on VitisAIExecution Provider specific `provider_options` as shown in the reference documentation :doc:`Model compilation and deployment <../modelrun>`
 
 
 ..
