@@ -88,7 +88,7 @@ The ``register_execution_providers`` function is used to download and register t
 Execution Policy
 ****************
 
-The EP selection policy can be configured to use specific execution provider or through general execution policy. For more details, refer to the Windows ML documentation on `Execution Providers <https://learn.microsoft.com/en-us/windows/ai/new-windows-ml/execution-providers>`_.
+The EP selection policy can be configured to use specific execution provider or through general execution policy. For more details, refer to the Windows ML documentation on `Execution Providers <https://learn.microsoft.com/en-us/windows/ai/new-windows-ml/select-execution-providers?tabs=python>`_.
 
 For example, setting the execution policy to `PREFER_NPU` will prioritize the NPU execution provider if available, with a fallback to CPU execution if an NPU is not present. 
 
@@ -114,7 +114,7 @@ Python Example
     assert options.has_providers()
 
 
-Specifying the specific VitisAI EP can be done through the `set_providers` API. For example, setting the execution provider to `VitisAIExecutionProvider` will only use the VitisAI EP for model execution.
+Specifying the specific execution provider can be done through the `set_providers` API. For example, setting the execution provider to `VitisAIExecutionProvider` will only use the VitisAI EP for model execution.
 
 C++ Example
 ~~~~~~~~~~~
@@ -179,7 +179,7 @@ Python Example
 Model Compilation
 *****************
 
-Models may need to be compiled for specific EPs. This is a one-time process that stores the compiled model for subsequent runs:
+Models needs to be compiled for specific EPs. This is a one-time process that stores the compiled model for subsequent runs:
 
 C++ Example
 ~~~~~~~~~~~
@@ -226,7 +226,7 @@ Python Example
 
 
 
-For more details on VitisAIExecution Provider specific `provider_options` as shown in the reference documentation :doc:`Model compilation and deployment <../modelrun>`
+For more details on `VitisAIExecutionProvider` specific `provider_options` as shown in the reference documentation :doc:`Model compilation and deployment <../modelrun>`
 
 
 ..
