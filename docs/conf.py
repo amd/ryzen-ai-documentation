@@ -31,10 +31,10 @@ copyright = '2023-2025, Advanced Micro Devices, Inc'
 author = 'Advanced Micro Devices, Inc'
 
 # The short X.Y version
-version = '1.6'
+version = '1.7'
 # The full version, including alpha/beta/rc tags
-release = '1.6'
-html_last_updated_fmt = 'Sep 30, 2025'
+release = '1.7.0'
+html_last_updated_fmt = 'Jan 22, 2026'
 
 
 # -- General configuration ---------------------------------------------------
@@ -65,6 +65,7 @@ extensions = [
     'sphinx.ext.githubpages',
     'linuxdoc.rstFlatTable',
     "notfound.extension",
+    "sphinx_copybutton",
 	#'recommonmark',
 	#'sphinx_markdown_tables',
 	#'edit_on_github',
@@ -97,7 +98,7 @@ pdf_documents = [('index', u'', u'', u'AMD, Inc.'),]
 
 
 # Configure 'Edit on GitHub' extension
-edit_on_github_project = '/amd/ryzen-ai-documentation'
+edit_on_github_project = '/amd/ryzen-ai-documentation-internal'
 edit_on_github_branch = 'main/docs'
 
 # Add any paths that contain templates here, relative to this directory.

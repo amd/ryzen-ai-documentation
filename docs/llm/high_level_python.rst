@@ -33,7 +33,7 @@ To create and set up an environment, run these commands in your terminal:
 
 .. code-block:: bash
 
-    conda create -n ryzenai-llm python=3.10
+    conda create -n ryzenai-llm python=3.12
     conda activate ryzenai-llm
     pip install lemonade-sdk[dev,oga-ryzenai] --extra-index-url=https://pypi.amd.com/simple
 

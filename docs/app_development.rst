@@ -24,6 +24,9 @@ The following table summarizes the driver requirements for the different version
    * - VitisAI EP version
      - Minimum NPU Driver version
      - Maximum NPU Driver release date
+   * - 1.7
+     - 32.0.203.280
+     - Jan 22nd, 2029
    * - 1.6
      - 32.0.203.280
      - Oct 7th, 2028
@@ -183,6 +186,7 @@ A C++ application built on the Ryzen AI ONNX Runtime must include the following 
   - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\aiecompiler_client.dll
 
 - Pre-compiled models in the form of :ref:`Vitis AI EP cache folders <vitisai-ep-cache>`
+- To compile BF16 models from C++ code, applications should include ``${CONDA_PREFIX}/Lib/site-packages/flexml/flexml_extras/lib/vaiml.dll`` in addition to the DLLs listed above.
 
 .. rubric:: For LLMs
 
