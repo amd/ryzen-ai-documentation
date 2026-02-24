@@ -19,9 +19,10 @@ NPU Management Interface
 Introduction
 *******************************
 
-The ``xrt-smi`` utility is a command-line interface to monitor and manage the NPU integrated AMD CPUs. 
+The ``xrt-smi`` utility is a command-line interface to monitor and manage the NPU integrated AMD CPUs.
 
-In Window platform, ``xrt-smi`` is installed in ``C:\Windows\System32\AMD`` and it can be directly invoked from within the conda environment created by the Ryzen AI Software installer.
+On the Windows platform, ``xrt-smi`` is installed in ``C:\Windows\System32\AMD``. Ensure that the following path ``C:\Windows\System32\AMD`` is set in the System PATH variable.
+This will allow it to be directly invoked from within the conda environment created by the Ryzen AI Software installer.
 
 The ``xrt-smi`` utility currently supports three primary commands:
 

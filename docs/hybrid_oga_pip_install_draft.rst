@@ -238,32 +238,46 @@ Python Script
 
    This sanitization fix will be included in the run_model.py script in the next release.
 
-
 Python Script (with Chat Template)
 ==================================
 
-For models that use chat templates, the sample `model_chat.py <https://github.com/amd/RyzenAI-SW/tree/main/LLM-examples/oga_inference>`_ script may provide better output quality. The script and usage instructions are available in the `RyzenAI-SW repository <https://github.com/amd/RyzenAI-SW/tree/main/LLM-examples/oga_inference>`_.
+For models that use chat templates, the ``model_chat.py`` script may provide better output quality. 
+
+It is highly recommended to use ``model_chat.py`` for the GPT-OSS-20B NPU model: https://huggingface.co/amd/gpt-oss-20b-onnx-ryzenai-npu
+
+The script is available in the RyzenAI-SW repository: https://github.com/amd/RyzenAI-SW/tree/main/LLM-examples/oga_inference
+
+1. Download the model:
+
+.. code-block:: bash
+
+   git clone https://huggingface.co/amd/gpt-oss-20b-onnx-ryzenai-npu
+
+2. Clone the repository and navigate to the script:
+
+.. code-block:: bash
+
+   git clone https://github.com/amd/RyzenAI-SW
+   cd RyzenAI-SW/LLM-examples/oga_inference
+
+3. Run the script:
+
+.. code-block:: bash
+
+   python model_chat.py -m <model_folder> -pr <prompt_file> -ipl <input_tokens> -tm
+
+   :: Example command
+   python model_chat.py -m "path/to/gpt-oss-20b-onnx-ryzenai-npu" -pr prompt.txt -ipl 256 -tm
+
 
 This script automatically loads and applies the chat template from the model folder during inference, which can improve output quality for models that use a chat template.
-
-It is highly recommended to use `model_chat.py <https://github.com/amd/RyzenAI-SW/tree/main/LLM-examples/oga_inference>`_ for the `GPT-OSS-20B NPU model <https://huggingface.co/amd/gpt-oss-20b-onnx-ryzenai-npu>`_.
-
-**********************************
-Vision Language Model (VLM) 
-**********************************
-
-AMD provides a pre-optimized Gemma-3-4b-it multimodal model ready to be deployed with Ryzen AI Software. Support for this model is available starting with the current Ryzen AI 1.7 release. 
-
-Model: `Gemma-3-4b-it-mm-onnx-ryzenai-npu <https://huggingface.co/amd/Gemma-3-4b-it-mm-onnx-ryzenai-npu>`_
-
-VLM inference requires a dedicated Python script. The python script and usage instructions are available in the RyzenAI-SW repository: `VLM <https://github.com/amd/RyzenAI-SW/tree/main/LLM-examples/VLM>`_
-
 
 **************************************
 Building C++ Applications
 **************************************
 
 A complete example including C++ source and build instructions is available in the RyzenAI-SW repository: https://github.com/amd/RyzenAI-SW/tree/main/example/llm/oga_api
+
 
 
 ***********************
@@ -275,7 +289,6 @@ It is also possible to run fine-tuned versions of the pre-optimized OGA models.
 To do this, the fine-tuned models must first be prepared for execution with the OGA flow. For instructions on how to do this, refer to the page about :doc:`oga_model_prepare`.
 
 After a fine-tuned model has been prepared for execution, it can be deployed by following the steps described previously in this page.
-
 
 *****************************
 Running LLM via pip install
@@ -294,8 +307,8 @@ In addition to the full RyzenAI software stack, we also provide standalone wheel
 
 .. code-block:: bash
 
-   	pip install onnxruntime-genai-directml-ryzenai==0.11.2 --extra-index-url=https://pypi.amd.com/simple
-	pip install model-generate==1.7.0 --extra-index-url=https://pypi.amd.com/simple
+   pip install onnxruntime-genai-directml-ryzenai==0.11.2 --extra-index-url=https://pypi.amd.com/simple
+   pip install model-generate==1.7.0 --extra-index-url=https://pypi.amd.com/simple
 
 3. Navigate to your working directory and download the desired Hybrid/NPU model
 
