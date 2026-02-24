@@ -57,7 +57,7 @@ Model conversion is the first step in preparing your model for deployment with W
 You can use the AI Toolkit to convert models to the ONNX format and apply quantization.
 
 - Model quantization is optional step that can help reduce model size and improve inference performance.
-- Orignal float model can be passed through automatic BF16 conversion. For more details refer to `Model conversion <../model_quantization.rst>`_
+- Original float model can be passed through automatic BF16 conversion. For more details refer to `Model conversion <../model_quantization.rst>`_
 - See the `VS Code AI Toolkit model conversion <https://code.visualstudio.com/docs/intelligentapps/modelconversion>`_ page for details on model conversion using AI Toolkit.
 
 If skipping the model quantization, you can directly download the ResNet ONNX model using the script:
@@ -78,7 +78,7 @@ Model Inference
 ~~~~~~~~~~~~~~~
 
 Use the python script to run inference which compiles and runs the model on NPU using ONNX runtime with Vitis AI Execution provider.
-If you are using quantized model specify the quantized model path e.g. `models\\model_a8w8.onnx` and if you are using original FP32 model specify the original model path e.g. `models\\resnet50.onnx`.
+If you are using quantized model specify the quantized model path e.g. `model\\model_a8w8.onnx` and if you are using original FP32 model specify the original model path e.g. `model\\resnet50.onnx`.
 
 .. code-block:: bash
 

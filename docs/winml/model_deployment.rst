@@ -97,7 +97,7 @@ C++ Example
 
 .. code-block:: cpp
 
-    // Configure the session to select an EP and device for MAX_EFFICIENCY which typically
+    // Configure the session to select an EP and device for PREFER_NPU which typically
     // will choose an NPU if available with a CPU fallback.
     Ort::SessionOptions sessionOptions;
     sessionOptions.SetEpSelectionPolicy(OrtExecutionProviderDevicePolicy_PREFER_NPU);

@@ -2,7 +2,7 @@
 Windows ML
 ==============================
 
-Microsoft provides a comprehensive AI platform for Windows that enables developers to build intelligent applications running locally on the device. The platform spans three key pillars: **Windows AI APIs**, **Foundry Local**, and **Windows ML**. For more details refer the official documentation, see: `Windows AI Developer Portal <https://developer.microsoft.com/en-us/windows/ai/>`_
+Microsoft provides a comprehensive AI platform for Windows that enables developers to build intelligent applications running locally on the device. The platform spans three key pillars: **Windows AI APIs**, **Foundry Local**, and **Windows ML**. For more details, refer to the official documentation, see: `Windows AI Developer Portal <https://developer.microsoft.com/en-us/windows/ai/>`_
 
 .. image:: ../images/winml-sw.png
    :align: center
@@ -66,13 +66,13 @@ Installation
 *************
 
 - Install the latest NPU drivers following `RAI installation instructions <../inst.rst>`_
-- Windows ML is included as part of the Windows App SDK, so installing it will also install Windows ML and its dependencies. Download and Install compatabile the `Windows App SDK 1.8.5 <https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/downloads>`_ or later version.
+- Windows ML is included as part of the Windows App SDK, so installing it will also install Windows ML and its dependencies. Download and install a compatabile version of the `Windows App SDK 1.8.5 <https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/downloads>`_ or later version.
 
 
 Key Features
 ~~~~~~~~~~~~
 
-Windows ML handles the complexity of package management and hardware selection, automatically downloading the latest execution providers compatible with your device's hardware.
+Windows ML handles the complexity of package management and hardware selection, automatically downloading the latest execution providers compatabile with your device's hardware.
 
 - Dynamically gets latest EPs for different hardware
 - Shared Windows-wide ONNX Runtime, which reduces application size
