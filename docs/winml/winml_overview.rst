@@ -168,7 +168,7 @@ Make sure the following requirements are met before proceeding:
    * - Requirement
      - Details
    * - Operating System
-     - Windows 10 (x64), Windows 11 (x64/ARM), Windows Server 2025, macOS
+     - Windows 10, Windows 11
    * - Hardware (Minimum)
      - 8 GB RAM, 3 GB free disk space
    * - Hardware (Recommended)
@@ -201,7 +201,7 @@ For detailed instructions on each option, see the `Running LLM Models on NPU <ht
 
 
 Getting Started Tutorials
-~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The following tutorials provide step-by-step instructions to help you get started with Windows ML on AMD Ryzen AI PCs. These examples cover CNN, Transformer, and LLM model deployment using both C++ and Python APIs.
 

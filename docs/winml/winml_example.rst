@@ -40,14 +40,14 @@ Check the installed `Windows Apps SDK` python package using the command below.
     conda list | findstr wasdk
 
 
-This should print the installed version of the `Windows App SDK` python package. Ensure that the version is 1.8.5 or later.
+This should print the installed version of the `Windows App SDK` python package. Ensure that the version is 2.0.0.dev4 or later.
 
 .. code-block:: shell
 
-    wasdk-microsoft-windows-ai-machinelearning 1.8.260209005            pypi_0    pypi
-    wasdk-microsoft-windows-applicationmodel-dynamicdependency-bootstrap 1.8.260209005            pypi_0    pypi
+    wasdk-microsoft-windows-ai-machinelearning 2.0.0.dev4               pypi_0    pypi
+    wasdk-microsoft-windows-applicationmodel-dynamicdependency-bootstrap 2.0.0.dev4               pypi_0    pypi
 
-Ensure that the `Windows App SDK` version matches the python package or download the specific version from `Windows App SDK 1.8.5 <https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/downloads>`_.
+Ensure that the installed `Windows App SDK` version matches the python package or download the specific version from `Windows App SDK 1.8.5 <https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/downloads>`_.
 
 ****************
 Model Conversion
