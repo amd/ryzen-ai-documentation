@@ -88,8 +88,8 @@ To run the demo, navigate to the ``GenAI-SD\test`` directory and run the followi
 .. code-block:: 
 
   python run_sd.py    --model_id "amd/stable-diffusion-1.5-amdnpu"
-  python run_sd.py    --model_id "amd/sd-turbo-amdnpu" --num_images_per_prompt 1
-  python run_sd_xl.py --model_id "amd/sdxl-turbo-amdnpu" --num_images_per_prompt 1
+  python run_sd.py    --model_id "amd/sd-turbo-amdnpu"
+  python run_sd_xl.py --model_id "amd/sdxl-turbo-amdnpu"
   python run_sd_xl.py --model_id "amd/sdxl-base-amdnpu"
   python run_sd_xl.py --model_id "amd/segmind-vega-amdnpu"
 
