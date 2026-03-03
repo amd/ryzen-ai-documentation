@@ -179,7 +179,7 @@ Python Example
 Model Compilation
 *****************
 
-Models needs to be compiled for specific EPs. This is a one-time process that stores the compiled model for subsequent runs:
+Models need to be compiled for specific EPs. This is a one-time process that stores the compiled model for subsequent runs:
 
 C++ Example
 ~~~~~~~~~~~
