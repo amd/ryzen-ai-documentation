@@ -131,7 +131,7 @@ C++ Example
     // 1. Enumerate EP devices
     std::vector<Ort::ConstEpDevice> ep_devices = env.GetEpDevices();
 
-    // 2. Collect only ReplaceWithExecutionProvider NPU devices
+    // 2. Collect only VitisAIExecutionProvider NPU devices
     std::vector<Ort::ConstEpDevice> selected_ep_devices;
     for (const auto& d : ep_devices) {
         if (std::string(d.EpName()) == "VitisAIExecutionProvider"
