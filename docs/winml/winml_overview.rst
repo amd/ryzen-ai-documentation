@@ -28,9 +28,9 @@ Windows Foundry Components
      - `Windows ML official documentation <https://learn.microsoft.com/en-us/windows/ai/new-windows-ml/overview>`_
 
 
-************************************
+
 Model Deployment using Windows ML
-************************************
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Windows Machine Learning (WinML) enables C#, C++, and Python developers to run ONNX AI models locally on Windows PCs through ONNX Runtime, with automatic execution provider management across hardware targets including CPUs, GPUs, and NPUs. You can use models from PyTorch, TensorFlow/Keras, TensorFlow Lite (TFLite), scikit-learn, and other frameworks by converting them to ONNX for ONNX Runtime.
 
@@ -68,9 +68,9 @@ Installation
 - Install the latest NPU drivers following `RAI installation instructions <../inst.rst>`_
 - Windows ML is included as part of the Windows App SDK, so installing it will also install Windows ML and its dependencies. Download and install a compatible version of the `Windows App SDK 1.8.5 <https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/downloads>`_ or later version.
 
-
+*************
 Key Features
-~~~~~~~~~~~~
+*************
 
 Windows ML handles the complexity of package management and hardware selection, automatically downloading the latest execution providers compatible with your device's hardware.
 
@@ -85,8 +85,9 @@ Running CNN / Transformer models on NPU
 
 Windows ML provides a streamlined workflow for deploying CNN and Transformer models on Ryzen AI PCs. Users can either use the original float model with automatic BF16 conversion, or use AI Toolkit for model quantization (QDQ format).
 
-Workflow Overview
-~~~~~~~~~~~~~~~~~
+*******************
+Windows ML workflow
+*******************
 
 .. image:: ../images/winml-workflow.png
    :align: center
@@ -154,8 +155,9 @@ Running LLM models on NPU
 
 Windows ML enables support for Foundry Local models for on-device AI inference solutions that provide privacy and performance. Currently, Foundry Local is available in preview mode. It automatically detects NPU and downloads the compatible model for the NPU device.
 
+*************
 Prerequisites
-~~~~~~~~~~~~~
+*************
 
 Make sure the following requirements are met before proceeding:
 
@@ -171,10 +173,8 @@ Make sure the following requirements are met before proceeding:
      - 8 GB RAM, 3 GB free disk space
    * - Hardware (Recommended)
      - 16 GB RAM, 15 GB free disk space
-   * - Network
-     - Internet connection to download the initial model (optional for offline use)
-   * - Acceleration (Optional)
-     - AMD GPU (6000 series or newer) or AMD NPU
+   * - Acceleration
+     - AMD NPU
 
 Running LLM on AMD NPU
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -189,20 +189,19 @@ This is the recommended option for most users as it provides a simple and effici
 
 This option allows users to run their custom LLM models on AMD NPU using Foundry Local. Users can use the Olive ``auto-opt`` command to download, convert, quantize, and optimize their custom LLM models for AMD NPU.
 
-**(TBD) Option 3: Run pre-quantized LLM model from AMD using Foundry Local**
+**Option 3: Run pre-quantized LLM model from AMD using Foundry Local**
 
 This option allows users to run pre-quantized and performance-optimized LLM models from AMD on AMD NPU using Foundry Local.
 
-**(TBD) Option 4: Running LLM model using Windows ML APIs**
+**Option 4: Running LLM model using Windows ML APIs**
 
 This option allows users to run LLM models on AMD NPU using Windows ML APIs. This option is suitable for users who want more control over the inference process and are comfortable managing dependencies and model optimization manually.
 
 For detailed instructions on each option, see the `Running LLM Models on NPU <https://github.com/amd/RyzenAI-SW/tree/main/WinML/LLM>`_ documentation.
 
 
-******************************
 Getting Started Tutorials
-******************************
+~~~~~~~~~~~~~~~~~~~~~~
 
 The following tutorials provide step-by-step instructions to help you get started with Windows ML on AMD Ryzen AI PCs. These examples cover CNN, Transformer, and LLM model deployment using both C++ and Python APIs.
 
