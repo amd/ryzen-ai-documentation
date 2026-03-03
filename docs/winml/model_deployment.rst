@@ -226,7 +226,7 @@ Python Example
 
 
 
-For more details on `VitisAIExecutionProvider` specific `provider_options` as shown in the reference documentation :doc:`Model compilation and deployment <../modelrun>`
+For more details on `VitisAIExecutionProvider` specific `provider_options`, see the reference documentation :doc:`Model compilation and deployment <../modelrun>`.
 
 
 
