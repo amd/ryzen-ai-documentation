@@ -40,7 +40,7 @@ Check the installed `Windows Apps SDK` python package using the command below.
     conda list | findstr wasdk
 
 
-This should print the install version of the `Windows App SDK` python package. Ensure that the version is 1.8.5 or later.
+This should print the installed version of the `Windows App SDK` python package. Ensure that the version is 1.8.5 or later.
 
 .. code-block:: shell
 
