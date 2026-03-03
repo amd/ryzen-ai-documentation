@@ -88,7 +88,7 @@ The ``register_execution_providers`` function is used to download and register t
 Execution Policy
 ****************
 
-The EP selection policy can be configured to use specific execution provider or through general execution policy. For more details, refer to the Windows ML documentation on `Execution Providers <https://learn.microsoft.com/en-us/windows/ai/new-windows-ml/select-execution-providers?tabs=python>`_.
+The EP selection policy can be configured to use a specific execution provider or through general execution policy. For more details, refer to the Windows ML documentation on `Execution Providers <https://learn.microsoft.com/en-us/windows/ai/new-windows-ml/select-execution-providers?tabs=python>`_.
 
 For example, setting the execution policy to `PREFER_NPU` will prioritize the NPU execution provider if available, with a fallback to CPU execution if an NPU is not present. 
 
@@ -131,7 +131,7 @@ C++ Example
     // 1. Enumerate EP devices
     std::vector<Ort::ConstEpDevice> ep_devices = env.GetEpDevices();
 
-    // 2. Collect only ReplaceWithExecutionProvider NPU devices
+    // 2. Collect only VitisAIExecutionProvider NPU devices
     std::vector<Ort::ConstEpDevice> selected_ep_devices;
     for (const auto& d : ep_devices) {
         if (std::string(d.EpName()) == "VitisAIExecutionProvider"
@@ -179,7 +179,7 @@ Python Example
 Model Compilation
 *****************
 
-Models needs to be compiled for specific EPs. This is a one-time process that stores the compiled model for subsequent runs:
+Models need to be compiled for specific EPs. This is a one-time process that stores the compiled model for subsequent runs:
 
 C++ Example
 ~~~~~~~~~~~
@@ -226,7 +226,7 @@ Python Example
 
 
 
-For more details on `VitisAIExecutionProvider` specific `provider_options` as shown in the reference documentation :doc:`Model compilation and deployment <../modelrun>`
+For more details on `VitisAIExecutionProvider` specific `provider_options`, see the reference documentation :doc:`Model compilation and deployment <../modelrun>`.
 
 
 

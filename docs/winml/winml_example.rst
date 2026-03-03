@@ -24,7 +24,7 @@ The source code files can be downloaded from `this link <https://github.com/amd/
 
 |
 
-The NPU driver and Windows App SDK should be correctly installed, as described in :doc:`Windows ML Installation <winml_overview.rst>`_.
+The NPU driver and Windows App SDK should be correctly installed, as described in :doc:`Windows ML Installation <winml_overview>`_.
 
 .. code-block:: shell
 
@@ -64,7 +64,7 @@ If skipping the model quantization, you can directly download the ResNet ONNX mo
 
 .. code-block:: shell
 
-    python models/download_model.py
+    python model/download_model.py
 
 
 *****************
