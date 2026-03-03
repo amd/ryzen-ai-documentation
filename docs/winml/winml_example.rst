@@ -64,7 +64,7 @@ If skipping the model quantization, you can directly download the ResNet ONNX mo
 
 .. code-block:: shell
 
-    python models/download_model.py
+    python model/download_model.py
 
 
 *****************
