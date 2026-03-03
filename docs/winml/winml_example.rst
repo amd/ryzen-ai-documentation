@@ -47,7 +47,7 @@ This should print the installed version of the `Windows App SDK` python package.
     wasdk-microsoft-windows-ai-machinelearning 2.0.0.dev4               pypi_0    pypi
     wasdk-microsoft-windows-applicationmodel-dynamicdependency-bootstrap 2.0.0.dev4               pypi_0    pypi
 
-Ensure that the installed `Windows App SDK` version matches the python package or download the specific version from `Windows App SDK 1.8.5 <https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/downloads>`_.
+Ensure that the installed `Windows App SDK` version matches the python package or download the specific version from `Windows App SDK 2.0.0.dev4 <https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/downloads>`_.
 
 ****************
 Model Conversion
