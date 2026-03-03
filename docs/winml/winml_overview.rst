@@ -72,7 +72,7 @@ Installation
 Key Features
 ~~~~~~~~~~~~
 
-Windows ML handles the complexity of package management and hardware selection, automatically downloading the latest execution providers compatabile with your device's hardware.
+Windows ML handles the complexity of package management and hardware selection, automatically downloading the latest execution providers compatible with your device's hardware.
 
 - Dynamically gets latest EPs for different hardware
 - Shared Windows-wide ONNX Runtime, which reduces application size
@@ -193,7 +193,7 @@ This option allows users to run their custom LLM models on AMD NPU using Foundry
 
 This option allows users to run pre-quantized and performance-optimized LLM models from AMD on AMD NPU using Foundry Local.
 
-**(TBD)Option 4: Running LLM model using Windows ML APIs**
+**(TBD) Option 4: Running LLM model using Windows ML APIs**
 
 This option allows users to run LLM models on AMD NPU using Windows ML APIs. This option is suitable for users who want more control over the inference process and are comfortable managing dependencies and model optimization manually.
 
