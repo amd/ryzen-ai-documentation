@@ -204,6 +204,8 @@ For detailed instructions on each option, see the `Running LLM Models on NPU <ht
 Getting Started Tutorials
 ******************************
 
+The following tutorials provide step-by-step instructions to help you get started with Windows ML on AMD Ryzen AI PCs. These examples cover CNN, Transformer, and LLM model deployment using both C++ and Python APIs.
+
 - `Getting Started Tutorial for Windows ML <winml_example.rst>`_ - Using ResNet model:
 
   -  Optional Model conversion to QDQ quantized ONNX model using `VS Code AI Toolkit <https://code.visualstudio.com/docs/intelligentapps/modelconversion>`_
