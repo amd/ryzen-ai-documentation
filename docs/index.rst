@@ -112,6 +112,14 @@ For more details, refer to the :doc:`llm/overview` page.
 
    gpu/ryzenai_gpu.rst
 
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+   :caption: Getting Started with Windows ML
+
+   winml/winml_overview.rst
+   winml/model_deployment.rst
+   winml/winml_example.rst
 
 .. toctree::
    :maxdepth: 1
