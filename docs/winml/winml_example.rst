@@ -15,12 +15,12 @@ This tutorial provides step-by-step instructions for deploying a ResNet model, d
 Setup Instructions
 ******************
 
-The source code files can be downloaded from `this link <https://github.com/amd/RyzenAI-SW/tree/main/WinML/CNN>`_. Alternatively, you can clone the RyzenAI-SW repo and change the directory into "WinML".
+The source code files can be downloaded from `this link <https://github.com/amd/RyzenAI-SW/tree/main/WinML/CNN/ResNet>`_. Alternatively, you can clone the RyzenAI-SW repo and change the directory into "WinML".
 
 .. code-block::
 
     git clone https://github.com/amd/RyzenAI-SW.git
-    cd RyzenAI-SW/WinML/CNN/python
+    cd RyzenAI-SW/WinML/CNN/ResNet/python
 
 |
 
