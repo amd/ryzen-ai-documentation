@@ -24,7 +24,7 @@ The source code files can be downloaded from `this link <https://github.com/amd/
 
 |
 
-The NPU driver and Windows App SDK should be correctly installed, as described in :doc:`Windows ML Installation <winml_overview>`_.
+The NPU driver and Windows App SDK should be correctly installed, as described in :doc:`Windows ML Installation <winml_overview>`.
 
 .. code-block:: shell
 
