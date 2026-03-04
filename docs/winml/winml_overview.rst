@@ -156,7 +156,7 @@ Running LLM models on NPU
 Windows ML enables support for Foundry Local models for on-device AI inference solutions that provide privacy and performance. Currently, Foundry Local is available in preview mode. It automatically detects NPU and downloads the compatible model for the NPU device.
 
 *************
-Prerequisites
+LLM prerequisites
 *************
 
 Make sure the following requirements are met before proceeding:
