@@ -146,7 +146,7 @@ Select the preferred execution target using the execution policy:
    * - PREFER_NPU
      - VitisAIExecutionProvider
 
-For details of the API walkthrough, see the `Model Deployment with Windows ML <model_deployment.rst>`_ documentation. 
+For details of the API walkthrough, see :doc:`Model Deployment with Windows ML <model_deployment>` documentation. 
 
 
 *************************
