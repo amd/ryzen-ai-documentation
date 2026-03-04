@@ -147,7 +147,7 @@ C++ Example
     // and append the EP with the correct devices (varies based on EP)
     Ort::SessionOptions session_options;
     Ort::KeyValuePairs ep_options;
-    ep_options.Add("provider_specific_option", "4");
+    ep_options.Add("optimize_level", "1");
     session_options.AppendExecutionProvider_V2(env, { selected_ep_devices.front() }, ep_options);
 
 
@@ -169,7 +169,7 @@ Python Example
     # 2. Configure provider-specific options (varies based on EP)
     # and append the EP with the correct devices (varies based on EP)
     options = ort.SessionOptions()
-    provider_options = {"provider_specific_option": "4"}
+    provider_options = {"optimize_level": "1"}
     options.add_provider_for_devices([selected_ep_devices[0]], provider_options)
 
 
