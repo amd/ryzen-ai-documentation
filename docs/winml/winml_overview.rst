@@ -205,10 +205,10 @@ Getting Started Tutorials
 
 The following tutorials provide step-by-step instructions to help you get started with Windows ML on AMD Ryzen AI PCs. These examples cover CNN, Transformer, and LLM model deployment using both C++ and Python APIs.
 
-- `Getting Started Tutorial for Windows ML <winml_example.rst>`_ - Using ResNet model:
+- :doc:`Getting Started Tutorial for Windows ML <winml_example>` - Using ResNet model:
 
   -  Optional Model conversion to QDQ quantized ONNX model using `VS Code AI Toolkit <https://code.visualstudio.com/docs/intelligentapps/modelconversion>`_
-  - `Deployment using Windows ML APIs and ONNX Runtime using C++ and Python <winml_example.rst>`_
+  - :doc:`Deployment using Windows ML APIs and ONNX Runtime using C++ and Python <winml_example>`
 
 - Additional examples:
 
