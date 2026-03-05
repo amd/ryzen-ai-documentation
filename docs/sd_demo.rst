@@ -4,7 +4,6 @@ Stable Diffusion Demo
 
 Ryzen AI 1.7 provides preview demos of Stable Diffusion image-generation pipelines. The demos cover Image-to-Image and Text-to-Image using SD 1.5, SDXL-base-1.0, Segmind-Vega, SD-Turbo(bs1), SDXL-Turbo(bs1), SD 3.0 and SD3.5. These models are available for public download from Hugging Face.
 
-
 ******************
 Installation Steps
 ******************
@@ -108,6 +107,13 @@ The demo script uses a predefined prompt for each of the models. The output imag
 Custom prompts can be provided with the ``--prompt`` option. For instance::
 
   python run_sd.py --model_id "amd/stable-diffusion-1.5-amdnpu" --prompt "Photo of a ultra realistic sailing ship, dramatic light, pale sunrise, cinematic lighting, battered, low angle, trending on artstation, 4k, hyper realistic, focused, extreme details"
+
+******************
+Running with AMD Stable Diffusion Sandbox
+******************
+
+AMD SD Sandbox is a framework for running Stable Diffusion (SD) models accelerated by AMD Ryzen AI hardware. It provides an easy-to-use interface for evaluating, comparing, and deploying multiple SD pipelines.
+Please go to https://github.com/amd/sd-sandbox for more information
 
 ..
   ------------
