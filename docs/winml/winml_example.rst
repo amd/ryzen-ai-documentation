@@ -1,6 +1,6 @@
-=========================
-Windows ML ResNet Example
-=========================
+==============
+ResNet Example
+==============
 
 This tutorial demonstrates how to deploy a ResNet model using Windows ML, covering the complete workflow for converting, quantizing, compiling, and deploying models in both Python and C++ environments.
 
@@ -21,8 +21,6 @@ The source code files can be downloaded from `this link <https://github.com/amd/
 
     git clone https://github.com/amd/RyzenAI-SW.git
     cd RyzenAI-SW/WinML/CNN/ResNet/python
-
-|
 
 The NPU driver and Windows App SDK should be correctly installed, as described in :doc:`Windows ML Installation <winml_overview>`.
 
