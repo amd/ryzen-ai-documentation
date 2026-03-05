@@ -14,13 +14,13 @@ Installation Steps
 
 .. code-block:: 
 
-  cd C:\Program Files\RyzenAI\1.7.0\GenAI-SD
+  cd C:\Program Files\RyzenAI\1.7.1\GenAI-SD
 
 3. Activate the Conda environment for the Stable Diffusion demo packages:
 
 .. code-block:: 
 
-  conda activate ryzen-ai-1.7.0
+  conda activate ryzen-ai-1.7.1
 
 4. The following Stable Diffusion models will be auto-downloaded from Hugging Face when running for the first time and be buffered locally in  ``GenAI-SD\models`` folder:
 
@@ -38,7 +38,7 @@ Running the Demos
 
 Activate the conda environment::
 
-  conda activate ryzen-ai-1.7.0
+  conda activate ryzen-ai-1.7.1
 
 Optionally, set the NPU to high performance mode to maximize performance::
 
@@ -94,7 +94,7 @@ To run the demo, navigate to the ``GenAI-SD\test`` directory and run the followi
 
 To run the sd3/sd3.5 models, you need to set env:DD_PLUGINS_ROOT before running the demo. For instance::
 
-  set DD_PLUGINS_ROOT=C:\Program Files\RyzenAI\1.7.0\GenAI-SD\lib\transaction\stx\
+  set DD_PLUGINS_ROOT=C:\Program Files\RyzenAI\1.7.1\GenAI-SD\lib\transaction\stx\
 
 Then run the following commands::
 
