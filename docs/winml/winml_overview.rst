@@ -1,14 +1,15 @@
-==============================
-Windows ML
-==============================
+=======================
+Windows ML Overview
+=======================
 
 Microsoft provides a comprehensive AI platform for Windows that enables developers to build intelligent applications running locally on the device. The platform spans three key pillars: **Windows AI APIs**, **Foundry Local**, and **Windows ML**. For more details, refer to the official documentation, see: `Windows AI Developer Portal <https://developer.microsoft.com/en-us/windows/ai/>`_
 
 .. image:: ../images/winml-sw.png
    :align: center
 
+**************************
 Windows Foundry Components
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+**************************
 
 .. list-table::
    :widths: 20 55 25
@@ -28,9 +29,9 @@ Windows Foundry Components
      - `Windows ML official documentation <https://learn.microsoft.com/en-us/windows/ai/new-windows-ml/overview>`_
 
 
-
+*********************************
 Model Deployment using Windows ML
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+*********************************
 
 Windows Machine Learning (WinML) enables C#, C++, and Python developers to run ONNX AI models locally on Windows PCs through ONNX Runtime, with automatic execution provider management across hardware targets including CPUs, GPUs, and NPUs. You can use models from PyTorch, TensorFlow/Keras, TensorFlow Lite (TFLite), scikit-learn, and other frameworks by converting them to ONNX for ONNX Runtime.
 
@@ -176,8 +177,9 @@ Make sure the following requirements are met before proceeding:
    * - Acceleration
      - AMD NPU
 
+**********************
 Running LLM on AMD NPU
-~~~~~~~~~~~~~~~~~~~~~~
+**********************
 
 LLM models can be run on AMD NPU using Foundry Local or Windows ML APIs. Foundry Local provides an easy-to-use interface for running LLM models on AMD NPU, while Windows ML APIs allow for more customization and control over the inference process.
 
@@ -199,9 +201,9 @@ This option allows users to run LLM models on AMD NPU using Windows ML APIs. Thi
 
 For detailed instructions on each option, see the `Running LLM Models on NPU <https://github.com/amd/RyzenAI-SW/tree/main/WinML/LLM>`_ documentation.
 
-
+**************************
 Getting Started Tutorials
-~~~~~~~~~~~~~~~~~~~~~~~~~
+**************************
 
 The following tutorials provide step-by-step instructions to help you get started with Windows ML on AMD Ryzen AI PCs. These examples cover CNN, Transformer, and LLM model deployment using both C++ and Python APIs.
 
