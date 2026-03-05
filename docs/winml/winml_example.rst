@@ -22,7 +22,13 @@ The source code files can be downloaded from `this link <https://github.com/amd/
     git clone https://github.com/amd/RyzenAI-SW.git
     cd RyzenAI-SW/WinML/CNN/ResNet/python
 
+<<<<<<< HEAD
 The NPU driver and Windows App SDK should be correctly installed, as described in :doc:`Windows ML Installation <winml_overview>`_.
+=======
+|
+
+The NPU driver and Windows App SDK should be correctly installed, as described in :doc:`Windows ML Installation <winml_overview>`.
+>>>>>>> fb983abcc9b2cc0c211a6bf500a9c54deb84cd41
 
 .. code-block:: shell
 
@@ -55,7 +61,7 @@ Model conversion is the first step in preparing your model for deployment with W
 You can use the AI Toolkit to convert models to the ONNX format and apply quantization.
 
 - Model quantization is optional step that can help reduce model size and improve inference performance.
-- Original float model can be passed through automatic BF16 conversion. For more details refer to `Model conversion <../model_quantization.rst>`_
+- Original float model can be passed through automatic BF16 conversion. For more details refer to :doc:`Model conversion <../model_quantization>`
 - See the `VS Code AI Toolkit model conversion <https://code.visualstudio.com/docs/intelligentapps/modelconversion>`_ page for details on model conversion using AI Toolkit.
 
 If skipping the model quantization, you can directly download the ResNet ONNX model using the script:

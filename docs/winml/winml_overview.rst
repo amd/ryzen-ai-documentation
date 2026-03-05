@@ -147,7 +147,7 @@ Select the preferred execution target using the execution policy:
    * - PREFER_NPU
      - VitisAIExecutionProvider
 
-For details of the API walkthrough, see the `Model Deployment with Windows ML <model_deployment.rst>`_ documentation. 
+For details of the API walkthrough, see :doc:`Model Deployment with Windows ML <model_deployment>` documentation. 
 
 
 *************************
@@ -157,7 +157,7 @@ Running LLM models on NPU
 Windows ML enables support for Foundry Local models for on-device AI inference solutions that provide privacy and performance. Currently, Foundry Local is available in preview mode. It automatically detects NPU and downloads the compatible model for the NPU device.
 
 *************
-Prerequisites
+LLM prerequisites
 *************
 
 Make sure the following requirements are met before proceeding:
@@ -207,10 +207,10 @@ Getting Started Tutorials
 
 The following tutorials provide step-by-step instructions to help you get started with Windows ML on AMD Ryzen AI PCs. These examples cover CNN, Transformer, and LLM model deployment using both C++ and Python APIs.
 
-- `Getting Started Tutorial for Windows ML <winml_example.rst>`_ - Using ResNet model:
+- :doc:`Getting Started Tutorial for Windows ML <winml_example>` - Using ResNet model:
 
   -  Optional Model conversion to QDQ quantized ONNX model using `VS Code AI Toolkit <https://code.visualstudio.com/docs/intelligentapps/modelconversion>`_
-  - `Deployment using Windows ML APIs and ONNX Runtime using C++ and Python <winml_example.rst>`_
+  - :doc:`Deployment using Windows ML APIs and ONNX Runtime using C++ and Python <winml_example>`
 
 - Additional examples:
 
