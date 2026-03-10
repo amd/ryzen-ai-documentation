@@ -1,6 +1,6 @@
-==============
+##############
 ResNet Example
-==============
+##############
 
 This tutorial demonstrates how to deploy a ResNet model using Windows ML, covering the complete workflow for converting, quantizing, compiling, and deploying models in both Python and C++ environments.
 
@@ -28,6 +28,7 @@ The NPU driver and Windows App SDK should be correctly installed, as described i
 
     conda create -n winml_resnet python==3.11
     conda activate winml_resnet
+    cd <RyzenAI-SW>\WinML\CNN\ResNet
     pip install -r .\requirements.txt
 
 
@@ -62,7 +63,8 @@ If skipping the model quantization, you can directly download the ResNet ONNX mo
 
 .. code-block:: shell
 
-    python model/download_model.py
+    cd <RyzenAI-SW>\WinML\CNN\ResNet\model
+    python download_ResNet.py
 
 
 *****************
@@ -73,17 +75,18 @@ This section covers how to compile and deploy ResNet ONNX model using Python scr
 
 
 Model Inference
-~~~~~~~~~~~~~~~
+===============
 
 Use the python script to run inference which compiles and runs the model on NPU using ONNX runtime with Vitis AI Execution provider.
 If you are using quantized model specify the quantized model path e.g. `model\\model_a8w8.onnx` and if you are using original FP32 model specify the original model path e.g. `model\\resnet50.onnx`.
 
 .. code-block:: bash
 
+    cd <RyzenAI-SW>\WinML\CNN\ResNet\python
     python run_model.py --model ..\model\resnet50.onnx --image_path ..\images\dog.jpg --ep_policy NPU
 
 Sample Output
-~~~~~~~~~~~~~
+=============
 
 The following is a sample output showing the top-5 predictions from the model.
 You should see class indices and their associated confidence scores.
@@ -104,7 +107,7 @@ C++ deployment is recommended for production scenarios where performance and int
 This section shows how to compile and deploy your model using C++ APIs
 
 Model Inference
-~~~~~~~~~~~~~~~
+===============
 
 Instructions to build the example application and run using the Visual Studio Developer Command Prompt:
 
@@ -121,7 +124,7 @@ After compiling the model, you can build and run your C++ application to perform
     .\x64\Release\CppResnetBuildDemo.exe --model ..\..\model\resnet50.onnx --image_path ..\..\images\dog.jpg --ep_policy NPU
 
 Sample Output
-~~~~~~~~~~~~~
+=============
 
 The output below shows the top-5 predictions from the C++ inference application.
 You should see similar results as in the Python deployment section.
