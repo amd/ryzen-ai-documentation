@@ -82,7 +82,7 @@ If you are using quantized model specify the quantized model path e.g. `model\\m
 
 .. code-block:: bash
 
-    cd <RzyenAI-SW>\WinML\CNN\ResNet\python
+    cd <RyzenAI-SW>\WinML\CNN\ResNet\python
     python run_model.py --model ..\model\resnet50.onnx --image_path ..\images\dog.jpg --ep_policy NPU
 
 Sample Output
