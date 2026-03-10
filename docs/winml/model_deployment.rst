@@ -9,7 +9,7 @@ In short, Windows ML provides a shared, Windows-wide ONNX Runtime along with sup
 For more details, see the `Windows ML official documentation <https://learn.microsoft.com/en-us/windows/ai/new-windows-ml/overview>`_.
 
 ************************************************
-Automatic Execution Provider (EPs) Registration
+Automatic Execution Providers (EPs) Registration
 ************************************************
 
 Windows ML will automatically discover, download, and register the latest version of all compatible execution providers.
@@ -173,7 +173,7 @@ Python Example
     options.add_provider_for_devices([selected_ep_devices[0]], provider_options)
 
 
-For more details on the `VitisAIExecutionProvider` specific `provider_options` as shown in the reference documentation :doc:`Model compilation and deployment <../modelrun>`_.
+For more details on the `VitisAIExecutionProvider`-specific `provider_options`, see :doc:`Model compilation and deployment <../modelrun>`.
 
 *****************
 Model Compilation
