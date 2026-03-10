@@ -1,6 +1,6 @@
-=======================
+###################
 Windows ML Overview
-=======================
+###################
 
 Microsoft provides a comprehensive AI platform for Windows that enables developers to build intelligent applications running locally on the device. The platform spans three key pillars: **Windows AI APIs**, **Foundry Local**, and **Windows ML**. For more details, refer to the official documentation, see: `Windows AI Developer Portal <https://developer.microsoft.com/en-us/windows/ai/>`_
 
@@ -39,9 +39,9 @@ In short, Windows ML provides a shared, Windows-wide ONNX Runtime along with sup
 
 For more details, see the `Windows ML official documentation <https://learn.microsoft.com/en-us/windows/ai/new-windows-ml/overview>`_.
 
-*************
+
 Prerequisites
-*************
+=============
 
 .. list-table::
    :widths: 25 25
@@ -62,16 +62,16 @@ Prerequisites
 
 For the complete list of Windows OS that are supported refer to `Windows App SDK support <https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/support>`_
 
-*************
+
 Installation
-*************
+============
 
 - Install the latest NPU drivers following `RAI installation instructions <../inst.rst>`_
 - Windows ML is included as part of the Windows App SDK, so installing it will also install Windows ML and its dependencies. Download and install a compatible version of the `Windows App SDK 1.8.5 <https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/downloads>`_ or later version.
 
-*************
+
 Key Features
-*************
+============
 
 Windows ML handles the complexity of package management and hardware selection, automatically downloading the latest execution providers compatible with your device's hardware.
 
@@ -86,9 +86,9 @@ Running CNN / Transformer models on NPU
 
 Windows ML provides a streamlined workflow for deploying CNN and Transformer models on Ryzen AI PCs. Users can either use the original float model with automatic BF16 conversion, or use AI Toolkit for model quantization (QDQ format).
 
-*******************
+
 Windows ML workflow
-*******************
+===================
 
 .. image:: ../images/winml-workflow.png
    :align: center
@@ -156,9 +156,9 @@ Running LLM models on NPU
 
 Windows ML enables support for Foundry Local models for on-device AI inference solutions that provide privacy and performance. Currently, Foundry Local is available in preview mode. It automatically detects NPU and downloads the compatible model for the NPU device.
 
-*************
+
 LLM prerequisites
-*************
+=================
 
 Make sure the following requirements are met before proceeding:
 
@@ -177,9 +177,9 @@ Make sure the following requirements are met before proceeding:
    * - Acceleration
      - AMD NPU
 
-**********************
+
 Running LLM on AMD NPU
-**********************
+======================
 
 LLM models can be run on AMD NPU using Foundry Local or Windows ML APIs. Foundry Local provides an easy-to-use interface for running LLM models on AMD NPU, while Windows ML APIs allow for more customization and control over the inference process.
 

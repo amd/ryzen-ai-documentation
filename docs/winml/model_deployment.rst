@@ -15,7 +15,7 @@ Automatic Execution Provider (EPs) Registration
 Windows ML will automatically discover, download, and register the latest version of all compatible execution providers.
 
 C++ Example
-~~~~~~~~~~~
+===========
 
 .. code-block:: cpp
 
@@ -33,7 +33,7 @@ C++ Example
     catalog.EnsureAndRegisterAllAsync().get();
 
 Python Example
-~~~~~~~~~~~~~~
+==============
 
 .. code-block:: python
 
@@ -93,7 +93,7 @@ The EP selection policy can be configured to use specific execution provider or 
 For example, setting the execution policy to `PREFER_NPU` will prioritize the NPU execution provider if available, with a fallback to CPU execution if an NPU is not present. 
 
 C++ Example
-~~~~~~~~~~~
+===========
 
 .. code-block:: cpp
 
@@ -103,7 +103,7 @@ C++ Example
     sessionOptions.SetEpSelectionPolicy(OrtExecutionProviderDevicePolicy_PREFER_NPU);
 
 Python Example
-~~~~~~~~~~~~~~
+==============
 
 .. code-block:: python
 
@@ -117,7 +117,7 @@ Python Example
 Specifying the **specific execution provider** can be done through the `set_providers` API. For example, setting the execution provider to `VitisAIExecutionProvider` will only use the VitisAI EP for model execution.
 
 C++ Example
-~~~~~~~~~~~
+===========
 
 .. code-block:: cpp
 
@@ -152,7 +152,7 @@ C++ Example
 
 
 Python Example
-~~~~~~~~~~~~~~
+==============
 
 .. code-block:: python
 
@@ -182,7 +182,7 @@ Model Compilation
 Models needs to be compiled for specific EPs. This is a one-time process that stores the compiled model for subsequent runs:
 
 C++ Example
-~~~~~~~~~~~
+===========
 
 .. code-block:: cpp
 
@@ -205,7 +205,7 @@ C++ Example
 
 
 Python Example
-~~~~~~~~~~~~~~
+==============
 
 .. code-block:: python
 
