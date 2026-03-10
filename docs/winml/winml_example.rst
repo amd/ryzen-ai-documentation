@@ -63,7 +63,7 @@ If skipping the model quantization, you can directly download the ResNet ONNX mo
 
 .. code-block:: shell
 
-    cd <RzyenAI-SW>\WinML\CNN\ResNet\model
+    cd <RyzenAI-SW>\WinML\CNN\ResNet\model
     python download_ResNet.py
 
 
