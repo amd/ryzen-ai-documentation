@@ -28,6 +28,7 @@ The NPU driver and Windows App SDK should be correctly installed, as described i
 
     conda create -n winml_resnet python==3.11
     conda activate winml_resnet
+    cd <RyzenAI-SW>\WinML\CNN\ResNet
     pip install -r .\requirements.txt
 
 
@@ -62,7 +63,8 @@ If skipping the model quantization, you can directly download the ResNet ONNX mo
 
 .. code-block:: shell
 
-    python model/download_model.py
+    cd <RzyenAI-SW>\WinML\CNN\ResNet\model
+    python download_ResNet.py
 
 
 *****************
@@ -80,6 +82,7 @@ If you are using quantized model specify the quantized model path e.g. `model\\m
 
 .. code-block:: bash
 
+    cd <RzyenAI-SW>\WinML\CNN\ResNet\python
     python run_model.py --model ..\model\resnet50.onnx --image_path ..\images\dog.jpg --ep_policy NPU
 
 Sample Output
