@@ -61,7 +61,7 @@ Install NPU Drivers
       - xrt_202610.2.21.75_24.04-amd64-npu.deb
 
    - NPU driver package
-      - xrt_plugin.2.21.260102.52.release_24.04-amd64-amdxdna.deb
+      - xrt_plugin.2.21.260102.53.release_24.04-amd64-amdxdna.deb
 
 - Install NPU driver package on your machine
 
@@ -70,7 +70,7 @@ Install NPU Drivers
    sudo apt reinstall --fix-broken -y ./xrt_202610.2.21.75_24.04-amd64-base.deb
    sudo apt reinstall --fix-broken -y ./xrt_202610.2.21.75_24.04-amd64-base-dev.deb
    sudo apt reinstall --fix-broken -y ./xrt_202610.2.21.75_24.04-amd64-npu.deb
-   sudo apt reinstall --fix-broken -y ./xrt_plugin.2.21.260102.52.release_24.04-amd64-amdxdna.deb
+   sudo apt reinstall --fix-broken -y ./xrt_plugin.2.21.260102.53.release_24.04-amd64-amdxdna.deb
 
 
 - Set essential Environment variables 
