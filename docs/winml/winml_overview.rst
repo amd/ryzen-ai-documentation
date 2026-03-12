@@ -187,17 +187,14 @@ LLM models can be run on AMD NPU using Foundry Local or Windows ML APIs. Foundry
 
 This is the recommended option for most users as it provides a simple and efficient way to run LLM models on AMD NPU without needing to manage dependencies or optimize the model manually.
 
-**Option 2: Running Custom LLM model using Foundry Local**
+**Option 2: Running custom LLM model using Windows ML APIs**
 
-This option allows users to run their custom LLM models on AMD NPU using Foundry Local. Users can use the Olive ``auto-opt`` command to download, convert, quantize, and optimize their custom LLM models for AMD NPU.
+This option allows users to run custom LLM models on AMD NPU using Windows ML APIs. This option is suitable for users who want more control over the inference process and are comfortable managing dependencies and model optimization manually.
 
-**Option 3: Run pre-quantized LLM model from AMD using Foundry Local**
+**Option 3: Run pre-quantized LLM model from AMD using Windows ML APIs**
 
-This option allows users to run pre-quantized and performance-optimized LLM models from AMD on AMD NPU using Foundry Local.
+This option allows users to run pre-quantized and performance-optimized LLM models from AMD on AMD NPU using Windows ML APIs.
 
-**Option 4: Running LLM model using Windows ML APIs**
-
-This option allows users to run LLM models on AMD NPU using Windows ML APIs. This option is suitable for users who want more control over the inference process and are comfortable managing dependencies and model optimization manually.
 
 For detailed instructions on each option, see the `Running LLM Models on NPU <https://github.com/amd/RyzenAI-SW/tree/main/WinML/LLM>`_ documentation.
 
