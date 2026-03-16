@@ -47,6 +47,13 @@ The following table lists which types of models are supported on what hardware p
      -
      - |checkmark|
 
+*************
+Version 1.7.1
+*************
+
+- RyzenAI software package is also available on the Linux platform. Please refer to the installation instructions here: :doc:`linux`
+
+
 ***********
 Version 1.7
 ***********
