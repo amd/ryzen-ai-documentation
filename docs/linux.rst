@@ -67,10 +67,10 @@ Install NPU Drivers
 
 .. code-block:: bash
 
-   sudo apt reinstall --fix-broken -y ./xrt_202610.2.21.75_24.04-amd64-base.deb
-   sudo apt reinstall --fix-broken -y ./xrt_202610.2.21.75_24.04-amd64-base-dev.deb
-   sudo apt reinstall --fix-broken -y ./xrt_202610.2.21.75_24.04-amd64-npu.deb
-   sudo apt reinstall --fix-broken -y ./xrt_plugin.2.21.260102.53.release_24.04-amd64-amdxdna.deb
+   sudo apt install --fix-broken -y ./xrt_202610.2.21.75_24.04-amd64-base.deb
+   sudo apt install --fix-broken -y ./xrt_202610.2.21.75_24.04-amd64-base-dev.deb
+   sudo apt install --fix-broken -y ./xrt_202610.2.21.75_24.04-amd64-npu.deb
+   sudo apt install --fix-broken -y ./xrt_plugin.2.21.260102.53.release_24.04-amd64-amdxdna.deb
 
 
 - Set essential Environment variables 
