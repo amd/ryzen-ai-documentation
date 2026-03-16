@@ -17,6 +17,7 @@ This page showcases an example of running LLM on RyzenAI NPU
 
   # Make sure git-lfs is installed (https://git-lfs.com)
   sudo apt install git-lfs
+  git lfs install
   git clone https://huggingface.co/amd/Phi-3.5-mini-instruct-onnx-ryzenai-npu
 
 - Search for RYZEN_AI_INSTALLATION_PATH
