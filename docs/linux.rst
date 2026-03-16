@@ -148,9 +148,9 @@ The RyzenAI software package contains a test script that verifies your correct i
 
 
 
-************************
+**************************
 Examples, Demos, Tutorials
-************************
+**************************
 
 - RyzenAI-SW demonstrates various demos and examples for Model compilation and deployment on NPUs
 
