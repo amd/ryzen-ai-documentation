@@ -1,6 +1,6 @@
-################
-Model Deployment
-################
+#################################
+Model Deployment using Windows ML
+#################################
 
 Windows Machine Learning (WinML) enables C#, C++, and Python developers to run ONNX AI models locally on Windows PCs through ONNX Runtime, with automatic execution provider management across hardware targets including CPUs, GPUs, and NPUs. You can use models from PyTorch, TensorFlow/Keras, TensorFlow Lite (TFLite), scikit-learn, and other frameworks by converting them to ONNX for ONNX Runtime.
 
@@ -8,227 +8,132 @@ In short, Windows ML provides a shared, Windows-wide ONNX Runtime along with sup
 
 For more details, see the `Windows ML official documentation <https://learn.microsoft.com/en-us/windows/ai/new-windows-ml/overview>`_.
 
-************************************************
-Automatic Execution Providers (EPs) Registration
-************************************************
 
-Windows ML will automatically discover, download, and register the latest version of all compatible execution providers.
+***************************************
+Running CNN / Transformer models on NPU
+***************************************
 
-C++ Example
-===========
-
-.. code-block:: cpp
-
-    #include <winrt/Microsoft.Windows.AI.MachineLearning.h>
-    #include <win_onnxruntime_cxx_api.h>
-
-    // First we need to create an ORT environment
-    Ort::Env env(ORT_LOGGING_LEVEL_ERROR, "WinMLDemo"); // Use an ID of your own choice
-
-    // Get the default ExecutionProviderCatalog
-    winrt::Microsoft::Windows::AI::MachineLearning::ExecutionProviderCatalog catalog =
-    winrt::Microsoft::Windows::AI::MachineLearning::ExecutionProviderCatalog::GetDefault();
-
-    // Ensure and register all compatible execution providers with ONNX Runtime
-    catalog.EnsureAndRegisterAllAsync().get();
-
-Python Example
-==============
-
-.. code-block:: python
-
-    # Known issue: import winrt.runtime will cause the TensorRTRTX execution provider to fail registration.
-    # As a workaround, please run pywinrt related code in a separate thread.
-
-    # winml.py
-    import json
-
-    def _get_ep_paths() -> dict[str, str]:
-        from winui3.microsoft.windows.applicationmodel.dynamicdependency.bootstrap import (
-            InitializeOptions,
-            initialize
-        )
-
-        import winui3.microsoft.windows.ai.machinelearning as winml
-        eps     = {}
-        with initialize(options = InitializeOptions.ON_NO_MATCH_SHOW_UI):
-            catalog = winml.ExecutionProviderCatalog.get_default()
-            providers = catalog.find_all_providers()
-            for provider in providers:
-                provider.ensure_ready_async().get()
-                eps[provider.name] = provider.library_path
-                # DO NOT call provider.try_register in python. That will register to the native env.
-        return eps
-
-    if __name__ == "__main__":
-        eps = _get_ep_paths()
-        print(json.dumps(eps))
-
-    # In your application code
-    import subprocess
-    import json
-    import sys
-    from pathlib import Path
-    import onnxruntime as ort
-
-    def register_execution_providers():
-        worker_script = str(Path(__file__).parent / 'winml.py')
-        result = subprocess.check_output([sys.executable, worker_script], text=True)
-        paths = json.loads(result)
-        for item in paths.items():
-            ort.register_execution_provider_library(item[0], item[1])
-        _ep_registered = True
-
-    register_execution_providers()
+Windows ML provides a streamlined workflow for deploying CNN and Transformer models on Ryzen AI PCs. Users can either use the original float model with automatic BF16 conversion, or use AI Toolkit for model quantization (QDQ format).
 
 
-The ``register_execution_providers`` function is used to download and register the latest version of all compatible execution providers.
+Windows ML workflow
+===================
 
-****************
-Execution Policy
-****************
+.. image:: ../images/winml-workflow.png
+   :align: center
 
-The EP selection policy can be configured to use specific execution provider or through general execution policy. For more details, refer to the Windows ML documentation on `Execution Providers <https://learn.microsoft.com/en-us/windows/ai/new-windows-ml/select-execution-providers?tabs=python>`_.
+**Step 1: Download the Original Float Model**
 
-For example, setting the execution policy to `PREFER_NPU` will prioritize the NPU execution provider if available, with a fallback to CPU execution if an NPU is not present. 
+Start with your pre-trained ONNX model in FP32 format. Models can be exported from PyTorch, TensorFlow, or obtained from model repositories.
 
-C++ Example
-===========
+**Step 2: (Optional) Model Quantization using VS AI Toolkit**
 
-.. code-block:: cpp
+For improved inference performance, quantize your model using VS AI Toolkit or Olive recipe:
 
-    // Configure the session to select an EP and device for PREFER_NPU which typically
-    // will choose an NPU if available with a CPU fallback.
-    Ort::SessionOptions sessionOptions;
-    sessionOptions.SetEpSelectionPolicy(OrtExecutionProviderDevicePolicy_PREFER_NPU);
+- **A8W8 quantization**: Recommended for CNN models (ResNet, MobileNet, etc.)
+- **A16W8 quantization**: Recommended for Transformer models (BERT, CLIP etc.)
 
-Python Example
-==============
+**Step 3: Automatic Execution Provider Registration**
 
-.. code-block:: python
+Windows ML automatically downloads and registers the appropriate execution providers based on available hardware:
 
-    # Configure the session to select an EP and device for PREFER_NPU which typically
-    # will choose an NPU if available with a CPU fallback.
-    options = ort.SessionOptions()
-    options.set_provider_selection_policy(ort.OrtExecutionProviderDevicePolicy.PREFER_NPU)
-    assert options.has_providers()
+.. list-table::
+   :widths: 35 65
+   :header-rows: 1
 
-
-Specifying the **specific execution provider** can be done through the `set_providers` API. For example, setting the execution provider to `VitisAIExecutionProvider` will only use the VitisAI EP for model execution.
-
-C++ Example
-===========
-
-.. code-block:: cpp
-
-    #include <iostream>
-    #include <iomanip>
-    #include <vector>
-    #include <stdexcept>
-    #include <win_onnxruntime_cxx_api.h>
-
-    // Assuming you have an Ort::Env named 'env'
-    // 1. Enumerate EP devices
-    std::vector<Ort::ConstEpDevice> ep_devices = env.GetEpDevices();
-
-    // 2. Collect only ReplaceWithExecutionProvider NPU devices
-    std::vector<Ort::ConstEpDevice> selected_ep_devices;
-    for (const auto& d : ep_devices) {
-        if (std::string(d.EpName()) == "VitisAIExecutionProvider"
-            && d.HardwareDevice().Type() == OrtHardwareDeviceType_NPU) {
-            selected_ep_devices.push_back(d);
-        }
-    }
-    if (selected_ep_devices.empty()) {
-        throw std::runtime_error("VitisAIExecutionProvider is not available on this system.");
-    }
-
-    // 3. Configure provider-specific options (varies based on EP)
-    // and append the EP with the correct devices (varies based on EP)
-    Ort::SessionOptions session_options;
-    Ort::KeyValuePairs ep_options;
-    ep_options.Add("optimize_level", "1");
-    session_options.AppendExecutionProvider_V2(env, { selected_ep_devices.front() }, ep_options);
+   * - Execution Provider
+     - Hardware Target
+   * - VitisAIExecutionProvider
+     - AMD Ryzen AI NPU
+   * - MIGraphXExecutionProvider
+     - AMD GPU (ROCm)
+   * - DmlExecutionProvider
+     - DirectML (GPU/NPU)
 
 
-Python Example
-==============
+**Step 4: Execution Policy for device selection**
 
-.. code-block:: python
+Select the preferred execution target using the execution policy:
 
-    # 1. Enumerate and filter EP devices
-    ep_devices = ort.get_ep_devices()
-    selected_ep_devices = [
-        d for d in ep_devices
-        if d.ep_name == "VitisAIExecutionProvider"
-        and d.device.type == ort.OrtHardwareDeviceType.NPU
-    ]
-    if not selected_ep_devices:
-        raise RuntimeError("VitisAIExecutionProvider is not available on this system.")
+.. list-table::
+   :widths: 30 70
+   :header-rows: 1
 
-    # 2. Configure provider-specific options (varies based on EP)
-    # and append the EP with the correct devices (varies based on EP)
-    options = ort.SessionOptions()
-    provider_options = {"optimize_level": "1"}
-    options.add_provider_for_devices([selected_ep_devices[0]], provider_options)
+   * - Execution Policy
+     - First Preference EP
+   * - PREFER_CPU
+     - CPUExecutionProvider
+   * - PREFER_GPU
+     - DmlExecutionProvider
+   * - PREFER_NPU
+     - VitisAIExecutionProvider
 
+The EP selection policy can be configured to use specific execution provider or through general execution policy. For more details, refer to the Windows ML documentation on :doc:`Execution Providers <winml_ep>`.
 
-For more details on the `VitisAIExecutionProvider`-specific `provider_options`, see :doc:`Model compilation and deployment <../modelrun>`.
+**Step 5: Model Compilation**
 
-*****************
-Model Compilation
-*****************
+The model is compiled for the target hardware:
 
-Models needs to be compiled for specific EPs. This is a one-time process that stores the compiled model for subsequent runs:
+- **Float models**: VAIML performs automatic BF16 conversion for NPU execution
+- **Quantized models**: A8W8/A16W8 models are compiled using X2/X1 compiler
 
-C++ Example
-===========
+For more details refer to :doc:`model compilation and deployment <modelrun>` documentation.
 
-.. code-block:: cpp
+**Step 6: Model Inference**
 
-    bool isCompiledModelAvailable = std::filesystem::exists(compiledModelPath);
-
-    if (!isCompiledModelAvailable)
-    {
-        Ort::ModelCompilationOptions compile_options(env, sessionOptions);
-        compile_options.SetInputModelPath(modelPath.c_str());
-        compile_options.SetOutputModelPath(compiledModelPath.c_str());
-
-        std::cout << "Starting compile, this may take a few moments..." << std::endl;
-        Ort::Status compileStatus = Ort::CompileModel(env, compile_options);
-        if (compileStatus.IsOK())
-        {
-            std::cout << "Model compiled successfully!" << std::endl;
-            isCompiledModelAvailable = true;
-        }
-    }
+Use the ONNX Runtime APIs to run inference on the compiled model. The model will execute on the selected hardware target based on the execution policy and available EPs.
 
 
-Python Example
-==============
+*************************
+Running LLM models on NPU
+*************************
 
-.. code-block:: python
+Windows ML enables support for Foundry Local models for on-device AI inference solutions that provide privacy and performance. Currently, Foundry Local is available in preview mode. It automatically detects NPU and downloads the compatible model for the NPU device.
 
-    input_model_path = "path_to_your_model.onnx"
-    output_model_path = "path_to_your_compiled_model.onnx"
+LLM prerequisites
+=================
 
-    model_compiler = ort.ModelCompiler(
-        options,
-        input_model_path,
-        embed_compiled_data_into_model=True,
-        external_initializers_file_path=None,
-    )
-    model_compiler.compile_to_file(output_model_path)
-    if not os.path.exists(output_model_path):
-        # For some EPs, there might not be a compilation output.
-        # In that case, use the original model directly.
-        output_model_path = input_model_path
+Make sure the following requirements are met before proceeding:
+
+.. list-table::
+   :widths: 30 70
+   :header-rows: 1
+
+   * - Requirement
+     - Details
+   * - Operating System
+     - Windows 10, Windows 11
+   * - Hardware (Minimum)
+     - 8 GB RAM, 3 GB free disk space
+   * - Hardware (Recommended)
+     - 16 GB RAM, 15 GB free disk space
+   * - Acceleration
+     - AMD NPU
 
 
+Running LLM on AMD NPU
+======================
 
-For more details on `VitisAIExecutionProvider` specific `provider_options` as shown in the reference documentation :doc:`Model compilation and deployment <../modelrun>`
+LLM models can be run on AMD NPU using Foundry Local or Windows ML APIs. Foundry Local provides an easy-to-use interface for running LLM models on AMD NPU, while Windows ML APIs allow for more customization and control over the inference process.
+
+**Option 1: Running LLM using Foundry Local**
+
+This is the recommended option for most users as it provides a simple and efficient way to run LLM models on AMD NPU without needing to manage dependencies or optimize the model manually.
+
+**Option 2: Running a Custom LLM Model using Windows ML and OGA APIs**
+
+This option allows users to run custom LLM models on AMD NPU using Windows ML APIs. This option is suitable for users who want more control over the inference process and are comfortable managing dependencies and model optimization manually.
+
+**Option 3: Running a Pre-quantized LLM Model from AMD using Foundry Local APIs**
+
+This option allows users to run pre-quantized and performance-optimized LLM models from AMD on AMD NPU using Foundry Local APIs.
+
+**Option 4: Running a Pre-quantized LLM Model from AMD using Windows ML and OGA APIs**
+
+This option allows users to run pre-quantized and performance-optimized LLM models from AMD on AMD NPU using Windows ML and OGA APIs.
 
 
+For detailed instructions on each option, see the `Running LLM Models on NPU <https://github.com/amd/RyzenAI-SW/tree/main/WinML/LLM>`_ documentation.
 
 ..
   ------------
