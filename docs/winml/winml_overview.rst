@@ -104,9 +104,16 @@ Download the Windows App SDK corresponding to the wasdk version (e.g., 2.0.0.dev
     curl -L -o windowsappruntimeinstall-x86.exe "https://aka.ms/windowsappsdk/2.0/2.0.0-experimental4/windowsappruntimeinstall-x86.exe"
     windowsappruntimeinstall-x86.exe --quiet
 
-After installation instructions run the `check_winml_setup.py` script to verify the Windows ML installation
+After completing the installation, run the `check_winml_setup.py` script from the `RyzenAI-SW` repository to verify the Windows ML installation. The script is available at: https://github.com/amd/RyzenAI-SW/blob/main/WinML/check_winml_setup.py
 
 .. code-block:: shell
+
+    cd <RyzenAI-SW>\WinML
+    python check_winml_setup.py
+
+The script will produce output similar to the following:
+
+.. code-block:: text
 
     ============================================================
     WinML Setup Checker
