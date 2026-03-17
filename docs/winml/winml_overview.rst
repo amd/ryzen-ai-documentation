@@ -29,9 +29,9 @@ Windows Foundry Components
      - `Windows ML official documentation <https://learn.microsoft.com/en-us/windows/ai/new-windows-ml/overview>`_
 
 
-*********************************
-Model Deployment using Windows ML
-*********************************
+***********************
+Windows ML Installation
+***********************
 
 Windows Machine Learning (WinML) enables C#, C++, and Python developers to run ONNX AI models locally on Windows PCs through ONNX Runtime, with automatic execution provider management across hardware targets including CPUs, GPUs, and NPUs. You can use models from PyTorch, TensorFlow/Keras, TensorFlow Lite (TFLite), scikit-learn, and other frameworks by converting them to ONNX for ONNX Runtime.
 
@@ -62,14 +62,6 @@ Prerequisites
 
 For the complete list of Windows OS that are supported refer to `Windows App SDK support <https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/support>`_
 
-
-Installation
-============
-
-- Install the latest NPU drivers following `RAI installation instructions <../inst.rst>`_
-- Windows ML is included as part of the Windows App SDK, so installing it will also install Windows ML and its dependencies. Download and install a compatible version of the `Windows App SDK 1.8.5 <https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/downloads>`_ or later version.
-
-
 Key Features
 ============
 
@@ -79,127 +71,74 @@ Windows ML handles the complexity of package management and hardware selection, 
 - Shared Windows-wide ONNX Runtime, which reduces application size
 - Broad hardware support across different vendors through ONNX Runtime
 
+Installation
+============
 
-***************************************
-Running CNN / Transformer models on NPU
-***************************************
-
-Windows ML provides a streamlined workflow for deploying CNN and Transformer models on Ryzen AI PCs. Users can either use the original float model with automatic BF16 conversion, or use AI Toolkit for model quantization (QDQ format).
-
-
-Windows ML workflow
-===================
-
-.. image:: ../images/winml-workflow.png
-   :align: center
-
-**Step 1: Download the Original Float Model**
-
-Start with your pre-trained ONNX model in FP32 format. Models can be exported from PyTorch, TensorFlow, or obtained from model repositories.
-
-**Step 2: (Optional) Model Quantization using VS AI Toolkit**
-
-For improved inference performance, quantize your model using VS AI Toolkit or Olive recipe:
-
-- **A8W8 quantization**: Recommended for CNN models (ResNet, MobileNet, etc.)
-- **A16W8 quantization**: Recommended for Transformer models (BERT, CLIP etc.)
-
-**Step 3: Automatic Execution Provider Registration**
-
-Windows ML automatically downloads and registers the appropriate execution providers based on available hardware:
-
-.. list-table::
-   :widths: 35 65
-   :header-rows: 1
-
-   * - Execution Provider
-     - Hardware Target
-   * - VitisAIExecutionProvider
-     - AMD Ryzen AI NPU
-   * - MIGraphXExecutionProvider
-     - AMD GPU (ROCm)
-   * - DmlExecutionProvider
-     - DirectML (GPU/NPU)
-
-**Step 4: Model Compilation**
-
-The model is compiled for the target hardware:
-
-- **Float models**: VAIML performs automatic BF16 conversion for NPU execution
-- **Quantized models**: A8W8/A16W8 models are compiled using X2/X1 compiler
-
-For more details refer to `model compilation and deployment <../modelrun.rst>`_ documentation.
-
-**Step 5: Hardware Selection and Execution**
-
-Select the preferred execution target using the execution policy:
-
-.. list-table::
-   :widths: 30 70
-   :header-rows: 1
-
-   * - Execution Policy
-     - First Preference EP
-   * - PREFER_CPU
-     - CPUExecutionProvider
-   * - PREFER_GPU
-     - DmlExecutionProvider
-   * - PREFER_NPU
-     - VitisAIExecutionProvider
-
-For details of the API walkthrough, see :doc:`Model Deployment with Windows ML <model_deployment>` documentation. 
+- Install the latest NPU drivers following :doc:`RAI installation instructions <../inst>`
+- Windows ML runtime is included as part of the Windows App SDK, so installing it will also install Windows ML and its dependencies. Download and install a compatible version of the `Windows App SDK 1.8.5 <https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/downloads>`_ or later version.
 
 
-*************************
-Running LLM models on NPU
-*************************
+*****************************
+Windows ML setup verification
+*****************************
 
-Windows ML enables support for Foundry Local models for on-device AI inference solutions that provide privacy and performance. Currently, Foundry Local is available in preview mode. It automatically detects NPU and downloads the compatible model for the NPU device.
+Install the required python packages in the conda environment `winml_env`
 
+.. code-block:: shell
 
-LLM prerequisites
-=================
+    conda create -n winml_env python==3.11
+    conda activate winml_env
+    cd <RyzenAI-SW>\WinML\CNN\ResNet
+    pip install --pre -r .\requirements.txt
 
-Make sure the following requirements are met before proceeding:
+Check installed wasdk python version and install same version of `Windows App SDK <https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/downloads>`_:
 
-.. list-table::
-   :widths: 30 70
-   :header-rows: 1
+.. code-block:: shell
 
-   * - Requirement
-     - Details
-   * - Operating System
-     - Windows 10, Windows 11
-   * - Hardware (Minimum)
-     - 8 GB RAM, 3 GB free disk space
-   * - Hardware (Recommended)
-     - 16 GB RAM, 15 GB free disk space
-   * - Acceleration
-     - AMD NPU
+    conda list | findstr wasdk
 
+Download the Windows App SDK corresponding to the wasdk version (e.g., 2.0.0.dev4) or latest and install it to ensure the WinML execution providers work correctly.
 
-Running LLM on AMD NPU
-======================
+.. code-block:: shell
 
-LLM models can be run on AMD NPU using Foundry Local or Windows ML APIs. Foundry Local provides an easy-to-use interface for running LLM models on AMD NPU, while Windows ML APIs allow for more customization and control over the inference process.
+    curl -L -o windowsappruntimeinstall-x86.exe "https://aka.ms/windowsappsdk/2.0/2.0.0-experimental4/windowsappruntimeinstall-x86.exe"
+    windowsappruntimeinstall-x86.exe --quiet
 
-**Option 1: Running LLM using Foundry Local**
+After completing the installation, run the `check_winml_setup.py` script from the `RyzenAI-SW` repository to verify the Windows ML installation. The script is available at: https://github.com/amd/RyzenAI-SW/blob/main/WinML/check_winml_setup.py
 
-This is the recommended option for most users as it provides a simple and efficient way to run LLM models on AMD NPU without needing to manage dependencies or optimize the model manually.
+.. code-block:: shell
 
-**Option 2: Running Custom LLM model using Foundry Local**
+    cd <RyzenAI-SW>\WinML
+    python check_winml_setup.py
 
-This option allows users to run their custom LLM models on AMD NPU using Foundry Local. Users can use the Olive ``auto-opt`` command to download, convert, quantize, and optimize their custom LLM models for AMD NPU.
+The script will produce output similar to the following:
 
-**Option 3: Run pre-quantized LLM model from AMD using Foundry Local**
+.. code-block:: text
 
-This option allows users to run pre-quantized and performance-optimized LLM models from AMD on AMD NPU using Foundry Local.
+    ============================================================
+    WinML Setup Checker
+    ============================================================
+    Python: 3.11.0 (<path_to_python_installation>\python.exe)
+    WASDK Python Packages:
+    ----------------------------------------
+      [✓] wasdk-ML: 2.0.0.dev4
+      [✓] wasdk-Bootstrap: 2.0.0.dev4
+    Windows App SDK Runtime:
+    ----------------------------------------
+    [✓] Windows App SDK: 2.0-experimental5 (internal: 0.770.2319.0)
+    Installed runtimes (newest first):
+        * 2.0-experimental5 (internal: 0.770.2319.0)
+        - 2.0-experimental4 (internal: 0.738.2207.0)
+        - 1.8 (internal: 8000.642.119.0)
+        - 1.8 (internal: 8000.675.1142.0)
+        - 1.8-experimental (internal: 8000.589.1529.0)
+        - 1.8-preview (internal: 8000.591.1127.0)
+        * Active runtime used by this checker
+    Expected SDK: 2.0.0-experimental4
+    ============================================================
+    Status: All components installed. Please, ensure matching Windows App SDK version is Installed.
 
-**Option 4: Running LLM model using Windows ML APIs**
-
-This option allows users to run LLM models on AMD NPU using Windows ML APIs. This option is suitable for users who want more control over the inference process and are comfortable managing dependencies and model optimization manually.
-
-For detailed instructions on each option, see the `Running LLM Models on NPU <https://github.com/amd/RyzenAI-SW/tree/main/WinML/LLM>`_ documentation.
+Windows App SDK version should match the wasdk python package version. If there is a mismatch, please install the correct Windows App SDK version. After installation, re-run the setup checker to verify that the correct version of Windows App SDK is installed and active.
 
 **************************
 Getting Started Tutorials
@@ -217,6 +156,8 @@ The following tutorials provide step-by-step instructions to help you get starte
   - `Transformer based GoogleBERT example <https://github.com/amd/RyzenAI-SW/tree/main/WinML/Transformers/GoogleBERT>`_
   - `Running OpenAI CLIP model on NPU <https://github.com/amd/RyzenAI-SW/tree/main/WinML/Transformers/clip-vit-base-path16>`_
   - `Running LLM models on NPU <https://github.com/amd/RyzenAI-SW/tree/main/WinML/LLM>`_
+
+For more details about model deployment using Windows ML, see the :doc:`Model Deployment using Windows ML documentation <model_deployment>`.
 
 ..
   ------------
