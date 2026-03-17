@@ -77,7 +77,7 @@ The model is compiled for the target hardware:
 - **Float models**: VAIML performs automatic BF16 conversion for NPU execution
 - **Quantized models**: A8W8/A16W8 models are compiled using X2/X1 compiler
 
-For more details refer to `model compilation and deployment <../modelrun.rst>`_ documentation.
+For more details refer to :doc:`model compilation and deployment <modelrun>` documentation.
 
 **Step 6: Model Inference**
 
