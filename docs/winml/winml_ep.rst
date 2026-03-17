@@ -1,10 +1,17 @@
-#############################
-Windows ML Execution Provider
-#############################
+###################
+Execution Providers
+###################
 
-Windows Machine Learning (WinML) enables C#, C++, and Python developers to run ONNX AI models locally on Windows PCs through ONNX Runtime, with automatic execution provider management across hardware targets including CPUs, GPUs, and NPUs. You can use models from PyTorch, TensorFlow/Keras, TensorFlow Lite (TFLite), scikit-learn, and other frameworks by converting them to ONNX for ONNX Runtime.
+Windows ML provides a system-level execution provider (EP) management layer for ONNX Runtime on Windows PCs. It automatically discovers, downloads, and registers the best-available EPs for your hardware — whether that is a CPU, GPU, or NPU — so your application always runs on the optimal hardware accelerator.
 
-In short, Windows ML provides a shared, Windows-wide ONNX Runtime along with support for dynamically downloading execution providers (EPs).
+Windows ML ships a shared, Windows-wide ONNX Runtime and exposes EP management APIs for C#, C++, and Python. Through these APIs you can:
+
+- **Auto-register all compatible EPs** with a single call, letting WinML handle version resolution and updates.
+- **Set an execution policy** (e.g., ``PREFER_NPU``) to steer workloads to a preferred device class with automatic fallback.
+- **Target a specific EP and device** by enumerating available EP devices and appending the one you need — for example, ``VitisAIExecutionProvider`` on an AMD NPU.
+- **Compile models for a specific EP** as a one-time step that optimizes the model for the target hardware, and the compiled artifact can be cached for all subsequent runs.
+
+Models from PyTorch, TensorFlow/Keras, TensorFlow Lite (TFLite), scikit-learn, and other frameworks can be converted to ONNX and executed through this managed EP infrastructure.
 
 For more details, see the `Windows ML official documentation <https://learn.microsoft.com/en-us/windows/ai/new-windows-ml/overview>`_.
 
