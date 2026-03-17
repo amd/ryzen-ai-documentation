@@ -68,7 +68,7 @@ Select the preferred execution target using the execution policy:
    * - PREFER_NPU
      - VitisAIExecutionProvider
 
-The EP selection policy can be configured to use specific execution provider or through general execution policy. For more details, refer to the Windows ML documentation on `Execution Providers <winml_ep.rst>`_.
+The EP selection policy can be configured to use specific execution provider or through general execution policy. For more details, refer to the Windows ML documentation on :doc:`Execution Providers <winml_ep>`.
 
 **Step 5: Model Compilation**
 
