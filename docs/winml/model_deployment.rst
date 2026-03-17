@@ -124,7 +124,7 @@ This is the recommended option for most users as it provides a simple and effici
 
 This option allows users to run custom LLM models on AMD NPU using Windows ML APIs. This option is suitable for users who want more control over the inference process and are comfortable managing dependencies and model optimization manually.
 
-**Option 3: Running a Pre-quantized LLM Model from AMD using Foudry Local APIs**
+**Option 3: Running a Pre-quantized LLM Model from AMD using Foundry Local APIs**
 
 This option allows users to run pre-quantized and performance-optimized LLM models from AMD on AMD NPU using Foundry Local APIs.
 
