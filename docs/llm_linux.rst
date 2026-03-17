@@ -24,11 +24,10 @@ This page showcases an example of running LLM on RyzenAI NPU
 
 .. code-block:: bash
 
-  echo $RYZEN_AI_INSTALLATION_PATH
-  <TARGET-PATH>/venv
-
-  # Activate the virtual environment
+  # Activate the virtual environment created in Linux Installation step
   source <TARGET-PATH>/venv/bin/activate
+
+  echo $RYZEN_AI_INSTALLATION_PATH
 
 - Collecting the necessary files to get in current working directory
 
@@ -51,7 +50,7 @@ This page showcases an example of running LLM on RyzenAI NPU
 
 .. code-block::
 
-  deployment   model_benchmark   amd_genai_prompt.txt   Phi-3.5-mini-instruct-onnx-ryzenai-npu
+  amd_genai_prompt.txt   deployment   model_benchmark   Phi-3.5-mini-instruct-onnx-ryzenai-npu
 
 - Two files under Phi-3.5 Model have to be updated to make it work for Linux environment 
 
