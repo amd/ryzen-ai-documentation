@@ -157,7 +157,7 @@ The following tutorials provide step-by-step instructions to help you get starte
   - `Running OpenAI CLIP model on NPU <https://github.com/amd/RyzenAI-SW/tree/main/WinML/Transformers/clip-vit-base-path16>`_
   - `Running LLM models on NPU <https://github.com/amd/RyzenAI-SW/tree/main/WinML/LLM>`_
 
-For more details about model deployment using Windows ML, see the `Model Deployment using Windows ML documentation <model_deployment>`_.
+For more details about model deployment using Windows ML, see the :doc:`Model Deployment using Windows ML documentation <model_deployment>`.
 
 ..
   ------------
