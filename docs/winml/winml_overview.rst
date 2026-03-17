@@ -74,7 +74,7 @@ Windows ML handles the complexity of package management and hardware selection, 
 Installation
 ============
 
-- Install the latest NPU drivers following `RAI installation instructions <../inst.rst>`_
+- Install the latest NPU drivers following :doc:`RAI installation instructions <../inst>`
 - Windows ML runtime is included as part of the Windows App SDK, so installing it will also install Windows ML and its dependencies. Download and install a compatible version of the `Windows App SDK 1.8.5 <https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/downloads>`_ or later version.
 
 
