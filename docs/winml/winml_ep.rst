@@ -1,6 +1,6 @@
-##################
-Execution Provider
-##################
+###################
+Execution Providers
+###################
 
 Windows ML provides a system-level execution provider (EP) management layer for ONNX Runtime on Windows PCs. It automatically discovers, downloads, and registers the best-available EPs for your hardware — whether that is a CPU, GPU, or NPU — so your application always runs on the optimal hardware accelerator.
 
