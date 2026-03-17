@@ -182,7 +182,7 @@ Follow this page to run LLM models on Linux: :doc:`llm_linux`
 Limitations
 ************
 
-- Integer CNN Model is only supported through Legacy backend compiler (X1)
+- Integer CNN Model is only supported through Legacy backend compiler (X1) - Now we support X2 flow
 - Of all supported LLM models, several require a 64GB machine for running.
 
 
