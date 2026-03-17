@@ -68,7 +68,7 @@ Select the preferred execution target using the execution policy:
    * - PREFER_NPU
      - VitisAIExecutionProvider
 
-The EP selection policy can be configured to use specific execution provider or through general execution policy. For more details, refer to the Windows ML documentation on `Execution Providers <winml_ep.rst>`_.
+The EP selection policy can be configured to use specific execution provider or through general execution policy. For more details, refer to the Windows ML documentation on :doc:`Execution Providers <winml_ep>`.
 
 **Step 5: Model Compilation**
 
@@ -77,7 +77,7 @@ The model is compiled for the target hardware:
 - **Float models**: VAIML performs automatic BF16 conversion for NPU execution
 - **Quantized models**: A8W8/A16W8 models are compiled using X2/X1 compiler
 
-For more details refer to `model compilation and deployment <../modelrun.rst>`_ documentation.
+For more details refer to :doc:`model compilation and deployment <modelrun>` documentation.
 
 **Step 6: Model Inference**
 
@@ -124,7 +124,7 @@ This is the recommended option for most users as it provides a simple and effici
 
 This option allows users to run custom LLM models on AMD NPU using Windows ML APIs. This option is suitable for users who want more control over the inference process and are comfortable managing dependencies and model optimization manually.
 
-**Option 3: Running a Pre-quantized LLM Model from AMD using Foudry Local APIs**
+**Option 3: Running a Pre-quantized LLM Model from AMD using Foundry Local APIs**
 
 This option allows users to run pre-quantized and performance-optimized LLM models from AMD on AMD NPU using Foundry Local APIs.
 

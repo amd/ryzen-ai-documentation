@@ -74,7 +74,7 @@ Windows ML handles the complexity of package management and hardware selection, 
 Installation
 ============
 
-- Install the latest NPU drivers following `RAI installation instructions <../inst.rst>`_
+- Install the latest NPU drivers following :doc:`RAI installation instructions <../inst>`
 - Windows ML runtime is included as part of the Windows App SDK, so installing it will also install Windows ML and its dependencies. Download and install a compatible version of the `Windows App SDK 1.8.5 <https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/downloads>`_ or later version.
 
 
@@ -104,9 +104,16 @@ Download the Windows App SDK corresponding to the wasdk version (e.g., 2.0.0.dev
     curl -L -o windowsappruntimeinstall-x86.exe "https://aka.ms/windowsappsdk/2.0/2.0.0-experimental4/windowsappruntimeinstall-x86.exe"
     windowsappruntimeinstall-x86.exe --quiet
 
-After installation instructions run the `check_winml_setup.py` script to verify the Windows ML installation
+After completing the installation, run the `check_winml_setup.py` script from the `RyzenAI-SW` repository to verify the Windows ML installation. The script is available at: https://github.com/amd/RyzenAI-SW/blob/main/WinML/check_winml_setup.py
 
 .. code-block:: shell
+
+    cd <RyzenAI-SW>\WinML
+    python check_winml_setup.py
+
+The script will produce output similar to the following:
+
+.. code-block:: text
 
     ============================================================
     WinML Setup Checker
@@ -150,7 +157,7 @@ The following tutorials provide step-by-step instructions to help you get starte
   - `Running OpenAI CLIP model on NPU <https://github.com/amd/RyzenAI-SW/tree/main/WinML/Transformers/clip-vit-base-path16>`_
   - `Running LLM models on NPU <https://github.com/amd/RyzenAI-SW/tree/main/WinML/LLM>`_
 
-For more details about model deployment using Windows ML, see the `Model Deployment using Windows ML documentation <model_deployment>`_.
+For more details about model deployment using Windows ML, see the :doc:`Model Deployment using Windows ML documentation <model_deployment>`.
 
 ..
   ------------
