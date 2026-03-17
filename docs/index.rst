@@ -119,6 +119,7 @@ For more details, refer to the :doc:`llm/overview` page.
 
    winml/winml_overview.rst
    winml/model_deployment.rst
+   winml/winml_ep.rst
    winml/winml_example.rst
 
 .. toctree::
