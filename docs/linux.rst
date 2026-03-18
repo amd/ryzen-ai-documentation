@@ -168,8 +168,30 @@ Examples, Demos, Tutorials
 
 .. code-block:: python
 
-  source <TARGET-PATH>/venv/bin/activate
+   source <TARGET-PATH>/venv/bin/activate
 
+
+Get NPU Info for your Machine
+
+`Getting started Resnet with INT8 Model <https://github.com/amd/RyzenAI-SW/tree/main/CNN-examples/getting_started_resnet/int8>`_
+
+Resnet_util.py script has a function "get_npu_info" to detect correct "NPU type" in your machine. The lookup logic is based for Windows system.
+For Linux, below lookup logic can be used:
+
+.. code-block:: python
+
+   def get_npu_info():
+       # Run pnputil as a subprocess to enumerate PCI devices
+       command = r'lspci -nn'
+       process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+       stdout, stderr = process.communicate()
+      
+       # Check for supported Hardware IDs
+       npu_type = ''
+       if '1022:17f0' in stdout.decode(): npu_type = 'STX/KRK'
+       return npu_type
+   
+   
 
 ***********
 Running LLM
@@ -182,8 +204,8 @@ Follow this page to run LLM models on Linux: :doc:`llm_linux`
 Limitations
 ************
 
-- Integer CNN Model is only supported through Legacy backend compiler (X1) - Now we support X2 flow
-- Of all supported LLM models, several require a 64GB machine for running.
+- Integer CNN Model is supported through default X2 flow
+- Several LLM models require a 64GB machine for running.
 
 
 
