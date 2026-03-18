@@ -52,41 +52,27 @@ This page showcases an example of running LLM on RyzenAI NPU
 
   amd_genai_prompt.txt   deployment   model_benchmark   Phi-3.5-mini-instruct-onnx-ryzenai-npu
 
-- Two files under Phi-3.5 Model have to be updated to make it work for Linux environment 
+- Create a new file for XRT Drivers named "xrt.ini"
 
 .. code-block:: bash
 
-  1) Edit genai_config.json file under Model folder: 
-
-      - "custom_ops_library": "deployment/lib/libonnx_custom_ops.so"    (line 8)  
+      - vi xrt.ini            (Creates a new file)
     
-      - "config_entries": {
-          "hybrid_dbg_use_aie_rope": "0",                               (line 11 - Add flag under config_entries)
+      - Add below lines to the file and save it
+          [Debug]
+          num_heap_pages = 8  
 
-
-  2) Edit .cache/MatMulNBits_2_0_meta.json file under Model folder:
-
-      # Python utility script helps convert Windows-style paths in "MatMulNBits_2_0_meta.json" to Linux-style paths
-      # Create a new python file, paste the below code snippet and run the script
-
-      # Python utility script
-       import json
-    
-       with open('Phi-3.5-mini-instruct-onnx-ryzenai-npu/.cache/MatMulNBits_2_0_meta.json','r') as f:
-        lines = f.readlines()
-        for i in range(len(lines)):
-            if '.cache' in lines[i]:
-                lines[i] = lines[i].replace('\\','/')
-    
-       with open('Phi-3.5-mini-instruct-onnx-ryzenai-npu/.cache/MatMulNBits_2_0_meta.json','w') as f:
-         f.writelines(lines)
-
+      - Add this file to System PATH
+          export XRT_INI_PATH=$PWD/xrt.ini
   
 - Lastly, add directories for LD_LIBRARY_PATH
 
 .. code-block:: bash
 
+  export LD_LIBRARY_PATH=/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH
   export LD_LIBRARY_PATH=deployment/lib:$LD_LIBRARY_PATH
+  export LD_LIBRARY_PATH=$PWD/deployment/lib/libonnxruntime_providers_ryzenai.so
+  
 
 - We can now run our Model with command below:
 
