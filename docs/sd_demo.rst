@@ -62,13 +62,13 @@ The demo script uses a predefined prompt and ``.\ref\canny.jpg`` as the control 
 
 The control image can be modified and custom prompts can be provided with the ``--prompt`` option. For instance::
 
-  python run_sd3.py -C canny --model_id "amd/stable-diffusion-3-medium-amdnpu" --prompt 'Anime style illustration of a girl wearing a suit. A moon in sky. In the background we see a big rain approaching. text "InstantX" on image' -n 50
+  python run_sd3.py -C canny --model_id "amd/stable-diffusion-3-medium-amdnpu" --prompt "Anime style illustration of a girl wearing a suit. A moon in sky. In the background we see a big rain approaching. text 'InstantX' on image" -n 50
 
 The application of ControlNet can be configured with the ``-C`` option. For instance::
 
-  python run_sd3.py -C canny --model_id "amd/stable-diffusion-3-medium-amdnpu" --prompt 'Anime style illustration of a girl wearing a suit. A moon in sky. In the background we see a big rain approaching. text "InstantX" on image' -H 1024 -W 1024 --control_image_path .\ref\canny.jpg -n 50
-  python run_sd3.py -C pose --model_id "amd/stable-diffusion-3-medium-amdnpu" --prompt 'Anime style illustration of a girl wearing a suit. A moon in sky. In the background we see a big rain approaching. text "InstantX" on image' -H 1024 -W 1024 --control_image_path .\ref\pose.jpg -n 50
-  python run_sd3.py -C tile --model_id "amd/stable-diffusion-3-medium-amdnpu" --prompt 'Anime style illustration of a girl wearing a suit. A moon in sky. In the background we see a big rain approaching. text "InstantX" on image' -H 1024 -W 1024 --control_image_path .\ref\tile.jpg -n 50
+  python run_sd3.py -C canny --model_id "amd/stable-diffusion-3-medium-amdnpu" --prompt "Anime style illustration of a girl wearing a suit. A moon in sky. In the background we see a big rain approaching. text 'InstantX' on image" -H 1024 -W 1024 --control_image_path .\ref\canny.jpg -n 50
+  python run_sd3.py -C pose --model_id "amd/stable-diffusion-3-medium-amdnpu" --prompt "Anime style illustration of a girl wearing a suit. A moon in sky. In the background we see a big rain approaching. text 'InstantX' on image" -H 1024 -W 1024 --control_image_path .\ref\pose.jpg -n 50
+  python run_sd3.py -C tile --model_id "amd/stable-diffusion-3-medium-amdnpu" --prompt "Anime style illustration of a girl wearing a suit. A moon in sky. In the background we see a big rain approaching. text 'InstantX' on image" -H 1024 -W 1024 --control_image_path .\ref\tile.jpg -n 50
   python run_sd3.py -C depth --model_id "amd/stable-diffusion-3-medium-amdnpu" -H 1024 -W 1024 --control_image_path .\assets\depth.jpeg -n 50
 
 To run the image-to-image demo of Segmind-Vega model (without ControlNet applications), run the following command::
