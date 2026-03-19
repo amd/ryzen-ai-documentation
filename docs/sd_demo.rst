@@ -58,7 +58,7 @@ To run the demo, navigate to the ``GenAI-SD\test`` directory and run the followi
 
     python run_sd3.py -C canny --model_id "amd/stable-diffusion-3-medium-amdnpu"
 
-The demo script uses a predefined prompt and ``.\ref\canny.jpg`` as the control image. The output image and control image are saved in the ``generated_images`` folder. Please run the terminal as administrator to get write permission. 
+The demo script uses a predefined prompt and ``.\ref\canny.jpg`` as the control image. The output image and control image are saved in the ``generated_images`` folder. You can re-direct the output directory to a location where your user account has write permissions, for example: ``--output_path C:\Users\<username>\Documents\generated_images``. 
 
 The control image can be modified and custom prompts can be provided with the ``--prompt`` option. For instance::
 
