@@ -30,7 +30,7 @@ Installation Steps
    - `SDXL-base-1.0 <https://huggingface.co/amd/sdxl-base-amdnpu>`_
    - `Segmind-Vega <https://huggingface.co/amd/segmind-vega-amdnpu>`_
    - `SD3.0 / SD3.0-Controlnet(Canny) / SD3.0-Controlnet(Pose) / SD3.0-Controlnet(Tile) / SD3.0-Controlnet(Depth) <https://huggingface.co/amd/stable-diffusion-3-medium-amdnpu>`_
-   - `SD3.5 <https://huggingface.co/amd/stable-diffusion-3-medium-amdnpu>`_
+   - `SD3.5 <https://huggingface.co/amd/stable-diffusion-3.5-medium-amdnpu>`_
 
 ******************
 Running the Demos
