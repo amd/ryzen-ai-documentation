@@ -108,9 +108,9 @@ Custom prompts can be provided with the ``--prompt`` option. For instance::
 
   python run_sd.py --model_id "amd/stable-diffusion-1.5-amdnpu" --prompt "Photo of a ultra realistic sailing ship, dramatic light, pale sunrise, cinematic lighting, battered, low angle, trending on artstation, 4k, hyper realistic, focused, extreme details"
 
-******************
+*****************************************
 Running with AMD Stable Diffusion Sandbox
-******************
+*****************************************
 
 AMD SD Sandbox is a framework for running Stable Diffusion (SD) models accelerated by AMD Ryzen AI hardware. It provides an easy-to-use interface for evaluating, comparing, and deploying multiple SD pipelines.
 Please go to the `AMD SD Sandbox GitHub repository <https://github.com/amd/sd-sandbox>`_ for more information.
