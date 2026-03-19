@@ -22,7 +22,7 @@ Installation Steps
 
   conda activate ryzen-ai-1.7.1
 
-4. The following Stable Diffusion models will be auto-downloaded from Hugging Face when running for the first time and be buffered locally in  ``GenAI-SD\models`` folder:
+4. The following Stable Diffusion models will be auto-downloaded from Hugging Face when running for the first time and cached locally in the ``GenAI-SD\models`` folder:
 
    - `SD1.5 <https://huggingface.co/amd/stable-diffusion-1.5-amdnpu>`_
    - `SD-Turbo (bs1) <https://huggingface.co/amd/sd-turbo-amdnpu>`_
