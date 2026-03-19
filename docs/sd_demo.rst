@@ -2,7 +2,7 @@
 Stable Diffusion Demo
 #######################
 
-Ryzen AI 1.7 provides preview demos of Stable Diffusion image-generation pipelines. The demos cover Image-to-Image and Text-to-Image using SD 1.5, SDXL-base-1.0, Segmind-Vega, SD-Turbo(bs1), SDXL-Turbo(bs1), SD 3.0 and SD3.5. These models are available for public download from Hugging Face.
+Ryzen AI 1.7.1 provides preview demos of Stable Diffusion image-generation pipelines. The demos cover Image-to-Image and Text-to-Image using SD 1.5, SDXL-base-1.0, Segmind-Vega, SD-Turbo(bs1), SDXL-Turbo(bs1), SD 3.0 and SD3.5. These models are available for public download from Hugging Face.
 
 ******************
 Installation Steps
