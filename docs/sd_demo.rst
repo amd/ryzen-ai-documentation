@@ -113,7 +113,7 @@ Running with AMD Stable Diffusion Sandbox
 ******************
 
 AMD SD Sandbox is a framework for running Stable Diffusion (SD) models accelerated by AMD Ryzen AI hardware. It provides an easy-to-use interface for evaluating, comparing, and deploying multiple SD pipelines.
-Please go to https://github.com/amd/sd-sandbox for more information
+Please go to the `AMD SD Sandbox GitHub repository <https://github.com/amd/sd-sandbox>`_ for more information.
 
 ..
   ------------
