@@ -29,7 +29,7 @@ Installation Steps
    - `SDXL-Turbo (bs1) <https://huggingface.co/amd/sdxl-turbo-amdnpu>`_
    - `SDXL-base-1.0 <https://huggingface.co/amd/sdxl-base-amdnpu>`_
    - `Segmind-Vega <https://huggingface.co/amd/segmind-vega-amdnpu>`_
-   - `SD3.0 / SD3.0-Controlnet(Canny) / SD3.0-Controlnet(Pose) / SD3.0-Controlnet(Tile) / SD3.0-Controlnet(Depth) <https://huggingface.co/amd/stable-diffusion-3-medium-amdnpu>`_
+   - `SD3.0 / SD3.0-ControlNet(Canny) / SD3.0-ControlNet(Pose) / SD3.0-ControlNet(Tile) / SD3.0-ControlNet(Depth) <https://huggingface.co/amd/stable-diffusion-3-medium-amdnpu>`_
    - `SD3.5 <https://huggingface.co/amd/stable-diffusion-3.5-medium-amdnpu>`_
 
 ******************
@@ -64,14 +64,14 @@ The control image can be modified and custom prompts can be provided with the ``
 
   python run_sd3.py -C canny --model_id "amd/stable-diffusion-3-medium-amdnpu" --prompt 'Anime style illustration of a girl wearing a suit. A moon in sky. In the background we see a big rain approaching. text "InstantX" on image' -n 50
 
-The application of controlnet can be configured with the ``-C`` option. For instance::
+The application of ControlNet can be configured with the ``-C`` option. For instance::
 
   python run_sd3.py -C canny --model_id "amd/stable-diffusion-3-medium-amdnpu" --prompt 'Anime style illustration of a girl wearing a suit. A moon in sky. In the background we see a big rain approaching. text "InstantX" on image' -H 1024 -W 1024 --control_image_path .\ref\canny.jpg -n 50
   python run_sd3.py -C pose --model_id "amd/stable-diffusion-3-medium-amdnpu" --prompt 'Anime style illustration of a girl wearing a suit. A moon in sky. In the background we see a big rain approaching. text "InstantX" on image' -H 1024 -W 1024 --control_image_path .\ref\pose.jpg -n 50
   python run_sd3.py -C tile --model_id "amd/stable-diffusion-3-medium-amdnpu" --prompt 'Anime style illustration of a girl wearing a suit. A moon in sky. In the background we see a big rain approaching. text "InstantX" on image' -H 1024 -W 1024 --control_image_path .\ref\tile.jpg -n 50
   python run_sd3.py -C depth --model_id "amd/stable-diffusion-3-medium-amdnpu" -H 1024 -W 1024 --control_image_path .\assets\depth.jpeg -n 50
 
-To run the image-to-image demo of Segmind-Vega model (without controlnet applications), run the following command::
+To run the image-to-image demo of Segmind-Vega model (without ControlNet applications), run the following command::
 
   python .\run_sd_xl.py --model_id "amd/segmind-vega-amdnpu" --control_image_path .\assets\controlimg_input_1024x1024.png --strength 0.95
 
