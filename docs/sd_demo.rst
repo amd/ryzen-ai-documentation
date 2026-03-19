@@ -50,7 +50,7 @@ Refer to the documentation on :ref:`xrt-smi configure <xrt-smi-configure>` for a
 Image-to-Image with ControlNet
 ==============================
 
-The image-to-image demo generates images based on a prompt and a control image for a Canny ControlNet. This demo supports SD 3.0 (512x512).
+The image-to-image demo generates images based on a prompt and a control image for a Canny ControlNet. This demo supports SD 3.0 and uses 512x512 as the default resolution, which can be overridden (for example, to 1024x1024) via the ``-W``/``-H`` options in the CLI examples below.
 
 To run the demo, navigate to the ``GenAI-SD\test`` directory and run the following command:
 
