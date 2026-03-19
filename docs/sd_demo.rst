@@ -2,7 +2,7 @@
 Stable Diffusion Demo
 #######################
 
-Ryzen AI 1.7.1 provides preview demos of Stable Diffusion image-generation pipelines. The demos cover Image-to-Image and Text-to-Image using SD 1.5, SDXL-base-1.0, Segmind-Vega, SD-Turbo(bs1), SDXL-Turbo(bs1), SD 3.0 and SD3.5. These models are available for public download from Hugging Face.
+Ryzen AI 1.7.1 provides preview demos of Stable Diffusion image-generation pipelines. The demos cover Image-to-Image and Text-to-Image using SD1.5, SDXL-base-1.0, Segmind-Vega, SD-Turbo (bs1), SDXL-Turbo (bs1), SD3.0 and SD3.5. These models are available for public download from Hugging Face.
 
 ******************
 Installation Steps
@@ -50,7 +50,7 @@ Refer to the documentation on :ref:`xrt-smi configure <xrt-smi-configure>` for a
 Image-to-Image with ControlNet
 ==============================
 
-The image-to-image demo generates images based on a prompt and a control image using ControlNet (for example, Canny, pose, tile, or depth). This demo supports SD 3.0 and uses 512x512 as the default resolution, which can be overridden (for example, to 1024x1024) via the ``-W``/``-H`` options in the CLI examples below.
+The image-to-image demo generates images based on a prompt and a control image using ControlNet (for example, Canny, pose, tile, or depth). This demo supports SD3.0 and uses 512x512 as the default resolution, which can be overridden (for example, to 1024x1024) via the ``-W``/``-H`` options in the CLI examples below.
 
 To run the demo, navigate to the ``GenAI-SD\test`` directory and run the following command:
 
