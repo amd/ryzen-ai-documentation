@@ -80,7 +80,7 @@ To run the image-to-image demo of Segmind-Vega model (without controlnet applica
 Text-to-Image
 =============
 
-The text-to-image generates images based on text prompts. This demo supports SD 1.5 (512x512), SDXL-base (1024x1024), SD-Turbo (512x512), SDXL-Turbo (512x512), Segmind-Vega (1024x1024).
+The text-to-image demo generates images based on text prompts. It supports SD 1.5 (512x512), SDXL-base (1024x1024), SD-Turbo (512x512), SDXL-Turbo (512x512), Segmind-Vega (1024x1024), as well as SD 3.0 and SD 3.5 (see below for additional setup required for SD3.x models).
 
 To run the demo, navigate to the ``GenAI-SD\test`` directory and run the following commands to run with each of the supported models:
 
