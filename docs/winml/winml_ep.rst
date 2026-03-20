@@ -180,7 +180,7 @@ Python Example
     session_options.add_provider_for_devices([selected_ep_devices[0]], provider_options)
 
 
-For more details on the `VitisAIExecutionProvider`-specific `provider_options`, see :docs:`modelrun`     :doc:`llm_linux`
+For more details on the `VitisAIExecutionProvider`-specific `provider_options`, see :docs:`winml_example`     :doc:`llm_linux`
 
 *****************
 Model Compilation
