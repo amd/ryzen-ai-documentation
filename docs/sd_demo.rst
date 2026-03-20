@@ -29,8 +29,8 @@ Installation Steps
    - `SDXL-Turbo (bs1) <https://huggingface.co/amd/sdxl-turbo-amdnpu>`_
    - `SDXL-base-1.0 <https://huggingface.co/amd/sdxl-base-amdnpu>`_
    - `Segmind-Vega <https://huggingface.co/amd/segmind-vega-amdnpu>`_
-   - `SD3.0 / SD3.0-ControlNet(Canny) / SD3.0-ControlNet(Pose) / SD3.0-ControlNet(Tile) / SD3.0-ControlNet(Depth) <https://huggingface.co/amd/stable-diffusion-3-medium-amdnpu>`_
-   - `SD3.5 <https://huggingface.co/amd/stable-diffusion-3.5-medium-amdnpu>`_
+   - `SD3.0 / SD3.0-ControlNet(Canny) / SD3.0-ControlNet(Pose) / SD3.0-ControlNet(Tile) / SD3.0-ControlNet(Depth) <https://huggingface.co/stabilityai/stable-diffusion-3-medium-amdnpu>`_
+   - `SD3.5 <https://huggingface.co/stabilityai/stable-diffusion-3.5-medium-amdnpu>`_
 
 ******************
 Running the Demos
