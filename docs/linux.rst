@@ -189,8 +189,8 @@ Get NPU Info for your Machine
 
 `Getting started Resnet with INT8 Model <https://github.com/amd/RyzenAI-SW/tree/main/CNN-examples/getting_started_resnet/int8>`_
 
-Resnet_util.py script has a function "get_npu_info" to detect correct "NPU type" in your machine. The lookup logic is based for Windows system.
-For Linux, below lookup logic can be used:
+Resnet_util.py script has a function "get_npu_info" to detect correct "NPU type" in your machine. This NPU lookup logic is based for Windows system.
+For Linux, NPU lookup logic can be used as shown below:
 
 .. code-block:: python
 
@@ -214,12 +214,6 @@ Running LLM
 Follow this page to run LLM models on Linux: :doc:`llm_linux`
 
 
-************
-Limitations
-************
-
-- Integer CNN Model is supported through default X2 flow
-- Several LLM models require a 64GB machine for running.
 
 
 
