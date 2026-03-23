@@ -121,7 +121,7 @@ The following tutorials provide step-by-step instructions to help you get starte
 - :doc:`Getting Started Tutorial for Windows ML <winml_example>` - Using ResNet model:
 
   -  Optional Model conversion to QDQ quantized ONNX model using `VS Code AI Toolkit <https://code.visualstudio.com/docs/intelligentapps/modelconversion>`_
-  - :doc:`Deployment using Windows ML APIs and ONNX Runtime using C++ and Python <winml_example>`
+  - :doc:`Deployment using Windows ML APIs and ONNX Runtime using C++ and Python <model_deployment>`
 
 - Additional examples:
 
