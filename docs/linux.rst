@@ -64,19 +64,6 @@ Install NPU Drivers
       - xrt_plugin.2.21.260102.53.release_24.04-amd64-amdxdna.deb
 
 
-.. list-table:: Driver package
-   :widths: 25 25 50
-   :header-rows: 1
-
-   * - XRT Package
-     - NPU driver package
-   * - xrt_202610.2.21.75_24.04-amd64-base.deb
-     - xrt_202610.2.21.75_24.04-amd64-base-dev.deb
-     - xrt_202610.2.21.75_24.04-amd64-npu.deb
-   * - xrt_plugin.2.21.260102.53.release_24.04-amd64-amdxdna.deb
-
-
-
 - Install NPU driver package on your machine
 
 .. code-block:: bash
