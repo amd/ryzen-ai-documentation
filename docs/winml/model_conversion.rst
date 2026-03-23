@@ -1,0 +1,48 @@
+##############################################
+Model Conversion and Quantization (AI Toolkit)
+##############################################
+
+The **AI Toolkit (AITK)** for Visual Studio Code is the primary tool for model conversion and quantization when preparing models for Windows ML on Ryzen AI.
+
+AITK supports:
+
+- **Model conversion** — Export models from PyTorch, TensorFlow, and other frameworks to ONNX
+- **Model quantization** — Convert to QDQ (Quantize-Dequantize) format for lower precision inference
+- **Evaluation** — Run models on CPU, GPU, or NPU to validate accuracy and performance
+
+********************
+Quantization Options
+********************
+
+.. list-table::
+   :widths: 25 40
+   :header-rows: 1
+
+   * - Option
+     - Values
+   * - Activation type
+     - INT8, UINT8, INT16, UINT16
+   * - Weight type
+     - INT8, UINT8, INT16, UINT16
+
+For CNN models, use **A8W8** (activation INT8/UINT8, weight INT8/UINT8). For Transformer models, use **A16W8** (activation INT16/UINT16, weight INT8/UINT8).
+
+*****************
+Device Evaluation
+*****************
+
+You can evaluate quantized models on CPU, GPU, or NPU to compare accuracy and performance before deployment.
+
+*****************
+Known Limitations
+*****************
+
+- **AMD GPU conversion** — Model conversion for AMD GPU may fail due to limited Olive and Quark AMD GPU support. Use NPU or CPU for conversion and evaluation when possible.
+- **Windows vs Linux** — For larger LLM models, model conversion is done on Linux with GPU support, due to failures on Windows. See :doc:`examples/llm` for details.
+
+***************
+References
+***************
+
+- `VS Code AI Toolkit model conversion <https://code.visualstudio.com/docs/intelligentapps/modelconversion>`_
+- :doc:`Model quantization <../model_quantization>` (Ryzen AI Quark flow for NPU-only path)

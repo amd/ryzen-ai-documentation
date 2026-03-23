@@ -29,9 +29,9 @@ Prerequisites
 
 For the complete list of supported Windows versions, refer to `Windows App SDK support <https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/support>`_.
 
-*************
+******************
 Installation Order
-*************
+******************
 
 Follow these steps in order:
 

@@ -43,11 +43,11 @@ Quick Links
    * - VitisAI EP model support (CNN, Transformer, LLM)
      - :doc:`model_support`
    * - Model deployment
-     - :doc:`deployment`
+     - :doc:`model_deployment`
    * - Model conversion and quantization (AI Toolkit)
      - :doc:`model_conversion`
    * - Execution providers (registration, EP policy, compilation)
-     - :doc:`execution_providers`
+     - :doc:`winml_ep`
    * - Windows ML examples (CNN, Transformer, LLM)
      - :doc:`winml_example`
    * - Frequently asked questions
