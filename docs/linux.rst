@@ -117,10 +117,10 @@ Install Ryzen AI Software
 .. code-block:: bash
 
    mkdir ryzen_ai-1.7.1
-   cp ryzen_ai-1.7.0.tgz ryzen_ai-1.7.1
+   cp ryzen_ai-1.7.1.tgz ryzen_ai-1.7.1
 
    cd ryzen_ai-1.7.1
-   tar -xvzf ryzen_ai-1.7.0.tgz 
+   tar -xvzf ryzen_ai-1.7.1.tgz 
    
 
 - Install RyzenAI package at your desired target path
