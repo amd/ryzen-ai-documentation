@@ -4,9 +4,9 @@ VitisAI EP Model Support
 
 The VitisAI EP (Execution Provider) within Windows ML supports input models in the following formats.
 
-***************
+*******************
 Model Support Table
-***************
+*******************
 
 .. list-table::
    :widths: 25 55
