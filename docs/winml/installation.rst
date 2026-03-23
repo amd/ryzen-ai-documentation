@@ -41,9 +41,9 @@ Follow these steps in order:
 
 3. **Verify installation** — For Python, ensure the ``wasdk-microsoft-windows-ai-machinelearning`` package is installed (e.g. via ``pip install``) and matches the Windows App SDK version used by your sample branch. Run ``conda list | findstr wasdk`` to verify.
 
-*************
+**************************
 Key Features of Windows ML
-*************
+**************************
 
 - **Dynamically gets latest EPs** — Compatible execution providers are downloaded from the Microsoft Store on demand
 - **Shared Windows-wide ONNX Runtime** — Reduces application size; no need to bundle ORT
