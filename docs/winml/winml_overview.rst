@@ -6,9 +6,9 @@ This section describes how to use **Windows ML on AMD Ryzen AI PCs** and complem
 
 Microsoft provides a comprehensive AI platform for Windows spanning three pillars:
 
-- **Windows AI APIs** — Built-in system APIs (OCR, image description, super resolution, object erase, etc.) for Copilot+ PCs. Use when your scenario is covered by these APIs.
-- **Foundry Local** — On-device runtime for LLMs and generative AI; auto-detects hardware and downloads compatible models. Use for LLM scenarios with minimal setup.
-- **Windows ML** — Runtime for custom ONNX models with automatic execution provider (EP) management across CPU, GPU, and NPU. Use when you need to run your own models.
+- **Windows AI APIs:** Built-in system APIs (OCR, image description, super resolution, object erase, etc.) for Copilot+ PCs. Use when your scenario is covered by these APIs.
+- **Foundry Local:** On-device runtime for LLMs and generative AI; auto-detects hardware and downloads compatible models. Use for LLM scenarios with minimal setup.
+- **Windows ML:** Runtime for custom ONNX models with automatic execution provider (EP) management across CPU, GPU, and NPU. Use when you need to run your own models.
 
 On **Ryzen AI PCs**, Windows ML can leverage the NPU via the VitisAI EP (Execution Provider).
 

@@ -6,9 +6,9 @@ The **AI Toolkit (AITK)** for Visual Studio Code is the primary tool for model c
 
 AITK supports:
 
-- **Model conversion** — Export models from PyTorch, TensorFlow, and other frameworks to ONNX
-- **Model quantization** — Convert to QDQ (Quantize-Dequantize) format for lower precision inference
-- **Evaluation** — Run models on CPU, GPU, or NPU to validate accuracy and performance
+- **Model conversion:** Export models from PyTorch, TensorFlow, and other frameworks to ONNX
+- **Model quantization:** Convert to QDQ (Quantize-Dequantize) format for lower precision inference
+- **Evaluation:** Run models on CPU, GPU, or NPU to validate accuracy and performance
 
 ********************
 Quantization Options
@@ -37,8 +37,8 @@ You can evaluate quantized models on CPU, GPU, or NPU to compare accuracy and pe
 Known Limitations
 *****************
 
-- **AMD GPU conversion** — Model conversion for AMD GPU may fail due to limited Olive and Quark AMD GPU support. Use NPU or CPU for conversion and evaluation when possible.
-- **Windows vs Linux** — For larger LLM models, model conversion is done on Linux with GPU support, due to limited support on Windows. See :doc:`Windows ML LLM example <https://github.com/amd/RyzenAI-SW/tree/main/WinML/LLM>`_ for details.
+- **AMD GPU conversion:** Model conversion for AMD GPU may fail due to limited Olive and Quark AMD GPU support. Use NPU or CPU for conversion and evaluation when possible.
+- **Windows vs Linux:** For larger LLM models, model conversion is done on Linux with GPU support, due to limited support on Windows. See :doc:`Windows ML LLM example <https://github.com/amd/RyzenAI-SW/tree/main/WinML/LLM>`_ for details.
 
 ***************
 References

@@ -22,18 +22,18 @@ Windows ML workflow
 .. image:: ../images/winml-workflow.png
    :align: center
 
-**Step 1: Download the Original Float Model**
+**Step 1:** Download the Original Float Model
 
 Start with your pre-trained ONNX model in FP32 format. Models can be exported from PyTorch, TensorFlow, or obtained from model repositories.
 
-**Step 2: (Optional) Model Quantization using VS AI Toolkit**
+**Step 2:** (Optional) Model Quantization using VS AI Toolkit
 
 For improved inference performance, quantize your model using VS AI Toolkit or Olive recipe:
 
 - **A8W8 quantization**: Recommended for CNN models (ResNet, MobileNet, etc.)
 - **A16W8 quantization**: Recommended for Transformer models (BERT, CLIP etc.)
 
-**Step 3: Automatic Execution Provider Registration**
+**Step 3:** Automatic Execution Provider Registration
 
 Windows ML automatically downloads and registers the appropriate execution providers based on available hardware:
 
@@ -51,7 +51,7 @@ Windows ML automatically downloads and registers the appropriate execution provi
      - DirectML (GPU/NPU)
 
 
-**Step 4: Execution Policy for device selection**
+**Step 4:** Execution Policy for device selection
 
 Select the preferred execution target using the execution policy:
 
@@ -70,7 +70,7 @@ Select the preferred execution target using the execution policy:
 
 The EP selection policy can be configured to use specific execution provider or through general execution policy. For more details, refer to the Windows ML documentation on :doc:`Execution Providers <winml_ep>`.
 
-**Step 5: Model Compilation**
+**Step 5:** Model Compilation
 
 The model is compiled for the target hardware:
 
@@ -79,7 +79,7 @@ The model is compiled for the target hardware:
 
 For more details refer to :doc:`model compilation and deployment <modelrun>` documentation.
 
-**Step 6: Model Inference**
+**Step 6:** Model Inference
 
 Use the ONNX Runtime APIs to run inference on the compiled model. The model will execute on the selected hardware target based on the execution policy and available EPs.
 
@@ -116,11 +116,11 @@ Running LLM on AMD NPU
 
 LLM models can be run on AMD NPU using Foundry Local or Windows ML APIs. Foundry Local provides an easy-to-use interface for running LLM models on AMD NPU, while Windows ML APIs allow for more customization and control over the inference process.
 
-**Option 1: Running LLM using Foundry Local**
+**Option 1:** Running LLM using Foundry Local
 
 This is the recommended option for most users as it provides a simple and efficient way to run LLM models on AMD NPU without needing to manage dependencies or optimize the model manually.
 
-**Option 2: Running a Custom LLM Model using Windows ML and OGA APIs**
+**Option 2:** Running a Custom LLM Model using Windows ML and OGA APIs
 
 This option allows users to run custom LLM models on AMD NPU using Windows ML APIs. This option is suitable for users who want more control over the inference process and are comfortable managing dependencies and model optimization manually.
 

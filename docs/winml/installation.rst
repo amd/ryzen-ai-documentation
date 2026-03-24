@@ -29,26 +29,26 @@ Prerequisites
 
 For the complete list of supported Windows versions, refer to `Windows App SDK support <https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/support>`_.
 
-******************
-Installation Order
-******************
+************
+Installation
+************
 
 Follow these steps in order:
 
-1. **Install NPU drivers** — Follow the :doc:`RAI installation instructions <../inst>`. Download and install the NPU driver (version 32.0.203.280 or newer) from the AMD Ryzen AI driver page.
+1. **Install NPU drivers:** Follow the :doc:`RAI installation instructions <../inst>`. Download and install the NPU driver (version 32.0.203.280 or newer) from the AMD Ryzen AI driver page.
 
-2. **Install Windows App SDK** — Windows ML is included as part of the Windows App SDK. Install the version required by your branch/sample from `Windows App SDK downloads <https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/downloads>`_.
+2. **Install Windows App SDK:** Windows ML is included as part of the Windows App SDK. Install the version required by your branch/sample from `Windows App SDK downloads <https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/downloads>`_.
 
-3. **Verify installation** — For Python, ensure the ``wasdk-microsoft-windows-ai-machinelearning`` package is installed (e.g. via ``pip install``) and matches the Windows App SDK version used by your sample branch. Run ``conda list | findstr wasdk`` to verify.
+3. **Verify installation:** For Python, ensure the ``wasdk-microsoft-windows-ai-machinelearning`` package is installed (e.g. via ``pip install``) and matches the Windows App SDK version used by your sample branch. Run ``conda list | findstr wasdk`` to verify.
 
 **************************
 Key Features of Windows ML
 **************************
 
-- **Dynamically gets latest EPs** — Compatible execution providers are downloaded from the Microsoft Store on demand
-- **Shared Windows-wide ONNX Runtime** — Reduces application size; no need to bundle ORT
-- **Smaller downloads and installs** — EPs are shared across applications
-- **Broad hardware support** — Works across CPUs, GPUs, and NPUs from different vendors via ONNX Runtime
+- **Dynamically gets latest EPs:** Compatible execution providers are downloaded from the Microsoft Store on demand
+- **Shared Windows-wide ONNX Runtime:** Reduces application size; no need to bundle ORT
+- **Smaller downloads and installs:** EPs are shared across applications
+- **Broad hardware support:** Works across CPUs, GPUs, and NPUs from different vendors via ONNX Runtime
 
 *****************************
 Windows ML setup verification
