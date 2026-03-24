@@ -12,7 +12,7 @@ This page addresses common issues and solutions when using Windows ML on Ryzen A
 Installation and Setup
 ***********************
 
-**Q: Windows App SDK Version Mismatch**
+**Issue: Windows App SDK Version Mismatch**
 
 **Symptom:** Inference fails or EPs do not load; version mismatch errors.
 
@@ -28,7 +28,7 @@ Installation and Setup
 - Run the application with administrator privileges if the EP requires Microsoft Store download.
 - Verify the NPU driver is installed. See :doc:`installation`.
 
-**Q: Model Compilation Fails**
+**Issue: Model Compilation Fails**
 
 **Symptom:** Compilation step fails or times out.
 
@@ -42,7 +42,7 @@ Installation and Setup
 Runtime Issues
 **************
 
-**Q: NPU Not Selected**
+**Issue: NPU Not Selected**
 
 **Symptom:** Model runs on CPU or GPU instead of NPU.
 
@@ -53,7 +53,7 @@ Runtime Issues
 - Check that the model is compatible with the Vitis AI EP. See :doc:`model_support`.
 
 
-**Q: TensorRTRTX or Pywinrt Registration Failure (Python)**
+**Issue: TensorRTRTX or Pywinrt Registration Failure (Python)**
 
 **Symptom:** Importing ``winrt.runtime`` causes the TensorRTRTX execution provider to fail registration.
 
