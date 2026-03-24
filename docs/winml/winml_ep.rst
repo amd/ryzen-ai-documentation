@@ -169,7 +169,8 @@ Python Example
     selected_ep_devices = [
         d for d in ep_devices
         if d.ep_name == "VitisAIExecutionProvider"
-        and d.device.type == ort.OrtHardwareDeviceType.NPU]
+        and d.device.type == ort.OrtHardwareDeviceType.NPU
+    ]
 
     if not selected_ep_devices:
         raise RuntimeError("VitisAIExecutionProvider is not available on this system.")
