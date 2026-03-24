@@ -31,7 +31,7 @@ Prerequisites
    * - Kernel Version
      - >= 6.10
    * - RAM
-     - 32GB or Higher, 64GB (Recommended)
+     - 64GB (Recommended)
    * - Python
      - 3.12.x
 
@@ -62,6 +62,7 @@ Install NPU Drivers
 
    - NPU driver package
       - xrt_plugin.2.21.260102.53.release_24.04-amd64-amdxdna.deb
+
 
 - Install NPU driver package on your machine
 
@@ -97,16 +98,16 @@ Install NPU Drivers
 *************************
 Install Ryzen AI Software
 *************************
-- Download the RyzenAI for Linux package `ryzen_ai-1.7.0.tgz` from `Downloads` section of `Ryzen AI Software Early Access Lounge <https://account.amd.com/en/member/ryzenai-sw-ea.html#tabs-a5e122f973-item-4757898120-tab>`_.
+- Download the RyzenAI for Linux package `ryzen_ai-1.7.1.tgz` from `Downloads` section of `Ryzen AI Software Early Access Lounge <https://account.amd.com/en/member/ryzenai-sw-ea.html#tabs-a5e122f973-item-4757898120-tab>`_.
 - Navigate to the downloaded path and follow the below steps
 
 .. code-block:: bash
 
    mkdir ryzen_ai-1.7.1
-   cp ryzen_ai-1.7.0.tgz ryzen_ai-1.7.1
+   cp ryzen_ai-1.7.1.tgz ryzen_ai-1.7.1
 
    cd ryzen_ai-1.7.1
-   tar -xvzf ryzen_ai-1.7.0.tgz 
+   tar -xvzf ryzen_ai-1.7.1.tgz 
    
 
 - Install RyzenAI package at your desired target path
@@ -160,16 +161,44 @@ Examples, Demos, Tutorials
    - `Yolov8m Model for Object Detection <https://github.com/amd/RyzenAI-SW/tree/main/CNN-examples/object_detection>`_
 
 
-.. note::
+******
+Note
+******
 
-   Before running the above examples - 
-      - RyzenAI creates its own Python Virtual Environment to run the examples. You can skip conda environment instruction as they are Windows specific only
-      - Ensure to activate Linux based Python Virtual Environment 
+Before running the above examples - 
+   - RyzenAI creates its own Python Virtual Environment to run the examples. You can skip conda environment instruction as they are Windows specific only
+   - Ensure to activate Linux based Python Virtual Environment 
+
+.. code-block:: bash
+
+   source <TARGET-PATH>/venv/bin/activate
+
+=============================
+Get NPU Info for your Machine
+=============================
+
+`Getting started Resnet with INT8 Model <https://github.com/amd/RyzenAI-SW/tree/main/CNN-examples/getting_started_resnet/int8>`_
+
+Getting started Resnet with INT8 Model contains Resnet_util.py script that has a function "get_npu_info" to detect correct "NPU type" in your machine. This NPU lookup logic is based for Windows system.
+
+For Linux, NPU lookup logic is shown below:
 
 .. code-block:: python
 
-  source <TARGET-PATH>/venv/bin/activate
-
+   import subprocess
+   
+   def get_npu_info():
+       # Run below command as subprocess to enumerate PCI devices
+       command = r'lspci -nn'
+       process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+       stdout, stderr = process.communicate()
+      
+       # Check for supported Hardware IDs
+       npu_type = ''
+       if '1022:17f0' in stdout.decode(): npu_type = 'STX/KRK'
+       return npu_type
+   
+   
 
 ***********
 Running LLM
@@ -178,12 +207,6 @@ Running LLM
 Follow this page to run LLM models on Linux: :doc:`llm_linux`
 
 
-************
-Limitations
-************
-
-- Integer CNN Model is only supported through Legacy backend compiler (X1)
-- Of all supported LLM models, several require a 64GB machine for running.
 
 
 

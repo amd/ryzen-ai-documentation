@@ -32,21 +32,21 @@ The NPU driver and Windows App SDK should be correctly installed, as described i
     pip install -r .\requirements.txt
 
 
-Check the installed `Windows Apps SDK` python package using the command below.
+Check the installed `Windows App SDK` Python package using the command below.
 
 .. code-block:: shell
 
     conda list | findstr wasdk
 
 
-This should print the installed version of the `Windows App SDK` python package. Ensure that the version is 2.0.0.dev4 or later.
+This should print the installed version of the `Windows App SDK` Python package. Ensure that the version is 2.0.0.dev4 or later.
 
 .. code-block:: shell
 
     wasdk-microsoft-windows-ai-machinelearning 2.0.0.dev4               pypi_0    pypi
     wasdk-microsoft-windows-applicationmodel-dynamicdependency-bootstrap 2.0.0.dev4               pypi_0    pypi
 
-Ensure that the installed `Windows App SDK` version matches the python package or download the specific version from `Windows App SDK 2.0.0.dev4 <https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/downloads>`_.
+Ensure that the installed `Windows App SDK` version matches the Python package or download the specific version from `Windows App SDK 2.0.0.dev4 <https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/downloads>`_.
 
 ****************
 Model Conversion
@@ -77,7 +77,7 @@ This section covers how to compile and deploy ResNet ONNX model using Python scr
 Model Inference
 ===============
 
-Use the python script to run inference which compiles and runs the model on NPU using ONNX runtime with Vitis AI Execution provider.
+Use the Python script to run inference which compiles and runs the model on NPU using ONNX Runtime with Vitis AI Execution Provider.
 If you are using quantized model specify the quantized model path e.g. `model\\model_a8w8.onnx` and if you are using original FP32 model specify the original model path e.g. `model\\resnet50.onnx`.
 
 .. code-block:: bash
@@ -145,8 +145,24 @@ You should see similar results as in the Python deployment section.
     Time taken for 20 iterations: 0 seconds
     Avg time per iteration : 19 milliseconds
 
+*******************
+Windows ML Examples
+*******************
 
-For more examples using Transformer and LLM models with Windows ML, refer to `Windows ML examples in RyzenAI-SW <https://github.com/amd/RyzenAI-SW/tree/main/WinML>`_.
+The following examples provide step-by-step instructions to help you get started with Windows ML on AMD Ryzen AI PCs. These examples cover CNN, Transformer, and LLM model deployment using both C++ and Python APIs.
+
+- :doc:`Getting Started Tutorial for Windows ML <winml_example>` - Using ResNet model:
+
+  -  Optional Model conversion to QDQ quantized ONNX model using `VS Code AI Toolkit <https://code.visualstudio.com/docs/intelligentapps/modelconversion>`_
+  - :doc:`Deployment using Windows ML APIs and ONNX Runtime using C++ and Python <winml_example>`
+
+- Additional examples:
+
+  - `Transformer based GoogleBERT example <https://github.com/amd/RyzenAI-SW/tree/main/WinML/Transformers/GoogleBERT>`_
+  - `Running OpenAI CLIP model on NPU <https://github.com/amd/RyzenAI-SW/tree/main/WinML/Transformers/clip-vit-base-path16>`_
+  - `Running LLM models on NPU <https://github.com/amd/RyzenAI-SW/tree/main/WinML/LLM>`_
+
+For more details about model deployment using Windows ML, see the :doc:`Model Deployment using Windows ML documentation <model_deployment>`.
 
 ..
   ------------
