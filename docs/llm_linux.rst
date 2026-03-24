@@ -62,7 +62,7 @@ This page showcases an example of running LLM on RyzenAI NPU
           [Debug]
           num_heap_pages = 8  
 
-      - Add this file to System PATH
+      - Set XRT_INI_PATH to point to this file
           export XRT_INI_PATH=$PWD/xrt.ini
   
 - Lastly, add directories for LD_LIBRARY_PATH
