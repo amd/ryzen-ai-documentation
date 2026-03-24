@@ -4,9 +4,6 @@ Windows ML on AMD Ryzen AI
 
 This section describes how to use **Windows ML on AMD Ryzen AI PCs** and complements the official `Microsoft Windows AI documentation <https://learn.microsoft.com/en-us/windows/ai/overview>`_. It bridges Microsoft's local AI platform with Ryzen AI hardware and software.
 
-.. image:: ../images/winml-sw.png
-   :align: center
-
 Microsoft provides a comprehensive AI platform for Windows spanning three pillars:
 
 - **Windows AI APIs** — Built-in system APIs (OCR, image description, super resolution, object erase, etc.) for Copilot+ PCs. Use when your scenario is covered by these APIs.

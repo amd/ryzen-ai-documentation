@@ -16,15 +16,12 @@ Model Support Table
      - Support
    * - **CNN Models**
      - Original float (FP32) model with automatic BF16 conversion during compilation
-   * -
      - Quantized QDQ model using A8W8 configuration
    * - **Transformer Models**
      - Original float (FP32) model with automatic BF16 conversion during compilation
-   * -
      - Quantized QDQ model using A16W8 configuration
    * - **LLM Models (via Foundry Local)**
      - Quantized and pre-compiled LLM models
-   * -
      - Support for custom models through Olive recipe
 
 ***************
