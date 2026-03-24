@@ -12,9 +12,9 @@ EP Not Found or Not Registered
 
 **Solutions:**
 
-- Ensure you have called EP registration before creating the session. See :doc:`execution_providers`.
+- Ensure you have called EP registration before creating the session. See :doc:`winml_ep`.
 - Run the application with administrator privileges if the EP requires Microsoft Store download.
-- Verify the NPU driver is installed. See :doc:`prerequisites`.
+- Verify the NPU driver is installed. See :doc:`installation`.
 
 ***************************************************
 Python: TensorRTRTX or pywinrt Registration Failure
@@ -22,7 +22,7 @@ Python: TensorRTRTX or pywinrt Registration Failure
 
 **Symptom:** Importing ``winrt.runtime`` causes the TensorRTRTX execution provider to fail registration.
 
-**Solution:** Run pywinrt-related code in a **separate process**. Use the subprocess pattern shown in :doc:`execution_providers` (place ``winml.py`` in the same directory as your application script).
+**Solution:** Run pywinrt-related code in a **separate process**. Use the subprocess pattern shown in :doc:`winml_ep` (place ``winml.py`` in the same directory as your application script).
 
 ********************************
 Windows App SDK Version Mismatch
@@ -40,7 +40,7 @@ NPU Not Selected
 
 **Solutions:**
 
-- Set execution policy to ``PREFER_NPU`` or explicitly use ``VitisAIExecutionProvider``. See :doc:`execution_providers`.
+- Set execution policy to ``PREFER_NPU`` or explicitly use ``VitisAIExecutionProvider``. See :doc:`winml_ep`.
 - Verify the NPU driver is installed and the device is recognized.
 - Check that the model is compatible with the Vitis AI EP. See :doc:`model_support`.
 
