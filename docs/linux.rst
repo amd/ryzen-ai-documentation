@@ -161,23 +161,27 @@ Examples, Demos, Tutorials
    - `Yolov8m Model for Object Detection <https://github.com/amd/RyzenAI-SW/tree/main/CNN-examples/object_detection>`_
 
 
-.. note::
+******
+Note
+******
 
-   Before running the above examples - 
-      - RyzenAI creates its own Python Virtual Environment to run the examples. You can skip conda environment instruction as they are Windows specific only
-      - Ensure to activate Linux based Python Virtual Environment 
+Before running the above examples - 
+   - RyzenAI creates its own Python Virtual Environment to run the examples. You can skip conda environment instruction as they are Windows specific only
+   - Ensure to activate Linux based Python Virtual Environment 
 
 .. code-block:: bash
 
    source <TARGET-PATH>/venv/bin/activate
 
-
+=============================
 Get NPU Info for your Machine
+=============================
 
 `Getting started Resnet with INT8 Model <https://github.com/amd/RyzenAI-SW/tree/main/CNN-examples/getting_started_resnet/int8>`_
 
-Resnet_util.py script has a function "get_npu_info" to detect correct "NPU type" in your machine. This NPU lookup logic is based for Windows system.
-For Linux, NPU lookup logic can be used as shown below:
+Getting started Resnet with INT8 Model contains Resnet_util.py script that has a function "get_npu_info" to detect correct "NPU type" in your machine. This NPU lookup logic is based for Windows system.
+
+For Linux, NPU lookup logic is shown below:
 
 .. code-block:: python
 
