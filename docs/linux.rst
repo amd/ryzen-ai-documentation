@@ -31,7 +31,7 @@ Prerequisites
    * - Kernel Version
      - >= 6.10
    * - RAM
-     - 32GB or Higher, 64GB (Recommended)
+     - 64GB (Recommended)
    * - Python
      - 3.12.x
 
