@@ -126,32 +126,7 @@ Expected output
 Preparing OGA Model
 *******************
 
-Preparing OGA Model is a two-step process
-
-==================
-Model Quantization
-==================
-
-- Follow Model Quantization steps described here :doc:`oga_model_prepare`
-
-===============
-Postprocessing
-===============
-
--  Model Quantization step produces Pytorch quantized model. 
--  Model_generate script initially converts Pytorch quantized model to Onnx format and subsequently postprocesses to run for NPU Execution mode. 
-
-.. code-block:: bash
-
-  pip install onnx-ir 
-
-  model_generate --npu <output_dir> <quantized_model_path> --optimize decode
-
-- Expected Output
-
-.. code-block:: bash
-
-  NPU optimize decode model generated successfully.
+Currently Linux supports NPU only flow. Read more on Model Generation by visiting :doc:`Preparing OGA Models <oga_model_prepare>`
   
 
 
