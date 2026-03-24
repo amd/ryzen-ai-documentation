@@ -6,7 +6,7 @@ Windows ML provides a system-level execution provider (EP) management layer for 
 
 Windows ML ships a shared, Windows-wide ONNX Runtime and exposes EP management APIs for C#, C++, and Python. Through these APIs you can:
 
-- **Auto-register all compatible EPs** with a single call, letting Windows ML handle version resolution and updates.
+- **Auto-register all compatible EPs** with a single API call, Windows ML handles version resolution and updates.
 - **Set an execution policy** (e.g., ``PREFER_NPU``) to steer workloads to a preferred device class with automatic fallback.
 - **Target a specific EP and device** by enumerating available EP devices and appending the one you need — for example, ``VitisAIExecutionProvider`` on an AMD NPU.
 - **Compile models for a specific EP** as a one-time step that optimizes the model for the target hardware, and the compiled artifact can be cached for all subsequent runs.
