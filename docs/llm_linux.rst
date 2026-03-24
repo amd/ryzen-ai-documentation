@@ -12,13 +12,13 @@ This page showcases an example of running LLM on RyzenAI NPU
   cd run_llm
 
 - Choose any prequantized and postprocessed ready-to-run Model from `Hugging Face collection of NPU models <https://huggingface.co/collections/amd/ryzen-ai-16-npu-llm>`_
-- For this flow, "Phi-3.5-mini-instruct-onnx-ryzenai-npu" is chosen for reference
+- For this flow, "Phi-3.5-mini-instruct_full_fusion" is chosen for reference
 .. code-block::
 
   # Make sure git-lfs is installed (https://git-lfs.com)
   sudo apt install git-lfs
   git lfs install
-  git clone https://huggingface.co/amd/Phi-3.5-mini-instruct-onnx-ryzenai-npu
+  git clone https://huggingface.co/amd/Phi-3.5-mini-instruct_full_fusion
 
 - Search for RYZEN_AI_INSTALLATION_PATH
 
@@ -50,7 +50,7 @@ This page showcases an example of running LLM on RyzenAI NPU
 
 .. code-block::
 
-  amd_genai_prompt.txt   deployment   model_benchmark   Phi-3.5-mini-instruct-onnx-ryzenai-npu
+  amd_genai_prompt.txt   deployment   model_benchmark   Phi-3.5-mini-instruct_full_fusion
 
 - Create a new file for XRT Drivers named "xrt.ini"
 
@@ -78,7 +78,7 @@ This page showcases an example of running LLM on RyzenAI NPU
 
 .. code-block:: bash
 
-  ./model_benchmark -i Phi-3.5-mini-instruct-onnx-ryzenai-npu/ -l 128 -f amd_genai_prompt.txt
+  ./model_benchmark -i Phi-3.5-mini-instruct_full_fusion/ -l 128 -f amd_genai_prompt.txt
 
   # Enable "-v" flag for verbose output
 
@@ -126,32 +126,7 @@ Expected output
 Preparing OGA Model
 *******************
 
-Preparing OGA Model is a two-step process
-
-==================
-Model Quantization
-==================
-
-- Follow Model Quantization steps described here :doc:`oga_model_prepare`
-
-===============
-Postprocessing
-===============
-
--  Model Quantization step produces Pytorch quantized model. 
--  Model_generate script initially converts Pytorch quantized model to Onnx format and subsequently postprocesses to run for NPU Execution mode. 
-
-.. code-block:: bash
-
-  pip install onnx-ir 
-
-  model_generate --npu <output_dir> <quantized_model_path> --optimize decode
-
-- Expected Output
-
-.. code-block:: bash
-
-  NPU optimize decode model generated successfully.
+Currently Linux supports NPU only flow. Read more on Model Generation by visiting :doc:`Preparing OGA Models <oga_model_prepare>`
   
 
 

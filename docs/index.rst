@@ -133,7 +133,6 @@ For more details, refer to the :doc:`llm/overview` page.
    :hidden:
    :caption: Additional Topics
 
-   Linux Installation <linux.rst>
    NPU Management <xrt_smi.rst>
    ai_analyzer.rst
    sd_demo.rst
