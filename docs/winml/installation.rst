@@ -112,11 +112,11 @@ The script will produce output similar to the following:
 
 Windows App SDK version should match the wasdk python package version. If there is a mismatch, please install the correct Windows App SDK version. After installation, re-run the setup checker to verify that the correct version of Windows App SDK is installed and active.
 
-**************************
-Getting Started Tutorials
-**************************
+************************
+Getting Started Examples
+************************
 
-The following tutorials provide step-by-step instructions to help you get started with Windows ML on AMD Ryzen AI PCs. These examples cover CNN, Transformer, and LLM model deployment using both C++ and Python APIs.
+The following examples provide step-by-step instructions to help you get started with Windows ML on AMD Ryzen AI PCs. These examples cover CNN, Transformer, and LLM model deployment using both C++ and Python APIs.
 
 - :doc:`Getting Started Tutorial for Windows ML <winml_example>` - Using ResNet model:
 

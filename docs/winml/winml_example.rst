@@ -149,7 +149,7 @@ You should see similar results as in the Python deployment section.
 Windows ML Examples
 *******************
 
-The following tutorials provide step-by-step instructions to help you get started with Windows ML on AMD Ryzen AI PCs. These examples cover CNN, Transformer, and LLM model deployment using both C++ and Python APIs.
+The following examples provide step-by-step instructions to help you get started with Windows ML on AMD Ryzen AI PCs. These examples cover CNN, Transformer, and LLM model deployment using both C++ and Python APIs.
 
 - :doc:`Getting Started Tutorial for Windows ML <winml_example>` - Using ResNet model:
 
