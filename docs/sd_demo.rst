@@ -94,7 +94,7 @@ To run the demo, navigate to the ``GenAI-SD\test`` directory and run the followi
 
 To run the sd3/sd3.5 models, you need to set the ``DD_PLUGINS_ROOT`` environment variable before running the demo. For instance::
 
-  set DD_PLUGINS_ROOT="C:\Program Files\RyzenAI\1.7.1\GenAI-SD\lib\transaction\stx\"
+  set "DD_PLUGINS_ROOT=C:\Program Files\RyzenAI\1.7.1\GenAI-SD\lib\transaction\stx\"
 
 Then run the following commands::
 
