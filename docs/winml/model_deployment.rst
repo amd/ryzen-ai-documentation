@@ -79,6 +79,7 @@ The model is compiled for the target hardware:
 
 For more details refer to the :doc:`model compilation and deployment <../modelrun>` documentation.
 
+
 **Step 6:** Model Inference
 
 Use the ONNX Runtime APIs to run inference on the compiled model. The model will execute on the selected hardware target based on the execution policy and available EPs.

@@ -171,17 +171,17 @@ Python Example
         if d.ep_name == "VitisAIExecutionProvider"
         and d.device.type == ort.OrtHardwareDeviceType.NPU
     ]
+
     if not selected_ep_devices:
         raise RuntimeError("VitisAIExecutionProvider is not available on this system.")
 
-    # 2. Configure provider-specific options (varies based on EP)
-    # and append the EP with the correct devices (varies based on EP)
-    options = ort.SessionOptions()
-    provider_options = {"optimize_level": "1"}
-    options.add_provider_for_devices([selected_ep_devices[0]], provider_options)
+    # 2. Configure provider-specific options in "vaiml_config.json" file 
+    session_options = ort.SessionOptions()
+    provider_options = {'config_file':'vaiml_config.json'}
+    session_options.add_provider_for_devices([selected_ep_devices[0]], provider_options)
 
 
-For more details on the `VitisAIExecutionProvider`-specific `provider_options`, see :doc:`Model compilation and deployment <../modelrun>`.
+For more details on the `VitisAIExecutionProvider`-specific `provider_options`, see :doc:`Model compilation and deployment <../modelrun>`
 
 *****************
 Model Compilation
