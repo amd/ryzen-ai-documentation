@@ -24,9 +24,8 @@ Model Support Table
      - - Quantized and pre-compiled LLM models
        - Support for custom models through Olive recipe
 
-***************
 Notes
-***************
+=====
 
 - For CNN and Transformer models, you can use either the original float model (with automatic BF16 conversion) or a quantized QDQ model. Quantization can reduce model size and improve inference performance.
 - For LLMs, Foundry Local provides pre-built models that auto-detect the NPU. Custom LLM deployment may require model preparation using the Olive recipe or Ryzen AI OGA workflow. See `Windows ML LLM examples <https://github.com/amd/RyzenAI-SW/tree/main/WinML/LLM>`_ for details.

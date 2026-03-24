@@ -6,9 +6,9 @@ This section describes how to use **Windows ML on AMD Ryzen AI PCs** and complem
 
 Microsoft provides a comprehensive AI platform for Windows spanning three pillars:
 
-- **Windows AI APIs** — Built-in system APIs (OCR, image description, super resolution, object erase, etc.) for Copilot+ PCs. Use when your scenario is covered by these APIs.
-- **Foundry Local** — On-device runtime for LLMs and generative AI; auto-detects hardware and downloads compatible models. Use for LLM scenarios with minimal setup.
-- **Windows ML** — Runtime for custom ONNX models with automatic execution provider (EP) management across CPU, GPU, and NPU. Use when you need to run your own models.
+- **Windows AI APIs:** Built-in system APIs (OCR, image description, super resolution, object erase, etc.) for Copilot+ PCs. Use when your scenario is covered by these APIs.
+- **Foundry Local:** On-device runtime for LLMs and generative AI; auto-detects hardware and downloads compatible models. Use for LLM scenarios with minimal setup.
+- **Windows ML:** Runtime for custom ONNX models with automatic execution provider (EP) management across CPU, GPU, and NPU. Use when you need to run your own models.
 
 On **Ryzen AI PCs**, Windows ML can leverage the NPU via the VitisAI EP (Execution Provider).
 
@@ -19,9 +19,9 @@ When to Use Windows ML
 Choose Windows ML when you:
 
 - Need to run **custom ONNX models** (CNN, Transformer, or LLM) on Windows
-- Want **automatic EP management** — Windows downloads and registers compatible execution providers (VitisAI EP, MIGraphX EP, DirectML EP) on demand
+- Want **automatic EP management** Windows downloads and registers compatible execution providers (VitisAI EP, MIGraphX EP, DirectML EP) on demand
 - Prefer **C#, C++, or Python** with a shared Windows-wide ONNX Runtime (smaller app size)
-- Need **hardware flexibility** — select CPU, GPU, or NPU via execution policy
+- Need **hardware flexibility** select CPU, GPU, or NPU via execution policy
 
 Use **Windows AI APIs** when built-in capabilities (OCR, image description, etc.) cover your scenario. Use **Foundry Local** when you want LLMs with minimal model preparation. Use the **Ryzen AI NPU-only flow** (:doc:`../modelrun`) when you need full control over ONNX Runtime without the Windows ML stack.
 
@@ -60,7 +60,7 @@ External Resources
 - `Windows ML official documentation <https://learn.microsoft.com/en-us/windows/ai/new-windows-ml/overview>`_
 - `AI on Windows samples (Microsoft Learn) <https://learn.microsoft.com/en-us/windows/ai/samples/>`_
 - `WindowsAppSDK-Samples — WindowsML <https://github.com/microsoft/WindowsAppSDK-Samples/tree/main/Samples/WindowsML>`_
-- `RyzenAI-SW WinML examples <https://github.com/amd/RyzenAI-SW/tree/main/WinML>`_
+- `RyzenAI-SW Windows ML examples <https://github.com/amd/RyzenAI-SW/tree/main/WinML>`_
 
 ..
   ------------

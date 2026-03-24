@@ -29,32 +29,32 @@ Prerequisites
 
 For the complete list of supported Windows versions, refer to `Windows App SDK support <https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/support>`_.
 
-******************
-Installation Order
-******************
+************
+Installation
+************
 
 Follow these steps in order:
 
-1. **Install NPU drivers** — Follow the :doc:`RAI installation instructions <../inst>`. Download and install the NPU driver (version 32.0.203.280 or newer) from the AMD Ryzen AI driver page.
+1. **Install NPU drivers:** Follow the :doc:`RAI installation instructions <../inst>`. Download and install the NPU driver (version 32.0.203.280 or newer) from the AMD Ryzen AI driver page.
 
-2. **Install Windows App SDK** — Windows ML is included as part of the Windows App SDK. Install the version required by your branch/sample from `Windows App SDK downloads <https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/downloads>`_.
+2. **Install Windows App SDK:** Windows ML is included as part of the Windows App SDK. Install the version required by your branch/sample from `Windows App SDK downloads <https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/downloads>`_.
 
-3. **Verify installation** — For Python, ensure the ``wasdk-microsoft-windows-ai-machinelearning`` package is installed (e.g. via ``pip install``) and matches the Windows App SDK version used by your sample branch. Run ``conda list | findstr wasdk`` to verify.
+3. **Verify installation:** For Python, ensure the ``wasdk-microsoft-windows-ai-machinelearning`` package is installed (e.g., via ``pip install``) and matches the Windows App SDK version used by your sample branch. Run ``conda list | findstr wasdk`` to verify.
 
 **************************
 Key Features of Windows ML
 **************************
 
-- **Dynamically gets latest EPs** — Compatible execution providers are downloaded from the Microsoft Store on demand
-- **Shared Windows-wide ONNX Runtime** — Reduces application size; no need to bundle ORT
-- **Smaller downloads and installs** — EPs are shared across applications
-- **Broad hardware support** — Works across CPUs, GPUs, and NPUs from different vendors via ONNX Runtime
+- **Dynamically downloads latest EPs:** Compatible execution providers are downloaded from the Microsoft Store on demand
+- **Shared Windows-wide ONNX Runtime:** Reduces application size; no need to bundle ORT
+- **Smaller downloads and installs:** EPs are shared across applications
+- **Broad hardware support:** Works across CPUs, GPUs, and NPUs from different vendors via ONNX Runtime
 
 *****************************
 Windows ML setup verification
 *****************************
 
-Install the required python packages in the conda environment `winml_env`
+Install the required Python packages in the conda environment `winml_env`
 
 .. code-block:: shell
 
@@ -63,13 +63,13 @@ Install the required python packages in the conda environment `winml_env`
     cd <RyzenAI-SW>\WinML\CNN\ResNet
     pip install --pre -r .\requirements.txt
 
-Check installed wasdk python version and install same version of `Windows App SDK <https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/downloads>`_:
+Check the installed wasdk Python version and install same version of `Windows App SDK <https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/downloads>`_:
 
 .. code-block:: shell
 
     conda list | findstr wasdk
 
-Download the Windows App SDK corresponding to the wasdk version (e.g., 2.0.0.dev4) or latest and install it to ensure the WinML execution providers work correctly.
+Download the Windows App SDK corresponding to the wasdk version (e.g., 2.0.0.dev4) or latest and install it to ensure the Windows ML execution providers work correctly.
 
 .. code-block:: shell
 
@@ -110,18 +110,18 @@ The script will produce output similar to the following:
     ============================================================
     Status: All components installed. Please, ensure matching Windows App SDK version is Installed.
 
-Windows App SDK version should match the wasdk python package version. If there is a mismatch, please install the correct Windows App SDK version. After installation, re-run the setup checker to verify that the correct version of Windows App SDK is installed and active.
+Windows App SDK version should match the wasdk Python package version. If there is a mismatch, install the correct Windows App SDK version. After installation, re-run the setup checker to verify that the correct version of Windows App SDK is installed and active.
 
-**************************
-Getting Started Tutorials
-**************************
+************************
+Getting Started Examples
+************************
 
-The following tutorials provide step-by-step instructions to help you get started with Windows ML on AMD Ryzen AI PCs. These examples cover CNN, Transformer, and LLM model deployment using both C++ and Python APIs.
+The following examples provide step-by-step instructions to help you get started with Windows ML on AMD Ryzen AI PCs. These examples cover CNN, Transformer, and LLM model deployment using both C++ and Python APIs.
 
-- :doc:`Getting Started Tutorial for Windows ML <winml_example>` - Using ResNet model:
+- `Getting Started Example for Windows ML <https://github.com/amd/RyzenAI-SW/tree/main/WinML/CNN/ResNet>`_ using ResNet model:
 
   -  Optional Model conversion to QDQ quantized ONNX model using `VS Code AI Toolkit <https://code.visualstudio.com/docs/intelligentapps/modelconversion>`_
-  - :doc:`Deployment using Windows ML APIs and ONNX Runtime using C++ and Python <model_deployment>`
+  - `Deployment using Windows ML APIs and ONNX Runtime using C++ and Python <https://github.com/amd/RyzenAI-SW/tree/main/WinML/CNN/ResNet>`_
 
 - Additional examples:
 
