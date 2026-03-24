@@ -98,7 +98,7 @@ Install NPU Drivers
 *************************
 Install Ryzen AI Software
 *************************
-- Download the RyzenAI for Linux package `ryzen_ai-1.7.0.tgz` from `Downloads` section of `Ryzen AI Software Early Access Lounge <https://account.amd.com/en/member/ryzenai-sw-ea.html#tabs-a5e122f973-item-4757898120-tab>`_.
+- Download the RyzenAI for Linux package `ryzen_ai-1.7.1.tgz` from `Downloads` section of `Ryzen AI Software Early Access Lounge <https://account.amd.com/en/member/ryzenai-sw-ea.html#tabs-a5e122f973-item-4757898120-tab>`_.
 - Navigate to the downloaded path and follow the below steps
 
 .. code-block:: bash
@@ -181,8 +181,10 @@ For Linux, NPU lookup logic can be used as shown below:
 
 .. code-block:: python
 
+   import subprocess
+   
    def get_npu_info():
-       # Run pnputil as a subprocess to enumerate PCI devices
+       # Run below command as subprocess to enumerate PCI devices
        command = r'lspci -nn'
        process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
        stdout, stderr = process.communicate()
