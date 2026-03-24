@@ -16,6 +16,7 @@ This page showcases an example of running LLM on RyzenAI NPU
 .. code-block::
 
   # Make sure git-lfs is installed (https://git-lfs.com)
+  sudo apt install git-lfs
   git lfs install
   git clone https://huggingface.co/amd/Phi-3.5-mini-instruct-onnx-ryzenai-npu
 
@@ -24,26 +25,26 @@ This page showcases an example of running LLM on RyzenAI NPU
 .. code-block:: bash
 
   echo $RYZEN_AI_INSTALLATION_PATH
-  <TARGET-PATH>/ryzen_ai-1.6.1/venv
+  <TARGET-PATH>/venv
 
   # Activate the virtual environment
-  source <TARGET-PATH>/ryzen_ai-1.6.1/venv/bin/activate
+  source <TARGET-PATH>/venv/bin/activate
 
 - Collecting the necessary files to get in current working directory
 
 .. code-block:: bash
 
   - Deployment folder - This has necessary libraries to run LLM Model
-      # Navigate to <TARGET-PATH>/ryzen_ai-1.6.1/venv and copy the "deployment" folder
-      cp -r <TARGET-PATH>/ryzen_ai-1.6.1/venv/deployment .
+      # Navigate to <TARGET-PATH>/venv and copy the "deployment" folder
+      cp -r <TARGET-PATH>/venv/deployment .
 
   - Model Benchmark Script 
-      # Navigate to <TARGET-PATH>/ryzen_ai-1.6.1/venv/LLM/examples/ and copy "model_benchmark" file.
-      cp <TARGET-PATH>/ryzen_ai-1.6.1/venv/LLM/examples/model_benchmark .
+      # Navigate to <TARGET-PATH>/venv/LLM/examples/ and copy "model_benchmark" file.
+      cp <TARGET-PATH>/venv/LLM/examples/model_benchmark .
 
   - Prompt file - Input to your LLM Model
-      # Navigate to <TARGET-PATH>/ryzen_ai-1.6.1/venv/LLM/examples/ and copy "amd_genai_prompt.txt" file.
-      cp <TARGET-PATH>/ryzen_ai-1.6.1/venv/LLM/examples/amd_genai_prompt.txt .
+      # Navigate to <TARGET-PATH>/venv/LLM/examples/ and copy "amd_genai_prompt.txt" file.
+      cp <TARGET-PATH>/venv/LLM/examples/amd_genai_prompt.txt .
 
                                     
 - Current working directory should have below files
@@ -67,6 +68,7 @@ This page showcases an example of running LLM on RyzenAI NPU
   2) Edit .cache/MatMulNBits_2_0_meta.json file under Model folder:
 
       # Python utility script helps convert Windows-style paths in "MatMulNBits_2_0_meta.json" to Linux-style paths
+      # Create a new python file, paste the below code snippet and run the script
 
       # Python utility script
        import json
@@ -107,29 +109,30 @@ Expected output
   
  Batch size: 1, prompt tokens: 128, tokens to generate: 128
  Prompt processing (time to first token):
-    avg (us):       442251
-    avg (tokens/s): 289.428
-    p50 (us):       442583
-    stddev (us):    4901.59
-    n:              5 * 128 token(s)
+        avg (us):       416591
+        avg (tokens/s): 307.256
+        p50 (us):       413180
+        stddev (us):    7532.87
+        n:              5 * 128 token(s)
  Token generation:
-    avg (us):       85353.7
-    avg (tokens/s): 11.716
-    p50 (us):       84689.3
-    stddev (us):    7012.99
-    n:              635 * 1 token(s)
+        avg (us):       90500.9
+        avg (tokens/s): 11.0496
+        p50 (us):       89802.8
+        stddev (us):    7364.33
+        n:              635 * 1 token(s)
  Token sampling:
-    avg (us):       27.4852
-    avg (tokens/s): 36383.2
-    p50 (us):       27.652
-    stddev (us):    0.928063
-    n:              5 * 1 token(s)
-  E2E generation (entire generation loop):
-    avg (ms):       11282.4
-    p50 (ms):       11275.4
-    stddev (ms):    14.2974
-    n:              5
- Peak working set size (bytes): 6736375808
+        avg (us):       30.0704
+        avg (tokens/s): 33255.3
+        p50 (us):       27.752
+        stddev (us):    5.21835
+        n:              5 * 1 token(s)
+ E2E generation (entire generation loop):
+        avg (ms):       11910.3
+        p50 (ms):       11898.2
+        stddev (ms):    22.1976
+        n:              5
+ Peak working set size (bytes): 6483783680
+
 
  
 
