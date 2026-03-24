@@ -118,9 +118,14 @@ For more details, refer to the :doc:`llm/overview` page.
    :caption: Getting Started with Windows ML
 
    winml/winml_overview.rst
+   winml/installation.rst
+   winml/model_support.rst
    winml/model_deployment.rst
+   winml/model_conversion.rst
    winml/winml_ep.rst
    winml/winml_example.rst
+   winml/faq.rst
+   winml/troubleshooting.rst
 
 .. toctree::
    :maxdepth: 1
