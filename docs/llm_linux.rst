@@ -65,13 +65,13 @@ This page showcases an example of running LLM on RyzenAI NPU
       - Set XRT_INI_PATH to point to this file
           export XRT_INI_PATH=$PWD/xrt.ini
   
-- Lastly, add directories for LD_LIBRARY_PATH
+- Lastly, add directories for PATH
 
 .. code-block:: bash
 
   export LD_LIBRARY_PATH=/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH
   export LD_LIBRARY_PATH=deployment/lib:$LD_LIBRARY_PATH
-  export LD_LIBRARY_PATH=$PWD/deployment/lib/libonnxruntime_providers_ryzenai.so:$LD_LIBRARY_PATH
+  export RYZENAI_EP_PATH=$PWD/deployment/lib/libonnxruntime_providers_ryzenai.so
   
 
 - We can now run our Model with command below:
