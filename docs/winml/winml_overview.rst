@@ -30,7 +30,7 @@ Quick Links
 ***********
 
 .. list-table::
-   :widths: 30 50
+   :widths: 50 30
    :header-rows: 1
 
    * - Topic
