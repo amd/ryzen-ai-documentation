@@ -116,12 +116,17 @@ For more details, refer to the :doc:`llm/overview` page.
 .. toctree::
    :maxdepth: 1
    :hidden:
-   :caption: Getting Started with Windows ML
+   :caption: Windows ML on AMD Ryzen AI
 
    winml/winml_overview.rst
+   winml/installation.rst
+   winml/model_support.rst
    winml/model_deployment.rst
+   winml/model_conversion.rst
    winml/winml_ep.rst
    winml/winml_example.rst
+   winml/faq.rst
+   winml/troubleshooting.rst
 
 .. toctree::
    :maxdepth: 1
