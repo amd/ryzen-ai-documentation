@@ -12,13 +12,11 @@ This page addresses common questions about Windows ML, Windows AI APIs, and Foun
 Windows AI APIs
 ************************
 
-Q: Do Windows AI APIs run on AMD NPUs?
-=======================================
+**Q: Do Windows AI APIs run on AMD NPUs?**
 
 **A:** Most Windows AI APIs have model options that run on CPU or GPU. A few support NPU. Check the `Windows AI APIs documentation <https://learn.microsoft.com/en-us/windows/ai/apis/>`_ for the latest capability matrix per API.
 
-Q: When should I use Windows AI APIs vs Windows ML?
-====================================================
+**Q: When should I use Windows AI APIs vs Windows ML?**
 
 **A:** Use **Windows AI APIs** when built-in capabilities cover your scenario:
 

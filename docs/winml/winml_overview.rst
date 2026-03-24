@@ -1,6 +1,6 @@
-##########################
-Windows ML on AMD Ryzen AI
-##########################
+###################
+Windows ML Overview
+###################
 
 This section describes how to use **Windows ML on AMD Ryzen AI PCs** and complements the official `Microsoft Windows AI documentation <https://learn.microsoft.com/en-us/windows/ai/overview>`_. It bridges Microsoft's local AI platform with Ryzen AI hardware and software.
 
