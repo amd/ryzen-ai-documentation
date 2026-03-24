@@ -167,7 +167,7 @@ Examples, Demos, Tutorials
       - RyzenAI creates its own Python Virtual Environment to run the examples. You can skip conda environment instruction as they are Windows specific only
       - Ensure to activate Linux based Python Virtual Environment 
 
-.. code-block:: python
+.. code-block:: bash
 
    source <TARGET-PATH>/venv/bin/activate
 
