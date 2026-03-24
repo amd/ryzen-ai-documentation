@@ -10,7 +10,7 @@ For more details, see the `Windows ML official documentation <https://learn.micr
 
 
 ***************************************
-Running CNN / Transformer models on NPU
+Running CNN/Transformer models on NPU
 ***************************************
 
 Windows ML provides a streamlined workflow for deploying CNN and Transformer models on Ryzen AI PCs. Users can either use the original float model with automatic BF16 conversion, or use AI Toolkit for model quantization (QDQ format).
@@ -26,7 +26,7 @@ Windows ML workflow
 
 Start with your pre-trained ONNX model in FP32 format. Models can be exported from PyTorch, TensorFlow, or obtained from model repositories.
 
-**Step 2:** (Optional) Model Quantization using VS AI Toolkit
+**Step 2:** Model Quantization using VS AI Toolkit (Optional)
 
 For improved inference performance, quantize your model using VS AI Toolkit or Olive recipe:
 
@@ -68,7 +68,7 @@ Select the preferred execution target using the execution policy:
    * - PREFER_NPU
      - VitisAIExecutionProvider
 
-The EP selection policy can be configured to use specific execution provider or through general execution policy. For more details, refer to the Windows ML documentation on :doc:`Execution Providers <winml_ep>`.
+The EP selection policy can be configured to use a specific execution provider or through general execution policy. For more details, refer to the Windows ML documentation on :doc:`Execution Providers <winml_ep>`.
 
 **Step 5:** Model Compilation
 
@@ -77,7 +77,7 @@ The model is compiled for the target hardware:
 - **Float models**: VAIML performs automatic BF16 conversion for NPU execution
 - **Quantized models**: A8W8/A16W8 models are compiled using X2/X1 compiler
 
-For more details refer to :doc:`model compilation and deployment <modelrun>` documentation.
+For more details refer to the :doc:`model compilation and deployment <modelrun>` documentation.
 
 **Step 6:** Model Inference
 

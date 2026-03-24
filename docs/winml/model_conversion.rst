@@ -38,7 +38,7 @@ Known Limitations
 *****************
 
 - **AMD GPU conversion:** Model conversion for AMD GPU may fail due to limited Olive and Quark AMD GPU support. Use NPU or CPU for conversion and evaluation when possible.
-- **Windows vs Linux:** For larger LLM models, model conversion is done on Linux with GPU support, due to limited support on Windows. See :doc:`Windows ML LLM example <https://github.com/amd/RyzenAI-SW/tree/main/WinML/LLM>`_ for details.
+- **Windows vs Linux:** For larger LLM models, model conversion is done on Linux with GPU support, due to limited support on Windows. See the `Windows ML LLM examples <https://github.com/amd/RyzenAI-SW/tree/main/WinML/LLM>`_ for details.
 
 ***************
 References
