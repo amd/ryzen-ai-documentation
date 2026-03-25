@@ -62,7 +62,7 @@ Version 1.7.1
 - Stable Diffusion
 
   - Support for 10 model classes (t2i, i2i, dynamic shapes, ControlNet)
-  - Performance and memory improvements for SD-2.1-v, SD-3.x, and SD 3.x
+  - Performance and memory improvements for SD-2.1-v and SD-3.x
 
 - ASR
 
