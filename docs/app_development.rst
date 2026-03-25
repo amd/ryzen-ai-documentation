@@ -180,11 +180,9 @@ A C++ application built on the Ryzen AI ONNX Runtime must include the following 
   - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\onnxruntime_providers_vitisai.dll  
   - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\onnxruntime_vitisai_ep.dll  
   - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\dyn_dispatch_core.dll  
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\libutf8_validity.dll  
   - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\ryzenai_onnx_utils.dll  
   - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\zlib.dll  
   - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\zstd.dll  
-  - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\abseil_dll.dll  
   - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\aiecompiler_client.dll
   - %RYZEN_AI_INSTALLATION_PATH%\\deployment\\vaiml.dll
 
