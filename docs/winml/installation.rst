@@ -60,6 +60,7 @@ Install the required Python packages in the conda environment `winml_env`
 
     conda create -n winml_env python==3.11
     conda activate winml_env
+    git clone https://github.com/amd/RyzenAI-SW.git
     cd <RyzenAI-SW>\WinML\CNN\ResNet
     pip install --pre -r .\requirements.txt
 
