@@ -6,7 +6,7 @@ This page addresses common issues and solutions when using Windows ML on Ryzen A
 
 .. contents:: Topics
    :local:
-   :depth: 1
+   :depth: 2
 
 ***********************
 Installation and Setup
