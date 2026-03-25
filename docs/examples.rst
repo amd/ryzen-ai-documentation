@@ -30,6 +30,8 @@ NPU
   - `Image Classification <https://github.com/amd/RyzenAI-SW/tree/main/CNN-examples/image_classification>`_
   - `Finetuned DistilBERT for Text Classification <https://github.com/amd/RyzenAI-SW/tree/main/Transformer-examples/DistilBERT_text_classification_bf16>`_
 
+- `Super-Resolution Models on AMD Ryzen AI NPU <https://github.com/amd/RyzenAI-SW/tree/main/CNN-examples/super-resolution>`_
+
 - LLM examples
 
   - `LLMs on RyzenAI with ONNX Runtime GenAI API <https://github.com/amd/RyzenAI-SW/tree/main/LLM-examples/oga_api>`_
