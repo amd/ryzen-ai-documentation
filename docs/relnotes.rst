@@ -51,8 +51,6 @@ The following table lists which types of models are supported on what hardware p
 Version 1.7.1
 *************
 
-- Ryzen AI is available on the Linux platform. Please refer to the installation instructions here: :doc:`linux`
-
 - LLM
 
   - Performance improvements for Gemma-3-4B and GPT-OSS-20B
