@@ -12,23 +12,22 @@ This page showcases an example of running LLM on RyzenAI NPU
   cd run_llm
 
 - Choose any prequantized and postprocessed ready-to-run Model from `Hugging Face collection of NPU models <https://huggingface.co/collections/amd/ryzen-ai-16-npu-llm>`_
-- For this flow, "Phi-3.5-mini-instruct-onnx-ryzenai-npu" is chosen for reference
+- For this flow, "Phi-3.5-mini-instruct_full_fusion" is chosen for reference
 .. code-block::
 
   # Make sure git-lfs is installed (https://git-lfs.com)
   sudo apt install git-lfs
   git lfs install
-  git clone https://huggingface.co/amd/Phi-3.5-mini-instruct-onnx-ryzenai-npu
+  git clone https://huggingface.co/amd/Phi-3.5-mini-instruct_full_fusion
 
 - Search for RYZEN_AI_INSTALLATION_PATH
 
 .. code-block:: bash
 
-  echo $RYZEN_AI_INSTALLATION_PATH
-  <TARGET-PATH>/venv
-
-  # Activate the virtual environment
+  # Activate the virtual environment created in Linux Installation step
   source <TARGET-PATH>/venv/bin/activate
+
+  echo $RYZEN_AI_INSTALLATION_PATH
 
 - Collecting the necessary files to get in current working directory
 
@@ -51,49 +50,35 @@ This page showcases an example of running LLM on RyzenAI NPU
 
 .. code-block::
 
-  deployment   model_benchmark   amd_genai_prompt.txt   Phi-3.5-mini-instruct-onnx-ryzenai-npu
+  amd_genai_prompt.txt   deployment   model_benchmark   Phi-3.5-mini-instruct_full_fusion
 
-- Two files under Phi-3.5 Model have to be updated to make it work for Linux environment 
+- Create a new file for XRT Drivers named "xrt.ini"
 
 .. code-block:: bash
 
-  1) Edit genai_config.json file under Model folder: 
-
-      - "custom_ops_library": "deployment/lib/libonnx_custom_ops.so"    (line 8)  
+      - vi xrt.ini            (Creates a new file)
     
-      - "config_entries": {
-          "hybrid_dbg_use_aie_rope": "0",                               (line 11 - Add flag under config_entries)
+      - Add below lines to the file and save it
+          [Debug]
+          num_heap_pages = 8  
 
-
-  2) Edit .cache/MatMulNBits_2_0_meta.json file under Model folder:
-
-      # Python utility script helps convert Windows-style paths in "MatMulNBits_2_0_meta.json" to Linux-style paths
-      # Create a new python file, paste the below code snippet and run the script
-
-      # Python utility script
-       import json
-    
-       with open('Phi-3.5-mini-instruct-onnx-ryzenai-npu/.cache/MatMulNBits_2_0_meta.json','r') as f:
-        lines = f.readlines()
-        for i in range(len(lines)):
-            if '.cache' in lines[i]:
-                lines[i] = lines[i].replace('\\','/')
-    
-       with open('Phi-3.5-mini-instruct-onnx-ryzenai-npu/.cache/MatMulNBits_2_0_meta.json','w') as f:
-         f.writelines(lines)
-
+      - Set XRT_INI_PATH to point to this file
+          export XRT_INI_PATH=$PWD/xrt.ini
   
-- Lastly, add directories for LD_LIBRARY_PATH
+- Lastly, add directories for PATH
 
 .. code-block:: bash
 
+  export LD_LIBRARY_PATH=/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH
   export LD_LIBRARY_PATH=deployment/lib:$LD_LIBRARY_PATH
+  export RYZENAI_EP_PATH=$PWD/deployment/lib/libonnxruntime_providers_ryzenai.so
+  
 
 - We can now run our Model with command below:
 
 .. code-block:: bash
 
-  ./model_benchmark -i Phi-3.5-mini-instruct-onnx-ryzenai-npu/ -l 128 -f amd_genai_prompt.txt
+  ./model_benchmark -i Phi-3.5-mini-instruct_full_fusion/ -l 128 -f amd_genai_prompt.txt
 
   # Enable "-v" flag for verbose output
 
@@ -108,30 +93,30 @@ Expected output
  Prompt Number of Tokens: 128
   
  Batch size: 1, prompt tokens: 128, tokens to generate: 128
- Prompt processing (time to first token):
-        avg (us):       416591
-        avg (tokens/s): 307.256
-        p50 (us):       413180
-        stddev (us):    7532.87
+Prompt processing (time to first token):
+        avg (us):       148056
+        avg (tokens/s): 864.536
+        p50 (us):       148143
+        stddev (us):    375.335
         n:              5 * 128 token(s)
- Token generation:
-        avg (us):       90500.9
-        avg (tokens/s): 11.0496
-        p50 (us):       89802.8
-        stddev (us):    7364.33
+Token generation:
+        avg (us):       56874.3
+        avg (tokens/s): 17.5826
+        p50 (us):       56250.6
+        stddev (us):    6743.11
         n:              635 * 1 token(s)
- Token sampling:
-        avg (us):       30.0704
-        avg (tokens/s): 33255.3
-        p50 (us):       27.752
-        stddev (us):    5.21835
+Token sampling:
+        avg (us):       27.273
+        avg (tokens/s): 36666.3
+        p50 (us):       27.21
+        stddev (us):    0.202461
         n:              5 * 1 token(s)
- E2E generation (entire generation loop):
-        avg (ms):       11910.3
-        p50 (ms):       11898.2
-        stddev (ms):    22.1976
+E2E generation (entire generation loop):
+        avg (ms):       7371.29
+        p50 (ms):       7378.4
+        stddev (ms):    14.3836
         n:              5
- Peak working set size (bytes): 6483783680
+Peak working set size (bytes): 12168941568
 
 
  
@@ -141,32 +126,7 @@ Expected output
 Preparing OGA Model
 *******************
 
-Preparing OGA Model is a two-step process
-
-==================
-Model Quantization
-==================
-
-- Follow Model Quantization steps described here :doc:`oga_model_prepare`
-
-===============
-Postprocessing
-===============
-
--  Model Quantization step produces Pytorch quantized model. 
--  Model_generate script initially converts Pytorch quantized model to Onnx format and subsequently postprocesses to run for NPU Execution mode. 
-
-.. code-block:: bash
-
-  pip install onnx-ir 
-
-  model_generate --npu <output_dir> <quantized_model_path> --optimize decode
-
-- Expected Output
-
-.. code-block:: bash
-
-  NPU optimize decode model generated successfully.
+Currently Linux supports NPU only flow. Read more on Model Generation by visiting :doc:`Preparing OGA Models <oga_model_prepare>`
   
 
 

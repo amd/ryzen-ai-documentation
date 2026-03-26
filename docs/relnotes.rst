@@ -51,7 +51,22 @@ The following table lists which types of models are supported on what hardware p
 Version 1.7.1
 *************
 
-- RyzenAI software package is also available on the Linux platform. Please refer to the installation instructions here: :doc:`linux`
+- Ryzen AI is available on the Linux platform. Please refer to the installation instructions here: :doc:`linux`
+
+- LLM
+
+  - Performance improvements for Gemma-3-4B and GPT-OSS-20B
+  - NPU support for SmolLM2-135M-Instruct and SmolLM-135M-Instruct
+  - Long context support up to 16K for NPU models
+
+- Stable Diffusion
+
+  - Support for 10 model classes (t2i, i2i, dynamic shapes, ControlNet)
+  - Performance and memory improvements for SD-2.1-v and SD-3.x
+
+- ASR
+
+  - ASR Whisper-small, medium and Large V3 turbo models are supported on Linux
 
 
 ***********

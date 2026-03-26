@@ -2,11 +2,11 @@
 Execution Providers
 ###################
 
-Windows ML provides a system-level execution provider (EP) management layer for ONNX Runtime on Windows PCs. It automatically discovers, downloads, and registers the best-available EPs for your hardware — whether that is a CPU, GPU, or NPU — so your application always runs on the optimal hardware accelerator.
+Windows ML provides a system-level execution provider (EP) management layer for ONNX Runtime on Windows PCs. It automatically discovers, downloads, and registers the best-available EPs for your hardware, whether that is a CPU, GPU, or NPU, so your application always runs on the optimal hardware accelerator.
 
 Windows ML ships a shared, Windows-wide ONNX Runtime and exposes EP management APIs for C#, C++, and Python. Through these APIs you can:
 
-- **Auto-register all compatible EPs** with a single call, letting WinML handle version resolution and updates.
+- **Auto-register all compatible EPs** with a single API call, Windows ML handles version resolution and updates.
 - **Set an execution policy** (e.g., ``PREFER_NPU``) to steer workloads to a preferred device class with automatic fallback.
 - **Target a specific EP and device** by enumerating available EP devices and appending the one you need — for example, ``VitisAIExecutionProvider`` on an AMD NPU.
 - **Compile models for a specific EP** as a one-time step that optimizes the model for the target hardware, and the compiled artifact can be cached for all subsequent runs.
@@ -46,7 +46,7 @@ Python Example
 .. code-block:: python
 
     # Known issue: import winrt.runtime will cause the TensorRTRTX execution provider to fail registration.
-    # As a workaround, please run pywinrt related code in a separate thread.
+    # As a workaround, run pywinrt related code in a separate thread.
 
     # winml.py
     import json
@@ -65,7 +65,7 @@ Python Example
             for provider in providers:
                 provider.ensure_ready_async().get()
                 eps[provider.name] = provider.library_path
-                # DO NOT call provider.try_register in python. That will register to the native env.
+                # DO NOT call provider.try_register in Python. That will register to the native env.
         return eps
 
     if __name__ == "__main__":
@@ -169,19 +169,18 @@ Python Example
     selected_ep_devices = [
         d for d in ep_devices
         if d.ep_name == "VitisAIExecutionProvider"
-        and d.device.type == ort.OrtHardwareDeviceType.NPU
-    ]
+        and d.device.type == ort.OrtHardwareDeviceType.NPU]
+
     if not selected_ep_devices:
         raise RuntimeError("VitisAIExecutionProvider is not available on this system.")
 
-    # 2. Configure provider-specific options (varies based on EP)
-    # and append the EP with the correct devices (varies based on EP)
-    options = ort.SessionOptions()
-    provider_options = {"optimize_level": "1"}
-    options.add_provider_for_devices([selected_ep_devices[0]], provider_options)
+    # 2. Configure provider-specific options in "vaiml_config.json" file 
+    session_options = ort.SessionOptions()
+    provider_options = {'config_file':'vaiml_config.json'}
+    session_options.add_provider_for_devices([selected_ep_devices[0]], provider_options)
 
 
-For more details on the `VitisAIExecutionProvider`-specific `provider_options`, see :doc:`Model compilation and deployment <../modelrun>`.
+For more details on the `VitisAIExecutionProvider`-specific `provider_options`, see :doc:`Model compilation and deployment <../modelrun>`
 
 *****************
 Model Compilation
