@@ -226,9 +226,9 @@ If the total number of tokens exceeds 4096 for a hybrid model, follow the steps 
 
 .. note::
 
-   The sample test application model_benchmark.exe accepts -l for input token length and -g for output token length.
+   The sample test application ``model_benchmark.exe`` accepts ``-l`` for input token length and ``-g`` for output token length.
 
-   - **Full Fusion NPU models** support up to 4096 tokens in total (input + output). By default, -g is set to 128. If the input length is close to 4096, you must adjust -g so the sum of input and output tokens does not exceed 4096. For example, -l 4000 -g 96 is valid (4000 + 96 ≤ 4096), while -l 4000 -g 128 will exceed the limit and result in an error.
+   - **Full Fusion NPU models** support up to 4096 tokens in total (input + output). By default, ``-g`` is set to 128. If the input length is close to 4096, you must adjust ``-g`` so the sum of input and output tokens does not exceed 4096. For example, ``-l 4000 -g 96`` is valid (4000 + 96 ≤ 4096), while ``-l 4000 -g 128`` will exceed the limit and result in an error.
    - **Token Fusion NPU models** support long context up to 16K tokens (input + output) with no additional configuration.
    - **Hybrid models**: The combined number of input and output tokens must not exceed the model's ``context_length``. You can verify the ``context_length`` in the ``genai_config.json`` file. For example, if a model's ``context_length`` is 8,000, the total token count (input + output) must not exceed 8,000.
 
