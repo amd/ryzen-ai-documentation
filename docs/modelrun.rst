@@ -106,8 +106,9 @@ The ``provider_options`` parameter of the ORT ``InferenceSession`` allows passin
            - MD5 hash of model
          * - ``enable_cache_file_io_in_mem``
            - Keep compiled model in memory (1) or save to disk (0). 
-             ``BF16 and INT8 Models``, enable_cache_file_io_in_mem = 0 saves to disk, 
-             ``INT8 Models only``, enable_cache_file_io_in_mem = 1 saves in Memory
+
+             - ``0``: saves to disk (BF16 and INT8 models) 
+             - ``1``: saves in memory (INT8 models only)
            - 0, 1
            - 1
          * - ``ai_analyzer_visualization``
