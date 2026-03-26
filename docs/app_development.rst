@@ -148,7 +148,12 @@ Including pre-compiled versions of INT8 models is recommended but not mandatory.
 Application Packaging Requirements
 **********************************
 
-An updated version of the Ryzen AI deployment DLLs is available for download at the `following link <https://download.amd.com/opendownload/RyzenAI/rai-deployment-dlls-1.7.0.p1.zip>`_. These updated DLLs are intended to replace the ones located in the %RYZEN_AI_INSTALLATION_PATH%/\deployment folder of the Ryzen AI 1.7 installation tree.
+Updated versions of the Ryzen AI 1.7.0 deployment DLLs are available for download: 
+
+- `1.7.0.p1 <https://download.amd.com/opendownload/RyzenAI/rai-deployment-dlls-1.7.0.p1.zip>`_ 
+- `1.7.0.1 <https://download.amd.com/opendownload/RyzenAI/1.7.0.1/ryzen-ai-1.7.0.1.zip>`_
+
+These updated DLLs are intended to replace the ones located in the %RYZEN_AI_INSTALLATION_PATH%/\deployment folder of the Ryzen AI 1.7 installation tree.
 
 A C++ application built on the Ryzen AI ONNX Runtime must include the following components in its distribution package:
 
