@@ -181,39 +181,39 @@ If the total number of tokens exceeds 4096 for a hybrid model, follow the steps 
 
 1. Make the following changes in ``genai_config.json`` file.
 
-- Add ``"hybrid_opt_chunk_context": "1"`` under ``model.decoder.session_options.provider_options.RyzenAI``.
+   - Add ``"hybrid_opt_chunk_context": "1"`` under ``model.decoder.session_options.provider_options.RyzenAI``.
 
-.. code-block:: bash
+   .. code-block:: bash
 
-    {
-    "model": {
-        "bos_token_id": 1,
-        "context_length": 16384,
-        "decoder": {
-            "session_options": {
-				"log_id": "onnxruntime-genai",
-				"provider_options": [
-				{
-					"RyzenAI": {
-						"external_data_file": "model_jit.pb.bin",
-						"hybrid_opt_free_after_prefill": "1",
-						"hybrid_opt_max_seq_length": "4096",
-                                                "hybrid_opt_chunk_context": "1"
-					}
-				}
-				]
-			},
+      {
+      "model": {
+         "bos_token_id": 1,
+         "context_length": 16384,
+         "decoder": {
+               "session_options": {
+               "log_id": "onnxruntime-genai",
+               "provider_options": [
+               {
+                  "RyzenAI": {
+                     "external_data_file": "model_jit.pb.bin",
+                     "hybrid_opt_free_after_prefill": "1",
+                     "hybrid_opt_max_seq_length": "4096",
+                                                   "hybrid_opt_chunk_context": "1"
+                  }
+               }
+               ]
+            },
 
 
-- Add ``"chunk_size":2048`` under ``search``.
+   - Add ``"chunk_size":2048`` under ``search``.
 
-.. code-block:: bash
+   .. code-block:: bash
 
-  "search": {
-        "diversity_penalty": 0.0,
-        "do_sample": false,
-        "chunk_size": 2048,
-        ...
+   "search": {
+         "diversity_penalty": 0.0,
+         "do_sample": false,
+         "chunk_size": 2048,
+         ...
 
 2. Copy the ``amd_genai_prompt_long.txt`` into your working directory.
 
@@ -370,7 +370,7 @@ In addition to the full RyzenAI software stack, we also provide standalone wheel
 
 .. code-block:: bash
 
-   	pip install onnxruntime-genai-directml-ryzenai==0.11.2 --extra-index-url=https://pypi.amd.com/simple
+   pip install onnxruntime-genai-directml-ryzenai==0.11.2 --extra-index-url=https://pypi.amd.com/simple
 	pip install model-generate==1.7.0 --extra-index-url=https://pypi.amd.com/simple
 
 3. Navigate to your working directory and download the desired Hybrid/NPU model
