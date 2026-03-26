@@ -32,11 +32,14 @@ Pre-optimized Models
 
 AMD provides a set of pre-optimized LLMs ready to be deployed with Ryzen AI Software and the supporting runtime for hybrid and/or NPU-only execution. These include popular architectures such as Llama-2, Llama-3, Mistral, DeepSeek Distill models, Qwen-2, Qwen-2.5, Qwen-3, Gemma-2, Gemma-3, GPT-OSS, Phi-3, Phi-3.5, and Phi-4. For the detailed list of supported models, visit :doc:`model_list`
 
-Hugging Face collection of hybrid models: <TODO: INSERT HF COLLECTION LINK FOR HYBRID MODELS>
+Hugging Face collection of hybrid models: https://huggingface.co/collections/amd/ryzen-ai-17-hybrid-llm
+ 
+Hugging Face collection of NPU Token Fusion models: https://huggingface.co/collections/amd/ryzen-ai-17-npu-llm
+ 
+Hugging Face collection of NPU Full Fusion models: https://huggingface.co/collections/amd/ryzen-ai-17-npu-llm-v2
 
-Hugging Face collection of NPU Token Fusion models: <TODO: INSERT HF COLLECTION LINK FOR NPU TOKEN FUSION MODELS>
-
-Hugging Face collection of NPU Full Fusion models: <TODO: INSERT HF COLLECTION LINK FOR NPU FULL FUSION MODELS>
+.. note::
+   Links to be updated soon
 
 NPU Models: Token Fusion vs Full Fusion
 ========================================
@@ -163,7 +166,7 @@ Token Fusion NPU models are pre-built with long context support up to 16K tokens
 .. code-block:: bash
 
    :: Example: Clone a Token Fusion NPU model
-   git clone <link_to_token_fusion_npu_model>
+   git clone https://huggingface.co/amd/Phi-3.5-mini-instruct-onnx-ryzenai-npu
 
    :: Run with long context
    .\model_benchmark.exe -i <path_to_model_dir> -f amd_genai_prompt_long.txt -l "16000"
