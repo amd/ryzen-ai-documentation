@@ -2,10 +2,7 @@
 Stable Diffusion Demo
 #######################
 
-Ryzen AI 1.7 provides preview demos of Stable Diffusion image-generation pipelines. The demos cover Image-to-Image and Text-to-Image using SD 1.5, SD 2.1-base, SD 2.1, SDXL-base-1.0, Segmind-Vega, SD-Turbo, SDXL-Turbo, SD 3.0, SD3.5 and SD3.5-Turbo. 
-
-The models for SD 1.5, SD 2.1-base, SD 2.1, SDXL-base-1.0, Segmind-Vega, SD-Turbo, SDXL-Turbo are available for public download. The SD3.0 / SD3.5 / SD3.5-Turbo models are only available to confirmed Stability AI licensees.
-
+Ryzen AI 1.7.1 provides preview demos of Stable Diffusion image-generation pipelines. The demos cover Image-to-Image and Text-to-Image using SD1.5, SDXL-base-1.0, Segmind-Vega, SD-Turbo (bs1), SDXL-Turbo (bs1), SD3.0 and SD3.5. These models are available for public download from Hugging Face.
 
 ******************
 Installation Steps
@@ -17,32 +14,23 @@ Installation Steps
 
 .. code-block:: 
 
-  cd C:\Program Files\RyzenAI\1.7.0\GenAI-SD
+  cd "C:\Program Files\RyzenAI\1.7.1\GenAI-SD"
 
 3. Activate the Conda environment for the Stable Diffusion demo packages:
 
 .. code-block:: 
 
-  conda activate ryzen-ai-1.7.0
+  conda activate ryzen-ai-1.7.1
 
-4. Download the Stable Diffusion models: 
+4. The following Stable Diffusion models will be auto-downloaded from Hugging Face when running for the first time and cached locally in the ``GenAI-SD\models`` folder:
 
-   - :download:`GenAI-SD-models-v0109.zip <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=GenAI-SD-models_v0109.zip>`
-   - :download:`GenAI-SDXL-models-v0109.zip <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=GenAI-SDXL-models-v0109.zip>`
-   - :download:`GenAI-Segmind-Vega-models-v0109.zip <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=GenAI-Segmind-Vega-models-v0109.zip>`
-
-5. Extract the downloaded zip files and copy the models in the ``GenAI-SD\models`` folder. After installing all the models, the ``GenAI-SD\models`` folder should contain the following subfolders:
-
-   - sd15   
-   - sd15_controlnet
-   - sd21_base
-   - sd-2.1-v
-   - sd_turbo
-   - sd_turbo_bs1
-   - sdxl_turbo
-   - sdxl_turbo_bs1
-   - sdxl-base-1.0
-   - segmind-vega
+   - `SD1.5 <https://huggingface.co/amd/stable-diffusion-1.5-amdnpu>`_
+   - `SD-Turbo (bs1) <https://huggingface.co/amd/sd-turbo-amdnpu>`_
+   - `SDXL-Turbo (bs1) <https://huggingface.co/amd/sdxl-turbo-amdnpu>`_
+   - `SDXL-base-1.0 <https://huggingface.co/amd/sdxl-base-amdnpu>`_
+   - `Segmind-Vega <https://huggingface.co/amd/segmind-vega-amdnpu>`_
+   - `SD3.0 / SD3.0-ControlNet(Canny) / SD3.0-ControlNet(Pose) / SD3.0-ControlNet(Tile) / SD3.0-ControlNet(Depth) <https://huggingface.co/stabilityai/stable-diffusion-3-medium-amdnpu>`_
+   - `SD3.5 <https://huggingface.co/stabilityai/stable-diffusion-3.5-medium-amdnpu>`_
 
 ******************
 Running the Demos
@@ -50,7 +38,7 @@ Running the Demos
 
 Activate the conda environment::
 
-  conda activate ryzen-ai-1.7.0
+  conda activate ryzen-ai-1.7.1
 
 Optionally, set the NPU to high performance mode to maximize performance::
 
@@ -62,51 +50,70 @@ Refer to the documentation on :ref:`xrt-smi configure <xrt-smi-configure>` for a
 Image-to-Image with ControlNet
 ==============================
 
-The image-to-image demo generates images based on a prompt and a control image for a Canny ControlNet. This demo supports SD 1.5 (512x512).
+The image-to-image demo generates images based on a prompt and a control image using ControlNet (for example, Canny, pose, tile, or depth). This demo supports SD3.0 and uses 512x512 as the default resolution, which can be overridden (for example, to 1024x1024) via the ``-W``/``-H`` options in the CLI examples below.
 
 To run the demo, navigate to the ``GenAI-SD\test`` directory and run the following command:
 
 .. code-block:: 
 
-    python .\run_sd15_controlnet.py --model_id 'stable-diffusion-v1-5' --model_path ..\models\sd15_controlnet_bfp\ --custom_op_path "C:\Program Files\RyzenAI\1.7.0\deployment\onnx_custom_ops.dll"
+    python run_sd3.py -C canny --model_id "stabilityai/stable-diffusion-3-medium-amdnpu"
 
-The demo script uses a predefined prompt and ``ref\control.png`` as the control image. The output image and control image are saved in the ``generated_images`` folder.
+The demo script uses a predefined prompt and ``.\ref\canny.jpg`` as the control image. The output image and control image are saved in the ``generated_images`` folder. You can redirect the output directory to a location where your user account has write permissions, for example: ``--output_path C:\Users\<username>\Documents\generated_images``. 
 
 The control image can be modified and custom prompts can be provided with the ``--prompt`` option. For instance::
 
-  python run_sd15_controlnet.py --model_id 'stable-diffusion-v1-5/stable-diffusion-v1-5' --model_path ..\models\sd15_controlnet_bfp\ --prompt "A red bird on a grey sky" --custom_op_path "C:\Program Files\RyzenAI\1.7.0\deployment\onnx_custom_ops.dll"
+  python run_sd3.py -C canny --model_id "stabilityai/stable-diffusion-3-medium-amdnpu" --prompt "Anime style illustration of a girl wearing a suit. A moon in sky. In the background we see a big rain approaching. text 'InstantX' on image" -n 50
+
+The application of ControlNet can be configured with the ``-C`` option. For instance::
+
+  python run_sd3.py -C canny --model_id "stabilityai/stable-diffusion-3-medium-amdnpu" --prompt "Anime style illustration of a girl wearing a suit. A moon in sky. In the background we see a big rain approaching. text 'InstantX' on image" -H 1024 -W 1024 --control_image_path .\ref\canny.jpg -n 50
+  python run_sd3.py -C pose --model_id "stabilityai/stable-diffusion-3-medium-amdnpu" --prompt "Anime style illustration of a girl wearing a suit. A moon in sky. In the background we see a big rain approaching. text 'InstantX' on image" -H 1024 -W 1024 --control_image_path .\ref\pose.jpg -n 50
+  python run_sd3.py -C tile --model_id "stabilityai/stable-diffusion-3-medium-amdnpu" --prompt "Anime style illustration of a girl wearing a suit. A moon in sky. In the background we see a big rain approaching. text 'InstantX' on image" -H 1024 -W 1024 --control_image_path .\ref\tile.jpg -n 50
+  python run_sd3.py -C depth --model_id "stabilityai/stable-diffusion-3-medium-amdnpu" -H 1024 -W 1024 --control_image_path .\assets\depth.jpeg -n 50
+
+To run the image-to-image demo of Segmind-Vega model (without ControlNet applications), run the following command::
+
+  python .\run_sd_xl.py --model_id "amd/segmind-vega-amdnpu" --control_image_path .\assets\controlimg_input_1024x1024.png --strength 0.95
+
 
 
 Text-to-Image
 =============
 
-The text-to-image generates images based on text prompts. This demo supports SD 1.5 (512x512), SD 2.1-base (512x512), SD 2.1 (768x768), SDXL-base (1024x1024), SD-Turbo (512x512), SDXL-Turbo (512x512), Segmind-Vega (1024x1024).
+The text-to-image demo generates images based on text prompts. It supports SD 1.5 (512x512), SDXL-base (1024x1024), SD-Turbo (512x512), SDXL-Turbo (512x512), Segmind-Vega (1024x1024), as well as SD 3.0 and SD 3.5 (see below for additional setup required for SD3.x models).
 
 To run the demo, navigate to the ``GenAI-SD\test`` directory and run the following commands to run with each of the supported models:
 
 .. code-block:: 
 
-  python run_sd.py    --model_id 'stable-diffusion-v1-5/stable-diffusion-v1-5' --model_path ..\models\sd15_bfp\ --custom_op_path "C:\Program Files\RyzenAI\1.7.0\deployment\onnx_custom_ops.dll"
-  python run_sd.py    --model_id 'stabilityai/stable-diffusion-2-1-base' --model_path ..\models\sd21_base_bfp --custom_op_path "C:\Program Files\RyzenAI\1.7.0\deployment\onnx_custom_ops.dll"
-  python run_sd.py    --model_id 'stabilityai/stable-diffusion-2-1' --model_path ..\models\sd-2.1-v\ --custom_op_path "C:\Program Files\RyzenAI\1.7.0\deployment\onnx_custom_ops.dll"
-  python run_sd.py    --model_id 'stabilityai/sd-turbo' --model_path ..\models\sd_turbo_bfp --custom_op_path "C:\Program Files\RyzenAI\1.7.0\deployment\onnx_custom_ops.dll"
-  python run_sd.py    --model_id 'stabilityai/sd-turbo' --model_path ..\models\sd_turbo_bs1_bfp --num_images_per_prompt 1 --custom_op_path "C:\Program Files\RyzenAI\1.7.0\deployment\onnx_custom_ops.dll"
-  python run_sd_xl.py --model_id 'stabilityai/sdxl-turbo' --model_path ..\models\sdxl_turbo_bfp --custom_op_path "C:\Program Files\RyzenAI\1.7.0\deployment\onnx_custom_ops.dll"
-  python run_sd_xl.py --model_id 'stabilityai/sdxl-turbo' --model_path ..\models\sdxl_turbo_bs1_bfp --num_images_per_prompt 1 --custom_op_path "C:\Program Files\RyzenAI\1.7.0\deployment\onnx_custom_ops.dll"
-  python run_sd_xl.py --model_id 'stabilityai/stable-diffusion-xl-base-1.0'  --model_path ..\models\sdxl-base-1.0_bfp\ --custom_op_path "C:\Program Files\RyzenAI\1.7.0\deployment\onnx_custom_ops.dll"
-  python run_sd_xl.py --model_id 'segmind/Segmind-Vega' --model_path ..\models\segmind-vega_bfp\ --custom_op_path "C:\Program Files\RyzenAI\1.7.0\deployment\onnx_custom_ops.dll"
+  python run_sd.py    --model_id "amd/stable-diffusion-1.5-amdnpu"
+  python run_sd.py    --model_id "amd/sd-turbo-amdnpu"
+  python run_sd_xl.py --model_id "amd/sdxl-turbo-amdnpu"
+  python run_sd_xl.py --model_id "amd/sdxl-base-amdnpu"
+  python run_sd_xl.py --model_id "amd/segmind-vega-amdnpu"
 
-To run the sd3/sd3.5/sd3.5-Turbo models, you need to set env:DD_PLUGINS_ROOT before running the demo. For instance:
-.. code-block:: 
-  set DD_PLUGINS_ROOT=C:\Program Files\RyzenAI\1.7.0\GenAI-SD\lib\transaction\stx\
+To run the sd3/sd3.5 models, you need to set the ``DD_PLUGINS_ROOT`` environment variable before running the demo. For instance::
+
+  set "DD_PLUGINS_ROOT=C:\Program Files\RyzenAI\1.7.1\GenAI-SD\lib\transaction\stx\"
+
+Then run the following commands::
+
+  python .\run_sd3.py -C None --model_id "stabilityai/stable-diffusion-3-medium-amdnpu" -n 50
+  python .\run_sd3.py -C None --model_id "stabilityai/stable-diffusion-3.5-medium-amdnpu" -n 50
 
 
 The demo script uses a predefined prompt for each of the models. The output images are saved in the ``generated_images`` folder. 
 
 Custom prompts can be provided with the ``--prompt`` option. For instance::
 
-  python run_sd.py --model_id 'stabilityai/stable-diffusion-2-1-base' --model_path ..\models\sd21_base_bfp  --prompt "A bouquet of roses, impressionist style" --custom_op_path "C:\Program Files\RyzenAI\1.7.0\deployment\onnx_custom_ops.dll"
+  python run_sd.py --model_id "amd/stable-diffusion-1.5-amdnpu" --prompt "Photo of a ultra realistic sailing ship, dramatic light, pale sunrise, cinematic lighting, battered, low angle, trending on artstation, 4k, hyper realistic, focused, extreme details"
 
+*****************************************
+Running with AMD Stable Diffusion Sandbox
+*****************************************
+
+AMD SD Sandbox is a framework for running Stable Diffusion (SD) models accelerated by AMD Ryzen AI hardware. It provides an easy-to-use interface for evaluating, comparing, and deploying multiple SD pipelines.
+Please go to the `AMD SD Sandbox GitHub repository <https://github.com/amd/sd-sandbox>`_ for more information.
 
 ..
   ------------

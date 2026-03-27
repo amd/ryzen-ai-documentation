@@ -67,18 +67,18 @@ Install NPU Drivers
 Install Ryzen AI Software
 *************************
 
-- Download the Ryzen AI Software installer :download:`ryzenai-lt-1.7.0.exe <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=ryzen-ai-lt-1.7.0.exe>`.
+- Download the Ryzen AI Software installer :download:`ryzen-ai-lt-1.7.1.exe <https://account.amd.com/en/forms/downloads/xef.html?filename=ryzen-ai-lt-1.7.1.exe>`.
 
 - Launch the EXE installer and follow the instructions on the installation wizard:
 
   - Accept the terms of the Licence agreement
-  - Provide the destination folder for Ryzen AI installation (default: ``C:\Program Files\RyzenAI\1.7.0``)
-  - Specify the name for the conda environment (default: ``ryzen-ai-1.7.0``)
+  - Provide the destination folder for Ryzen AI installation (default: ``C:\Program Files\RyzenAI\1.7.1``)
+  - Specify the name for the conda environment (default: ``ryzen-ai-1.7.1``)
 
 The Ryzen AI Software packages are now installed in the conda environment created by the installer.
 
 .. note::
-   NuGet package is available to download at :download:`ryzen-ai-1.7.0-nuget.zip <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=signed_nuget_1.7.0.zip>`.
+   NuGet package is available to download at :download:`ryzen-ai-1.7.1-nuget.zip <https://account.amd.com/en/forms/downloads/xef.html?filename=1.7.1_nuget_signed.zip>`.
 
 .. _quicktest:
 
@@ -95,7 +95,7 @@ The Ryzen AI Software installation folder contains test to verify that the softw
 
 .. code-block::
 
-   conda activate <env_name>
+   conda activate ryzen-ai-<version>
 
 - Run the test:
 
@@ -106,9 +106,10 @@ The Ryzen AI Software installation folder contains test to verify that the softw
 
 .. code-block::
 
-  INFO: [aiecompiler 77-749] Reading logical device aie2p_8x4_device
-  Using TXN FORMAT 0.1
-  Test Passed
+  [I:onnxruntime:, session_state_utils.cc:243 onnxruntime::session_state_utils::SaveInitializedTensors] Saving initialized tensors.
+  [I:onnxruntime:, session_state_utils.cc:438 onnxruntime::session_state_utils::SaveInitializedTensors] Done saving initialized tensors
+  [I:onnxruntime:, inference_session.cc:2532 onnxruntime::InferenceSession::Initialize] Session successfully initialized.
+  Test Finished
 
 - Verify NPU activity by opening **Task Manager → Performance → NPU** while the test is running. You should see NPU utilization increase during model inference.
 
@@ -159,7 +160,7 @@ To view detailed logging information, update the session options in ``quicktest.
 
    # Create session options
    session_options = ort.SessionOptions()
-   session_options.log_severity_level = 1  # 0=Verbose, 1=Info, 2=Warning, 3=Error, 4=Fatal
+   session_options.log_severity_level = 0  # 0=Verbose, 1=Info, 2=Warning, 3=Error, 4=Fatal
 
    try:
        session = ort.InferenceSession(model,
@@ -190,20 +191,16 @@ To view detailed logging information, update the session options in ``quicktest.
 .. code-block::
 
    cd %RYZEN_AI_INSTALLATION_PATH%/quicktest
-   python quicktest.py 2>&1 | findstr /i "Operators Subgraphs VITIS_EP_CPU NPU Test"
+   python quicktest.py 2>&1 | findstr /i "VerifyEachNodeIsAssignedToAnEp | Test"
 
 
 - On a successful run, you will see an output similar to the one shown below. This indicates that the model is running on the NPU and that the installation of the Ryzen AI Software was successful:
 
 .. code-block::
 
-  [Vitis AI EP] No. of Operators :
-      NPU   398
-      VITIS_EP_CPU     2
-  [Vitis AI EP] No. of Subgraphs :
-    NPU     1
-  Test finished
-
+  [V:onnxruntime:, session_state.cc:1296 onnxruntime::VerifyEachNodeIsAssignedToAnEp] Node placements
+  [V:onnxruntime:, session_state.cc:1299 onnxruntime::VerifyEachNodeIsAssignedToAnEp]  All nodes placed on [VitisAIExecutionProvider]. Number of nodes: 3
+  Test Finished
 
 .. note::
 
