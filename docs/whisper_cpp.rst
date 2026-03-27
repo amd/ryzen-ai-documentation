@@ -1,0 +1,7 @@
+###################
+Whisper.cpp support
+###################
+
+Ryzen AI provides NPU acceleration for whisper.cpp through an AMD-maintained fork. On AMD Ryzen AI 300 Series systems, Whisper can fully offload the encoder to the NPU, which can deliver a significant speedup versus CPU-only runs. NPU acceleration is currently supported on Windows only, with Linux support planned. 
+
+For setup steps, build flags, and NPU-optimized model guidance, refer to the GitHub README at https://github.com/amd/whisper.cpp?tab=readme-ov-file#amd-ryzen-ai-support-for-npu
