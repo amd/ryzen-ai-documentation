@@ -62,9 +62,7 @@ Version 1.7.1
   - Support for 10 model classes (t2i, i2i, dynamic shapes, ControlNet)
   - Performance and memory improvements for SD-2.1-v and SD-3.x
 
-- ASR
 
-  - ASR Whisper-small, medium and Large V3 turbo models are supported on Linux
 
 
 ***********
