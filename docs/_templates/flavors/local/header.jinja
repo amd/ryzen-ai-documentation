@@ -1,0 +1,18 @@
+{% macro top_level_header(branch, latest_version, release_candidate_version) -%}
+    <a class="klavika-font hover-opacity" href="/">Ryzen AI</a>
+{%- endmacro -%}
+
+{% macro version_list() -%}
+    {% if theme_version_list_link %}
+        <a class="header-all-versions" href="{{ theme_version_list_link }}">Version List</a>
+    {% endif %}
+{%- endmacro -%}
+
+{%
+set nav_secondary_items = {
+    "GitHub": theme_repository_url|replace("-docs", ""),
+    "Community": "https://community.amd.com/t5/ai/ct-p/amd_ai",
+    "Products": "https://www.amd.com/en/products/processors/consumer/ryzen-ai.html",
+    "Examples": "https://github.com/amd/RyzenAI-SW"
+}
+%}
