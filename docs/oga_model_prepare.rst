@@ -72,8 +72,7 @@ Use following command to run Quantization. In a GPU equipped Linux machine the q
           --no_trust_remote_code \
           --model_dir "meta-llama/Llama-2-7b-chat-hf"  \
           --output_dir <quantized safetensor output dir>  \
-          --quant_scheme w_uint4_per_group_asym \
-          --group_size 128 \
+          --quant_scheme uint4_wo_128 \
           --num_calib_data 128 \
           --seq_len 512 \
           --quant_algo awq \
@@ -85,13 +84,15 @@ Use following command to run Quantization. In a GPU equipped Linux machine the q
 
 - Use ``--data_type bfloat16`` for bf16 pretrained model. For fp32/fp16 pretrained model use ``--datatype float16``
 - Not using ``--exclude_layers``  parameter may result in model-specific defaults which may exclude certain layers like output layers.
+- To specify a group size other than 128, such as 32, use ``--quant_scheme uint4_wo_32`` instead of ``--quant_scheme uint4_wo_128``. Available group sizes are 32, 64, and 128 (e.g., uint4_wo_32, uint4_wo_64, uint4_wo_128)
+- Quark supports quantizing layers with different group sizes, use ``--layer_quant_scheme lm_head uint4_wo_32`` to quantize the model with 32 group size for lm_head
 
 The quantized model is generated in the <quantized safetensor output dir> folder.
 
 **Note:** For the Phi-4 model, the following quantization recipe is recommended for better accuracy:
 
 - Use ``--quant_algo gptq``
-- Add ``--group_size_per_layer lm_head 32``
+- Add ``--layer_quant_scheme lm_head uint4_wo_32``
 
 **Note:**: Currently the following files are not copied into the quantized model folder and must be copied manually:
 
