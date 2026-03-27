@@ -1,0 +1,142 @@
+############
+Installation
+############
+
+This page consolidates all requirements and installation steps for running Windows ML on Ryzen AI PCs.
+
+*************
+Prerequisites
+*************
+
+.. list-table::
+   :widths: 30 40
+   :header-rows: 1
+
+   * - Requirement
+     - Version or Notes
+   * - Windows
+     - Windows 11 24H2 (build 26100) or greater
+   * - Ryzen AI NPU
+     - Supported processor with NPU. See :ref:`supported configurations <supported-configurations>` in the release notes.
+   * - Visual Studio (for C++)
+     - Visual Studio 2022, latest version. Ensure *Desktop Development with C++* is installed.
+   * - Visual Studio Code (optional)
+     - For model conversion using AI Toolkit extension
+   * - Python (for Python examples)
+     - 3.10 to 3.12
+   * - C++ (for C++ examples)
+     - C++20 or later
+
+For the complete list of supported Windows versions, refer to `Windows App SDK support <https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/support>`_.
+
+************
+Installation
+************
+
+Follow these steps in order:
+
+1. **Install NPU drivers:** Follow the :doc:`RAI installation instructions <../inst>`. Download and install the NPU driver (version 32.0.203.280 or newer) from the AMD Ryzen AI driver page.
+
+2. **Install Windows App SDK:** Windows ML is included as part of the Windows App SDK. Install the version required by your branch/sample from `Windows App SDK downloads <https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/downloads>`_.
+
+3. **Verify installation:** For Python, ensure the ``wasdk-microsoft-windows-ai-machinelearning`` package is installed (e.g., via ``pip install``) and matches the Windows App SDK version used by your sample branch. Run ``conda list | findstr wasdk`` to verify.
+
+**************************
+Key Features of Windows ML
+**************************
+
+- **Dynamically downloads latest EPs:** Compatible execution providers are downloaded from the Microsoft Store on demand
+- **Shared Windows-wide ONNX Runtime:** Reduces application size; no need to bundle ORT
+- **Smaller downloads and installs:** EPs are shared across applications
+- **Broad hardware support:** Works across CPUs, GPUs, and NPUs from different vendors via ONNX Runtime
+
+*****************************
+Windows ML setup verification
+*****************************
+
+Install the required Python packages in the conda environment `winml_env`
+
+.. code-block:: shell
+
+    conda create -n winml_env python==3.11
+    conda activate winml_env
+    git clone https://github.com/amd/RyzenAI-SW.git
+    cd <RyzenAI-SW>\WinML\CNN\ResNet
+    pip install --pre -r .\requirements.txt
+
+Check the installed wasdk Python version and install same version of `Windows App SDK <https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/downloads>`_:
+
+.. code-block:: shell
+
+    conda list | findstr wasdk
+
+Download the Windows App SDK corresponding to the wasdk version (e.g., 2.0.0.dev4) or latest and install it to ensure the Windows ML execution providers work correctly.
+
+.. code-block:: shell
+
+    curl -L -o windowsappruntimeinstall-x86.exe "https://aka.ms/windowsappsdk/2.0/2.0.0-experimental4/windowsappruntimeinstall-x86.exe"
+    windowsappruntimeinstall-x86.exe --quiet
+
+After completing the installation, run the `check_winml_setup.py` script from the `RyzenAI-SW` repository to verify the Windows ML installation. The script is available at: https://github.com/amd/RyzenAI-SW/blob/main/WinML/check_winml_setup.py
+
+.. code-block:: shell
+
+    cd <RyzenAI-SW>\WinML
+    python check_winml_setup.py
+
+The script will produce output similar to the following:
+
+.. code-block:: text
+
+    ============================================================
+    WinML Setup Checker
+    ============================================================
+    Python: 3.11.0 (<path_to_python_installation>\python.exe)
+    WASDK Python Packages:
+    ----------------------------------------
+      [✓] wasdk-ML: 2.0.0.dev4
+      [✓] wasdk-Bootstrap: 2.0.0.dev4
+    Windows App SDK Runtime:
+    ----------------------------------------
+    [✓] Windows App SDK: 2.0-experimental5 (internal: 0.770.2319.0)
+    Installed runtimes (newest first):
+        * 2.0-experimental5 (internal: 0.770.2319.0)
+        - 2.0-experimental4 (internal: 0.738.2207.0)
+        - 1.8 (internal: 8000.642.119.0)
+        - 1.8 (internal: 8000.675.1142.0)
+        - 1.8-experimental (internal: 8000.589.1529.0)
+        - 1.8-preview (internal: 8000.591.1127.0)
+        * Active runtime used by this checker
+    Expected SDK: 2.0.0-experimental4
+    ============================================================
+    Status: All components installed. Please, ensure matching Windows App SDK version is Installed.
+
+Windows App SDK version should match the wasdk Python package version. If there is a mismatch, install the correct Windows App SDK version. After installation, re-run the setup checker to verify that the correct version of Windows App SDK is installed and active.
+
+************************
+Getting Started Examples
+************************
+
+The following examples provide step-by-step instructions to help you get started with Windows ML on AMD Ryzen AI PCs. These examples cover CNN, Transformer, and LLM model deployment using both C++ and Python APIs.
+
+- `Getting Started Example for Windows ML <https://github.com/amd/RyzenAI-SW/tree/main/WinML/CNN/ResNet>`_ using ResNet model:
+
+  -  Optional Model conversion to QDQ quantized ONNX model using `VS Code AI Toolkit <https://code.visualstudio.com/docs/intelligentapps/modelconversion>`_
+  - `Deployment using Windows ML APIs and ONNX Runtime using C++ and Python <https://github.com/amd/RyzenAI-SW/tree/main/WinML/CNN/ResNet>`_
+
+- Additional examples:
+
+  - `Transformer based GoogleBERT example <https://github.com/amd/RyzenAI-SW/tree/main/WinML/Transformers/GoogleBERT>`_
+  - `Running OpenAI CLIP model on NPU <https://github.com/amd/RyzenAI-SW/tree/main/WinML/Transformers/clip-vit-base-patch16>`_
+  - `Running LLM models on NPU <https://github.com/amd/RyzenAI-SW/tree/main/WinML/LLM>`_
+
+For more details about model deployment using Windows ML, see the :doc:`Model Deployment using Windows ML documentation <model_deployment>`.
+
+..
+  ------------
+
+  #####################################
+  License
+  #####################################
+
+ Ryzen AI is licensed under `MIT License <https://github.com/amd/ryzen-ai-documentation/blob/main/License>`_ . Refer to the `LICENSE File <https://github.com/amd/ryzen-ai-documentation/blob/main/License>`_ for the full license text and copyright notice.
