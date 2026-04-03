@@ -127,7 +127,7 @@ NPU Execution Mode
 
 Several NPU optimization levels are available depending on model support and performance requirements.
 
-**Full Fusion** (maximum performance, recommended for supported models):
+**Full Fusion** (Best performance, recommended for `supported models <https://huggingface.co/collections/amd/ryzen-ai-171-npu-4k>`_):
 
 .. code-block::
 
@@ -141,7 +141,7 @@ Several NPU optimization levels are available depending on model support and per
 
 **Note:** Token Fusion currently supports generating models with a 4K context length only. For longer context lengths (e.g., 16K), use the pre-built models available on `Hugging Face <https://huggingface.co/collections/amd/ryzen-ai-171-npu-16k>`_.
 
-**Basic / MatMulNBits only** (safe default for new or untested models):
+**Basic** (safe default for new or untested models):
 
 .. code-block::
 
