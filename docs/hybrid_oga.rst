@@ -40,8 +40,6 @@ Hugging Face collection of NPU Token Fusion models: https://huggingface.co/colle
  
 Hugging Face collection of NPU Full Fusion models: https://huggingface.co/collections/amd/ryzen-ai-171-npu-4k
 
-.. note::
-   Links to be updated soon
 
 NPU Models: Token Fusion vs Full Fusion
 ========================================
