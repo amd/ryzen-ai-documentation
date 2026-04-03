@@ -2,7 +2,7 @@
 Execution Providers
 ###################
 
-Windows ML provides a system-level execution provider (EP) management layer for ONNX Runtime on Windows PCs. It automatically discovers, downloads, and registers the best-available EPs for your hardware — whether that is a CPU, GPU, or NPU — so your application always runs on the optimal hardware accelerator.
+Windows ML provides a system-level execution provider (EP) management layer for ONNX Runtime on Windows PCs. It automatically discovers, downloads, and registers the best-available EPs for your hardware, whether that is a CPU, GPU, or NPU, so your application always runs on the optimal hardware accelerator.
 
 Windows ML ships a shared, Windows-wide ONNX Runtime and exposes EP management APIs for C#, C++, and Python. Through these APIs you can:
 
@@ -169,8 +169,7 @@ Python Example
     selected_ep_devices = [
         d for d in ep_devices
         if d.ep_name == "VitisAIExecutionProvider"
-        and d.device.type == ort.OrtHardwareDeviceType.NPU
-    ]
+        and d.device.type == ort.OrtHardwareDeviceType.NPU]
 
     if not selected_ep_devices:
         raise RuntimeError("VitisAIExecutionProvider is not available on this system.")

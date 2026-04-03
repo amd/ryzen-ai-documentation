@@ -21,11 +21,15 @@ Quantization Options
    * - Option
      - Values
    * - Activation type
-     - INT8, UINT8, INT16, UINT16
+     - INT8, UINT8, INT16, UINT16, BF16
    * - Weight type
-     - INT8, UINT8, INT16, UINT16
+     - INT8, UINT8, INT16, UINT16, INT4, BF16
 
-For CNN models, use **A8W8** (activation INT8/UINT8, weight INT8/UINT8). For Transformer models, use **A16W8** (activation INT16/UINT16, weight INT8/UINT8).
+Recommended Precision Settings by Model Type:
+
+- CNN Models: Use **A8W8** quantization (activation INT8/UINT8, weight INT8/UINT8)
+- Transformer Models: Use **A16W8** quantization (activation INT16/UINT16, weight INT8/UINT8)
+- LLM Models: BF16 and INT4 precision options are available
 
 *****************
 Device Evaluation

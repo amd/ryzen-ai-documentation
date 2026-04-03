@@ -6,20 +6,22 @@ This page addresses common issues and solutions when using Windows ML on Ryzen A
 
 .. contents:: Topics
    :local:
-   :depth: 1
+   :depth: 2
 
 ***********************
 Installation and Setup
 ***********************
 
-**Issue: Windows App SDK Version Mismatch**
+Issue: Windows App SDK Version Mismatch
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 **Symptom:** Inference fails or EPs do not load; version mismatch errors.
 
 **Solution:** Ensure the installed Windows App SDK Python package matches the Windows App SDK version required by your sample branch (stable or preview). Run ``conda list | findstr wasdk`` to verify. Download the matching version from `Windows App SDK downloads <https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/downloads>`_.
 
 
-**Issue: EP Not Found or Not Registered**
+Issue: EP Not Found or Not Registered
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 **Symptom:** Inference fails with "execution provider not found" or similar error message.
 
@@ -30,7 +32,8 @@ Installation and Setup
 - Verify the NPU driver is installed. See :doc:`installation`.
 
 
-**Issue: Model Compilation Fails**
+Issue: Model Compilation Fails
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 **Symptom:** Compilation step fails or times out.
 
@@ -45,7 +48,8 @@ Installation and Setup
 Runtime Issues
 **************
 
-**Issue: NPU Not Selected**
+Issue: NPU Not Selected
+~~~~~~~~~~~~~~~~~~~~~~~
 
 **Symptom:** Model runs on CPU or GPU instead of NPU.
 
@@ -56,7 +60,8 @@ Runtime Issues
 - Check that the model is compatible with the Vitis AI EP. See :doc:`model_support`.
 
 
-**Issue: TensorRTRTX or Pywinrt Registration Failure (Python)**
+Issue: TensorRTRTX or Pywinrt Registration Failure (Python)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 **Symptom:** Importing ``winrt.runtime`` causes the TensorRTRTX execution provider to fail registration.
 

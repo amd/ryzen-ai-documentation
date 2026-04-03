@@ -60,6 +60,7 @@ Install the required Python packages in the conda environment `winml_env`
 
     conda create -n winml_env python==3.11
     conda activate winml_env
+    git clone https://github.com/amd/RyzenAI-SW.git
     cd <RyzenAI-SW>\WinML\CNN\ResNet
     pip install --pre -r .\requirements.txt
 
@@ -126,7 +127,7 @@ The following examples provide step-by-step instructions to help you get started
 - Additional examples:
 
   - `Transformer based GoogleBERT example <https://github.com/amd/RyzenAI-SW/tree/main/WinML/Transformers/GoogleBERT>`_
-  - `Running OpenAI CLIP model on NPU <https://github.com/amd/RyzenAI-SW/tree/main/WinML/Transformers/clip-vit-base-path16>`_
+  - `Running OpenAI CLIP model on NPU <https://github.com/amd/RyzenAI-SW/tree/main/WinML/Transformers/clip-vit-base-patch16>`_
   - `Running LLM models on NPU <https://github.com/amd/RyzenAI-SW/tree/main/WinML/LLM>`_
 
 For more details about model deployment using Windows ML, see the :doc:`Model Deployment using Windows ML documentation <model_deployment>`.

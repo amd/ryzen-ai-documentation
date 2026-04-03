@@ -1,8 +1,8 @@
-##############
-ResNet Example
-##############
+##################
+Windows ML Example
+##################
 
-This tutorial demonstrates how to deploy a ResNet model using Windows ML, covering the complete workflow for converting, quantizing, compiling, and deploying models in both Python and C++ environments.
+This example demonstrates how to deploy a ResNet model using Windows ML, covering the complete workflow for converting, quantizing, compiling, and deploying models in both Python and C++ environments.
 
 This tutorial provides step-by-step instructions for deploying a ResNet model, demonstrating:
 
@@ -146,21 +146,14 @@ You should see similar results as in the Python deployment section.
     Avg time per iteration : 19 milliseconds
 
 *******************
-Windows ML Examples
+Additional Examples
 *******************
 
 The following examples provide step-by-step instructions to help you get started with Windows ML on AMD Ryzen AI PCs. These examples cover CNN, Transformer, and LLM model deployment using both C++ and Python APIs.
 
-- :doc:`Getting Started Tutorial for Windows ML <winml_example>` - Using ResNet model:
-
-  -  Optional Model conversion to QDQ quantized ONNX model using `VS Code AI Toolkit <https://code.visualstudio.com/docs/intelligentapps/modelconversion>`_
-  - :doc:`Deployment using Windows ML APIs and ONNX Runtime using C++ and Python <winml_example>`
-
-- Additional examples:
-
-  - `Transformer based GoogleBERT example <https://github.com/amd/RyzenAI-SW/tree/main/WinML/Transformers/GoogleBERT>`_
-  - `Running OpenAI CLIP model on NPU <https://github.com/amd/RyzenAI-SW/tree/main/WinML/Transformers/clip-vit-base-path16>`_
-  - `Running LLM models on NPU <https://github.com/amd/RyzenAI-SW/tree/main/WinML/LLM>`_
+- `Transformer based GoogleBERT example <https://github.com/amd/RyzenAI-SW/tree/main/WinML/Transformers/GoogleBERT>`_
+- `Running OpenAI CLIP model on NPU <https://github.com/amd/RyzenAI-SW/tree/main/WinML/Transformers/clip-vit-base-path16>`_
+- `Running LLM models on NPU <https://github.com/amd/RyzenAI-SW/tree/main/WinML/LLM>`_
 
 For more details about model deployment using Windows ML, see the :doc:`Model Deployment using Windows ML documentation <model_deployment>`.
 
