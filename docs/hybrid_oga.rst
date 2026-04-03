@@ -25,6 +25,8 @@ Requirements
 - Install GPU device driver: Ensure GPU device driver https://www.amd.com/en/support is installed
 - Install Git for Windows (needed to download models from HF): https://git-scm.com/downloads
 
+.. _pre_opt_model:
+
 ********************
 Pre-optimized Models
 ********************
