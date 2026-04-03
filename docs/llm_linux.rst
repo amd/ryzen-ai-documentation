@@ -126,7 +126,16 @@ Expected output
 Preparing OGA Model
 *******************
 
+Install "model_generate" package in current virtual environment
+
+.. code-block:: bash
+
+  pip install model-generate==1.7.1 --force-reinstall --no-deps --extra-index-url https://pypi.amd.com/ryzenai_llm/1.7.1/linux/simple/
+
+
 Currently Linux supports NPU only flow. Read more on Model Generation by visiting :doc:`Preparing OGA Models <oga_model_prepare>`
+
+
   
 
 
