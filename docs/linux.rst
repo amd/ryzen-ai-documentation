@@ -52,7 +52,7 @@ After installing required Ubuntu distribution and Python version, proceed with N
 *******************
 Install NPU Drivers
 *******************
-- Download the NPU driver package from `Downloads` section of `Ryzen AI Software Early Access Lounge <https://account.amd.com/en/member/ryzenai-sw-ea.html#tabs-a5e122f973-item-4757898120-tab>`_.
+- Download the NPU driver package from `Downloads` section of `Ryzen AI Software Drivers <https://account.amd.com/en/forms/downloads/xef.html?filename=RAI_1.7.1_Linux_NPU_XRT.zip>`_.
 
 - RyzenAI linux driver package contains 
    - XRT Package
@@ -98,7 +98,7 @@ Install NPU Drivers
 *************************
 Install Ryzen AI Software
 *************************
-- Download the RyzenAI for Linux package `ryzen_ai-1.7.1.tgz` from `Downloads` section of `Ryzen AI Software Early Access Lounge <https://account.amd.com/en/member/ryzenai-sw-ea.html#tabs-a5e122f973-item-4757898120-tab>`_.
+- Download the RyzenAI for Linux package `ryzen_ai-1.7.1.tgz` from `Downloads` section of `Ryzen AI Software Installer <https://account.amd.com/en/forms/downloads/xef.html?filename=ryzen_ai-1.7.1.tgz>`_.
 - Navigate to the downloaded path and follow the below steps
 
 .. code-block:: bash
