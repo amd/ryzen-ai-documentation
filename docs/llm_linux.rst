@@ -65,7 +65,7 @@ This page showcases an example of running LLM on RyzenAI NPU
       - Set XRT_INI_PATH to point to this file
           export XRT_INI_PATH=$PWD/xrt.ini
   
-- Lastly, add directories for PATH
+- Lastly, set required library path
 
 .. code-block:: bash
 
