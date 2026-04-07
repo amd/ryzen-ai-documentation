@@ -83,6 +83,7 @@ For more details, refer to the :doc:`llm/overview` page.
 
    inst.rst
    examples.rst
+   linux.rst
 
 .. toctree::
    :maxdepth: 1
