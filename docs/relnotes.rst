@@ -62,6 +62,7 @@ Version 1.7.1
   - Support for 10 model classes (t2i, i2i, dynamic shapes, ControlNet)
   - Performance and memory improvements for SD-2.1-v and SD-3.x
 
+- Ryzen AI installer is also available on Linux platform.
 
 
 
