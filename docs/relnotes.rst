@@ -65,7 +65,6 @@ Version 1.7.1
 - Ryzen AI installer is also available on Linux platform.
 
 
-
 ***********
 Version 1.7
 ***********
