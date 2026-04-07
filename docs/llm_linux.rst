@@ -11,14 +11,22 @@ This page showcases an example of running LLM on RyzenAI NPU
   mkdir run_llm
   cd run_llm
 
-- Choose any prequantized and postprocessed ready-to-run Model from `Hugging Face collection of NPU models <https://huggingface.co/collections/amd/ryzen-ai-16-npu-llm>`_
-- For this flow, "Phi-3.5-mini-instruct_full_fusion" is chosen for reference
+- Choose any prequantized and postprocessed ready-to-run Model from Hugging Face collection of NPU models
+
+.. parsed-literal::
+
+    `Models with 4K Context length <https://huggingface.co/collections/amd/ryzen-ai-171-npu-4k>`_
+
+    `Models with 16K Context length <https://huggingface.co/collections/amd/ryzen-ai-171-npu-16k>`_
+
+
+- For this flow, "Phi-3.5-mini-instruct_rai_1.7.1_npu_4K" is chosen for reference
 .. code-block::
 
   # Make sure git-lfs is installed (https://git-lfs.com)
   sudo apt install git-lfs
   git lfs install
-  git clone https://huggingface.co/amd/Phi-3.5-mini-instruct_full_fusion
+  git clone https://huggingface.co/amd/Phi-3.5-mini-instruct_rai_1.7.1_npu_4K
 
 - Search for RYZEN_AI_INSTALLATION_PATH
 
@@ -50,7 +58,7 @@ This page showcases an example of running LLM on RyzenAI NPU
 
 .. code-block::
 
-  amd_genai_prompt.txt   deployment   model_benchmark   Phi-3.5-mini-instruct_full_fusion
+  amd_genai_prompt.txt   deployment   model_benchmark   Phi-3.5-mini-instruct_rai_1.7.1_npu_4K
 
 - Create a new file for XRT Drivers named "xrt.ini"
 
@@ -78,7 +86,7 @@ This page showcases an example of running LLM on RyzenAI NPU
 
 .. code-block:: bash
 
-  ./model_benchmark -i Phi-3.5-mini-instruct_full_fusion/ -l 128 -f amd_genai_prompt.txt
+  ./model_benchmark -i Phi-3.5-mini-instruct_rai_1.7.1_npu_4K/ -l 128 -f amd_genai_prompt.txt
 
   # Enable "-v" flag for verbose output
 
