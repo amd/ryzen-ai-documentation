@@ -81,7 +81,7 @@ Use following command to run Quantization. In a GPU equipped Linux machine the q
 
 
 - Use ``--data_type bfloat16`` for bf16 pretrained model. For fp32/fp16 pretrained model use ``--datatype float16``
-- Quark natively supports AWQ quantization for popular architectures. If AWQ is not supported by default, you must create an AWQ configuration file and pass it to the quantize_quark.py script using the --quant_algo_config_file custom_awq_config.json option. For details on creating an AWQ config file, see the Quark documentation AWQ example: https://quark.docs.amd.com/latest/tutorials/torch/example_awq.html
+- Quark natively supports AWQ quantization for popular architectures. If AWQ is not supported by default, you must create an AWQ configuration file and pass it to the ``quantize_quark.py`` script using the ``--quant_algo_config_file awq <custom awq config json>`` option. For details on creating an AWQ config file, see the Quark documentation AWQ example: https://quark.docs.amd.com/latest/tutorials/torch/example_awq.html
 - Not using ``--exclude_layers``  parameter may result in model-specific defaults which may exclude certain layers like output layers.
 - To specify a group size other than 128, such as 32, use ``--quant_scheme uint4_wo_32`` instead of ``--quant_scheme uint4_wo_128``. Available group sizes are 32, 64, and 128 (e.g., uint4_wo_32, uint4_wo_64, uint4_wo_128)
 - Quark supports quantizing layers with different group sizes, use ``--layer_quant_scheme lm_head uint4_wo_32`` to quantize the model with 32 group size for lm_head
