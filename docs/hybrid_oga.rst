@@ -40,6 +40,12 @@ Hugging Face collection of NPU Token Fusion models: https://huggingface.co/colle
  
 Hugging Face collection of NPU Full Fusion models: https://huggingface.co/collections/amd/ryzen-ai-171-npu-4k
 
+Hugging Face collection of NPU Liquid Foundation Models: https://huggingface.co/collections/amd/ryzen-ai-171-npu-liquid-foundation-models
+
+.. note:: 
+
+   These Liquid Foundation Models are supported through ONNX Runtime. The OGA-based model instructions on this page do not apply to them. For run instructions, refer to the individual model cards in the collection. 
+
 
 NPU Models: Token Fusion vs Full Fusion
 ========================================
