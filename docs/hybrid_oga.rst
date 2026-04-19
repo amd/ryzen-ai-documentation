@@ -40,7 +40,7 @@ Hugging Face collection of NPU Token Fusion models: https://huggingface.co/colle
  
 Hugging Face collection of NPU Full Fusion models: https://huggingface.co/collections/amd/ryzen-ai-171-npu-4k
 
-Hugging Face collection of NPU Liquid Foundation Models: https://huggingface.co/collections/amd/ryzen-ai-171-npu-liquid-foundation-models
+Hugging Face collection of NPU Liquid Foundation Models: https://huggingface.co/collections/amd/ryzen-ai-171-npu-lfm2-models
 
 .. note:: 
 
