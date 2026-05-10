@@ -10,21 +10,22 @@ Installation Steps
 
 1. Ensure the latest version of Ryzen AI and NPU drivers are installed. See :doc:`inst`.
 
+  To support SD3.x models, please download the patch from `GenAI-SD-RAI-1.7.1-v0408.zip <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=GenAI-SD-RAI-1.7.1-v0408.zip>`_ and extract it into ``C:\Program Files\RyzenAI\1.7.1\GenAI-SD``. Please click the ``Continue`` button when asked for admin permission to extract and replace the existing files. 
+
 2. The GenAI-SD folder is located in the RyzenAI installation tree. Navigate to the folder and run the following command:
 
 .. code-block:: 
 
   cd "C:\Program Files\RyzenAI\1.7.1\GenAI-SD"
 
-3. To support SD3.x models, please download `GenAI-SD-RAI-1.7.1-v0408.zip <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=GenAI-SD-RAI-1.7.1-v0408.zip>`_ and extract it into ``C:\Program Files\RyzenAI\1.7.1``. Please click the ``Continue`` button when asked for admin permission to extract. Then navigate into this new extracted folder.
 
-4. Activate the Conda environment for the Stable Diffusion demo packages:
+3. Activate the Conda environment for the Stable Diffusion demo packages:
 
 .. code-block:: 
 
   conda activate ryzen-ai-1.7.1
 
-5. The following Stable Diffusion models will be auto-downloaded from Hugging Face when running for the first time and cached locally in the ``GenAI-SD\models`` folder:
+4. The following Stable Diffusion models will be auto-downloaded from Hugging Face when running for the first time and cached locally in the ``GenAI-SD\models`` folder:
 
    - `SD1.5 <https://huggingface.co/amd/stable-diffusion-1.5-amdnpu>`_
    - `SD-Turbo (bs1) <https://huggingface.co/stabilityai/sd-turbo-amdnpu>`_
