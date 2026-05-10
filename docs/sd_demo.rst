@@ -18,7 +18,6 @@ Installation Steps
 
   cd "C:\Program Files\RyzenAI\1.7.1\GenAI-SD"
 
-
 3. Activate the Conda environment for the Stable Diffusion demo packages:
 
 .. code-block:: 
