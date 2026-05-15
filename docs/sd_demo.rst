@@ -10,7 +10,7 @@ Installation Steps
 
 1. Ensure the latest version of Ryzen AI and NPU drivers are installed. See :doc:`inst`.
 
-   To support SD3.x models, please download the patch from `GenAI-SD-RAI-1.7.1-v0408.zip <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=GenAI-SD-RAI-1.7.1-v0408.zip>`_ and extract it into ``C:\Program Files\RyzenAI\1.7.1\GenAI-SD``. Please click the ``Continue`` button when asked for admin permission to extract and replace the existing files.
+   To support SD3.x models, please download the patch from `GenAI-SD-RAI-1.7.1-v0408.zip <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=GenAI-SD-RAI-1.7.1-v0408.zip>`_ and extract it into the ``GenAI-SD`` folder in your RyzenAI installation tree. For a default installation, this folder is ``C:\Program Files\RyzenAI\1.7.1\GenAI-SD``. If RyzenAI is installed elsewhere, extract the patch into the corresponding ``GenAI-SD`` folder under that installation path. Please click the ``Continue`` button when asked for admin permission to extract and replace the existing files.
 
 2. The GenAI-SD folder is located in the RyzenAI installation tree. Navigate to the folder and run the following command:
 
