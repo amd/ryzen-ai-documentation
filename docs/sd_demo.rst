@@ -10,6 +10,8 @@ Installation Steps
 
 1. Ensure the latest version of Ryzen AI and NPU drivers are installed. See :doc:`inst`.
 
+   To support SD3.x models, please download the patch from `GenAI-SD-RAI-1.7.1-v0408.zip <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=GenAI-SD-RAI-1.7.1-v0408.zip>`_ and extract it into the ``GenAI-SD`` folder in your RyzenAI installation tree. For a default installation, this folder is ``C:\Program Files\RyzenAI\1.7.1\GenAI-SD``. If RyzenAI is installed elsewhere, extract the patch into the corresponding ``GenAI-SD`` folder under that installation path. Please click the ``Continue`` button when asked for admin permission to extract and replace the existing files.
+
 2. The GenAI-SD folder is located in the RyzenAI installation tree. Navigate to the folder and run the following command:
 
 .. code-block:: 
@@ -25,9 +27,9 @@ Installation Steps
 4. The following Stable Diffusion models will be auto-downloaded from Hugging Face when running for the first time and cached locally in the ``GenAI-SD\models`` folder:
 
    - `SD1.5 <https://huggingface.co/amd/stable-diffusion-1.5-amdnpu>`_
-   - `SD-Turbo (bs1) <https://huggingface.co/amd/sd-turbo-amdnpu>`_
-   - `SDXL-Turbo (bs1) <https://huggingface.co/amd/sdxl-turbo-amdnpu>`_
-   - `SDXL-base-1.0 <https://huggingface.co/amd/sdxl-base-amdnpu>`_
+   - `SD-Turbo (bs1) <https://huggingface.co/stabilityai/sd-turbo-amdnpu>`_
+   - `SDXL-Turbo (bs1) <https://huggingface.co/stabilityai/sdxl-turbo-amdnpu>`_
+   - `SDXL-base-1.0 <https://huggingface.co/stabilityai/sdxl-base-amdnpu>`_
    - `Segmind-Vega <https://huggingface.co/amd/segmind-vega-amdnpu>`_
    - `SD3.0 / SD3.0-ControlNet(Canny) / SD3.0-ControlNet(Pose) / SD3.0-ControlNet(Tile) / SD3.0-ControlNet(Depth) <https://huggingface.co/stabilityai/stable-diffusion-3-medium-amdnpu>`_
    - `SD3.5 <https://huggingface.co/stabilityai/stable-diffusion-3.5-medium-amdnpu>`_
@@ -87,9 +89,9 @@ To run the demo, navigate to the ``GenAI-SD\test`` directory and run the followi
 .. code-block:: 
 
   python run_sd.py    --model_id "amd/stable-diffusion-1.5-amdnpu"
-  python run_sd.py    --model_id "amd/sd-turbo-amdnpu"
-  python run_sd_xl.py --model_id "amd/sdxl-turbo-amdnpu"
-  python run_sd_xl.py --model_id "amd/sdxl-base-amdnpu"
+  python run_sd.py    --model_id "stabilityai/sd-turbo-amdnpu"
+  python run_sd_xl.py --model_id "stabilityai/sdxl-turbo-amdnpu"
+  python run_sd_xl.py --model_id "stabilityai/sdxl-base-amdnpu"
   python run_sd_xl.py --model_id "amd/segmind-vega-amdnpu"
 
 To run the sd3/sd3.5 models, you need to set the ``DD_PLUGINS_ROOT`` environment variable before running the demo. For instance::
