@@ -44,9 +44,9 @@ the one that matches what you are building, then jump to its documentation.
      - NPU + iGPU (Hybrid) or NPU-only
      - OnnxRuntime GenAI (OGA) C++ / Python API
      - :doc:`OGA Flow <hybrid_oga>`
-   * - Any **custom ONNX model** through Microsoft's Windows-wide runtime
+   * - Any **custom ONNX model** (CNN, Transformer, or LLM) through Microsoft's Windows-wide runtime
      - CPU / GPU / NPU (auto-selected)
-     - Windows ML (VitisAI EP managed automatically) or Foundry Local for LLMs
+     - Windows ML, with the VitisAI EP managed automatically (LLMs can also use Foundry Local for zero-setup)
      - :doc:`Windows ML Overview <winml/winml_overview>`
    * - A model on the **integrated GPU**
      - iGPU
@@ -56,11 +56,14 @@ the one that matches what you are building, then jump to its documentation.
 .. note::
 
    **Native Ryzen AI flow vs. Windows ML.** Both run NPU models through the *same*
-   VitisAI EP and ONNX Runtime. The difference is execution-provider management: the
-   native flow ships and configures the EP yourself (maximum control), while Windows ML
-   downloads and registers the EP automatically from the Microsoft Store (least setup).
-   Choose the native flow when you need full control over ORT; choose Windows ML when you
-   want the system to manage EPs for you.
+   VitisAI EP and ONNX Runtime. The difference is execution-provider management: in the
+   native flow the Ryzen AI installer bundles the VitisAI EP into the conda environment it
+   creates, and your application selects and configures it explicitly (maximum control).
+   With Windows ML, the EP is downloaded and registered automatically from the Microsoft
+   Store and chosen via an execution policy (least setup). Choose the native flow when you
+   want to bundle a specific EP version into your own application and control exactly what
+   ships to end users; choose Windows ML when you'd rather not bundle the EP at all and let
+   Windows download and manage it for you.
 
 .. _hardware-support-matrix:
 
@@ -192,7 +195,9 @@ hood** — they share Phase 1 (you prepare the ONNX model) and differ only in Ph
   execution policy (e.g. ``PREFER_NPU``). Choose this for the smallest app footprint
   (shared, Windows-wide ONNX Runtime) and automatic EP management.
 - **DirectML flow** (:doc:`DirectML Flow <gpu/ryzenai_gpu>`) — runs on the **iGPU** rather
-  than the NPU. Choose this when you specifically want GPU execution.
+  than the NPU, via the ONNX Runtime DirectML EP. This is a general-purpose GPU path that
+  works for both LLM and non-LLM models. Choose it when you specifically want GPU
+  execution.
 
 Because the native flow and Windows ML use the same EP, you can prepare a model once and
 deploy it either way; the choice is purely about how much of execution you want to manage.

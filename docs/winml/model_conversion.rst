@@ -41,8 +41,8 @@ You can evaluate quantized models on CPU, GPU, or NPU to compare accuracy and pe
 Known Limitations
 *****************
 
-- **AMD GPU conversion:** Model conversion for AMD GPU may fail due to limited Olive and Quark AMD GPU support. Use NPU or CPU for conversion and evaluation when possible.
-- **Windows vs Linux:** For larger LLM models, model conversion is done on Linux with GPU support, due to limited support on Windows. See the `Windows ML LLM examples <https://github.com/amd/RyzenAI-SW/tree/main/WinML/LLM>`_ for details.
+- **AMD GPU (ROCm) quantization on Windows:** Quantization running on the AMD GPU via ROCm on Windows is not currently supported (AMD Quark Windows GPU support). Use Windows + GPU (CUDA) or Windows + CPU for quantization instead. This does not affect running models on the GPU afterward.
+- **LLM model conversion:** Model conversion can be performed on Windows with a CUDA GPU or on Windows with CPU. Conversion on Linux with AMD ROCm is planned for a future release. See the `Windows ML LLM examples <https://github.com/amd/RyzenAI-SW/tree/main/WinML/LLM>`_ for details.
 
 ***************
 References
