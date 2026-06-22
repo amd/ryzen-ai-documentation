@@ -47,7 +47,7 @@ Use the commands below to install Python 3.12.x along with certain dependencies
 
 After installing required Ubuntu distribution and Python version, proceed with NPU drivers installation
 
-.. _install-driver:
+.. _install-driver-linux:
 
 *******************
 Install NPU Drivers
