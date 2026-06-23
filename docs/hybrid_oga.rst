@@ -25,21 +25,27 @@ Requirements
 - Install GPU device driver: Ensure GPU device driver https://www.amd.com/en/support is installed
 - Install Git for Windows (needed to download models from HF): https://git-scm.com/downloads
 
+.. _pre_opt_model:
+
 ********************
 Pre-optimized Models
 ********************
 
 
-AMD provides a set of pre-optimized LLMs ready to be deployed with Ryzen AI Software and the supporting runtime for hybrid and/or NPU-only execution. These include popular architectures such as Llama-2, Llama-3, Mistral, DeepSeek Distill models, Qwen-2, Qwen-2.5, Qwen-3, Gemma-2, Gemma-3, GPT-OSS, Phi-3, Phi-3.5, and Phi-4. For the detailed list of supported models, visit :doc:`model_list`
+AMD provides a set of pre-optimized LLMs ready to be deployed with Ryzen AI Software and the supporting runtime for hybrid and/or NPU-only execution. These include popular architectures such as Llama-2, Llama-3, Mistral, DeepSeek Distill models, Qwen-2, Qwen-2.5, Qwen-3, Gemma-2, Gemma-3, GPT-OSS, Phi-3, Phi-3.5, and Phi-4. 
 
-Hugging Face collection of hybrid models: https://huggingface.co/collections/amd/ryzen-ai-17-hybrid-llm
+Hugging Face collection of hybrid models: https://huggingface.co/collections/amd/ryzen-ai-171-hybrid
  
-Hugging Face collection of NPU Token Fusion models: https://huggingface.co/collections/amd/ryzen-ai-17-npu-llm
+Hugging Face collection of NPU Token Fusion models: https://huggingface.co/collections/amd/ryzen-ai-171-npu-16k
  
-Hugging Face collection of NPU Full Fusion models: https://huggingface.co/collections/amd/ryzen-ai-17-npu-llm-v2
+Hugging Face collection of NPU Full Fusion models: https://huggingface.co/collections/amd/ryzen-ai-171-npu-4k
 
-.. note::
-   Links to be updated soon
+Hugging Face collection of NPU Liquid Foundation Models: https://huggingface.co/collections/amd/ryzen-ai-171-npu-lfm2-models
+
+.. note:: 
+
+   These Liquid Foundation Models are supported through ONNX Runtime. The OGA-based model instructions on this page do not apply to them. For run instructions, refer to the individual model cards in the collection. 
+
 
 NPU Models: Token Fusion vs Full Fusion
 ========================================
@@ -370,8 +376,8 @@ In addition to the full RyzenAI software stack, we also provide standalone wheel
 
 .. code-block:: bash
 
-   pip install onnxruntime-genai-directml-ryzenai==0.11.2 --extra-index-url=https://pypi.amd.com/simple
-	pip install model-generate==1.7.0 --extra-index-url=https://pypi.amd.com/simple
+   pip install onnxruntime-genai-directml-ryzenai==0.11.2 --extra-index-url https://pypi.amd.com/ryzenai_llm/1.7.1/windows/simple/
+	pip install model-generate==1.7.1 --extra-index-url https://pypi.amd.com/ryzenai_llm/1.7.1/windows/simple/
 
 3. Navigate to your working directory and download the desired Hybrid/NPU model
 
