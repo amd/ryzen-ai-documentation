@@ -81,7 +81,7 @@ The Ryzen AI Software packages are now installed in the conda environment create
    NuGet package is available to download at :download:`ryzen-ai-1.7.1-nuget.zip <https://account.amd.com/en/forms/downloads/xef.html?filename=1.7.1_nuget_signed.zip>`.
 
 
- Ryzen AI 1.8.0 beta version is available for download at the `following link <https://download.amd.com/opendownload/RyzenAI/1.8.0b0/ryzen-ai-lt-1.8.0-beta.exe>`_. This beta version requires updated `NPU driver <https://download.amd.com/opendownload/RyzenAI/1.8.0b0/NPU_RAI_376_WHQL.zip>`_.
+Ryzen AI 1.8.0 beta version is available for download at the `following link <https://download.amd.com/opendownload/RyzenAI/1.8.0b0/ryzen-ai-lt-1.8.0-beta.exe>`_. This beta version requires updated `NPU driver <https://download.amd.com/opendownload/RyzenAI/1.8.0b0/NPU_RAI_376_WHQL.zip>`_.
 
 .. _quicktest:
 
