@@ -128,19 +128,19 @@ NPU Execution Mode
 
 Several NPU optimization levels are available depending on model support and performance requirements.
 
-**Full Fusion** (Best performance, recommended for `supported models <https://huggingface.co/collections/amd/ryzen-ai-171-npu-4k>`_):
+**High-throughput** — *Full Fusion recipe* (best performance, recommended for `supported models <https://huggingface.co/collections/amd/ryzen-ai-171-npu-4k>`_):
 
 .. code-block::
 
    model_generate --npu --full_fusion --input <quantized_model_path> --output <output_dir>
 
-**Token Fusion** (better tokens-per-second):
+**Long-context** — *Token Fusion recipe* (better tokens-per-second):
 
 .. code-block::
 
    model_generate --npu --token_fusion --input <quantized_model_path> --output <output_dir>
 
-**Note:** Token Fusion currently supports generating models with a 4K context length only. For longer context lengths (e.g., 16K), use the pre-built models available on `Hugging Face <https://huggingface.co/collections/amd/ryzen-ai-171-npu-16k>`_.
+**Note:** The Token Fusion recipe currently supports generating models with a 4K context length only. For longer context lengths (e.g., 16K), use the pre-built Long-context models available on `Hugging Face <https://huggingface.co/collections/amd/ryzen-ai-171-npu-16k>`_.
 
 **Basic** (safe default for new or untested models):
 

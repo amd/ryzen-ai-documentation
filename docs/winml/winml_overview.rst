@@ -25,6 +25,19 @@ Choose Windows ML when you:
 
 Use **Windows AI APIs** when built-in capabilities (OCR, image description, etc.) cover your scenario. Use **Foundry Local** when you want LLMs with minimal model preparation. Use the **Ryzen AI NPU-only flow** (:doc:`../modelrun`) when you need full control over ONNX Runtime without the Windows ML stack.
 
+*******************
+Current Limitations
+*******************
+
+The Windows ML flow on Ryzen AI is evolving. Keep the following limitations in mind when deciding whether it fits your use case. Details are spread across the pages linked below.
+
+- **No EP version control.** Windows ML always downloads and registers the latest compatible execution provider from the Microsoft Store; you cannot select or pin a specific EP version. If you need to pin a version (for reproducibility or to control exactly what ships with your app), use the native :doc:`Ryzen AI flow <../modelrun>` instead. See :doc:`faq`.
+- **Foundry Local is preview and NPU-only.** The zero-setup LLM path (Foundry Local) is in preview and currently supports **NPU-only** execution; Hybrid (NPU + iGPU) is on the roadmap. For Hybrid LLM execution today, use the native :doc:`OGA flow <../hybrid_oga>` or Lemonade. See :doc:`faq`.
+- **Custom LLM deployment is manual.** Running a custom (non-Foundry-Local) LLM uses Windows ML together with the OGA APIs and requires manually managing dependencies and model optimization. See :doc:`model_deployment`.
+- **AMD GPU (ROCm) quantization on Windows is unsupported.** Quantization running on the AMD GPU via ROCm on Windows is not currently supported; use Windows + GPU (CUDA) or Windows + CPU for quantization instead (Linux + ROCm is planned for a future release). This does not affect running models on the GPU. See :doc:`model_conversion`.
+- **Windows App SDK version sensitivity.** The installed Windows App SDK runtime must match the ``wasdk`` Python package version, or EPs fail to load. See :doc:`installation` and :doc:`troubleshooting`.
+- **Performance vs. native is not guaranteed.** Windows ML uses the same VitisAI EP and ONNX Runtime as the native flow, but parity is not documented. For performance-critical workloads, benchmark both paths. See :doc:`faq`.
+
 ***********
 Quick Links
 ***********
