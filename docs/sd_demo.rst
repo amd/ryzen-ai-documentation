@@ -9,7 +9,8 @@ Segmind-Vega, DreamShaper XL Lightning, SSD-1B, Playground v2.5, FLUX.1-Schnell,
 FLUX.2-klein-4B, SD3.0, and SD3.5, with **inpainting** where noted for SD3.0.
 
 Models are fetched from Hugging Face on first use (see :doc:`inst` for Ryzen AI and driver
-setup).
+setup). SD3.0 and SD3.5 models require Hugging Face authentication and may also require
+acceptance of the model license before they can be downloaded.
 
 
 ******************
@@ -234,8 +235,11 @@ To run a minimal Canny example:
    python run.py -C canny --model_id stabilityai/stable-diffusion-3-medium-amdnpu
 
 The demo can use ``.\ref\canny.jpg`` as the control image unless you override
-``--control_image_path``. Outputs go to ``generated_images`` unless you set
-``--output_path``.
+``--control_image_path``. Outputs are written to ``generated_images`` by default,
+unless ``--output_path`` is specified. You can redirect the output directory to
+a location where your user account has write permissions, for example:
+``--output_path C:\Users\<username>\Documents\generated_images``.
+
 
 **SD1.5 ControlNet Canny (i2i-canny)**
 
@@ -265,6 +269,9 @@ After copying SD3.0 Canny ControlNet into the SD3.5 layout as required:
 .. code-block:: powershell
 
    python .\run.py -C canny --model_id stabilityai/stable-diffusion-3.5-medium-amdnpu --prompt "Anime style illustration of a girl wearing a suit. A moon in sky. In the background we see heavy rain approaching. text 'InstantX' on image" -H 1024 -W 1024 --control_image_path .\ref\canny.jpg -n 50
+
+
+For SD3 and SD3.5 models, pass ``-O1`` (or ``--optimize_o1``) to enable a performance optimization preset that skips selected DiT denoising steps to improve inference performance.
 
 Text-to-Image
 =============
