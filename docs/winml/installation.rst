@@ -43,7 +43,10 @@ Follow these steps in order:
 
 
 .. note::
-   Windows ML VitisAI Execution Provider (EP) NuGet package is available for download at :download:`AMD.NPU.WinML.VitisAI.EP_2026_5D.nupkg <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=AMD.NPU.WinML.VitisAI.EP_2026_5D.nupkg>`.
+   Windows ML VitisAI Execution Provider (EP) NuGet package is available for download
+
+   - :download:`AMD.NPU.WinML.VitisAI.EP_2026_5D.nupkg <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=AMD.NPU.WinML.VitisAI.EP_2026_5D.nupkg>`
+   - :download:`AMD.NPU.WinML.VitisAI.EP_2026_7D.nupkg <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=AMD.NPU.WinML.VitisAI.EP_2026_7D.nupkg>`
 
 
 **************************
