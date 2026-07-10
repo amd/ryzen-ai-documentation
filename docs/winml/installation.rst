@@ -50,11 +50,11 @@ Follow these steps in order:
       :widths: auto
       :header-rows: 1
 
-      * - Package
-        - Download
-      * - AMD.NPU.WinML.VitisAI.EP_2026_5D
+      * - Version
+        - Package Download
+      * - **Release 2026.5D**
         - :download:`AMD.NPU.WinML.VitisAI.EP_2026_5D.nupkg <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=AMD.NPU.WinML.VitisAI.EP_2026_5D.nupkg>`
-      * - AMD.NPU.WinML.VitisAI.EP_2026_7D
+      * - **Release 2026.7D**
         - :download:`AMD.NPU.WinML.VitisAI.EP_2026_7D.nupkg <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=AMD.NPU.WinML.VitisAI.EP_2026_7D.nupkg>`
 
 
