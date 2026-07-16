@@ -5,10 +5,7 @@ OnnxRuntime GenAI (OGA) Flow
 Ryzen AI Software supports deploying LLMs on Ryzen AI PCs using the native ONNX Runtime Generate (OGA) C++ or Python API. The OGA API is the lowest-level API available for building LLM applications on a Ryzen AI PC. It supports the following execution modes:
 
 - Hybrid execution mode: This mode uses both the NPU and iGPU to achieve the best TTFT and TPS during the prefill and decode phases.
-- NPU-only execution mode: This mode uses the NPU exclusively for both the prefill and decode phases. Two types of NPU models are available:
-
-  - **Token Fusion models**: Support long context up to 16K tokens with no additional configuration required.
-  - **Full Fusion models**: Optimized for best performance, supporting up to 4096 total tokens (input + output).
+- NPU-only execution mode: This mode uses the NPU exclusively for both the prefill and decode phases. Two types of NPU models are available - Token Fusion (long context) and Full Fusion (best performance). See :ref:`npu_model_types` for the full comparison.
 
 ************************
 Supported Configurations
@@ -50,32 +47,39 @@ Hugging Face collection of NPU Liquid Foundation Models: https://huggingface.co/
 NPU Models: Token Fusion vs Full Fusion
 ========================================
 
-AMD provides two types of NPU models:
 
-- **Token Fusion models**: These models support long context up to 16K tokens. They are pre-built and uploaded to Hugging Face — no additional configuration is required to use long context. Simply download and run the model.
-- **Full Fusion models**: These models are optimized for best inference performance but do not support long context. The total token count (input + output) must not exceed 4096.
-
-Choose the model type based on your use case: Token Fusion for long context workloads, or Full Fusion for maximum throughput on shorter sequences.
-
-Each OGA model folder contains a ``genai_config.json`` file. This file contains various configuration settings for the model. The ``session_option`` section is where information about specific runtime dependencies is specified.
+AMD provides two types of NPU models. Choose based on your use case: Token Fusion for long-context workloads, or Full Fusion for maximum throughput on shorter sequences.
+ 
+.. list-table::
+   :header-rows: 1
+   :widths: 24 38 38
+ 
+   * -
+     - Token Fusion
+     - Full Fusion
+   * - Max context (input + output)
+     - Up to 16K tokens
+     - Up to 4096 tokens
+   * - Best for
+     - Long-context workloads
+     - Maximum throughput on shorter sequences
+ 
+Each OGA model folder contains a ``genai_config.json`` file, which holds configuration settings for the model. The ``session_option`` section is where specific runtime dependencies are specified.
 
 ************************************
 Changes Compared to Previous Release
 ************************************
 
-- OGA version is updated to v0.11.2 (Ryzen AI 1.7) from v0.9.2.2 (Ryzen AI 1.6.1).
-- For 1.7 release, a new set of hybrid and NPU models is published. Models from earlier releases are not compatible with this version. If you are using Ryzen AI 1.7, please download the updated models.
-- Two types of NPU models are now available: **Token Fusion** models (long context up to 16K tokens) and **Full Fusion** models (best performance, up to 4096 tokens).
-- Context length up to 4K tokens (combined input and output) is supported for Full Fusion NPU models. Extended context length up to 16K tokens is supported for Token Fusion NPU models and Hybrid models.
-
+- OGA version is updated to v0.14.0 (Ryzen AI 1.8) from v0.11.2 (Ryzen AI 1.7.1).
+- For 1.8 release, a new set of hybrid and NPU models is published. Models from earlier releases are not compatible with this version. If you are using Ryzen AI 1.7.1, please download the updated models.
 
 *******************
 Compatible OGA APIs
 *******************
 
-Pre-optimized hybrid or NPU LLMs can be executed using the official OGA C++ and Python APIs. The current release is compatible with OGA version 0.11.2.
+Pre-optimized hybrid or NPU LLMs can be executed using the official OGA C++ and Python APIs. The current release is compatible with OGA version 0.14.0.
 For detailed documentation and examples, refer to the official OGA repository:
-🔗 https://github.com/microsoft/onnxruntime-genai/tree/rel-0.11.2
+🔗 https://github.com/microsoft/onnxruntime-genai/tree/rel-0.14.0
 
 
 ***************************
@@ -267,28 +271,6 @@ Python Script
      python "%RYZEN_AI_INSTALLATION_PATH%\LLM\example\run_model.py" -m "Llama-2-7b-chat-hf-onnx-ryzenai-hybrid" -l 256
 
 
-.. note::
-
-   Some models may return non-printable characters in their output (for example, Qwen models), which can cause a crash while printing the output text. To avoid this, modify the provided script %RYZEN_AI_INSTALLATION_PATH%\\LLM\\example\\run_model.py by adding a text sanitization function and updating the print statement as shown below.
-
-   Add sanitize_string function:
-
-   .. code-block::
-
-      def sanitize_string(input_string):
-         return input_string.encode("charmap", "ignore").decode("charmap")
-
-
-   Update line 80 to print sanitized output:
-
-   .. code-block::
-
-      print("Output:", sanitize_string(output_text))
-
-
-   This sanitization fix will be included in the run_model.py script in the next release.
-
-
 Python Script (with Chat Template)
 ===================================
 
@@ -376,8 +358,8 @@ In addition to the full RyzenAI software stack, we also provide standalone wheel
 
 .. code-block:: bash
 
-   pip install onnxruntime-genai-directml-ryzenai==0.11.2 --extra-index-url https://pypi.amd.com/ryzenai_llm/1.7.1/windows/simple/
-	pip install model-generate==1.7.1 --extra-index-url https://pypi.amd.com/ryzenai_llm/1.7.1/windows/simple/
+   pip install onnxruntime-genai-directml-ryzenai==0.14.0 --extra-index-url https://pypi.amd.com/ryzenai_llm/1.7.1/windows/simple/
+	pip install model-generate==1.8.0 --extra-index-url https://pypi.amd.com/ryzenai_llm/1.8.0/windows/simple/
 
 3. Navigate to your working directory and download the desired Hybrid/NPU model
 
