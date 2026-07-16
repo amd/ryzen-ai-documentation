@@ -62,7 +62,7 @@ AMD provides two types of NPU models. Choose based on your use case: Token Fusio
      - Up to 4096 tokens
    * - Best for
      - Long-context workloads
-     - Maximum throughput on shorter sequences
+     - Best performance on shorter sequences
  
 Each OGA model folder contains a ``genai_config.json`` file, which holds configuration settings for the model. The ``session_option`` section is where specific runtime dependencies are specified.
 
