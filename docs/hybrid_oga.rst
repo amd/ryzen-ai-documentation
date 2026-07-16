@@ -48,7 +48,7 @@ NPU Models: Token Fusion vs Full Fusion
 ========================================
 
 
-AMD provides two types of NPU models. Choose based on your use case: Token Fusion for long-context workloads, or Full Fusion for maximum throughput on shorter sequences.
+AMD provides two types of NPU models. Choose based on your use case: Token Fusion for long-context workloads, or Full Fusion for higher throughput on shorter sequences.
  
 .. list-table::
    :header-rows: 1
@@ -62,7 +62,7 @@ AMD provides two types of NPU models. Choose based on your use case: Token Fusio
      - Up to 4096 tokens
    * - Best for
      - Long-context workloads
-     - Best performance on shorter sequences
+     - Higher throughput on shorter sequences
  
 Each OGA model folder contains a ``genai_config.json`` file, which holds configuration settings for the model. The ``session_option`` section is where specific runtime dependencies are specified.
 
@@ -71,7 +71,7 @@ Changes Compared to Previous Release
 ************************************
 
 - OGA version is updated to v0.14.0 (Ryzen AI 1.8) from v0.11.2 (Ryzen AI 1.7.1).
-- For 1.8 release, a new set of hybrid and NPU models is published. Models from earlier releases are not compatible with this version. If you are using Ryzen AI 1.7.1, please download the updated models.
+- For 1.8 release, a new set of hybrid and NPU models is published. Models from earlier releases are not compatible with this version. Please download the updated models.
 
 *******************
 Compatible OGA APIs
@@ -217,7 +217,7 @@ If the total number of tokens exceeds 4096 for a hybrid model, follow the steps 
 
    - Add ``"chunk_size":2048`` under ``search``.
 
-   .. code-block:: bash
+.. code-block:: bash
 
    "search": {
          "diversity_penalty": 0.0,
