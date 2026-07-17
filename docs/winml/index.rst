@@ -6,7 +6,7 @@ This documentation describes how to use **Windows ML on AMD Ryzen AI PCs**. It c
 
 On **Ryzen AI PCs**, Windows ML can leverage the NPU via the VitisAI Execution Provider (EP). Use the pages in the sidebar for prerequisites, installation, model deployment, execution provider configuration, examples, and troubleshooting.
 
-For the broader Ryzen AI software stack (NPU-only ONNX Runtime flow, LLMs, GPU, and more), see the `Ryzen AI Software documentation <https://ryzenai.docs.amd.com/en/latest/>`_.
+For the broader Ryzen AI software stack, see the `Ryzen AI Software documentation <https://ryzenai.docs.amd.com/en/latest/>`_.
 
 ***********
 Quick Links
