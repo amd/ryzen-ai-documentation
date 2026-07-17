@@ -12,7 +12,7 @@ import urllib.parse
 sys.path.insert(0, os.path.abspath("../_ext"))
 sys.path.insert(0, os.path.abspath(".."))
 
-project = "Windows ML on AMD Ryzen AI"
+project = "Windows ML on Ryzen AI"
 copyright = "2023-2025, Advanced Micro Devices, Inc"
 author = "Advanced Micro Devices, Inc"
 
