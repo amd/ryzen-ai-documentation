@@ -80,15 +80,19 @@ This page showcases an example of running LLM on RyzenAI NPU
   export LD_LIBRARY_PATH=/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH
   export LD_LIBRARY_PATH=deployment/lib:$LD_LIBRARY_PATH
   export RYZENAI_EP_PATH=$PWD/deployment/lib/libonnxruntime_providers_ryzenai.so
-  
+  source /opt/xilinx/xrt/setup.sh
 
 - We can now run our Model with command below:
 
 .. code-block:: bash
 
-  ./model_benchmark -i Phi-3.5-mini-instruct_rai_1.7.1_npu_4K/ -l 128 -f amd_genai_prompt.txt
+  ./model_benchmark -i Phi-3.5-mini-instruct_rai_1.7.1_npu_4K/ -l 128 -v
 
-  # Enable "-v" flag for verbose output
+   -i - Path to the ONNX model directory to benchmark
+   -l - Number of tokens in the generated prompt (Default: 16)
+   -v - Show more informational output
+   
+  # Use "./model_benchmark --help" to enable more options
 
 
 ***************
@@ -102,29 +106,29 @@ Expected output
   
  Batch size: 1, prompt tokens: 128, tokens to generate: 128
  Prompt processing (time to first token):
-        avg (us):       148056
-        avg (tokens/s): 864.536
-        p50 (us):       148143
-        stddev (us):    375.335
+        avg (us):       169860
+        avg (tokens/s): 753.562
+        p50 (us):       169022
+        stddev (us):    6108.17
         n:              5 * 128 token(s)
  Token generation:
-        avg (us):       56874.3
-        avg (tokens/s): 17.5826
-        p50 (us):       56250.6
-        stddev (us):    6743.11
+        avg (us):       20354.1
+        avg (tokens/s): 49.1301
+        p50 (us):       19964.9
+        stddev (us):    4411.67
         n:              635 * 1 token(s)
  Token sampling:
-        avg (us):       27.273
-        avg (tokens/s): 36666.3
-        p50 (us):       27.21
-        stddev (us):    0.202461
+        avg (us):       192.274
+        avg (tokens/s): 5200.91
+        p50 (us):       202.417
+        stddev (us):    76.6932
         n:              5 * 1 token(s)
  E2E generation (entire generation loop):
-        avg (ms):       7371.29
-        p50 (ms):       7378.4
-        stddev (ms):    14.3836
+        avg (ms):       2755.09
+        p50 (ms):       2747.84
+        stddev (ms):    14.0296
         n:              5
- Peak working set size (bytes): 12168941568
+ Peak working set size (bytes): 3543330816
 
 
  
