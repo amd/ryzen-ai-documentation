@@ -54,7 +54,7 @@ Windows ML
 
 **Q: Can developers pass EP provider options?**
 
-**A:** Yes. When using a specific EP (e.g., VitisAI EP), you can pass provider options via the session configuration. See :doc:`model_deployment` for examples. For VitisAI EP options, see :doc:`Model compilation and deployment <../modelrun>`.
+**A:** Yes. When using a specific EP (e.g., VitisAI EP), you can pass provider options via the session configuration. See :doc:`model_deployment` for examples. For VitisAI EP options, see :doc:`Model compilation and deployment <ryzenai:modelrun>`.
 
 **Q: Is there performance overhead when using Windows ML vs native Ryzen AI?**
 

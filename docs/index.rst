@@ -118,15 +118,7 @@ For more details, refer to the :doc:`llm/overview` page.
    :hidden:
    :caption: Windows ML on AMD Ryzen AI
 
-   winml/winml_overview.rst
-   winml/installation.rst
-   winml/model_support.rst
-   winml/model_deployment.rst
-   winml/model_conversion.rst
-   winml/winml_ep.rst
-   winml/winml_example.rst
-   winml/faq.rst
-   winml/troubleshooting.rst
+   Windows ML on AMD Ryzen AI <https://ryzenai.docs.amd.com/projects/winml/en/latest/>
 
 .. toctree::
    :maxdepth: 1

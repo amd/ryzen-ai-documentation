@@ -17,7 +17,7 @@ Prerequisites
    * - Windows
      - Windows 11 24H2 (build 26100) or greater
    * - Ryzen AI NPU
-     - Supported processor with NPU. See :ref:`supported configurations <supported-configurations>` in the release notes.
+     - Supported processor with NPU. See :ref:`supported configurations <ryzenai:supported-configurations>` in the release notes.
    * - Visual Studio (for C++)
      - Visual Studio 2022, latest version. Ensure *Desktop Development with C++* is installed.
    * - Visual Studio Code (optional)
@@ -35,7 +35,7 @@ Installation
 
 Follow these steps in order:
 
-1. **Install NPU drivers:** Follow the :doc:`RAI installation instructions <../inst>`. Download and install the NPU driver (version 32.0.203.280 or newer) from the AMD Ryzen AI driver page.
+1. **Install NPU drivers:** Follow the :doc:`RAI installation instructions <ryzenai:inst>`. Download and install the NPU driver (version 32.0.203.280 or newer) from the AMD Ryzen AI driver page.
 
 2. **Install Windows App SDK:** Windows ML is included as part of the Windows App SDK. Install the version required by your branch/sample from `Windows App SDK downloads <https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/downloads>`_.
 

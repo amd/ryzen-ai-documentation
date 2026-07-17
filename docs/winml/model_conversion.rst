@@ -49,4 +49,4 @@ References
 ***************
 
 - `VS Code AI Toolkit model conversion <https://code.visualstudio.com/docs/intelligentapps/modelconversion>`_
-- :doc:`Model quantization <../model_quantization>` (Ryzen AI Quark flow for NPU-only path)
+- :doc:`Model quantization <ryzenai:model_quantization>` (Ryzen AI Quark flow for NPU-only path)

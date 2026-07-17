@@ -23,7 +23,7 @@ Choose Windows ML when you:
 - Prefer **C#, C++, or Python** with a shared Windows-wide ONNX Runtime (smaller app size)
 - Need **hardware flexibility** select CPU, GPU, or NPU via execution policy
 
-Use **Windows AI APIs** when built-in capabilities (OCR, image description, etc.) cover your scenario. Use **Foundry Local** when you want LLMs with minimal model preparation. Use the **Ryzen AI NPU-only flow** (:doc:`../modelrun`) when you need full control over ONNX Runtime without the Windows ML stack.
+Use **Windows AI APIs** when built-in capabilities (OCR, image description, etc.) cover your scenario. Use **Foundry Local** when you want LLMs with minimal model preparation. Use the **Ryzen AI NPU-only flow** (:doc:`ryzenai:modelrun`) when you need full control over ONNX Runtime without the Windows ML stack.
 
 ***********
 Quick Links
