@@ -17,7 +17,7 @@ copyright = "2023-2025, Advanced Micro Devices, Inc"
 author = "Advanced Micro Devices, Inc"
 
 version = "1.7"
-release = "1.7.1"
+release = ""
 html_last_updated_fmt = "%b %d, %Y"
 
 html_baseurl = os.environ.get(
