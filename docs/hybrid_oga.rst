@@ -112,7 +112,6 @@ Run the following commands:
 .. code-block:: bash
 
    conda activate ryzen-ai-<version>
-   pip install torch==2.7.1
 
 This step is required for running the python script.
 
@@ -327,7 +326,11 @@ For benchmarking scripts (``vlm_benchmark.py``, ``run_all_benchmarks.py``) and d
 Building C++ Applications
 **************************************
 
-A complete example including C++ source and build instructions is available in the RyzenAI-SW repository: https://github.com/amd/RyzenAI-SW/tree/main/example/llm/oga_api
+The RyzenAI-SW repository provides a complete C++ example demonstrating how to
+load a pre-optimized OGA model, apply the chat template, and run inference using
+the OGA C++ API. It includes the full source and CMake build instructions.
+
+Repository: https://github.com/amd/RyzenAI-SW/tree/main/LLM-examples/oga_api
 
 
 ***********************
