@@ -4,9 +4,12 @@ from __future__ import annotations
 
 from pathlib import Path
 
+import sphinx.util.logging
 from sphinx.application import Sphinx
 from sphinx.config import Config
 from sphinx.errors import ExtensionError
+
+logger = sphinx.util.logging.getLogger(__name__)
 
 MARKDOWN_BUTTON = {
     "type": "link",
@@ -81,7 +84,7 @@ def _write_per_page_markdown(app: Sphinx, exception: object) -> None:
         app.config.markdown_http_base = saved_http_base
 
     if written:
-        app.info(f"Wrote {written} per-page Markdown files", type="llms")
+        logger.info("Wrote %s per-page Markdown files", written)
 
 
 def _markdown_download_url(pagename: str) -> str:

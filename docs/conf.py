@@ -115,10 +115,6 @@ def setup(app):
 rocm_docs_generate_llms = True
 rocm_docs_llms_base_url = "https://ryzenai.docs.amd.com/en/latest/"
 
-intersphinx_mapping = {
-    "winml": ("https://ryzenai.docs.amd.com/projects/winml/en/latest/", None),
-}
-
 
 # The suffix(es) of source filenames.
 # You can specify multiple suffix as a list of string:
