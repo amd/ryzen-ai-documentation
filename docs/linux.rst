@@ -62,7 +62,7 @@ Install NPU Drivers
       - xrt_202620.2.25.37_24.04-amd64-npu.deb
 
    - NPU driver package
-      - xrt_plugin.2.25.260102.57.release_24.04-amd64-amdxdna.deb
+      - xrt_plugin.2.25.260102.56.release_24.04-amd64-amdxdna.deb
 
 
 - Install NPU driver package on your machine
@@ -72,7 +72,7 @@ Install NPU Drivers
    sudo apt install --fix-broken -y ./xrt_202620.2.25.37_24.04-amd64-base.deb
    sudo apt install --fix-broken -y ./xrt_202620.2.25.37_24.04-amd64-base-dev.deb
    sudo apt install --fix-broken -y ./xrt_202620.2.25.37_24.04-amd64-npu.deb
-   sudo apt install --fix-broken -y ./xrt_plugin.2.25.260102.57.release_24.04-amd64-amdxdna.deb
+   sudo apt install --fix-broken -y ./xrt_plugin.2.25.260102.56.release_24.04-amd64-amdxdna.deb
 
 
 - Verify your Driver installation
@@ -87,7 +87,7 @@ Install NPU Drivers
   |----------------|--------------------|--------------|----------|
   |[0000:c5:00.1]  |NPU Strix           |aie2p         |6x8       |
 
-   # NPU name might differ based on your machine
+   # NPU name and Device code may differ based on your machine
 
 
 .. _install-bundled:
