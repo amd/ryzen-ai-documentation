@@ -22,7 +22,7 @@ html_last_updated_fmt = "%b %d, %Y"
 
 html_baseurl = os.environ.get(
     "READTHEDOCS_CANONICAL_URL",
-    "https://ryzenai.docs.amd.com/projects/winml/en/latest/",
+    "https://ryzenai.docs.amd.com/projects/advanced-micro-devices-windows-ml-for-ryzen-ai/en/latest/",
 )
 html_context = {}
 if os.environ.get("READTHEDOCS", "") == "True":
@@ -67,7 +67,7 @@ def setup(app):
 
 
 rocm_docs_generate_llms = True
-rocm_docs_llms_base_url = "https://ryzenai.docs.amd.com/projects/winml/en/latest/"
+rocm_docs_llms_base_url = "https://ryzenai.docs.amd.com/projects/advanced-micro-devices-windows-ml-for-ryzen-ai/en/latest/"
 
 intersphinx_mapping = {
     "ryzenai": ("https://ryzenai.docs.amd.com/en/latest/", None),
