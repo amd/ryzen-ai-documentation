@@ -35,9 +35,9 @@ For the complete list of supported pre-optimized models and their available vari
 
 Hugging Face collection of hybrid models: https://huggingface.co/collections/amd/ryzen-ai-180-hybrid
  
-Hugging Face collection of NPU Token Fusion models: https://huggingface.co/collections/amd/ryzen-ai-180-npu-16k
+Hugging Face collection of NPU long-context models (up to 16K, Token Fusion): https://huggingface.co/collections/amd/ryzen-ai-180-npu-16k
  
-Hugging Face collection of NPU Full Fusion models: https://huggingface.co/collections/amd/ryzen-ai-180-npu-4k
+Hugging Face collection of NPU best-performance models (up to 4K, Full Fusion): https://huggingface.co/collections/amd/ryzen-ai-180-npu-4k
 
 
 .. _npu_model_types:
