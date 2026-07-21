@@ -120,8 +120,7 @@ Generate the final model for Hybrid execution mode (NPU prefill phase + GPU toke
 NPU Execution Mode
 ===================
 
-Several NPU optimization levels are available depending on model support and performance requirements. Several NPU optimization levels are available depending on model support and performance
-requirements. To check which variants (full fusion, token fusion, hybrid) are supported for a given model architecture, see :doc:`llm_list`.
+Several NPU optimization levels are available depending on model support and performance requirements. To check which variants (full fusion, token fusion, hybrid) are supported for a given model architecture, see :doc:`llm_list`.
 
 **Full Fusion** (**Best performance**, recommended for `supported models <https://huggingface.co/collections/amd/ryzen-ai-180-npu-4k>`_):
 
