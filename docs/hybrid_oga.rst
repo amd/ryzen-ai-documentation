@@ -46,9 +46,10 @@ Hugging Face collection of NPU Liquid Foundation Models: https://huggingface.co/
    These Liquid Foundation Models are supported through ONNX Runtime. The OGA-based model instructions on this page do not apply to them. For run instructions, refer to the individual model cards in the collection. 
 
 
+.. _npu_model_types:
+
 NPU Models: Token Fusion vs Full Fusion
 ========================================
-
 
 AMD provides two types of NPU models. Choose based on your use case: Token Fusion for long-context workloads, or Full Fusion for higher throughput on shorter sequences.
  
