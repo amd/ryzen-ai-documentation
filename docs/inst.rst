@@ -67,18 +67,18 @@ Install NPU Drivers
 Install Ryzen AI Software
 *************************
 
-- Download the Ryzen AI Software installer :download:`ryzen-ai-lt-1.7.1.exe <https://account.amd.com/en/forms/downloads/xef.html?filename=ryzen-ai-lt-1.7.1.exe>`.
+- Download the Ryzen AI Software installer :download:`ryzen-ai-lt-1.8.0.exe <https://account.amd.com/en/forms/downloads/xef.html?filename=ryzen-ai-lt-1.8.0.exe>`.
 
 - Launch the EXE installer and follow the instructions on the installation wizard:
 
   - Accept the terms of the Licence agreement
-  - Provide the destination folder for Ryzen AI installation (default: ``C:\Program Files\RyzenAI\1.7.1``)
-  - Specify the name for the conda environment (default: ``ryzen-ai-1.7.1``)
+  - Provide the destination folder for Ryzen AI installation (default: ``C:\Program Files\RyzenAI\1.8.0``)
+  - Specify the name for the conda environment (default: ``ryzen-ai-1.8.0``)
 
 The Ryzen AI Software packages are now installed in the conda environment created by the installer.
 
 .. note::
-   NuGet package is available to download at :download:`ryzen-ai-1.7.1-nuget.zip <https://account.amd.com/en/forms/downloads/xef.html?filename=1.7.1_nuget_signed.zip>`.
+   NuGet package is available to download at :download:`ryzen-ai-1.8.0-nuget.zip <https://account.amd.com/en/forms/downloads/xef.html?filename=1.8.0_nuget_signed.zip>`.
 
 
 Ryzen AI 1.8.0 beta version is available for download at the `following link <https://download.amd.com/opendownload/RyzenAI/1.8.0b0/ryzen-ai-lt-1.8.0-beta.exe>`_. This beta version requires updated `NPU driver <https://download.amd.com/opendownload/RyzenAI/1.8.0b0/NPU_RAI_376_WHQL.zip>`_.
@@ -120,8 +120,7 @@ The Ryzen AI Software installation folder contains test to verify that the softw
 NPU Offloading with Session Options
 ===================================
 
-This section demonstrates how to enable NPU offloading logs using ONNX Runtime session options. The code also includes changes needed in ``quicktest.py`` to run on Phoenix/Hawk Point devices.  
-To view detailed logging information, update the session options in ``quicktest.py`` as shown below:
+This section demonstrates how to enable NPU offloading logs using ONNX Runtime session options. The code below includes changes needed in ``quicktest.py`` to provide detailed logging information and use the session options as shown below:
 
 .. code-block:: python
 
@@ -194,7 +193,7 @@ To view detailed logging information, update the session options in ``quicktest.
 .. code-block::
 
    cd %RYZEN_AI_INSTALLATION_PATH%/quicktest
-   python quicktest.py 2>&1 | findstr /i "VerifyEachNodeIsAssignedToAnEp | Test"
+   python quicktest.py 2>&1 | findstr /i "Vitis | NPU | Test"
 
 
 - On a successful run, you will see an output similar to the one shown below. This indicates that the model is running on the NPU and that the installation of the Ryzen AI Software was successful:
