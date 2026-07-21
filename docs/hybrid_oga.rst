@@ -286,6 +286,8 @@ This section uses a basic ``run_model.py`` sample script.
      python "%RYZEN_AI_INSTALLATION_PATH%\LLM\example\run_model.py" -m "Llama-2-7b-chat-hf-onnx-ryzenai-hybrid" -l 256
 
 
+.. _python-chat-template:
+
 Python Script (with Chat Template)
 ===================================
 
