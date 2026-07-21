@@ -33,17 +33,11 @@ AMD provides a set of pre-optimized LLMs ready to be deployed with Ryzen AI Soft
 
 For the complete list of supported pre-optimized models and their available variants, see :doc:`llm_list`.
 
-Hugging Face collection of hybrid models: https://huggingface.co/collections/amd/ryzen-ai-171-hybrid
+Hugging Face collection of hybrid models: https://huggingface.co/collections/amd/ryzen-ai-180-hybrid
  
-Hugging Face collection of NPU Token Fusion models: https://huggingface.co/collections/amd/ryzen-ai-171-npu-16k
+Hugging Face collection of NPU Token Fusion models: https://huggingface.co/collections/amd/ryzen-ai-180-npu-16k
  
-Hugging Face collection of NPU Full Fusion models: https://huggingface.co/collections/amd/ryzen-ai-171-npu-4k
-
-Hugging Face collection of NPU Liquid Foundation Models: https://huggingface.co/collections/amd/ryzen-ai-171-npu-lfm2-models
-
-.. note:: 
-
-   These Liquid Foundation Models are supported through ONNX Runtime. The OGA-based model instructions on this page do not apply to them. For run instructions, refer to the individual model cards in the collection. 
+Hugging Face collection of NPU Full Fusion models: https://huggingface.co/collections/amd/ryzen-ai-180-npu-4k
 
 
 .. _npu_model_types:
