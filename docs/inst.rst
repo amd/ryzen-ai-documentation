@@ -117,8 +117,8 @@ The Ryzen AI Software installation folder contains test to verify that the softw
 - Verify NPU activity by opening **Task Manager → Performance → NPU** while the test is running. You should see NPU utilization increase during model inference.
 
 
-NPU Offloading with Session Options
-===================================
+Enable Logging for NPU Offloading
+=================================
 
 This section demonstrates how to enable NPU offloading logs using ONNX Runtime session options. The code below includes changes needed in ``quicktest.py`` to provide detailed logging information and use the session options as shown below:
 
