@@ -108,12 +108,6 @@ Copy the quantized model to the Windows PC with Ryzen AI installed, and activate
 
     conda activate ryzen-ai-<version>
 
-Install the ``model-generate`` package:
-
-.. code-block::
-
-    pip install model-generate==1.8.0 --force-reinstall --no-deps --extra-index-url https://pypi.amd.com/ryzenai_llm/1.8.0/windows/simple/
-
 Hybrid Execution Mode
 =====================
 
