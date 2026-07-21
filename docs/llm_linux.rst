@@ -60,19 +60,6 @@ This page showcases an example of running LLM on RyzenAI NPU
 
   amd_genai_prompt.txt   deployment   model_benchmark   Phi-3.5-mini-instruct_rai_1.7.1_npu_4K
 
-- Create a new file for XRT Drivers named "xrt.ini"
-
-.. code-block:: bash
-
-      - vi xrt.ini            (Creates a new file)
-    
-      - Add below lines to the file and save it
-          [Debug]
-          num_heap_pages = 8  
-
-      - Set XRT_INI_PATH to point to this file
-          export XRT_INI_PATH=$PWD/xrt.ini
-  
 - Lastly, set required library path
 
 .. code-block:: bash
