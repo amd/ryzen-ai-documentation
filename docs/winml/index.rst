@@ -21,7 +21,7 @@ Quick Links
 .. toctree::
    :maxdepth: 2
    :hidden:
-   :caption: Windows ML on AMD Ryzen AI
+   :caption: Windows ML on Ryzen AI
 
    Windows ML Overview <winml_overview>
    installation
