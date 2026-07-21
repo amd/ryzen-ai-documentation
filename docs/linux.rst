@@ -104,8 +104,8 @@ Install Ryzen AI Software
    cp ryzen_ai-1.8.0.tgz ryzen_ai-1.8.0
 
    cd ryzen_ai-1.8.0
-   tar -xvzf ryzen_ai-1.8.0.tgz 
-   
+   tar -xvzf ryzen_ai-1.8.0.tgz
+
 
 - Install RyzenAI package at your desired target path
 
@@ -117,7 +117,7 @@ Install Ryzen AI Software
 - This will successfully install RyzenAI and activate the Virtual environment at your target location
 
 .. code-block:: bash
-   
+
    # Validate your installation path
    echo $RYZEN_AI_INSTALLATION_PATH
 

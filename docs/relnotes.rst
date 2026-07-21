@@ -10,7 +10,7 @@ Release Notes
 Supported Configurations
 ************************
 
-Ryzen AI 1.7 Software supports AMD processors codenamed Phoenix, Hawk Point, Strix, Strix Halo, and Krackan Point. These processors can be found in the following Ryzen series:
+Ryzen AI 1.8 Software supports AMD processors codenamed Phoenix, Hawk Point, Strix, Strix Halo, and Krackan Point. These processors can be found in the following Ryzen series:
 
 - Ryzen 200 Series
 - Ryzen 7000 Series, Ryzen PRO 7000 Series
@@ -47,6 +47,35 @@ The following table lists which types of models are supported on what hardware p
      -
      - |checkmark|
 
+***********
+Version 1.8
+***********
+- LLM
+
+  - 8 new LLM and VLM support: Hunyuan-0.5B-Instruct, Hunyuan-1.8B-Instruct, Hunyuan-4B-Instruct, Hunyuan-7B-Instruct, HY-MT1.5-1.8B, HY-MT1.5-7B, VideoChat-Flash-Qwen2_5-7B_InternVideo2-1B, Qwen3-VL-4B-Instruct
+  - New TTS model support: neutts-air, neutts-nano
+  - New embedding model support: embeddinggemma-300m
+  - New translation model support: translategemma-4b-it
+
+- Stable Diffusion
+
+  - New models, new applications, more dynamic resolutions
+
+    - SD1.5 i2i-canny
+    - SDXL-turbo t2i with 5x Dynamic Resolutions
+    - SDXL-base t2i with 20x Dynamic Resolutions
+    - SSD-1B t2i with 20x Dynamic Resolutions
+    - Playground v2.5 t2i with 20x Dynamic Resolutions
+    - DreamShaper-XL-Lightning t2i with 20x Dynamic Resolutions
+    - FLUX.1-Schnell t2i with 20x Dynamic Resolutions
+    - SD3.0-medium t2i with 20x Dynamic Resolutions
+    - SD3.5-medium t2i with 20x Dynamic Resolutions
+    - SD3.0-inpainting
+    - Flux.2-Klein-4B t2i
+
+  - Performance optimizations with -O1 for SD3.x models
+  - Support running large models on low-memory machine
+
 *************
 Version 1.7.1
 *************
@@ -69,11 +98,11 @@ Version 1.7.1
 Version 1.7
 ***********
 
-- CNN/Transformer 
+- CNN/Transformer
 
   - General Performance improvements (Avg 15-20% improvements expected)
   - ~40% Compile time improvement for transformer models
-  - Whisper.cpp integration enabling scalable ASR support 
+  - Whisper.cpp integration enabling scalable ASR support
 
 - LLM
 

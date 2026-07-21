@@ -13,14 +13,15 @@ For more details, see the `Windows ML official documentation <https://learn.micr
 Running CNN/Transformer models on NPU
 ***************************************
 
-Windows ML provides a streamlined workflow for deploying CNN and Transformer models on Ryzen AI PCs. Users can either use the original float model with automatic BF16 conversion, or use AI Toolkit for model quantization (QDQ format).
-
+Windows ML provides a streamlined workflow for deploying CNN and Transformer models on Ryzen AI PCs. Users can either use the original float model with automatic BF16 conversion, or use Foundry Toolkit for model quantization (QDQ format).
 
 Windows ML workflow
 ===================
 
 .. image:: ../images/winml-workflow.png
    :align: center
+
+For more details about different Windows ML based model deployment options, see `Install and deploy Windows ML | Microsoft Learn <https://learn.microsoft.com/en-us/windows/ai/new-windows-ml/distributing-your-app?tabs=csharp>`_.
 
 **Step 1:** Download the Original Float Model
 
