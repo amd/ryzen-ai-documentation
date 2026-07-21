@@ -31,6 +31,8 @@ Pre-optimized Models
 
 AMD provides a set of pre-optimized LLMs ready to be deployed with Ryzen AI Software and the supporting runtime for hybrid and/or NPU-only execution. These include popular architectures such as Llama-2, Llama-3, Mistral, DeepSeek Distill models, Qwen-2, Qwen-2.5, Qwen-3, Gemma-2, Gemma-3, GPT-OSS, Phi-3, Phi-3.5, and Phi-4. 
 
+For the complete list of supported pre-optimized models and their available variants, see :doc:`llm_list`.
+
 Hugging Face collection of hybrid models: https://huggingface.co/collections/amd/ryzen-ai-171-hybrid
  
 Hugging Face collection of NPU Token Fusion models: https://huggingface.co/collections/amd/ryzen-ai-171-npu-16k
@@ -44,9 +46,10 @@ Hugging Face collection of NPU Liquid Foundation Models: https://huggingface.co/
    These Liquid Foundation Models are supported through ONNX Runtime. The OGA-based model instructions on this page do not apply to them. For run instructions, refer to the individual model cards in the collection. 
 
 
+.. _npu_model_types:
+
 NPU Models: Token Fusion vs Full Fusion
 ========================================
-
 
 AMD provides two types of NPU models. Choose based on your use case: Token Fusion for long-context workloads, or Full Fusion for higher throughput on shorter sequences.
  
@@ -258,6 +261,12 @@ If the total number of tokens exceeds 4096 for a hybrid model, follow the steps 
 Python Script
 =============
 
+This section uses a basic ``run_model.py`` sample script.
+ 
+.. note::
+ 
+   ``run_model.py`` does not apply a chat template. If your model uses a chat template, use :ref:`Python Script (with Chat Template) <python-chat-template>` (``model_chat.py``) instead for more accurate output.
+
 1. Navigate to your working directory and download model.
 
 .. code-block:: bash
@@ -277,6 +286,8 @@ Python Script
      :: Example command
      python "%RYZEN_AI_INSTALLATION_PATH%\LLM\example\run_model.py" -m "Llama-2-7b-chat-hf-onnx-ryzenai-hybrid" -l 256
 
+
+.. _python-chat-template:
 
 Python Script (with Chat Template)
 ===================================
