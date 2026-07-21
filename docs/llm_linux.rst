@@ -77,8 +77,7 @@ This page showcases an example of running LLM on RyzenAI NPU
 
 .. code-block:: bash
 
-  export LD_LIBRARY_PATH=/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH
-  export LD_LIBRARY_PATH=deployment/lib:$LD_LIBRARY_PATH
+  export LD_LIBRARY_PATH=/lib/x86_64-linux-gnu:deployment/lib:$LD_LIBRARY_PATH
   export RYZENAI_EP_PATH=$PWD/deployment/lib/libonnxruntime_providers_ryzenai.so
   source /opt/xilinx/xrt/setup.sh
 
