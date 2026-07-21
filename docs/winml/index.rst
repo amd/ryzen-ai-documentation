@@ -65,7 +65,7 @@ External Resources
 .. toctree::
    :maxdepth: 2
    :hidden:
-   :caption: Windows ML on AMD Ryzen AI
+   :caption: Windows ML on Ryzen AI
 
    installation
    model_support

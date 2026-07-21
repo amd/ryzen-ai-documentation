@@ -1,10 +1,10 @@
 ##############################################
-Model Conversion and Quantization (AI Toolkit)
+Model Conversion and Quantization (Foundry Toolkit)
 ##############################################
 
-The **AI Toolkit (AITK)** for Visual Studio Code is the primary tool for model conversion and quantization when preparing models for Windows ML on Ryzen AI.
+The **Foundry Toolkit (Foundry TK)** for Visual Studio Code is the primary tool for model conversion and quantization when preparing models for Windows ML on Ryzen AI.
 
-AITK supports:
+Foundry TK supports:
 
 - **Model conversion:** Export models from PyTorch, TensorFlow, and other frameworks to ONNX
 - **Model quantization:** Convert to QDQ (Quantize-Dequantize) format for lower precision inference
@@ -35,7 +35,7 @@ Recommended Precision Settings by Model Type:
 Device Evaluation
 *****************
 
-You can evaluate quantized models on CPU, GPU, or NPU to compare accuracy and performance before deployment.
+Evaluate quantized models across CPU, GPU, or NPU to validate accuracy and performance before deploying to production.
 
 *****************
 Known Limitations
@@ -48,5 +48,5 @@ Known Limitations
 References
 ***************
 
-- `VS Code AI Toolkit model conversion <https://code.visualstudio.com/docs/intelligentapps/modelconversion>`_
-- :doc:`Model quantization <ryzenai:model_quantization>` (Ryzen AI Quark flow for NPU-only path)
+- `VS Code Foundry Toolkit model conversion <https://code.visualstudio.com/docs/intelligentapps/modelconversion>`_
+- :doc:`Model quantization <ryzenai:model_quantization>` (Using AMD-Quark flow for RyzenAI NPU deployment)
