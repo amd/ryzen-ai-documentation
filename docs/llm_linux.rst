@@ -12,6 +12,7 @@ This page showcases an example of running LLM on RyzenAI NPU
   cd run_llm
 
 - Here is an Overview of all supported Models :doc:`List of Supported Models <llm_linux.rst>` 
+  (Note - Linux does not support Hybrid flow)
 
 - Choose any prequantized and postprocessed ready-to-run Model from Hugging Face collection of NPU models
 
