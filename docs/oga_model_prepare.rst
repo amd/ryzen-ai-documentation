@@ -184,7 +184,7 @@ Here are simple commands to export an OGA model from a quantized model using a s
     pip install ....
 
 
-    python3 -m onnxruntime_genai.models.builder -m <input quantized model> -o <output OGA model> -p int4 -e cpu 
+    python3 -m onnxruntime_genai.models.builder -m <input quantized model> -o <output OGA model> -p int4 -e dml 
 
 
 
