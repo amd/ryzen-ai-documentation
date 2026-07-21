@@ -200,9 +200,17 @@ This section demonstrates how to enable NPU offloading logs using ONNX Runtime s
 
 .. code-block::
 
-  [V:onnxruntime:, session_state.cc:1296 onnxruntime::VerifyEachNodeIsAssignedToAnEp] Node placements
-  [V:onnxruntime:, session_state.cc:1299 onnxruntime::VerifyEachNodeIsAssignedToAnEp]  All nodes placed on [VitisAIExecutionProvider]. Number of nodes: 3
-  Test Finished
+    [I:onnxruntime:, stat.cpp:198 stat.cpp] [Vitis AI EP] No. of Operators :
+    [I:onnxruntime:, stat.cpp:198 stat.cpp]    NPU   398
+    [I:onnxruntime:, stat.cpp:198 stat.cpp] VITIS_EP_CPU     2
+    [I:onnxruntime:, stat.cpp:198 stat.cpp] [Vitis AI EP] No. of Subgraphs :
+    [I:onnxruntime:, stat.cpp:198 stat.cpp]    NPU     1
+    [I:onnxruntime:, stat.cpp:198 stat.cpp] Actually running on NPU      1
+    [I:onnxruntime:, vitisai_compile_model.cpp:1488 vitisai_compile_model.cpp] AVG CPU Usage 4.93969%
+    [I:onnxruntime:, vitisai_compile_model.cpp:1489 vitisai_compile_model.cpp] Peak Working Set size 565.277 MB
+    [V:onnxruntime:, session_state.cc:1350 onnxruntime::VerifyEachNodeIsAssignedToAnEp]  All nodes placed on [VitisAIExecutionProvider]. Number of nodes: 3
+    [I:onnxruntime:, unzip.hpp:18 unzip.hpp] inflateInit successful, available input: 137827
+    Test finished
 
 .. note::
 
