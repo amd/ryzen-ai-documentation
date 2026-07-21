@@ -10,7 +10,7 @@ Release Notes
 Supported Configurations
 ************************
 
-Ryzen AI 1.7 Software supports AMD processors codenamed Phoenix, Hawk Point, Strix, Strix Halo, and Krackan Point. These processors can be found in the following Ryzen series:
+Ryzen AI 1.8 Software supports AMD processors codenamed Phoenix, Hawk Point, Strix, Strix Halo, and Krackan Point. These processors can be found in the following Ryzen series:
 
 - Ryzen 200 Series
 - Ryzen 7000 Series, Ryzen PRO 7000 Series
@@ -57,10 +57,10 @@ Version 1.8
   - New embedding model support: embeddinggemma-300m
   - New translation model support: translategemma-4b-it
 
-- Stable Diffusion 
+- Stable Diffusion
 
   - New models, new applications, more dynamic resolutions
-    
+
     - SD1.5 i2i-canny
     - SDXL-turbo t2i with 5x Dynamic Resolutions
     - SDXL-base t2i with 20x Dynamic Resolutions
@@ -98,11 +98,11 @@ Version 1.7.1
 Version 1.7
 ***********
 
-- CNN/Transformer 
+- CNN/Transformer
 
   - General Performance improvements (Avg 15-20% improvements expected)
   - ~40% Compile time improvement for transformer models
-  - Whisper.cpp integration enabling scalable ASR support 
+  - Whisper.cpp integration enabling scalable ASR support
 
 - LLM
 
