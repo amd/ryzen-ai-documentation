@@ -11,6 +11,8 @@ This page showcases an example of running LLM on RyzenAI NPU
   mkdir run_llm
   cd run_llm
 
+- Here is an Overview of all supported Models :doc:`List of Supported Models <llm_linux.rst>` 
+
 - Choose any prequantized and postprocessed ready-to-run Model from Hugging Face collection of NPU models
 
 .. parsed-literal::
@@ -18,7 +20,6 @@ This page showcases an example of running LLM on RyzenAI NPU
     `Models with 4K Context length <https://huggingface.co/collections/amd/ryzen-ai-171-npu-4k>`_
 
     `Models with 16K Context length <https://huggingface.co/collections/amd/ryzen-ai-171-npu-16k>`_
-
 
 - For this flow, "Phi-3.5-mini-instruct_rai_1.7.1_npu_4K" is chosen for reference
 .. code-block::
@@ -72,11 +73,10 @@ This page showcases an example of running LLM on RyzenAI NPU
 
 .. code-block:: bash
 
-  ./model_benchmark -i Phi-3.5-mini-instruct_rai_1.7.1_npu_4K/ -l 128 -v
+  ./model_benchmark -i Phi-3.5-mini-instruct_rai_1.7.1_npu_4K/ -l 128 
 
    -i - Path to the ONNX model directory to benchmark
    -l - Number of tokens in the generated prompt (Default: 16)
-   -v - Show more informational output
    
   # Use "./model_benchmark --help" to enable more options
 
@@ -124,14 +124,8 @@ Expected output
 Preparing OGA Model
 *******************
 
-Install "model_generate" package in current virtual environment
-
-.. code-block:: bash
-
-  pip install model-generate==1.7.1 --force-reinstall --no-deps --extra-index-url https://pypi.amd.com/ryzenai_llm/1.7.1/linux/simple/
-
-
-Currently Linux supports NPU only flow. Read more on Model Generation by visiting :doc:`Preparing OGA Models <oga_model_prepare>`
+Model Generate is not supported in current release. Choose any prequantized and postprocessed ready-to-run Model from the provided list.
+Read more on Windows specific Model Generation by visiting :doc:`Preparing OGA Models <oga_model_prepare>`
 
 
   
