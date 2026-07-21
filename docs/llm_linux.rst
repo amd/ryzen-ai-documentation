@@ -17,9 +17,9 @@ This page showcases an example of running LLM on RyzenAI NPU
 
 .. parsed-literal::
 
-    `Models with 4K Context length <https://huggingface.co/collections/amd/ryzen-ai-171-npu-4k>`_
+    `Full-optimized Models with 4K Context length <https://huggingface.co/collections/amd/ryzen-ai-180-npu-4k>`_
 
-    `Models with 16K Context length <https://huggingface.co/collections/amd/ryzen-ai-171-npu-16k>`_
+    `Long-context Models with 16K Context length <https://huggingface.co/collections/amd/ryzen-ai-180-npu-16k>`_
 
 - For this flow, "Phi-3.5-mini-instruct_rai_1.7.1_npu_4K" is chosen for reference
 .. code-block::
@@ -128,6 +128,19 @@ Model Generate is not supported in current release. Choose any prequantized and 
 Read more on Windows specific Model Generation by visiting :doc:`Preparing OGA Models <oga_model_prepare>`
 
 
-  
+************
+Limitations
+************
 
+For some Models, the memory requirement is more than system default. Use the command below to change it to "unlimited"
+
+.. code-block:: bash
+
+ sudo tee /etc/security/limits.d/99-memlock.conf >/dev/null <<'EOF'
+ *    soft    memlock    unlimited
+ *    hard    memlock    unlimited
+ EOF
+ 
+ # execute the command to verify 
+ ulimit -l
 
