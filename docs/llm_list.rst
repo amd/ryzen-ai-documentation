@@ -63,7 +63,7 @@
      - LLM
      - hybrid, full-optimized, long-context
    * - 13
-     - Qwen-2.5_1.5B_Instruct
+     - Qwen2.5_1.5B_Instruct
      - LLM
      - hybrid, full-optimized, long-context
    * - 14
