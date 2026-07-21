@@ -33,11 +33,11 @@ AMD provides a set of pre-optimized LLMs ready to be deployed with Ryzen AI Soft
 
 For the complete list of supported pre-optimized models and their available variants, see :doc:`llm_list`.
 
-Hugging Face collection of hybrid models: https://huggingface.co/collections/amd/ryzen-ai-180-hybrid
+- Hugging Face collection of **hybrid models**: https://huggingface.co/collections/amd/ryzen-ai-180-hybrid
  
-Hugging Face collection of NPU long-context models (up to 16K, Token Fusion): https://huggingface.co/collections/amd/ryzen-ai-180-npu-16k
+- Hugging Face collection of **NPU long-context models** (up to 16K, Token Fusion): https://huggingface.co/collections/amd/ryzen-ai-180-npu-16k
  
-Hugging Face collection of NPU best-performance models (up to 4K, Full Fusion): https://huggingface.co/collections/amd/ryzen-ai-180-npu-4k
+- Hugging Face collection of **NPU best-performance models** (up to 4K, Full Fusion): https://huggingface.co/collections/amd/ryzen-ai-180-npu-4k
 
 
 .. _npu_model_types:
