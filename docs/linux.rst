@@ -169,12 +169,13 @@ Note
 ******
 
 Before running the above examples - 
-   - RyzenAI creates its own Python Virtual Environment to run the examples. You can skip conda environment instruction as they are Windows specific only
+   - RyzenAI-SW repo hosts a diverse set of examples with both NPU and iGPU Execution Provider. However, Linux currently supports NPU only flow. 
+   - RyzenAI creates its own Python Virtual Environment to run the examples. Skip conda environment instruction as they are Windows specific only
    - Ensure to activate Linux based Python Virtual Environment 
 
-.. code-block:: bash
+     .. code-block:: bash
 
-   source <TARGET-PATH>/venv/bin/activate
+      source <TARGET-PATH>/venv/bin/activate
 
 =============================
 Get NPU Info for your Machine
