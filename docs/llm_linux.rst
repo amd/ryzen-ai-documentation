@@ -124,8 +124,8 @@ Expected output
 Preparing OGA Model
 *******************
 
-Model Generate is not supported in current release. Choose any prequantized and postprocessed ready-to-run Model from the provided list.
-Read more on Windows specific Model Generation by visiting :doc:`Preparing OGA Models <oga_model_prepare>`
+- Model Generate is not supported in current release. Choose any prequantized and postprocessed ready-to-run Model from the provided list.
+- Read more on Windows specific Model Generation by visiting :doc:`Preparing OGA Models <oga_model_prepare>`
 
 
 ************
