@@ -2,6 +2,9 @@
 1.8 LLM-based Model List
 ########################
 
+1. Full-optimized models are fully fused model which currently support 4K context length
+2. long-context models are not fully optimized, and currently supports longer context length <= 16K
+3. hybrid models runs prefill phase on NPU and decode phase on GPU
 
 .. list-table::
    :header-rows: 1
