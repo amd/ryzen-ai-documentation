@@ -112,7 +112,7 @@ Install the ``model-generate`` package:
 
 .. code-block::
 
-    pip install model-generate==1.7.1 --force-reinstall --no-deps --extra-index-url https://pypi.amd.com/ryzenai_llm/1.7.1/windows/simple/
+    pip install model-generate==1.8.0 --force-reinstall --no-deps --extra-index-url https://pypi.amd.com/ryzenai_llm/1.8.0/windows/simple/
 
 Hybrid Execution Mode
 =====================
@@ -134,13 +134,12 @@ Several NPU optimization levels are available depending on model support and per
 
    model_generate --npu --full_fusion --input <quantized_model_path> --output <output_dir>
 
-**Token Fusion** (better tokens-per-second):
+**Token Fusion** (better tokens-per-second, supports long-context):
 
 .. code-block::
 
-   model_generate --npu --token_fusion --input <quantized_model_path> --output <output_dir>
-
-**Note:** Token Fusion currently supports generating models with a 4K context length only. For longer context lengths (e.g., 16K), use the pre-built models available on `Hugging Face <https://huggingface.co/collections/amd/ryzen-ai-171-npu-16k>`_.
+   :: 16K context
+   model_generate --npu --token_fusion --input <quantized_model_path> --output <output_dir> --extra_options max_seq_len=16384
 
 **Basic** (safe default for new or untested models):
 
@@ -176,7 +175,7 @@ Add ``--mem_optimize`` to any recipe to optimize for 16 GB laptop configurations
 
    model_generate --npu --token_fusion --mem_optimize --input <quantized_model_path> --output <output_dir>
 
-**Note**: During the ``model_generate`` step, the quantized model is first converted to an OGA model using ONNX Runtime GenAI Model Builder (version 0.11.2). It is possible to use a standalone environment for exporting an OGA model, refer to the official `ONNX Runtime GenAI Model Builder documentation <https://github.com/microsoft/onnxruntime-genai/tree/main/src/python/py/models>`_. Once you have an exported OGA model, you can pass it directly to the ``model_generate`` command with ``--input``, which will skip the export step and perform only the post-processing.
+**Note**: During the ``model_generate`` step, the quantized model is first converted to an OGA model using ONNX Runtime GenAI Model Builder (version 0.14.0). It is possible to use a standalone environment for exporting an OGA model, refer to the official `ONNX Runtime GenAI Model Builder documentation <https://github.com/microsoft/onnxruntime-genai/tree/main/src/python/py/models>`_. Once you have an exported OGA model, you can pass it directly to the ``model_generate`` command with ``--input``, which will skip the export step and perform only the post-processing.
 
 Here are simple commands to export an OGA model from a quantized model using a standalone environment:
 
@@ -186,12 +185,12 @@ Here are simple commands to export an OGA model from a quantized model using a s
     conda activate oga_builder_env
 
 
-    pip install onnxruntime-genai==0.11.2
+    pip install onnxruntime-genai==0.14.0
     # pip install other necessary packages
     pip install ....
 
 
-    python3 -m onnxruntime_genai.models.builder -m <input quantized model> -o <output OGA model> -p int4 -e dml 
+    python3 -m onnxruntime_genai.models.builder -m <input quantized model> -o <output OGA model> -p int4 -e cpu 
 
 
 
