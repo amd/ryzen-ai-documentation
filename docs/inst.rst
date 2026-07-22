@@ -50,8 +50,8 @@ Install NPU Drivers
 
   - :download:`NPU Driver (Version 32.0.203.280) <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=NPU_RAI1.5_280_WHQL.zip>`
 
-    - NPU driver 32.0.203.280 is production driver for Phoenix, Hawk Point, Strix, Strix Halo, and Krackan Point.
-  - :download:`NPU Driver (Version 32.0.203.314) <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=NPU_RAI1.6.1_314_WHQL.zip>`
+    - NPU driver 32.0.203.376 is production driver for Phoenix, Hawk Point, Strix, Strix Halo, and Krackan Point.
+  - :download:`NPU Driver (Version 32.0.203.376) <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=NPU_RAI_376_WHQL.zip>`
 
 - Install the NPU drivers by following these steps:
 
@@ -67,7 +67,7 @@ Install NPU Drivers
 Install Ryzen AI Software
 *************************
 
-- Download the Ryzen AI Software installer :download:`ryzen-ai-lt-1.8.0.exe <https://account.amd.com/en/forms/downloads/xef.html?filename=ryzen-ai-lt-1.8.0.exe>`.
+- Download the Ryzen AI Software installer :download:`ryzen-ai-1.8.0.exe <https://account.amd.com/en/forms/downloads/xef.html?filename=ryzen-ai-1.8.0.exe>`.
 
 - Launch the EXE installer and follow the instructions on the installation wizard:
 
@@ -78,7 +78,7 @@ Install Ryzen AI Software
 The Ryzen AI Software packages are now installed in the conda environment created by the installer.
 
 .. note::
-   NuGet package is available to download at :download:`ryzen-ai-1.8.0-nuget.zip <https://account.amd.com/en/forms/downloads/xef.html?filename=1.8.0_nuget_signed.zip>`.
+   NuGet package is available to download at :download:`ryzen_ai_nuget_1.8.0.zip <https://account.amd.com/en/forms/downloads/xef.html?filename=ryzen_ai_nuget_1.8.0.zip>`.
 
 
 
