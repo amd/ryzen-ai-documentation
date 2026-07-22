@@ -48,7 +48,7 @@ Install NPU Drivers
 
 - Download and Install the NPU driver version: 32.0.203.280 or newer using the following links:
 
-  - :download:`NPU Driver (Version 32.0.203.280) <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=NPU_RAI1.5_280_WHQL.zip>`
+  - :download:`NPU Driver (Version 32.0.203.280) <https://download.amd.com/opendownload/RyzenAI/Driver/NPU_RAI1.5_280_WHQL.zip>`
 
     - NPU driver 32.0.203.376 is production driver for Phoenix, Hawk Point, Strix, Strix Halo, and Krackan Point.
   - :download:`NPU Driver (Version 32.0.203.376) <https://download.amd.com/opendownload/RyzenAI/Driver/NPU_RAI_376_WHQL.zip>`
