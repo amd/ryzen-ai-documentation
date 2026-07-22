@@ -76,6 +76,21 @@ Version 1.8
   - Performance optimizations with -O1 for SD3.x models
   - Support running large models on low-memory machine
 
+- Known Issues
+
+  - LLM
+
+    - The following models are not available in the current release and will be published in a future update:
+
+        - Full Fusion: Qwen2.5-14B, Qwen2.5-14B-Instruct, Qwen3-0.6B, Qwen3-14B
+        - TPS Fusion: Phi-3-mini-128k-instruct (Linux only)
+
+    - Model generation is not supported on Linux in this release. Models generated on Windows are compatible with the Linux
+
+    - BF16 Models
+
+      - The ``openai-whisper-medium-encoder`` model requires the following additional compiler option ``FE_EXPERIMENT+=enable-binary-blob-inputs=0`` in the BF16 config file
+
 *************
 Version 1.7.1
 *************
