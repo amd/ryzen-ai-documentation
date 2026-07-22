@@ -82,8 +82,8 @@ Version 1.8
 
     - The following models are not available in the current release and will be published in a future update:
 
-        - Full Fusion: Qwen2.5-14B, Qwen2.5-14B-Instruct, Qwen3-0.6B, Qwen3-14B
-        - TPS Fusion: Phi-3-mini-128k-instruct is only available on Windows
+      - Full Fusion: Qwen2.5-14B, Qwen2.5-14B-Instruct, Qwen3-0.6B, Qwen3-14B
+      - TPS Fusion: Phi-3-mini-128k-instruct is only available on Windows
 
     - Model generation is not supported on Linux in this release. Models generated on Windows are compatible with the Linux
 
