@@ -87,9 +87,9 @@ Version 1.8
 
     - Model generation is not supported on Linux in this release. Models generated on Windows are compatible with the Linux
 
-    - BF16 Models
+  - BF16 Models
 
-      - The ``openai-whisper-medium-encoder`` model requires the following additional compiler option ``FE_EXPERIMENT+=enable-binary-blob-inputs=0`` in the BF16 config file
+    - The ``openai-whisper-medium-encoder`` model requires the following additional compiler option ``FE_EXPERIMENT+=enable-binary-blob-inputs=0`` in the BF16 config file
 
 *************
 Version 1.7.1
