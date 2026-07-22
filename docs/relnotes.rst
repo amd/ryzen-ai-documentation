@@ -76,6 +76,8 @@ Version 1.8
   - Performance optimizations with -O1 for SD3.x models
   - Support running large models on low-memory machine
 
+- Whisper.cpp: Improved short-audio transcription speed, with 3-second audio RTF reduced to 13.9% (Whisper small) and 33.7% (Whisper large-v3-turbo)
+
 - Known Issues
 
   - LLM
