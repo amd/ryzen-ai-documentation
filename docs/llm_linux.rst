@@ -33,10 +33,12 @@ This page showcases an example of running LLM on RyzenAI NPU
 
 .. code-block:: bash
 
-  # Activate the virtual environment created in Linux Installation step
-  source <TARGET-PATH>/venv/bin/activate
+  # Activate the RyzenAI virtual environment and load the XRT Utils
+    source <TARGET-PATH>/venv/bin/activate
+    source /opt/xilinx/xrt/setup.sh
 
-  echo $RYZEN_AI_INSTALLATION_PATH
+  # Search for your RyzenAI Installation Path
+    echo $RYZEN_AI_INSTALLATION_PATH
 
 - Collecting the necessary files to get in current working directory
 
@@ -44,15 +46,15 @@ This page showcases an example of running LLM on RyzenAI NPU
 
   - Deployment folder - This has necessary libraries to run LLM Model
       # Navigate to <TARGET-PATH>/venv and copy the "deployment" folder
-      cp -r <TARGET-PATH>/venv/deployment .
+        cp -r <TARGET-PATH>/venv/deployment .
 
   - Model Benchmark Script 
       # Navigate to <TARGET-PATH>/venv/LLM/examples/ and copy "model_benchmark" file.
-      cp <TARGET-PATH>/venv/LLM/examples/model_benchmark .
+        cp <TARGET-PATH>/venv/LLM/examples/model_benchmark .
 
   - Prompt file - Input to your LLM Model
       # Navigate to <TARGET-PATH>/venv/LLM/examples/ and copy "amd_genai_prompt.txt" file.
-      cp <TARGET-PATH>/venv/LLM/examples/amd_genai_prompt.txt .
+        cp <TARGET-PATH>/venv/LLM/examples/amd_genai_prompt.txt .
 
                                     
 - Current working directory should have below files
@@ -67,7 +69,6 @@ This page showcases an example of running LLM on RyzenAI NPU
 
   export LD_LIBRARY_PATH=/lib/x86_64-linux-gnu:deployment/lib:$LD_LIBRARY_PATH
   export RYZENAI_EP_PATH=$PWD/deployment/lib/libonnxruntime_providers_ryzenai.so
-  source /opt/xilinx/xrt/setup.sh
 
 - We can now run our Model with command below:
 
