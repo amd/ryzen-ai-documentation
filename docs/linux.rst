@@ -180,11 +180,13 @@ Note
 Before running the above examples - 
    - RyzenAI-SW repo hosts a diverse set of examples with both NPU and iGPU Execution Provider. However, Linux currently supports NPU only flow. 
    - RyzenAI creates its own Python Virtual Environment to run the examples. Skip conda environment instruction as they are Windows specific only
-   - Ensure to activate Linux based Python Virtual Environment 
+   - Ensure to activate Linux based Python Virtual Environment and load necessary XRT Utils 
 
      .. code-block:: bash
 
       source <TARGET-PATH>/venv/bin/activate
+
+      source /opt/xilinx/xrt/setup.sh
 
 =============================
 Get NPU Info for your Machine
