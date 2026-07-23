@@ -177,7 +177,7 @@ During the Python and C++ deployment, the compiler saves the compiled model arti
 Deployment - Python
 ===========================
 
-The ``predict.py`` script is used to deploy the model. It extracts the first ten images from the CIFAR-10 test dataset and converts them to the .png format. The script then reads all those ten images and classifies them by running the quantized custom ResNet model on CPU or NPU.
+The ``predict.py`` script deploys the model. It extracts the first ten images from the CIFAR-10 test dataset and converts them to the .png format. The script then reads all those ten images and classifies them by running the quantized custom ResNet model on CPU or NPU.
 
 Deploy the Model on the CPU
 ----------------------------
@@ -209,7 +209,6 @@ Deploy the Model on the Ryzen AI NPU
 
 To successfully run the model on the NPU, follow these setup steps:
 
-- Ensure ``RYZEN_AI_INSTALLATION_PATH`` points to ``path\to\ryzen-ai-sw-<version>\``. If you installed Ryzen AI software using the MSI installer, this variable should already be set. Ensure that the Ryzen AI software package has not been moved post installation, in which case ``RYZEN_AI_INSTALLATION_PATH`` has to be set again.
 
 .. code-block::
 
@@ -234,8 +233,8 @@ To successfully run the model on the NPU, follow these setup steps:
 
 .. note::
 
-   - For PHX/HPT, the legacy integer compiler must be used by setting 'target' option to 'X1' within provider optiosn. 
-   - NPU binary for PHX/HPT devices need to be set in inference session explicitly by passing the `xclbin` option in provider_options
+- For PHX/HPT, set the 'target' option to 'X1' within provider options to use the legacy integer compiler.
+- Set the NPU binary for PHX/HPT devices in the inference session explicitly by passing the `xclbin` option in provider_options
 
 
 Run the ``predict.py`` with the ``--ep npu`` switch to run the custom ResNet model on the Ryzen AI NPU:
@@ -272,7 +271,6 @@ Deployment - C++
 Prerequisites
 -------------
 
-1. Visual Studio 2022 Community edition, ensure **Desktop Development with C++** is installed
 2. cmake (version >= 3.26)
 3. opencv (version=4.6.0) required for the custom resnet example
 
@@ -289,12 +287,12 @@ It is recommended to build OpenCV from the source code and use static build. The
    cmake --build build --config Release
    cmake --install build --config Release
 
-The build files are written to ``build\``.
+The compiler writes the build files to ``build\\``.
 
 Build and Run Custom Resnet C++ sample
 --------------------------------------
 
-The C++ source files, CMake list files, and related artifacts are provided in the ``cpp/resnet_cifar/*`` folder. The source file ``cpp/resnet_cifar/resnet_cifar.cpp`` takes 10 images from the CIFAR-10 test set, converts them to .png format, preprocesses them, and performs model inference. The example has onnxruntime dependencies that are provided in ``%RYZEN_AI_INSTALLATION_PATH%/onnxruntime/*``.
+The compiler provides the C++ source files, CMake list files, and related artifacts in the ``cpp/resnet_cifar/*`` folder. The source file ``cpp/resnet_cifar/resnet_cifar.cpp`` takes 10 images from the CIFAR-10 test set, converts them to .png format, preprocesses them, and performs model inference. The example has onnxruntime dependencies that are provided in ``%RYZEN_AI_INSTALLATION_PATH%/onnxruntime/*``.
 
 Run the following command to build the resnet example. Assign ``-DOpenCV_DIR`` to the OpenCV build directory.
 
@@ -309,14 +307,13 @@ This should generate the build directory with the ``resnet_cifar.sln`` solution 
 
    devenv build/resnet_cifar.sln
 
-Now to deploy the model, go back to the parent directory (getting_started_resnet) of this example. After compilation, the executable should be generated in ``cpp/build/Release/resnet_cifar.exe``. Copy this application over to the parent directory:
 
 .. code-block:: bash
 
    cd ..
    xcopy cpp\build\Release\resnet_cifar.exe .
 
-Additionally, copy the onnxruntime DLLs from the Vitis AI Execution Provider package to the current directory. The following commands copy the required files in the current directory:
+Also, copy the onnxruntime DLLs from the Vitis AI Execution Provider package to the current directory. The following commands copy the required files in the current directory:
 
 .. code-block:: bash
 
