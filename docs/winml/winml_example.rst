@@ -26,7 +26,7 @@ The NPU driver and Windows App SDK should be correctly installed, as described i
 
 .. code-block:: shell
 
-    conda create -n winml_resnet python==3.11
+    conda create -n winml_resnet python==3.12
     conda activate winml_resnet
     cd <RyzenAI-SW>\WinML\CNN\ResNet
     pip install -r .\requirements.txt
@@ -39,14 +39,14 @@ Check the installed `Windows App SDK` Python package using the command below.
     conda list | findstr wasdk
 
 
-This should print the installed version of the `Windows App SDK` Python package. Ensure that the version is 2.0.0.dev4 or later.
+This should print the installed version of the `Windows App SDK` Python package.
 
 .. code-block:: shell
 
-    wasdk-microsoft-windows-ai-machinelearning 2.0.0.dev4               pypi_0    pypi
-    wasdk-microsoft-windows-applicationmodel-dynamicdependency-bootstrap 2.0.0.dev4               pypi_0    pypi
+    wasdk-microsoft-windows-ai-machinelearning 2.3.0               pypi_0    pypi
+    wasdk-microsoft-windows-applicationmodel-dynamicdependency-bootstrap 2.3.0               pypi_0    pypi
 
-Ensure that the installed `Windows App SDK` version matches the Python package or download the specific version from `Windows App SDK 2.0.0.dev4 <https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/downloads>`_.
+Ensure that the installed `Windows App SDK` version matches the Python package or download the matching version from `Windows App SDK downloads <https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/downloads>`_.
 
 ****************
 Model Conversion
@@ -56,7 +56,7 @@ Model conversion is the first step in preparing your model for deployment with W
 You can use the AI Toolkit to convert models to the ONNX format and apply quantization.
 
 - Model quantization is optional step that can help reduce model size and improve inference performance.
-- Original float model can be passed through automatic BF16 conversion. For more details refer to :doc:`Model conversion <../model_quantization>`
+- Original float model can be passed through automatic BF16 conversion. For more details refer to :doc:`Model conversion <ryzenai:model_quantization>`
 - See the `VS Code AI Toolkit model conversion <https://code.visualstudio.com/docs/intelligentapps/modelconversion>`_ page for details on model conversion using AI Toolkit.
 
 If skipping the model quantization, you can directly download the ResNet ONNX model using the script:

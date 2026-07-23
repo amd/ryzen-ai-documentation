@@ -180,7 +180,7 @@ Python Example
     session_options.add_provider_for_devices([selected_ep_devices[0]], provider_options)
 
 
-For more details on the `VitisAIExecutionProvider`-specific `provider_options`, see :doc:`Model compilation and deployment <../modelrun>`
+For more details on the `VitisAIExecutionProvider`-specific `provider_options`, see :doc:`Model compilation and deployment <ryzenai:modelrun>`
 
 *****************
 Model Compilation
@@ -233,7 +233,7 @@ Python Example
 
 
 
-For more details on `VitisAIExecutionProvider` specific `provider_options` as shown in the reference documentation :doc:`Model compilation and deployment <../modelrun>`
+For more details on `VitisAIExecutionProvider` specific `provider_options` as shown in the reference documentation :doc:`Model compilation and deployment <ryzenai:modelrun>`
 
 ..
   ------------

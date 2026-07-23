@@ -41,7 +41,7 @@ Issue: Model Compilation Fails
 
 - Ensure the model is in a supported format (FP32 or QDQ). See :doc:`model_support`.
 - For quantized models, verify the quantization configuration (A8W8 for CNN, A16W8 for Transformer).
-- Check model opset compatibility. ONNX opset 17 is recommended. See :doc:`Model compilation and deployment <../modelrun>`.
+- Check model opset compatibility. ONNX opset 17 is recommended. See :doc:`Model compilation and deployment <ryzenai:modelrun>`.
 
 
 **************

@@ -31,9 +31,9 @@ copyright = '2023-2025, Advanced Micro Devices, Inc'
 author = 'Advanced Micro Devices, Inc'
 
 # The short X.Y version
-version = '1.7'
+version = '1.8'
 # The full version, including alpha/beta/rc tags
-release = '1.7.1'
+release = '1.8.0'
 html_last_updated_fmt = '%b %d, %Y'
 
 
@@ -52,6 +52,7 @@ if os.environ.get("READTHEDOCS", "") == "True":
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
+    'rocm_llms',
     'sphinx.ext.graphviz',
     'breathe',
     'sphinx.ext.autodoc',
@@ -108,6 +109,11 @@ templates_path = ['_templates']
 def setup(app):
     app.add_css_file('custom.css')
     app.add_css_file("llm-table.css")
+    app.add_js_file("winml-external-links.js")
+
+
+rocm_docs_generate_llms = True
+rocm_docs_llms_base_url = "https://ryzenai.docs.amd.com/en/latest/"
 
 
 # The suffix(es) of source filenames.
@@ -140,7 +146,7 @@ language = 'en'
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This patterns also effect to html_static_path and html_extra_path
-exclude_patterns = ['include', 'api_rst', '_build', 'Thumbs.db', '.DS_Store']
+exclude_patterns = ['include', 'api_rst', '_build', 'Thumbs.db', '.DS_Store', 'winml']
 
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'sphinx'
@@ -169,7 +175,9 @@ html_theme = 'rocm_docs_theme'
 ##html_logo = '_static/xilinx-header-logo.svg'
 html_theme_options = {
     "link_main_doc": False,
-    "flavor": "local"
+    "flavor": "local",
+    "use_download_button": False,
+    "article_header_end": ["article-header-buttons.html"],
 }
 
 # Add any paths that contain custom static files (such as style sheets) here,
