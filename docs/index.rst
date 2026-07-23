@@ -118,7 +118,7 @@ For more details, refer to the :doc:`llm/overview` page.
    :hidden:
    :caption: Windows ML on Ryzen AI
 
-   Windows ML on Ryzen AI <https://ryzenai.docs.amd.com/projects/advanced-micro-devices-windows-ml-for-ryzen-ai/en/latest/>
+   Windows ML on Ryzen AI <https://ryzenai.docs.amd.com/projects/WinML/en/latest/>
 
 .. toctree::
    :maxdepth: 1
