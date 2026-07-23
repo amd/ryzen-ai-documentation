@@ -65,7 +65,7 @@ Key Features of Windows ML
 - **Dynamically downloads latest EPs:** Compatible execution providers are downloaded from the Microsoft Store on demand
 - **Shared Windows-wide ONNX Runtime:** Reduces application size; no need to bundle ORT
 - **Smaller downloads and installs:** EPs are shared across applications
-- **Broad hardware support:** Works across CPUs, GPUs, and NPUs from different vendors via ONNX Runtime
+- **Broad hardware support:** Works across CPUs, GPUs, and NPUs from different vendors with ONNX Runtime
 
 *****************************
 Windows ML setup verification

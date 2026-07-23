@@ -9,7 +9,7 @@ Segmind-Vega, DreamShaper XL Lightning, SSD-1B, Playground v2.5, FLUX.1-Schnell,
 FLUX.2-klein-4B, SD3.0, and SD3.5, with **inpainting** where noted for SD3.0.
 
 Models are fetched from Hugging Face on first use (see :doc:`inst` for Ryzen AI and driver
-setup). SD3.0 and SD3.5 models require Hugging Face authentication and may also require
+setup). SD3.0 and SD3.5 models require Hugging Face authentication and might also require
 acceptance of the model license before they can be downloaded.
 
 

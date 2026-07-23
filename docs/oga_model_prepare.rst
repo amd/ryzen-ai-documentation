@@ -17,7 +17,7 @@ Quantization
 
 Prerequisites
 =============
-Linux machine with AMD (e.g., AMD Instinct MI Series) or Nvidia GPUs
+A Linux machine with AMD (e.g., AMD Instinct MI Series) or Nvidia GPUs
 
 Setup
 =====

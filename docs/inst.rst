@@ -71,7 +71,7 @@ Install Ryzen AI Software
 
 - Launch the EXE installer and follow the instructions on the installation wizard:
 
-  - Accept the terms of the Licence agreement
+ - Accept the terms of the license agreement
   - Provide the destination folder for Ryzen AI installation (default: ``C:\Program Files\RyzenAI\1.8.0``)
   - Specify the name for the conda environment (default: ``ryzen-ai-1.8.0``)
 

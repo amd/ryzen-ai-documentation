@@ -33,13 +33,13 @@ The Ryzen AI CVML library consists of the following files and folders:
 Executing Ryzen AI CVML library enabled applications
 *****************************************************
 
-The Ryzen AI CVML library selects the appropriate hardware (e.g., GPU or NPU) and framework for performing inference operations by default. An API is also available to set the preferred inference backend for those applications that wish to do so.
+The Ryzen AI CVML library selects the appropriate hardware (for example GPU or NPU) and framework for performing inference operations by default. An API is also available to set the preferred inference backend for those applications that wish to do so.
 
 In order to execute applications that utilize the Ryzen AI CVML library, the appropriate drivers must first be installed on the target system, and the Ryzen AI CVML library files must be included with the application itself.
 
 .. note::
 
-   Ryzen AI CVML library features that utilize the ONNX backend for NPU operations may experience a longer startup latency the first time they are executed on a device. This increased startup latency does not occur for subsequent runs of the feature.
+ Ryzen AI CVML library features that utilize the ONNX backend for NPU operations might experience a longer startup latency the first time they are executed on a device. This increased startup latency does not occur for subsequent runs of the feature.
 
 .. note::
 
@@ -190,7 +190,7 @@ Create Ryzen AI CVML library feature object
 =============================================
 
 The application programming interface for each feature is provided via a
-*Ryzen AI CVML library C++ feature object* that may be instantiated once a
+*Ryzen AI CVML library C++ feature object* that might be instantiated once a
 Ryzen AI CVML library context has been created.
 
 The following example instantiates a feature object for the depth estimation
@@ -236,7 +236,7 @@ library's ``include/`` folder is part of the compiler's include paths, and that
 the library's ``windows/`` or ``linux/`` folder has been added to the linker's
 library paths.
 
-Depending on the application's build environment, it may also be necessary to
+Depending on the application's build environment, it might also be necessary to
 explicitly list which of the Ryzen AI CVML library's .LIB files (when building for
 Windows applications) need to be linked.
 
@@ -278,7 +278,7 @@ The following are CMake commands for building samples.
 On Windows, ::
 
   rem Point to the build subfolder inside your OpenCV installation
-  rem (e.g. if you extracted OpenCV to C:\opencv, use C:\opencv\build)
+ rem (for exampleif you extracted OpenCV to C:\opencv, use C:\opencv\build)
   rem CMake's find_package needs this folder to locate OpenCVConfig.cmake
   set OPENCV_INSTALL_ROOT=C:\opencv\build
   cd samples/

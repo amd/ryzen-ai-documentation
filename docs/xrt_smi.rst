@@ -292,7 +292,7 @@ Runs a set of built-in NPU sanity tests which includes latency, throughput, and 
 Note: All tests are run in performance mode.
 
 - ``latency`` - this test executes a no-op control code and measures the end-to-end latency on all columns
-- ``throughput`` - this test loops back the input data from DDR through a MM2S Shim DMA channel back to DDR through a S2MM Shim DMA channel. The data movement within the AIE array follows the lowest latency path i.e. movement is restricted to just the Shim tile.
+- ``throughput`` - this test loops back the input data from DDR through a MM2S Shim DMA channel back to DDR through a S2MM Shim DMA channel. The data movement within the AIE array follows the lowest latency path, which means the movement is restricted to just the Shim tile.
 - ``gemm`` - An INT8 GeMM kernel is deployed on all 32 cores by the application. Each core is storing cycle count in the core data memory. The cycle count is read by the firmware. The TOPS application uses the "XBUTIL" tool to capture the IPUHCLK while the workload runs. Once all cores are executed, the cycle count from all cores will be synced back to the host. Finally, the application uses IPUHCLK, core cycle count, and GeMM kernel size to calculate the TOPS. This is a full array test and it should not be run while another workload is running. **NOTE**: This command is not supported on PHX and HPT NPUs.
 - ``all`` - All applicable validate tests will be executed (default)
 
@@ -301,7 +301,7 @@ Note: All tests are run in performance mode.
 
     xrt-smi validate --run all
 
-|memo| **NOTE**: Some sanity checks may fail if other applications (for example MEP, Microsoft Experience Package) are also using the NPU. 
+|memo| **NOTE**: Some sanity checks might fail if other applications (for example MEP, Microsoft Experience Package) are also using the NPU. 
 
 Sample Command Line Output::
 

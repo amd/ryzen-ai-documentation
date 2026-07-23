@@ -10,7 +10,7 @@ Microsoft provides a comprehensive AI platform for Windows spanning three pillar
 - **Foundry Local:** On-device runtime for LLMs and generative AI; auto-detects hardware and downloads compatible models. Use for LLM scenarios with minimal setup.
 - **Windows ML:** Runtime for custom ONNX models with automatic execution provider (EP) management across CPU, GPU, and NPU. Use when you need to run your own models.
 
-On **Ryzen AI PCs**, Windows ML can leverage the NPU via the VitisAI EP (Execution Provider).
+On **Ryzen AI PCs**, Windows ML can leverage the NPU with the VitisAI EP (Execution Provider).
 
 **********************
 When to Use Windows ML
@@ -21,7 +21,7 @@ Choose Windows ML when you:
 - Need to run **custom ONNX models** (CNN, Transformer, or LLM) on Windows
 - Want **automatic EP management** Windows downloads and registers compatible execution providers (VitisAI EP, MIGraphX EP, DirectML EP) on demand
 - Prefer **C#, C++, or Python** with a shared Windows-wide ONNX Runtime (smaller app size)
-- Need **hardware flexibility** select CPU, GPU, or NPU via execution policy
+- Need **hardware flexibility** select CPU, GPU, or NPU through execution policy
 
 Use **Windows AI APIs** when built-in capabilities (OCR, image description, etc.) cover your scenario. Use **Foundry Local** when you want LLMs with minimal model preparation. Use the **Ryzen AI NPU-only flow** (:doc:`ryzenai:modelrun`) when you need full control over ONNX Runtime without the Windows ML stack.
 
