@@ -67,7 +67,7 @@ Install NPU Drivers
 Install Ryzen AI Software
 *************************
 
-- Download the Ryzen AI Software installer :download:`ryzen-ai-1.8.0.exe <https://account.amd.com/en/forms/downloads/xef.html?filename=ryzen-ai-1.8.0.exe>`.
+- Download the Ryzen AI Software installer :download:`ryzen-ai-1.8.0.exe <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=ryzen-ai-1.8.0.exe>`.
 
 - Launch the EXE installer and follow the instructions on the installation wizard:
 
@@ -78,7 +78,7 @@ Install Ryzen AI Software
 The Ryzen AI Software packages are now installed in the conda environment created by the installer.
 
 .. note::
-   NuGet package is available to download at :download:`ryzen_ai_nuget_1.8.0.zip <https://account.amd.com/en/forms/downloads/xef.html?filename=ryzen_ai_nuget_1.8.0.zip>`.
+   NuGet package is available to download at :download:`ryzen_ai_nuget_1.8.0.zip <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=ryzen_ai_nuget_1.8.0.zip>`.
 
 
 
