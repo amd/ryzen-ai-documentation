@@ -120,8 +120,10 @@ The ``provider_options`` parameter of the ORT ``InferenceSession`` allows passin
            - Boolean
            - False
 
+.. _enabling-onnx-runtime-logs:
+
 Enabling ONNX Runtime Logs
-==========================
+===========================
 
 To enable detailed logging for debugging purposes, set the ONNX Runtime session log severity level using ``SessionOptions.log_severity_level``:
 

@@ -17,7 +17,7 @@ Prerequisites
    * - Windows
      - Windows 11 24H2 (build 26100) or greater
    * - Ryzen AI NPU
-     - Supported processor with NPU. See :ref:`supported configurations <supported-configurations>` in the release notes.
+     - Supported processor with NPU. See :ref:`supported configurations <ryzenai:supported-configurations>` in the release notes.
    * - Visual Studio (for C++)
      - Visual Studio 2022, latest version. Ensure *Desktop Development with C++* is installed.
    * - Visual Studio Code (optional)
@@ -35,7 +35,7 @@ Installation
 
 Follow these steps in order:
 
-1. **Install NPU drivers:** Follow the :doc:`RAI installation instructions <../inst>`. Download and install the NPU driver (version 32.0.203.280 or newer) from the AMD Ryzen AI driver page.
+1. **Install NPU drivers:** Follow the :doc:`RAI installation instructions <ryzenai:inst>`. Download and install the NPU driver (version 32.0.203.280 or newer) from the AMD Ryzen AI driver page.
 
 2. **Install Windows App SDK:** Windows ML is included as part of the Windows App SDK. Install the version required by your branch/sample from `Windows App SDK downloads <https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/downloads>`_.
 
@@ -87,48 +87,17 @@ Check the installed wasdk Python version and install same version of `Windows Ap
 
     conda list | findstr wasdk
 
-Download the Windows App SDK corresponding to the wasdk version (e.g., 2.0.0.dev4) or latest and install it to ensure the Windows ML execution providers work correctly.
+Download the Windows App SDK that matches the wasdk version to ensure the Windows ML execution providers work as expected.
 
 .. code-block:: shell
 
-    curl -L -o windowsappruntimeinstall-x86.exe "https://aka.ms/windowsappsdk/2.0/2.0.0-experimental4/windowsappruntimeinstall-x86.exe"
-    windowsappruntimeinstall-x86.exe --quiet
+    curl -L -o windowsappruntimeinstall-x64.exe "https://aka.ms/windowsappsdk/2.3/2.3.1/windowsappruntimeinstall-x64.exe"
+    windowsappruntimeinstall-x64.exe --quiet
 
-After completing the installation, run the `check_winml_setup.py` script from the `RyzenAI-SW` repository to verify the Windows ML installation. The script is available at: https://github.com/amd/RyzenAI-SW/blob/main/WinML/check_winml_setup.py
+.. node::
 
-.. code-block:: shell
-
-    cd <RyzenAI-SW>\WinML
-    python check_winml_setup.py
-
-The script will produce output similar to the following:
-
-.. code-block:: text
-
-    ============================================================
-    WinML Setup Checker
-    ============================================================
-    Python: 3.11.0 (<path_to_python_installation>\python.exe)
-    WASDK Python Packages:
-    ----------------------------------------
-      [✓] wasdk-ML: 2.0.0.dev4
-      [✓] wasdk-Bootstrap: 2.0.0.dev4
-    Windows App SDK Runtime:
-    ----------------------------------------
-    [✓] Windows App SDK: 2.0-experimental5 (internal: 0.770.2319.0)
-    Installed runtimes (newest first):
-        * 2.0-experimental5 (internal: 0.770.2319.0)
-        - 2.0-experimental4 (internal: 0.738.2207.0)
-        - 1.8 (internal: 8000.642.119.0)
-        - 1.8 (internal: 8000.675.1142.0)
-        - 1.8-experimental (internal: 8000.589.1529.0)
-        - 1.8-preview (internal: 8000.591.1127.0)
-        * Active runtime used by this checker
-    Expected SDK: 2.0.0-experimental4
-    ============================================================
-    Status: All components installed. Please, ensure matching Windows App SDK version is Installed.
-
-Windows App SDK version should match the wasdk Python package version. If there is a mismatch, install the correct Windows App SDK version. After installation, re-run the setup checker to verify that the correct version of Windows App SDK is installed and active.
+    All stable 2.x runtimes share the `Microsoft.WindowsAppRuntime.2` package family.
+    A newer runtime (e.g. 2.2.0) supersedes an older one (e.g. 2.1.3) in place and remains compatible with the `wasdk` pip package.
 
 ************************
 Getting Started Examples

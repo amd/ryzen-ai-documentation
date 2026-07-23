@@ -11,14 +11,15 @@ This page showcases an example of running LLM on RyzenAI NPU
   mkdir run_llm
   cd run_llm
 
+- Here is an Overview of all supported Models and their available variants :doc:`List of Supported Models <llm_list>` 
+- Note - Linux does not support Hybrid flow
 - Choose any prequantized and postprocessed ready-to-run Model from Hugging Face collection of NPU models
 
 .. parsed-literal::
 
-    `Models with 4K Context length <https://huggingface.co/collections/amd/ryzen-ai-171-npu-4k>`_
+    `Full-optimized Models with 4K Context length <https://huggingface.co/collections/amd/ryzen-ai-180-npu-4k>`_
 
-    `Models with 16K Context length <https://huggingface.co/collections/amd/ryzen-ai-171-npu-16k>`_
-
+    `Long-context Models with 16K Context length <https://huggingface.co/collections/amd/ryzen-ai-180-npu-16k>`_
 
 - For this flow, "Phi-3.5-mini-instruct_rai_1.7.1_npu_4K" is chosen for reference
 .. code-block::
@@ -60,35 +61,24 @@ This page showcases an example of running LLM on RyzenAI NPU
 
   amd_genai_prompt.txt   deployment   model_benchmark   Phi-3.5-mini-instruct_rai_1.7.1_npu_4K
 
-- Create a new file for XRT Drivers named "xrt.ini"
-
-.. code-block:: bash
-
-      - vi xrt.ini            (Creates a new file)
-    
-      - Add below lines to the file and save it
-          [Debug]
-          num_heap_pages = 8  
-
-      - Set XRT_INI_PATH to point to this file
-          export XRT_INI_PATH=$PWD/xrt.ini
-  
 - Lastly, set required library path
 
 .. code-block:: bash
 
-  export LD_LIBRARY_PATH=/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH
-  export LD_LIBRARY_PATH=deployment/lib:$LD_LIBRARY_PATH
+  export LD_LIBRARY_PATH=/lib/x86_64-linux-gnu:deployment/lib:$LD_LIBRARY_PATH
   export RYZENAI_EP_PATH=$PWD/deployment/lib/libonnxruntime_providers_ryzenai.so
-  
+  source /opt/xilinx/xrt/setup.sh
 
 - We can now run our Model with command below:
 
 .. code-block:: bash
 
-  ./model_benchmark -i Phi-3.5-mini-instruct_rai_1.7.1_npu_4K/ -l 128 -f amd_genai_prompt.txt
+  ./model_benchmark -i Phi-3.5-mini-instruct_rai_1.7.1_npu_4K/ -l 128 
 
-  # Enable "-v" flag for verbose output
+   -i - Path to the ONNX model directory to benchmark
+   -l - Number of tokens in the generated prompt (Default: 16)
+   
+  # Use "./model_benchmark --help" to enable more options
 
 
 ***************
@@ -102,29 +92,29 @@ Expected output
   
  Batch size: 1, prompt tokens: 128, tokens to generate: 128
  Prompt processing (time to first token):
-        avg (us):       148056
-        avg (tokens/s): 864.536
-        p50 (us):       148143
-        stddev (us):    375.335
+        avg (us):       169860
+        avg (tokens/s): 753.562
+        p50 (us):       169022
+        stddev (us):    6108.17
         n:              5 * 128 token(s)
  Token generation:
-        avg (us):       56874.3
-        avg (tokens/s): 17.5826
-        p50 (us):       56250.6
-        stddev (us):    6743.11
+        avg (us):       20354.1
+        avg (tokens/s): 49.1301
+        p50 (us):       19964.9
+        stddev (us):    4411.67
         n:              635 * 1 token(s)
  Token sampling:
-        avg (us):       27.273
-        avg (tokens/s): 36666.3
-        p50 (us):       27.21
-        stddev (us):    0.202461
+        avg (us):       192.274
+        avg (tokens/s): 5200.91
+        p50 (us):       202.417
+        stddev (us):    76.6932
         n:              5 * 1 token(s)
  E2E generation (entire generation loop):
-        avg (ms):       7371.29
-        p50 (ms):       7378.4
-        stddev (ms):    14.3836
+        avg (ms):       2755.09
+        p50 (ms):       2747.84
+        stddev (ms):    14.0296
         n:              5
- Peak working set size (bytes): 12168941568
+ Peak working set size (bytes): 3543330816
 
 
  
@@ -134,16 +124,23 @@ Expected output
 Preparing OGA Model
 *******************
 
-Install "model_generate" package in current virtual environment
+- Model Generate is not supported in current release. Choose any prequantized and postprocessed ready-to-run Model from the provided list.
+- Read more on Windows specific Model Generation by visiting :doc:`Preparing OGA Models <oga_model_prepare>`
+
+
+************
+Limitations
+************
+
+For some Models, the memory requirement is more than system default. Use the command below to change it to "unlimited"
 
 .. code-block:: bash
 
-  pip install model-generate==1.7.1 --force-reinstall --no-deps --extra-index-url https://pypi.amd.com/ryzenai_llm/1.7.1/linux/simple/
-
-
-Currently Linux supports NPU only flow. Read more on Model Generation by visiting :doc:`Preparing OGA Models <oga_model_prepare>`
-
-
-  
-
+ sudo tee /etc/security/limits.d/99-memlock.conf >/dev/null <<'EOF'
+ *    soft    memlock    unlimited
+ *    hard    memlock    unlimited
+ EOF
+ 
+ # execute the command to verify 
+ ulimit -l
 
