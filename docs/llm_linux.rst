@@ -21,13 +21,13 @@ This page showcases an example of running LLM on RyzenAI NPU
 
     `Long-context Models with 16K Context length <https://huggingface.co/collections/amd/ryzen-ai-180-npu-16k>`_
 
-- For this flow, "Phi-3.5-mini-instruct_rai_1.7.1_npu_4K" is chosen for reference
+- For this flow, "Phi-3.5-mini-instruct_rai_1.8.0_npu_4K" is chosen for reference
 .. code-block::
 
   # Make sure git-lfs is installed (https://git-lfs.com)
   sudo apt install git-lfs
   git lfs install
-  git clone https://huggingface.co/amd/Phi-3.5-mini-instruct_rai_1.7.1_npu_4K
+  git clone https://huggingface.co/amd/Phi-3.5-mini-instruct_rai_1.8.0_npu_4K
 
 - Search for RYZEN_AI_INSTALLATION_PATH
 
@@ -59,7 +59,7 @@ This page showcases an example of running LLM on RyzenAI NPU
 
 .. code-block::
 
-  amd_genai_prompt.txt   deployment   model_benchmark   Phi-3.5-mini-instruct_rai_1.7.1_npu_4K
+  amd_genai_prompt.txt   deployment   model_benchmark   Phi-3.5-mini-instruct_rai_1.8.0_npu_4K
 
 - Lastly, set required library path
 
@@ -73,7 +73,7 @@ This page showcases an example of running LLM on RyzenAI NPU
 
 .. code-block:: bash
 
-  ./model_benchmark -i Phi-3.5-mini-instruct_rai_1.7.1_npu_4K/ -l 128 
+  ./model_benchmark -i Phi-3.5-mini-instruct_rai_1.8.0_npu_4K/ -l 128 
 
    -i - Path to the ONNX model directory to benchmark
    -l - Number of tokens in the generated prompt (Default: 16)
