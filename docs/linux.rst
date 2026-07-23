@@ -127,6 +127,15 @@ Install Ryzen AI Software
 
    export LD_LIBRARY_PATH=/lib/x86_64-linux-gnu:${RYZEN_AI_INSTALLATION_PATH}/onnxruntime/lib/:$LD_LIBRARY_PATH
 
+- Important Note 
+.. code-block:: bash
+
+   # After activating the Ryzen AI Virtual environment-
+     source <TARGET-PATH>/venv/bin/activate
+
+   # Always run the below command. It appends necessary XRT utils to LD_LIBRARY_PATH for successful execution on NPU
+     source /opt/xilinx/xrt/setup.sh
+
 
 **********************
 Test the Installation
