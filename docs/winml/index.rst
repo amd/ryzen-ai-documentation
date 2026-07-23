@@ -21,7 +21,7 @@ Choose Windows ML when you:
 - Need to run **custom ONNX models** (CNN, Transformer, or LLM) on Windows
 - Want **automatic EP management** Windows downloads and registers compatible execution providers (VitisAI EP, MIGraphX EP, DirectML EP) on demand
 - Prefer **C#, C++, or Python** with a shared Windows-wide ONNX Runtime (smaller app size)
-- Need **hardware flexibility** select CPU, GPU, or NPU via execution policy
+- Need **hardware flexibility** select CPU, GPU, or NPU through execution policy
 
 Use **Windows AI APIs** when built-in capabilities (OCR, image description, etc.) cover your scenario. Use **Foundry Local** when you want LLMs with minimal model preparation. Use the **Ryzen AI NPU-only flow** (:doc:`ryzenai:modelrun`) when you need full control over ONNX Runtime without the Windows ML stack.
 

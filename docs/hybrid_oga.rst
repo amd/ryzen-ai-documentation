@@ -68,7 +68,7 @@ Changes Compared to Previous Release
 ************************************
 
 - OGA version is updated to v0.14.0 (Ryzen AI 1.8) from v0.11.2 (Ryzen AI 1.7.1).
-- For 1.8 release, a new set of hybrid and NPU models is published. Models from earlier releases are not compatible with this version. Please download the updated models.
+- For the 1.8 release, a new set of hybrid and NPU models has been published. Models from earlier releases are not compatible with this version. Download the updated models.
 
 *******************
 Compatible OGA APIs
@@ -358,7 +358,7 @@ After a fine-tuned model has been prepared for execution, it can be deployed by 
 
 
 *****************************
-Running LLM via pip install
+Running LLM with pip install
 *****************************
 
 In addition to the full RyzenAI software stack, we also provide standalone wheel files for the users who prefer using their own environment. To prepare an environment for running the Hybrid and NPU-only LLM independently, perform the following steps:
