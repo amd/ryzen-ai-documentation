@@ -53,9 +53,13 @@ Follow these steps in order:
       * - Version
         - Package Download
       * - **Release 2026.5D**
-        - :download:`AMD.NPU.WinML.VitisAI.EP_2026_5D.nupkg <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=AMD.NPU.WinML.VitisAI.EP_2026_5D.nupkg>`
+        - :download:`AMD.NPU.WinML.EP_2026_5D.nupkg <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=AMD.NPU.WinML.VitisAI.EP_2026_5D.nupkg>`
+      * - **Release 2026.6D**
+        - :download:`AMD.NPUWinML.EP_2026_6D.nupkg <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=AMD.NPUWinML.EP_2026_6D.nupkg>`
       * - **Release 2026.7D**
-        - :download:`AMD.NPU.WinML.VitisAI.EP_2026_7D.nupkg <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=AMD.NPU.WinML.VitisAI.EP_2026_7D.nupkg>`
+        - :download:`AMD.NPU.WinML.EP_2026_7D.nupkg <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=AMD.NPU.WinML.VitisAI.EP_2026_7D.nupkg>`
+      * - **Release 2026.8D**
+        - :download:`AMD.NPU.WinML.EP_2026_8D.nupkg <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=AMD.NPU.WinML.EP_2026_8D.nupkg>`
 
 
 **************************
