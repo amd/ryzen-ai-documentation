@@ -37,7 +37,7 @@ Follow these steps in order:
 
 1. **Install NPU drivers:** Follow the :doc:`RAI installation instructions <ryzenai:inst>`. Download and install the NPU driver (version 32.0.203.280 or newer) from the AMD Ryzen AI driver page.
 
-2. **Install Windows App SDK:** Windows ML is included as part of the Windows App SDK. Install the version required by your branch/sample from `Windows App SDK downloads <https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/downloads>`_.
+2. **Install Windows App SDK:** Windows ML is included as part of the WASDK. Install the version required by your branch/sample from `Windows App SDK downloads <https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/downloads>`_.
 
 3. **Verify installation:** For Python, ensure the ``wasdk-microsoft-windows-ai-machinelearning`` package is installed (e.g., via ``pip install``) and matches the Windows App SDK version used by your sample branch. Run ``conda list | findstr wasdk`` to verify.
 
