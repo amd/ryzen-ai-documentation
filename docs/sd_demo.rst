@@ -12,6 +12,9 @@ Models are fetched from Hugging Face on first use (see :doc:`inst` for Ryzen AI 
 setup). SD3.0 and SD3.5 models require Hugging Face authentication and might also require
 acceptance of the model license before they can be downloaded.
 
+Medusa M1.0.0 adds a separate set of public NPU models for the Medusa platform. Those
+pipelines run at the default resolution only. Dynamic resolution is not supported in
+M1.0.0 and is planned for M1.0.1. See `medusa-models`_.
 
 ******************
 Installation Steps
@@ -54,7 +57,8 @@ Supported models
 
 The following summarizes default application mode, typical resolution /
 dynamic-resolution (DynRes) notes, and the recommended Hugging Face ``model_id`` on
-AMD NPU-tuned repos.
+AMD NPU-tuned repos for Ryzen AI 1.8.0. Medusa platform models are listed separately
+in `medusa-models`_.
 
 .. list-table::
    :header-rows: 1
@@ -141,9 +145,9 @@ AMD NPU-tuned repos.
      - 512x512, 20x DynRes
      - Uses SD3.5 AMD weights plus SD3.0 Canny ControlNet assets (see below)
 
-In the Supported models table, the **DynRes** column counts how many dynamic-resolution
-presets a pipeline exposes (for example 5x or 20x). The following material spells out which
-width x height pairs are in scope.
+In the Ryzen AI 1.8.0 supported-models table, the **DynRes** count is how many
+dynamic-resolution presets a pipeline exposes (for example 5x or 20x). The pairs
+below are those presets. Medusa M1.0.0 does not include them; see `medusa-models`_.
 
 .. _dynres:
 
@@ -196,6 +200,114 @@ Public model pages follow the Hugging Face model license (HF LIC) for each repo.
 **SD3.5 Canny ControlNet setup:** copy the SD3.0 Canny ControlNet files into the SD3.5
 model layout as required by your GenAI-SD tree (per release notes), then run the Canny
 example with ``--model_id amd/stable-diffusion-3.5-medium-amdnpu``.
+
+.. _medusa-models:
+
+********************************
+Medusa platform models (M1.0.0)
+********************************
+
+Medusa M1.0.0 supports the NPU models below. Each row lists the application, the default
+resolution, and the Hugging Face ``model_id`` to pass as ``--model_id``. Source weights
+are public Hugging Face repositories. Each repository follows the Hugging Face model
+license (HF LIC) on its model card.
+
+M1.0.0 does not support dynamic resolution, so the table lists only the default
+resolution. Dynamic-resolution presets are planned for M1.0.1. Until that release, do
+not apply the Ryzen AI 1.8.0 DynRes grids in `Dynamic resolution (DynRes) <dynres>`_.
+
+FLUX.2-klein-4B text-to-image and both image-to-image modes (one input and two inputs)
+share one repository. Segmind-Vega text-to-image and image-to-image also share one
+repository. Run them with the same ``run.py`` entry point described in `Running the Demos`_.
+
+.. list-table:: Medusa M1.0.0 supported models
+   :header-rows: 1
+   :widths: 20 8 14 32 14 12
+
+   * - Model
+     - App
+     - Default resolution
+     - NPU model location
+     - Source model
+     - License
+   * - SD1.5
+     - t2i
+     - 512x512
+     - ``amd/stable-diffusion-1.5-amdnpu-medusa``
+     - `Public HF <https://huggingface.co/amd/stable-diffusion-1.5-amdnpu-medusa>`_
+     - HF LIC
+   * - FLUX.2-klein-4B
+     - t2i
+     - 1024x1024
+     - ``amd/FLUX.2-klein-4B-amdnpu-medusa``
+     - `Public HF <https://huggingface.co/amd/FLUX.2-klein-4B-amdnpu-medusa>`_
+     - HF LIC
+   * - FLUX.2-klein-4B (1 input)
+     - i2i
+     - 1024x1024
+     - ``amd/FLUX.2-klein-4B-amdnpu-medusa``
+     - `Public HF <https://huggingface.co/amd/FLUX.2-klein-4B-amdnpu-medusa>`_
+     - HF LIC
+   * - FLUX.2-klein-4B (2 inputs)
+     - i2i
+     - 1024x1024
+     - ``amd/FLUX.2-klein-4B-amdnpu-medusa``
+     - `Public HF <https://huggingface.co/amd/FLUX.2-klein-4B-amdnpu-medusa>`_
+     - HF LIC
+   * - Segmind-Vega
+     - t2i
+     - 1024x1024
+     - ``amd/segmind-vega-amdnpu-medusa``
+     - `Public HF <https://huggingface.co/amd/segmind-vega-amdnpu-medusa>`_
+     - HF LIC
+   * - Segmind-Vega
+     - i2i
+     - 1024x1024
+     - ``amd/segmind-vega-amdnpu-medusa``
+     - `Public HF <https://huggingface.co/amd/segmind-vega-amdnpu-medusa>`_
+     - HF LIC
+   * - SDXL-Turbo
+     - t2i
+     - 512x512
+     - ``amd/sdxl-turbo-amdnpu-medusa``
+     - `Public HF <https://huggingface.co/amd/sdxl-turbo-amdnpu-medusa>`_
+     - HF LIC
+   * - SDXL-base
+     - t2i
+     - 1024x1024
+     - ``amd/sdxl-base-amdnpu-medusa``
+     - `Public HF <https://huggingface.co/amd/sdxl-base-amdnpu-medusa>`_
+     - HF LIC
+   * - SSD-1B
+     - t2i
+     - 1024x1024
+     - ``amd/SSD-1B-amdnpu-medusa``
+     - `Public HF <https://huggingface.co/amd/SSD-1B-amdnpu-medusa>`_
+     - HF LIC
+   * - DreamShaper XL Lightning
+     - t2i
+     - 1024x1024
+     - ``amd/dreamshaper-xl-lightning-amdnpu-medusa``
+     - `Public HF <https://huggingface.co/amd/dreamshaper-xl-lightning-amdnpu-medusa>`_
+     - HF LIC
+   * - Playground v2.5
+     - t2i
+     - 1024x1024
+     - ``amd/playground-v2.5-1024px-aesthetic-amdnpu-medusa``
+     - `Public HF <https://huggingface.co/amd/playground-v2.5-1024px-aesthetic-amdnpu-medusa>`_
+     - HF LIC
+   * - FLUX.1-Schnell
+     - t2i
+     - 1024x1024
+     - ``amd/FLUX.1-schnell-amdnpu-medusa``
+     - `Public HF <https://huggingface.co/amd/FLUX.1-schnell-amdnpu-medusa>`_
+     - HF LIC
+   * - SD3.5-Medium
+     - t2i
+     - 1024x1024
+     - ``amd/stable-diffusion-3.5-medium-amdnpu-medusa``
+     - `Public HF <https://huggingface.co/amd/stable-diffusion-3.5-medium-amdnpu-medusa>`_
+     - HF LIC
 
 ******************
 Running the Demos
@@ -302,6 +414,44 @@ Custom prompts can be supplied with ``--prompt``. For example:
 .. code-block:: powershell
 
    python .\run.py --model_id stabilityai/stable-diffusion-1.5-amdnpu --prompt "Photo of an ultra realistic sailing ship, dramatic light, pale sunrise, cinematic lighting, battered, low angle, trending on artstation, 4k, hyper realistic, focused, extreme details"
+
+Running Medusa Models (M1.0.0)
+==============================
+
+Medusa models use the same commands as above with the ``-medusa`` ``model_id``. M1.0.0
+runs at the default resolution only (see `medusa-models`_).
+
+**Text-to-Image**
+
+.. code-block:: powershell
+
+   python .\run.py --model_id amd/stable-diffusion-1.5-amdnpu-medusa
+   python .\run.py --model_id amd/sdxl-turbo-amdnpu-medusa
+   python .\run.py --model_id amd/sdxl-base-amdnpu-medusa
+   python .\run.py --model_id amd/segmind-vega-amdnpu-medusa
+   python .\run.py --model_id amd/dreamshaper-xl-lightning-amdnpu-medusa
+   python .\run.py --model_id amd/SSD-1B-amdnpu-medusa
+   python .\run.py --model_id amd/playground-v2.5-1024px-aesthetic-amdnpu-medusa
+   python .\run.py --model_id amd/FLUX.1-schnell-amdnpu-medusa
+   python .\run.py -C None --model_id amd/stable-diffusion-3.5-medium-amdnpu-medusa -H 1024 -W 1024 -n 50
+
+**FLUX.2-klein-4B**
+
+Text-to-image, one-input image edit, and two-input image edit share
+``amd/FLUX.2-klein-4B-amdnpu-medusa``.
+One input uses a single ``--edit_image_path``; two inputs pass both images to the same flag.
+
+.. code-block:: powershell
+
+   python .\run.py --model_id amd/FLUX.2-klein-4B-amdnpu-medusa -H 1024 -W 1024 -n 4 --prompt "A beautiful anime girl with long silver hair and blue eyes, wearing a flowing white dress.Standing in a field of flowers under golden sunset.Soft warm lighting, gentle breeze, petals floating in the air.Highly detailed, delicate face, clean line art, vibrant colors, dreamy atmosphere."
+   python .\run.py --model_id amd/FLUX.2-klein-4B-amdnpu-medusa -H 1024 -W 1024 -n 4 --prompt "Change the dress to red" --edit_image_path ./assets/flux2_img2.png
+   python .\run.py --model_id amd/FLUX.2-klein-4B-amdnpu-medusa -H 1024 -W 1024 -n 4 --prompt "Replace the astronaut in image 1 with the girl in image 2" --edit_image_path ./assets/flux2_img1.png ./assets/flux2_img2.png
+
+**Segmind-Vega (i2i, no ControlNet path)**
+
+.. code-block:: powershell
+
+   python .\run.py --model_id amd/segmind-vega-amdnpu-medusa --control_image_path .\assets\controlimg_input_1024x1024.png --strength 0.95
 
 Inpainting
 ==========
