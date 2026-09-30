@@ -2,6 +2,23 @@
 Stable Diffusion Demo
 #######################
 
+This page documents two Stable Diffusion demo releases. Each chapter lists the models
+and ``run.py`` commands for that release.
+
+* :ref:`Ryzen AI 1.8.0 <rai-180>` — preview pipelines, including dynamic resolution (DynRes) where listed.
+* :ref:`Medusa M1.0.0 <medusa-m1>` — Medusa platform models. M1.0.0 uses the default resolution only. Dynamic resolution is planned for M1.0.1.
+
+Both releases run from the GenAI-SD tree installed with Ryzen AI 1.8.0. Medusa model
+IDs use the ``-medusa`` suffix. :ref:`AMD Stable Diffusion Sandbox <sd-sandbox>` applies
+to both releases.
+
+
+.. _rai-180:
+
+*****************
+Ryzen AI 1.8.0
+*****************
+
 Ryzen AI 1.8.0 provides preview demos of Stable Diffusion image-generation pipelines.
 The demos cover **Image-to-Image** (ControlNet: Canny, Pose, Tile, Depth; plus Segmind-Vega
 i2i without ControlNet) and **Text-to-Image** for SD1.5, SD-Turbo, SDXL-base, SDXL-Turbo,
@@ -12,13 +29,10 @@ Models are fetched from Hugging Face on first use (see :doc:`inst` for Ryzen AI 
 setup). SD3.0 and SD3.5 models require Hugging Face authentication and might also require
 acceptance of the model license before they can be downloaded.
 
-Medusa M1.0.0 adds a separate set of public NPU models for the Medusa platform. Those
-pipelines run at the default resolution only. Dynamic resolution is not supported in
-M1.0.0 and is planned for M1.0.1. See `medusa-models`_.
+.. _installation-steps:
 
-******************
 Installation Steps
-******************
+==================
 
 1. Ensure the latest version of Ryzen AI and NPU drivers are installed. See :doc:`inst`.
 
@@ -51,14 +65,12 @@ Installation Steps
 
 .. _supported-models:
 
-******************
-Supported models
-******************
+Supported Models
+================
 
 The following summarizes default application mode, typical resolution /
 dynamic-resolution (DynRes) notes, and the recommended Hugging Face ``model_id`` on
-AMD NPU-tuned repos for Ryzen AI 1.8.0. Medusa platform models are listed separately
-in `medusa-models`_.
+AMD NPU-tuned repos for Ryzen AI 1.8.0.
 
 .. list-table::
    :header-rows: 1
@@ -145,9 +157,8 @@ in `medusa-models`_.
      - 512x512, 20x DynRes
      - Uses SD3.5 AMD weights plus SD3.0 Canny ControlNet assets (see below)
 
-In the Ryzen AI 1.8.0 supported-models table, the **DynRes** count is how many
-dynamic-resolution presets a pipeline exposes (for example 5x or 20x). The pairs
-below are those presets. Medusa M1.0.0 does not include them; see `medusa-models`_.
+In this table, the **DynRes** count is how many dynamic-resolution presets a pipeline
+exposes (for example 5x or 20x). The pairs below are those presets.
 
 .. _dynres:
 
@@ -201,24 +212,149 @@ Public model pages follow the Hugging Face model license (HF LIC) for each repo.
 model layout as required by your GenAI-SD tree (per release notes), then run the Canny
 example with ``--model_id amd/stable-diffusion-3.5-medium-amdnpu``.
 
+Running the Demos
+=================
+
+Activate the conda environment (see also `installation-steps`_):
+
+.. code-block:: powershell
+
+   conda activate ryzen-ai-1.8.0
+
+Optionally, set the NPU to high performance mode to maximize performance:
+
+.. code-block:: powershell
+
+   xrt-smi configure --pmode performance
+
+Refer to the documentation on :ref:`xrt-smi configure <xrt-smi-configure>` for additional options.
+
+From the ``GenAI-SD\test`` directory unless noted otherwise. All examples use the unified
+entry point ``run.py`` and pass ``--model_id`` with the Hugging Face model identifier.
+For more details, refer to the ``README.md`` file in the ``GenAI-SD`` directory.
+
+Image-to-Image with ControlNet
+------------------------------
+
+The image-to-image demo generates images from a **prompt** plus a **control image**
+(ControlNet types such as Canny, pose, tile, or depth for SD3.x, selected with ``-C``).
+SD3.x often defaults to 512x512; override resolution with ``-W`` and ``-H`` as in the
+examples below. SD3.x DynRes presets are summarized in `supported-models`_ and
+:ref:`Dynamic resolution (DynRes) <dynres>`.
+
+To run a minimal Canny example:
+
+.. code-block:: powershell
+
+   python run.py -C canny --model_id stabilityai/stable-diffusion-3-medium-amdnpu
+
+The demo can use ``.\ref\canny.jpg`` as the control image unless you override
+``--control_image_path``. Outputs are written to ``generated_images`` by default,
+unless ``--output_path`` is specified. You can redirect the output directory to
+a location where your user account has write permissions, for example:
+``--output_path C:\Users\<username>\Documents\generated_images``.
+
+
+**SD1.5 ControlNet Canny (i2i-canny)**
+
+.. code-block:: powershell
+
+   python .\run.py --model_id amd/sd1.5-controlnet-canny-amdnpu
+
+**Segmind-Vega (i2i, no ControlNet path)**
+
+.. code-block:: powershell
+
+   python .\run.py --model_id amd/segmind-vega-amdnpu --control_image_path .\assets\controlimg_input_1024x1024.png --strength 0.95
+
+**SD3.0 ControlNet (canny / pose / tile / depth)**
+
+.. code-block:: powershell
+
+   python .\run.py -C canny --model_id stabilityai/stable-diffusion-3-medium-amdnpu --prompt "Anime style illustration of a girl wearing a suit. A moon in sky. In the background we see heavy rain approaching. text 'InstantX' on image" -H 1024 -W 1024 --control_image_path .\ref\canny.jpg -n 50
+   python .\run.py -C pose --model_id stabilityai/stable-diffusion-3-medium-amdnpu --prompt "Anime style illustration of a girl wearing a suit. A moon in sky. In the background we see heavy rain approaching. text 'InstantX' on image" -H 1024 -W 1024 --control_image_path .\ref\pose.jpg -n 50
+   python .\run.py -C tile --model_id stabilityai/stable-diffusion-3-medium-amdnpu --prompt "Anime style illustration of a girl wearing a suit. A moon in sky. In the background we see heavy rain approaching. text 'InstantX' on image" -H 1024 -W 1024 --control_image_path .\ref\tile.jpg -n 50
+   python .\run.py -C depth --model_id stabilityai/stable-diffusion-3-medium-amdnpu -H 1024 -W 1024 --control_image_path .\assets\depth.jpeg -n 50
+
+**SD3.5 ControlNet Canny (i2i-canny)**
+
+After copying SD3.0 Canny ControlNet into the SD3.5 layout as required:
+
+.. code-block:: powershell
+
+   python .\run.py -C canny --model_id stabilityai/stable-diffusion-3.5-medium-amdnpu --prompt "Anime style illustration of a girl wearing a suit. A moon in sky. In the background we see heavy rain approaching. text 'InstantX' on image" -H 1024 -W 1024 --control_image_path .\ref\canny.jpg -n 50
+
+
+For SD3 and SD3.5 models, pass ``-O1`` (or ``--optimize_o1``) to enable a performance optimization preset that skips selected DiT denoising steps to improve inference performance.
+
+Text-to-Image
+-------------
+
+The text-to-image demo generates images from **text prompts only** (no control image).
+It covers SD1.5 (512-class), SD-Turbo and SDXL-Turbo (512-class), SDXL-base, Segmind-Vega,
+DreamShaper XL Lightning, SSD-1B, Playground v2.5, FLUX.1-Schnell, FLUX.2-klein-4B, and
+SD3.0 / SD3.5 with ``-C None``. Use ``-H``, ``-W``, and ``-n`` when the pipeline supports
+them.
+
+.. code-block:: powershell
+
+   python .\run.py --model_id amd/stable-diffusion-1.5-amdnpu
+   python .\run.py --model_id stabilityai/sd-turbo-amdnpu
+   python .\run.py --model_id stabilityai/sdxl-turbo-amdnpu
+   python .\run.py --model_id stabilityai/sdxl-base-amdnpu
+   python .\run.py --model_id amd/segmind-vega-amdnpu
+   python .\run.py --model_id amd/dreamshaper-xl-lightning-amdnpu
+   python .\run.py --model_id amd/SSD-1B-amdnpu
+   python .\run.py --model_id amd/playground-v2.5-1024px-aesthetic-amdnpu
+   python .\run.py --model_id amd/FLUX.1-schnell-amdnpu
+   python .\run.py --model_id amd/FLUX.2-klein-4B-amdnpu
+   python .\run.py -C None --model_id stabilityai/stable-diffusion-3-medium-amdnpu -H 1024 -W 1024 -n 50
+   python .\run.py -C None --model_id stabilityai/stable-diffusion-3.5-medium-amdnpu -H 1024 -W 1024 -n 50
+
+Custom prompts can be supplied with ``--prompt``. For example:
+
+.. code-block:: powershell
+
+   python .\run.py --model_id stabilityai/stable-diffusion-1.5-amdnpu --prompt "Photo of an ultra realistic sailing ship, dramatic light, pale sunrise, cinematic lighting, battered, low angle, trending on artstation, 4k, hyper realistic, focused, extreme details"
+
+Inpainting
+----------
+
+**SD3.0 (``-C Inpainting``)** uses a base image and ``--control_mask_path`` (URLs or local
+paths). This extends the image-conditioned flows above with an explicit mask channel.
+
+.. code-block:: powershell
+
+   python .\run.py --model_id stabilityai/stable-diffusion-3-medium-amdnpu -C Inpainting --prompt "A cat is sitting next to a puppy" --n_prompt "deformed, distorted, disfigured, poorly drawn, bad anatomy, wrong anatomy, extra limb, missing limb, floating limbs, mutated hands and fingers, disconnected limbs, mutation, mutated, ugly, disgusting, blurry, amputation, NSFW" -n 28 --controlnet_conditioning_scale 0.95 --control_image_path "https://huggingface.co/alimama-creative/SD3-Controlnet-Inpainting/resolve/main/images/dog.png" --control_mask_path "https://huggingface.co/alimama-creative/SD3-Controlnet-Inpainting/resolve/main/images/dog_mask.png" --seed 42
+
+
+.. _medusa-m1:
+
+***************
+Medusa M1.0.0
+***************
+
+Medusa M1.0.0 adds NPU models for the Medusa platform. Each pipeline runs at the default
+resolution in the table below. Dynamic resolution is planned for M1.0.1. The DynRes
+preset grids in :ref:`Dynamic resolution (DynRes) <dynres>` belong to Ryzen AI 1.8.0.
+
+Environment setup is the Ryzen AI 1.8.0 `installation-steps`_: the same conda
+environment, ``GenAI-SD`` tree, and ``run.py`` entry point. Model IDs and the commands
+in this chapter are the Medusa set.
+
 .. _medusa-models:
 
-********************************
-Medusa platform models (M1.0.0)
-********************************
+Supported Models
+================
 
-Medusa M1.0.0 supports the NPU models below. Each row lists the application, the default
-resolution, and the Hugging Face ``model_id`` to pass as ``--model_id``. Source weights
-are public Hugging Face repositories. Each repository follows the Hugging Face model
-license (HF LIC) on its model card.
-
-M1.0.0 does not support dynamic resolution, so the table lists only the default
-resolution. Dynamic-resolution presets are planned for M1.0.1. Until that release, do
-not apply the Ryzen AI 1.8.0 DynRes grids in `Dynamic resolution (DynRes) <dynres>`_.
+Each row lists the application, the default resolution, and the Hugging Face
+``model_id`` to pass as ``--model_id``. Source weights are public Hugging Face
+repositories. Each repository follows the Hugging Face model license (HF LIC) on its
+model card.
 
 FLUX.2-klein-4B text-to-image and both image-to-image modes (one input and two inputs)
 share one repository. Segmind-Vega text-to-image and image-to-image also share one
-repository. Run them with the same ``run.py`` entry point described in `Running the Demos`_.
+repository. Commands are in :ref:`Running the Demos <medusa-running-demos>`.
 
 .. list-table:: Medusa M1.0.0 supported models
    :header-rows: 1
@@ -309,119 +445,16 @@ repository. Run them with the same ``run.py`` entry point described in `Running 
      - `Public HF <https://huggingface.co/amd/stable-diffusion-3.5-medium-amdnpu-medusa>`_
      - HF LIC
 
-******************
+.. _medusa-running-demos:
+
 Running the Demos
-******************
+=================
 
-Activate the conda environment (see also `installation-steps`_):
-
-.. code-block:: powershell
-
-   conda activate ryzen-ai-1.8.0
-
-Optionally, set the NPU to high performance mode to maximize performance:
-
-.. code-block:: powershell
-
-   xrt-smi configure --pmode performance
-
-Refer to the documentation on :ref:`xrt-smi configure <xrt-smi-configure>` for additional options.
-
-From the ``GenAI-SD\test`` directory unless noted otherwise. All examples use the unified
-entry point ``run.py`` and pass ``--model_id`` with the Hugging Face model identifier.
-For more details, refer to the ``README.md`` file in the ``GenAI-SD`` directory.
-
-Image-to-Image with ControlNet
-==============================
-
-The image-to-image demo generates images from a **prompt** plus a **control image**
-(ControlNet types such as Canny, pose, tile, or depth for SD3.x, selected with ``-C``).
-SD3.x often defaults to 512x512; override resolution with ``-W`` and ``-H`` as in the
-examples below. SD3.x DynRes presets are summarized in `supported-models`_ and
-`Dynamic resolution (DynRes) <dynres>`_.
-
-To run a minimal Canny example:
-
-.. code-block:: powershell
-
-   python run.py -C canny --model_id stabilityai/stable-diffusion-3-medium-amdnpu
-
-The demo can use ``.\ref\canny.jpg`` as the control image unless you override
-``--control_image_path``. Outputs are written to ``generated_images`` by default,
-unless ``--output_path`` is specified. You can redirect the output directory to
-a location where your user account has write permissions, for example:
-``--output_path C:\Users\<username>\Documents\generated_images``.
-
-
-**SD1.5 ControlNet Canny (i2i-canny)**
-
-.. code-block:: powershell
-
-   python .\run.py --model_id amd/sd1.5-controlnet-canny-amdnpu
-
-**Segmind-Vega (i2i, no ControlNet path)**
-
-.. code-block:: powershell
-
-   python .\run.py --model_id amd/segmind-vega-amdnpu --control_image_path .\assets\controlimg_input_1024x1024.png --strength 0.95
-
-**SD3.0 ControlNet (canny / pose / tile / depth)**
-
-.. code-block:: powershell
-
-   python .\run.py -C canny --model_id stabilityai/stable-diffusion-3-medium-amdnpu --prompt "Anime style illustration of a girl wearing a suit. A moon in sky. In the background we see heavy rain approaching. text 'InstantX' on image" -H 1024 -W 1024 --control_image_path .\ref\canny.jpg -n 50
-   python .\run.py -C pose --model_id stabilityai/stable-diffusion-3-medium-amdnpu --prompt "Anime style illustration of a girl wearing a suit. A moon in sky. In the background we see heavy rain approaching. text 'InstantX' on image" -H 1024 -W 1024 --control_image_path .\ref\pose.jpg -n 50
-   python .\run.py -C tile --model_id stabilityai/stable-diffusion-3-medium-amdnpu --prompt "Anime style illustration of a girl wearing a suit. A moon in sky. In the background we see heavy rain approaching. text 'InstantX' on image" -H 1024 -W 1024 --control_image_path .\ref\tile.jpg -n 50
-   python .\run.py -C depth --model_id stabilityai/stable-diffusion-3-medium-amdnpu -H 1024 -W 1024 --control_image_path .\assets\depth.jpeg -n 50
-
-**SD3.5 ControlNet Canny (i2i-canny)**
-
-After copying SD3.0 Canny ControlNet into the SD3.5 layout as required:
-
-.. code-block:: powershell
-
-   python .\run.py -C canny --model_id stabilityai/stable-diffusion-3.5-medium-amdnpu --prompt "Anime style illustration of a girl wearing a suit. A moon in sky. In the background we see heavy rain approaching. text 'InstantX' on image" -H 1024 -W 1024 --control_image_path .\ref\canny.jpg -n 50
-
-
-For SD3 and SD3.5 models, pass ``-O1`` (or ``--optimize_o1``) to enable a performance optimization preset that skips selected DiT denoising steps to improve inference performance.
+From the ``GenAI-SD\test`` directory, these examples use ``run.py`` with a Medusa
+``--model_id``. M1.0.0 runs at the default resolution listed in `medusa-models`_.
 
 Text-to-Image
-=============
-
-The text-to-image demo generates images from **text prompts only** (no control image).
-It covers SD1.5 (512-class), SD-Turbo and SDXL-Turbo (512-class), SDXL-base, Segmind-Vega,
-DreamShaper XL Lightning, SSD-1B, Playground v2.5, FLUX.1-Schnell, FLUX.2-klein-4B, and
-SD3.0 / SD3.5 with ``-C None``. Use ``-H``, ``-W``, and ``-n`` when the pipeline supports
-them.
-
-.. code-block:: powershell
-
-   python .\run.py --model_id amd/stable-diffusion-1.5-amdnpu
-   python .\run.py --model_id stabilityai/sd-turbo-amdnpu
-   python .\run.py --model_id stabilityai/sdxl-turbo-amdnpu
-   python .\run.py --model_id stabilityai/sdxl-base-amdnpu
-   python .\run.py --model_id amd/segmind-vega-amdnpu
-   python .\run.py --model_id amd/dreamshaper-xl-lightning-amdnpu
-   python .\run.py --model_id amd/SSD-1B-amdnpu
-   python .\run.py --model_id amd/playground-v2.5-1024px-aesthetic-amdnpu
-   python .\run.py --model_id amd/FLUX.1-schnell-amdnpu
-   python .\run.py --model_id amd/FLUX.2-klein-4B-amdnpu
-   python .\run.py -C None --model_id stabilityai/stable-diffusion-3-medium-amdnpu -H 1024 -W 1024 -n 50
-   python .\run.py -C None --model_id stabilityai/stable-diffusion-3.5-medium-amdnpu -H 1024 -W 1024 -n 50
-
-Custom prompts can be supplied with ``--prompt``. For example:
-
-.. code-block:: powershell
-
-   python .\run.py --model_id stabilityai/stable-diffusion-1.5-amdnpu --prompt "Photo of an ultra realistic sailing ship, dramatic light, pale sunrise, cinematic lighting, battered, low angle, trending on artstation, 4k, hyper realistic, focused, extreme details"
-
-Running Medusa Models (M1.0.0)
-==============================
-
-Medusa models use the same commands as above with the ``-medusa`` ``model_id``. M1.0.0
-runs at the default resolution only (see `medusa-models`_).
-
-**Text-to-Image**
+-------------
 
 .. code-block:: powershell
 
@@ -435,7 +468,8 @@ runs at the default resolution only (see `medusa-models`_).
    python .\run.py --model_id amd/FLUX.1-schnell-amdnpu-medusa
    python .\run.py -C None --model_id amd/stable-diffusion-3.5-medium-amdnpu-medusa -H 1024 -W 1024 -n 50
 
-**FLUX.2-klein-4B**
+FLUX.2-klein-4B
+---------------
 
 Text-to-image, one-input image edit, and two-input image edit share
 ``amd/FLUX.2-klein-4B-amdnpu-medusa``.
@@ -447,21 +481,17 @@ One input uses a single ``--edit_image_path``; two inputs pass both images to th
    python .\run.py --model_id amd/FLUX.2-klein-4B-amdnpu-medusa -H 1024 -W 1024 -n 4 --prompt "Change the dress to red" --edit_image_path ./assets/flux2_img2.png
    python .\run.py --model_id amd/FLUX.2-klein-4B-amdnpu-medusa -H 1024 -W 1024 -n 4 --prompt "Replace the astronaut in image 1 with the girl in image 2" --edit_image_path ./assets/flux2_img1.png ./assets/flux2_img2.png
 
-**Segmind-Vega (i2i, no ControlNet path)**
+Segmind-Vega
+------------
+
+Image-to-image without a ControlNet path:
 
 .. code-block:: powershell
 
    python .\run.py --model_id amd/segmind-vega-amdnpu-medusa --control_image_path .\assets\controlimg_input_1024x1024.png --strength 0.95
 
-Inpainting
-==========
 
-**SD3.0 (``-C Inpainting``)** uses a base image and ``--control_mask_path`` (URLs or local
-paths). This extends the image-conditioned flows above with an explicit mask channel.
-
-.. code-block:: powershell
-
-   python .\run.py --model_id stabilityai/stable-diffusion-3-medium-amdnpu -C Inpainting --prompt "A cat is sitting next to a puppy" --n_prompt "deformed, distorted, disfigured, poorly drawn, bad anatomy, wrong anatomy, extra limb, missing limb, floating limbs, mutated hands and fingers, disconnected limbs, mutation, mutated, ugly, disgusting, blurry, amputation, NSFW" -n 28 --controlnet_conditioning_scale 0.95 --control_image_path "https://huggingface.co/alimama-creative/SD3-Controlnet-Inpainting/resolve/main/images/dog.png" --control_mask_path "https://huggingface.co/alimama-creative/SD3-Controlnet-Inpainting/resolve/main/images/dog_mask.png" --seed 42
+.. _sd-sandbox:
 
 *****************************************
 Running with AMD Stable Diffusion Sandbox
