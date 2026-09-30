@@ -30,94 +30,80 @@ Each row lists the application, the default resolution, and the Hugging Face
 and two inputs) share one repository. Segmind-Vega text-to-image and image-to-image
 also share one repository. Commands are in `m100-running-demos`_.
 
-.. list-table:: Medusa M1.0.0 supported models
+.. list-table::
    :header-rows: 1
-   :widths: 20 8 14 32 14 12
+   :widths: 8 18 12 22 35
 
-   * - Model
+   * - Notes
+     - Model
      - App
-     - Default resolution
-     - NPU model location
-     - Source model
-     - License
-   * - SD1.5
+     - Default resolution / DynRes
+     - ``model_id`` (AMD Hub; ``stabilityai`` equivalent where applicable)
+   * -
+     - SD1.5
      - t2i
      - 512x512
-     - ``amd/stable-diffusion-1.5-amdnpu-medusa``
-     - `Public HF <https://huggingface.co/amd/stable-diffusion-1.5-amdnpu-medusa>`_
-     - HF LIC
-   * - FLUX.2-klein-4B
+     - `amd/stable-diffusion-1.5-amdnpu-medusa <https://huggingface.co/amd/stable-diffusion-1.5-amdnpu-medusa>`_
+   * -
+     - FLUX.2-klein-4B
      - t2i
      - 1024x1024
-     - ``amd/FLUX.2-klein-4B-amdnpu-medusa``
-     - `Public HF <https://huggingface.co/amd/FLUX.2-klein-4B-amdnpu-medusa>`_
-     - HF LIC
-   * - FLUX.2-klein-4B (1 input)
+     - `amd/FLUX.2-klein-4B-amdnpu-medusa <https://huggingface.co/amd/FLUX.2-klein-4B-amdnpu-medusa>`_
+   * -
+     - FLUX.2-klein-4B (1 input)
      - i2i
      - 1024x1024
-     - ``amd/FLUX.2-klein-4B-amdnpu-medusa``
-     - `Public HF <https://huggingface.co/amd/FLUX.2-klein-4B-amdnpu-medusa>`_
-     - HF LIC
-   * - FLUX.2-klein-4B (2 inputs)
+     - `amd/FLUX.2-klein-4B-amdnpu-medusa <https://huggingface.co/amd/FLUX.2-klein-4B-amdnpu-medusa>`_
+   * -
+     - FLUX.2-klein-4B (2 inputs)
      - i2i
      - 1024x1024
-     - ``amd/FLUX.2-klein-4B-amdnpu-medusa``
-     - `Public HF <https://huggingface.co/amd/FLUX.2-klein-4B-amdnpu-medusa>`_
-     - HF LIC
-   * - Segmind-Vega
+     - `amd/FLUX.2-klein-4B-amdnpu-medusa <https://huggingface.co/amd/FLUX.2-klein-4B-amdnpu-medusa>`_
+   * -
+     - Segmind-Vega
      - t2i
      - 1024x1024
-     - ``amd/segmind-vega-amdnpu-medusa``
-     - `Public HF <https://huggingface.co/amd/segmind-vega-amdnpu-medusa>`_
-     - HF LIC
-   * - Segmind-Vega
+     - `amd/segmind-vega-amdnpu-medusa <https://huggingface.co/amd/segmind-vega-amdnpu-medusa>`_
+   * -
+     - Segmind-Vega
      - i2i
      - 1024x1024
-     - ``amd/segmind-vega-amdnpu-medusa``
-     - `Public HF <https://huggingface.co/amd/segmind-vega-amdnpu-medusa>`_
-     - HF LIC
-   * - SDXL-Turbo
+     - `amd/segmind-vega-amdnpu-medusa <https://huggingface.co/amd/segmind-vega-amdnpu-medusa>`_
+   * -
+     - SDXL-Turbo
      - t2i
      - 512x512
-     - ``amd/sdxl-turbo-amdnpu-medusa``
-     - `Public HF <https://huggingface.co/amd/sdxl-turbo-amdnpu-medusa>`_
-     - HF LIC
-   * - SDXL-base
+     - `amd/sdxl-turbo-amdnpu-medusa <https://huggingface.co/amd/sdxl-turbo-amdnpu-medusa>`_
+   * -
+     - SDXL-base
      - t2i
      - 1024x1024
-     - ``amd/sdxl-base-amdnpu-medusa``
-     - `Public HF <https://huggingface.co/amd/sdxl-base-amdnpu-medusa>`_
-     - HF LIC
-   * - SSD-1B
+     - `amd/sdxl-base-amdnpu-medusa <https://huggingface.co/amd/sdxl-base-amdnpu-medusa>`_
+   * -
+     - SSD-1B
      - t2i
      - 1024x1024
-     - ``amd/SSD-1B-amdnpu-medusa``
-     - `Public HF <https://huggingface.co/amd/SSD-1B-amdnpu-medusa>`_
-     - HF LIC
-   * - DreamShaper XL Lightning
+     - `amd/SSD-1B-amdnpu-medusa <https://huggingface.co/amd/SSD-1B-amdnpu-medusa>`_
+   * -
+     - DreamShaper XL Lightning
      - t2i
      - 1024x1024
-     - ``amd/dreamshaper-xl-lightning-amdnpu-medusa``
-     - `Public HF <https://huggingface.co/amd/dreamshaper-xl-lightning-amdnpu-medusa>`_
-     - HF LIC
-   * - Playground v2.5
+     - `amd/dreamshaper-xl-lightning-amdnpu-medusa <https://huggingface.co/amd/dreamshaper-xl-lightning-amdnpu-medusa>`_
+   * -
+     - Playground v2.5
      - t2i
      - 1024x1024
-     - ``amd/playground-v2.5-1024px-aesthetic-amdnpu-medusa``
-     - `Public HF <https://huggingface.co/amd/playground-v2.5-1024px-aesthetic-amdnpu-medusa>`_
-     - HF LIC
-   * - FLUX.1-Schnell
+     - `amd/playground-v2.5-1024px-aesthetic-amdnpu-medusa <https://huggingface.co/amd/playground-v2.5-1024px-aesthetic-amdnpu-medusa>`_
+   * -
+     - FLUX.1-Schnell
      - t2i
      - 1024x1024
-     - ``amd/FLUX.1-schnell-amdnpu-medusa``
-     - `Public HF <https://huggingface.co/amd/FLUX.1-schnell-amdnpu-medusa>`_
-     - HF LIC
-   * - SD3.5-Medium
+     - `amd/FLUX.1-schnell-amdnpu-medusa <https://huggingface.co/amd/FLUX.1-schnell-amdnpu-medusa>`_
+   * -
+     - SD3.5-Medium
      - t2i
      - 1024x1024
-     - ``amd/stable-diffusion-3.5-medium-amdnpu-medusa``
-     - `Public HF <https://huggingface.co/amd/stable-diffusion-3.5-medium-amdnpu-medusa>`_
-     - HF LIC
+     - `amd/stable-diffusion-3.5-medium-amdnpu-medusa <https://huggingface.co/amd/stable-diffusion-3.5-medium-amdnpu-medusa>`_
 
 .. _m100-running-demos:
 
