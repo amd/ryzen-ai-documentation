@@ -128,6 +128,7 @@ For more details, refer to the :doc:`llm/overview` page.
    NPU Management <xrt_smi.rst>
    ai_analyzer.rst
    sd_demo.rst
+   Medusa M1.0.0 <sd_demo_m100.rst>
    ryzen_ai_libraries.rst
    Supported Operators <ops_support.rst>
    Licensing Information <licenses.rst>
