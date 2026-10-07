@@ -3,8 +3,7 @@ Linux Installation Instructions
 ###############################
 
 
-Ryzen AI for Linux supports running AI models on the AMD Neural Processing Unit (NPU).
-The current release supports STX and KRK platforms.
+Ryzen AI for Linux supports running AI models on the AMD Neural Processing Unit (NPU). Linux support is available on all consumer platforms starting with Strix Point, as well as Ryzen™ AI Embedded P100 APUs.
 
 With this release, Users can now compile and run AI models using the following formats:
 
