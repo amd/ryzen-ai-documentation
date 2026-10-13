@@ -25,6 +25,10 @@ Execution Modes
      - OnnxRuntime GenAI (OGA)
      - Dynamic NPU + iGPU partitioning
      - Interactive inference with optimal prefill/decode performance
+   * - **NPU**
+     - FastFlowLM (https://fastflowlm.com/)
+     - NPU
+     - Out-of-box, NPU-first runtime built exclusively for Ryzen™ AI.
    * - **GPU**
      - llama.cpp
      - Dedicated GPU execution
