@@ -148,7 +148,7 @@ The compiler recommends including pre-compiled versions of INT8 models, but it i
 Application Packaging Requirements
 **********************************
  
-Ryzen AI 1.8.0 beta version is available for download at the `following link <https://download.amd.com/opendownload/RyzenAI/1.8.0b0/ryzen-ai-lt-1.8.0-beta.exe>`_. This beta version requires updated `NPU driver <https://download.amd.com/opendownload/RyzenAI/1.8.0b0/NPU_RAI_376_WHQL.zip>`_.
+Ryzen AI 1.9.0 beta version is available for download at the `following link <https://download.amd.com/opendownload/RyzenAI/1.9.0Beta/ryzen-ai-beta-1.9.0-msi.zip>`_. This beta version requires updated `NPU driver <https://download.amd.com/opendownload/RyzenAI/1.9.0Beta/NPU_329_WHQL_25.20.zip>`_.
 
 
 A C++ application built on the Ryzen AI ONNX Runtime must include the following components in its distribution package:
