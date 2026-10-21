@@ -61,7 +61,7 @@ Follow these steps in order:
       * - **Release 2026.8D**
         - :download:`AMD.NPU.WinML.EP_2026_8D.nupkg <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=AMD.NPU.WinML.EP_2026_8D.nupkg>`
       * - **Release 2026.9D**
-        - :download:`AMD.NPU.WinML.EP_2026_9D.nupkg <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=AMD.NPU.WinML.EP_2026_9D.nupkg>`
+        - :download:`AMD.NPU.WinML.EP_2026_9D.nupkg <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=RyzenAI_Deployment.1.8.0-9D.nupkg`
 
 
 **************************
