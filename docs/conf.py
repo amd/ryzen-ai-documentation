@@ -109,6 +109,7 @@ templates_path = ['_templates']
 def setup(app):
     app.add_css_file('custom.css')
     app.add_css_file("llm-table.css")
+    app.add_css_file("licenses.css")
     app.add_js_file("winml-external-links.js")
 
 

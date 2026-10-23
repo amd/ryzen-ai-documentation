@@ -24,6 +24,9 @@ The following table summarizes the driver requirements for the different version
    * - VitisAI EP version
      - Minimum NPU Driver version
      - Maximum NPU Driver release date
+   * - 1.8
+     - 32.0.203.280
+     - Jan 22nd, 2029
    * - 1.7
      - 32.0.203.280
      - Jan 22nd, 2029
@@ -86,6 +89,14 @@ The Ryzen AI Software supports various types of NPU-enabled APUs, referred to as
      - 0x17F0
      - 0x20
      - KRK
+   * - 0x1022
+     - 0x17F0
+     - 0x10
+     - GPT
+   * - 0x1022
+     - 0x17F0
+     - 0x20
+     - GPT
 
 The application must verify that it runs on an AMD processor with NPU, and that the Vitis AI EP version supports the NPU type.
 
@@ -134,7 +145,7 @@ AMD recommends using the ONNXRuntime :ref:`EP Context Cache <ort-ep-context-cach
 
 .. rubric:: BF16 models
 
-The deployment version of the VitisAI Execution Provider (EP) does not support the on-the-fly compilation of BF16 models. Applications utilizing BF16 models must include pre-compiled versions of these models. The VitisAI EP can then load the pre-compiled models and deploy them efficiently on the NPU.
+The deployment version of the VitisAI Execution Provider (EP) supports on-the-fly compilation of BF16 models. It is recommended for Applications with BF16 models to include pre-compiled versions of the models. The VitisAI EP can then load the pre-compiled models and deploy them efficiently on the NPU.
 
 .. rubric:: INT8 models
 
@@ -148,7 +159,7 @@ The compiler recommends including pre-compiled versions of INT8 models, but it i
 Application Packaging Requirements
 **********************************
  
-Ryzen AI 1.9.0 beta version is available for download at the `following link <https://download.amd.com/opendownload/RyzenAI/1.9.0Beta/ryzen-ai-beta-1.9.0-msi.zip>`_. This beta version requires updated `NPU driver <https://download.amd.com/opendownload/RyzenAI/1.9.0Beta/NPU_329_WHQL_25.20.zip>`_.
+Ryzen AI 1.8.0 beta version is available for download at the `following link <https://download.amd.com/opendownload/RyzenAI/1.8.0b0/ryzen-ai-lt-1.8.0-beta.exe>`_. This beta version requires updated `NPU driver <https://download.amd.com/opendownload/RyzenAI/1.8.0b0/NPU_RAI_376_WHQL.zip>`_.
 
 
 A C++ application built on the Ryzen AI ONNX Runtime must include the following components in its distribution package:

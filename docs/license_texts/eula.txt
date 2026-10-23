@@ -1,0 +1,176 @@
+End User License Agreement for Software 
+(Public Repository Download) 
+CAREFULLY READ THIS END USER LICENSE AGREEMENT FOR SOFTWARE (“AGREEMENT”).  THIS IS AN AGREEMENT 
+BETWEEN THE LICENSEE AND ADVANCED MICRO DEVICES, INC. (“AMD”).  
+BY CLICKING THE “ACCEPT” OR “AGREE” BUTTON, OR OTHERWISE ACCESSING, DOWNLOADING, INSTALLING, OR USING THE 
+SOFTWARE (DEFINED BELOW), YOU AGREE ON BEHALF OF LICENSEE TO BE BOUND BY THIS AGREEMENT.  “LICENSEE” 
+MEANS (1) THE CORPORATION OR OTHER LEGAL ENTITY ENTERING INTO THIS AGREEMENT, OR (2) IN THE CASE OF AN 
+INDIVIDUAL THAT IS NOT ACCESSING, DOWNLOADING, INSTALLING, OR USING THE SOFTWARE ON BEHALF OF A LEGAL 
+ENTITY, THE INDIVIDUAL ENTERING INTO THIS AGREEMENT.  IF YOU ENTER INTO THIS AGREEMENT ON BEHALF OF A 
+CORPORATION OR OTHER LEGAL ENTITY, YOU REPRESENT THAT YOU HAVE AUTHORITY TO BIND THAT ENTITY TO THIS 
+AGREEMENT.  IF LICENSEE DOES NOT AGREE TO THE TERMS OF THIS AGREEMENT, DO NOT CLICK THE “ACCEPT” OR 
+“AGREE” BUTTON OR OTHERWISE ACCESS, DOWNLOAD, INSTALL, OR USE THE SOFTWARE.  
+1. Definitions.   
+1.1. “Derivative Works” means any work, revision, modification, or adaptation made to or derived from the Software, 
+or any work that incorporates the Software, in whole or in part.  
+1.2. “Free Software License” means an open source or other license that requires, as a condition of use, modification 
+or distribution, that any resulting software must be (a) disclosed or distributed in source code form; (b) licensed 
+for the purpose of making modifications or derivative works; or (c) redistributable at no charge. 
+1.3. “Intellectual Property Rights” means all copyrights, trademarks, trade secrets, patents, mask works, and all 
+related, similar, or other intellectual property rights recognized in any jurisdiction worldwide, including all 
+applications and registrations with respect thereto. 
+1.4. “Software” means the AMD software, installation scripts, and related files that AMD provides to Licensee under 
+this Agreement, including any updates to such software and any associated online or electronic documentation 
+included with or otherwise provided to Licensee in connection with such software. 
+2. License.   
+2.1. Subject to the terms of this Agreement, AMD hereby grants Licensee a non-exclusive, royalty-free, revocable, 
+limited copyright license to 
+2.1.1. install and use the Software solely in conjunction with systems or components that include or incorporate 
+AMD products; 
+2.1.2. reproduce and modify any portion of the Software that AMD provides in source code form and create 
+Derivative Works, solely for use in conjunction with systems or components that include or incorporate 
+AMD products; 
+2.1.3. subject to Section 5 (with respect to pre-production Software), (a) reproduce and distribute copies of 
+Derivative Works to third parties, provided that any portions containing or derived from AMD -proprietary 
+source code are distributed solely in object code form for use solely in conjunction with systems or 
+components that include or incorporate AMD products; and (b) grant each such third party a non -
+exclusive, non-transferable, non-sublicensable sublicense under AMD’s copyrights to reproduce and use 
+the portions of such Derivative Works that contain or are derived from the Software solely as necessary to 
+install and use such Derivative Works for such purpose; provided that, before receiving any such copy, 
+each such third party enters into a written or electronic license agreement with Licensee that is binding 
+on such third party and contains terms at least as protective of the Software as those set forth in this 
+Agreement; and 
+2.1.4. subject to Section 5 (with respect to pre-production Software), reproduce and redistribute unmodified 
+copies of the Software, without charge, provided that all copyright, trademark, patent, and other 
+proprietary notices are retained and a copy of this Agreement is distributed with the Software. 
+2.2. Licensee may allow any of its Subsidiaries to exercise the rights granted to Licensee above, and Licensee and its 
+Subsidiaries may disclose the Software to contractors performing services for Licensee or its Subsidiaries; 
+provided, however, that Licensee will be liable for any failure of its Subsidiaries or contractors to comply with this
+
+Agreement as if such failure were its own.  As used in this Section 2.2, “Subsidiary” means an entity controlled by 
+Licensee, where ‘control’ means Licensee’s direct or indirect beneficial ownership of more than fifty percent of 
+the entity’s shares or other ownership interests entitled to direct or cause the direction of the entity’s general 
+management.  An entity is a Subsidiary only while such control exists.  
+3. Restrictions.  Except as expressly permitted in Section 2 (or under applicable laws notwithstanding these restrictions) , 
+Licensee may not: 
+3.1. modify the Software or create any Derivative Works; 
+3.2. distribute, publish, display, sublicense, assign, or otherwise transfer the Software; 
+3.3. decrypt, decompile, reverse engineer, disassemble, modify, alter, or otherwise reduce to human-perceivable form 
+any portion of the Software that AMD provides in object code, encrypted, or other obfuscated form; 
+3.4. alter or remove any copyright, trademark, patent, or other proprietary notice in the Software;  
+3.5. use the Software to: (i) develop inventions directly derived from the Software to seek patent protection; (ii) assist 
+in the analysis of Licensee’s patents or patent applications; or (iii) modify existing patents; or 
+3.6. use, modify, or distribute any Software in a manner that subjects any portion of the Software to a Free Software 
+License; provided, however, that redistribution of unmodified copies of the Software as expressly permitted in 
+Section 2 will not, by itself, be prohibited by this subsection. 
+4. Third-Party Licenses.  Certain files, programs, or other materials distributed in connection with the Software may 
+originate from third-party licensors and are licensed to Licensee under the applicable license terms rather than under 
+this Agreement.  Those terms may appear during installation, acceptance, or activation of the Software; in 
+corresponding release notes, documentation, header files, or source files; or elsewhere in materials distributed with 
+the Software.  Such files, programs, or other materials may be subject to the GNU General Public License or other open  
+source or free software licenses.  Licensee agrees to carefully review and comply with those license terms to the extent 
+they govern such files, programs, or other materials.  Notwithstanding the foregoing, as between AMD and Licensee, to 
+the maximum extent permitted by applicable law and the applicable third -party licenses, all such third-party files, 
+programs, or other materials will be subject to Sections 8 (Disclaimers), 9 (Limitation of Liability and Indemnification), 
+and 13.1 (Governing Law) of this Agreement.  For any object code distributed with the Software under a license that 
+requires AMD to make corresponding source code available to recipients, AMD offers to provide Licensee, upon 
+Licensee’s written request, a copy of that source code for as long as the applicable license requires .  Unless the 
+applicable license prohibits it, AMD may charge Licensee the cost of providing the source code.  Licensee’s request 
+must identify the Software by name and version number and should be sent to: Advanced Micro Devices, Inc., Attn: 
+Software Compliance Officer, 2485 Augustine Drive, Santa Clara, CA 95054, USA. 
+5. Pre-Production Software.  The Software may be an alpha, beta, early-access, or other pre-production version intended 
+to provide advance access to features that may or may not be included in a future production version .  Accordingly, 
+pre-production Software may not be as fully functional as production versions; its use may produce unexpected 
+outcomes, data loss, project delays, or other unpredictable damage or loss.  Pre -production Software is not provided or 
+intended for production use, and Licensee’s use of pre-production Software is at Licensee’s own risk.  Pre-production 
+Software is provided to Licensee only for Licensee’s evaluation purposes.  Sections 2.1.3 and 2.1.4 do not apply to pre-
+production Software.   
+6. Feedback.  Licensee has no obligation to provide AMD with suggestions, comments, or other feedback relating to the 
+Software (“Feedback”).  However, AMD may use any Feedback it receives from Licensee to improve the Software or 
+other AMD products, software, and technologies.  Accordingly, for any Feedback Licensee provides to AMD, Licensee 
+hereby grants AMD and its affiliates and subsidiaries a worldwide, non-exclusive, irrevocable, royalty-free, perpetual 
+license to use, reproduce, license, sublicense, distribute, make, have made, sell , and otherwise commercialize, directly 
+or indirectly, the Feedback in connection with the Software or other AMD products, software, and technologies.  
+Licensee further agrees not to provide any Feedback that Licensee knows is subject to (a) any third party’s Intellectual 
+Property Rights or (b) license terms that purport to require products incorporating or derived from such Feedback, or 
+other AMD intellectual property, to be licensed to or otherwise shared with any third  party. 
+7. Ownership.  The Software and all Intellectual Property Rights therein are and will remain the sole and exclusive 
+property of AMD or its licensors.  Except for the license expressly granted in Section 2, Licensee has no other rights in 
+the Software, whether express, implied, arising by estoppel, or otherwise .  AMD and its licensors reserve all rights not
+
+expressly granted under this Agreement.  All modifications, changes, improvements and enhancements to the Software 
+(collectively “Modifications”) are the sole property of AMD.  Licensee hereby assigns and agrees to assign to AMD 
+Licensee's entire right, title and interest in and to the Modifications and all associated Intellectual Property Rights, and 
+Licensee will acquire no greater rights therein than specifically provided for in this Agreement; provided, however , that 
+Licensee shall have no obligation to disclose or provide such Modifications to AMD and “Modifications” do not include 
+technology independently developed by Licensee that is added to or incorporated in the Software.  Licensee agrees 
+that any Modifications are made solely at its own risk and that AMD accepts no liability whatsoever for any such 
+Modifications. 
+8. Disclaimers.  TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, THE SOFTWARE IS PROVIDED “AS IS” 
+WITHOUT WARRANTY OF ANY KIND.  AMD DISCLAIMS ALL WARRANTIES, WHETHER EXPRESS, IMPLIED, OR STATUTORY, 
+INCLUDING THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, AND NON -
+INFRINGEMENT; ANY WARRANTY THAT THE SOFTWARE WILL OPERATE UNINTERRUPTED OR ERROR -FREE; AND ANY 
+WARRANTY ARISING FROM CUSTOM OF TRADE OR COURSE OF USAGE.  LICENSEE ASSUMES THE ENTIRE RISK 
+ASSOCIATED WITH USE OF THE SOFTWARE.  Some jurisdictions do not allow the exclusion of implied warranties, so the 
+above exclusion may not apply. 
+9. Limitation of Liability and Indemnification.  TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW:  (1) IN NO 
+EVENT WILL AMD OR ITS LICENSORS BE LIABLE FOR ANY LOSS OF DATA, LOST PROFITS, GOODWILL, OR COST OF 
+PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES, OR FOR ANY SPECIAL, INCIDENTAL, CONSEQUENTIAL OR 
+INDIRECT DAMAGES ARISING UNDER, RELATED TO, OR IN CONNECTION WITH THIS AGREEMENT OR THE USE OR 
+OPERATION OF THE SOFTWARE, IN WHOLE OR IN PART, HOWEVER CAUSED AND UNDER ANY THEORY OF LIABILITY; (2) 
+IN NO EVENT WILL THE ENTIRE LIABILITY OF AMD OR ITS LICENSORS ARISING UNDER, RELATED TO, OR IN CONNECTION 
+WITH THIS AGREEMENT EXCEED THE AMOUNT OF LICENSE FEES RECEIVED BY AMD FROM LICENSEE FOR THE 
+SOFTWARE; (3) THESE LIMITATIONS AND EXCLUSIONS APPLY REGARDLESS OF WHETHER SUCH LOSS WAS REASONABLY 
+FORESEEABLE OR AMD WAS ADVISED OF THE POSSIBILITY OF SUCH DAMAGES ; AND (4) THESE LIMITATIONS APPLY 
+NOTWITHSTANDING THE FAILURE OF THE ESSENTIAL PURPOSE OF ANY LIMITED REMEDIES HEREIN.  Licensee agrees to 
+defend, indemnify, and hold harmless AMD, its licensors, and their respective directors, officers, employees, affilia tes, 
+and agents from and against any and all losses, damages, liabilities, and expenses (including reasonable attorneys’ fees) 
+resulting from Licensee’s use of the Software or Licensee’s breach of this Agreement . 
+Nothing in this Section excludes or limits any liability to the extent such liability cannot be excluded or limited under 
+applicable law. 
+10. Notice to U.S. Government End Users.  The Software is a “commercial product,” as that term is defined in 48 C.F.R. § 
+2.101, consisting of “commercial computer software” and “commercial computer software documentation,” as those 
+terms are used in 48 C.F.R. § 12.212 and 48 C.F.R. § 227.7202, respectively .  Consistent with 48 C.F.R. § 12.212 or 48 
+C.F.R. §§ 227.7202-1 through 227.7202-4, as applicable, the commercial computer software and commercial computer 
+software documentation are licensed to U.S. Government end users (a) only as commercial products and (b) with only 
+those rights granted to all other end users under this Agreement. 
+11. Term and Termination.   
+11.1. Term.  This Agreement will commence upon the date that Licensee clicks the “ Accept” or “Agree” button or 
+otherwise accesses, downloads, installs, or uses the Software, whichever occurs first, and will remain effective 
+until terminated in accordance with this Section 11.   
+11.2. Termination by Licensee.  Licensee may terminate this Agreement at any time for any or no reason by 
+destroying the Software and all copies and derivatives and providing notice to AMD of same. 
+11.3. Termination for Breach.  This Agreement will terminate immediately without notice from AMD or judicial 
+resolution if Licensee fails to comply with any provision of this Agreement.   
+11.4. Effects of Termination.  Upon termination of this Agreement, the licenses and rights granted by AMD hereunder 
+will cease, and Licensee must promptly destroy the Software, including all copies and derivatives in its 
+possession or under its control, and certify such destruction in writing to AMD.  Sections 7 (Ownership), 8 
+(Disclaimers), 9 (Limitation of Liability and Indemnification), 11.4 (Effects of Termination) , and 13 (General), and 
+all defined terms survive termination of this Agreement.
+
+12. Support and Updates.  AMD has no obligation to provide support under this Agreement.  AMD may, in its sole 
+discretion, provide Licensee with updates to the Software. 
+13. General. 
+13.1. Governing Law.  This Agreement is governed by and construed in accordance with the laws of the State of 
+California, without regard to its conflict-of-laws rules.  Each party submits to the exclusive jurisdiction of the 
+state courts located in Santa Clara County, California, and the federal courts located in the Northern District of 
+California for any dispute arising out of or relating to this Agreement.  Licensee acknowledges that Licensee’s 
+breach of this Agreement may cause irreparable harm for which monetary damages would be an inadequate 
+remedy and agrees that AMD may seek injunctive relief, in addition to any other relief available from a ny court 
+of competent jurisdiction. 
+13.2. Assignment.  Licensee shall not assign this Agreement or transfer any of the rights or obligations under this 
+Agreement, in whole or in part, by operation of law or otherwise, without the prior written consent of AMD.  
+Any merger, acquisition, reorganization, change of control, or the like involving Licensee shall be deemed an 
+assignment in violation of the foregoing.   
+13.3. Severability.  If any provision of this Agreement is found unenforceable, illegal, void or invalid in whole or in 
+part, then it will to that extent be deemed not to form part of this Agreement and the remainder of the 
+Agreement will remain in full force and effect. 
+13.4. Notices.  Any notice required or permitted under this Agreement must be in writing and delivered to the address 
+provided by each party to the other in connection with this Agreement or to another address that a party 
+specifies in writing.  Notices to AMD must be addressed to the attention of “General Counsel, Legal 
+Department.” 
+13.5. Entire Agreement.  This Agreement constitutes the entire agreement and understanding between the parties 
+regarding the Software and supersedes all prior or contemporaneous oral or written agreements, discussions, 
+and understandings concerning its subject matter.  No waiver or modification of any provision of this Agreement 
+will be binding unless it is in writing and signed by an authorized representative of each party.  
+2026.09

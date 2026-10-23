@@ -26,8 +26,8 @@ The NPU driver and Windows App SDK should be correctly installed, as described i
 
 .. code-block:: shell
 
-    conda create -n winml_resnet python==3.12
-    conda activate winml_resnet
+    py -3.12 -m venv winml_resnet
+    winml_resnet\Scripts\activate.bat
     cd <RyzenAI-SW>\WinML\CNN\ResNet
     pip install -r .\requirements.txt
 
@@ -36,7 +36,7 @@ Check the installed `Windows App SDK` Python package using the command below.
 
 .. code-block:: shell
 
-    conda list | findstr wasdk
+    python -m pip list | findstr wasdk
 
 
 This should print the installed version of the `Windows App SDK` Python package.

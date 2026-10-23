@@ -98,6 +98,14 @@ For more details, refer to the :doc:`llm/overview` page.
 .. toctree::
    :maxdepth: 1
    :hidden:
+   :caption: Image-Gen Models on the NPU
+
+   sd_installation.rst
+   sd_demo.rst
+
+.. toctree::
+   :maxdepth: 1
+   :hidden:
    :caption: Running LLMs on the NPU
 
    llm/overview.rst
@@ -105,6 +113,7 @@ For more details, refer to the :doc:`llm/overview` page.
    llm/high_level_python.rst
    hybrid_oga.rst
    oga_model_prepare.rst
+   lora.rst
 
 .. toctree::
    :maxdepth: 1
@@ -127,7 +136,6 @@ For more details, refer to the :doc:`llm/overview` page.
 
    NPU Management <xrt_smi.rst>
    ai_analyzer.rst
-   sd_demo.rst
    ryzen_ai_libraries.rst
    Supported Operators <ops_support.rst>
    Licensing Information <licenses.rst>

@@ -11,6 +11,9 @@ Preparing a LLM for deployment on a Ryzen AI PC involves 2 steps:
 1. **Quantization**: The pretrained model is quantized to reduce memory footprint and better map to compute resources in the hardware accelerators
 2. **Postprocessing**: During the postprocessing the model is exported to OGA followed by NPU-only or Hybrid execution mode specific postprocess to obtain the final deployable model.
 
+
+.. _llm_quantization:
+
 ************
 Quantization
 ************
@@ -22,12 +25,12 @@ A Linux machine with AMD (e.g., AMD Instinct MI Series) or Nvidia GPUs
 Setup
 =====
 
-1. Create and activate Conda Environment 
+1. Create and activate a Python virtual environment 
 
 .. code-block::
 
-    conda create --name <conda_env_name> python=3.12
-    conda activate <conda_env_name>
+    python3.12 -m venv <env_name>
+    source <env_name>/bin/activate
 
 2. If Using AMD GPUs, update PyTorch to use ROCm 
 
@@ -102,11 +105,11 @@ The quantized model is generated in the <quantized safetensor output dir> folder
 Postprocessing
 **************
 
-Copy the quantized model to the Windows PC with Ryzen AI installed, and activate the Ryzen AI Conda environment.
+Copy the quantized model to the Windows PC with Ryzen AI installed, and activate the Ryzen AI Python virtual environment.
 
 .. code-block::
 
-    conda activate ryzen-ai-<version>
+    "%RYZEN_AI_INSTALLATION_PATH%\venv\Scripts\activate.bat"
 
 Hybrid Execution Mode
 =====================
@@ -175,8 +178,8 @@ Here are simple commands to export an OGA model from a quantized model using a s
 
 .. code-block::
 
-    conda create --name oga_builder_env python=3.12
-    conda activate oga_builder_env
+    py -3.12 -m venv oga_builder_env
+    oga_builder_env\Scripts\activate.bat
 
 
     pip install onnxruntime-genai==0.14.0

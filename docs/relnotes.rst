@@ -10,16 +10,17 @@ Release Notes
 Supported Configurations
 ************************
 
-Ryzen AI 1.8 Software supports AMD processors codenamed Phoenix, Hawk Point, Strix, Strix Halo, and Krackan Point. These processors can be found in the following Ryzen series:
+Ryzen AI 1.8 Software supports AMD processors codenamed Phoenix, Hawk Point, Strix, Strix Halo, Krackan Point and Gorgon Point. These processors can be found in the following Ryzen series:
 
 - Ryzen 200 Series
 - Ryzen 7000 Series, Ryzen PRO 7000 Series
 - Ryzen 8000 Series, Ryzen PRO 8000 Series
 - Ryzen AI 300 Series, Ryzen AI PRO Series, Ryzen AI Max 300 Series
+- Ryzen AI 400 series
 
 For a complete list of supported devices, refer to the `processor specifications <https://www.amd.com/en/products/specifications/processors.html>`_ page (look for the "AMD Ryzen AI" column towards the right side of the table, and select "Available" from the pull-down menu).
 
-The rest of this document will refer to Phoenix as PHX, Hawk Point as HPT, Strix and Strix Halo as STX, and Krackan Point as KRK.
+The rest of this document will refer to Phoenix as PHX, Hawk Point as HPT, Strix and Strix Halo as STX, Krackan Point as KRK and Gorgon Point as GPT.
 
 
 *************************
@@ -33,7 +34,7 @@ The following table lists which types of models are supported on what hardware p
 
    * - Model Type
      - PHX/HPT
-     - STX/KRK
+     - STX/KRK/GPT
    * - CNN INT8
      - |checkmark|
      - |checkmark|

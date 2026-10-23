@@ -21,8 +21,8 @@ System-level pre-requisites
 You only need to do this once per computer:
 
 1. Make sure your system has the recommended Ryzen AI driver installed as described in :ref:`install-driver`.
-2. Download and install `Miniconda for Windows <https://repo.anaconda.com/miniconda/Miniconda3-latest-Windows-x86_64.exe>`_ or `Miniforge for Windows <https://github.com/conda-forge/miniforge/releases/download/25.3.0-1/Miniforge3-25.3.0-1-Windows-x86_64.exe>`_.
-3. Launch a terminal and call ``conda init``.
+2. Install Python 3.12 for Windows.
+3. Launch a Windows Command Prompt.
 
 
 *****************
@@ -33,8 +33,8 @@ To create and set up an environment, run these commands in your terminal:
 
 .. code-block:: bash
 
-    conda create -n ryzenai-llm python=3.12
-    conda activate ryzenai-llm
+    py -3.12 -m venv ryzenai-llm
+    ryzenai-llm\Scripts\activate.bat
     pip install lemonade-sdk[dev,oga-ryzenai] --extra-index-url=https://pypi.amd.com/simple
 
 ****************

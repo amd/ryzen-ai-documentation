@@ -76,20 +76,20 @@ To run LLMs in best performance mode, follow these steps:
      cd C:\Windows\System32\AMD
      xrt-smi configure --pmode performance
 
-2. Activate the Ryzen AI Conda Environment and install ``torch`` library.
+2. Activate the Ryzen AI Python Virtual Environment and install ``torch`` library.
 
 Run the following commands:
 
 .. code-block:: bash
 
-   conda activate ryzen-ai-<version>
+   "%RYZEN_AI_INSTALLATION_PATH%\venv\Scripts\activate.bat"
    pip install torch==2.7.1
 
 This step is required for running the python script.
 
 .. note::
 
-   For the C++ program, if you choose not to activate the Conda environment, open a Windows Command Prompt and manually set the environment variable before continuing:
+   For the C++ program, if you choose not to activate the Python virtual environment, open a Windows Command Prompt and manually set the environment variable before continuing:
 
    ``set RYZEN_AI_INSTALLATION_PATH=C:\\Program Files\\RyzenAI\\<version>``
 
@@ -300,8 +300,8 @@ In addition to the full RyzenAI software stack, we also provide standalone wheel
 
 .. code-block:: bash
 
-   conda create -n <env_name> python=3.12 -y
-   conda activate <env_name>
+   py -3.12 -m venv <env_name>
+   <env_name>\Scripts\activate.bat
 
 2. Install onnxruntime-genai wheel file.
 

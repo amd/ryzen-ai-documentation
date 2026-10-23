@@ -23,20 +23,16 @@ The following dependencies must be installed on the system before installing the
      - Version Requirement
    * - Windows 11
      - build >= 22621.3527
-   * - Visual Studio
-     - 2022
    * - cmake
      - version >= 3.26
-   * - Python distribution (Miniforge preferred)
+   * - Python (with venv support)
      - Latest version
 
 |
 
 |warning| **IMPORTANT**:
 
-- Visual Studio 2022 Community (Optional for AMD Quark, to support custom op flow): ensure that `Desktop Development with C++` is installed
-
-- Miniforge: ensure that the following path is set in the System PATH variable: ``path\to\miniforge3\condabin`` or ``path\to\miniforge3\Scripts\`` or ``path\to\miniforge3\`` (The System PATH variable should be set in the *System Variables* section of the *Environment Variables* window).
+- Python: ensure that the Python installation directory and its ``Scripts`` directory are available in the System PATH variable (set in the *System Variables* section of the *Environment Variables* window).
 
 |
 
@@ -67,18 +63,25 @@ Install NPU Drivers
 Install Ryzen AI Software
 *************************
 
-- Download the Ryzen AI Software installer :download:`ryzen-ai-1.8.0.exe <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=ryzen-ai-1.8.0.exe>`.
+- Download the Ryzen AI Software installer :download:`ryzen-ai-1.9.0.exe <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=ryzen-ai-1.9.0.exe>`.
 
 - Launch the EXE installer and follow the instructions on the installation wizard:
 
   - Accept the terms of the Licence agreement
-  - Provide the destination folder for Ryzen AI installation (default: ``C:\Program Files\RyzenAI\1.8.0``)
-  - Specify the name for the conda environment (default: ``ryzen-ai-1.8.0``)
+  - Provide the destination folder for Ryzen AI installation (default: ``C:\Program Files\RyzenAI\1.9.0``)
+  - Use the Python virtual environment provided in the installation folder (``venv``)
+  - The commands below are w.r.t default installation PATH
 
-The Ryzen AI Software packages are now installed in the conda environment created by the installer.
+.. image:: images/venv-2.png
+   :align: center
+
+The Ryzen AI Software packages are now installed in the Python virtual environment provided by the installer.
+
+.. image:: images/venv-3.png
+   :align: center
 
 .. note::
-   NuGet package is available to download at :download:`ryzen_ai_nuget_1.8.0.zip <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=ryzen_ai_nuget_1.8.0.zip>`.
+   NuGet package is available to download at :download:`ryzen_ai_nuget_1.8.0.zip <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=ryzen_ai_nuget_1.9.0.zip>`.
 
 
 
@@ -91,13 +94,13 @@ Test the Installation
 
 The Ryzen AI Software installation folder contains test to verify that the software is correctly installed. This installation test can be found in the ``quicktest`` subfolder which is expected to work for Strix (STX) or newer devices.
 
-- Open a Conda command prompt (search for "Miniforge Prompt" in the Windows start menu)
+- Open a Windows Command Prompt
 
-- Activate the Conda environment created by the Ryzen AI installer:
+- Activate the Python virtual environment created by the Ryzen AI installer:
 
 .. code-block::
 
-   conda activate ryzen-ai-<version>
+   "%RYZEN_AI_INSTALLATION_PATH%\venv\Scripts\activate.bat"
 
 - Run the test:
 
