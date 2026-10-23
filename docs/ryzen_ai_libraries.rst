@@ -57,7 +57,7 @@ Download Ryzen AI CVML Library package
 
 Create an AMD account at `account.amd.com <https://account.amd.com>`_ if you don't have one, then sign in to download the Ryzen AI CVML Library from the AMD Account Portal: ::
 
-  https://account.amd.com/en/forms/downloads/xef.html?filename=72293_Ryzen_AI_Library_26.07.15.zip
+  https://account.amd.com/en/forms/downloads/xef.html?filename=72293_Ryzen_AI_Library_26.09.16.zip
 
 After downloading, extract the package to a local directory (e.g., ``C:\RyzenAI-Library`` on Windows or ``~/RyzenAI-Library`` on Linux) and set the ``AMD_CVML_SDK_ROOT`` environment variable to the extracted location.
 s
@@ -96,10 +96,36 @@ The following installations are for Ubuntu. For Windows OS, follow `Windows Setu
 
 Ensure that the following software tools/packages are installed on the development system:
 
-1. OS: Ubuntu 22.04 or Ubuntu 24.04 (linux kernel >= 6.11.0-21-generic)
-2. Install latest Ryzen AI NPU driver following the "`Install NPU Drivers <https://ryzenai.docs.amd.com/en/latest/linux.html>`_" section
+1. OS: Ubuntu 22.04 or Ubuntu 24.04 (linux kernel >= 6.14.0-1018-oem)
+2. OCm7.13 (or ROCm6.4.4 for STX/STX-Halo). The SDK bundles MIGraphX EPs for both and picks one at runtime based on the installed ROCm version.
+3. Install latest Ryzen AI NPU driver following the "`Install NPU Drivers <https://ryzenai.docs.amd.com/en/latest/linux.html>`_" section
 3. Vulkan SDK
 4. OpenCV 4.11.0 — build from source following the instructions in ``README-linux.md``
+
+Installing ROCm 7.13 and AMDGPU drivers
+--------------------------------------------------------
+
+ROCm is required for GPU inference. ROCm 7.13+ is distributed as a userspace tarball and uses the amdgpu driver built into the Linux kernel, so no `amdgpu-dkms` package is needed.
+
+ROCm 7.13 on Ryzen APUs (gfx1150/gfx1151) requires the OEM kernel 6.14.0-1018-oem or newer. Install it along with the matching `linux-headers` (so the NPU `amdxdna` DKMS module can rebuild against the new kernel), then reboot:
+
+::
+
+  sudo apt update
+  sudo apt install linux-image-6.14.0-1020-oem linux-headers-6.14.0-1020-oem
+  sudo reboot
+  uname -r  (confirm >= 6.14.0-1018-oem after reboot)
+
+Check your gfx architecture, then download and extract the matching ROCm tarball from repo.amd.com (e.g. `gfx1150` for Radeon 890M, `gfx1151` for Radeon 8060S):
+
+::
+
+  vulkaninfo | grep deviceName
+  export GFX_ARCH=gfx1150 or gfx1151
+  wget https://repo.amd.com/rocm/tarball/therock-dist-linux-$GFX_ARCH-7.13.0.tar.gz
+  sudo mkdir /opt/rocm-7.13.0
+  sudo tar -zxvf therock-dist-linux-$GFX_ARCH-7.13.0.tar.gz -C /opt/rocm-7.13.0
+  sudo ln -sfn /opt/rocm-7.13.0 /opt/rocm
 
 Installing VulkanSDK and 22.04/24.04 specific installs
 --------------------------------------------------------
@@ -330,6 +356,12 @@ For Linux, all the following conditions are met:
   export LD_LIBRARY_PATH=/opt/xilinx/xrt/lib:$LD_LIBRARY_PATH
   export LD_LIBRARY_PATH=$OPENCV_INSTALL_ROOT/lib:$LD_LIBRARY_PATH
 
+For ROCm 7.13 and later, also add ROCm to PATH:
+
+::
+
+  export PATH=$PATH:/opt/rocm/llvm/bin:/opt/rocm/bin
+
 Select an input source/image/video
 ====================================
 
@@ -361,4 +393,3 @@ On Linux, ::
   #####################################
 
  Ryzen AI is licensed under `MIT License <https://github.com/amd/ryzen-ai-documentation/blob/main/License>`_ . Refer to the `LICENSE File <https://github.com/amd/ryzen-ai-documentation/blob/main/License>`_ for the full license text and copyright notice.
-
