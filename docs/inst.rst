@@ -42,12 +42,31 @@ The following dependencies must be installed on the system before installing the
 Install NPU Drivers
 *******************
 
-- Download and Install the NPU driver version: 32.0.203.280 or newer using the following links:
+.. list-table::
+   :widths: 25 25 25
+   :header-rows: 1
 
-  - :download:`NPU Driver (Version 32.0.203.280) <https://download.amd.com/opendownload/RyzenAI/Driver/NPU_RAI_280_WHQL.zip>`
+   * - Driver Version
+     - Version
+     - Link
+   * - Minimum Driver
+     - 32.0.20102.8443
+     - :download:`NPU Driver <https://download.amd.com/opendownload/RyzenAI/Driver/NPU_RAI_280_WHQL.zip>`
+   * - Production Driver
+     - 32.0.20102.3930
+     - :download:`NPU Driver <https://download.amd.com/opendownload/RyzenAI/Driver/NPU_RAI_376_WHQL.zip>`
 
-    - NPU driver 32.0.203.376 is production driver for Phoenix, Hawk Point, Strix, Strix Halo, and Krackan Point.
-  - :download:`NPU Driver (Version 32.0.203.376) <https://download.amd.com/opendownload/RyzenAI/Driver/NPU_RAI_376_WHQL.zip>`
+|
+
+- Minimum Driver Version - Download and Install the NPU driver version: 32.0.20102.8443 :
+
+  - :download:`NPU Driver (Version 32.0.20102.8443) <https://download.amd.com/opendownload/RyzenAI/Driver/NPU_RAI_280_WHQL.zip>`
+
+- Production Driver Version - Download and Install the NPU driver version: 32.0.20102.3930 :
+
+  - :download:`NPU Driver (Version 32.0.20102.3930) <https://download.amd.com/opendownload/RyzenAI/Driver/NPU_RAI_376_WHQL.zip>`
+
+
 
 - Install the NPU drivers by following these steps:
 
