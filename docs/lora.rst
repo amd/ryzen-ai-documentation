@@ -28,7 +28,7 @@ in the Ryzen AI SW repository.
 
   - LoRA fine-tuning on the quantized model trains the adapter against the frozen quantized weights, allowing the adapter to adapt to the quantization characteristics of the deployed base model.
   - The maximum supported LoRA rank is currently 128.
-- **Compile the model and LoRA adapter for the NPU**: Use the ``model_generate`` tool with the quantized model and LoRA adapter as inputs. ``model_generate`` handles the model conversion internally and generates the compiled NPU model and NPU LoRA adapter for execution on the Ryzen AI NPU. The LoRA adapter is passed through ``--extra_options``, where ``lora_name`` is the name used to activate it at runtime and ``lora_scaling_factor`` must equal the adapter's ``alpha / r``; the scale is applied at compile time, with no runtime dial. ``--mem_optimize`` is optional and reduces peak memory during compilation.
+- **Compile the model and LoRA adapter for the NPU**: Use the ``model_generate`` tool with the quantized model and LoRA adapter as inputs. ``model_generate`` handles the model conversion internally and generates the compiled NPU model and NPU LoRA adapter for execution on the Ryzen AI NPU. The LoRA adapter is passed through ``--extra_options``, where ``lora_name`` is the name used to activate it at runtime and ``lora_scaling_factor`` must equal the adapter's ``alpha / r``; the scale is applied at compile time, with no runtime dial. ``--mem_optimize`` is optional; it optimizes the model for 16 GB laptop configurations.
 
 .. code::
 
