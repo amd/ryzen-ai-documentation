@@ -135,7 +135,7 @@ Note
 
    chmod +x setup_ryzen_ai.sh
    ./setup_ryzen_ai.sh -a yes -d ./ryzen-ai-runtime_1.9.0-1_amd64.deb -p <TARGET-PATH>/venv
-   *-p <path> Virtual environment path (default: ~/ryzen-ai-venv)*
+   # -p <path> (default: ~/ryzen-ai-venv)`
 
    source <TARGET-PATH>/venv/bin/activate
 
