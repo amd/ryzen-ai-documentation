@@ -28,14 +28,20 @@ in the Ryzen AI SW repository.
 
   - LoRA fine-tuning on the quantized model trains the adapter against the frozen quantized weights, allowing the adapter to adapt to the quantization characteristics of the deployed base model.
   - The maximum supported LoRA rank is currently 128.
-- **Compile the model and LoRA adapter for the NPU**: Use the ``model_generate`` tool with the quantized model and LoRA adapter as inputs. ``model_generate`` handles the model conversion internally and generates the compiled NPU model and NPU LoRA adapter for execution on the Ryzen AI NPU. The LoRA adapter is passed through ``--extra_options``, where ``lora_name`` is the name used to activate it at runtime.
+- **Compile the model and LoRA adapter for the NPU**: Use the ``model_generate`` tool with the quantized model and LoRA adapter as inputs. ``model_generate`` handles the model conversion internally and generates the compiled NPU model and NPU LoRA adapter for execution on the Ryzen AI NPU. The LoRA adapter is passed through ``--extra_options``, where ``lora_name`` is the name used to activate it at runtime and ``lora_scaling_factor`` must equal the adapter's ``alpha / r``. ``--mem_optimize`` is optional and reduces peak memory during compilation.
 
 .. code::
 
      model_generate --npu --token_fusion --mem_optimize ^
             --output <npu model folder> ^
             --input <quark quantized model> ^
-            --extra_options lora lora_adapter=<adapter>/adapter_model.safetensors lora_name=<adapter name>
+            --extra_options lora lora_adapter=<adapter>/adapter_model.safetensors lora_name=<adapter name> lora_scaling_factor=<alpha/r>
+
+.. note::
+
+   The LoRA scale is applied at compile time; there is no runtime scale dial. If
+   ``lora_scaling_factor`` does not match the ``alpha / r`` used during fine-tuning, the
+   adapter is applied at the wrong strength.
 
 - **Run inference with LoRA adapters**: Load the compiled NPU model and switch LoRA adapters at runtime by name, as shown below.
 
