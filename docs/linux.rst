@@ -13,8 +13,6 @@ With this release, users can now compile and run AI models using the following f
 - LLMs (NPU-only flow)
 
 
-
-
 *************
 Prerequisites
 *************
@@ -30,7 +28,7 @@ Prerequisites
    * - Kernel Version
      - >= 6.10
    * - RAM
- - 64 GB (Recommended)
+     - 64 GB (Recommended)
    * - Python
      - 3.12.x
 
@@ -56,22 +54,22 @@ Install NPU Drivers
 
 - RyzenAI linux driver package contains 
    - XRT Package
-      - xrt_202620.2.25.37_24.04-amd64-base.deb
-      - xrt_202620.2.25.37_24.04-amd64-base-dev.deb
-      - xrt_202620.2.25.37_24.04-amd64-npu.deb
+      - xrt_202620.2.26.89_24.04-amd64-base.deb
+      - xrt_202620.2.26.89_24.04-amd64-base-dev.deb
+      - xrt_202620.2.26.89_24.04-amd64-npu.deb
 
    - NPU driver package
-      - xrt_plugin.2.25.260102.56.release_24.04-amd64-amdxdna.deb
+      - xrt_plugin.2.26.260102.59.release_24.04-amd64-amdxdna.deb
 
 
 - Install NPU driver package on your machine
 
 .. code-block:: bash
 
-   sudo apt install --fix-broken -y ./xrt_202620.2.25.37_24.04-amd64-base.deb
-   sudo apt install --fix-broken -y ./xrt_202620.2.25.37_24.04-amd64-base-dev.deb
-   sudo apt install --fix-broken -y ./xrt_202620.2.25.37_24.04-amd64-npu.deb
-   sudo apt install --fix-broken -y ./xrt_plugin.2.25.260102.56.release_24.04-amd64-amdxdna.deb
+   sudo apt install --fix-broken -y ./xrt_202620.2.26.89_24.04-amd64-base.deb
+   sudo apt install --fix-broken -y ./xrt_202620.2.26.89_24.04-amd64-base-dev.deb
+   sudo apt install --fix-broken -y ./xrt_202620.2.26.89_24.04-amd64-npu.deb
+   sudo apt install --fix-broken -y ./xrt_plugin.2.26.260102.59.release_24.04-amd64-amdxdna.deb
 
 
 - Verify your Driver installation
@@ -94,16 +92,16 @@ Install NPU Drivers
 *************************
 Install Ryzen AI Software
 *************************
-- Download the RyzenAI for Linux package `ryzen_ai-1.8.0.tgz` from `Downloads` section of `Ryzen AI Software Installer <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=ryzen_ai-1.8.0.tgz>`_.
+- Download the RyzenAI for Linux package `ryzen_ai-1.9.0.tgz` from `Downloads` section of `Ryzen AI Software Installer <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=ryzen_ai-1.9.0.tgz>`_.
 - Navigate to the downloaded path and follow the below steps
 
 .. code-block:: bash
 
-   mkdir ryzen_ai-1.8.0
-   cp ryzen_ai-1.8.0.tgz ryzen_ai-1.8.0
+   mkdir ryzen_ai-1.9.0
+   cp ryzen_ai-1.9.0.tgz ryzen_ai-1.9.0
 
-   cd ryzen_ai-1.8.0
-   tar -xvzf ryzen_ai-1.8.0.tgz
+   cd ryzen_ai-1.9.0
+   tar -xvzf ryzen_ai-1.9.0.tgz
 
 
 - Install RyzenAI package at your desired target path
