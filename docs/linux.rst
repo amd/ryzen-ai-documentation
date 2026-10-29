@@ -143,6 +143,10 @@ Note
 
    source <TARGET-PATH>/venv/bin/activate
 
+   # Deb installation defaults to /opt in the disk. 
+   # If there is memory shortage, redirect Installation using below flag 
+   # ./setup_ryzen_ai.sh -a yes -d ./ryzen-ai-runtime_1.9.0-1_amd64.deb -p <TARGET-PATH>/venv -c "$HOME/ryzen-ai-runtime"
+
 **********************
 Test the Installation
 **********************
