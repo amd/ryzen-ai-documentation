@@ -67,7 +67,7 @@ Step 1: Install Packages
 
 .. code-block::
 
-   "%RYZEN_AI_INSTALLATION_PATH%\venv\Scripts\activate.bat"
+   "C:\Program Files\RyzenAI\ryzen-ai-1.9.0\Scripts\activate.bat"
    python -m pip install -r requirements.txt
 
 |

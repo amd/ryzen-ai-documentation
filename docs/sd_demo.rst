@@ -6,7 +6,8 @@ Activate the Python virtual environment (see also `installation-steps`_):
 
 .. code-block:: powershell
 
-   & "$env:RYZEN_AI_INSTALLATION_PATH\venv\Scripts\Activate.ps1"
+   $env:RYZEN_AI_INSTALLATION_PATH = "C:\Program Files\RyzenAI\ryzen-ai-1.9.0"
+   & "$env:RYZEN_AI_INSTALLATION_PATH\Scripts\Activate.ps1"
 
 Optionally, set the NPU to high performance mode to maximize performance:
 

@@ -108,7 +108,7 @@ Run the following commands:
 
 .. code-block:: bash
 
-   "%RYZEN_AI_INSTALLATION_PATH%\venv\Scripts\activate.bat"
+   "C:\Program Files\RyzenAI\ryzen-ai-1.9.0\Scripts\activate.bat"
 
 This step is required for running the python script.
 

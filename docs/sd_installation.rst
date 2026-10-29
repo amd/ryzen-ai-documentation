@@ -24,7 +24,8 @@ Installation Steps
 
    .. code-block:: powershell
 
-      & "$env:RYZEN_AI_INSTALLATION_PATH\venv\Scripts\Activate.ps1"
+      $env:RYZEN_AI_INSTALLATION_PATH = "C:\Program Files\RyzenAI\ryzen-ai-1.9.0"
+      & "$env:RYZEN_AI_INSTALLATION_PATH\Scripts\Activate.ps1"
       cd "$env:RYZEN_AI_INSTALLATION_PATH\GenAI-SD"
 
 3. Models are downloaded from Hugging Face on first use and cached under

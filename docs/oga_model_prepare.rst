@@ -159,7 +159,7 @@ Copy the quantized model to the Windows PC with Ryzen AI installed, and activate
 
 .. code-block::
 
-    "%RYZEN_AI_INSTALLATION_PATH%\venv\Scripts\activate.bat"
+    "C:\Program Files\RyzenAI\ryzen-ai-1.9.0\Scripts\activate.bat"
 
 Hybrid Execution Mode
 =====================
