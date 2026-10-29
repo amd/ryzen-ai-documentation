@@ -98,7 +98,7 @@ Install Ryzen AI Software
 .. code-block:: bash
 
    mkdir ryzen_ai-1.9.0
-   cp ryzen_ai-1.9.0.tgz ryzen_ai-1.9.0
+   mv ryzen_ai-1.9.0.tgz ryzen_ai-1.9.0
 
    cd ryzen_ai-1.9.0
    tar -xvzf ryzen_ai-1.9.0.tgz
