@@ -162,7 +162,14 @@ The RyzenAI software package contains a test script that verifies your correct i
 .. code-block:: bash
 
    Setting environment for STX/KRK
-   
+   [I:onnxruntime:, compile_pass_manager.cpp:1680 compile_pass_manager.cpp] Compile done.
+   [I:onnxruntime:, stat.cpp:198 stat.cpp] [Vitis AI EP] No. of Operators :
+   [I:onnxruntime:, stat.cpp:198 stat.cpp]    NPU   398
+   [I:onnxruntime:, stat.cpp:198 stat.cpp] VITIS_EP_CPU     2
+   [I:onnxruntime:, stat.cpp:198 stat.cpp]
+   [I:onnxruntime:, stat.cpp:198 stat.cpp] [Vitis AI EP] No. of Subgraphs :
+   [I:onnxruntime:, stat.cpp:198 stat.cpp]    NPU     1
+   [I:onnxruntime:, stat.cpp:198 stat.cpp] Actually running on NPU      1
    Test Finished
 
 
