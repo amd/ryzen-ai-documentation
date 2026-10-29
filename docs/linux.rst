@@ -124,13 +124,10 @@ Install Ryzen AI Software
 
    export LD_LIBRARY_PATH=/lib/x86_64-linux-gnu:${RYZEN_AI_INSTALLATION_PATH}/onnxruntime/lib/:$LD_LIBRARY_PATH
 
-.. role:: red
-.. role:: green
-
 ******
 Note
 ******
-- Moving forward, Linux Installation will transition from :red:`*.tgz` to *.deb based Installer. 
+- Moving forward, Linux Installation will transition from ***.tgz** to ***.deb** based Installer. 
 - In RyzenAI 1.9 release, we are providing this optional method as a preview.
 - Related files
    - Download `ryzen-ai-runtime_1.9.0-1_amd64.deb` from `Ryzen AI Software Installer <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=ryzen_ai-1.9.0.tgz>`_.
@@ -142,7 +139,7 @@ Note
 
    chmod +x setup_ryzen_ai.sh
    ./setup_ryzen_ai.sh -a yes -d ./ryzen-ai-runtime_1.9.0-1_amd64.deb -p <TARGET-PATH>/venv
-   # -p <path> (default: ~/ryzen-ai-venv)`
+   # -p <path> (default: ~/ryzen-ai-venv)
 
    source <TARGET-PATH>/venv/bin/activate
 
