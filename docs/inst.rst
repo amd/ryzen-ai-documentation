@@ -77,7 +77,7 @@ Install Ryzen AI Software
   - Accept the terms of the Licence agreement
   - Provide the destination folder for Ryzen AI installation (default installation path: ``C:\Program Files\RyzenAI\ryzen-ai-1.9.0\``)
   - Use the Python virtual environment provided in the installation folder
-  - **Note - The commands below and in this documentation are w.r.t selection of default installation path (``C:\Program Files\RyzenAI\ryzen-ai-1.9.0\``)
+  - **Note - The commands below and in this documentation are w.r.t selection of default installation path (``C:\Program Files\RyzenAI\ryzen-ai-1.9.0\``)**
 
 .. image:: images/venv-2.png
    :align: center
