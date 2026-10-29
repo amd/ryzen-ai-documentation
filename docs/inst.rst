@@ -50,30 +50,18 @@ Install NPU Drivers
      - Version
      - Link
    * - Minimum Driver
-     - 32.0.20102.8443
+     - 32.0.203.280 
      - :download:`NPU Driver <https://download.amd.com/opendownload/RyzenAI/Driver/NPU_RAI_280_WHQL.zip>`
-   * - Production Driver
-     - 32.0.20102.3930
+   * - Latest Driver
+     - 32.0.20102.8443
      - :download:`NPU Driver <https://download.amd.com/opendownload/RyzenAI/Driver/NPU_RAI_376_WHQL.zip>`
 
-|
-
-- Minimum Driver Version - Download and Install the NPU driver version: 32.0.20102.8443 :
-
-  - :download:`NPU Driver (Version 32.0.20102.8443) <https://download.amd.com/opendownload/RyzenAI/Driver/NPU_RAI_280_WHQL.zip>`
-
-- Production Driver Version - Download and Install the NPU driver version: 32.0.20102.3930 :
-
-  - :download:`NPU Driver (Version 32.0.20102.3930) <https://download.amd.com/opendownload/RyzenAI/Driver/NPU_RAI_376_WHQL.zip>`
-
-
-
-- Install the NPU drivers by following these steps:
+- Install the NPU drivers:
 
   - Extract the downloaded ZIP file.
   - Open a terminal in administrator mode and execute the ``.\npu_sw_installer.exe`` file.
 
-- Ensure that NPU driver (Version:32.0.203.280, Date:5/16/2025) is correctly installed by opening Task Manager -> Performance -> NPU0. 
+- Ensure that NPU driver (Need to change - Version:32.0.203.280, Date:5/16/2025) is correctly installed by opening Task Manager -> Performance -> NPU0. 
 
 
 .. _install-bundled:
