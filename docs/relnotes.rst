@@ -48,6 +48,19 @@ The following table lists which types of models are supported on what hardware p
      -
      - |checkmark|
 
+
+***********
+Version 1.8
+***********
+- LLM
+
+  - Extended context length for LLMs on NPU, beyond the 4K/16K limit of previous releases. 
+  - New model support: Gemma-4-E2B (text), Gemma-4-E4B (text), Hy-MT2-1.8B
+  - New model support, functional only (performance not optimized): Phi-4-14B, Qwen3.5-9B, Granite-4.1-8B, Gemma-4-12B
+  - Dynamic LoRA support for Qwen models (text): Qwen2.5-3B, Qwen3-4B, Qwen3.5-4B
+
+
+
 ***********
 Version 1.8
 ***********
