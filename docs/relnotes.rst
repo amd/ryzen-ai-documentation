@@ -50,7 +50,7 @@ The following table lists which types of models are supported on what hardware p
 
 
 ***********
-Version 1.8
+Version 1.9
 ***********
 - LLM
 
