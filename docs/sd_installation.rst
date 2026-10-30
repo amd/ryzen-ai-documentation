@@ -2,7 +2,7 @@
 Stable Diffusion
 #######################
 
-Ryzen AI 1.8.0 provides preview demos of Stable Diffusion image-generation pipelines.
+Ryzen AI 1.9.0 provides preview demos of Stable Diffusion image-generation pipelines.
 The demos cover **Image-to-Image** (ControlNet: Canny, Pose, Tile, Depth; plus Segmind-Vega
 i2i without ControlNet) and **Text-to-Image** for SD1.5, SD-Turbo, SDXL-base, SDXL-Turbo,
 Segmind-Vega, DreamShaper XL Lightning, SSD-1B, Playground v2.5, FLUX.1-Schnell,
