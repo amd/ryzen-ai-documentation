@@ -53,8 +53,8 @@ Install NPU Drivers
      - 32.0.203.280 
      - :download:`NPU Driver <https://download.amd.com/opendownload/RyzenAI/Driver/NPU_RAI_280_WHQL.zip>`
    * - Latest Driver
-     - 32.0.20102.8443
-     - :download:`NPU Driver <https://download.amd.com/opendownload/RyzenAI/Driver/NPU_RAI_376_WHQL.zip>`
+     - Adrenalin-Edition-26.10.1
+     - `NPU Driver <https://www.amd.com/en/resources/support-articles/release-notes/RN-RAD-WIN-26-10-1.html#Downloads>`
 
 - Install the NPU drivers:
 
