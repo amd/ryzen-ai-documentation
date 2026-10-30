@@ -40,7 +40,7 @@ Changes Compared to Previous Release
 ************************************
 
 - OGA version is updated to v0.11.2 (Ryzen AI 1.7) from v0.9.2.2 (Ryzen AI 1.6.1).
-- For 1.7 release, a new set of hybrid and NPU models is published. Models from earlier releases are not compatible with this version. If you are using Ryzen AI 1.7, please download the updated models.
+- For the 1.7 release, a new set of hybrid and NPU models has been published. Models from earlier releases are not compatible with this version. If you are using Ryzen AI 1.7, download the updated models.
 - Context length upto 4K tokens (combined input and output) is supported for NPU Models. Extended context length more than 4K tokens is supported for Hybrid models.
 
 
@@ -219,7 +219,7 @@ Python Script
 
 .. note:: 
 
-   Some models may return non-printable characters in their output (for example, Qwen models), which can cause a crash while printing the output text. To avoid this, modify the provided script %RYZEN_AI_INSTALLATION_PATH%\\LLM\\example\\run_model.py by adding a text sanitization function and updating the print statement as shown below.
+{"line":"Some models might return non‑printable characters in their output (for example, Qwen models), which can cause a crash when printing the output text. To avoid this, modify the provided script %RYZEN_AI_INSTALLATION_PATH%\\LLM\\example\\run_model.py by adding a text‑sanitization function and updating the print statement as shown below.","changed":true,"note":"Replaced \"while\" with \"when\" for smoother phrasing and hyphenated \"text‑
 
    Add sanitize_string function:
 
@@ -241,7 +241,7 @@ Python Script
 Python Script (with Chat Template)
 ==================================
 
-For models that use chat templates, the ``model_chat.py`` script may provide better output quality. 
+For models that use chat templates, the ``model_chat.py`` script might provide better output quality. 
 
 It is highly recommended to use ``model_chat.py`` for the GPT-OSS-20B NPU model: https://huggingface.co/amd/gpt-oss-20b-onnx-ryzenai-npu
 
@@ -291,7 +291,7 @@ To do this, the fine-tuned models must first be prepared for execution with the 
 After a fine-tuned model has been prepared for execution, it can be deployed by following the steps described previously in this page.
 
 *****************************
-Running LLM via pip install
+Running LLM with pip install
 *****************************
 
 In addition to the full RyzenAI software stack, we also provide standalone wheel files for the users who prefer using their own environment. To prepare an environment for running the Hybrid and NPU-only LLM independently, perform the following steps:

@@ -182,7 +182,7 @@ Version 1.6
   - LLM:
 
     - OGA version has been updated to v0.9.2 (Ryzen AI 1.6) from v0.7.0 (Ryzen AI 1.5). Any APIs that are obsolete must be updated to the supported equivalents as described in the `Microsoft ONNX Runtime GenAI v0.9.2 documentation <https://github.com/microsoft/onnxruntime-genai/tree/rel-0.9.2>`_
-    - Hybrid models published with earlier releases are not compatible with Ryzen AI 1.6. Please use the hybrid models published with the 1.6 release.
+ - Hybrid models published with earlier releases are not compatible with Ryzen AI 1.6. use the hybrid models published with the 1.6 release.
 
 
 ***********
@@ -304,11 +304,11 @@ Version 1.4
 
 - Known Issues:
 
-  - Microsoft Windows Insider Program (WIP) users may see warnings or need to restart when running all applications concurrently.
+ - Microsoft Windows Insider Program (WIP) users might see warnings or need to restart when running all applications concurrently.
 
     - NPU driver and workloads will continue to work.
 
-  - Context creation may appear to be limited when some application do not close contexts quickly.
+ - Context creation might appear to be limited when some application do not close contexts quickly.
 
 
 ***********
@@ -402,7 +402,7 @@ Version 1.3
 - Known Issues:
 
   - Extended compile time for some models with BF16/BFP16 data types
-  - LLM models with 4K sequence length may revert to CPU execution
+- LLM models with a 4K sequence length might revert to CPU execution.
   - Accuracy drop in some Transformer models using BF16/BFP16 data types, requiring Quark intervention
 
 ***********
@@ -661,7 +661,7 @@ NPU and Compiler
 - New operators support
 
   - Global average pooling with large spatial dimensions
-  - Single Activation (no fusion with conv2d, e.g. relu/single alpha PRelu)
+- Single Activation (no fusion with conv2d, e.g., ReLU or single‑alpha PReLU)
 
 - Operator support enhancement
 
@@ -763,7 +763,7 @@ Known issues
 - Flow control OPs including "Loop", "If", "Reduce" not supported by VOE
 - Resizing OP in ONNX opset 10 or lower is not supported by VOE
 - Tensorflow 2.x quantizer supports models within tf.keras.model only
-- Running quantizer docker in WSL on Ryzen AI laptops may encounter OOM (Out-of-memory) issue
+- Running the quantizer Docker in WSL on Ryzen AI laptops might encounter an OOM (Out-of-Memory) issue.
 - Running multiple concurrent models using temporal sharing on the 5x4 binary is not supported
 - Only batch sizes of 1 are supported
 - Only models with the pretrained weights setting = TRUE should be imported
@@ -826,7 +826,7 @@ NPU and Compiler
   - Padding mode: pad
   - Broadcast: add
   - Variant dimension (non-NHWC shape): reshape, transpose, add
-- Support new operators, e.g. reducemax(min/sum/avg), argmax(min)
+- Support new operators, for example, reducemax(min/sum/avg) and argmax(min).
 - Enhanced multi-level fusion
 - Performance enhancement for some operators
 - Add quantization information validation
@@ -848,7 +848,7 @@ Known issues
 - Flow control OPs including "Loop", "If", "Reduce" not supported by VOE
 - Resize OP in ONNX opset 10 or lower not supported by VOE
 - Tensorflow 2.x quantizer supports models within tf.keras.model only
-- Running quantizer docker in WSL on Ryzen AI laptops may encounter OOM (Out-of-memory) issue
+Running the quantizer Docker in WSL on Ryzen AI laptops might encounter an OOM (Out-of-Memory) issue.
 - Run multiple concurrent models by temporal sharing on the Performance optimized overlay (5x4.xclbin) is not supported
 - Support batch size 1 only for NPU
 
@@ -888,7 +888,7 @@ Quantizer
   - Supports bias quantization using int8 datatype for NPU.
   - Supports quantization parameters (scale) refinement for NPU.
   - Supports excluding certain operations from quantization for NPU.
-  - Supports ONNX models larger than 2GB.
+ - Supports ONNX models larger than 2 GB.
   - Supports using CUDAExecutionProvider for calibration in quantization
   - Open source and upstreamed to Microsoft Olive Github repo
 
@@ -944,7 +944,7 @@ Known issues
 - Flow control OPs including "Loop", "If", "Reduce" are not supported by VOE
 - Resize OP in ONNX opset 10 or lower not supported by VOE
 - Tensorflow 2.x quantizer supports models within tf.keras.model only
-- Running quantizer docker in WSL on Ryzen AI laptops may encounter OOM (Out-of-memory) issue
+- Running the quantizer Docker in WSL on Ryzen AI laptops might encounter an OOM (Out-of-Memory) issue.
 - Run multiple concurrent models by temporal sharing on the Performance optimized overlay (5x4.xclbin) is not supported
 
 

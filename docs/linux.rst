@@ -3,10 +3,9 @@ Linux Installation Instructions
 ###############################
 
 
-Ryzen AI for Linux supports running AI models on the AMD Neural Processing Unit (NPU).
-The current release supports STX and KRK platforms.
+Ryzen AI for Linux supports running AI models on the AMD Neural Processing Unit (NPU). Linux support is available on newer consumer APUs, beginning with Strix Point, and on newer embedded APUs, beginning with Ryzen™ AI Embedded P100.
 
-With this release, users can now compile and run AI models using the following formats:
+With this release, Users can now compile and run AI models using the following formats:
 
 - CNN models in INT8
 - CNN models in BF16
@@ -31,7 +30,7 @@ Prerequisites
    * - Kernel Version
      - >= 6.10
    * - RAM
-     - 64GB (Recommended)
+ - 64 GB (Recommended)
    * - Python
      - 3.12.x
 
@@ -95,7 +94,7 @@ Install NPU Drivers
 *************************
 Install Ryzen AI Software
 *************************
-- Download the RyzenAI for Linux package `ryzen_ai-1.8.0.tgz` from `Downloads` section of `Ryzen AI Software Installer <https://account.amd.com/en/forms/downloads/xef.html?filename=ryzen_ai-1.8.0.tgz>`_.
+- Download the RyzenAI for Linux package `ryzen_ai-1.8.0.tgz` from `Downloads` section of `Ryzen AI Software Installer <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=ryzen_ai-1.8.0.tgz>`_.
 - Navigate to the downloaded path and follow the below steps
 
 .. code-block:: bash
@@ -126,6 +125,15 @@ Install Ryzen AI Software
 .. code-block:: bash
 
    export LD_LIBRARY_PATH=/lib/x86_64-linux-gnu:${RYZEN_AI_INSTALLATION_PATH}/onnxruntime/lib/:$LD_LIBRARY_PATH
+
+- Important Note 
+.. code-block:: bash
+
+   # After activating the Ryzen AI Virtual environment-
+     source <TARGET-PATH>/venv/bin/activate
+
+   # Always run the below command. It appends necessary XRT utils to LD_LIBRARY_PATH for successful execution on NPU
+     source /opt/xilinx/xrt/setup.sh
 
 
 **********************
@@ -171,11 +179,13 @@ Note
 Before running the above examples - 
    - RyzenAI-SW repo hosts a diverse set of examples with both NPU and iGPU Execution Provider. However, Linux currently supports NPU only flow. 
    - RyzenAI creates its own Python Virtual Environment to run the examples. Skip conda environment instruction as they are Windows specific only
-   - Ensure to activate Linux based Python Virtual Environment 
+   - Ensure to activate Linux based Python Virtual Environment and load necessary XRT Utils 
 
      .. code-block:: bash
 
       source <TARGET-PATH>/venv/bin/activate
+
+      source /opt/xilinx/xrt/setup.sh
 
 =============================
 Get NPU Info for your Machine

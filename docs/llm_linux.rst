@@ -21,22 +21,24 @@ This page showcases an example of running LLM on RyzenAI NPU
 
     `Long-context Models with 16K Context length <https://huggingface.co/collections/amd/ryzen-ai-180-npu-16k>`_
 
-- For this flow, "Phi-3.5-mini-instruct_rai_1.7.1_npu_4K" is chosen for reference
+- For this flow, "Phi-3.5-mini-instruct_rai_1.8.0_npu_4K" is chosen for reference
 .. code-block::
 
   # Make sure git-lfs is installed (https://git-lfs.com)
   sudo apt install git-lfs
   git lfs install
-  git clone https://huggingface.co/amd/Phi-3.5-mini-instruct_rai_1.7.1_npu_4K
+  git clone https://huggingface.co/amd/Phi-3.5-mini-instruct_rai_1.8.0_npu_4K
 
 - Search for RYZEN_AI_INSTALLATION_PATH
 
 .. code-block:: bash
 
-  # Activate the virtual environment created in Linux Installation step
-  source <TARGET-PATH>/venv/bin/activate
+  # Activate the RyzenAI virtual environment and load the XRT Utils
+    source <TARGET-PATH>/venv/bin/activate
+    source /opt/xilinx/xrt/setup.sh
 
-  echo $RYZEN_AI_INSTALLATION_PATH
+  # Search for your RyzenAI Installation Path
+    echo $RYZEN_AI_INSTALLATION_PATH
 
 - Collecting the necessary files to get in current working directory
 
@@ -44,22 +46,22 @@ This page showcases an example of running LLM on RyzenAI NPU
 
   - Deployment folder - This has necessary libraries to run LLM Model
       # Navigate to <TARGET-PATH>/venv and copy the "deployment" folder
-      cp -r <TARGET-PATH>/venv/deployment .
+        cp -r <TARGET-PATH>/venv/deployment .
 
   - Model Benchmark Script 
       # Navigate to <TARGET-PATH>/venv/LLM/examples/ and copy "model_benchmark" file.
-      cp <TARGET-PATH>/venv/LLM/examples/model_benchmark .
+        cp <TARGET-PATH>/venv/LLM/examples/model_benchmark .
 
   - Prompt file - Input to your LLM Model
       # Navigate to <TARGET-PATH>/venv/LLM/examples/ and copy "amd_genai_prompt.txt" file.
-      cp <TARGET-PATH>/venv/LLM/examples/amd_genai_prompt.txt .
+        cp <TARGET-PATH>/venv/LLM/examples/amd_genai_prompt.txt .
 
                                     
 - Current working directory should have below files
 
 .. code-block::
 
-  amd_genai_prompt.txt   deployment   model_benchmark   Phi-3.5-mini-instruct_rai_1.7.1_npu_4K
+  amd_genai_prompt.txt   deployment   model_benchmark   Phi-3.5-mini-instruct_rai_1.8.0_npu_4K
 
 - Lastly, set required library path
 
@@ -67,13 +69,12 @@ This page showcases an example of running LLM on RyzenAI NPU
 
   export LD_LIBRARY_PATH=/lib/x86_64-linux-gnu:deployment/lib:$LD_LIBRARY_PATH
   export RYZENAI_EP_PATH=$PWD/deployment/lib/libonnxruntime_providers_ryzenai.so
-  source /opt/xilinx/xrt/setup.sh
 
 - We can now run our Model with command below:
 
 .. code-block:: bash
 
-  ./model_benchmark -i Phi-3.5-mini-instruct_rai_1.7.1_npu_4K/ -l 128 
+  ./model_benchmark -i Phi-3.5-mini-instruct_rai_1.8.0_npu_4K/ -l 128 
 
    -i - Path to the ONNX model directory to benchmark
    -l - Number of tokens in the generated prompt (Default: 16)

@@ -68,7 +68,7 @@ Changes Compared to Previous Release
 ************************************
 
 - OGA version is updated to v0.14.0 (Ryzen AI 1.8) from v0.11.2 (Ryzen AI 1.7.1).
-- For 1.8 release, a new set of hybrid and NPU models is published. Models from earlier releases are not compatible with this version. Please download the updated models.
+- For the 1.8 release, a new set of hybrid and NPU models has been published. Models from earlier releases are not compatible with this version. Download the updated models.
 
 *******************
 Compatible OGA APIs
@@ -303,7 +303,7 @@ The script is included in the Ryzen AI installation:
 
 For the full list of options including multi-turn JSON testing, guided generation, and advanced flags, refer to the `RyzenAI-SW repository <https://github.com/amd/RyzenAI-SW/blob/main/LLM-examples/oga_inference/README.md>`_.
 
-It is highly recommended to use ``model_chat.py`` for the `GPT-OSS-20B NPU model <https://huggingface.co/amd/gpt-oss-20b-onnx-ryzenai-npu>`_.
+It is highly recommended to use ``model_chat.py`` for the `GPT-OSS-20B NPU model <https://huggingface.co/amd/gpt-oss-20B_eager_rai_1.8.0_npu_16K>`_.
 
 
 **********************************
@@ -312,7 +312,7 @@ Vision Language Model (VLM)
 
 AMD provides a pre-optimized Gemma-3-4b-it multimodal model ready to be deployed with Ryzen AI Software. Support for this model is available starting with the Ryzen AI 1.7 release.
 
-Model: `Gemma-3-4b-it-mm-onnx-ryzenai-npu <https://huggingface.co/amd/Gemma-3-4b-it-mm-onnx-ryzenai-npu>`_
+Model: `Gemma-3-4b-it <https://huggingface.co/amd/Gemma-3-4b_rai_1.8.0_npu_16K>`_
 
 VLM inference requires dedicated Python scripts, which are included in the Ryzen AI installation at ``%RYZEN_AI_INSTALLATION_PATH%\LLM\example\vlm``.
 
@@ -358,7 +358,7 @@ After a fine-tuned model has been prepared for execution, it can be deployed by 
 
 
 *****************************
-Running LLM via pip install
+Running LLM with pip install
 *****************************
 
 In addition to the full RyzenAI software stack, we also provide standalone wheel files for the users who prefer using their own environment. To prepare an environment for running the Hybrid and NPU-only LLM independently, perform the following steps:
@@ -374,8 +374,8 @@ In addition to the full RyzenAI software stack, we also provide standalone wheel
 
 .. code-block:: bash
 
-	pip install onnxruntime-genai-directml-ryzenai==0.14.0 --extra-index-url https://pypi.amd.com/ryzenai_llm/1.8.1/windows/simple/
-	pip install model-generate==1.8.0 --extra-index-url https://pypi.amd.com/ryzenai_llm/1.8.0/windows/simple/
+	pip install --extra-index-url https://pypi.amd.com/ryzenai_llm/1.8.0/windows/simple onnxruntime-genai-directml-ryzenai==0.14.0
+	pip install --extra-index-url https://pypi.amd.com/ryzenai_llm/1.8.0/windows/simple model-generate==1.8.0
 
 3. Navigate to your working directory and download the desired Hybrid/NPU model
 

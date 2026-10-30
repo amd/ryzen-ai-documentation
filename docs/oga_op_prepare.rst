@@ -8,7 +8,7 @@ Ryzen AI currently supports many popular LLMs in both hybrid and NPU-only flows.
 
 When users fine-tune these models, only the weights change and no new operator shapes are introduced. In that case, follow the steps from :doc:`oga_model_prepare` to prepare the model, which will run on the Ryzen AI runtime using the precompiled operators.
 
-However, in cases where architectural changes introduce new operator shapes not available in the Ryzen AI runtime, additional operator compilation is required. This page provides a recipe to compile operators that are not already present in the runtime. **This flow is experimental, and results may vary depending on the extent of the architectural changes**.
+However, in cases where architectural changes introduce new operator shapes not available in the Ryzen AI runtime, additional operator compilation is required. This page provides a recipe to compile operators that are not already present in the runtime. **This flow is experimental, and results might vary depending on the extent of the architectural changes**.
 
 .. note:: 
 

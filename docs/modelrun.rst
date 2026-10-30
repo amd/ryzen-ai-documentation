@@ -307,7 +307,7 @@ Suitable settings for the :option:`target` and :option:`xclbin` provider options
 
 When compiling INT8 models on STX/KRK devices:
 
-- The :option:`target` provider option can be set to ``X2`` (default) or ``X1`` (legacy backend, may provide better results for some models).
+- The :option:`target` provider option can be set to ``X2`` (default) or ``X1`` (a legacy backend might provide better results for some models).
 - The :option:`xclbin` provider option must not be set.
 
 When compiling INT8 models on PHX/HPT devices:

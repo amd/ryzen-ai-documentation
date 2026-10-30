@@ -37,7 +37,7 @@ Follow these steps in order:
 
 1. **Install NPU drivers:** Follow the :doc:`RAI installation instructions <ryzenai:inst>`. Download and install the NPU driver (version 32.0.203.280 or newer) from the AMD Ryzen AI driver page.
 
-2. **Install Windows App SDK:** Windows ML is included as part of the Windows App SDK. Install the version required by your branch/sample from `Windows App SDK downloads <https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/downloads>`_.
+2. **Install Windows App SDK:** Windows ML is included as part of the WASDK. Install the version required by your branch/sample from `Windows App SDK downloads <https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/downloads>`_.
 
 3. **Verify installation:** For Python, ensure the ``wasdk-microsoft-windows-ai-machinelearning`` package is installed (e.g., via ``pip install``) and matches the Windows App SDK version used by your sample branch. Run ``conda list | findstr wasdk`` to verify.
 
@@ -53,9 +53,15 @@ Follow these steps in order:
       * - Version
         - Package Download
       * - **Release 2026.5D**
-        - :download:`AMD.NPU.WinML.VitisAI.EP_2026_5D.nupkg <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=AMD.NPU.WinML.VitisAI.EP_2026_5D.nupkg>`
+        - :download:`AMD.NPU.WinML.EP_2026_5D.nupkg <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=AMD.NPU.WinML.VitisAI.EP_2026_5D.nupkg>`
+      * - **Release 2026.6D**
+        - :download:`AMD.NPU.WinML.EP_2026_6D.nupkg <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=AMD.NPUWinML.EP_2026_6D.nupkg>`
       * - **Release 2026.7D**
-        - :download:`AMD.NPU.WinML.VitisAI.EP_2026_7D.nupkg <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=AMD.NPU.WinML.VitisAI.EP_2026_7D.nupkg>`
+        - :download:`AMD.NPU.WinML.EP_2026_7D.nupkg <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=AMD.NPU.WinML.VitisAI.EP_2026_7D.nupkg>`
+      * - **Release 2026.8D**
+        - :download:`AMD.NPU.WinML.EP_2026_8D.nupkg <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=AMD.NPU.WinML.EP_2026_8D.nupkg>`
+      * - **Release 2026.9D**
+        - :download:`AMD.NPU.WinML.EP_2026_9D.nupkg <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=RyzenAI_Deployment.1.8.0-9D.nupkg>`
 
 
 **************************
@@ -65,7 +71,7 @@ Key Features of Windows ML
 - **Dynamically downloads latest EPs:** Compatible execution providers are downloaded from the Microsoft Store on demand
 - **Shared Windows-wide ONNX Runtime:** Reduces application size; no need to bundle ORT
 - **Smaller downloads and installs:** EPs are shared across applications
-- **Broad hardware support:** Works across CPUs, GPUs, and NPUs from different vendors via ONNX Runtime
+- **Broad hardware support:** Works across CPUs, GPUs, and NPUs from different vendors with ONNX Runtime
 
 *****************************
 Windows ML setup verification
