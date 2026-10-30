@@ -5,7 +5,7 @@ OnnxRuntime GenAI (OGA) Flow
 Ryzen AI Software supports deploying LLMs on Ryzen AI PCs using the native ONNX Runtime Generate (OGA) C++ or Python API. The OGA API is the lowest-level API available for building LLM applications on a Ryzen AI PC. It supports the following execution modes:
 
 - Hybrid execution mode: This mode uses both the NPU and iGPU to achieve the best TTFT and TPS during the prefill and decode phases.
-- NPU-only execution mode: This mode uses the NPU exclusively for both the prefill and decode phases. Two types of NPU models are available - Token Fusion (long context) and Full Fusion (best performance). See :ref:`npu_model_types` for the full comparison.
+- NPU-only execution mode: This mode uses the NPU exclusively for both the prefill and decode phases.
 
 ************************
 Supported Configurations
@@ -32,43 +32,17 @@ Pre-optimized Models
 AMD provides a set of pre-optimized LLMs ready to be deployed with Ryzen AI Software and the supporting runtime for hybrid and/or NPU-only execution. These include popular architectures such as Llama-2, Llama-3, Mistral, DeepSeek Distill models, Qwen-2, Qwen-2.5, Qwen-3, Gemma-2, Gemma-3, GPT-OSS, Phi-3, Phi-3.5, and Phi-4. 
 
 For the complete list of supported pre-optimized models and their available variants, see :doc:`llm_list`.
-
+ 
+- Hugging Face collection of **NPU models**: https://huggingface.co/collections/amd/ryzen-ai-190-npu
 - Hugging Face collection of **hybrid models**: https://huggingface.co/collections/amd/ryzen-ai-180-hybrid
- 
-- Hugging Face collection of **NPU long-context models** (up to 16K, Token Fusion): https://huggingface.co/collections/amd/ryzen-ai-180-npu-16k
- 
-- Hugging Face collection of **NPU best-performance models** (up to 4K, Full Fusion): https://huggingface.co/collections/amd/ryzen-ai-180-npu-4k
 
-
-.. _npu_model_types:
-
-NPU Models: Token Fusion vs Full Fusion
-========================================
-
-AMD provides two types of NPU models. Choose based on your use case: Token Fusion for long-context workloads, or Full Fusion for higher throughput on shorter sequences.
- 
-.. list-table::
-   :header-rows: 1
-   :widths: 24 38 38
- 
-   * -
-     - Token Fusion
-     - Full Fusion
-   * - Max context (input + output)
-     - Up to 16K tokens
-     - Up to 4096 tokens
-   * - Best for
-     - Long-context workloads
-     - Higher throughput on shorter sequences
- 
-Each OGA model folder contains a ``genai_config.json`` file, which holds configuration settings for the model. The ``session_option`` section is where specific runtime dependencies are specified.
 
 ************************************
 Changes Compared to Previous Release
 ************************************
 
-- OGA version is updated to v0.14.0 (Ryzen AI 1.8) from v0.11.2 (Ryzen AI 1.7.1).
-- For the 1.8 release, a new set of hybrid and NPU models has been published. Models from earlier releases are not compatible with this version. Download the updated models.
+- OGA version is updated to v0.16.0 (Ryzen AI 1.9) from v0.14.0 (Ryzen AI 1.8).
+- For the 1.9 release, a new set of NPU models has been published. NPU Models from earlier releases are not compatible with this version. Download the updated models.
 
 *******************
 Compatible OGA APIs
@@ -76,7 +50,7 @@ Compatible OGA APIs
 
 Pre-optimized hybrid or NPU LLMs can be executed using the official OGA C++ and Python APIs. The current release is compatible with OGA version 0.14.0.
 For detailed documentation and examples, refer to the official OGA repository:
-🔗 https://github.com/microsoft/onnxruntime-genai/tree/rel-0.14.0
+🔗 https://github.com/microsoft/onnxruntime-genai/tree/rel-0.16.0
 
 
 ***************************
@@ -175,21 +149,31 @@ Key options: Run ``model_benchmark.exe --help`` for the complete list of options
 Long Context Support
 ====================
 
-Ryzen AI supports long context (beyond 4096 tokens) for **Hybrid models** and **Token Fusion NPU models**.
+Ryzen AI supports long context (beyond 4096 tokens) for **Hybrid models** and **NPU models**.
 
-Token Fusion NPU Models
------------------------
+NPU Models
+----------
 
-Token Fusion NPU models are pre-built with long context support up to 16K tokens. No additional configuration is required — simply download the model from Hugging Face and run it.
+NPU models are pre-built with long context support. No additional configuration is required — simply download the model from Hugging Face and run it.
 
 .. code-block:: bash
  
-   :: Example: Clone a Token Fusion NPU model
+   :: Example: Clone a NPU model
    git clone https://huggingface.co/amd/Phi-3.5-mini-instruct-onnx-ryzenai-npu
 
    :: Run with long context (synthetic 16000-token prompt)
    .\model_benchmark.exe -i <path_to_model_dir> -l 16000 -g 128
 
+.. note::
+
+   The context length that can actually be used is not a fixed number. It is
+   bounded by the model's own maximum sequence length, and beyond that by the
+   memory available on the system. The KV cache grows linearly with context
+   length, and its footprint depends on the model's layer count, number of
+   key/value heads, head dimension, and KV cache data type. A larger model, or
+   a model with a wider KV cache, will run out of memory at a shorter context
+   than the examples shown here. If a run fails at a given ``-l`` value, reduce
+   the prompt length or use a smaller model.
 
 Hybrid Models
 -------------
@@ -245,11 +229,7 @@ If the total number of tokens exceeds 4096 for a hybrid model, follow the steps 
 
    The sample test application ``model_benchmark.exe`` accepts ``-l`` for input token length and ``-g`` for output token length.
 
-   - **Full Fusion NPU models** support up to 4096 tokens in total (input + output). By default, ``-g`` is set to 128. If the input length is close to 4096, you must adjust ``-g`` so the sum of input and output tokens does not exceed 4096. For example, ``-l 4000 -g 96`` is valid (4000 + 96 ≤ 4096), while ``-l 4000 -g 128`` will exceed the limit and result in an error.
-   - **Token Fusion NPU models** support long context up to 16K tokens (input + output) with no additional configuration.
-   - **Hybrid models**: The combined number of input and output tokens must not exceed the model's ``context_length``. You can verify the ``context_length`` in the ``genai_config.json`` file. For example, if a model's ``context_length`` is 8,000, the total token count (input + output) must not exceed 8,000.
-
-   The long context feature has been tested for Token Fusion NPU models and Hybrid models up to 16,000 tokens.
+   - The combined number of input and output tokens must not exceed the model's ``context_length``. You can verify the ``context_length`` in the ``genai_config.json`` file. For example, if a model's ``context_length`` is 8,000, the total token count (input + output) must not exceed 8,000.
 
 
 Python Script
