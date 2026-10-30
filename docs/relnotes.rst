@@ -59,6 +59,9 @@ Version 1.9
   - New model support, functional only (performance not optimized): Phi-4-14B, Qwen3.5-9B, Granite-4.1-8B, Gemma-4-12B
   - Dynamic LoRA support for Qwen models (text): Qwen2.5-3B, Qwen3-4B, Qwen3.5-4B
 
+- CNN/Transformer
+
+  - General Performance improvements and Bug Fixes
 
 
 ***********
