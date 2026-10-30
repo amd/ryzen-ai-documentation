@@ -61,7 +61,7 @@ Version 1.9
 
 - CNN/Transformer
 
-  - General Performance improvements and Bug Fixes
+  - General performance improvements and bug fixes
 
 
 ***********
