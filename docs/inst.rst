@@ -22,7 +22,7 @@ The following dependencies must be installed on the system before installing the
    * - Dependencies
      - Version Requirement
    * - Windows 11
-     - build >= 22621.3527
+     - build >= 26100
    * - cmake
      - version >= 3.26
    * - Python (with venv support)
@@ -42,26 +42,10 @@ The following dependencies must be installed on the system before installing the
 Install NPU Drivers
 *******************
 
-.. list-table::
-   :widths: 25 25 25
-   :header-rows: 1
-
-   * - Driver Version
-     - Version
-     - Link
-   * - Minimum Driver
-     - 32.0.203.280 
-     - :download:`NPU Driver <https://download.amd.com/opendownload/RyzenAI/Driver/NPU_RAI_280_WHQL.zip>`
-   * - Latest Driver
-     - Adrenalin-Edition-26.10.1
-     - `NPU Driver <https://www.amd.com/en/resources/support-articles/release-notes/RN-RAD-WIN-26-10-1.html#Downloads>`_
-
-- Install the NPU drivers:
-
-  - Extract the downloaded ZIP file.
-  - Open a terminal in administrator mode and execute the ``.\npu_sw_installer.exe`` file.
-
-- Ensure that NPU driver (Need to change - Version:32.0.203.280, Date:5/16/2025) is correctly installed by opening Task Manager -> Performance -> NPU0. 
+- Download the latest drivers - `NPU Driver <https://www.amd.com/en/support/download/drivers.html>`_
+- AMD Software Installer - Follow the Instructions to successfully install the drivers 
+- Reboot the machine
+- Open Task Manager -> Performance -> NPU0. Ensure that NPU driver (Version:32.0.201.448, Date:10/3/2026) is correct 
 
 
 .. _install-bundled:
