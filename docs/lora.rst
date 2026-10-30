@@ -7,7 +7,7 @@ Ryzen AI LoRA enables AI PC developers to run an LLM together with LoRA fine-tun
 
 A single base LLM can be used with multiple LoRA adapters, allowing applications to dynamically switch adapters at runtime for different users, domains, or tasks without maintaining a separate copy of the full model for each use case. Running the model and adapters locally can reduce dependency on cloud inference, improve responsiveness, keep application data on the device, and enable customized AI experiences on Ryzen AI PCs.
 
-Currently LoRA flow is supported on the following models: Qwen-2.5-4B, Qwen-3-4B
+Currently LoRA flow is supported on the following models: Qwen-2.5-4B, Qwen-3-4B, Qwen3.5-4B (text). 
 
 Flow Description
 ~~~~~~~~~~~~~~~~
