@@ -166,18 +166,8 @@ NPU models are pre-built with long context support. No additional configuration 
 
 .. note::
 
-   Running LLMs with large context lengths (64K–128K tokens) can require
-   substantial system memory:
-
-   - **KV cache dominates.** The cache grows linearly with context length, and
-     its size depends on the model's attention architecture (number of
-     key/value heads, head dimension) and layer count.
-   - **Example.** 4B-parameter models such as Phi-4-mini-instruct and Qwen3-4B
-     can consume approximately 20–30 GB of system memory at large context
-     lengths.
-   - **If memory is insufficient**, reduce the context length or move to a
-     system with more memory - 64 GB RAM or higher is recommended for this
-     range.
+   Running LLMs with large context lengths (64K–128K tokens) can require substantial system memory. This is primarily due to the KV cache, which grows with context length and depends on the model's attention architecture and number of layers. For example, 4B-parameter models such as Phi-4-mini-instruct and Qwen3-4B can consume approximately 20–30 GB of system memory when running with large context lengths. If memory is insufficient, consider reducing the context length or using a system with more memory, such as 64 GB RAM or higher.
+   
 
 Hybrid Models
 -------------
