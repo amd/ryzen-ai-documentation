@@ -5,7 +5,7 @@ OnnxRuntime GenAI (OGA) Flow
 Ryzen AI Software supports deploying LLMs on Ryzen AI PCs using the native ONNX Runtime Generate (OGA) C++ or Python API. The OGA API is the lowest-level API available for building LLM applications on a Ryzen AI PC. It supports the following execution modes:
 
 - Hybrid execution mode: This mode uses both the NPU and iGPU to achieve the best TTFT and TPS during the prefill and decode phases.
-- NPU-only execution mode: This mode uses the NPU exclusively for both the prefill and decode phases. Two types of NPU models are available - Token Fusion (long context) and Full Fusion (best performance). See :ref:`npu_model_types` for the full comparison.
+- NPU-only execution mode: This mode uses the NPU exclusively for both the prefill and decode phases.
 
 ************************
 Supported Configurations
@@ -32,43 +32,17 @@ Pre-optimized Models
 AMD provides a set of pre-optimized LLMs ready to be deployed with Ryzen AI Software and the supporting runtime for hybrid and/or NPU-only execution. These include popular architectures such as Llama-2, Llama-3, Mistral, DeepSeek Distill models, Qwen-2, Qwen-2.5, Qwen-3, Gemma-2, Gemma-3, GPT-OSS, Phi-3, Phi-3.5, and Phi-4. 
 
 For the complete list of supported pre-optimized models and their available variants, see :doc:`llm_list`.
-
+ 
+- Hugging Face collection of **NPU models**: https://huggingface.co/collections/amd/ryzen-ai-190-npu
 - Hugging Face collection of **hybrid models**: https://huggingface.co/collections/amd/ryzen-ai-180-hybrid
- 
-- Hugging Face collection of **NPU long-context models** (up to 16K, Token Fusion): https://huggingface.co/collections/amd/ryzen-ai-180-npu-16k
- 
-- Hugging Face collection of **NPU best-performance models** (up to 4K, Full Fusion): https://huggingface.co/collections/amd/ryzen-ai-180-npu-4k
 
-
-.. _npu_model_types:
-
-NPU Models: Token Fusion vs Full Fusion
-========================================
-
-AMD provides two types of NPU models. Choose based on your use case: Token Fusion for long-context workloads, or Full Fusion for higher throughput on shorter sequences.
- 
-.. list-table::
-   :header-rows: 1
-   :widths: 24 38 38
- 
-   * -
-     - Token Fusion
-     - Full Fusion
-   * - Max context (input + output)
-     - Up to 16K tokens
-     - Up to 4096 tokens
-   * - Best for
-     - Long-context workloads
-     - Higher throughput on shorter sequences
- 
-Each OGA model folder contains a ``genai_config.json`` file, which holds configuration settings for the model. The ``session_option`` section is where specific runtime dependencies are specified.
 
 ************************************
 Changes Compared to Previous Release
 ************************************
 
-- OGA version is updated to v0.14.0 (Ryzen AI 1.8) from v0.11.2 (Ryzen AI 1.7.1).
-- For the 1.8 release, a new set of hybrid and NPU models has been published. Models from earlier releases are not compatible with this version. Download the updated models.
+- OGA version is updated to v0.18.0 (Ryzen AI 1.9) from v0.14.0 (Ryzen AI 1.8).
+- For the 1.9 release, a new set of NPU models has been published. NPU Models from earlier releases are not compatible with this version. Download the updated models.
 
 *******************
 Compatible OGA APIs
@@ -76,7 +50,7 @@ Compatible OGA APIs
 
 Pre-optimized hybrid or NPU LLMs can be executed using the official OGA C++ and Python APIs. The current release is compatible with OGA version 0.14.0.
 For detailed documentation and examples, refer to the official OGA repository:
-🔗 https://github.com/microsoft/onnxruntime-genai/tree/rel-0.14.0
+🔗 https://github.com/microsoft/onnxruntime-genai/tree/rel-0.18.0
 
 
 ***************************
@@ -151,7 +125,7 @@ Use the ``model_benchmark.exe`` executable to test LLMs and identify DLL depende
    git lfs install
 
    :: Clone the model repository
-   git clone https://huggingface.co/amd/Llama-2-7b-chat-hf-onnx-ryzenai-hybrid
+   git clone https://huggingface.co/amd/Llama-3.2-1B_rai_1.9.0_npu
 
 3. Run ``model_benchmark.exe``
 
@@ -162,12 +136,12 @@ Provide the prompt using **either** ``--prompt_file`` (a prompt text file) **or*
    :: Using a synthetic prompt length:
    .\model_benchmark.exe -i <path_to_model_dir> -l <prompt_length> -g <generation_length>
    :: Example:
-   .\model_benchmark.exe -i Llama-2-7b-chat-hf-onnx-ryzenai-hybrid -l 1024 -g 128
+   .\model_benchmark.exe -i Llama-3.2-1B_rai_1.9.0_npu -l 1024 -g 128
 
    :: Using a prompt file:
    .\model_benchmark.exe -i <path_to_model_dir> --prompt_file <prompt_file> -g <generation_length>
    :: Example:
-   .\model_benchmark.exe -i Llama-2-7b-chat-hf-onnx-ryzenai-hybrid --prompt_file amd_genai_prompt.txt -g 128
+   .\model_benchmark.exe -i Llama-3.2-1B_rai_1.9.0_npu --prompt_file amd_genai_prompt.txt -g 128
 
 Key options: Run ``model_benchmark.exe --help`` for the complete list of options.
 
@@ -175,21 +149,35 @@ Key options: Run ``model_benchmark.exe --help`` for the complete list of options
 Long Context Support
 ====================
 
-Ryzen AI supports long context (beyond 4096 tokens) for **Hybrid models** and **Token Fusion NPU models**.
+Ryzen AI supports long context (beyond 4096 tokens) for **Hybrid models** and **NPU models**.
 
-Token Fusion NPU Models
------------------------
+NPU Models
+----------
 
-Token Fusion NPU models are pre-built with long context support up to 16K tokens. No additional configuration is required — simply download the model from Hugging Face and run it.
+NPU models are pre-built with long context support. No additional configuration is required - simply download the model from Hugging Face and run it.
 
 .. code-block:: bash
  
-   :: Example: Clone a Token Fusion NPU model
-   git clone https://huggingface.co/amd/Phi-3.5-mini-instruct-onnx-ryzenai-npu
+   :: Example: Clone a NPU model
+   git clone https://huggingface.co/amd/Llama-3.2-1B_rai_1.9.0_npu
 
    :: Run with long context (synthetic 16000-token prompt)
    .\model_benchmark.exe -i <path_to_model_dir> -l 16000 -g 128
 
+.. note::
+
+   Running LLMs with large context lengths (64K–128K tokens) can require
+   substantial system memory:
+
+   - **KV cache dominates.** The cache grows linearly with context length, and
+     its size depends on the model's attention architecture (number of
+     key/value heads, head dimension) and layer count.
+   - **Example.** 4B-parameter models such as Phi-4-mini-instruct and Qwen3-4B
+     can consume approximately 20–30 GB of system memory at large context
+     lengths.
+   - **If memory is insufficient**, reduce the context length or move to a
+     system with more memory - 64 GB RAM or higher is recommended for this
+     range.
 
 Hybrid Models
 -------------
@@ -245,11 +233,7 @@ If the total number of tokens exceeds 4096 for a hybrid model, follow the steps 
 
    The sample test application ``model_benchmark.exe`` accepts ``-l`` for input token length and ``-g`` for output token length.
 
-   - **Full Fusion NPU models** support up to 4096 tokens in total (input + output). By default, ``-g`` is set to 128. If the input length is close to 4096, you must adjust ``-g`` so the sum of input and output tokens does not exceed 4096. For example, ``-l 4000 -g 96`` is valid (4000 + 96 ≤ 4096), while ``-l 4000 -g 128`` will exceed the limit and result in an error.
-   - **Token Fusion NPU models** support long context up to 16K tokens (input + output) with no additional configuration.
-   - **Hybrid models**: The combined number of input and output tokens must not exceed the model's ``context_length``. You can verify the ``context_length`` in the ``genai_config.json`` file. For example, if a model's ``context_length`` is 8,000, the total token count (input + output) must not exceed 8,000.
-
-   The long context feature has been tested for Token Fusion NPU models and Hybrid models up to 16,000 tokens.
+   - The combined number of input and output tokens must not exceed the model's ``context_length``. You can verify the ``context_length`` in the ``genai_config.json`` file. For example, if a model's ``context_length`` is 8,000, the total token count (input + output) must not exceed 8,000.
 
 
 Python Script
@@ -269,7 +253,7 @@ This section uses a basic ``run_model.py`` sample script.
    git lfs install
 
    :: Clone the model repository
-   git clone https://huggingface.co/amd/Llama-2-7b-chat-hf-onnx-ryzenai-hybrid
+   git clone https://huggingface.co/amd/Llama-3.2-1B_rai_1.9.0_npu
 
 2. Run sample python script
 
@@ -278,7 +262,7 @@ This section uses a basic ``run_model.py`` sample script.
      python "%RYZEN_AI_INSTALLATION_PATH%\LLM\example\run_model.py" -m <model_folder> -l <max_length>
 
      :: Example command
-     python "%RYZEN_AI_INSTALLATION_PATH%\LLM\example\run_model.py" -m "Llama-2-7b-chat-hf-onnx-ryzenai-hybrid" -l 256
+     python "%RYZEN_AI_INSTALLATION_PATH%\LLM\example\run_model.py" -m "Llama-3.2-1B_rai_1.9.0_npu" -l 256
 
 
 .. _python-chat-template:
@@ -303,16 +287,18 @@ The script is included in the Ryzen AI installation:
 
 For the full list of options including multi-turn JSON testing, guided generation, and advanced flags, refer to the `RyzenAI-SW repository <https://github.com/amd/RyzenAI-SW/blob/main/LLM-examples/oga_inference/README.md>`_.
 
-It is highly recommended to use ``model_chat.py`` for the `GPT-OSS-20B NPU model <https://huggingface.co/amd/gpt-oss-20b-onnx-ryzenai-npu>`_.
+It is highly recommended to use ``model_chat.py`` for the `GPT-OSS-20B NPU model <https://huggingface.co/amd/gpt-oss-20b-onnx_cpu_rai_1.9.0_npu>`_.
 
 
 **********************************
 Vision Language Model (VLM)
 **********************************
 
-AMD provides a pre-optimized Gemma-3-4b-it multimodal model ready to be deployed with Ryzen AI Software. Support for this model is available starting with the Ryzen AI 1.7 release.
+AMD provides pre-optimized multimodal models ready to be deployed with Ryzen AI Software. The following VLMs are supported:
 
-Model: `Gemma-3-4b-it-mm-onnx-ryzenai-npu <https://huggingface.co/amd/Gemma-3-4b-it-mm-onnx-ryzenai-npu>`_
+- `Qwen3-VL-4B-Instruct <https://huggingface.co/amd/Qwen3-VL-4B-Instruct_rai_1.9.0_npu>`_
+- `VideoChat-Flash-Qwen2_5-7B_InternVideo2-1B <https://huggingface.co/amd/Videochat_rai_1.9.0_npu>`_
+- `Gemma-3-4b-it <https://huggingface.co/amd/gemma-3-4b-npu-basic-text-logit-pruning_rai_1.9.0_npu>`_
 
 VLM inference requires dedicated Python scripts, which are included in the Ryzen AI installation at ``%RYZEN_AI_INSTALLATION_PATH%\LLM\example\vlm``.
 
@@ -335,6 +321,15 @@ Use ``vlm_run.py`` to quickly test a model and see output:
 For benchmarking scripts (``vlm_benchmark.py``, ``run_all_benchmarks.py``) and detailed options, refer to the README in the ``vlm`` directory or the `RyzenAI-SW repository <https://github.com/amd/RyzenAI-SW/blob/main/LLM-examples/VLM/README.md>`_.
 
 
+**********************************
+Embedding Model
+**********************************
+
+AMD provides a pre-optimized `embeddinggemma-300m <https://huggingface.co/amd/embeddinggemma_npu_rai_1.9.0_npu>`_ model for the NPU.
+
+An embedding model converts an input text into a single embedding vector; it is not a chat model. It has no ``genai_config.json`` and does not run through OGA, so ``model_benchmark.exe`` and the sample LLM scripts do not apply. Instead, run it with ONNX Runtime using the Ryzen AI execution provider.
+
+
 **************************************
 Building C++ Applications
 **************************************
@@ -355,34 +350,4 @@ It is also possible to run fine-tuned versions of the pre-optimized OGA models.
 To do this, the fine-tuned models must first be prepared for execution with the OGA flow. For instructions on how to do this, refer to the page about :doc:`oga_model_prepare`.
 
 After a fine-tuned model has been prepared for execution, it can be deployed by following the steps described previously in this page.
-
-
-*****************************
-Running LLM with pip install
-*****************************
-
-In addition to the full RyzenAI software stack, we also provide standalone wheel files for the users who prefer using their own environment. To prepare an environment for running the Hybrid and NPU-only LLM independently, perform the following steps:
-
-1. Create a new python environment and activate it.
-
-.. code-block:: bash
-
-   py -3.12 -m venv <env_name>
-   <env_name>\Scripts\activate.bat
-
-2. Install onnxruntime-genai wheel file.
-
-.. code-block:: bash
-
-	pip install onnxruntime-genai-directml-ryzenai==0.14.0 --extra-index-url https://pypi.amd.com/ryzenai_llm/1.8.1/windows/simple/
-	pip install model-generate==1.8.0 --extra-index-url https://pypi.amd.com/ryzenai_llm/1.8.0/windows/simple/
-
-3. Navigate to your working directory and download the desired Hybrid/NPU model
-
-.. code-block:: bash
-
-   cd working_directory
-   git clone <link_to_model>
-
-4. Run the Hybrid or NPU model.
 
