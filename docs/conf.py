@@ -31,9 +31,9 @@ copyright = '2023-2025, Advanced Micro Devices, Inc'
 author = 'Advanced Micro Devices, Inc'
 
 # The short X.Y version
-version = '1.8'
+version = '1.9'
 # The full version, including alpha/beta/rc tags
-release = '1.8.0'
+release = '1.9.0'
 html_last_updated_fmt = '%b %d, %Y'
 
 
@@ -109,6 +109,7 @@ templates_path = ['_templates']
 def setup(app):
     app.add_css_file('custom.css')
     app.add_css_file("llm-table.css")
+    app.add_css_file("licenses.css")
     app.add_js_file("winml-external-links.js")
 
 

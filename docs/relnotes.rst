@@ -10,16 +10,17 @@ Release Notes
 Supported Configurations
 ************************
 
-Ryzen AI 1.8 Software supports AMD processors codenamed Phoenix, Hawk Point, Strix, Strix Halo, and Krackan Point. These processors can be found in the following Ryzen series:
+Ryzen AI 1.8 Software supports AMD processors codenamed Phoenix, Hawk Point, Strix, Strix Halo, Krackan Point and Gorgon Point. These processors can be found in the following Ryzen series:
 
 - Ryzen 200 Series
 - Ryzen 7000 Series, Ryzen PRO 7000 Series
 - Ryzen 8000 Series, Ryzen PRO 8000 Series
 - Ryzen AI 300 Series, Ryzen AI PRO Series, Ryzen AI Max 300 Series
+- Ryzen AI 400 series
 
 For a complete list of supported devices, refer to the `processor specifications <https://www.amd.com/en/products/specifications/processors.html>`_ page (look for the "AMD Ryzen AI" column towards the right side of the table, and select "Available" from the pull-down menu).
 
-The rest of this document will refer to Phoenix as PHX, Hawk Point as HPT, Strix and Strix Halo as STX, and Krackan Point as KRK.
+The rest of this document will refer to Phoenix as PHX, Hawk Point as HPT, Strix and Strix Halo as STX, Krackan Point as KRK and Gorgon Point as GPT.
 
 
 *************************
@@ -33,7 +34,7 @@ The following table lists which types of models are supported on what hardware p
 
    * - Model Type
      - PHX/HPT
-     - STX/KRK
+     - STX/KRK/GPT
    * - CNN INT8
      - |checkmark|
      - |checkmark|
@@ -46,6 +47,22 @@ The following table lists which types of models are supported on what hardware p
    * - LLM (OGA)
      -
      - |checkmark|
+
+
+***********
+Version 1.9
+***********
+- LLM
+
+  - Extended context length for LLMs on NPU, beyond the 4K/16K limit of previous releases. 
+  - New model support: Gemma-4-E2B (text), Gemma-4-E4B (text), Hy-MT2-1.8B
+  - New model support, functional only (performance not optimized): Phi-4-14B, Qwen3.5-9B, Granite-4.1-8B, Gemma-4-12B
+  - Dynamic LoRA support for Qwen models (text): Qwen2.5-3B, Qwen3-4B, Qwen3.5-4B
+
+- CNN/Transformer
+
+  - Bug fixes and general improvements
+
 
 ***********
 Version 1.8

@@ -24,6 +24,9 @@ The following table summarizes the driver requirements for the different version
    * - VitisAI EP version
      - Minimum NPU Driver version
      - Maximum NPU Driver release date
+   * - 1.8
+     - 32.0.203.280
+     - Jan 22nd, 2029
    * - 1.7
      - 32.0.203.280
      - Jan 22nd, 2029
@@ -86,6 +89,14 @@ The Ryzen AI Software supports various types of NPU-enabled APUs, referred to as
      - 0x17F0
      - 0x20
      - KRK
+   * - 0x1022
+     - 0x17F0
+     - 0x10
+     - GPT
+   * - 0x1022
+     - 0x17F0
+     - 0x20
+     - GPT
 
 The application must verify that it runs on an AMD processor with NPU, and that the Vitis AI EP version supports the NPU type.
 
@@ -134,7 +145,7 @@ AMD recommends using the ONNXRuntime :ref:`EP Context Cache <ort-ep-context-cach
 
 .. rubric:: BF16 models
 
-The deployment version of the VitisAI Execution Provider (EP) does not support the on-the-fly compilation of BF16 models. Applications utilizing BF16 models must include pre-compiled versions of these models. The VitisAI EP can then load the pre-compiled models and deploy them efficiently on the NPU.
+The deployment version of the VitisAI Execution Provider (EP) supports on-the-fly compilation of BF16 models. It is recommended for Applications with BF16 models to include pre-compiled versions of the models. The VitisAI EP can then load the pre-compiled models and deploy them efficiently on the NPU.
 
 .. rubric:: INT8 models
 

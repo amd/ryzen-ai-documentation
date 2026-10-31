@@ -25,7 +25,7 @@ Currently this flow is primarily supported for hybrid execution.
 
 .. code-block:: 
 
-   conda activate ryzen-ai-<version>
+   "C:\Program Files\RyzenAI\ryzen-ai-1.9.0\Scripts\activate.bat"
    python -m onnxruntime_genai.models.builder \
         -i <quantized model folder> -o <dml model folder> \
         -p int4 -e dml

@@ -1,0 +1,23 @@
+/* Scrollable license / TPN text boxes on the Licensing Information page */
+
+.license-box {
+  max-height: 28rem;
+  overflow: auto;
+  margin: 1rem 0 2rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--pst-color-border, #ccc);
+  border-radius: 0.25rem;
+  background: var(--pst-color-surface, #f8f9fa);
+}
+
+.license-box pre,
+.license-box .highlight {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-size: 0.85rem;
+  line-height: 1.45;
+}

@@ -11,6 +11,9 @@ Preparing a LLM for deployment on a Ryzen AI PC involves 2 steps:
 1. **Quantization**: The pretrained model is quantized to reduce memory footprint and better map to compute resources in the hardware accelerators
 2. **Postprocessing**: During the postprocessing the model is exported to OGA followed by NPU-only or Hybrid execution mode specific postprocess to obtain the final deployable model.
 
+
+.. _llm_quantization:
+
 ************
 Quantization
 ************
@@ -22,12 +25,12 @@ A Linux machine with AMD (e.g., AMD Instinct MI Series) or Nvidia GPUs
 Setup
 =====
 
-1. Create and activate Conda Environment 
+1. Create and activate a Python virtual environment 
 
 .. code-block::
 
-    conda create --name <conda_env_name> python=3.12
-    conda activate <conda_env_name>
+    python3.12 -m venv <env_name>
+    source <env_name>/bin/activate
 
 2. If Using AMD GPUs, update PyTorch to use ROCm 
 
@@ -98,15 +101,65 @@ The quantized model is generated in the <quantized safetensor output dir> folder
 - For Phi-4 models: ``configuration_phi3.py``
 - For ChatGLM-6b models: ``tokenizer.json``
 
+Importing INT4 Quantized Models from QAT
+========================================
+
+In addition to the existing Post-Training Quantization (PTQ) workflow using
+AMD Quark, Ryzen AI supports importing pre-quantized INT4 PyTorch models
+generated through Quantization-Aware Training (QAT), provided the checkpoint
+follows a supported format.
+
+The ONNX Runtime GenAI Model Builder supports the ``quant_auto`` checkpoint
+format, allowing quantized weights to be converted into the ONNX INT4
+representation while preserving the original quantization scales and zero
+points. ``quant_auto`` is an **asymmetric** INT4 format: the trained zero
+points carry real information and are retained through export rather than
+being replaced by a symmetric scheme.
+
+Supported checkpoint format
+---------------------------
+
+For the authoritative tensor layout, see the ONNX Runtime GenAI
+`quant_auto format specification
+<https://github.com/microsoft/onnxruntime-genai/blob/main/src/python/py/models/loaders/quant-auto.md>`_.
+
+Configuration and naming conventions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The checkpoint must set ``quant_method: quant_auto`` in
+``quantize_config.json``.
+
+A few conventions are specific to this format and are load-breaking if not
+followed:
+
+- **bits and group_size are not declared in the config.** The loader defaults
+  ``bits`` to 4 and infers ``group_size`` from the tensor shapes
+  (``in_features / num_groups``, where ``num_groups`` is derived from the
+  scales shape). Do not rely on these fields being present.
+- **Zero-point tensors use the .zeros suffix** (for example
+  ``model.embed_tokens.zeros``), not ``.qzeros``. The loader normalizes
+  ``.zeros`` to ``.qzeros`` on read.
+- **Fused projections** (``qkv_proj``, ``gate_up_proj``) are stored in
+  ``(out, in)`` order and split along dim=0 using group-size-aware boundaries.
+
+Compilation flow
+----------------
+
+Once exported to ONNX, the model can follow the existing Ryzen AI NPU or
+hybrid compilation flow, subject to model architecture and execution-mode
+support.
+
+**Note:** This capability applies to checkpoints compatible with the documented ``quant_auto`` format. Other QAT checkpoint formats may require conversion or additional loader support.
+
 **************
 Postprocessing
 **************
 
-Copy the quantized model to the Windows PC with Ryzen AI installed, and activate the Ryzen AI Conda environment.
+Copy the quantized model to the Windows PC with Ryzen AI installed, and activate the Ryzen AI Python virtual environment.
 
 .. code-block::
 
-    conda activate ryzen-ai-<version>
+    "C:\Program Files\RyzenAI\ryzen-ai-1.9.0\Scripts\activate.bat"
 
 Hybrid Execution Mode
 =====================
@@ -175,8 +228,8 @@ Here are simple commands to export an OGA model from a quantized model using a s
 
 .. code-block::
 
-    conda create --name oga_builder_env python=3.12
-    conda activate oga_builder_env
+    py -3.12 -m venv oga_builder_env
+    oga_builder_env\Scripts\activate.bat
 
 
     pip install onnxruntime-genai==0.14.0

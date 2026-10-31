@@ -22,21 +22,17 @@ The following dependencies must be installed on the system before installing the
    * - Dependencies
      - Version Requirement
    * - Windows 11
-     - build >= 22621.3527
-   * - Visual Studio
-     - 2022
+     - build >= 26100
    * - cmake
      - version >= 3.26
-   * - Python distribution (Miniforge preferred)
+   * - Python (with venv support)
      - Latest version
 
 |
 
 |warning| **IMPORTANT**:
 
-- Visual Studio 2022 Community (Optional for AMD Quark, to support custom op flow): ensure that `Desktop Development with C++` is installed
-
-- Miniforge: ensure that the following path is set in the System PATH variable: ``path\to\miniforge3\condabin`` or ``path\to\miniforge3\Scripts\`` or ``path\to\miniforge3\`` (The System PATH variable should be set in the *System Variables* section of the *Environment Variables* window).
+- Python: ensure that the Python installation directory and its ``Scripts`` directory are available in the System PATH variable (set in the *System Variables* section of the *Environment Variables* window).
 
 |
 
@@ -46,19 +42,10 @@ The following dependencies must be installed on the system before installing the
 Install NPU Drivers
 *******************
 
-- Download and Install the NPU driver version: 32.0.203.280 or newer using the following links:
-
-  - :download:`NPU Driver (Version 32.0.203.280) <https://download.amd.com/opendownload/RyzenAI/Driver/NPU_RAI_280_WHQL.zip>`
-
-    - NPU driver 32.0.203.376 is production driver for Phoenix, Hawk Point, Strix, Strix Halo, and Krackan Point.
-  - :download:`NPU Driver (Version 32.0.203.376) <https://download.amd.com/opendownload/RyzenAI/Driver/NPU_RAI_376_WHQL.zip>`
-
-- Install the NPU drivers by following these steps:
-
-  - Extract the downloaded ZIP file.
-  - Open a terminal in administrator mode and execute the ``.\npu_sw_installer.exe`` file.
-
-- Ensure that NPU driver (Version:32.0.203.280, Date:5/16/2025) is correctly installed by opening Task Manager -> Performance -> NPU0. 
+- Download the latest drivers - `NPU Driver <https://www.amd.com/en/support/download/drivers.html>`_
+- AMD Software Installer - Follow the Instructions to successfully install the drivers 
+- Reboot the machine
+- Open Task Manager -> Performance -> NPU0. Ensure that NPU driver (Version:32.0.201.448, Date:10/3/2026) is correct 
 
 
 .. _install-bundled:
@@ -67,18 +54,25 @@ Install NPU Drivers
 Install Ryzen AI Software
 *************************
 
-- Download the Ryzen AI Software installer :download:`ryzen-ai-1.8.0.exe <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=ryzen-ai-1.8.0.exe>`.
+- Download the Ryzen AI Software installer `Ryzen AI Software Installer <https://download.amd.com/opendownload/RyzenAI/1.9.0/ryzen-ai-1.9.0-msi.zip>`_
 
 - Launch the EXE installer and follow the instructions on the installation wizard:
 
   - Accept the terms of the Licence agreement
-  - Provide the destination folder for Ryzen AI installation (default: ``C:\Program Files\RyzenAI\1.8.0``)
-  - Specify the name for the conda environment (default: ``ryzen-ai-1.8.0``)
+  - Provide the destination folder for Ryzen AI installation (default installation path: ``C:\Program Files\RyzenAI\ryzen-ai-1.9.0\``)
+  - Use the Python virtual environment provided in the installation folder
+  - **Note - The commands below and in this documentation are w.r.t selection of default installation path (``C:\Program Files\RyzenAI\ryzen-ai-1.9.0\``)**
 
-The Ryzen AI Software packages are now installed in the conda environment created by the installer.
+.. image:: images/venv-2.png
+   :align: center
+
+The Ryzen AI Software packages are now installed in the Python virtual environment provided by the installer.
+
+.. image:: images/venv-3.png
+   :align: center
 
 .. note::
-   NuGet package is available to download at :download:`ryzen_ai_nuget_1.8.0.zip <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=ryzen_ai_nuget_1.8.0.zip>`.
+   NuGet package is available to download at :download:`ryzen_ai_nuget_1.9.0.zip <https://download.amd.com/opendownload/RyzenAI/1.9.0/RyzenAI_Deployment.1.9.0.nupkg>`.
 
 
 
@@ -91,13 +85,15 @@ Test the Installation
 
 The Ryzen AI Software installation folder contains test to verify that the software is correctly installed. This installation test can be found in the ``quicktest`` subfolder which is expected to work for Strix (STX) or newer devices.
 
-- Open a Conda command prompt (search for "Miniforge Prompt" in the Windows start menu)
+- Open a Windows Command Prompt
 
-- Activate the Conda environment created by the Ryzen AI installer:
+- Activate the Python virtual environment created by the Ryzen AI installer:
 
 .. code-block::
 
-   conda activate ryzen-ai-<version>
+   "C:\Program Files\RyzenAI\ryzen-ai-1.9.0\Scripts\activate.bat"
+
+- Immediately after activating ``ryzen-ai-1.9.0`` python virtual enviornment, ``RYZEN_AI_INSTALLATION_PATH`` environment variable will be set by executing the following command - ``set "RYZEN_AI_INSTALLATION_PATH=C:\Program Files\RyzenAI\1.9.0`` 
 
 - Run the test:
 

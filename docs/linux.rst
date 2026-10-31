@@ -5,14 +5,12 @@ Linux Installation Instructions
 
 Ryzen AI for Linux supports running AI models on the AMD Neural Processing Unit (NPU). Linux support is available on newer consumer APUs, beginning with Strix Point, and on newer embedded APUs, beginning with Ryzen™ AI Embedded P100.
 
-With this release, Users can now compile and run AI models using the following formats:
+With this release, users can now compile and run AI models using the following formats:
 
 - CNN models in INT8
 - CNN models in BF16
 - NLP models (e.g., BERT, encoder-based) in BF16
 - LLMs (NPU-only flow)
-
-
 
 
 *************
@@ -30,7 +28,7 @@ Prerequisites
    * - Kernel Version
      - >= 6.10
    * - RAM
- - 64 GB (Recommended)
+     - 64 GB (Recommended)
    * - Python
      - 3.12.x
 
@@ -52,26 +50,26 @@ After installing required Ubuntu distribution and Python version, proceed with N
 *******************
 Install NPU Drivers
 *******************
-- Download the NPU driver package from `Downloads` section of `Ryzen AI Software Drivers <https://download.amd.com/opendownload/RyzenAI/Driver/RAI_1.8_Linux_NPU_XRT.zip>`_.
+- Download the NPU driver package from `Ryzen AI Linux Drivers <https://download.amd.com/opendownload/RyzenAI/1.9.0/RAI_1.9_Linux_NPU_XRT.zip>`_.
 
 - RyzenAI linux driver package contains 
    - XRT Package
-      - xrt_202620.2.25.37_24.04-amd64-base.deb
-      - xrt_202620.2.25.37_24.04-amd64-base-dev.deb
-      - xrt_202620.2.25.37_24.04-amd64-npu.deb
+      - xrt_202620.2.26.89_24.04-amd64-base.deb
+      - xrt_202620.2.26.89_24.04-amd64-base-dev.deb
+      - xrt_202620.2.26.89_24.04-amd64-npu.deb
 
    - NPU driver package
-      - xrt_plugin.2.25.260102.56.release_24.04-amd64-amdxdna.deb
+      - xrt_plugin.2.26.260102.59.release_24.04-amd64-amdxdna.deb
 
 
 - Install NPU driver package on your machine
 
 .. code-block:: bash
 
-   sudo apt install --fix-broken -y ./xrt_202620.2.25.37_24.04-amd64-base.deb
-   sudo apt install --fix-broken -y ./xrt_202620.2.25.37_24.04-amd64-base-dev.deb
-   sudo apt install --fix-broken -y ./xrt_202620.2.25.37_24.04-amd64-npu.deb
-   sudo apt install --fix-broken -y ./xrt_plugin.2.25.260102.56.release_24.04-amd64-amdxdna.deb
+   sudo apt install --fix-broken -y ./xrt_202620.2.26.89_24.04-amd64-base.deb
+   sudo apt install --fix-broken -y ./xrt_202620.2.26.89_24.04-amd64-base-dev.deb
+   sudo apt install --fix-broken -y ./xrt_202620.2.26.89_24.04-amd64-npu.deb
+   sudo apt install --fix-broken -y ./xrt_plugin.2.26.260102.59.release_24.04-amd64-amdxdna.deb
 
 
 - Verify your Driver installation
@@ -94,16 +92,16 @@ Install NPU Drivers
 *************************
 Install Ryzen AI Software
 *************************
-- Download the RyzenAI for Linux package `ryzen_ai-1.8.0.tgz` from `Downloads` section of `Ryzen AI Software Installer <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=ryzen_ai-1.8.0.tgz>`_.
+- Download the RyzenAI for Linux package `ryzen_ai-1.9.0.tgz` from `Ryzen AI Software Installer <https://download.amd.com/opendownload/RyzenAI/1.9.0/ryzen_ai-1.9.0.tgz>`_.
 - Navigate to the downloaded path and follow the below steps
 
 .. code-block:: bash
 
-   mkdir ryzen_ai-1.8.0
-   cp ryzen_ai-1.8.0.tgz ryzen_ai-1.8.0
+   mkdir ryzen_ai-1.9.0
+   mv ryzen_ai-1.9.0.tgz ryzen_ai-1.9.0
 
-   cd ryzen_ai-1.8.0
-   tar -xvzf ryzen_ai-1.8.0.tgz
+   cd ryzen_ai-1.9.0
+   tar -xvzf ryzen_ai-1.9.0.tgz
 
 
 - Install RyzenAI package at your desired target path
@@ -126,15 +124,28 @@ Install Ryzen AI Software
 
    export LD_LIBRARY_PATH=/lib/x86_64-linux-gnu:${RYZEN_AI_INSTALLATION_PATH}/onnxruntime/lib/:$LD_LIBRARY_PATH
 
-- Important Note 
+******
+Note
+******
+- Moving forward, Linux Installation will transition from ***.tgz** to ***.deb** based Installer. 
+- In RyzenAI 1.9 release, we are providing this optional method as a preview.
+- Related files
+   - Download `ryzen-ai-runtime_1.9.0-1_amd64.deb` from `Ryzen AI (deb) Software Installer <https://download.amd.com/opendownload/RyzenAI/1.9.0/ryzen-ai-runtime_1.9.0-1_amd64.deb>`_.
+   - Download `setup_ryzen_ai.sh` from `Ryzen AI Setup script <https://download.amd.com/opendownload/RyzenAI/1.9.0/setup_ryzen_ai.sh>`_.
+
+- Installation Instructions
+
 .. code-block:: bash
 
-   # After activating the Ryzen AI Virtual environment-
-     source <TARGET-PATH>/venv/bin/activate
+   chmod +x setup_ryzen_ai.sh
+   ./setup_ryzen_ai.sh -a yes -d ./ryzen-ai-runtime_1.9.0-1_amd64.deb -p <TARGET-PATH>/venv
+   # -p <path> (default: ~/ryzen-ai-venv)
 
-   # Always run the below command. It appends necessary XRT utils to LD_LIBRARY_PATH for successful execution on NPU
-     source /opt/xilinx/xrt/setup.sh
+   source <TARGET-PATH>/venv/bin/activate
 
+   # Deb installation defaults to /opt in the disk. 
+   # If there is memory shortage, redirect Installation using below flag 
+   # ./setup_ryzen_ai.sh -a yes -d ./ryzen-ai-runtime_1.9.0-1_amd64.deb -p <TARGET-PATH>/venv -c "$HOME/ryzen-ai-runtime"
 
 **********************
 Test the Installation
@@ -155,7 +166,14 @@ The RyzenAI software package contains a test script that verifies your correct i
 .. code-block:: bash
 
    Setting environment for STX/KRK
-   
+   [I:onnxruntime:, compile_pass_manager.cpp:1680 compile_pass_manager.cpp] Compile done.
+   [I:onnxruntime:, stat.cpp:198 stat.cpp] [Vitis AI EP] No. of Operators :
+   [I:onnxruntime:, stat.cpp:198 stat.cpp]    NPU   398
+   [I:onnxruntime:, stat.cpp:198 stat.cpp] VITIS_EP_CPU     2
+   [I:onnxruntime:, stat.cpp:198 stat.cpp]
+   [I:onnxruntime:, stat.cpp:198 stat.cpp] [Vitis AI EP] No. of Subgraphs :
+   [I:onnxruntime:, stat.cpp:198 stat.cpp]    NPU     1
+   [I:onnxruntime:, stat.cpp:198 stat.cpp] Actually running on NPU      1
    Test Finished
 
 
@@ -178,14 +196,12 @@ Note
 
 Before running the above examples - 
    - RyzenAI-SW repo hosts a diverse set of examples with both NPU and iGPU Execution Provider. However, Linux currently supports NPU only flow. 
-   - RyzenAI creates its own Python Virtual Environment to run the examples. Skip conda environment instruction as they are Windows specific only
-   - Ensure to activate Linux based Python Virtual Environment and load necessary XRT Utils 
+   - RyzenAI creates its own Python Virtual Environment to run the examples. Skip Windows-specific Python virtual environment activation instructions
+   - Ensure to activate Linux based Python Virtual Environment 
 
      .. code-block:: bash
 
       source <TARGET-PATH>/venv/bin/activate
-
-      source /opt/xilinx/xrt/setup.sh
 
 =============================
 Get NPU Info for your Machine

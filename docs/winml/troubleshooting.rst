@@ -17,7 +17,7 @@ Issue: Windows App SDK Version Mismatch
 
 **Symptom:** Inference fails or EPs do not load; version mismatch errors.
 
-**Solution:** Ensure the installed Windows App SDK Python package matches the Windows App SDK version required by your sample branch (stable or preview). Run ``conda list | findstr wasdk`` to verify. Download the matching version from `Windows App SDK downloads <https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/downloads>`_.
+**Solution:** Ensure the installed Windows App SDK Python package matches the Windows App SDK version required by your sample branch (stable or preview). Run ``python -m pip list | findstr wasdk`` to verify. Download the matching version from `Windows App SDK downloads <https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/downloads>`_.
 
 
 Issue: EP Not Found or Not Registered

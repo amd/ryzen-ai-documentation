@@ -37,9 +37,9 @@ Follow these steps in order:
 
 1. **Install NPU drivers:** Follow the :doc:`RAI installation instructions <ryzenai:inst>`. Download and install the NPU driver (version 32.0.203.280 or newer) from the AMD Ryzen AI driver page.
 
-2. **Install Windows App SDK:** Windows ML is included as part of the WASDK. Install the version required by your branch/sample from `Windows App SDK downloads <https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/downloads>`_.
+2. **Install Windows App SDK:** Windows ML is included as part of the Windows App SDK. Install the version required by your branch/sample from `Windows App SDK downloads <https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/downloads>`_.
 
-3. **Verify installation:** For Python, ensure the ``wasdk-microsoft-windows-ai-machinelearning`` package is installed (e.g., via ``pip install``) and matches the Windows App SDK version used by your sample branch. Run ``conda list | findstr wasdk`` to verify.
+3. **Verify installation:** For Python, ensure the ``wasdk-microsoft-windows-ai-machinelearning`` package is installed (e.g., via ``pip install``) and matches the Windows App SDK version used by your sample branch. Run ``python -m pip list | findstr wasdk`` to verify.
 
 
 .. note::
@@ -53,15 +53,9 @@ Follow these steps in order:
       * - Version
         - Package Download
       * - **Release 2026.5D**
-        - :download:`AMD.NPU.WinML.EP_2026_5D.nupkg <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=AMD.NPU.WinML.VitisAI.EP_2026_5D.nupkg>`
-      * - **Release 2026.6D**
-        - :download:`AMD.NPU.WinML.EP_2026_6D.nupkg <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=AMD.NPUWinML.EP_2026_6D.nupkg>`
+        - :download:`AMD.NPU.WinML.VitisAI.EP_2026_5D.nupkg <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=AMD.NPU.WinML.VitisAI.EP_2026_5D.nupkg>`
       * - **Release 2026.7D**
-        - :download:`AMD.NPU.WinML.EP_2026_7D.nupkg <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=AMD.NPU.WinML.VitisAI.EP_2026_7D.nupkg>`
-      * - **Release 2026.8D**
-        - :download:`AMD.NPU.WinML.EP_2026_8D.nupkg <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=AMD.NPU.WinML.EP_2026_8D.nupkg>`
-      * - **Release 2026.9D**
-        - :download:`AMD.NPU.WinML.EP_2026_9D.nupkg <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=RyzenAI_Deployment.1.8.0-9D.nupkg>`
+        - :download:`AMD.NPU.WinML.VitisAI.EP_2026_7D.nupkg <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=AMD.NPU.WinML.VitisAI.EP_2026_7D.nupkg>`
 
 
 **************************
@@ -77,12 +71,12 @@ Key Features of Windows ML
 Windows ML setup verification
 *****************************
 
-Install the required Python packages in the conda environment `winml_env`
+Install the required Python packages in the Python virtual environment ``winml_env``
 
 .. code-block:: shell
 
-    conda create -n winml_env python==3.11
-    conda activate winml_env
+    py -3.11 -m venv winml_env
+    winml_env\Scripts\activate.bat
     git clone https://github.com/amd/RyzenAI-SW.git
     cd <RyzenAI-SW>\WinML\CNN\ResNet
     pip install --pre -r .\requirements.txt
@@ -91,7 +85,7 @@ Check the installed wasdk Python version and install same version of `Windows Ap
 
 .. code-block:: shell
 
-    conda list | findstr wasdk
+    python -m pip list | findstr wasdk
 
 Download the Windows App SDK that matches the wasdk version to ensure the Windows ML execution providers work as expected.
 

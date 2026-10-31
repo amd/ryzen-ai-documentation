@@ -102,19 +102,19 @@ To run LLMs in best performance mode, follow these steps:
      cd C:\Windows\System32\AMD
      xrt-smi configure --pmode performance
 
-2. Activate the Ryzen AI Conda Environment and install ``torch`` library.
+2. Activate the Ryzen AI Python Virtual Environment and install ``torch`` library.
 
 Run the following commands:
 
 .. code-block:: bash
 
-   conda activate ryzen-ai-<version>
+   "C:\Program Files\RyzenAI\ryzen-ai-1.9.0\Scripts\activate.bat"
 
 This step is required for running the python script.
 
 .. note::
 
-   For the C++ program, if you choose not to activate the Conda environment, open a Windows Command Prompt and manually set the environment variable before continuing:
+   For the C++ program, if you choose not to activate the Python virtual environment, open a Windows Command Prompt and manually set the environment variable before continuing:
 
    ``set RYZEN_AI_INSTALLATION_PATH=C:\\Program Files\\RyzenAI\\<version>``
 
@@ -303,7 +303,7 @@ The script is included in the Ryzen AI installation:
 
 For the full list of options including multi-turn JSON testing, guided generation, and advanced flags, refer to the `RyzenAI-SW repository <https://github.com/amd/RyzenAI-SW/blob/main/LLM-examples/oga_inference/README.md>`_.
 
-It is highly recommended to use ``model_chat.py`` for the `GPT-OSS-20B NPU model <https://huggingface.co/amd/gpt-oss-20B_eager_rai_1.8.0_npu_16K>`_.
+It is highly recommended to use ``model_chat.py`` for the `GPT-OSS-20B NPU model <https://huggingface.co/amd/gpt-oss-20b-onnx-ryzenai-npu>`_.
 
 
 **********************************
@@ -312,7 +312,7 @@ Vision Language Model (VLM)
 
 AMD provides a pre-optimized Gemma-3-4b-it multimodal model ready to be deployed with Ryzen AI Software. Support for this model is available starting with the Ryzen AI 1.7 release.
 
-Model: `Gemma-3-4b-it <https://huggingface.co/amd/Gemma-3-4b_rai_1.8.0_npu_16K>`_
+Model: `Gemma-3-4b-it-mm-onnx-ryzenai-npu <https://huggingface.co/amd/Gemma-3-4b-it-mm-onnx-ryzenai-npu>`_
 
 VLM inference requires dedicated Python scripts, which are included in the Ryzen AI installation at ``%RYZEN_AI_INSTALLATION_PATH%\LLM\example\vlm``.
 
@@ -367,15 +367,15 @@ In addition to the full RyzenAI software stack, we also provide standalone wheel
 
 .. code-block:: bash
 
-   conda create -n <env_name> python=3.12 -y
-   conda activate <env_name>
+   py -3.12 -m venv <env_name>
+   <env_name>\Scripts\activate.bat
 
 2. Install onnxruntime-genai wheel file.
 
 .. code-block:: bash
 
-	pip install --extra-index-url https://pypi.amd.com/ryzenai_llm/1.8.0/windows/simple onnxruntime-genai-directml-ryzenai==0.14.0
-	pip install --extra-index-url https://pypi.amd.com/ryzenai_llm/1.8.0/windows/simple model-generate==1.8.0
+	pip install onnxruntime-genai-directml-ryzenai==0.14.0 --extra-index-url https://pypi.amd.com/ryzenai_llm/1.8.1/windows/simple/
+	pip install model-generate==1.8.0 --extra-index-url https://pypi.amd.com/ryzenai_llm/1.8.0/windows/simple/
 
 3. Navigate to your working directory and download the desired Hybrid/NPU model
 

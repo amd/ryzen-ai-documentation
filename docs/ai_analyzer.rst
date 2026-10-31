@@ -7,7 +7,7 @@ AMD AI Analyzer is a tool that supports analysis and visualization of model comp
 Installation
 ~~~~~~~~~~~~
 
-If you installed the Ryzen AI software using automatic installer, AI Analyzer is already installed in the conda environment.
+If you installed the Ryzen AI software using automatic installer, AI Analyzer is already installed in the Python virtual environment.
 
 If you manually installed the software, you need to install the AI Analyzer wheel file in your environment.
 
