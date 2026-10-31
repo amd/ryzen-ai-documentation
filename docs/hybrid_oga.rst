@@ -41,7 +41,7 @@ For the complete list of supported pre-optimized models and their available vari
 Changes Compared to Previous Release
 ************************************
 
-- OGA version is updated to v0.16.0 (Ryzen AI 1.9) from v0.14.0 (Ryzen AI 1.8).
+- OGA version is updated to v0.18.0 (Ryzen AI 1.9) from v0.14.0 (Ryzen AI 1.8).
 - For the 1.9 release, a new set of NPU models has been published. NPU Models from earlier releases are not compatible with this version. Download the updated models.
 
 *******************
@@ -50,7 +50,7 @@ Compatible OGA APIs
 
 Pre-optimized hybrid or NPU LLMs can be executed using the official OGA C++ and Python APIs. The current release is compatible with OGA version 0.14.0.
 For detailed documentation and examples, refer to the official OGA repository:
-🔗 https://github.com/microsoft/onnxruntime-genai/tree/rel-0.16.0
+🔗 https://github.com/microsoft/onnxruntime-genai/tree/rel-0.18.0
 
 
 ***************************
@@ -125,7 +125,7 @@ Use the ``model_benchmark.exe`` executable to test LLMs and identify DLL depende
    git lfs install
 
    :: Clone the model repository
-   git clone https://huggingface.co/amd/Llama-2-7b-chat-hf-onnx-ryzenai-hybrid
+   git clone https://huggingface.co/amd/Llama-3.2-1B_rai_1.9.0_npu
 
 3. Run ``model_benchmark.exe``
 
@@ -136,12 +136,12 @@ Provide the prompt using **either** ``--prompt_file`` (a prompt text file) **or*
    :: Using a synthetic prompt length:
    .\model_benchmark.exe -i <path_to_model_dir> -l <prompt_length> -g <generation_length>
    :: Example:
-   .\model_benchmark.exe -i Llama-2-7b-chat-hf-onnx-ryzenai-hybrid -l 1024 -g 128
+   .\model_benchmark.exe -i Llama-3.2-1B_rai_1.9.0_npu -l 1024 -g 128
 
    :: Using a prompt file:
    .\model_benchmark.exe -i <path_to_model_dir> --prompt_file <prompt_file> -g <generation_length>
    :: Example:
-   .\model_benchmark.exe -i Llama-2-7b-chat-hf-onnx-ryzenai-hybrid --prompt_file amd_genai_prompt.txt -g 128
+   .\model_benchmark.exe -i Llama-3.2-1B_rai_1.9.0_npu --prompt_file amd_genai_prompt.txt -g 128
 
 Key options: Run ``model_benchmark.exe --help`` for the complete list of options.
 
@@ -154,26 +154,30 @@ Ryzen AI supports long context (beyond 4096 tokens) for **Hybrid models** and **
 NPU Models
 ----------
 
-NPU models are pre-built with long context support. No additional configuration is required — simply download the model from Hugging Face and run it.
+NPU models are pre-built with long context support. No additional configuration is required - simply download the model from Hugging Face and run it.
 
 .. code-block:: bash
  
    :: Example: Clone a NPU model
-   git clone https://huggingface.co/amd/Phi-3.5-mini-instruct-onnx-ryzenai-npu
+   git clone https://huggingface.co/amd/Llama-3.2-1B_rai_1.9.0_npu
 
    :: Run with long context (synthetic 16000-token prompt)
    .\model_benchmark.exe -i <path_to_model_dir> -l 16000 -g 128
 
 .. note::
 
-   The context length that can actually be used is not a fixed number. It is
-   bounded by the model's own maximum sequence length, and beyond that by the
-   memory available on the system. The KV cache grows linearly with context
-   length, and its footprint depends on the model's layer count, number of
-   key/value heads, head dimension, and KV cache data type. A larger model, or
-   a model with a wider KV cache, will run out of memory at a shorter context
-   than the examples shown here. If a run fails at a given ``-l`` value, reduce
-   the prompt length or use a smaller model.
+   Running LLMs with large context lengths (64K–128K tokens) can require
+   substantial system memory:
+
+   - **KV cache dominates.** The cache grows linearly with context length, and
+     its size depends on the model's attention architecture (number of
+     key/value heads, head dimension) and layer count.
+   - **Example.** 4B-parameter models such as Phi-4-mini-instruct and Qwen3-4B
+     can consume approximately 20–30 GB of system memory at large context
+     lengths.
+   - **If memory is insufficient**, reduce the context length or move to a
+     system with more memory - 64 GB RAM or higher is recommended for this
+     range.
 
 Hybrid Models
 -------------
@@ -249,7 +253,7 @@ This section uses a basic ``run_model.py`` sample script.
    git lfs install
 
    :: Clone the model repository
-   git clone https://huggingface.co/amd/Llama-2-7b-chat-hf-onnx-ryzenai-hybrid
+   git clone https://huggingface.co/amd/Llama-3.2-1B_rai_1.9.0_npu
 
 2. Run sample python script
 
@@ -258,7 +262,7 @@ This section uses a basic ``run_model.py`` sample script.
      python "%RYZEN_AI_INSTALLATION_PATH%\LLM\example\run_model.py" -m <model_folder> -l <max_length>
 
      :: Example command
-     python "%RYZEN_AI_INSTALLATION_PATH%\LLM\example\run_model.py" -m "Llama-2-7b-chat-hf-onnx-ryzenai-hybrid" -l 256
+     python "%RYZEN_AI_INSTALLATION_PATH%\LLM\example\run_model.py" -m "Llama-3.2-1B_rai_1.9.0_npu" -l 256
 
 
 .. _python-chat-template:
@@ -283,16 +287,18 @@ The script is included in the Ryzen AI installation:
 
 For the full list of options including multi-turn JSON testing, guided generation, and advanced flags, refer to the `RyzenAI-SW repository <https://github.com/amd/RyzenAI-SW/blob/main/LLM-examples/oga_inference/README.md>`_.
 
-It is highly recommended to use ``model_chat.py`` for the `GPT-OSS-20B NPU model <https://huggingface.co/amd/gpt-oss-20b-onnx-ryzenai-npu>`_.
+It is highly recommended to use ``model_chat.py`` for the `GPT-OSS-20B NPU model <https://huggingface.co/amd/gpt-oss-20b-onnx_cpu_rai_1.9.0_npu>`_.
 
 
 **********************************
 Vision Language Model (VLM)
 **********************************
 
-AMD provides a pre-optimized Gemma-3-4b-it multimodal model ready to be deployed with Ryzen AI Software. Support for this model is available starting with the Ryzen AI 1.7 release.
+AMD provides pre-optimized multimodal models ready to be deployed with Ryzen AI Software. The following VLMs are supported:
 
-Model: `Gemma-3-4b-it-mm-onnx-ryzenai-npu <https://huggingface.co/amd/Gemma-3-4b-it-mm-onnx-ryzenai-npu>`_
+- `Qwen3-VL-4B-Instruct <https://huggingface.co/amd/Qwen3-VL-4B-Instruct_rai_1.9.0_npu>`_
+- `VideoChat-Flash-Qwen2_5-7B_InternVideo2-1B <https://huggingface.co/amd/Videochat_rai_1.9.0_npu>`_
+- `Gemma-3-4b-it <https://huggingface.co/amd/gemma-3-4b-npu-basic-text-logit-pruning_rai_1.9.0_npu>`_
 
 VLM inference requires dedicated Python scripts, which are included in the Ryzen AI installation at ``%RYZEN_AI_INSTALLATION_PATH%\LLM\example\vlm``.
 
@@ -313,6 +319,15 @@ Use ``vlm_run.py`` to quickly test a model and see output:
    python "%RYZEN_AI_INSTALLATION_PATH%\LLM\example\vlm\vlm_run.py" -m <model_folder> -i <image_path> --image_size 1024 1024
 
 For benchmarking scripts (``vlm_benchmark.py``, ``run_all_benchmarks.py``) and detailed options, refer to the README in the ``vlm`` directory or the `RyzenAI-SW repository <https://github.com/amd/RyzenAI-SW/blob/main/LLM-examples/VLM/README.md>`_.
+
+
+**********************************
+Embedding Model
+**********************************
+
+AMD provides a pre-optimized `embeddinggemma-300m <https://huggingface.co/amd/embeddinggemma_npu_rai_1.9.0_npu>`_ model for the NPU.
+
+An embedding model converts an input text into a single embedding vector; it is not a chat model. It has no ``genai_config.json`` and does not run through OGA, so ``model_benchmark.exe`` and the sample LLM scripts do not apply. Instead, run it with ONNX Runtime using the Ryzen AI execution provider.
 
 
 **************************************
