@@ -13,21 +13,14 @@ This page showcases an example of running LLM on RyzenAI NPU
 
 - Here is an Overview of all supported Models and their available variants :doc:`List of Supported Models <llm_list>` 
 - Note - Linux does not support Hybrid flow
-- Choose any prequantized and postprocessed ready-to-run Model from Hugging Face collection of NPU models
-
-.. parsed-literal::
-
-    `Full-optimized Models with 4K Context length <https://huggingface.co/collections/amd/ryzen-ai-180-npu-4k>`_
-
-    `Long-context Models with 16K Context length <https://huggingface.co/collections/amd/ryzen-ai-180-npu-16k>`_
-
-- For this flow, "Phi-3.5-mini-instruct_rai_1.8.0_npu_4K" is chosen for reference
+- Choose any prequantized and postprocessed ready-to-run Model from `Hugging Face collection of NPU models <https://huggingface.co/collections/amd/ryzen-ai-190-npu>`_
+- For this demo, "Phi-3.5-mini-instruct_rai_1.9.0_npu" is chosen for reference
 .. code-block::
 
   # Make sure git-lfs is installed (https://git-lfs.com)
   sudo apt install git-lfs
   git lfs install
-  git clone https://huggingface.co/amd/Phi-3.5-mini-instruct_rai_1.8.0_npu_4K
+  git clone https://huggingface.co/amd/Phi-3.5-mini-instruct_rai_1.9.0_npu
 
 - Search for RYZEN_AI_INSTALLATION_PATH
 
