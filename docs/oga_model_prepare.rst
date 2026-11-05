@@ -176,13 +176,12 @@ NPU Execution Mode
 Several NPU optimization levels are available depending on model support and performance requirements. To check which variants (full fusion, token fusion, hybrid) are supported for a given model architecture, see :doc:`llm_list`.
 
 
-**Token Fusion** (**long-context** support) `supported models <https://huggingface.co/collections/amd/ryzen-ai-190-npu>`_)::
+**Token Fusion** (**long-context** support) — `supported models <https://huggingface.co/collections/amd/ryzen-ai-190-npu>`_
 
-.. code-block::
+.. code-block:: bash
 
-    :: For example, 131K context
-    model_generate --npu --token_fusion --output {model}_large --input {model} --extra_options max_seq_len=131072 page_attention
-
+   :: For example, 131K context
+   model_generate --npu --token_fusion --output {model}_large --input {model} --extra_options max_seq_len=131072 page_attention
 
 **Full Fusion** (**Best performance**, for `supported models <https://huggingface.co/collections/amd/ryzen-ai-180-npu-4k>`_):
 
