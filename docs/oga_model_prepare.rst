@@ -180,8 +180,8 @@ Several NPU optimization levels are available depending on model support and per
 
 .. code-block::
 
-   :: For example, 131K context
-   model_generate --npu --token_fusion --output {model}_large --input {model} --extra_options max_seq_len=131072 page_attention
+    :: For example, 131K context
+    model_generate --npu --token_fusion --output {model}_large --input {model} --extra_options max_seq_len=131072 page_attention
 
 
 **Full Fusion** (**Best performance**, for `supported models <https://huggingface.co/collections/amd/ryzen-ai-180-npu-4k>`_):
