@@ -56,7 +56,7 @@ Install Ryzen AI Software
 
 - Download the Ryzen AI Software installer `Ryzen AI Software Installer <https://download.amd.com/opendownload/RyzenAI/1.9.0/ryzen-ai-1.9.0-msi.zip>`_
 
-- Launch the EXE installer and follow the instructions on the installation wizard:
+- Launch the MSI installer and follow the instructions on the installation wizard:
 
   - Accept the terms of the Licence agreement
   - Provide the destination folder for Ryzen AI installation (default installation path: ``C:\Program Files\RyzenAI\ryzen-ai-1.9.0\``)
