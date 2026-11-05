@@ -50,7 +50,7 @@ After installing required Ubuntu distribution and Python version, proceed with N
 *******************
 Install NPU Drivers
 *******************
-- Download the NPU driver package from `Downloads` section of `Ryzen AI Software Drivers <https://download.amd.com/opendownload/RyzenAI/Driver/RAI_1.8_Linux_NPU_XRT.zip>`_.
+- Download the NPU driver package from `Ryzen AI Linux Drivers <https://download.amd.com/opendownload/RyzenAI/1.9.0/RAI_1.9_Linux_NPU_XRT.zip>`_.
 
 - RyzenAI linux driver package contains 
    - XRT Package
@@ -92,7 +92,7 @@ Install NPU Drivers
 *************************
 Install Ryzen AI Software
 *************************
-- Download the RyzenAI for Linux package `ryzen_ai-1.9.0.tgz` from `Downloads` section of `Ryzen AI Software Installer <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=ryzen_ai-1.9.0.tgz>`_.
+- Download the RyzenAI for Linux package `ryzen_ai-1.9.0.tgz` from `Ryzen AI Software Installer <https://download.amd.com/opendownload/RyzenAI/1.9.0/ryzen_ai-1.9.0.tgz>`_.
 - Navigate to the downloaded path and follow the below steps
 
 .. code-block:: bash
@@ -130,8 +130,8 @@ Note
 - Moving forward, Linux Installation will transition from ***.tgz** to ***.deb** based Installer. 
 - In RyzenAI 1.9 release, we are providing this optional method as a preview.
 - Related files
-   - Download `ryzen-ai-runtime_1.9.0-1_amd64.deb` from `Ryzen AI Software Installer <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=ryzen_ai-1.9.0.tgz>`_.
-   - Download `setup_ryzen_ai.sh` from `Ryzen AI Software Installer <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=ryzen_ai-1.9.0.tgz>`_.
+   - Download `ryzen-ai-runtime_1.9.0-1_amd64.deb` from `Ryzen AI (deb) Software Installer <https://download.amd.com/opendownload/RyzenAI/1.9.0/ryzen-ai-runtime_1.9.0-1_amd64.deb>`_.
+   - Download `setup_ryzen_ai.sh` from `Ryzen AI Setup script <https://download.amd.com/opendownload/RyzenAI/1.9.0/setup_ryzen_ai.sh>`_.
 
 - Installation Instructions
 
