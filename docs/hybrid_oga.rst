@@ -341,3 +341,37 @@ To do this, the fine-tuned models must first be prepared for execution with the 
 
 After a fine-tuned model has been prepared for execution, it can be deployed by following the steps described previously in this page.
 
+*****************************
+Running LLM with pip install
+*****************************
+
+In addition to the full RyzenAI software stack, we also provide standalone wheel files for the users who prefer using their own environment. To prepare an environment for running the Hybrid and NPU-only LLM independently, perform the following steps:
+
+1. Create a new python environment and activate it.
+
+.. code-block:: bash
+
+	:: Create and activate the venv
+	py -3.12 -m venv C:\llm_venv
+	C:\llm_venv\Scripts\activate.bat
+	python -m pip install --upgrade pip
+
+
+2. Install onnxruntime-genai wheel file.
+
+.. code-block:: bash
+
+	:: Install packages
+	pip install --extra-index-url https://pypi.amd.com/ryzenai_llm/1.9.0/windows/simple onnxruntime-genai-directml-ryzenai==0.18.0
+	pip install --extra-index-url https://pypi.amd.com/ryzenai_llm/1.9.0/windows/simple ryzenai-onnx-utils==1.9.0 onnx==1.22.0
+
+
+3. Navigate to your working directory and download the desired Hybrid/NPU model
+
+.. code-block:: bash
+
+   cd working_directory
+   git clone <link_to_model>
+
+4. Run the Hybrid or NPU model.
+
