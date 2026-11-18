@@ -57,7 +57,7 @@ Download Ryzen AI CVML Library package
 
 Create an AMD account at `account.amd.com <https://account.amd.com>`_ if you don't have one, then sign in to download the Ryzen AI CVML Library from the AMD Account Portal: ::
 
-  https://account.amd.com/en/forms/downloads/xef.html?filename=72293_Ryzen_AI_Library_26.09.16.zip
+  https://account.amd.com/en/forms/downloads/xef.html?filename=72293_Ryzen-AI-Library-Public-Release_26.11.18.zip
 
 After downloading, extract the package to a local directory (e.g., ``C:\RyzenAI-Library`` on Windows or ``~/RyzenAI-Library`` on Linux) and set the ``AMD_CVML_SDK_ROOT`` environment variable to the extracted location.
 s
