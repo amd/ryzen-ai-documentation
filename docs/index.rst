@@ -86,6 +86,13 @@ For more details, refer to the :doc:`llm/overview` page.
    linux.rst
 
 .. toctree::
+   :maxdepth: 2
+   :hidden:
+   :caption: Ryzen AI Linux
+
+   linux_sw/index
+
+.. toctree::
    :maxdepth: 1
    :hidden:
    :caption: Running Models on the NPU
