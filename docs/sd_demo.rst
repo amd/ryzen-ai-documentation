@@ -156,7 +156,7 @@ environment and set the model cache as described in :ref:`installation-steps`.
 
    **One installer for several platforms.** The same Ryzen AI installer supports
    STX, KRK, GPT, and MDS. On Medusa (MDS), use a repository whose ``model_id``
-   ends with ``-medusa``. See `Supported models (Medusa)`_.
+   ends with ``-medusa``. See :ref:`medusa-supported-models`.
 
 .. tip::
 
@@ -173,122 +173,14 @@ environment and set the model cache as described in :ref:`installation-steps`.
    VBS is a Windows security feature. Disable it only on systems where this trade-off is
    acceptable.
 
-.. _medusa-supported-models:
-
-Supported models (Medusa)
--------------------------
-
-Each row lists the task, the default resolution, whether dynamic resolution and
-preemption are supported, the default number of denoising steps (``-n``), and the
-Hugging Face ``model_id`` to pass as ``--model_id``. The width and height presets
-are listed in :ref:`Dynamic resolution (DynRes) <dynres>`. Models that support both
-text-to-image and image-to-image share one repository. Commands are in
-`Running Medusa Models (M1.0.3-Beta)`_.
-
-.. list-table:: Medusa M1.0.3-Beta supported models
-   :header-rows: 1
-   :widths: 17 13 11 13 8 10 28
-
-   * - Model
-     - App
-     - Default resolution
-     - Dynamic resolution
-     - Preemption
-     - Default steps (``-n``)
-     - Hugging Face ``model_id``
-   * - SD1.5
-     - t2i
-     - 512x512
-     - No
-     - No
-     - 20
-     - `amd/stable-diffusion-1.5-amdnpu-medusa <https://huggingface.co/amd/stable-diffusion-1.5-amdnpu-medusa>`_
-   * - FLUX.2-Klein-4B
-     - t2i, i2i (1 or 2 inputs)
-     - 1024x1024
-     - Yes (20 and 11 resolutions)
-     - Yes
-     - 4
-     - `amd/FLUX.2-klein-4B-amdnpu-medusa <https://huggingface.co/amd/FLUX.2-klein-4B-amdnpu-medusa>`_
-   * - **FLUX.3-Klein** (new)
-     - t2i
-     - 1024x1024
-     - No
-     - No
-     - 16
-     - `amd/flux-3-image-klein-amdnpu-medusa <https://huggingface.co/amd/flux-3-image-klein-amdnpu-medusa>`_
-   * - **Z-Image-Turbo** (new)
-     - t2i
-     - 1024x1024
-     - No
-     - No
-     - 9
-     - `amd/Z-Image-Turbo-amdnpu-medusa <https://huggingface.co/amd/Z-Image-Turbo-amdnpu-medusa>`_
-   * - Segmind-Vega
-     - t2i, i2i
-     - 1024x1024
-     - No
-     - Yes
-     - 50
-     - `amd/segmind-vega-amdnpu-medusa <https://huggingface.co/amd/segmind-vega-amdnpu-medusa>`_
-   * - SDXL-Turbo
-     - t2i
-     - 512x512
-     - Yes (5 resolutions)
-     - Yes
-     - 1
-     - `amd/sdxl-turbo-amdnpu-medusa <https://huggingface.co/amd/sdxl-turbo-amdnpu-medusa>`_
-   * - SDXL-Base
-     - t2i
-     - 1024x1024
-     - Yes (20 resolutions)
-     - Yes
-     - 50
-     - `amd/sdxl-base-amdnpu-medusa <https://huggingface.co/amd/sdxl-base-amdnpu-medusa>`_
-   * - SSD-1B
-     - t2i
-     - 1024x1024
-     - Yes (20 resolutions)
-     - Yes
-     - 50
-     - `amd/SSD-1B-amdnpu-medusa <https://huggingface.co/amd/SSD-1B-amdnpu-medusa>`_
-   * - DreamShaper XL Lightning
-     - t2i
-     - 1024x1024
-     - Yes (20 resolutions)
-     - Yes
-     - 50
-     - `amd/dreamshaper-xl-lightning-amdnpu-medusa <https://huggingface.co/amd/dreamshaper-xl-lightning-amdnpu-medusa>`_
-   * - Playground v2.5
-     - t2i
-     - 1024x1024
-     - Yes (20 resolutions)
-     - Yes
-     - 50
-     - `amd/playground-v2.5-1024px-aesthetic-amdnpu-medusa <https://huggingface.co/amd/playground-v2.5-1024px-aesthetic-amdnpu-medusa>`_
-   * - FLUX.1-Schnell
-     - t2i
-     - 1024x1024
-     - Yes (20 resolutions)
-     - Yes
-     - 4
-     - `amd/FLUX.1-schnell-amdnpu-medusa <https://huggingface.co/amd/FLUX.1-schnell-amdnpu-medusa>`_
-   * - SD3.5-Medium
-     - t2i
-     - 1024x1024
-     - Yes (20 resolutions)
-     - Yes
-     - 8
-     - `amd/stable-diffusion-3.5-medium-amdnpu-medusa <https://huggingface.co/amd/stable-diffusion-3.5-medium-amdnpu-medusa>`_
-
 .. _medusa-preemption:
 
 Preemption
 ----------
 
-Models marked "Yes" in the Preemption column can be interrupted so the NPU can
-run another workload, then resumed. SD1.5, FLUX.3-Klein, and Z-Image-Turbo do
-not support preemption in M1.0.3-Beta.
+Models marked "Yes" in the Preemption column of :ref:`medusa-supported-models`
+can be interrupted so the NPU can run another workload, then resumed. SD1.5,
+FLUX.3-Klein, and Z-Image-Turbo do not support preemption in M1.0.3-Beta.
 
 A preemption request waits at most 100 ms at DPM1 (480 MHz).
 
@@ -298,7 +190,8 @@ Running Medusa Models (M1.0.3-Beta)
 -----------------------------------
 
 Run the commands below from ``GenAI-SD\test`` after activating the environment
-(:ref:`installation-steps`). ``--model_id`` is required.
+(:ref:`installation-steps`). ``--model_id`` is required. Model ids and default
+``-n`` are in :ref:`medusa-supported-models`.
 
 .. code-block:: powershell
 
