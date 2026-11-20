@@ -2,35 +2,57 @@
 Stable Diffusion
 #######################
 
-Ryzen AI 1.9.0 provides preview demos of Stable Diffusion image-generation pipelines.
-The demos cover **Image-to-Image** (ControlNet: Canny, Pose, Tile, Depth; plus Segmind-Vega
-i2i without ControlNet) and **Text-to-Image** for SD1.5, SD-Turbo, SDXL-base, SDXL-Turbo,
-Segmind-Vega, DreamShaper XL Lightning, SSD-1B, Playground v2.5, FLUX.1-Schnell,
-FLUX.2-klein-4B, SD3.0, and SD3.5, with **inpainting** where noted for SD3.0.
+Ryzen AI 1.9.5 includes preview Stable Diffusion demos that run on the AMD NPU.
+The demos cover image-to-image (ControlNet Canny, pose, tile, and depth, plus
+Segmind-Vega without ControlNet), text-to-image, and SD3.0 inpainting.
+Commands for each pipeline are in :doc:`sd_demo`. Medusa (MDS) uses a separate
+set of ``-medusa`` models; see :ref:`medusa-models`.
 
-Models are fetched from Hugging Face on first use (see :doc:`inst` for Ryzen AI and driver
-setup). SD3.0 and SD3.5 models require Hugging Face authentication and might also require
-acceptance of the model license before they can be downloaded.
+Models download from Hugging Face on first use. SD3.0 and SD3.5 also require a
+Hugging Face login, and you may need to accept the license on the model card
+before the download starts. Each repository is covered by the Hugging Face
+license on its model card. Ryzen AI and NPU driver setup are in :doc:`inst`.
 
+
+.. _installation-steps:
 
 ******************
 Installation Steps
 ******************
 
-1. Ensure the latest version of Ryzen AI and NPU drivers are installed. See :doc:`inst`.
+1. Install the latest Ryzen AI software and NPU drivers. See :doc:`inst`.
 
-2. The GenAI-SD folder is located in the RyzenAI installation tree. Navigate to the
-   folder and run the following command:
+2. The installer creates two directories under ``C:\Program Files\RyzenAI``:
+
+   * ``ryzen-ai-1.9.5`` is the Python virtual environment. Activate it with
+     ``Scripts\Activate.ps1`` in PowerShell, or ``Scripts\activate.bat`` in
+     Command Prompt.
+   * ``1.9.5`` is the runtime. ``RYZEN_AI_INSTALLATION_PATH`` points here.
+     ``GenAI-SD`` is ``C:\Program Files\RyzenAI\1.9.5\GenAI-SD``. Run the
+     examples from ``GenAI-SD\test``.
 
    .. code-block:: powershell
 
-      $env:RYZEN_AI_INSTALLATION_PATH = "C:\Program Files\RyzenAI\ryzen-ai-1.9.0"
-      & "$env:RYZEN_AI_INSTALLATION_PATH\Scripts\Activate.ps1"
-      cd "$env:RYZEN_AI_INSTALLATION_PATH\GenAI-SD"
+      & "C:\Program Files\RyzenAI\ryzen-ai-1.9.5\Scripts\Activate.ps1"
+      $env:RYZEN_AI_INSTALLATION_PATH = "C:\Program Files\RyzenAI\1.9.5"
+      cd "$env:RYZEN_AI_INSTALLATION_PATH\GenAI-SD\test"
 
-3. Models are downloaded from Hugging Face on first use and cached under
-   ``GenAI-SD\models`` or ``$env:RYZENAI_GENAI_SD_MODELS_ROOT``. See `supported-models`_
-   for the full list; primary entry points include:
+3. On first use, ``run.py`` downloads each model into ``GenAI-SD\models``.
+   ``C:\Program Files`` is often read-only, so set
+   ``RYZENAI_GENAI_SD_MODELS_ROOT`` to a folder you can write to. Models are
+   then downloaded to, and loaded from, that folder.
+
+   .. code-block:: powershell
+
+      $env:RYZENAI_GENAI_SD_MODELS_ROOT = "D:\sd_models"
+
+   Pass ``--output_path`` to store generated images outside the install tree,
+   for example ``--output_path C:\Users\<username>\Documents\generated_images``.
+   You can instead copy the whole ``GenAI-SD`` directory to a writable location
+   and run ``run.py`` from that copy.
+
+   These are the model repositories. Resolution and ``model_id`` details are
+   in `supported-models`_.
 
    - `SD1.5 <https://huggingface.co/amd/stable-diffusion-1.5-amdnpu>`_
    - `SD1.5 ControlNet Canny <https://huggingface.co/amd/sd1.5-controlnet-canny-amdnpu>`_
@@ -53,9 +75,9 @@ Installation Steps
 Supported models
 ******************
 
-The following summarizes default application mode, typical resolution /
-dynamic-resolution (DynRes) notes, and the recommended Hugging Face ``model_id`` on
-AMD NPU-tuned repos.
+The table lists each pipeline's task, default resolution, dynamic-resolution
+(DynRes) presets, and the Hugging Face ``model_id`` to pass as ``--model_id``.
+Where a cell gives both an ``amd`` id and a ``stabilityai`` id, either one works.
 
 .. list-table::
    :header-rows: 1
@@ -140,24 +162,34 @@ AMD NPU-tuned repos.
      - SD3.5-ControlNet (Canny)
      - i2i-canny
      - 512x512, 20x DynRes
-     - Uses SD3.5 AMD weights plus SD3.0 Canny ControlNet assets (see below)
+     - Uses SD3.5 weights plus SD3.0 Canny ControlNet assets (see below)
 
-In the Supported models table, the **DynRes** column counts how many dynamic-resolution
-presets a pipeline exposes (for example 5x or 20x). The following material spells out which
-width x height pairs are in scope.
+A DynRes count is the number of width and height presets that pipeline accepts.
+The pairs are listed in `Dynamic resolution (DynRes)`_.
 
 .. _dynres:
 
-.. rubric:: Dynamic resolution (DynRes)
+Dynamic resolution (DynRes)
+===========================
 
-**Original dynamic-resolution requirements**
+Pass width and height with ``-W`` and ``-H``. For example, 1152x928 is
+``-W 1152 -H 928``. Every side is a multiple of 32, and the batch size is 1.
 
-These are the classic fixed pairs (per model class) before the expanded preset grid.
+SDXL-Turbo accepts the 5 resolutions below. Every other DynRes pipeline accepts
+the 20. Medusa FLUX.2-Klein-4B also accepts the 11 sizes after that table, for
+text-to-image and for image-to-image. The Medusa model table in
+:ref:`medusa-supported-models` shows which set each Medusa model uses.
 
-* **DynRes 5x:** 512x512, 288x512, 512x288, 384x512, 512x384.
-* **DynRes 20x:**
+**5 resolutions (SDXL-Turbo)**
 
-.. list-table:: New DynRes combinations (batch size 1; align to multiple of 32 as required)
+512x512, 512x384, 384x512, 512x288, and 288x512 (width x height). These five
+sizes are the 512 column of the table below.
+
+**20 resolutions**
+
+Four base sizes, with the same five aspect ratios at each size:
+
+.. list-table:: 20 resolutions (width x height)
    :header-rows: 1
    :widths: 14 18 18 18 22
 
@@ -192,24 +224,33 @@ These are the classic fixed pairs (per model class) before the expanded preset g
      - 448x768
      - 576x1024
 
-Public model pages follow the Hugging Face model license (HF LIC) for each repo.
+**11 resolutions (Medusa FLUX.2-Klein-4B)**
 
-**SD3.5 Canny ControlNet setup:** copy the SD3.0 Canny ControlNet files into the SD3.5
-model layout as required by your GenAI-SD tree (per release notes), then run the Canny
-example with ``--model_id amd/stable-diffusion-3.5-medium-amdnpu``.
+These sizes are in addition to the 20 above.
+
+.. list-table:: 11 resolutions (width x height)
+   :header-rows: 1
+   :widths: 25 25 25 25
+
+   * - 1024x1024
+     - 928x1152
+     - 1152x928
+     - 896x1216
+   * - 1216x896
+     - 864x1280
+     - 1280x864
+     - 768x1376
+   * - 1376x768
+     - 672x1600
+     - 1600x672
+     -
+
+**SD3.5 Canny ControlNet.** Copy the SD3.0 Canny ControlNet files into the
+SD3.5 model layout, as described in the GenAI-SD release notes. Then run the
+Canny example with ``--model_id stabilityai/stable-diffusion-3.5-medium-amdnpu``.
 
 ********************
 Deploy Models on NPU
 ********************
 
-This page elaborates on running Stable Diffusion Models on NPU: :doc:`sd_demo`
-
-..
-   ------------
-   #####################################
-   License
-   #####################################
-
-   Ryzen AI is licensed under `MIT License <https://github.com/amd/ryzen-ai-documentation/blob/main/License>`_.
-   Refer to the `LICENSE File <https://github.com/amd/ryzen-ai-documentation/blob/main/License>`_
-   for the full license text and copyright notice.
+Commands for each model are in :doc:`sd_demo`.
